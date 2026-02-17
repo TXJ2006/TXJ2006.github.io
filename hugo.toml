@@ -1,0 +1,49 @@
+baseURL = 'https://TXJ2006.github.io/'
+languageCode = 'zh-cn'
+title = 'XuJiang'
+theme = 'PaperMod'
+
+[params]
+    math = true
+    defaultTheme = "light"
+    ShowToc = true
+    TocOpen = true
+    ShowBreadCrumbs = false
+    ShowPostNavLinks = true
+    ShowCodeCopyButtons = true
+    ShowReadingTime = false
+    ShowShareButtons = false
+    ShowWordCount = false
+    author = "XuJiang"
+
+    [params.label]
+        text = "XuJiang"
+
+    [params.profileMode]
+        enabled = false
+
+[[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 1
+
+[[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 2
+
+[[menu.main]]
+    name = "Publications"
+    url = "/publications/"
+    weight = 3
+
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
+        [markup.goldmark.extensions]
+            [markup.goldmark.extensions.passthrough]
+                enable = true
+                [markup.goldmark.extensions.passthrough.delimiters]
+                    block = [['$$', '$$'], ['\[', '\]']]
+                    inline = [['$', '$'], ['\(', '\)']]

@@ -1,0 +1,161 @@
+/* ===== 左侧固定 TOC 侧边栏（复刻截图样式） ===== */
+@media (min-width: 1280px) {
+    .post-single {
+        position: relative;
+    }
+
+    .toc {
+        position: fixed;
+        top: 120px;
+        left: max(calc((100vw - 800px) / 2 - 320px), 20px);
+        width: 260px;
+        max-height: calc(100vh - 160px);
+        overflow-y: auto;
+        border: none;
+        background: none;
+        font-size: 0.85rem;
+    }
+
+    .toc details {
+        background: none;
+        border: none;
+        box-shadow: none;
+    }
+
+    .toc details summary {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--primary);
+        padding: 0;
+        margin-bottom: 8px;
+    }
+
+    .toc .inner {
+        margin: 0;
+        padding: 0;
+    }
+
+    .toc ul {
+        list-style: none;
+        padding-left: 12px;
+        margin: 0;
+        line-height: 1.8;
+    }
+
+    .toc ul li a {
+        color: var(--secondary);
+        font-size: 0.82rem;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .toc ul li a:hover {
+        color: var(--primary);
+    }
+}
+
+/* ===== "Enjoy Reading This Article?" 提示文字 ===== */
+@media (min-width: 1280px) {
+    .toc::after {
+        content: "Enjoy Reading This Article?";
+        display: block;
+        margin-top: 20px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+        font-size: 0.8rem;
+        color: var(--secondary);
+        font-style: italic;
+    }
+}
+
+/* ===== 标签样式：粉紫色圆角 ===== */
+.post-tags li a {
+    background: linear-gradient(135deg, #e8b4f8, #c4a5f5);
+    color: #fff !important;
+    border: none;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.post-tags li a:hover {
+    opacity: 0.85;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+}
+
+/* ===== 文章元信息（日期）样式 ===== */
+.post-meta {
+    color: var(--secondary);
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+/* ===== 文章标题 ===== */
+.post-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+/* ===== 正文排版 ===== */
+.post-content {
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.post-content h1 {
+    font-size: 1.6rem;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+.post-content h2 {
+    font-size: 1.35rem;
+    margin-top: 1.8em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+
+.post-content h3 {
+    font-size: 1.15rem;
+    margin-top: 1.5em;
+    margin-bottom: 0.4em;
+    font-weight: 600;
+}
+
+/* ===== 数学公式间距 ===== */
+.katex-display {
+    margin: 1.2em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* ===== 引用块 ===== */
+.post-content blockquote {
+    border-left: 3px solid var(--primary);
+    padding-left: 16px;
+    margin: 1.5em 0;
+    color: var(--secondary);
+    font-style: italic;
+}
+
+/* ===== 顶部导航栏微调 ===== */
+.nav {
+    max-width: 900px;
+}
+
+.post-single {
+    max-width: 800px;
+}
