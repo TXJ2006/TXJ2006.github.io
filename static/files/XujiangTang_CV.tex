@@ -1,0 +1,184 @@
+%-------------------------
+% Academic CV for Xujiang Tang
+% Based on standard LaTeX CV template
+% Compile with: xelatex or pdflatex
+%-------------------------
+
+\documentclass[11pt,a4paper]{article}
+
+% ===== Packages =====
+\usepackage[margin=0.75in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% ===== Colors =====
+\definecolor{primary}{RGB}{0, 51, 102}
+\definecolor{linkcolor}{RGB}{0, 102, 204}
+
+% ===== Hyperlink Setup =====
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    pdfauthor={Xujiang Tang},
+    pdftitle={Xujiang Tang - Curriculum Vitae}
+}
+
+% ===== Section Formatting =====
+\titleformat{\section}{\large\bfseries\color{primary}\scshape}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+% ===== Header/Footer =====
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\small\thepage}
+
+% ===== Custom Commands =====
+\newcommand{\cventry}[4]{
+    \textbf{#1} \hfill #2 \\
+    \textit{#3} \hfill \textit{#4} \\[2pt]
+}
+
+\newcommand{\cventryoneline}[2]{
+    \textbf{#1} \hfill #2 \\[2pt]
+}
+
+% ===== Document =====
+\begin{document}
+
+% ===== Title =====
+\begin{center}
+    {\LARGE\bfseries\color{primary} Xujiang Tang} \\[6pt]
+    {\large Curriculum Vitae} \\[8pt]
+    \faEnvelope\ \href{mailto:txj_262538@163.com}{txj\_262538@163.com} \quad
+    \faPhone\ +86 183-2782-9197 \\[3pt]
+    \faGithub\ \href{https://github.com/TXJ2006}{github.com/TXJ2006} \quad
+    \faOrcid\ \href{https://orcid.org/0009-0008-1127-6420}{0009-0008-1127-6420} \\[3pt]
+    \faGlobe\ \href{https://txj2006.github.io}{txj2006.github.io}
+\end{center}
+
+% ===== Education =====
+\section{Education}
+
+\cventry{Yangtze University College of Arts and Sciences}{Jingzhou, Hubei, China}
+{B.Sc. in Mathematics and Applied Mathematics}{Sep. 2023 -- Jun. 2027 (Expected)}
+\textbf{GPA: 3.5 / 4.0}
+
+\vspace{4pt}
+\textbf{Key High-Achievement Courses:}
+\begin{itemize}[nosep, leftmargin=1.5em]
+    \item Optimization Theory --- \textbf{97/100} (Ranked 1st in the Major)
+    \item Numerical Computation Methods --- \textbf{96/100}
+    \item Mathematical Modeling, Data Structures, Ordinary Differential Equations, Probability \& Mathematical Statistics
+\end{itemize}
+
+% ===== Publications =====
+\section{Submitted / Under-Review Papers \& Manuscripts}
+
+{\small\textit{Focus: Learning Theory, Optimization Algorithms, Stochastic Processes and Causal Inference}}
+
+\begin{enumerate}[leftmargin=1.5em, itemsep=6pt]
+    \item \textbf{X. Tang} and C. Fan (Corresponding Author). \textit{Out-of-Distribution Generalization Error Bounds for Successful Prediction of Deep Autoregressive Algorithms.} \\
+    Submitted to \textbf{ICML 2026} $|$ Under Review
+
+    \item \textbf{X. Tang}, et al. \textit{Geometric Disentanglement of Causal Cycles and Latent Confounders via Non-Gaussian Heterogeneity.} \\
+    Submitted to \textbf{UAI 2026} (Causal Inference \& Statistical Learning) $|$ Under Review
+
+    \item \textbf{X. Tang}. \textit{Quartic Difficulty: Assessing the Learnability of Unsupervised Learning Algorithms.} \\
+    Submitted to \textbf{COLT} (Generalization Bounds and Theoretical Guarantees)
+
+    \item \textbf{X. Tang}. \textit{Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions.} \\
+    Submitted to \textbf{AIMS Mathematics}
+
+    \item \textbf{X. Tang} and D. Hu. \textit{Geometric Manifold Rectification: Inducing Neural Collapse for Robust Representation Alignment.} \\
+    Submitted to \textbf{ICLR 2026 Workshop}
+
+    \item \textbf{X. Tang}, et al. \textit{Theoretical Analysis of Transformer Architecture.} \\
+    Submitted to an \textbf{EI-indexed International Conference} (MIT Remote Research Group)
+\end{enumerate}
+
+% ===== Research Experience =====
+\section{Research Experience}
+
+\cventry{Independent Research on Dynamical Systems and Machine Learning}{Remote / On-Campus}
+{Project Lead}{Mar. 2024 -- Present}
+\begin{itemize}[nosep, leftmargin=1.5em]
+    \item \textbf{Koopman Operator Theory:} Collaborated with the research group of Prof. Yanbing Jia (Henan University of Science and Technology) to solve long-sequence modeling problems.
+    \item Proposed a Koopman Operator Linearization Skeleton system for nonlinear dynamical modeling.
+    \item Validated the system on multiple chaotic datasets, outperforming baseline deep learning models.
+\end{itemize}
+
+\vspace{6pt}
+
+\cventry{Stochastic Modeling and Quantitative Finance}{Independent Team Project}
+{Team Lead}{Oct. 2023 -- Apr. 2024}
+\begin{itemize}[nosep, leftmargin=1.5em]
+    \item \textbf{Rough Volatility \& MCMC:} Led a team to investigate the rough volatility characteristics of financial markets.
+    \item Overcame computational bottlenecks of MCMC methods in stochastic process generation.
+    \item Designed a novel algorithm to resolve inductive bias in matrix representation; optimized parameter estimation strategies.
+    \item Open-sourced the model framework on GitHub; manuscript in preparation for a top-tier journal.
+\end{itemize}
+
+\vspace{6pt}
+
+\cventry{Biomedical Data Science (Spatial Transcriptomics)}{Northeastern University}
+{Research Assistant $|$ Advisor: Dr. Dayu Hu}{Sep. 2024 -- Jan. 2025}
+\begin{itemize}[nosep, leftmargin=1.5em]
+    \item Assisted in designing single-cell data clustering algorithms, integrating a geometric perspective into computational pipelines.
+    \item Optimized computation and processing workflows for high-dimensional biological data.
+\end{itemize}
+
+% ===== Internships =====
+\section{Internship \& Professional Experience}
+
+\cventry{Peking University Open-Source Large Model Group}{Remote}
+{Research Engineering Intern}{Jun. 2024 -- Aug. 2024}
+\begin{itemize}[nosep, leftmargin=1.5em]
+    \item Participated in engineering deployment of Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) tasks, improving the model's external knowledge retrieval performance.
+\end{itemize}
+
+\vspace{6pt}
+
+\cventry{Deloitte \& Guolian Securities}{China}
+{Data Analysis Intern}{Jul. 2024 -- Sep. 2024}
+\begin{itemize}[nosep, leftmargin=1.5em]
+    \item Applied statistical methods to securities research and developed quantitative workflows for financial reporting.
+    \item Led team projects to solve business problems via data-driven approaches.
+\end{itemize}
+
+% ===== Honors =====
+\section{Honors \& Awards}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+    \item \textbf{Silver Medal}, Kaggle Jigsaw Toxic Comment Classification Challenge
+    \item \textbf{Regional Gold Medal}, WorldQuant International Quant Championship
+    \item \textbf{Third Prize}, Graduate AI Forum, University of Chinese Academy of Sciences (UCAS) --- \textit{Only undergraduate recipient}
+    \item \textbf{Multiple National Second Prizes} in mathematical modeling competitions (Future Cup, Central China Cup, Higher Education Press Cup); Led university mathematical modeling team formation and training
+    \item \textbf{Reviewer}, ICLR 2026 Workshop (GRAm)
+    \item \textbf{Participation Award}, NeurIPS 2025 Open Problems in WiML \& OPP Competitions
+\end{itemize}
+
+% ===== Skills =====
+\section{Skills}
+
+\begin{itemize}[leftmargin=1.5em, itemsep=3pt]
+    \item \textbf{Mathematics:} Convex Optimization, Numerical Analysis, Stochastic Processes, Differential Equations, Causal Inference
+    \item \textbf{Programming:} Python (PyTorch, NumPy, Pandas), MATLAB, R, C++
+    \item \textbf{Tools:} \LaTeX, Git/GitHub, Linux
+    \item \textbf{Languages:} English (Professional Fluency), Mandarin (Native)
+\end{itemize}
+
+\vfill
+\begin{center}
+    \small\textit{Last updated: February 2026}
+\end{center}
+
+\end{document}
