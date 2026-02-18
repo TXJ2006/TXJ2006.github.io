@@ -15,7 +15,7 @@ hideMeta: true
 Expected Graduation: Jun. 2027
 
 📧 [txj_262538@163.com](mailto:txj_262538@163.com) · 📱 +86 183-2782-9197  
-🔗 [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-0008-1127-6420)
+🔗 [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-0008-1127-6420) · [LinkedIn](https://www.linkedin.com/in/%E7%85%A6%E6%B1%9F-%E5%94%90-7a1513392)
 
 ---
 
