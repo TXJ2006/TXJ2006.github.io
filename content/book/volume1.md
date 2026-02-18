@@ -34,7 +34,7 @@ math: true
 
 | 章节 | 标题 | 英文 |
 |:----:|------|------|
-| 001 | 向量空间与对偶空间 | Vector Spaces & Dual Spaces |
+| 001 | [向量空间与对偶空间](/book/chapters/chapter001/) | Vector Spaces & Dual Spaces |
 | 002 | 谱理论：特征值与奇异值分解 | Spectral Theory: Eigendecomposition & SVD |
 | 003 | 张量代数与爱因斯坦求和约定 | Tensor Algebra & Einstein Summation |
 | 004 | 希尔伯特空间与 $L^p$ 范数 | Hilbert Spaces & Norms |
