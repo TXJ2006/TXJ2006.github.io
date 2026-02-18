@@ -16,9 +16,9 @@ hideMeta: true
    📄 **IEEE ICMEIM 2025** (EI-indexed) | Published, pp. 1–5  
    🔗 [IEEE Xplore](https://ieeexplore.ieee.org/xpl/conhome/11306383/proceeding)
 
-2. **X. Tang**, et al. *Theoretical Analysis of Transformer Architecture.*  
-   📄 **IEIT 2025** — 5th International Conference on Internet, Education and Information Technology, Hangzhou, China (EI-indexed) | Published, Jul. 2025  
-   🔗 [Atlantis Press](https://atlantis-press.com/proceedings/ieit-25) | DOI: [10.2991/978-94-6463-803-5](https://doi.org/10.2991/978-94-6463-803-5)
+2. **X. Tang**\* and Q. Li. *Logical Gene Encoding: a Bio-Inspired Approach for Energy-Efficient Automated Reasoning.*  
+   📄 **IEIT 2025** — 5th Intl. Conf. on Internet, Education and Information Technology, Hangzhou, China (EI-indexed) | Published, Jul. 2025  
+   🔗 [Atlantis Press](https://doi.org/10.2991/978-94-6463-803-5_81) | DOI: 10.2991/978-94-6463-803-5_81
 
 ---
 

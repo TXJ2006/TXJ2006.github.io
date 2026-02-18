@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.15)  18 FEB 2026 20:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.15)  18 FEB 2026 20:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -457,7 +457,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 89.
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
@@ -471,22 +471,22 @@ dministrator/AppData/Roaming/MiKTeX/fonts/enc/dvips/fontawesome5/fa5brands0.enc
 }{C:/Users/Administrator/AppData/Roaming/MiKTeX/fonts/enc/dvips/fontawesome5/fa
 5brands1.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program
  Files/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--153
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 160--161
+Underfull \hbox (badness 10000) in paragraph at lines 161--162
 
  []
 
@@ -499,23 +499,17 @@ L3 programming layer <2025-12-29>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-Package rerunfilecheck Warning: File `XujiangTang_CV.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `XujiangTang_CV.out':
-(rerunfilecheck)             Before: A41EA7E2EBBEA3595BD0D32056420BD4;950
-(rerunfilecheck)             After:  0E674C1CA84739CF91E92B17EB23234D;1150.
+Package rerunfilecheck Info: File `XujiangTang_CV.out' has not changed.
+(rerunfilecheck)             Checksum: 0E674C1CA84739CF91E92B17EB23234D;1150.
  ) 
 Here is how much of TeX's memory you used:
- 13576 strings out of 467871
- 233102 string characters out of 5428419
- 644463 words of memory out of 5000000
- 42287 multiletter control sequences out of 15000+600000
+ 13577 strings out of 467871
+ 233113 string characters out of 5428419
+ 644464 words of memory out of 5000000
+ 42288 multiletter control sequences out of 15000+600000
  673877 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,337b,567s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,337b,572s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Administrator/AppData/Roaming/MiKTeX/fonts/type1/public/fontawesome
 5/FontAwesome5Brands-Regular.pfb><C:/Users/Administrator/AppData/Roaming/MiKTeX
 /fonts/type1/public/fontawesome5/FontAwesome5Free-Solid.pfb><C:/Program Files/M
@@ -523,10 +517,11 @@ iKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
 lic/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/
 Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/f
 onts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lm
-ri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
-Output written on XujiangTang_CV.pdf (3 pages, 219646 bytes).
+ri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program 
+Files/MiKTeX/fonts/type1/public/lm/lmsy8.pfb>
+Output written on XujiangTang_CV.pdf (3 pages, 224372 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
+ 130 PDF objects out of 1000 (max. 8388607)
  18 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
