@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.15)  18 FEB 2026 19:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.15)  18 FEB 2026 20:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -324,7 +324,7 @@ Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \bigstrutjot=\dimen177
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 31.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 42
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 45
 .
 (C:\Program Files\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -333,27 +333,31 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count309
 )
+
+LaTeX Warning: Unused global option(s):
+    [9pt].
+
 (XujiangTang_Transcript.aux)
 \openout1 = `XujiangTang_Transcript.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -363,15 +367,15 @@ LaTeX Font Info:    ... okay on input line 42.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(43.36243pt, 510.78302pt, 43.36243pt)
-* v-part:(T,H,B)=(36.135pt, 765.54942pt, 43.36243pt)
+* h-part:(L,W,R)=(39.74872pt, 518.01044pt, 39.74872pt)
+* v-part:(T,H,B)=(32.52127pt, 772.77686pt, 39.74872pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=510.78302pt
-* \textheight=765.54942pt
-* \oddsidemargin=-28.90756pt
-* \evensidemargin=-28.90756pt
-* \topmargin=-73.135pt
+* \textwidth=518.01044pt
+* \textheight=772.77686pt
+* \oddsidemargin=-32.52127pt
+* \evensidemargin=-32.52127pt
+* \topmargin=-76.74872pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -403,51 +407,51 @@ LaTeX Font Info:    ... okay on input line 42.
 \makeMPintoPDFobject=\count315
 \everyMPtoPDFconversion=\toks26
 )
-Package hyperref Info: Link coloring ON on input line 42.
+Package hyperref Info: Link coloring ON on input line 45.
  (XujiangTang_Transcript.out) (XujiangTang_Transcript.out)
 \@outlinefile=\write3
 \openout3 = `XujiangTang_Transcript.out'.
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4
-9.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 5
+2.
 
 (C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4
-9.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5
+2.
 
 (C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-49.
+52.
 
 (C:\Program Files\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-49.
+52.
 
 (C:\Program Files\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 49.
+(Font)              <10> on input line 52.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 49.
+(Font)              <7> on input line 52.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 49.
+(Font)              <5> on input line 52.
  [1
 
 {C:/Users/Administrator/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Pr
-ogram Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTeX/fonts/
-enc/dvips/lm/lm-mathsy.enc}] [2]
+ogram Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 292.
+(Font)              <9> on input line 276.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 292.
- [3{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
+(Font)              <6> on input line 276.
+ [2{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files/
+MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
 (XujiangTang_Transcript.aux)
  ***********
 LaTeX2e <2025-11-01>
@@ -458,24 +462,23 @@ Package rerunfilecheck Info: File `XujiangTang_Transcript.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 10117 strings out of 467871
- 157176 string characters out of 5428419
- 642621 words of memory out of 5000000
- 38869 multiletter control sequences out of 15000+600000
- 679189 words of font info for 67 fonts, out of 8000000 for 9000
+ 10119 strings out of 467871
+ 157191 string characters out of 5428419
+ 660682 words of memory out of 5000000
+ 38872 multiletter control sequences out of 15000+600000
+ 673192 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,83p,420b,447s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/M
 iKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
 lic/lm/lmbx9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/P
 rogram Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fo
-nts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lm
-r9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Fi
-les/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Program Files/MiKTeX/fonts/type1
-/public/lm/lmsy10.pfb>
-Output written on XujiangTang_Transcript.pdf (3 pages, 233196 bytes).
+nts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr
+i10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Program Fi
+les/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
+Output written on XujiangTang_Transcript.pdf (2 pages, 205521 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 4 named destinations out of 1000 (max. 500000)
+ 63 PDF objects out of 1000 (max. 8388607)
+ 3 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
