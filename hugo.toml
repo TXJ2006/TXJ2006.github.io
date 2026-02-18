@@ -37,6 +37,11 @@ theme = 'PaperMod'
     url = "/publications/"
     weight = 3
 
+[[menu.main]]
+    name = "Book"
+    url = "/book/"
+    weight = 4
+
 [markup]
     [markup.goldmark]
         [markup.goldmark.renderer]
