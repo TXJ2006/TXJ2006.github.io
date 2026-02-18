@@ -1,8 +1,8 @@
----
-title: "Chapter 1 — Vector Spaces and Dual Spaces"
+﻿---
+title: "Chapter 1: Vector Spaces and Dual Spaces"
 layout: "single"
 url: "/book/chapters/chapter001/"
-summary: "The minimum algebraic structure underlying all of machine learning: vector spaces for states, dual spaces for measurements, and the metric bridge between them."
+summary: "The minimum algebraic structure underlying all of machine learning."
 draft: false
 ShowToc: true
 TocOpen: true
@@ -11,68 +11,29 @@ math: true
 ---
 
 <style>
-  .post-content {
-    font-family: 'Times New Roman', 'Times', 'Noto Serif', Georgia, serif;
-    font-size: 12pt;
-    line-height: 1.72;
-  }
-  .post-content h1, .post-content h2, .post-content h3, .post-content h4 {
+  .post-content,
+  .post-content h1, .post-content h2, .post-content h3, .post-content h4,
+  .post-content p, .post-content li, .post-content blockquote,
+  .post-content td, .post-content th {
     font-family: 'Times New Roman', 'Times', 'Noto Serif', Georgia, serif;
   }
-  .post-content p, .post-content li, .post-content blockquote {
-    font-family: 'Times New Roman', 'Times', 'Noto Serif', Georgia, serif;
-  }
-  .post-content code, .post-content pre {
-    font-family: 'Times New Roman', 'Times', monospace;
-  }
-  .def-box {
-    border-left: 4px solid #4a148c;
-    background: #faf5ff;
-    padding: 1em 1.2em;
-    margin: 1.5em 0;
-    border-radius: 4px;
-  }
-  .prop-box {
-    border-left: 4px solid #1565c0;
-    background: #f0f6ff;
-    padding: 1em 1.2em;
-    margin: 1.5em 0;
-    border-radius: 4px;
-  }
-  .proof-box {
-    border-left: 4px solid #999;
-    background: #fafafa;
-    padding: 0.8em 1.2em;
-    margin: 1em 0 1.5em 0;
-    border-radius: 4px;
-  }
-  .ml-box {
-    border-left: 4px solid #e65100;
-    background: #fff8f0;
-    padding: 0.8em 1.2em;
-    margin: 1em 0 1.5em 0;
-    border-radius: 4px;
-  }
-  .scholium-box {
-    border: 2px solid #6a1b9a;
-    background: #fdf5ff;
-    padding: 1em 1.2em;
-    margin: 1.5em 0;
-    border-radius: 6px;
-  }
+  .post-content { font-size: 12pt; line-height: 1.72; }
+  .def-box  { border-left:4px solid #4a148c; background:#faf5ff; padding:1em 1.2em; margin:1.5em 0; border-radius:4px; }
+  .prop-box { border-left:4px solid #1565c0; background:#f0f6ff; padding:1em 1.2em; margin:1.5em 0; border-radius:4px; }
+  .proof-box{ border-left:4px solid #999;    background:#fafafa; padding:.8em 1.2em; margin:1em 0 1.5em; border-radius:4px; }
+  .ml-box   { border-left:4px solid #e65100; background:#fff8f0; padding:.8em 1.2em; margin:1em 0 1.5em; border-radius:4px; }
+  .scholium-box { border:2px solid #6a1b9a; background:#fdf5ff; padding:1em 1.2em; margin:1.5em 0; border-radius:6px; }
 </style>
 
-<div style="text-align:center; margin: 1.5em 0 2.5em 0;">
+<div style="text-align:center; margin:1.5em 0 2.5em 0;">
 
-# Volume I — The Mathematical Principles of Machine Learning
+# Volume I &mdash; The Mathematical Principles of Machine Learning
 
-## Chapter 1 — Vector Spaces and Dual Spaces
+## Chapter 1 &mdash; Vector Spaces and Dual Spaces
 
 *Xujiang Tang*
 
 </div>
-
----
 
 ## Abstract
 
@@ -82,18 +43,14 @@ The chapter then adds the machine-learning layer: why distributed training force
 
 The end result is a clean type discipline: *states live in primal spaces, measurements live in dual spaces, and optimization requires a principled bridge between them*.
 
----
-
 ## Notation and Conventions
 
 - $\mathbb{F}$ denotes a field, typically $\mathbb{R}$.
 - $V, W$ denote vector spaces over $\mathbb{F}$.
-- $V^\*$ denotes the **dual space** of $V$: the space of linear maps $V \to \mathbb{F}$.
-- A *vector* means an element of $V$. A *covector* means an element of $V^\*$.
+- $V^{\ast}$ denotes the **dual space** of $V$: the space of linear maps $V \to \mathbb{F}$.
+- A *vector* means an element of $V$. A *covector* means an element of $V^{\ast}$.
 - For finite-dimensional $V$, coordinates are written with **upper indices** for vectors $v^i$ and **lower indices** for covectors $\varphi_i$, reflecting their different transformation laws.
 - An inner product is **not** assumed unless explicitly stated. When introduced, it is additional structure, not part of the definition of a vector space.
-
----
 
 ## 1.1 Vector Spaces as the Algebra of Learnable State
 
@@ -110,13 +67,11 @@ where $\theta_t$ is a state (parameters, features, latent variables) and $\Delta
 
 If the space of increments does not support these two operations consistently, "mini-batching," "gradient accumulation," "learning rate," and "distributed reduction" cannot be mathematically coherent. This motivates the axioms of a vector space.
 
----
-
 ### 1.1.2 Definition: field and vector space
 
 <div class="def-box">
 
-**Definition 1.1 (Field).** A field $\mathbb{F}$ is a set with addition and multiplication such that $(\mathbb{F},+)$ is an Abelian group, $(\mathbb{F}\setminus\\{0\\},\cdot)$ is an Abelian group, and multiplication distributes over addition.
+**Definition 1.1 (Field).** A field $\mathbb{F}$ is a set with addition and multiplication such that $(\mathbb{F},+)$ is an Abelian group, $(\mathbb{F}\setminus\lbrace 0\rbrace,\cdot)$ is an Abelian group, and multiplication distributes over addition.
 
 </div>
 
@@ -125,7 +80,7 @@ If the space of increments does not support these two operations consistently, "
 **Definition 1.2 (Vector Space).** A vector space over $\mathbb{F}$ is a set $V$ equipped with:
 
 - addition $+: V \times V \to V$,
-- scalar multiplication $\cdot\,: \mathbb{F} \times V \to V$,
+- scalar multiplication $\cdot : \mathbb{F} \times V \to V$,
 
 satisfying for all $u, v, w \in V$, $\alpha, \beta \in \mathbb{F}$:
 
@@ -138,13 +93,11 @@ satisfying for all $u, v, w \in V$, $\alpha, \beta \in \mathbb{F}$:
 | (A5) | $\forall\, u \in V,\ \exists\, (-u) \in V$ such that $u + (-u) = 0$ | Additive inverse |
 | (A6) | $\alpha u \in V$ | Closure under scalar multiplication |
 | (A7) | $\alpha(u + v) = \alpha u + \alpha v$ | Distributivity over vector addition |
-| (A8) | $(\alpha + \beta)u = \alpha u + \beta u$, $\ (\alpha\beta)u = \alpha(\beta u)$, $\ 1u = u$ | Distributivity, compatibility, identity |
+| (A8) | $(\alpha + \beta)u = \alpha u + \beta u$, $(\alpha\beta)u = \alpha(\beta u)$, $1u = u$ | Distributivity, compatibility, identity |
 
 This is the *minimal algebra* underlying every linearization used in ML.
 
 </div>
-
----
 
 ### 1.1.3 Uniqueness facts that ML silently relies on
 
@@ -174,7 +127,7 @@ Hence $0 = 0'$. $\square$
 
 *Proof.* Suppose $v$ and $w$ both satisfy $u + v = 0$ and $u + w = 0$. Then
 
-$$v = v + 0 = v + (u + w) \overset{(A3)}{=} (v + u) + w \overset{(A2)}{=} (u + v) + w = 0 + w = w.$$
+$$v = v + 0 = v + (u + w) \overset{(\text{A3})}{=} (v + u) + w \overset{(\text{A2})}{=} (u + v) + w = 0 + w = w.$$
 
 Thus $v = w$. $\square$
 
@@ -182,11 +135,9 @@ Thus $v = w$. $\square$
 
 <div class="ml-box">
 
-**ML Interpretation.** "No update," "cancelation," and "exact undoing" are not vague metaphors; they require unique identity and unique inverses to make update arithmetic unambiguous — especially when debugging or reasoning about optimizer algebra.
+**ML Interpretation.** "No update," "cancelation," and "exact undoing" are not vague metaphors; they require unique identity and unique inverses to make update arithmetic unambiguous &mdash; especially when debugging or reasoning about optimizer algebra.
 
 </div>
-
----
 
 ### 1.1.4 Distributed training: why commutativity and associativity are non-negotiable
 
@@ -194,7 +145,7 @@ Let $g_1, \dots, g_n \in V$ be increments computed on different shards (workers,
 
 <div class="prop-box">
 
-**Proposition 1.5 (Order invariance of aggregation).** For any permutation $\pi$ of $\\{1, \dots, n\\}$,
+**Proposition 1.5 (Order invariance of aggregation).** For any permutation $\pi$ of $\lbrace 1, \dots, n\rbrace$,
 
 $$g_1 + g_2 + \cdots + g_n = g_{\pi(1)} + g_{\pi(2)} + \cdots + g_{\pi(n)}.$$
 
@@ -222,8 +173,6 @@ Associativity (A3) ensures that inserting parentheses in repeated sums does not 
 
 </div>
 
----
-
 ### 1.1.5 Scalar multiplication is exactly learning-rate semantics
 
 A learning rate $\eta$ is meaningful only if scaling commutes with aggregation. Concretely, the requirement is:
@@ -246,7 +195,7 @@ $$\eta\left(\sum_{i=1}^n g_i\right) = \sum_{i=1}^n \eta\, g_i.$$
 
 **Inductive step.** Assume the statement holds for $n$. Then for $n + 1$:
 
-$$\eta\left(\sum_{i=1}^{n+1} g_i\right) = \eta\left(\sum_{i=1}^{n} g_i + g_{n+1}\right) \overset{(A7)}{=} \eta\left(\sum_{i=1}^{n} g_i\right) + \eta\, g_{n+1} = \left(\sum_{i=1}^{n} \eta\, g_i\right) + \eta\, g_{n+1} = \sum_{i=1}^{n+1} \eta\, g_i.$$
+$$\eta\left(\sum_{i=1}^{n+1} g_i\right) = \eta\left(\sum_{i=1}^{n} g_i + g_{n+1}\right) \overset{(\text{A7})}{=} \eta\left(\sum_{i=1}^{n} g_i\right) + \eta\, g_{n+1} = \left(\sum_{i=1}^{n} \eta\, g_i\right) + \eta\, g_{n+1} = \sum_{i=1}^{n+1} \eta\, g_i.$$
 
 Thus the claim holds for all $n \geq 1$. $\square$
 
@@ -257,8 +206,6 @@ Thus the claim holds for all $n \geq 1$. $\square$
 **ML Interpretation.** Mini-batch SGD with step size $\eta$ can be implemented as "sum then scale" or "scale then sum"; they are identical *only because* scalar distributivity holds.
 
 </div>
-
----
 
 ### 1.1.6 Expectation, mini-batching, and convex combinations are linearity statements
 
@@ -289,23 +236,19 @@ which presuppose linear structure in the output/target representation space.
 
 </div>
 
----
+### 1.1.7 Basis, dimension, and embeddings: what representation learning actually chooses
 
-### 1.1.7 Basis, dimension, and embeddings: what "representation learning" actually chooses
-
-If $V$ is finite-dimensional with basis $\\{e_1, \dots, e_n\\}$, each $v \in V$ has unique coordinates $v^i$ such that
+If $V$ is finite-dimensional with basis $\lbrace e_1, \dots, e_n\rbrace$, each $v \in V$ has unique coordinates $v^i$ such that
 
 $$v = \sum_{i=1}^n v^i\, e_i.$$
 
 <div class="ml-box">
 
-**ML Interpretation.** "Learning an embedding" can be read as learning a map $E: \mathcal{X} \to V$ and often also learning a *useful coordinate system* for downstream tasks. Linear probes and linear heads test whether task-relevant information is linearly accessible in those coordinates.
+**ML Interpretation.** Learning an embedding can be read as learning a map $E: \mathcal{X} \to V$ and often also learning a *useful coordinate system* for downstream tasks. Linear probes and linear heads test whether task-relevant information is linearly accessible in those coordinates.
 
 </div>
 
 A linear layer is a linear map $T: V \to W$. In coordinates it is a matrix; but the intrinsic object is the map $T$, independent of the chosen basis. This distinction becomes operational when discussing invariances, conditioning, and reparameterization.
-
----
 
 ### 1.1.8 Linear maps are the primitives of neural layers
 
@@ -313,9 +256,7 @@ A linear layer is $T(v) = Av$ (coordinate form). A typical network composes affi
 
 $$v \mapsto \sigma(Av + b).$$
 
-Even for nonlinear layers, training uses local linearization: the derivative $D\sigma$ and Jacobians of compositions. Hence linear algebra is not restricted to "linear models"; it is the local language of *all* differentiable computation graphs.
-
----
+Even for nonlinear layers, training uses local linearization: the derivative $D\sigma$ and Jacobians of compositions. Hence linear algebra is not restricted to linear models; it is the local language of *all* differentiable computation graphs.
 
 ## 1.2 Dual Spaces as the Algebra of Measurement, Loss, and Gradient
 
@@ -327,13 +268,13 @@ A model outputs scalars (scores, energies, losses) from representations. The min
 
 **Definition 1.8 (Dual space).**
 
-$$V^\* := \bigl\\{\varphi: V \to \mathbb{F}\ \big|\ \varphi(u + v) = \varphi(u) + \varphi(v),\quad \varphi(\alpha u) = \alpha\,\varphi(u)\bigr\\}.$$
+$$V^{\ast} := \bigl\lbrace\varphi: V \to \mathbb{F}\ \big\vert\ \varphi(u + v) = \varphi(u) + \varphi(v),\quad \varphi(\alpha u) = \alpha\,\varphi(u)\bigr\rbrace.$$
 
 </div>
 
 <div class="def-box">
 
-**Definition 1.9 (Canonical pairing).** For $\varphi \in V^\*$ and $v \in V$,
+**Definition 1.9 (Canonical pairing).** For $\varphi \in V^{\ast}$ and $v \in V$,
 
 $$\langle \varphi,\, v \rangle := \varphi(v) \in \mathbb{F}.$$
 
@@ -343,11 +284,9 @@ This pairing needs no metric and no coordinates.
 
 <div class="ml-box">
 
-**ML Interpretation.** A linear classifier is exactly a covector $\varphi \in V^\*$ acting on an embedding $x \in V$, producing a scalar logit $\varphi(x)$.
+**ML Interpretation.** A linear classifier is exactly a covector $\varphi \in V^{\ast}$ acting on an embedding $x \in V$, producing a scalar logit $\varphi(x)$.
 
 </div>
-
----
 
 ### 1.2.2 The dual is a vector space
 
@@ -355,13 +294,13 @@ Define $(\varphi + \psi)(v) := \varphi(v) + \psi(v)$ and $(\alpha\varphi)(v) := 
 
 <div class="prop-box">
 
-**Proposition 1.10.** $V^\*$ is a vector space over $\mathbb{F}$.
+**Proposition 1.10.** $V^{\ast}$ is a vector space over $\mathbb{F}$.
 
 </div>
 
 <div class="proof-box">
 
-*Proof.* Closure and linearity of these operations are verified as follows. Let $\varphi, \psi \in V^\*$. For all $u, v \in V$:
+*Proof.* Closure and linearity of these operations are verified as follows. Let $\varphi, \psi \in V^{\ast}$. For all $u, v \in V$:
 
 $$(\varphi + \psi)(u + v) = \varphi(u + v) + \psi(u + v) = \bigl(\varphi(u) + \varphi(v)\bigr) + \bigl(\psi(u) + \psi(v)\bigr) = (\varphi + \psi)(u) + (\varphi + \psi)(v).$$
 
@@ -369,27 +308,25 @@ Also, for $\alpha \in \mathbb{F}$:
 
 $$(\varphi + \psi)(\alpha u) = \varphi(\alpha u) + \psi(\alpha u) = \alpha\,\varphi(u) + \alpha\,\psi(u) = \alpha\,(\varphi + \psi)(u).$$
 
-Thus $\varphi + \psi \in V^\*$. Similar verification shows $\alpha\varphi \in V^\*$. Remaining axioms hold pointwise because they hold in $\mathbb{F}$. $\square$
+Thus $\varphi + \psi \in V^{\ast}$. Similar verification shows $\alpha\varphi \in V^{\ast}$. Remaining axioms hold pointwise because they hold in $\mathbb{F}$. $\square$
 
 </div>
 
 <div class="ml-box">
 
-**ML Interpretation.** Averaging heads, ensembling logits, interpolating linear probes: all remain in $V^\*$. This is why "logit averaging" is algebraically clean.
+**ML Interpretation.** Averaging heads, ensembling logits, interpolating linear probes: all remain in $V^{\ast}$. This is why logit averaging is algebraically clean.
 
 </div>
 
----
-
 ### 1.2.3 Dual basis and coordinate invariance (covariance vs. contravariance)
 
-Let $\\{e_1, \dots, e_n\\}$ be a basis of $V$. Define $\\{\varepsilon^1, \dots, \varepsilon^n\\} \subset V^\*$ by
+Let $\lbrace e_1, \dots, e_n\rbrace$ be a basis of $V$. Define $\lbrace\varepsilon^1, \dots, \varepsilon^n\rbrace \subset V^{\ast}$ by
 
 $$\varepsilon^i(e_j) = \delta^i_{\ j}.$$
 
 <div class="prop-box">
 
-**Proposition 1.11 (Existence and uniqueness of the dual basis).** Such $\\{\varepsilon^i\\}$ exists, is unique, and forms a basis of $V^\*$.
+**Proposition 1.11 (Existence and uniqueness of the dual basis).** Such $\lbrace\varepsilon^i\rbrace$ exists, is unique, and forms a basis of $V^{\ast}$.
 
 </div>
 
@@ -413,19 +350,17 @@ $$\varphi'_k = \sum_{i=1}^n \varphi_i\, A^i_{\ k}.$$
 
 <div class="ml-box">
 
-**ML Interpretation.** Reparameterizations change "gradient coordinates" and "parameter coordinates" differently. Any algorithm that ignores this distinction is not invariant under change of variables.
+**ML Interpretation.** Reparameterizations change gradient coordinates and parameter coordinates differently. Any algorithm that ignores this distinction is not invariant under change of variables.
 
 </div>
 
----
-
 ### 1.2.4 Backpropagation is covector transport (the chain rule in correct types)
 
-Let $f: V \to W$ and $\ell: W \to \mathbb{F}$. Set $y = f(x)$. Then $Df(x)$ is a linear map $V \to W$, while $D\ell(y)$ is a covector in $W^\*$. The derivative of the composite is
+Let $f: V \to W$ and $\ell: W \to \mathbb{F}$. Set $y = f(x)$. Then $Df(x)$ is a linear map $V \to W$, while $D\ell(y)$ is a covector in $W^{\ast}$. The derivative of the composite is
 
 $$D(\ell \circ f)(x) = D\ell(y) \circ Df(x),$$
 
-which is an element of $V^\*$. This is exactly the formal statement of backpropagation: **covectors propagate backward through the dual of the local linearization**.
+which is an element of $V^{\ast}$. This is exactly the formal statement of backpropagation: **covectors propagate backward through the dual of the local linearization**.
 
 In coordinates (with Jacobian $J \in \mathbb{R}^{m \times n}$), represent $D\ell(y)$ as a row vector $\frac{\partial \ell}{\partial y} \in \mathbb{R}^{1 \times m}$. For any perturbation $h \in \mathbb{R}^n$:
 
@@ -437,29 +372,25 @@ $$\frac{\partial \ell}{\partial x} = \frac{\partial \ell}{\partial y}\, J.$$
 
 If one insists on column gradients, this becomes the familiar $J^\top$ rule, but the invariant content is the same: it is dual-map composition.
 
----
-
 ### 1.2.5 Gradients live in the dual: the foundational type statement
 
-Let $J: V \to \mathbb{F}$ be differentiable at $\theta$. By definition of the Fréchet derivative, there exists a linear map $DJ(\theta): V \to \mathbb{F}$ such that
+Let $J: V \to \mathbb{F}$ be differentiable at $\theta$. By definition of the Fr&eacute;chet derivative, there exists a linear map $DJ(\theta): V \to \mathbb{F}$ such that
 
-$$\lim_{h \to 0} \frac{J(\theta + h) - J(\theta) - DJ(\theta)[h]}{\\|h\\|} = 0.$$
+$$\lim_{h \to 0} \frac{J(\theta + h) - J(\theta) - DJ(\theta)[h]}{\lVert h\rVert} = 0.$$
 
-Hence $DJ(\theta) \in V^\*$. This is not optional: it is the definition of derivative in linear-algebraic terms.
+Hence $DJ(\theta) \in V^{\ast}$. This is not optional: it is the definition of derivative in linear-algebraic terms.
 
 <div class="ml-box">
 
-**ML Interpretation.** The gradient is *not* inherently a vector in parameter space. It is a covector (a linear functional on perturbations). Any update rule that subtracts a "gradient vector" is already assuming an identification $V^\* \cong V$, which requires additional structure (a metric).
+**ML Interpretation.** The gradient is *not* inherently a vector in parameter space. It is a covector (a linear functional on perturbations). Any update rule that subtracts a "gradient vector" is already assuming an identification $V^{\ast} \cong V$, which requires additional structure (a metric).
 
 </div>
 
----
-
 ### 1.2.6 Turning covectors into vectors: metric transport and natural gradient
 
-To produce an update $\Delta\theta \in V$ from a covector $DJ(\theta) \in V^\*$, one must supply an isomorphism $\sharp_G: V^\* \to V$. The standard mechanism is a positive-definite bilinear form (metric) $G(\theta)$.
+To produce an update $\Delta\theta \in V$ from a covector $DJ(\theta) \in V^{\ast}$, one must supply an isomorphism $\sharp_G: V^{\ast} \to V$. The standard mechanism is a positive-definite bilinear form (metric) $G(\theta)$.
 
-Define $\flat_G: V \to V^\*$ by
+Define $\flat_G: V \to V^{\ast}$ by
 
 $$(\flat_G(v))[h] := v^\top G(\theta)\, h.$$
 
@@ -500,9 +431,7 @@ $$\theta_{t+1} = \theta_t - \eta\, G(\theta_t)^{-1}\, \nabla J(\theta_t).$$
 
 </div>
 
----
-
-### 1.2.7 Optimizers as implicit geometry: SGD, momentum, Adam viewed through the dual–primal bridge
+### 1.2.7 Optimizers as implicit geometry: SGD, momentum, Adam viewed through the dual&ndash;primal bridge
 
 **1) SGD (Euclidean identification).** Using $G = I$ identifies covectors with vectors via the standard dot product. Then $\operatorname{grad}_G J = \nabla J$, giving the usual update $\theta \leftarrow \theta - \eta\,\nabla J$. This is simple but coordinate-dependent: change variables and the update changes.
 
@@ -518,13 +447,9 @@ $$u_t \approx G_t^{-1}\, \nabla J(\theta_t).$$
 
 The algorithmic details differ, but the structural meaning is stable: **adaptive methods modify the covector-to-vector map.**
 
----
-
 ### 1.2.8 Attention and bilinear forms: where dot products hide a metric
 
-Attention scores often take the form $s = q^\top k$. Strictly typed, one should interpret this as evaluation of a covector on a vector, or as a bilinear form induced by a metric. In practice, projection matrices and normalization layers define an implicit bilinear form that makes this operation numerically stable. The key point is: **dot products are not "free"; they encode geometric assumptions.**
-
----
+Attention scores often take the form $s = q^\top k$. Strictly typed, one should interpret this as evaluation of a covector on a vector, or as a bilinear form induced by a metric. In practice, projection matrices and normalization layers define an implicit bilinear form that makes this operation numerically stable. The key point is: **dot products are not free; they encode geometric assumptions.**
 
 ## 1.3 Summary and the Next Mathematical Layer
 
@@ -540,18 +465,16 @@ This chapter establishes the type system required by machine learning:
 
 3. **Backpropagation** is covector transport through compositions of derivatives.
 
-4. **Optimization** requires a bridge $V^\* \to V$; choosing or approximating a metric is exactly the act of defining this bridge.
+4. **Optimization** requires a bridge $V^{\ast} \to V$; choosing or approximating a metric is exactly the act of defining this bridge.
 
 </div>
 
 The next layer studies linear operators $T: V \to V$ and $T: V \to W$ and their invariants. In deep learning, stability and trainability are governed by operator spectra: singular values of Jacobians (signal propagation), conditioning of curvature/preconditioners (optimization speed), and spectral radii in recurrent dynamics (explosion/vanishing). Hence the natural continuation is **operator theory and spectral analysis** as the quantitative language of stability and information transport.
 
----
-
 <div style="text-align:center; margin-top:3em; color:#888; font-size:0.9em;">
 
-*— End of Chapter 1 —*
+*&mdash; End of Chapter 1 &mdash;*
 
-*Next: [Chapter 2 — Spectral Theory: Eigendecomposition and SVD](/book/chapters/chapter002/)*
+*Next: [Chapter 2: Spectral Theory &mdash; Eigendecomposition and SVD](/book/chapters/chapter002/)*
 
 </div>
