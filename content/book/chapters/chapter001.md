@@ -127,7 +127,7 @@ Hence $0 = 0'$. $\square$
 
 *Proof.* Suppose $v$ and $w$ both satisfy $u + v = 0$ and $u + w = 0$. Then
 
-$$v = v + 0 = v + (u + w) \overset{(\text{A3})}{=} (v + u) + w \overset{(\text{A2})}{=} (u + v) + w = 0 + w = w.$$
+$$\begin{aligned} v &= v + 0 \\\\  &= v + (u + w) \\\\  &= (v + u) + w  &\quad&\text{by (A3)} \\\\  &= (u + v) + w  &\quad&\text{by (A2)} \\\\  &= 0 + w = w. \end{aligned}$$
 
 Thus $v = w$. $\square$
 
@@ -195,7 +195,7 @@ $$\eta\left(\sum_{i=1}^n g_i\right) = \sum_{i=1}^n \eta\, g_i.$$
 
 **Inductive step.** Assume the statement holds for $n$. Then for $n + 1$:
 
-$$\eta\left(\sum_{i=1}^{n+1} g_i\right) = \eta\left(\sum_{i=1}^{n} g_i + g_{n+1}\right) \overset{(\text{A7})}{=} \eta\left(\sum_{i=1}^{n} g_i\right) + \eta\, g_{n+1} = \left(\sum_{i=1}^{n} \eta\, g_i\right) + \eta\, g_{n+1} = \sum_{i=1}^{n+1} \eta\, g_i.$$
+$$\begin{aligned} \eta\left(\sum_{i=1}^{n+1} g_i\right) &= \eta\left(\sum_{i=1}^{n} g_i + g_{n+1}\right) \\\\  &= \eta\left(\sum_{i=1}^{n} g_i\right) + \eta\, g_{n+1}  &\quad&\text{by (A7)} \\\\  &= \left(\sum_{i=1}^{n} \eta\, g_i\right) + \eta\, g_{n+1}  &\quad&\text{by induction hypothesis} \\\\  &= \sum_{i=1}^{n+1} \eta\, g_i. \end{aligned}$$
 
 Thus the claim holds for all $n \geq 1$. $\square$
 
