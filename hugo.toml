@@ -87,3 +87,9 @@ I am **Xujiang Tang (唐旭江)**, an undergraduate in Mathematics at Yangtze Un
                 [markup.goldmark.extensions.passthrough.delimiters]
                     block = [['$$', '$$'], ['\[', '\]']]
                     inline = [['$', '$'], ['\(', '\)']]
+
+[minify]
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepQuotes = true
+      keepEndTags = true
