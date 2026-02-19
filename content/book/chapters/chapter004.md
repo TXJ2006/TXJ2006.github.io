@@ -261,11 +261,11 @@ Let $H$ be an inner-product space, $S\subseteq H$ a nonempty closed linear subsp
 
 <div class="prop-box">
 
-**Theorem 4.6 (Projection).** For each $x\in H$ there exists a unique $s^\*\in S$ such that
+**Theorem 4.6 (Projection).** For each $x\in H$ there exists a unique $s^{\ast}\in S$ such that
 $$
-\|x-s^\*\|=\inf_{s\in S}\|x-s\|,
+\|x-s^{\ast}\|=\inf_{s\in S}\|x-s\|,
 \quad\text{and}\quad
-x-s^\*\perp S.
+x-s^{\ast}\perp S.
 $$
 
 </div>
@@ -343,11 +343,11 @@ This yields a precise conceptual diagnosis for frontier RL instability: divergen
 
 <div class="prop-box">
 
-**Theorem 4.7 (Riesz representation).** Let $H$ be a Hilbert space and $\phi\in H^\*$ a bounded linear functional. Then there exists a unique $w\in H$ such that
+**Theorem 4.7 (Riesz representation).** Let $H$ be a Hilbert space and $\phi\in H^{\ast}$ a bounded linear functional. Then there exists a unique $w\in H$ such that
 $$
 \phi(x)=\langle x,w\rangle_H\quad(\forall x\in H),
 $$
-and $\|\phi\|_{H^\*}=\|w\|_H$.
+and $\|\phi\|_{H^{\ast}}=\|w\|_H$.
 
 </div>
 
@@ -389,8 +389,8 @@ $$
 If $\langle x,w\rangle=\langle x,w'\rangle$ for all $x$, then $\langle x,w-w'\rangle=0$ for all $x$. Taking $x=w-w'$ yields $\|w-w'\|^2=0$, hence $w=w'$.
 
 **Step 6 &mdash; Norm identity.**
-For $\|x\|\le 1$, $|\phi(x)|=|\langle x,w\rangle|\le \|x\|\|w\|\le \|w\|$, so $\|\phi\|_{H^\*}\le \|w\|$.
-Conversely, take $x=w/\|w\|$ to achieve equality. Hence $\|\phi\|_{H^\*}=\|w\|$. $\square$
+For $\|x\|\le 1$, $|\phi(x)|=|\langle x,w\rangle|\le \|x\|\|w\|\le \|w\|$, so $\|\phi\|_{H^{\ast}}\le \|w\|$.
+Conversely, take $x=w/\|w\|$ to achieve equality. Hence $\|\phi\|_{H^{\ast}}=\|w\|$. $\square$
 
 </div>
 
