@@ -8,16 +8,41 @@ theme = 'PaperMod'
     defaultTheme = "light"
     ShowToc = true
     TocOpen = true
-    ShowBreadCrumbs = false
+    ShowBreadCrumbs = true
     ShowPostNavLinks = true
     ShowCodeCopyButtons = true
-    ShowReadingTime = false
-    ShowShareButtons = false
-    ShowWordCount = false
+    ShowReadingTime = true
+    ShowShareButtons = true
+    ShowWordCount = true
+    comments = true
     author = "XuJiang"
+    description = "Xujiang Tang — Mathematics × Machine Learning. Research on learning theory, optimization, and spectral methods. Author of The Mathematical Phenomenology of Machine Intelligence."
 
     [params.label]
         text = "XuJiang"
+
+    [params.homeInfoParams]
+        Title = "Welcome to XuJiang's Academic Hub 👋"
+        Content = """
+I am **Xujiang Tang (唐旭江)**, an undergraduate in Mathematics at Yangtze University, researching at the intersection of **mathematical theory** and **machine learning**. \n\n
+📖 Currently writing [*The Mathematical Phenomenology of Machine Intelligence*](/book/) — a 200-chapter open treatise. \n
+📄 2 published papers (EI indexed) · 5 submitted to top venues (ICML, ICLR, UAI, COLT). \n
+🤝 **[Open for collaboration →](/collaborate/)** \n
+💬 **[Join the community →](/community/)**
+"""
+
+    [[params.socialIcons]]
+        name = "github"
+        url = "https://github.com/TXJ2006"
+    [[params.socialIcons]]
+        name = "linkedin"
+        url = "https://www.linkedin.com/in/%E7%85%A6%E6%B1%9F-%E5%94%90-7a1513392"
+    [[params.socialIcons]]
+        name = "orcid"
+        url = "https://orcid.org/0009-0008-1127-6420"
+    [[params.socialIcons]]
+        name = "email"
+        url = "mailto:txj_262538@163.com"
 
     [params.profileMode]
         enabled = false
@@ -41,6 +66,16 @@ theme = 'PaperMod'
     name = "Book"
     url = "/book/"
     weight = 4
+
+[[menu.main]]
+    name = "Collaborate"
+    url = "/collaborate/"
+    weight = 5
+
+[[menu.main]]
+    name = "Community"
+    url = "/community/"
+    weight = 6
 
 [markup]
     [markup.goldmark]
