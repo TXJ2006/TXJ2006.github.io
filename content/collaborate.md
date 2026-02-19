@@ -123,6 +123,23 @@ I am currently writing an open-access treatise: [*The Mathematical Phenomenology
 | **Code collaboration** | Joint development of open-source tools or experiments |
 | **Mentorship (either direction)** | I'm eager to learn from senior researchers and happy to share what I know |
 
+## Core Collaborators & Co-Authors
+
+<div class="collab-card" style="display:flex; align-items:center; gap:1.5em;">
+<img src="https://avatars.githubusercontent.com/u/162676747?v=4" alt="Samuel Guan" style="width:80px; height:80px; border-radius:50%; flex-shrink:0;">
+<div>
+
+### Samuel Guan
+
+**SCNU (South China Normal University)** · Undergraduate
+
+Co-author and close collaborator. Samuel brings strong engineering expertise in multi-agent systems and LLM-based frameworks. He is the creator of [Multi-Agent-Framework-NodeAgent](https://github.com/SamuelGuan/Multi-Agent-Framework-NodeAgent) — a lightweight open multi-agent framework built on LangChain.
+
+🔗 [GitHub](https://github.com/SamuelGuan) · 📧 [1738215261@qq.com](mailto:1738215261@qq.com)
+
+</div>
+</div>
+
 ## How to Reach Me
 
 | Channel | Link |

@@ -118,6 +118,24 @@ This is an academic community. Please observe the following principles:
 | 💼 LinkedIn | [Xujiang Tang](https://www.linkedin.com/in/%E7%85%A6%E6%B1%9F-%E5%94%90-7a1513392) | Professional networking |
 | 🆔 ORCID | [0009-0008-1127-6420](https://orcid.org/0009-0008-1127-6420) | Academic identity and publication record |
 
+## The Team
+
+This project is not a solo effort. Meet the people behind it:
+
+<div class="community-card" style="display:flex; align-items:center; gap:1.5em;">
+<img src="https://avatars.githubusercontent.com/u/162676747?v=4" alt="Samuel Guan" style="width:72px; height:72px; border-radius:50%; flex-shrink:0;">
+<div>
+
+**Samuel Guan** · Co-Author & Collaborator
+SCNU (South China Normal University) · Undergraduate
+Multi-agent systems · LLM frameworks · Engineering
+🔗 [GitHub](https://github.com/SamuelGuan)
+
+</div>
+</div>
+
+*Interested in joining the team? See the [Collaborate](/collaborate/) page.*
+
 ## Spread the Word
 
 If you find this project useful, consider:
