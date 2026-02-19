@@ -39,7 +39,7 @@ math: true
 | 003 | [张量代数与爱因斯坦求和约定](/book/chapters/chapter003/) | Tensor Algebra & Einstein Summation |
 | 004 | [希尔伯特空间与范数](/book/chapters/chapter004/) | Hilbert Spaces & Norms |
 | 005 | [巴拿赫空间与算子范数](/book/chapters/chapter005/) | Banach Spaces & Operator Norms |
-| 006 | 里斯表示定理 | Riesz Representation Theorem |
+| 006 | [里斯表示定理](/book/chapters/chapter006/) | Riesz Representation Theorem |
 | 007 | 再生核希尔伯特空间 (RKHS) — 核方法的灵魂 | Reproducing Kernel Hilbert Spaces |
 | 008 | 矩阵微积分 | Matrix Calculus |
 | 009 | 随机矩阵理论 — 理解高维初始化的关键 | Random Matrix Theory |
