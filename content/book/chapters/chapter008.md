@@ -503,9 +503,7 @@ $$
 Let $G_S := \nabla_S\mathcal{J}$. Then
 
 $$
-d\mathcal{J} = \langle G_S, \delta S\rangle_F
-= \frac{1}{\sqrt{d}}\langle G_S, (\delta Q)K^\top\rangle_F
-+ \frac{1}{\sqrt{d}}\langle G_S, Q(\delta K)^\top\rangle_F.
+d\mathcal{J} = \langle G_S, \delta S\rangle_F = \frac{1}{\sqrt{d}}\langle G_S, (\delta Q)K^\top\rangle_F + \frac{1}{\sqrt{d}}\langle G_S, Q(\delta K)^\top\rangle_F.
 $$
 
 <div class="proof-box">
