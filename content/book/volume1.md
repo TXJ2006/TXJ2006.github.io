@@ -52,7 +52,7 @@ math: true
 
 | 章节 | 标题 | 英文 |
 |:----:|------|------|
-| 011 | $\sigma$-代数与可测空间 | $\sigma$-Algebras & Measurable Spaces |
+| 011 | [$\sigma$-代数与可测空间](/book/chapters/chapter011/) | $\sigma$-Algebras & Measurable Spaces |
 | 012 | 勒贝格积分与概率测度 | Lebesgue Integration |
 | 013 | 拉东-尼科迪姆导数 — 密度比的本质 | Radon-Nikodym Derivative |
 | 014 | 条件期望作为正交投影 | Conditional Expectation as Orthogonal Projection |
