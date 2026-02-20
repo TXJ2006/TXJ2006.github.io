@@ -93,9 +93,7 @@ Write \(B=A\cup(B\setminus A)\) and note the union is disjoint. By countable add
 *Proof.*  
 Define disjoint sets \(B_1=A_1\) and \(B_n=A_n\setminus\bigcup_{k=1}^{n-1}A_k\) for \(n\ge2\). Then \(B_n\subseteq A_n\) and \(\bigcup_n B_n=\bigcup_n A_n\), with the \(B_n\) disjoint. Hence
 \[
-\mu\!\left(\bigcup_{n=1}^\infty A_n\right)
-=\sum_{n=1}^\infty \mu(B_n)
-\le \sum_{n=1}^\infty \mu(A_n),
+\mu\!\left(\bigcup_{n=1}^\infty A_n\right) =\sum_{n=1}^\infty \mu(B_n) \le \sum_{n=1}^\infty \mu(A_n),
 \]
 using monotonicity for \(\mu(B_n)\le\mu(A_n)\). \(\square\)
 
@@ -226,17 +224,12 @@ By Radon–Nikodym, for any measurable set \(A\),
 \mathbb{P}(A)=\int_A w\,d\mathbb{Q}.
 \]
 First prove for simple \(f=\sum_k a_k \mathbf{1}_{A_k}\):
+
+<p>
 \[
-\int f\,d\mathbb{P}
-=
-\sum_k a_k\,\mathbb{P}(A_k)
-=
-\sum_k a_k \int_{A_k} w\,d\mathbb{Q}
-=
-\int \left(\sum_k a_k\mathbf{1}_{A_k}\right)w\,d\mathbb{Q}
-=
-\int f w\,d\mathbb{Q}.
+\int f\,d\mathbb{P} = \sum_k a_k\,\mathbb{P}(A_k) = \sum_k a_k \int_{A_k} w\,d\mathbb{Q} = \int \left(\sum_k a_k\mathbf{1}_{A_k}\right)w\,d\mathbb{Q} = \int f w\,d\mathbb{Q}.
 \]
+</p>
 Extend to nonnegative measurable \(f\) by monotone convergence using simple approximations, then to integrable \(f\) by decomposing into positive and negative parts. \(\square\)
 
 ---
@@ -248,21 +241,15 @@ Extend to nonnegative measurable \(f\) by monotone convergence using simple appr
 #### 11.7.1 KL divergence and nonnegativity (full proof)
 Assume \(\mathbb{P}\ll\mathbb{Q}\) with density ratio \(r=\frac{d\mathbb{P}}{d\mathbb{Q}}\). Define
 \[
-\mathrm{KL}(\mathbb{P}\,\|\,\mathbb{Q})
-=
-\int \log r \, d\mathbb{P}
-=
-\int r\log r \, d\mathbb{Q}.
+\mathrm{KL}(\mathbb{P}\,\|\,\mathbb{Q}) = \int \log r \, d\mathbb{P} = \int r\log r \, d\mathbb{Q}.
 \]
 
 **Theorem 11.14 (Gibbs inequality).** \(\mathrm{KL}(\mathbb{P}\,\|\,\mathbb{Q})\ge 0\), with equality iff \(\mathbb{P}=\mathbb{Q}\) (a.e.).
 
 *Proof.*  
-Consider the convex function \(\varphi(t)=t\log t\) on \(t>0\). By Jensen’s inequality applied to \(r\) under \(\mathbb{Q}\),
+Consider the convex function \(\varphi(t)=t\log t\) on \(t>0\). By Jensen's inequality applied to \(r\) under \(\mathbb{Q}\),
 \[
-\int r\log r \, d\mathbb{Q}
-\ge
-\left(\int r\,d\mathbb{Q}\right)\log\left(\int r\,d\mathbb{Q}\right).
+\int r\log r \, d\mathbb{Q} \ge \left(\int r\,d\mathbb{Q}\right)\log\left(\int r\,d\mathbb{Q}\right).
 \]
 But \(\int r\,d\mathbb{Q}=\int d\mathbb{P}=1\). Hence
 \[
