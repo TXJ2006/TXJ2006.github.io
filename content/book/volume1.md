@@ -43,7 +43,7 @@ math: true
 | 007 | [再生核希尔伯特空间 (RKHS) — 核方法的灵魂](/book/chapters/chapter007/) | Reproducing Kernel Hilbert Spaces |
 | 008 | [矩阵微积分](/book/chapters/chapter008/) | Matrix Calculus |
 | 009 | [随机矩阵理论 — 理解高维初始化的关键](/book/chapters/chapter009/) | Random Matrix Theory |
-| 010 | 凸集与凸锥 | Convex Sets & Cones |
+| 010 | [凸集与凸锥](/book/chapters/chapter010/) | Convex Sets & Cones |
 
 ---
 
