@@ -58,7 +58,7 @@ math: true
 | 014 | [条件期望作为正交投影](/book/chapters/chapter014/) | Conditional Expectation as Orthogonal Projection |
 | 015 | [马尔可夫链与遍历性](/book/chapters/chapter015/) | Markov Chains & Ergodicity |
 | 016 | [鞅论 — 强化学习收敛性的基础](/book/chapters/chapter016/) | Martingale Theory |
-| 017 | 大数定律与中心极限定理 | LLN & CLT |
+| 017 | [大数定律与中心极限定理](/book/chapters/chapter017/) | LLN & CLT |
 | 018 | 集中不等式 — 学习理论的界 | Concentration Inequalities: Hoeffding/Bernstein |
 | 019 | 随机微分方程 (SDE) 基础 — 扩散模型的基础 | Itô Calculus |
 | 020 | 维纳过程与布朗运动 | Wiener Processes |
