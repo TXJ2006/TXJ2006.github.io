@@ -55,7 +55,7 @@ math: true
 | 011 | [$\sigma$-代数与可测空间](/book/chapters/chapter011/) | $\sigma$-Algebras & Measurable Spaces |
 | 012 | [信息论与熵 — 对数泛函与学习即压缩](/book/chapters/chapter012/) | Information Theory & Entropy |
 | 013 | [拉东-尼科迪姆导数 — 密度比的本质](/book/chapters/chapter013/) | Radon-Nikodym Derivative |
-| 014 | 条件期望作为正交投影 | Conditional Expectation as Orthogonal Projection |
+| 014 | [条件期望作为正交投影](/book/chapters/chapter014/) | Conditional Expectation as Orthogonal Projection |
 | 015 | 马尔可夫链与遍历性 | Markov Chains & Ergodicity |
 | 016 | 鞅论 — 强化学习收敛性的基础 | Martingale Theory |
 | 017 | 大数定律与中心极限定理 | LLN & CLT |
