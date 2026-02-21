@@ -1,7 +1,7 @@
 ---
-title: "Chapter 13: Information Theory & Entropy"
+title: "Chapter 12: Information Theory & Entropy"
 layout: "single"
-url: "/book/chapters/chapter013/"
+url: "/book/chapters/chapter012/"
 summary: "Entropy, cross-entropy, KL divergence, and mutual information as the canonical log-additive geometry of probability measures; maximum likelihood as divergence minimization."
 draft: false
 ShowToc: true
@@ -31,7 +31,7 @@ math: true
 
 ## Part B &mdash; Probability &amp; Measure
 
-## Chapter 13 &mdash; Information Theory &amp; Entropy: Logarithmic Functionals, Learning as Compression, and the Geometry of Likelihood
+## Chapter 12 &mdash; Information Theory &amp; Entropy: Logarithmic Functionals, Learning as Compression, and the Geometry of Likelihood
 
 *Xujiang Tang*
 
@@ -43,11 +43,11 @@ Part B has established that uncertainty is not "noise in numbers," but structure
 
 ---
 
-## 13.1 The Epistemological Break: Why the Logarithm Is Forced
+## 12.1 The Epistemological Break: Why the Logarithm Is Forced
 
-> **Core theorem-sentence 13.1.** If evidence aggregates by product of probabilities, then any additive loss must be (a constant multiple of) the negative logarithm; thus log-loss is not a "choice," but the unique lawful scoring rule under multiplicative uncertainty.
+> **Core theorem-sentence 12.1.** If evidence aggregates by product of probabilities, then any additive loss must be (a constant multiple of) the negative logarithm; thus log-loss is not a "choice," but the unique lawful scoring rule under multiplicative uncertainty.
 
-### 13.1.1 From multiplicative uncertainty to additive cost
+### 12.1.1 From multiplicative uncertainty to additive cost
 
 Let \(p\in(0,1]\) denote the probability assigned to a realized event. Suppose we seek a cost \(\ell(p)\) satisfying the minimal rationality axiom:
 
@@ -68,7 +68,7 @@ Assume \(\ell\) is measurable and not pathological (e.g., locally bounded). Then
 
 This is the first "type discipline" in probabilistic learning: if your model outputs probabilities and you want a sum over samples as objective, the log is forced.
 
-### 13.1.2 ML insertion: why training objectives sum over samples
+### 12.1.2 ML insertion: why training objectives sum over samples
 
 <div class="ml-box">
 
@@ -82,11 +82,11 @@ If the model assigns conditional probabilities \(p_\theta(y\mid x)\), and we req
 
 ---
 
-## 13.2 Entropy: The Lebesgue Integral of Surprise
+## 12.2 Entropy: The Lebesgue Integral of Surprise
 
-> **Core theorem-sentence 13.2.** Entropy is the expected log-cost of observing an outcome under its own law; it is the intrinsic "uncertainty mass" of a distribution, defined as a Lebesgue integral, not as a combinatorial heuristic.
+> **Core theorem-sentence 12.2.** Entropy is the expected log-cost of observing an outcome under its own law; it is the intrinsic "uncertainty mass" of a distribution, defined as a Lebesgue integral, not as a combinatorial heuristic.
 
-### 13.2.1 Definition (discrete)
+### 12.2.1 Definition (discrete)
 
 Let \(P\) be a distribution on a countable alphabet \(\mathcal{X}\) with mass function \(p(x)\). The Shannon entropy is
 \[
@@ -94,7 +94,7 @@ H(P) = \mathbb{E}_{X\sim P}\big[-\log p(X)\big] = \sum_{x\in\mathcal{X}} p(x)\,(
 \]
 This is a Lebesgue integral with respect to the counting measure (equivalently, an expectation).
 
-### 13.2.2 Definition (continuous) and the measure-theoretic warning
+### 12.2.2 Definition (continuous) and the measure-theoretic warning
 
 If \(P\ll \lambda\) (Lebesgue measure) with density \(p\), the differential entropy is
 \[
@@ -110,11 +110,11 @@ A practical ML corollary: whenever one speaks about "entropy of continuous embed
 
 ---
 
-## 13.3 Cross-Entropy and Maximum Likelihood: Learning as Risk Minimization in Measure Space
+## 12.3 Cross-Entropy and Maximum Likelihood: Learning as Risk Minimization in Measure Space
 
-> **Core theorem-sentence 13.3.** Maximum likelihood estimation is exactly empirical cross-entropy minimization; generalization is the statement that empirical Lebesgue integrals converge to population integrals under the data-generating measure.
+> **Core theorem-sentence 12.3.** Maximum likelihood estimation is exactly empirical cross-entropy minimization; generalization is the statement that empirical Lebesgue integrals converge to population integrals under the data-generating measure.
 
-### 13.3.1 Cross-entropy
+### 12.3.1 Cross-entropy
 
 For distributions \(P\) and \(Q\) on \(\mathcal{X}\) (with \(P\ll Q\) in the discrete sense \(q(x)=0\Rightarrow p(x)=0\)), define
 \[
@@ -122,7 +122,7 @@ H(P,Q) = \mathbb{E}_{X\sim P}\big[-\log q(X)\big] = \sum_x p(x)\,(-\log q(x)).
 \]
 This is the expected log-loss incurred if the world is \(P\) but we code/predict with \(Q\).
 
-### 13.3.2 Maximum likelihood is cross-entropy minimization (step-by-step)
+### 12.3.2 Maximum likelihood is cross-entropy minimization (step-by-step)
 
 Let data \(x_1,\dots,x_n\) be i.i.d. from \(P\). Consider a parametric model family \(\{Q_\theta\}\) with pmf/pdf \(q_\theta\). The log-likelihood is
 \[
@@ -146,7 +146,7 @@ H(\widehat{P}_n,Q_\theta)\to H(P,Q_\theta).
 \]
 So MLE is the procedure "choose \(Q_\theta\) that minimizes the population cross-entropy," estimated by the empirical cross-entropy.
 
-### 13.3.3 ML example: LLM next-token training as conditional cross-entropy
+### 12.3.3 ML example: LLM next-token training as conditional cross-entropy
 
 <div class="ml-box">
 
@@ -164,11 +164,11 @@ Training by minimizing the dataset average of this quantity is precisely minimiz
 
 ---
 
-## 13.4 KL Divergence: The Only Correct Notion of Regret Under Log-Loss
+## 12.4 KL Divergence: The Only Correct Notion of Regret Under Log-Loss
 
-> **Core theorem-sentence 13.4.** KL divergence is the excess cross-entropy (regret) of using \(Q\) when the truth is \(P\); its nonnegativity is a theorem (Gibbs inequality), not an assumption.
+> **Core theorem-sentence 12.4.** KL divergence is the excess cross-entropy (regret) of using \(Q\) when the truth is \(P\); its nonnegativity is a theorem (Gibbs inequality), not an assumption.
 
-### 13.4.1 Definition and identity
+### 12.4.1 Definition and identity
 
 Define the KL divergence
 \[
@@ -190,11 +190,11 @@ H(P,Q) = \sum_x p(x)(-\log q(x)) = \sum_x p(x)(-\log p(x)) + \sum_x p(x)\log\fra
 
 Thus minimizing cross-entropy in \(Q\) is equivalent to minimizing \(D_{\mathrm{KL}}(P\|Q)\) since \(H(P)\) does not depend on \(Q\).
 
-### 13.4.2 Gibbs inequality (full proof, no skipped steps)
+### 12.4.2 Gibbs inequality (full proof, no skipped steps)
 
 <div class="prop-box">
 
-**Theorem 13.5 (Nonnegativity of KL).** \(D_{\mathrm{KL}}(P\|Q)\ge 0\), with equality iff \(P=Q\) (a.e. on support).
+**Theorem 12.5 (Nonnegativity of KL).** \(D_{\mathrm{KL}}(P\|Q)\ge 0\), with equality iff \(P=Q\) (a.e. on support).
 
 </div>
 
@@ -217,7 +217,7 @@ Hence \(D_{\mathrm{KL}}(P\|Q)\ge 0\). Equality requires \(-\log u(x)=1-u(x)\) fo
 
 </div>
 
-### 13.4.3 ML consequence: label smoothing as "truth-mixing" in KL geometry
+### 12.4.3 ML consequence: label smoothing as "truth-mixing" in KL geometry
 
 <div class="ml-box">
 
@@ -227,11 +227,11 @@ Label smoothing replaces a one-hot target \(P\) by \(\tilde{P}=(1-\varepsilon)P+
 
 ---
 
-## 13.5 Mutual Information: Dependence as a Divergence in Product Measure Space
+## 12.5 Mutual Information: Dependence as a Divergence in Product Measure Space
 
-> **Core theorem-sentence 13.6.** Mutual information is KL divergence between the joint measure and the product of marginals; it is the canonical scalar measure of statistical dependence.
+> **Core theorem-sentence 12.6.** Mutual information is KL divergence between the joint measure and the product of marginals; it is the canonical scalar measure of statistical dependence.
 
-### 13.5.1 Definition
+### 12.5.1 Definition
 
 For joint \(P_{XY}\) with marginals \(P_X,P_Y\),
 \[
@@ -239,7 +239,7 @@ I(X;Y)=D_{\mathrm{KL}}(P_{XY}\,\|\,P_X\otimes P_Y) = \mathbb{E}\Big[\log\frac{p_
 \]
 Nonnegativity follows immediately from KL nonnegativity. Moreover, \(I(X;Y)=0\) iff \(P_{XY}=P_X\otimes P_Y\), i.e., independence.
 
-### 13.5.2 ML insertion: contrastive learning as controlled MI estimation
+### 12.5.2 ML insertion: contrastive learning as controlled MI estimation
 
 <div class="ml-box">
 
@@ -251,9 +251,9 @@ The practical thesis: contrastive learning is not "magic representation learning
 
 ---
 
-## 13.6 The Radon–Nikodym Lens Revisited: When Log-Loss Is Legal (and When It Is Not)
+## 12.6 The Radon–Nikodym Lens Revisited: When Log-Loss Is Legal (and When It Is Not)
 
-> **Core theorem-sentence 13.7.** Log-loss and KL are only defined where a Radon–Nikodym derivative exists; failures of absolute continuity are not numerical instabilities but measure-theoretic type errors.
+> **Core theorem-sentence 12.7.** Log-loss and KL are only defined where a Radon–Nikodym derivative exists; failures of absolute continuity are not numerical instabilities but measure-theoretic type errors.
 
 Recall: if \(P\not\ll Q\), then \(\log\frac{dP}{dQ}\) is undefined on sets where \(Q\) assigns zero mass but \(P\) does not. In such cases, \(D_{\mathrm{KL}}(P\|Q)=+\infty\) by definition.
 
@@ -265,7 +265,7 @@ This is the precise reason the "density-ratio worldview" can break in high-dimen
 
 ---
 
-## 13.7 Scholium: Information Geometry as the Metric Backbone of Learning
+## 12.7 Scholium: Information Geometry as the Metric Backbone of Learning
 
 <div class="scholium-box">
 
@@ -280,7 +280,7 @@ These objects are not optional vocabulary; they are the minimal invariant scalar
 
 ---
 
-## 13.8 Closing Transition
+## 12.8 Closing Transition
 
 We now possess the lawful arithmetic of uncertainty: we can integrate, we can compare measures by divergences, and we can interpret training as compression. The next question is structural: how do these divergences and expectations behave under parameterization, under transformation, and under optimization dynamics?
 

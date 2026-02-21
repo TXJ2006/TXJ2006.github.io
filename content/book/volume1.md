@@ -53,8 +53,8 @@ math: true
 | 章节 | 标题 | 英文 |
 |:----:|------|------|
 | 011 | [$\sigma$-代数与可测空间](/book/chapters/chapter011/) | $\sigma$-Algebras & Measurable Spaces |
-| 012 | 勒贝格积分与概率测度 | Lebesgue Integration |
-| 013 | [信息论与熵 — 对数泛函与学习即压缩](/book/chapters/chapter013/) | Information Theory & Entropy |
+| 012 | [信息论与熵 — 对数泛函与学习即压缩](/book/chapters/chapter012/) | Information Theory & Entropy |
+| 013 | 拉东-尼科迪姆导数 — 密度比的本质 | Radon-Nikodym Derivative |
 | 014 | 条件期望作为正交投影 | Conditional Expectation as Orthogonal Projection |
 | 015 | 马尔可夫链与遍历性 | Markov Chains & Ergodicity |
 | 016 | 鞅论 — 强化学习收敛性的基础 | Martingale Theory |
