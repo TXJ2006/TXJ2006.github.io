@@ -8,6 +8,7 @@ ShowToc: true
 TocOpen: true
 hideMeta: true
 math: true
+weight: 16
 ---
 
 <style>
@@ -127,7 +128,7 @@ If the current estimate of future reward is *pessimistic* (underestimates), then
 
 </div>
 
-**Geometric interpretation in \(L^2\).** If \(\varepsilon_{t+1}\in L^2\), then \(\mathbb{E}[\varepsilon_{t+1}\mid\mathcal{F}_t]=0\) means \(\varepsilon_{t+1}\) is orthogonal (in the inner product \(\mathbb{E}[\cdot\,\cdot]\)) to every \(\mathcal{F}_t\)-measurable square-integrable function. It is new information that cannot be predicted from the past â€” the orthogonal complement of the history subspace in \(L^2\).
+**Geometric interpretation in \(L^2\).** If \(\varepsilon_{t+1}\in L^2\), then \(\mathbb{E}[\varepsilon_{t+1}\mid\mathcal{F}_t]=0\) means \(\varepsilon_{t+1}\) is orthogonal (in the inner product \(\mathbb{E}[\cdot\,\cdot]\)) to every \(\mathcal{F}_t\)-measurable square-integrable function. It is new information that cannot be predicted from the past â€?the orthogonal complement of the history subspace in \(L^2\).
 
 **Variance additivity.** A key consequence: if \(\varepsilon_1,\varepsilon_2,\dots\) is an MDS with \(\varepsilon_t\in L^2\), then
 \[
@@ -284,7 +285,7 @@ The same drift+MDS structure holds. Tabular convergence requires: (i) contractio
 
 ## 16.6 Stopping Times: Episodic RL as Optional Stopping Under Admissible Truncation
 
-> **Theorem-sentence 16.6.** A stopping time is a random time whose occurrence is determined by the filtration alone â€” not the future. Optional stopping theorems give conditions under which the martingale's expectation is preserved at the stopping time; these conditions formalize when episode truncation is statistically unbiased.
+> **Theorem-sentence 16.6.** A stopping time is a random time whose occurrence is determined by the filtration alone â€?not the future. Optional stopping theorems give conditions under which the martingale's expectation is preserved at the stopping time; these conditions formalize when episode truncation is statistically unbiased.
 
 <div class="def-box">
 
@@ -315,7 +316,7 @@ The decision "stop now" can only depend on observed history, not on the future. 
 In practice, episodes are truncated at a finite horizon \(H\) even in continuing tasks. If \(V_H(s)\ne 0\) at truncation, bootstrapping from \(V_H\) replaces the missing tail \(\sum_{t=H}^{\infty}\gamma^t R_{t+1}\). This is formally an importance-weighted truncation, not a true optional stop, and introduces bias unless \(V_H\) is accurate.
 
 **Failure mode 2 (biased returns from goal-conditioned truncation).**
-If the stopping rule "episode ends when reward is high" is correlated with the return \(G_\tau\), the expectation \(\mathbb{E}[G_\tau]\) is no longer \(V^\pi(S_0)\). The optional stopping theorem's condition â€” that \(\tau\) is \(\mathcal{F}\)-measurable and independent of the future increments â€” is violated, and selection bias enters.
+If the stopping rule "episode ends when reward is high" is correlated with the return \(G_\tau\), the expectation \(\mathbb{E}[G_\tau]\) is no longer \(V^\pi(S_0)\). The optional stopping theorem's condition â€?that \(\tau\) is \(\mathcal{F}\)-measurable and independent of the future increments â€?is violated, and selection bias enters.
 
 ---
 
@@ -343,7 +344,7 @@ Under Robbinsâ€“Monro conditions this yields \(\Phi_t\to 0\) a.s., i.e., \(V_t\t
 
 ## 16.8 Deep RL: Why Target Networks, Replay, and Importance Sampling Are Martingale Repairs
 
-> **Theorem-sentence 16.8.** Deep RL engineering heuristics â€” target networks, experience replay, importance sampling corrections â€” are repairs to specific violations of the filtration and measure conditions required for martingale-structure convergence.
+> **Theorem-sentence 16.8.** Deep RL engineering heuristics â€?target networks, experience replay, importance sampling corrections â€?are repairs to specific violations of the filtration and measure conditions required for martingale-structure convergence.
 
 Deep RL violates the clean filtration assumptions in three common ways.
 
@@ -390,7 +391,7 @@ for suitable \(Z_t\). This is exactly the measure-theoretic condition needed to 
 
 <div class="ml-box">
 
-**RL regret bounds.** In bandit and RL settings, the regret after \(T\) steps decomposes into a deterministic bias term (Bellman drift contributions from suboptimal exploration) and a stochastic term (martingale sum over TD noise). Azumaâ€“Hoeffding bounds the stochastic term, yielding regret bounds of order \(O(\sqrt{T})\) or better. Freedman's inequality gives sharper bounds when the conditional variance is small â€” important in low-noise environments where exploration is the bottleneck rather than estimation noise.
+**RL regret bounds.** In bandit and RL settings, the regret after \(T\) steps decomposes into a deterministic bias term (Bellman drift contributions from suboptimal exploration) and a stochastic term (martingale sum over TD noise). Azumaâ€“Hoeffding bounds the stochastic term, yielding regret bounds of order \(O(\sqrt{T})\) or better. Freedman's inequality gives sharper bounds when the conditional variance is small â€?important in low-noise environments where exploration is the bottleneck rather than estimation noise.
 
 </div>
 
@@ -400,7 +401,7 @@ for suitable \(Z_t\). This is exactly the measure-theoretic condition needed to 
 
 <div class="scholium-box">
 
-1. **Definition-level essence.** Value functions are conditional expectations under the policy-induced trajectory measure; learning is the act of aligning a parametric predictor with these conditional expectations. The martingale structure is not added on top of RL â€” it *is* RL's mathematical skeleton.
+1. **Definition-level essence.** Value functions are conditional expectations under the policy-induced trajectory measure; learning is the act of aligning a parametric predictor with these conditional expectations. The martingale structure is not added on top of RL â€?it *is* RL's mathematical skeleton.
 
 2. **TD error anatomy.** The TD error decomposes into a predictable drift (Bellman residual), which contains learnable structure, and a martingale difference (innovation), which contains irreducible randomness. No amount of computation can reduce the martingale component; only the drift can be eliminated by learning.
 
@@ -414,6 +415,6 @@ for suitable \(Z_t\). This is exactly the measure-theoretic condition needed to 
 
 </div>
 
-The natural continuation is concentration inequalities for dependent sequences in full generality (Chapter 17), covering Hoeffding, Bernstein, and their extensions to non-i.i.d. data â€” the tools that convert the martingale framework into quantitative learning-theoretic bounds.
+The natural continuation is concentration inequalities for dependent sequences in full generality (Chapter 17), covering Hoeffding, Bernstein, and their extensions to non-i.i.d. data â€?the tools that convert the martingale framework into quantitative learning-theoretic bounds.
 
-**Chapter 017: Concentration Inequalities â€” Large Deviation Bounds and the Mathematics of Generalization.**
+**Chapter 017: Concentration Inequalities â€?Large Deviation Bounds and the Mathematics of Generalization.**

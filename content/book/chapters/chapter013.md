@@ -8,6 +8,7 @@ ShowToc: true
 TocOpen: true
 hideMeta: true
 math: true
+weight: 13
 ---
 
 <style>
@@ -39,7 +40,7 @@ math: true
 
 ## Abstract
 
-Chapter 12 established that "expectation" is a Lebesgue integral with respect to an unknown environment measure. Modern machine learning rarely operates in a single measure universe: we compare training vs. test (covariate shift), real vs. generated (GANs), joint vs. product measures (contrastive learning), behavior vs. target policies (off-policy RL), and base vs. pushforward measures (normalizing flows). The common mathematical obstruction is that *absolute* densities are coordinate- and reference-measure dependent; what remains invariant, operational, and often computable is the *relative density* â€” the Radon&ndash;Nikodym derivative.
+Chapter 12 established that "expectation" is a Lebesgue integral with respect to an unknown environment measure. Modern machine learning rarely operates in a single measure universe: we compare training vs. test (covariate shift), real vs. generated (GANs), joint vs. product measures (contrastive learning), behavior vs. target policies (off-policy RL), and base vs. pushforward measures (normalizing flows). The common mathematical obstruction is that *absolute* densities are coordinate- and reference-measure dependent; what remains invariant, operational, and often computable is the *relative density* â€?the Radon&ndash;Nikodym derivative.
 
 The thesis of this chapter is deliberately strict: in high dimensions, the quantity that can be estimated, optimized, and transported is not a density \(p\) in isolation, but a density ratio \(\frac{d\mu}{d\nu}\). Many "algorithms" can be re-read as different ways of parameterizing, estimating, or regularizing this ratio.
 
@@ -228,7 +229,7 @@ By the covariate-shift assumption and the change-of-measure identity,
 
 <div class="ml-box">
 
-This is not an approximation; it is an identity. The only approximation in practice is the estimation of \(w\). If \(w\) is heavy-tailed or unbounded (weak overlap), reweighting has high variance and becomes statistically unstable â€” not "bad engineering," but the analytic consequence of comparing measures with insufficient absolute continuity on the relevant support.
+This is not an approximation; it is an identity. The only approximation in practice is the estimation of \(w\). If \(w\) is heavy-tailed or unbounded (weak overlap), reweighting has high variance and becomes statistically unstable â€?not "bad engineering," but the analytic consequence of comparing measures with insufficient absolute continuity on the relevant support.
 
 </div>
 
@@ -251,7 +252,7 @@ Pointwise optimization gives \(D^*(x)=\frac{p(x)}{p(x)+q_\theta(x)}\), hence
 
 <div class="ml-box">
 
-When supports barely overlap, this derivative becomes ill-behaved and gradients collapse â€” precisely the absolute-continuity pathology, not a mysterious optimization curse.
+When supports barely overlap, this derivative becomes ill-behaved and gradients collapse â€?precisely the absolute-continuity pathology, not a mysterious optimization curse.
 
 </div>
 
@@ -284,7 +285,7 @@ For any trajectory functional \(F(\tau)\),
 
 <div class="ml-box">
 
-The practical problem â€” variance blow-up â€” has a mathematical diagnosis: RN derivatives on long horizons are products of many random ratios, often heavy-tailed. Clipping, per-decision correction, and control variates are not ad hoc tricks; they are variance-regularization strategies for unstable density ratios in high-dimensional trajectory spaces.
+The practical problem â€?variance blow-up â€?has a mathematical diagnosis: RN derivatives on long horizons are products of many random ratios, often heavy-tailed. Clipping, per-decision correction, and control variates are not ad hoc tricks; they are variance-regularization strategies for unstable density ratios in high-dimensional trajectory spaces.
 
 </div>
 

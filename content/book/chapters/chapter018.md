@@ -1,5 +1,5 @@
 ---
-title: "Chapter 18: Concentration Inequalities â€” The Boundary of Learning Theory"
+title: "Chapter 18: Concentration Inequalities â€?The Boundary of Learning Theory"
 layout: "single"
 url: "/book/chapters/chapter018/"
 summary: "The Chernoffâ€“mgf pipeline; Hoeffding's lemma and inequality; Bernstein's inequality and variance-aware tail switching; McDiarmid via Doob martingales; finite-class uniform bounds and the union bound; the boundary where concentration ends and complexity begins."
@@ -8,6 +8,7 @@ ShowToc: true
 TocOpen: true
 hideMeta: true
 math: true
+weight: 18
 ---
 
 <style>
@@ -41,7 +42,7 @@ math: true
 
 ## Abstract
 
-Chapter 17 established that LLN makes empirical risk converge to population risk *asymptotically*. Learning theory needs a finite-\(n\) certificate â€” an explicit exponential tail bound on the deviation \(|R_n(\theta)-R(\theta)|\). Concentration inequalities are exactly the machinery that upgrades "eventually true" into "true at this \(n\), with this confidence." This chapter builds the concentration engine from first principles through a single pipeline: exponentiate the event, apply Markov, factor over independent variables, bound the one-dimensional MGF. Everything else â€” Hoeffding, Bernstein, McDiarmid â€” is a different way of executing step 4.
+Chapter 17 established that LLN makes empirical risk converge to population risk *asymptotically*. Learning theory needs a finite-\(n\) certificate â€?an explicit exponential tail bound on the deviation \(|R_n(\theta)-R(\theta)|\). Concentration inequalities are exactly the machinery that upgrades "eventually true" into "true at this \(n\), with this confidence." This chapter builds the concentration engine from first principles through a single pipeline: exponentiate the event, apply Markov, factor over independent variables, bound the one-dimensional MGF. Everything else â€?Hoeffding, Bernstein, McDiarmid â€?is a different way of executing step 4.
 
 ---
 
@@ -222,7 +223,7 @@ Solving for the sample size to achieve confidence \(1-\delta\): \(n\ge \frac{1}{
 
 <div class="ml-box">
 
-This is a complete finite-sample statement for a *fixed* \(\theta\). But learning does not keep \(\theta\) fixed â€” it chooses \(\hat\theta\) based on data. That shifts the problem from pointwise deviation to *uniform* deviation, which is precisely where concentration meets complexity.
+This is a complete finite-sample statement for a *fixed* \(\theta\). But learning does not keep \(\theta\) fixed â€?it chooses \(\hat\theta\) based on data. That shifts the problem from pointwise deviation to *uniform* deviation, which is precisely where concentration meets complexity.
 
 </div>
 
@@ -277,8 +278,8 @@ Hence \(\mathbb{P}(\bar{X}_n-\mu\ge\varepsilon)\le\exp\!\left(-\frac{n\varepsilo
 ### 18.5.3 The two regimes and their ML meaning
 
 The Bernstein exponent has two asymptotic regimes:
-- **Small \(\varepsilon\) (Gaussian regime):** \(\exp\!\left(-\frac{n\varepsilon^2}{2\sigma^2}\right)\) â€” variance dominates.
-- **Large \(\varepsilon\) (exponential regime):** \(\exp\!\left(-\frac{3n\varepsilon}{2M}\right)\) â€” amplitude dominates.
+- **Small \(\varepsilon\) (Gaussian regime):** \(\exp\!\left(-\frac{n\varepsilon^2}{2\sigma^2}\right)\) â€?variance dominates.
+- **Large \(\varepsilon\) (exponential regime):** \(\exp\!\left(-\frac{3n\varepsilon}{2M}\right)\) â€?amplitude dominates.
 
 <div class="ml-box">
 
@@ -401,7 +402,7 @@ R(\hat{h}) \le \min_{h\in\mathcal{H}} R(h) + 2\sqrt{\frac{1}{2n}\log\frac{2|\mat
 
 <div class="ml-box">
 
-**The boundary.** When \(|\mathcal{H}|\) is infinite, the union bound breaks entirely: \(\log|\mathcal{H}|=\infty\). To proceed, one must replace \(\log|\mathcal{H}|\) by a genuine measure of the effective complexity of the class â€” VC dimension (combinatorial), covering numbers (metric), or Rademacher complexity (probabilistic). That is where Chapter 19 begins.
+**The boundary.** When \(|\mathcal{H}|\) is infinite, the union bound breaks entirely: \(\log|\mathcal{H}|=\infty\). To proceed, one must replace \(\log|\mathcal{H}|\) by a genuine measure of the effective complexity of the class â€?VC dimension (combinatorial), covering numbers (metric), or Rademacher complexity (probabilistic). That is where Chapter 19 begins.
 
 </div>
 
@@ -415,7 +416,7 @@ R(\hat{h}) \le \min_{h\in\mathcal{H}} R(h) + 2\sqrt{\frac{1}{2n}\log\frac{2|\mat
 
 **The pipeline:**
 
-1. Learning compares \(R(\theta)\) with \(R_n(\theta)\) â€” an expectation vs. an empirical average.
+1. Learning compares \(R(\theta)\) with \(R_n(\theta)\) â€?an expectation vs. an empirical average.
 2. Any such comparison is a tail probability about a random deviation \(S\).
 3. Tail control begins with Chernoff: $\mathbb{P}(S\ge a)\le e^{-ta}\mathbb{E}[e^{tS}]$.
 4. The entire difficulty is bounding \(\mathbb{E}[e^{tS}]\):
@@ -440,10 +441,10 @@ Concentration inequalities are the last purely probabilistic step. After this, t
 
 3. **Stability is a concentration property.** McDiarmid's inequality shows that algorithmic stability (bounded sensitivity to single samples) directly implies concentration of the generalization gap.
 
-4. **The union bound is sharp for finite classes but fails for infinite ones.** The \(\log|\mathcal{H}|\) cost is not a loose bound; for finite classes under adversarial construction it can be tight. The need for a better complexity measure is not a technical annoyance â€” it is the true open problem.
+4. **The union bound is sharp for finite classes but fails for infinite ones.** The \(\log|\mathcal{H}|\) cost is not a loose bound; for finite classes under adversarial construction it can be tight. The need for a better complexity measure is not a technical annoyance â€?it is the true open problem.
 
 5. **Deep learning generalization is not yet explained by this chapter.** Neural networks have billions of parameters (\(|\mathcal{H}|\) is astronomically large), yet generalize well. The correct explanation requires function-space complexity measures (Rademacher, spectral norms, margin bounds), not raw parameter counts. Chapter 19 begins that story.
 
 </div>
 
-**Chapter 019: Generalization Theory â€” Rademacher Complexity, Covering Numbers, and Why Deep Networks Generalize.**
+**Chapter 019: Generalization Theory â€?Rademacher Complexity, Covering Numbers, and Why Deep Networks Generalize.**

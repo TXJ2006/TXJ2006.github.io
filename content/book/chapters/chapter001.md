@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Chapter 1: Vector Spaces and Dual Spaces"
 layout: "single"
 url: "/book/chapters/chapter001/"
@@ -8,6 +8,7 @@ ShowToc: true
 TocOpen: true
 hideMeta: true
 math: true
+weight: 1
 ---
 
 <style>

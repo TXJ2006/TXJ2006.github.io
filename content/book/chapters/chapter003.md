@@ -8,6 +8,7 @@ ShowToc: true
 TocOpen: true
 hideMeta: true
 math: true
+weight: 3
 ---
 
 <style>

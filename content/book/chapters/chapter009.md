@@ -2,12 +2,13 @@
 title: "Chapter 9: Random Matrix Theory"
 layout: "single"
 url: "/book/chapters/chapter009/"
-summary: "The Marchenkoâ€“Pastur law, Xavier/He initializations as Jacobian-stability conditions, dynamical isometry, and mean-field signal propagation â€” why high-dimensional randomness is spectral determinism."
+summary: "The Marchenkoâ€“Pastur law, Xavier/He initializations as Jacobian-stability conditions, dynamical isometry, and mean-field signal propagation â€?why high-dimensional randomness is spectral determinism."
 draft: false
 ShowToc: true
 TocOpen: true
 hideMeta: true
 math: true
+weight: 9
 ---
 
 <style>
@@ -502,7 +503,7 @@ and counts the leading closed-walk contributions, again dominated by noncrossing
 
 ### 9.7.3 ML implication: saddles dominate in high dimension
 
-Because the bulk spectrum under semicircle-like behavior is roughly symmetric about zero, a random point in a high-dimensional nonconvex landscape typically has both positive and negative curvature directions. Thus "optimization difficulty" is not primarily the multiplicity of poor local minima, but the prevalence of saddle geometry and ill-conditioned directions. SGD's noise can help traverse such regions, but only if gradient transport (Jacobians) is stable â€” linking loss-landscape geometry back to initialization.
+Because the bulk spectrum under semicircle-like behavior is roughly symmetric about zero, a random point in a high-dimensional nonconvex landscape typically has both positive and negative curvature directions. Thus "optimization difficulty" is not primarily the multiplicity of poor local minima, but the prevalence of saddle geometry and ill-conditioned directions. SGD's noise can help traverse such regions, but only if gradient transport (Jacobians) is stable â€?linking loss-landscape geometry back to initialization.
 
 ---
 
@@ -528,6 +529,6 @@ In this view, initialization is a statement about limits: we design the paramete
 2. The Marchenko&ndash;Pastur law provides the canonical spectral template for Gaussian layers, fixing singular-value support and hence signal amplification bounds.
 3. Xavier/He initializations are best understood as enforcing *critical transport* (especially of Jacobians), not as superficial variance-matching recipes.
 4. Depth creates multiplicative spectral phenomena; dynamical isometry explains why controlling the *entire singular spectrum* matters, and why orthogonal structure can accelerate learning.
-5. Modern architectures (ResNets, Transformers) succeed in part because residual and normalization mechanisms reshape Jacobian spectra â€” an operator-theoretic, not merely heuristic, explanation.
+5. Modern architectures (ResNets, Transformers) succeed in part because residual and normalization mechanisms reshape Jacobian spectra â€?an operator-theoretic, not merely heuristic, explanation.
 
 The next mathematical step is to understand optimization regimes where geometry is controlled globally (e.g., convexity, cones, and monotone operators), and to identify precisely which parts of deep learning behave "as if convex" due to spectral regularities established at initialization.

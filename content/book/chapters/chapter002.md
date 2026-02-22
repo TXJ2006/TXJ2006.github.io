@@ -1,5 +1,5 @@
 ---
-title: "Chapter 2: Spectral Theory â€” Eigen-Decomposition and SVD"
+title: "Chapter 2: Spectral Theory â€?Eigen-Decomposition and SVD"
 layout: "single"
 url: "/book/chapters/chapter002/"
 summary: "Persistence, decay, oscillation, and the skeleton of information in linear operators."
@@ -8,6 +8,7 @@ ShowToc: true
 TocOpen: true
 hideMeta: true
 math: true
+weight: 2
 ---
 
 <style>

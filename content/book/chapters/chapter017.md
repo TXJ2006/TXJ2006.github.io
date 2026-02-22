@@ -8,6 +8,7 @@ ShowToc: true
 TocOpen: true
 hideMeta: true
 math: true
+weight: 17
 ---
 
 <style>
@@ -42,7 +43,7 @@ math: true
 We leave "single events" and "finite-time fluctuations" and enter the regime that actually powers modern ML: **aggregation**. Deep learning is not a theory of one sample; it is a theory of billions of samples, minibatches, and overparameterized sums. Two theorems govern this regime:
 
 - **LLN** is the unique rigidity that makes empirical averages legitimate surrogates for population integrals.
-- **CLT** is the unique universality mechanism that turns aggregated randomness into a Gaussian geometry at the \(\sqrt{n}\) scale â€” the geometry that appears in minibatch gradient noise, wide-network preactivations, and random feature limits.
+- **CLT** is the unique universality mechanism that turns aggregated randomness into a Gaussian geometry at the \(\sqrt{n}\) scale â€?the geometry that appears in minibatch gradient noise, wide-network preactivations, and random feature limits.
 
 ---
 
@@ -86,7 +87,7 @@ Define \(\bar{X}_n := \frac{1}{n}\sum_{i=1}^n X_i\). The SLLN is not "usually cl
 - *Micro-level:* each \(X_i\) varies arbitrarily in its distribution.
 - *Macro-level:* aggregation kills randomness in the topology of almost-sure convergence.
 
-Contrast with the **Weak LLN** (Khinchin), which gives only convergence in probability: \(\bar{X}_n\xrightarrow{\mathbb{P}}\mu\). The strong law gives a stronger topology â€” almost surely â€” and is the basis for the "single trajectory" ergodic arguments of Chapter 15.
+Contrast with the **Weak LLN** (Khinchin), which gives only convergence in probability: \(\bar{X}_n\xrightarrow{\mathbb{P}}\mu\). The strong law gives a stronger topology â€?almost surely â€?and is the basis for the "single trajectory" ergodic arguments of Chapter 15.
 
 ### 17.1.2 ML derivation: why ERM is a lawful surrogate
 
@@ -98,7 +99,7 @@ This is the minimal physical legality of ERM: for any fixed parameter \(\theta\)
 
 <div class="ml-box">
 
-**Important ML nuance â€” where naÃ¯ve treatments cheat.**
+**Important ML nuance â€?where naÃ¯ve treatments cheat.**
 Optimization chooses \(\hat\theta_n\in\arg\min_\theta \widehat{R}_n(\theta)\), which depends on the entire sample. The SLLN *alone* does not guarantee \(R(\hat\theta_n)\to\inf_\theta R(\theta)\); that requires **uniform** control over \(\theta\) (Glivenkoâ€“Cantelli classes, Rademacher complexity, VC dimension). SLLN is the non-negotiable base: if even pointwise convergence fails, no generalization theory can be built on top.
 
 </div>
@@ -150,7 +151,7 @@ Here \(\Rightarrow\) denotes convergence in distribution (weak convergence of pr
 
 Write the sum of centered variables \(S_n := \sum_{i=1}^n (X_i-\mu)\). Then \(\mathbb{E}[S_n]=0\) and \(\mathrm{Var}(S_n)=n\sigma^2\). The three possible normalizations:
 
-- Divide by \(n\): yield \(\bar{X}_n - \mu\to 0\) (LLN scale â€” the limit is degenerate at \(0\)).
+- Divide by \(n\): yield \(\bar{X}_n - \mu\to 0\) (LLN scale â€?the limit is degenerate at \(0\)).
 - No normalization: variance explodes to \(\infty\) (no limit exists in distribution).
 - Divide by \(\sqrt{n}\sigma\): variance is pinned to \(1\), and the shape converges universally to Gaussian.
 
@@ -350,14 +351,14 @@ At scale \(n\): collapse (LLN). At scale \(1\): explosion (no limit). At scale \
 \[
 \widehat{g}_m(\theta) \approx \nabla L(\theta) + \frac{1}{\sqrt{m}}\,\mathcal{N}(0,\Sigma(\theta)).
 \]
-This is the analytic origin of "temperature," "diffusion," and "flat minima" narratives â€” derived, not asserted.
+This is the analytic origin of "temperature," "diffusion," and "flat minima" narratives â€?derived, not asserted.
 
 4. **Wide networks are CLT objects.** As width grows, random feature sums become Gaussian; deep compositions inherit GP/NTK structure in suitable limits. The NNGP is CLT applied recursively to function space.
 
-5. **Scaling laws reflect \(n^{-1/2}\) as a baseline.** Deviations from this rate â€” power laws with exponent \(\ne -1/2\) â€” indicate genuine structure beyond variance reduction. Identifying that structure is the open problem in empirical scaling laws.
+5. **Scaling laws reflect \(n^{-1/2}\) as a baseline.** Deviations from this rate â€?power laws with exponent \(\ne -1/2\) â€?indicate genuine structure beyond variance reduction. Identifying that structure is the open problem in empirical scaling laws.
 
 </div>
 
 LLN and CLT are asymptotic statements. Modern ML needs **finite-sample** control. The next mathematically forced step is concentration inequalities and uniform laws (Hoeffding, Bernstein, McDiarmid, Rademacher complexity), and their dependent-data counterparts (Azumaâ€“Hoeffding, Freedman for martingales), because actual training data are not strictly i.i.d. and optimization is adaptive.
 
-**Chapter 018: Concentration Inequalities â€” Large Deviation Bounds and the Finite-Sample Mathematics of Generalization.**
+**Chapter 018: Concentration Inequalities â€?Large Deviation Bounds and the Finite-Sample Mathematics of Generalization.**

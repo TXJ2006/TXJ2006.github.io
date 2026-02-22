@@ -1,5 +1,5 @@
 ---
-title: "Chapter 19: Stochastic Differential Equations — The Calculus Under Diffusion Models"
+title: "Chapter 19: Stochastic Differential Equations �?The Calculus Under Diffusion Models"
 layout: "single"
 url: "/book/chapters/chapter019/"
 summary: "Itô calculus from quadratic variation; Itô's formula and the chain-rule correction; Fokker–Planck for density evolution; forward VP/VE SDEs; reverse-time SDE and the score; denoising score matching from first principles; probability flow ODE; drifting models as training-time distribution evolution."
@@ -8,6 +8,7 @@ ShowToc: true
 TocOpen: true
 hideMeta: true
 math: true
+weight: 19
 ---
 
 <style>
@@ -210,7 +211,7 @@ d\varphi(X_t,t) = \Big(\partial_t\varphi + \nabla\varphi^\top f + \frac{1}{2}\ma
 
 </div>
 
-The extra term \(\frac{1}{2}g^2\,\partial_{xx}\varphi\) (or \(\frac{1}{2}\mathrm{tr}(a\,\nabla^2\varphi)\) in \(d\) dimensions) is the Itô correction — the second-order contribution forced by the non-vanishing quadratic variation of Brownian motion.
+The extra term \(\frac{1}{2}g^2\,\partial_{xx}\varphi\) (or \(\frac{1}{2}\mathrm{tr}(a\,\nabla^2\varphi)\) in \(d\) dimensions) is the Itô correction �?the second-order contribution forced by the non-vanishing quadratic variation of Brownian motion.
 
 ---
 
@@ -387,7 +388,7 @@ Plug \(s_\theta\) into the reverse-time drift:
 \[
 dX_t = \Big(f(X_t,t) - g(t)^2\,s_\theta(X_t,t)\Big)\,dt + g(t)\,d\bar{W}_t, \qquad T\to 0.
 \]
-Discretizations — Euler–Maruyama, stochastic Runge–Kutta, predictor–corrector — produce practical samplers with different accuracy and compute trade-offs.
+Discretizations �?Euler–Maruyama, stochastic Runge–Kutta, predictor–corrector �?produce practical samplers with different accuracy and compute trade-offs.
 
 ### 19.9.2 Deterministic Sampling (Probability Flow ODE)
 
@@ -415,7 +416,7 @@ This provides a deterministic sampling path and connects diffusion models to con
 | **Marginals** | \(p_t\) for all \(t\) | Same \(p_t\) for all \(t\) |
 | **Governing object** | \(s_\theta(x,t)\) | Same \(s_\theta(x,t)\) |
 | **Inference cost** | Many small stochastic steps | ODE solver (often fewer steps) |
-| **Connection** | — | Continuous normalizing flow |
+| **Connection** | �?| Continuous normalizing flow |
 
 Both are governed by the same learned object \(s_\theta\). That is the central unification of the score-SDE framework.
 
@@ -433,7 +434,7 @@ U_t(x) := -\log p_t(x),
 \]
 with score \(\nabla\log p_t(x) = -\nabla U_t(x)\). Sampling becomes a controlled evolution on these landscapes where the control is learned.
 
-This perspective remains stable when the surface form changes — DDPM sampling, predictor–corrector, ODE samplers — because it is attached to the reverse drift structure, not to discretization details.
+This perspective remains stable when the surface form changes �?DDPM sampling, predictor–corrector, ODE samplers �?because it is attached to the reverse drift structure, not to discretization details.
 
 ---
 
@@ -460,9 +461,9 @@ After training, inference is a single forward pass.
 
 **Design axis comparison:**
 
-SDE diffusion performs distribution evolution at inference time — the distribution \(p_t\) evolves along a trajectory of physical time \(t\in[0,T]\) driven by a known forward SDE and a learned reverse correction. Integrating this trajectory costs \(N\) network evaluations.
+SDE diffusion performs distribution evolution at inference time �?the distribution \(p_t\) evolves along a trajectory of physical time \(t\in[0,T]\) driven by a known forward SDE and a learned reverse correction. Integrating this trajectory costs \(N\) network evaluations.
 
-Drifting Models perform distribution evolution during *training* — the optimizer's updates, guided by the drifting field \(V\), move the generated distribution toward data over the course of training steps. After training, the distribution evolution has already happened; inference collapses to one evaluation.
+Drifting Models perform distribution evolution during *training* �?the optimizer's updates, guided by the drifting field \(V\), move the generated distribution toward data over the course of training steps. After training, the distribution evolution has already happened; inference collapses to one evaluation.
 
 From the SDE perspective: both are manipulating drift fields. The difference is which dynamical system serves as the "time axis":
 
@@ -471,7 +472,7 @@ From the SDE perspective: both are manipulating drift fields. The difference is 
 
 </div>
 
-This connects to a broader design space: generative modeling as choosing (i) a path of intermediate distributions and (ii) a mechanism that realizes the path — stochastic dynamics, deterministic transport, or training-driven drift.
+This connects to a broader design space: generative modeling as choosing (i) a path of intermediate distributions and (ii) a mechanism that realizes the path �?stochastic dynamics, deterministic transport, or training-driven drift.
 
 ---
 
@@ -481,14 +482,14 @@ This connects to a broader design space: generative modeling as choosing (i) a p
 
 1. **Classical calculus fails on Brownian paths.** The quadratic variation identity \((dW)^2 = dt\) is not a convenience notation; it is the precise mathematical statement that forces the second-order Itô correction term. Every formula in diffusion modeling that looks like a chain rule is actually Itô's formula.
 
-2. **The score is the only unknown.** The entire reverse-time dynamics — from the theoretical time-reversal theorem to the practical training objective — depends on one object: \(\nabla_x\log p_t(x)\). Score estimation is not a choice of method; it is the canonical form of the problem.
+2. **The score is the only unknown.** The entire reverse-time dynamics �?from the theoretical time-reversal theorem to the practical training objective �?depends on one object: \(\nabla_x\log p_t(x)\). Score estimation is not a choice of method; it is the canonical form of the problem.
 
 3. **Training computes the score implicitly.** The denoising score matching objective never directly labels the score. It exploits the identity that the marginal score equals the conditional expectation of the conditional score, and the conditional score for Gaussian corruption is available in closed form. The entire training loop is a Monte Carlo approximation of this expectation.
 
 4. **The SDE and ODE samplers are dual representations of the same marginal flow.** The stochastic reverse-time SDE and the probability flow ODE produce the same time-marginals \(p_t\). The choice between them is about trajectories and computational trade-offs, not about which distribution is targeted.
 
-5. **"Drift" is a design variable, not a fixed concept.** Different generative models — diffusion, flows, drifting models — can be understood as different choices of drift field and different "time axes" (physical time vs. training time) along which distribution evolution unfolds. The SDE framework provides the language to compare them at the structural level.
+5. **"Drift" is a design variable, not a fixed concept.** Different generative models �?diffusion, flows, drifting models �?can be understood as different choices of drift field and different "time axes" (physical time vs. training time) along which distribution evolution unfolds. The SDE framework provides the language to compare them at the structural level.
 
 </div>
 
-**Chapter 020: Rademacher Complexity and Generalization Theory — From Finite Hypothesis Classes to Deep Networks.**
+**Chapter 020: Rademacher Complexity and Generalization Theory �?From Finite Hypothesis Classes to Deep Networks.**

@@ -8,6 +8,7 @@ ShowToc: true
 TocOpen: true
 hideMeta: true
 math: true
+weight: 11
 ---
 
 <style>
@@ -27,11 +28,11 @@ math: true
 
 <div style="text-align:center; margin:1.5em 0 2.5em 0;">
 
-# Volume I — Mathematical Foundations
+# Volume I �?Mathematical Foundations
 
-## Part B — Probability and Measure
+## Part B �?Probability and Measure
 
-## Chapter 11 — Measure Theory and Probability: What Can Be Observed, What Can Be Integrated, and What Data Can Legitimately Constrain
+## Chapter 11 �?Measure Theory and Probability: What Can Be Observed, What Can Be Integrated, and What Data Can Legitimately Constrain
 
 *Xujiang Tang*
 
@@ -39,7 +40,7 @@ math: true
 
 ## Chapter Abstract
 
-Learning theory tacitly assumes that “data define constraints” and that “losses are expectations.” Both statements are meaningless until we specify (i) which subsets of the world are *observable* (a σ-algebra), (ii) how observation is *quantified* (a measure), and (iii) how quantities are *aggregated* over uncertainty (the Lebesgue integral). This chapter builds the probability space as the legal substrate of inference, then places modern machine learning inside it: empirical risk minimization as integration against the empirical measure, distribution shift as a change of measure, importance weighting as a Radon–Nikodym derivative identity, and cross-entropy training as the minimization of a divergence.
+Learning theory tacitly assumes that “data define constraints�?and that “losses are expectations.�?Both statements are meaningless until we specify (i) which subsets of the world are *observable* (a σ-algebra), (ii) how observation is *quantified* (a measure), and (iii) how quantities are *aggregated* over uncertainty (the Lebesgue integral). This chapter builds the probability space as the legal substrate of inference, then places modern machine learning inside it: empirical risk minimization as integration against the empirical measure, distribution shift as a change of measure, importance weighting as a Radon–Nikodym derivative identity, and cross-entropy training as the minimization of a divergence.
 
 ---
 
@@ -47,7 +48,7 @@ Learning theory tacitly assumes that “data define constraints” and that “l
 
 > **Core Theorem-Statement 11.1:** A learning objective is well-defined if and only if its loss is measurable with respect to an admissible σ-algebra.
 
-#### 11.1.1 Definition and necessity (why “events” must be closed under limits)
+#### 11.1.1 Definition and necessity (why “events�?must be closed under limits)
 Let \(\Omega\) denote the space of possible outcomes (inputs, labels, trajectories, or entire datasets, depending on the modeling level).
 
 A collection \(\mathcal{F}\subseteq 2^\Omega\) is a **σ-algebra** if:  
@@ -58,13 +59,13 @@ A collection \(\mathcal{F}\subseteq 2^\Omega\) is a **σ-algebra** if:
 From (2) and (3), \(\mathcal{F}\) is also closed under countable intersections.
 
 **ML placement (natural, not decorative).**  
-A classifier induces events of the form \(\{x: f_\theta(x)\ge 0\}\). Training or evaluation inevitably considers *countable* compositions of such events (threshold sweeps, limiting procedures, convergence of iterates, etc.). If \(\mathcal{F}\) is not closed under countable operations, one cannot even guarantee that the limit of an “increasingly refined” evaluation procedure is an event the theory can talk about.
+A classifier induces events of the form \(\{x: f_\theta(x)\ge 0\}\). Training or evaluation inevitably considers *countable* compositions of such events (threshold sweeps, limiting procedures, convergence of iterates, etc.). If \(\mathcal{F}\) is not closed under countable operations, one cannot even guarantee that the limit of an “increasingly refined�?evaluation procedure is an event the theory can talk about.
 
 ---
 
 ### 11.2 Measures: Quantifying Events Without Smuggling in Geometry
 
-> **Core Theorem-Statement 11.2:** A measure is the unique consistent extension of finite additivity to countable limits, and this countability is what makes “large sample” statements possible.
+> **Core Theorem-Statement 11.2:** A measure is the unique consistent extension of finite additivity to countable limits, and this countability is what makes “large sample�?statements possible.
 
 #### 11.2.1 Measure axioms
 A **measure** is a map \(\mu:\mathcal{F}\to[0,\infty]\) such that:  
@@ -260,14 +261,14 @@ Equality in Jensen holds iff \(r\) is constant \(\mathbb{Q}\)-a.e., thus \(r=1\)
 ---
 
 ### 11.8 Scholium: What This Chapter Removes from the Realm of Metaphor
-1) “Data constrain truth” becomes: \(\hat{\mathbb{P}}_n\) approximates \(\mathbb{P}\) and losses are integrals against these measures.  
-2) “Distribution shift” becomes: \(\mathbb{P}\) and \(\mathbb{Q}\) are different measures; transfer requires \(d\mathbb{P}/d\mathbb{Q}\).  
-3) “Cross-entropy works” becomes: KL nonnegativity is a convex inequality.  
-4) “Limits commute with expectations” becomes: MCT/DCT are the legal instruments that permit exchanging training limits with population expectations.
+1) “Data constrain truth�?becomes: \(\hat{\mathbb{P}}_n\) approximates \(\mathbb{P}\) and losses are integrals against these measures.  
+2) “Distribution shift�?becomes: \(\mathbb{P}\) and \(\mathbb{Q}\) are different measures; transfer requires \(d\mathbb{P}/d\mathbb{Q}\).  
+3) “Cross-entropy works�?becomes: KL nonnegativity is a convex inequality.  
+4) “Limits commute with expectations�?becomes: MCT/DCT are the legal instruments that permit exchanging training limits with population expectations.
 
 ---
 
 ### Transition
 We now possess a rigorous notion of observability (σ-algebra), uncertainty (probability measure), and aggregation (Lebesgue expectation). The next step is to introduce *conditional* structure and time: conditional expectation, filtrations, martingales, and the stochastic-process viewpoint underlying SGD, diffusion models, and modern generalization bounds.
 
-**Next chapter (proposed): Chapter 012 — Conditional Expectation and Martingales: Information, Filtrations, and the Mathematics of Stochastic Optimization.**
+**Next chapter (proposed): Chapter 012 �?Conditional Expectation and Martingales: Information, Filtrations, and the Mathematics of Stochastic Optimization.**
