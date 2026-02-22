@@ -195,3 +195,8 @@
 .post-single {
     max-width: 800px;
 }
+
+/* ===== 隐藏 PaperMod 自带的 prev/next 卡片（使用章节末尾自定义导航） ===== */
+.post-nav-links {
+    display: none !important;
+}
