@@ -36,7 +36,6 @@ weight: 5
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 ## Abstract
 
@@ -62,7 +61,6 @@ Let $(X,\|\cdot\|)$ be a normed vector space.
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 In finite dimensions, completeness is automatic.
 
@@ -72,7 +70,6 @@ In finite dimensions, completeness is automatic.
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 <div class="proof-box">
 
@@ -80,7 +77,6 @@ In finite dimensions, completeness is automatic.
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 This is already sufficient for most parameter-space discussions in modern ML, since weights live in finite-dimensional spaces.
 
@@ -114,7 +110,6 @@ $$
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 For $g(w)=\|w\|_1$, one computes explicitly:
 $$
@@ -135,7 +130,6 @@ $$
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 <div class="proof-box">
 
@@ -143,7 +137,6 @@ $$
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 Now the sparsity mechanism is immediate. For a coordinate $i$ with $w_i^{\ast}=0$, we have $z_i\in [-1,1]$, hence the optimality equation implies
 $$
@@ -157,7 +150,6 @@ a "dead-zone" condition. Coordinates whose correlations lie within this interval
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 ---
 
@@ -174,7 +166,6 @@ $$
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 <div class="prop-box">
 
@@ -186,7 +177,6 @@ $$
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 **Concrete identifications.**
 $$
@@ -214,7 +204,6 @@ This algebra is the exact backbone of adversarial training and certified robustn
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 ---
 
@@ -235,7 +224,6 @@ Then $T$ is continuous iff $\|T\|_{X\to Y}<\infty$.
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 <div class="ml-box">
 
@@ -243,7 +231,6 @@ Then $T$ is continuous iff $\|T\|_{X\to Y}<\infty$.
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 ---
 
@@ -258,7 +245,6 @@ $$
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 <div class="proof-box">
 
@@ -271,7 +257,6 @@ Divide by $\|x\|_X$ and take supremum. $\square$
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 This is the precise statement behind "deep networks multiply sensitivities": stability is not a local attribute; it composes multiplicatively.
 
@@ -290,7 +275,6 @@ $$
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 <div class="proof-box">
 
@@ -307,7 +291,6 @@ To show equality, choose $j^{\ast}$ achieving the maximum and take $x=e_{j^{\ast
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 <div class="prop-box">
 
@@ -318,7 +301,6 @@ $$
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 <div class="proof-box">
 
@@ -337,7 +319,6 @@ hence $\|Ax\|_\infty\ge |(Ax)_{i^{\ast}}|=\sum_j|a_{i^{\ast}j}|$, proving $\|A\|
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 **Spectral norm.** The induced $\ell_2$ operator norm is
 $$
@@ -365,7 +346,6 @@ $$
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 <div class="proof-box">
 
@@ -394,7 +374,6 @@ Since $\|x\|_X\le 1$, we obtain $\|Tx\|_Y\le \|T^{\ast}\|$. Taking supremum over
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 <div class="ml-box">
 
@@ -402,7 +381,6 @@ Since $\|x\|_X\le 1$, we obtain $\|Tx\|_Y\le \|T^{\ast}\|$. Taking supremum over
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 ---
 
@@ -424,7 +402,6 @@ $$
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 <div class="proof-box">
 
@@ -442,7 +419,6 @@ $\square$
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 For linear layers $f_\ell(x)=W_\ell x$, $L_\ell=\|W_\ell\|$ (the relevant induced operator norm). Thus depth creates multiplicative sensitivity.
 
@@ -452,7 +428,6 @@ This principle is explicitly exploited in spectral-complexity generalization ana
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 ---
 
@@ -466,7 +441,6 @@ From the Banach perspective: generalization failure is frequently an *amplificat
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 ---
 
@@ -489,7 +463,6 @@ Provable robustness methods explicitly compute upper bounds on such worst-case l
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 ---
 
@@ -507,7 +480,6 @@ These are Banach statements: they are about bounding amplification under a chose
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 ---
 
@@ -537,7 +509,6 @@ Transformer training stability is widely influenced by how normalization and att
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 ---
 
@@ -551,7 +522,6 @@ Lipschitz neural networks constrain layer operators so that the global map is pr
 
 </div>
 
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
 
 ---
 
@@ -562,26 +532,6 @@ Lipschitz neural networks constrain layer operators so that the global map is pr
 In LLM deployment, prompt injection can be viewed as an adversarial perturbation of the input *instructional context*. While it is not naturally modeled as a small $\ell_p$ perturbation in pixel space, it is still a constraint problem: the system must maintain output invariants under structured adversarial inputs. Recent work frames this as co-evolution of attacks/defenses with automated prompt optimization.
 
 **Our synthesis:** the Banach perspective suggests a general recipe for such domains. One must (i) define an operational "distance" between contexts (not necessarily Euclidean), (ii) define a norm/constraint set capturing admissible adversarial manipulations, and (iii) enforce bounded amplification of these manipulations through the system&rsquo;s mapping (often via operator-norm-type controls on internal representations). The analytic machinery is the same; only the chosen geometry changes.
-
-</div>
-
-*Next: [Chapter 6: Measure Theory and Lebesgue Integration](/book/chapters/chapter006/)*
-
----
-
-## 5.5 Scholium: What Banach Spaces Add Beyond Hilbert (and why ML needs it)
-
-<div class="scholium-box">
-
-Hilbert geometry is the special case where constraints are smooth and isotropic. Banach geometry is the general case where constraints are sharp, anisotropic, and operationally defined by worst-case criteria. In modern machine learning, the most consequential objectives&mdash;sparsity, robustness, stability across depth, and constraint-driven representation&mdash;are Banach objectives.
-
-Three takeaways are structural:
-
-1. The unit ball shape encodes inductive bias: corners produce selection, cubes produce worst-case control.
-2. Operator norms are the correct invariants of information flow: they bound amplification, sensitivity, and (via dual operators) the stability of learning signals.
-3. Completeness is the minimal existence law: it ensures that iterative learning does not converge toward a point outside the hypothesis space.
-
-We have now axiomatized deterministic geometry under constraints: from vector space (composition) to Hilbert space (energy) to Banach space (constraints and worst-case stability). The next conceptual layer is stochastic: uncertainty, sampling, distribution shift, and integration. Measure theory and probability will supply the operators (expectation, conditional expectation, Radon&ndash;Nikodym derivatives) that govern learning under randomness&mdash;while Banach/Hilbert geometry continues to govern stability of those operators.
 
 </div>
 

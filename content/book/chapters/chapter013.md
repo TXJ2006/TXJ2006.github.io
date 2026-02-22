@@ -308,8 +308,3 @@ This closes the measure-relativity layer of Part B: we can now compare, transpor
 **Chapter 014: Information Geometry and Cross-Entropy &mdash; Divergences as Riemannian Structure on the Manifold of Measures.**
 
 *Next: [Chapter 14: Variational Inference and ELBO](/book/chapters/chapter014/)*
-
-
-*Next: [Chapter 14: Variational Inference and ELBO](/book/chapters/chapter014/)*
-
-*Next: [Chapter 14: Variational Inference and ELBO](/book/chapters/chapter014/)*

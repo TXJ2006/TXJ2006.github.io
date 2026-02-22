@@ -290,8 +290,3 @@ The next chapter therefore introduces the variational principle that governs mod
 **Ch 014: Variational Inference &amp; ELBO &mdash; When Optimization Replaces Integration, and Why "Approximation" Must Be a Theorem.**
 
 *Next: [Chapter 13: KL Divergence and Information Theory](/book/chapters/chapter013/)*
-
-
-*Next: [Chapter 13: KL Divergence and Information Theory](/book/chapters/chapter013/)*
-
-*Next: [Chapter 13: KL Divergence and Information Theory](/book/chapters/chapter013/)*
