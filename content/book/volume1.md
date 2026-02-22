@@ -60,7 +60,7 @@ math: true
 | 016 | [鞅论 — 强化学习收敛性的基础](/book/chapters/chapter016/) | Martingale Theory |
 | 017 | [大数定律与中心极限定理](/book/chapters/chapter017/) | LLN & CLT |
 | 018 | [集中不等式 — 学习理论的界](/book/chapters/chapter018/) | Concentration Inequalities: Hoeffding/Bernstein |
-| 019 | 随机微分方程 (SDE) 基础 — 扩散模型的基础 | Itô Calculus |
+| 019 | [随机微分方程 (SDE) 基础 — 扩散模型的基础](/book/chapters/chapter019/) | Itô Calculus |
 | 020 | 维纳过程与布朗运动 | Wiener Processes |
 
 ---
