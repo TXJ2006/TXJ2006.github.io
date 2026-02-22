@@ -1,5 +1,5 @@
----
-title: "Chapter 20: Wiener Processes and Brownian Motion �?The Canonical Noise Source"
+﻿---
+title: "Chapter 20: Wiener Processes and Brownian Motion 鈥?The Canonical Noise Source"
 layout: "single"
 url: "/book/chapters/chapter020/"
 summary: "The Wiener process defined axiomatically and via Gaussian-process covariance; multidimensional Brownian motion; random-walk scaling limit and Donsker's principle; Langevin viewpoint; pure diffusion and the heat equation via Fourier; quadratic variation computed from first principles; scores under Gaussian smoothing and the denoising bridge."
@@ -42,7 +42,7 @@ weight: 20
 
 ## Abstract
 
-Chapter 19 used Brownian motion as a primitive. This chapter unpacks the primitive. The Wiener process is defined axiomatically, characterized as a Gaussian process via its covariance function \(\min(s,t)\), and derived as the scaling limit of discrete random walks. Its quadratic variation is computed from first principles �?this is the analytic fact that forces Itô's correction term. Pure Brownian diffusion is connected to the heat equation by a Fourier derivation. Finally, scores under Gaussian smoothing are computed explicitly, providing the analytical bridge that makes denoising score matching possible.
+Chapter 19 used Brownian motion as a primitive. This chapter unpacks the primitive. The Wiener process is defined axiomatically, characterized as a Gaussian process via its covariance function \(\min(s,t)\), and derived as the scaling limit of discrete random walks. Its quadratic variation is computed from first principles 鈥?this is the analytic fact that forces It么's correction term. Pure Brownian diffusion is connected to the heat equation by a Fourier derivation. Finally, scores under Gaussian smoothing are computed explicitly, providing the analytical bridge that makes denoising score matching possible.
 
 ---
 
@@ -126,7 +126,7 @@ Then \(\mathbb{E}[S_n]=0\) and \(\mathrm{Var}(S_n)=n(\Delta x)^2\). At physical 
 \[
 \mathbb{E}\!\left[S_{t/\Delta t}^2\right] = \frac{t}{\Delta t}(\Delta x)^2.
 \]
-Define the diffusion constant \(D := \frac{(\Delta x)^2}{2\Delta t}\). Then \(\mathbb{E}[S_{t/\Delta t}^2] = 2Dt\) �?the **linear-in-time mean-squared displacement**, the macroscopic signature of diffusion.
+Define the diffusion constant \(D := \frac{(\Delta x)^2}{2\Delta t}\). Then \(\mathbb{E}[S_{t/\Delta t}^2] = 2Dt\) 鈥?the **linear-in-time mean-squared displacement**, the macroscopic signature of diffusion.
 
 <div class="proof-box">
 
@@ -136,7 +136,7 @@ X_t^{(\Delta)} := \frac{S_{\lfloor t/\Delta t\rfloor}}{\sqrt{t/\Delta t}} \cdot 
 \]
 More concisely, the scaling is chosen so that \(\mathrm{Var}(X_t^{(\Delta)})=t\) and increments over disjoint time blocks are sums of disjoint \(\xi_k\)'s, hence independent. As \(\Delta t\to 0\) with \(D\) fixed:
 - Finite-dimensional distributions converge to those of \(\sqrt{2D}\,W_t\) by the CLT.
-- Tightness (hence path-level convergence) follows from the Kolmogorov–Chentsov criterion.
+- Tightness (hence path-level convergence) follows from the Kolmogorov鈥揅hentsov criterion.
 
 This is Donsker's invariance principle: Brownian motion is the universal scaling limit of centered random walks with finite variance steps.
 
@@ -146,13 +146,13 @@ This is Donsker's invariance principle: Brownian motion is the universal scaling
 \[
 W_{t+\Delta t} - W_t \approx \sqrt{\Delta t}\,\varepsilon, \qquad \varepsilon\sim\mathcal{N}(0,1).
 \]
-This is not an approximation of the process �?it is the exact distribution of the increment. Euler–Maruyama discretization of SDEs rests entirely on this fact.
+This is not an approximation of the process 鈥?it is the exact distribution of the increment. Euler鈥揗aruyama discretization of SDEs rests entirely on this fact.
 
 ### 20.2.2 Langevin Viewpoint: Friction and Noise
 
 A physical model for a particle's velocity \(V_t\) balances friction and random molecular kicks:
 \[
-dV_t = -\gamma V_t\,dt + \sigma\,dW_t \qquad \text{(Ornstein–Uhlenbeck SDE).}
+dV_t = -\gamma V_t\,dt + \sigma\,dW_t \qquad \text{(Ornstein鈥揢hlenbeck SDE).}
 \]
 Integrating velocity gives position \(dX_t = V_t\,dt\). In the **overdamped regime** (fast velocity relaxation, \(\gamma\to\infty\) with \(\sigma^2/(2\gamma)=D\) fixed), position dynamics reduce directly to:
 \[
@@ -162,7 +162,7 @@ This is the simplest forward diffusion: noise injection with variance growing li
 
 <div class="ml-box">
 
-The VP SDE in diffusion models is an Ornstein–Uhlenbeck process with time-varying coefficients:
+The VP SDE in diffusion models is an Ornstein鈥揢hlenbeck process with time-varying coefficients:
 \[
 dX_t = -\tfrac{1}{2}\beta(t)X_t\,dt + \sqrt{\beta(t)}\,dW_t.
 \]
@@ -235,7 +235,7 @@ Multiplying by \(-\|k\|^2\) in Fourier space corresponds to applying the Laplaci
 
 </div>
 
-This is the PDE counterpart of the SDE. In diffusion models this PDE describes the "forward smoothing" mechanism. The reverse process must undo it �?and the score field specifies precisely how the density contracts back.
+This is the PDE counterpart of the SDE. In diffusion models this PDE describes the "forward smoothing" mechanism. The reverse process must undo it 鈥?and the score field specifies precisely how the density contracts back.
 
 ---
 
@@ -272,11 +272,11 @@ Q_\pi(W;\,t) = \sum_{k=0}^{n-1}(W_{t_{k+1}} - W_{t_k})^2.
 
 </div>
 
-**Differential mnemonic.** The quadratic variation identity is the rigorous content behind the Itô bookkeeping rules:
+**Differential mnemonic.** The quadratic variation identity is the rigorous content behind the It么 bookkeeping rules:
 \[
 (dW_t)^2 = dt, \qquad dt\,dW_t = 0, \qquad (dt)^2 = 0.
 \]
-These are not formal conventions �?they are consequences of the \(L^2\) convergence above, made precise in the derivation of Itô's formula (Chapter 19, §19.4).
+These are not formal conventions 鈥?they are consequences of the \(L^2\) convergence above, made precise in the derivation of It么's formula (Chapter 19, 搂19.4).
 
 **Contrast with smooth functions.** For a smooth function \(f\) with \(f'\) bounded, the quadratic variation of \(f(t)\) satisfies
 \[
@@ -320,7 +320,7 @@ This is the continuous-time analog of the discrete Gaussian perturbation used in
 
 </div>
 
-The marginal score is related to the conditional score by the DSM identity (Chapter 19, §19.8.1):
+The marginal score is related to the conditional score by the DSM identity (Chapter 19, 搂19.8.1):
 \[
 \nabla\log p_t(x) = \mathbb{E}\!\big[\nabla_x\log p(X_t\mid X_0,t)\;\big|\;X_t=x\big] = -\frac{1}{2Dt}\,\mathbb{E}[X_t - X_0\mid X_t=x].
 \]
@@ -331,7 +331,7 @@ The marginal score is related to the conditional score by the DSM identity (Chap
 \[
 \nabla\log p_t(x) = -\frac{x - \mathbb{E}[X_0\mid X_t=x]}{2Dt}.
 \]
-Learning the score is equivalent to learning the MMSE denoiser. This is why score networks in practice often output a "noise prediction" or "clean image prediction" rather than the score directly �?all three are equivalent up to known rescaling by \(2Dt\) or \(\sigma(t)\).
+Learning the score is equivalent to learning the MMSE denoiser. This is why score networks in practice often output a "noise prediction" or "clean image prediction" rather than the score directly 鈥?all three are equivalent up to known rescaling by \(2Dt\) or \(\sigma(t)\).
 
 </div>
 
@@ -341,7 +341,7 @@ Brownian motion also appears in Langevin-type samplers for Bayesian inference an
 \[
 dX_t = \nabla\log\pi(X_t)\,dt + \sqrt{2}\,dW_t,
 \]
-whose stationary distribution is \(\pi\) under suitable conditions (Poincaré inequality, log-Sobolev inequality). Diffusion models generalize this to a time-inhomogeneous family: the reverse drift involves \(\nabla\log p_t\) rather than a single stationary \(\nabla\log\pi\). The forward noising creates the trajectory of targets \((p_t)\); the reverse SDE samples from this trajectory in reverse.
+whose stationary distribution is \(\pi\) under suitable conditions (Poincar茅 inequality, log-Sobolev inequality). Diffusion models generalize this to a time-inhomogeneous family: the reverse drift involves \(\nabla\log p_t\) rather than a single stationary \(\nabla\log\pi\). The forward noising creates the trajectory of targets \((p_t)\); the reverse SDE samples from this trajectory in reverse.
 
 ---
 
@@ -357,7 +357,7 @@ whose stationary distribution is \(\pi\) under suitable conditions (Poincaré in
 
 **Its key analytic property:**
 
-4. Quadratic variation \([W]_t = t\) �?not zero, not random. This is why classical calculus fails and Itô's formula needs the correction term \(\frac{1}{2}g^2\partial_{xx}\varphi\,dt\).
+4. Quadratic variation \([W]_t = t\) 鈥?not zero, not random. This is why classical calculus fails and It么's formula needs the correction term \(\frac{1}{2}g^2\partial_{xx}\varphi\,dt\).
 
 **Its role in diffusion models:**
 
@@ -367,17 +367,10 @@ whose stationary distribution is \(\pi\) under suitable conditions (Poincaré in
 
 **The conceptual pivot for Chapter 21:**
 
-The VP SDE replaces \(\sqrt{2D}\,dW_t\) by \(-\frac{1}{2}\beta(t)X_t\,dt + \sqrt{\beta(t)}\,dW_t\), adding mean reversion to the noise injection. The analysis of this Ornstein–Uhlenbeck dynamics �?and of how the reverse-time SDE reconstructs data from the \(\mathcal{N}(0,I)\) prior �?is the next step.
+The VP SDE replaces \(\sqrt{2D}\,dW_t\) by \(-\frac{1}{2}\beta(t)X_t\,dt + \sqrt{\beta(t)}\,dW_t\), adding mean reversion to the noise injection. The analysis of this Ornstein鈥揢hlenbeck dynamics 鈥?and of how the reverse-time SDE reconstructs data from the \(\mathcal{N}(0,I)\) prior 鈥?is the next step.
 
 </div>
 
-**Chapter 021: The Ornstein–Uhlenbeck Process, the VP SDE, and Closed-Form Marginals �?From Mean Reversion to the DDPM Corruption Kernel.**
-
-
-*Next: [Chapter 21: The Ornstein-Uhlenbeck Process and the VP SDE](/book/chapters/chapter021/)*
-
-*Next: [Chapter 21: The Ornstein-Uhlenbeck Process and the VP SDE](/book/chapters/chapter021/)*
-
-*Next: [Chapter 21: The Ornstein-Uhlenbeck Process and the VP SDE](/book/chapters/chapter021/)*
+**Chapter 021: The Ornstein鈥揢hlenbeck Process, the VP SDE, and Closed-Form Marginals 鈥?From Mean Reversion to the DDPM Corruption Kernel.**
 
 *Next: [Chapter 21: The Ornstein-Uhlenbeck Process and the VP SDE](/book/chapters/chapter021/)*

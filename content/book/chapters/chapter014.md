@@ -1,8 +1,8 @@
----
+﻿---
 title: "Chapter 14: Conditional Expectation and Orthogonal Projection"
 layout: "single"
 url: "/book/chapters/chapter014/"
-summary: "Conditional expectation as a Radon–Nikodym derivative on an information horizon; MSE minimization as orthogonal projection in L²; attention, denoising, and regression as instances of the same projection theorem."
+summary: "Conditional expectation as a Radon鈥揘ikodym derivative on an information horizon; MSE minimization as orthogonal projection in L虏; attention, denoising, and regression as instances of the same projection theorem."
 draft: false
 ShowToc: true
 TocOpen: true
@@ -40,7 +40,7 @@ weight: 14
 
 ## Abstract
 
-Conditional expectation is the central object of statistical prediction. Chapter 13 showed that density ratios govern the comparison of measures; Chapter 14 shows that *averaging under an information constraint* �?the operation underlying regression, denoising, attention, and policy evaluation �?is a Radon–Nikodym derivative on a restricted \(\sigma\)-algebra, and simultaneously the orthogonal projection in the Hilbert space \(L^2\). These two characterizations are equivalent and together explain why MSE minimization, the Pythagorean bias–variance identity, and the optimality of softmax attention are not separate empirical findings but corollaries of a single geometric theorem.
+Conditional expectation is the central object of statistical prediction. Chapter 13 showed that density ratios govern the comparison of measures; Chapter 14 shows that *averaging under an information constraint* 鈥?the operation underlying regression, denoising, attention, and policy evaluation 鈥?is a Radon鈥揘ikodym derivative on a restricted \(\sigma\)-algebra, and simultaneously the orthogonal projection in the Hilbert space \(L^2\). These two characterizations are equivalent and together explain why MSE minimization, the Pythagorean bias鈥搗ariance identity, and the optimality of softmax attention are not separate empirical findings but corollaries of a single geometric theorem.
 
 ---
 
@@ -72,9 +72,9 @@ The key point: any \(\mathcal{G}\)-measurable predictor is *constrained* by what
 
 ---
 
-## 14.3 Existence via Radon–Nikodym: Conditional Expectation Is a Derivative on an Information Horizon
+## 14.3 Existence via Radon鈥揘ikodym: Conditional Expectation Is a Derivative on an Information Horizon
 
-> **Theorem-sentence 14.1.** For any integrable random variable \(Y\in L^{1}(\Omega,\mathcal{F},\mathbb{P})\) and any sub-\(\sigma\)-algebra \(\mathcal{G}\subseteq\mathcal{F}\), the conditional expectation \(\mathbb{E}[Y\mid\mathcal{G}]\) exists and is uniquely determined \(\mathbb{P}\)-a.s. as a Radon–Nikodym derivative.
+> **Theorem-sentence 14.1.** For any integrable random variable \(Y\in L^{1}(\Omega,\mathcal{F},\mathbb{P})\) and any sub-\(\sigma\)-algebra \(\mathcal{G}\subseteq\mathcal{F}\), the conditional expectation \(\mathbb{E}[Y\mid\mathcal{G}]\) exists and is uniquely determined \(\mathbb{P}\)-a.s. as a Radon鈥揘ikodym derivative.
 
 ### 14.3.1 Construction (measure-theoretic, canonical)
 
@@ -84,7 +84,7 @@ Fix \(\mathcal{G}\subseteq\mathcal{F}\). Define a signed measure \(\mu\) on \((\
 \]
 Then \(\mu\) is \(\sigma\)-additive (linearity of the Lebesgue integral) and is absolutely continuous with respect to \(\mathbb{P}\) restricted to \(\mathcal{G}\): if \(\mathbb{P}(A)=0\), then \(\mu(A)=\mathbb{E}[Y\mathbf{1}_A]=0\). Hence \(\mu\ll \mathbb{P}|_{\mathcal{G}}\).
 
-By the Radon–Nikodym theorem (Chapter 13), there exists a \(\mathcal{G}\)-measurable function \(Z\in L^1\) such that for all \(A\in\mathcal{G}\),
+By the Radon鈥揘ikodym theorem (Chapter 13), there exists a \(\mathcal{G}\)-measurable function \(Z\in L^1\) such that for all \(A\in\mathcal{G}\),
 \[
 \mu(A) = \int_A Z\, d\mathbb{P}.
 \]
@@ -92,7 +92,7 @@ Equivalently,
 \[
 \mathbb{E}[Y\mathbf{1}_A] = \mathbb{E}[Z\mathbf{1}_A] \quad \forall\, A\in\mathcal{G}.
 \]
-We define \(Z := \mathbb{E}[Y\mid\mathcal{G}]\). Uniqueness holds \(\mathbb{P}\)-a.s. by uniqueness of the Radon–Nikodym derivative.
+We define \(Z := \mathbb{E}[Y\mid\mathcal{G}]\). Uniqueness holds \(\mathbb{P}\)-a.s. by uniqueness of the Radon鈥揘ikodym derivative.
 
 ### 14.3.2 Interpretation
 
@@ -122,7 +122,7 @@ Let \(Y,Y_1,Y_2\in L^1\), \(\mathcal{G}\subseteq\mathcal{H}\subseteq\mathcal{F}\
 
 <div class="ml-box">
 
-**Tower property in ML.** In multi-stage models (encoder \(\to\) bottleneck \(\to\) decoder), if the encoder computes a representation \(h(X)\) and the decoder operates on \(h(X)\), the tower property guarantees that the expected loss evaluated at each stage is consistent: \(\mathbb{E}[\mathbb{E}[Y\mid h(X)]\mid X] = \mathbb{E}[Y\mid h(X)]\) when \(h(X)\) is a function of \(X\). Information can only be lost, never gained, by compressing through a bottleneck �?this is the tower property as an information-theoretic identity.
+**Tower property in ML.** In multi-stage models (encoder \(\to\) bottleneck \(\to\) decoder), if the encoder computes a representation \(h(X)\) and the decoder operates on \(h(X)\), the tower property guarantees that the expected loss evaluated at each stage is consistent: \(\mathbb{E}[\mathbb{E}[Y\mid h(X)]\mid X] = \mathbb{E}[Y\mid h(X)]\) when \(h(X)\) is a function of \(X\). Information can only be lost, never gained, by compressing through a bottleneck 鈥?this is the tower property as an information-theoretic identity.
 
 </div>
 
@@ -185,7 +185,7 @@ The minimal achievable risk is
 \]
 This is not an artifact of optimization; it is the geometric distance from truth to the information subspace.
 
-**3. Bias–variance decomposition as projection decomposition.**
+**3. Bias鈥搗ariance decomposition as projection decomposition.**
 If a learned model \(\tilde{f}\in L^{2}(\mathcal{G})\) is random (depends on a training set), then
 \[
 \mathbb{E}[(Y-\tilde{f})^2] = \mathbb{E}[(Y-\hat{Y})^2] + \mathbb{E}[(\hat{Y}-\tilde{f})^2],
@@ -216,7 +216,7 @@ then the population optimum is
 \[
 g^{\ast}(X_t) = \mathbb{E}[X_0\mid X_t],
 \]
-the conditional expectation �?exactly the orthogonal projection of \(X_0\) onto the information horizon generated by the noisy observation. This is the precise probabilistic core beneath denoising-based generative modeling: the target function is a conditional expectation; training is projection.
+the conditional expectation 鈥?exactly the orthogonal projection of \(X_0\) onto the information horizon generated by the noisy observation. This is the precise probabilistic core beneath denoising-based generative modeling: the target function is a conditional expectation; training is projection.
 
 <div class="ml-box">
 
@@ -294,9 +294,7 @@ This clarifies a frequent conceptual confusion: using MSE for classification for
 
 This completes the geometric foundation of prediction under information constraints. Once prediction is understood as projection, the natural question is what global divergences and curvatures govern the space of probability measures. That is the domain of information geometry, KL divergence, and cross-entropy as the dominant training functional in large-scale models.
 
-**Chapter 015: Information Geometry and Divergences �?Curvature on the Manifold of Probability Measures.**
+**Chapter 015: Information Geometry and Divergences 鈥?Curvature on the Manifold of Probability Measures.**
 
-
-*Next: [Chapter 15: Information Geometry and Divergences](/book/chapters/chapter015/)*
 
 *Next: [Chapter 15: Information Geometry and Divergences](/book/chapters/chapter015/)*

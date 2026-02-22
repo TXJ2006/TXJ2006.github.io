@@ -427,5 +427,3 @@ The next step is probabilistic: real learning is driven by random sampling, nois
 A further step&mdash;crucial for scalable intelligence&mdash;is geometric generalization beyond Euclidean settings: non-Euclidean norms, operator-induced metrics, and graph-structured or manifold-structured hypothesis spaces. The Hilbert layer built here is the quantitative foundation; subsequent chapters will lift it into geometries suited to large-scale, parallel, compositional computation where "space" is not merely $\mathbb{R}^d$ but a structured arena of interacting modules.
 
 *Next: [Chapter 5: Banach Spaces and Operator Norms](/book/chapters/chapter005/)*
-
-*Next: [Chapter 5: Banach Spaces and Operator Norms](/book/chapters/chapter005/)*

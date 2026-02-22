@@ -383,5 +383,3 @@ If the kernel's spectrum does not provide sufficient penalty to noise-aligned di
 RKHS theory tells us what solutions must look like and why they are well-posed. To understand how learning trajectories *move*&mdash;in kernels, in neural nets, and in hybrid systems&mdash;we need a calculus that differentiates objectives with respect to matrices and operators without collapsing into coordinate bookkeeping. Chapter 8 develops matrix differentials as the correct language of backpropagation, and exposes precisely where and how "geometry" enters the chain rule in modern ML.
 
 *Next: [Chapter 8: Matrix Calculus and Backpropagation](/book/chapters/chapter008/)*
-
-*Next: [Chapter 8: Matrix Calculus and Backpropagation](/book/chapters/chapter008/)*

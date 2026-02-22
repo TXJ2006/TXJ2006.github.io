@@ -1,8 +1,8 @@
----
-title: "Chapter 19: Stochastic Differential Equations �?The Calculus Under Diffusion Models"
+﻿---
+title: "Chapter 19: Stochastic Differential Equations 鈥?The Calculus Under Diffusion Models"
 layout: "single"
 url: "/book/chapters/chapter019/"
-summary: "Itô calculus from quadratic variation; Itô's formula and the chain-rule correction; Fokker–Planck for density evolution; forward VP/VE SDEs; reverse-time SDE and the score; denoising score matching from first principles; probability flow ODE; drifting models as training-time distribution evolution."
+summary: "It么 calculus from quadratic variation; It么's formula and the chain-rule correction; Fokker鈥揚lanck for density evolution; forward VP/VE SDEs; reverse-time SDE and the score; denoising score matching from first principles; probability flow ODE; drifting models as training-time distribution evolution."
 draft: false
 ShowToc: true
 TocOpen: true
@@ -34,7 +34,7 @@ weight: 19
 
 ## Chapter 19 &mdash; Stochastic Differential Equations: The Calculus Under Diffusion Models
 
-*Itô calculus, forward noising, reverse-time dynamics, and what "drift" really means in modern generative modeling*
+*It么 calculus, forward noising, reverse-time dynamics, and what "drift" really means in modern generative modeling*
 
 *Xujiang Tang*
 
@@ -42,7 +42,7 @@ weight: 19
 
 ## Abstract
 
-A diffusion model is, at its core, a statement about how a probability distribution evolves in time under a stochastic dynamics. The stochastic dynamics is an SDE. The "model" is typically not the forward SDE (noise injection is chosen, not learned), but the inverse mechanism that reconstructs data from noise. The aim here is to put the foundational objects on the table and then connect them to diffusion models at the level where the mathematics is doing the work: filtration, Brownian motion, Itô integral, quadratic variation, Itô's formula, Fokker–Planck, and time reversal.
+A diffusion model is, at its core, a statement about how a probability distribution evolves in time under a stochastic dynamics. The stochastic dynamics is an SDE. The "model" is typically not the forward SDE (noise injection is chosen, not learned), but the inverse mechanism that reconstructs data from noise. The aim here is to put the foundational objects on the table and then connect them to diffusion models at the level where the mathematics is doing the work: filtration, Brownian motion, It么 integral, quadratic variation, It么's formula, Fokker鈥揚lanck, and time reversal.
 
 ---
 
@@ -91,9 +91,9 @@ In ordinary smooth calculus, \((dt)^2\) vanishes at first order; here the square
 
 ---
 
-## 19.2 The Itô Integral: Definition Before Intuition
+## 19.2 The It么 Integral: Definition Before Intuition
 
-An SDE uses integrals of the form \(\int_0^t H_s\,dW_s\). This is not a Riemann–Stieltjes integral; Brownian motion has unbounded variation. The definition is a limit in \(L^2\), built from simple adapted processes.
+An SDE uses integrals of the form \(\int_0^t H_s\,dW_s\). This is not a Riemann鈥揝tieltjes integral; Brownian motion has unbounded variation. The definition is a limit in \(L^2\), built from simple adapted processes.
 
 ### 19.2.1 Simple Adapted Processes
 
@@ -107,7 +107,7 @@ where each \(H_k\) is \(\mathcal{F}_{t_k}\)-measurable. For such \(H\), define
 \]
 The measurability condition (use the left-endpoint information) is the adaptation constraint that matches causality in stochastic dynamics.
 
-### 19.2.2 Extension by \(L^2\) Completion and Itô Isometry
+### 19.2.2 Extension by \(L^2\) Completion and It么 Isometry
 
 If \(H\) is progressively measurable and square-integrable, meaning
 \[
@@ -117,15 +117,15 @@ then there exists a sequence of simple adapted processes \(H^{(m)}\) approximati
 \[
 \mathbb{E}\!\left[\int_0^t (H_s^{(m)} - H_s)^2\,ds\right] \to 0.
 \]
-The Itô integral is defined by the \(L^2\) limit:
+The It么 integral is defined by the \(L^2\) limit:
 \[
 \int_0^t H_s\,dW_s := \lim_{m\to\infty}\int_0^t H_s^{(m)}\,dW_s.
 \]
-This limit is independent of the approximating sequence. The essential identity is the **Itô isometry**:
+This limit is independent of the approximating sequence. The essential identity is the **It么 isometry**:
 
 <div class="prop-box">
 
-**Proposition 19.1 (Itô isometry).** For any progressively measurable square-integrable \(H\),
+**Proposition 19.1 (It么 isometry).** For any progressively measurable square-integrable \(H\),
 \[
 \mathbb{E}\!\left[\left(\int_0^t H_s\,dW_s\right)^2\right] = \mathbb{E}\!\left[\int_0^t H_s^2\,ds\right].
 \]
@@ -136,13 +136,13 @@ This is the rigorous form of \((dW)^2 = dt\): the second moment of the stochasti
 
 ---
 
-## 19.3 Itô Processes and SDEs: Definition, Existence, and Meaning of Coefficients
+## 19.3 It么 Processes and SDEs: Definition, Existence, and Meaning of Coefficients
 
-### 19.3.1 Itô Process
+### 19.3.1 It么 Process
 
 <div class="def-box">
 
-**Definition 19.2 (Itô process).** A process \(X_t\) is an *Itô process* if it can be written as
+**Definition 19.2 (It么 process).** A process \(X_t\) is an *It么 process* if it can be written as
 \[
 X_t = X_0 + \int_0^t f(s)\,ds + \int_0^t g(s)\,dW_s,
 \]
@@ -177,7 +177,7 @@ In diffusion models, this separation becomes structural: the forward process is 
 
 ---
 
-## 19.4 Itô's Formula: The Calculus Rule That Replaces the Chain Rule
+## 19.4 It么's Formula: The Calculus Rule That Replaces the Chain Rule
 
 Let \(X_t\) satisfy \(dX_t = f(X_t,t)\,dt + g(X_t,t)\,dW_t\) in one dimension, and let \(\varphi(x,t)\) be \(C^{2,1}\). The classical chain rule fails because \((dX_t)^2\) contains a first-order piece.
 
@@ -195,7 +195,7 @@ we get \((dX_t)^2 = g(X_t,t)^2\,dt\). Therefore:
 
 <div class="prop-box">
 
-**Theorem 19.1 (Itô's formula, one dimension).** For \(\varphi\in C^{2,1}\),
+**Theorem 19.1 (It么's formula, one dimension).** For \(\varphi\in C^{2,1}\),
 \[
 d\varphi(X_t,t) = \Big(\partial_t\varphi + f\,\partial_x\varphi + \frac{1}{2}g^2\,\partial_{xx}\varphi\Big)\,dt + g\,\partial_x\varphi\,dW_t.
 \]
@@ -204,20 +204,20 @@ d\varphi(X_t,t) = \Big(\partial_t\varphi + f\,\partial_x\varphi + \frac{1}{2}g^2
 
 <div class="prop-box">
 
-**Theorem 19.2 (Itô's formula, \(d\) dimensions).** With diffusion matrix \(a = GG^\top\),
+**Theorem 19.2 (It么's formula, \(d\) dimensions).** With diffusion matrix \(a = GG^\top\),
 \[
 d\varphi(X_t,t) = \Big(\partial_t\varphi + \nabla\varphi^\top f + \frac{1}{2}\mathrm{tr}(a\,\nabla^2\varphi)\Big)\,dt + \nabla\varphi^\top G\,dW_t.
 \]
 
 </div>
 
-The extra term \(\frac{1}{2}g^2\,\partial_{xx}\varphi\) (or \(\frac{1}{2}\mathrm{tr}(a\,\nabla^2\varphi)\) in \(d\) dimensions) is the Itô correction �?the second-order contribution forced by the non-vanishing quadratic variation of Brownian motion.
+The extra term \(\frac{1}{2}g^2\,\partial_{xx}\varphi\) (or \(\frac{1}{2}\mathrm{tr}(a\,\nabla^2\varphi)\) in \(d\) dimensions) is the It么 correction 鈥?the second-order contribution forced by the non-vanishing quadratic variation of Brownian motion.
 
 ---
 
-## 19.5 Generator and Fokker–Planck: From Sample Paths to Density Evolution
+## 19.5 Generator and Fokker鈥揚lanck: From Sample Paths to Density Evolution
 
-Diffusion models are distributional machines. The bridge from SDE pathwise dynamics to density evolution is the Kolmogorov forward equation (Fokker–Planck).
+Diffusion models are distributional machines. The bridge from SDE pathwise dynamics to density evolution is the Kolmogorov forward equation (Fokker鈥揚lanck).
 
 ### 19.5.1 Infinitesimal Generator
 
@@ -230,7 +230,7 @@ Diffusion models are distributional machines. The bridge from SDE pathwise dynam
 
 </div>
 
-Itô's formula implies that
+It么's formula implies that
 \[
 \varphi(X_t,t) - \varphi(X_0,0) - \int_0^t \big(\partial_s\varphi(X_s,s) + \mathcal{L}\varphi(X_s,s)\big)\,ds
 \]
@@ -239,20 +239,20 @@ is a martingale (the stochastic integral term). Taking expectations kills the ma
 \mathbb{E}[\varphi(X_t,t)] = \mathbb{E}[\varphi(X_0,0)] + \int_0^t \mathbb{E}\big[\partial_s\varphi(X_s,s) + \mathcal{L}\varphi(X_s,s)\big]\,ds.
 \]
 
-### 19.5.2 Deriving the Fokker–Planck Equation
+### 19.5.2 Deriving the Fokker鈥揚lanck Equation
 
 Let \(p_t(x)\) be the density of \(X_t\). Differentiating \(\mathbb{E}[\varphi(X_t,t)] = \int\varphi(x,t)\,p_t(x)\,dx\) in \(t\) and using the generator identity, then canceling the \(\partial_t\varphi\) term, integrating by parts to move \(\mathcal{L}\) onto \(p_t\) via the adjoint \(\mathcal{L}^\ast\):
 
 <div class="prop-box">
 
-**Theorem 19.3 (Fokker–Planck / Kolmogorov forward equation).**
+**Theorem 19.3 (Fokker鈥揚lanck / Kolmogorov forward equation).**
 \[
 \partial_t p_t(x) = \mathcal{L}^\ast p_t(x) = -\nabla\cdot\!\big(f(x,t)\,p_t(x)\big) + \frac{1}{2}\sum_{i,j}\partial_{x_i}\partial_{x_j}\!\big(a_{ij}(x,t)\,p_t(x)\big).
 \]
 
 </div>
 
-This PDE is the distribution-level statement of the SDE: where the SDE describes individual paths, Fokker–Planck describes the evolution of the entire ensemble density.
+This PDE is the distribution-level statement of the SDE: where the SDE describes individual paths, Fokker鈥揚lanck describes the evolution of the entire ensemble density.
 
 ---
 
@@ -270,7 +270,7 @@ with scalar diffusion \(g(t)\) and drift \(f\) chosen so that \(p_T \approx \mat
 
 ### 19.6.2 Variance Preserving (VP) SDE: Continuous Analog of DDPM
 
-The VP SDE is an Ornstein–Uhlenbeck type process:
+The VP SDE is an Ornstein鈥揢hlenbeck type process:
 \[
 dX_t = -\frac{1}{2}\beta(t)X_t\,dt + \sqrt{\beta(t)}\,dW_t,
 \]
@@ -286,7 +286,7 @@ so that \(p(X_t\mid X_0) = \mathcal{N}(\alpha(t)X_0,\;\sigma^2(t)I)\). This clos
 
 <div class="ml-box">
 
-**Why the VP marginal is tractable.** The VP SDE is linear in \(X_t\), so its solution is an affine function of the Gaussian noise \(\varepsilon\). Linearity + Gaussian noise = Gaussian marginal, with explicitly computable mean and variance. This is what makes the denoising score matching objective (§19.8) computable without approximation.
+**Why the VP marginal is tractable.** The VP SDE is linear in \(X_t\), so its solution is an affine function of the Gaussian noise \(\varepsilon\). Linearity + Gaussian noise = Gaussian marginal, with explicitly computable mean and variance. This is what makes the denoising score matching objective (搂19.8) computable without approximation.
 
 </div>
 
@@ -321,7 +321,7 @@ The only unknown object is \(\nabla_x\log p_t(x)\), the *score* of the marginal 
 
 ### 19.7.2 Why the Score Is the Correct Object
 
-From the forward SDE, \(p_t\) satisfies Fokker–Planck. Time reversal is a statement about constructing a dynamics whose marginals evolve as \(p_{T-t}\). The score term appears because reversing diffusion requires "undoing" the entropy increase induced by the Laplacian spreading term.
+From the forward SDE, \(p_t\) satisfies Fokker鈥揚lanck. Time reversal is a statement about constructing a dynamics whose marginals evolve as \(p_{T-t}\). The score term appears because reversing diffusion requires "undoing" the entropy increase induced by the Laplacian spreading term.
 
 The score \(\nabla_x\log p_t(x) = -\nabla_x U_t(x)\), where \(U_t(x) = -\log p_t(x)\) is the instantaneous energy. The reverse drift contracts mass in the direction of increasing density, exactly countering forward diffusion's dispersal. This is the same mechanism as Langevin dynamics, generalized to a time-inhomogeneous family of targets \(p_t\).
 
@@ -388,7 +388,7 @@ Plug \(s_\theta\) into the reverse-time drift:
 \[
 dX_t = \Big(f(X_t,t) - g(t)^2\,s_\theta(X_t,t)\Big)\,dt + g(t)\,d\bar{W}_t, \qquad T\to 0.
 \]
-Discretizations �?Euler–Maruyama, stochastic Runge–Kutta, predictor–corrector �?produce practical samplers with different accuracy and compute trade-offs.
+Discretizations 鈥?Euler鈥揗aruyama, stochastic Runge鈥揔utta, predictor鈥揷orrector 鈥?produce practical samplers with different accuracy and compute trade-offs.
 
 ### 19.9.2 Deterministic Sampling (Probability Flow ODE)
 
@@ -416,7 +416,7 @@ This provides a deterministic sampling path and connects diffusion models to con
 | **Marginals** | \(p_t\) for all \(t\) | Same \(p_t\) for all \(t\) |
 | **Governing object** | \(s_\theta(x,t)\) | Same \(s_\theta(x,t)\) |
 | **Inference cost** | Many small stochastic steps | ODE solver (often fewer steps) |
-| **Connection** | �?| Continuous normalizing flow |
+| **Connection** | 鈥?| Continuous normalizing flow |
 
 Both are governed by the same learned object \(s_\theta\). That is the central unification of the score-SDE framework.
 
@@ -434,7 +434,7 @@ U_t(x) := -\log p_t(x),
 \]
 with score \(\nabla\log p_t(x) = -\nabla U_t(x)\). Sampling becomes a controlled evolution on these landscapes where the control is learned.
 
-This perspective remains stable when the surface form changes �?DDPM sampling, predictor–corrector, ODE samplers �?because it is attached to the reverse drift structure, not to discretization details.
+This perspective remains stable when the surface form changes 鈥?DDPM sampling, predictor鈥揷orrector, ODE samplers 鈥?because it is attached to the reverse drift structure, not to discretization details.
 
 ---
 
@@ -461,9 +461,9 @@ After training, inference is a single forward pass.
 
 **Design axis comparison:**
 
-SDE diffusion performs distribution evolution at inference time �?the distribution \(p_t\) evolves along a trajectory of physical time \(t\in[0,T]\) driven by a known forward SDE and a learned reverse correction. Integrating this trajectory costs \(N\) network evaluations.
+SDE diffusion performs distribution evolution at inference time 鈥?the distribution \(p_t\) evolves along a trajectory of physical time \(t\in[0,T]\) driven by a known forward SDE and a learned reverse correction. Integrating this trajectory costs \(N\) network evaluations.
 
-Drifting Models perform distribution evolution during *training* �?the optimizer's updates, guided by the drifting field \(V\), move the generated distribution toward data over the course of training steps. After training, the distribution evolution has already happened; inference collapses to one evaluation.
+Drifting Models perform distribution evolution during *training* 鈥?the optimizer's updates, guided by the drifting field \(V\), move the generated distribution toward data over the course of training steps. After training, the distribution evolution has already happened; inference collapses to one evaluation.
 
 From the SDE perspective: both are manipulating drift fields. The difference is which dynamical system serves as the "time axis":
 
@@ -472,7 +472,7 @@ From the SDE perspective: both are manipulating drift fields. The difference is 
 
 </div>
 
-This connects to a broader design space: generative modeling as choosing (i) a path of intermediate distributions and (ii) a mechanism that realizes the path �?stochastic dynamics, deterministic transport, or training-driven drift.
+This connects to a broader design space: generative modeling as choosing (i) a path of intermediate distributions and (ii) a mechanism that realizes the path 鈥?stochastic dynamics, deterministic transport, or training-driven drift.
 
 ---
 
@@ -480,21 +480,19 @@ This connects to a broader design space: generative modeling as choosing (i) a p
 
 <div class="scholium-box">
 
-1. **Classical calculus fails on Brownian paths.** The quadratic variation identity \((dW)^2 = dt\) is not a convenience notation; it is the precise mathematical statement that forces the second-order Itô correction term. Every formula in diffusion modeling that looks like a chain rule is actually Itô's formula.
+1. **Classical calculus fails on Brownian paths.** The quadratic variation identity \((dW)^2 = dt\) is not a convenience notation; it is the precise mathematical statement that forces the second-order It么 correction term. Every formula in diffusion modeling that looks like a chain rule is actually It么's formula.
 
-2. **The score is the only unknown.** The entire reverse-time dynamics �?from the theoretical time-reversal theorem to the practical training objective �?depends on one object: \(\nabla_x\log p_t(x)\). Score estimation is not a choice of method; it is the canonical form of the problem.
+2. **The score is the only unknown.** The entire reverse-time dynamics 鈥?from the theoretical time-reversal theorem to the practical training objective 鈥?depends on one object: \(\nabla_x\log p_t(x)\). Score estimation is not a choice of method; it is the canonical form of the problem.
 
 3. **Training computes the score implicitly.** The denoising score matching objective never directly labels the score. It exploits the identity that the marginal score equals the conditional expectation of the conditional score, and the conditional score for Gaussian corruption is available in closed form. The entire training loop is a Monte Carlo approximation of this expectation.
 
 4. **The SDE and ODE samplers are dual representations of the same marginal flow.** The stochastic reverse-time SDE and the probability flow ODE produce the same time-marginals \(p_t\). The choice between them is about trajectories and computational trade-offs, not about which distribution is targeted.
 
-5. **"Drift" is a design variable, not a fixed concept.** Different generative models �?diffusion, flows, drifting models �?can be understood as different choices of drift field and different "time axes" (physical time vs. training time) along which distribution evolution unfolds. The SDE framework provides the language to compare them at the structural level.
+5. **"Drift" is a design variable, not a fixed concept.** Different generative models 鈥?diffusion, flows, drifting models 鈥?can be understood as different choices of drift field and different "time axes" (physical time vs. training time) along which distribution evolution unfolds. The SDE framework provides the language to compare them at the structural level.
 
 </div>
 
-**Chapter 020: Rademacher Complexity and Generalization Theory �?From Finite Hypothesis Classes to Deep Networks.**
+**Chapter 020: Rademacher Complexity and Generalization Theory 鈥?From Finite Hypothesis Classes to Deep Networks.**
 
-
-*Next: [Chapter 20: Wiener Processes and Brownian Motion](/book/chapters/chapter020/)*
 
 *Next: [Chapter 20: Wiener Processes and Brownian Motion](/book/chapters/chapter020/)*

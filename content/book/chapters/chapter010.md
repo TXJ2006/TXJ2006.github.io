@@ -349,5 +349,3 @@ The next logical object is unavoidable: once the relevant state variables become
 **Next chapter (proposed): Chapter 011 &mdash; Measure Theory and Probability: What Can Be Observed, What Can Be Integrated, and What Data Can Legitimately Constrain.**
 
 *Next: [Chapter 11: Measure Theory and Probability](/book/chapters/chapter011/)*
-
-*Next: [Chapter 11: Measure Theory and Probability](/book/chapters/chapter011/)*

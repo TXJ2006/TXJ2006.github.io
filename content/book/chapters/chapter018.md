@@ -1,8 +1,8 @@
----
-title: "Chapter 18: Concentration Inequalities �?The Boundary of Learning Theory"
+﻿---
+title: "Chapter 18: Concentration Inequalities 鈥?The Boundary of Learning Theory"
 layout: "single"
 url: "/book/chapters/chapter018/"
-summary: "The Chernoff–mgf pipeline; Hoeffding's lemma and inequality; Bernstein's inequality and variance-aware tail switching; McDiarmid via Doob martingales; finite-class uniform bounds and the union bound; the boundary where concentration ends and complexity begins."
+summary: "The Chernoff鈥搈gf pipeline; Hoeffding's lemma and inequality; Bernstein's inequality and variance-aware tail switching; McDiarmid via Doob martingales; finite-class uniform bounds and the union bound; the boundary where concentration ends and complexity begins."
 draft: false
 ShowToc: true
 TocOpen: true
@@ -42,7 +42,7 @@ weight: 18
 
 ## Abstract
 
-Chapter 17 established that LLN makes empirical risk converge to population risk *asymptotically*. Learning theory needs a finite-\(n\) certificate �?an explicit exponential tail bound on the deviation \(|R_n(\theta)-R(\theta)|\). Concentration inequalities are exactly the machinery that upgrades "eventually true" into "true at this \(n\), with this confidence." This chapter builds the concentration engine from first principles through a single pipeline: exponentiate the event, apply Markov, factor over independent variables, bound the one-dimensional MGF. Everything else �?Hoeffding, Bernstein, McDiarmid �?is a different way of executing step 4.
+Chapter 17 established that LLN makes empirical risk converge to population risk *asymptotically*. Learning theory needs a finite-\(n\) certificate 鈥?an explicit exponential tail bound on the deviation \(|R_n(\theta)-R(\theta)|\). Concentration inequalities are exactly the machinery that upgrades "eventually true" into "true at this \(n\), with this confidence." This chapter builds the concentration engine from first principles through a single pipeline: exponentiate the event, apply Markov, factor over independent variables, bound the one-dimensional MGF. Everything else 鈥?Hoeffding, Bernstein, McDiarmid 鈥?is a different way of executing step 4.
 
 ---
 
@@ -223,7 +223,7 @@ Solving for the sample size to achieve confidence \(1-\delta\): \(n\ge \frac{1}{
 
 <div class="ml-box">
 
-This is a complete finite-sample statement for a *fixed* \(\theta\). But learning does not keep \(\theta\) fixed �?it chooses \(\hat\theta\) based on data. That shifts the problem from pointwise deviation to *uniform* deviation, which is precisely where concentration meets complexity.
+This is a complete finite-sample statement for a *fixed* \(\theta\). But learning does not keep \(\theta\) fixed 鈥?it chooses \(\hat\theta\) based on data. That shifts the problem from pointwise deviation to *uniform* deviation, which is precisely where concentration meets complexity.
 
 </div>
 
@@ -278,8 +278,8 @@ Hence \(\mathbb{P}(\bar{X}_n-\mu\ge\varepsilon)\le\exp\!\left(-\frac{n\varepsilo
 ### 18.5.3 The two regimes and their ML meaning
 
 The Bernstein exponent has two asymptotic regimes:
-- **Small \(\varepsilon\) (Gaussian regime):** \(\exp\!\left(-\frac{n\varepsilon^2}{2\sigma^2}\right)\) �?variance dominates.
-- **Large \(\varepsilon\) (exponential regime):** \(\exp\!\left(-\frac{3n\varepsilon}{2M}\right)\) �?amplitude dominates.
+- **Small \(\varepsilon\) (Gaussian regime):** \(\exp\!\left(-\frac{n\varepsilon^2}{2\sigma^2}\right)\) 鈥?variance dominates.
+- **Large \(\varepsilon\) (exponential regime):** \(\exp\!\left(-\frac{3n\varepsilon}{2M}\right)\) 鈥?amplitude dominates.
 
 <div class="ml-box">
 
@@ -326,11 +326,11 @@ Now we are back in a "sum of bounded increments" world:
 F - \mathbb{E}[F] = M_n - M_0 = \sum_{i=1}^n \Delta_i.
 \]
 
-### 18.6.3 Azuma–Hoeffding \(\Rightarrow\) McDiarmid
+### 18.6.3 Azuma鈥揌oeffding \(\Rightarrow\) McDiarmid
 
 <div class="prop-box">
 
-**Theorem 18.3 (Azuma–Hoeffding).** If \((M_i)\) is a martingale with \(|\Delta_i|\le d_i\) a.s., then
+**Theorem 18.3 (Azuma鈥揌oeffding).** If \((M_i)\) is a martingale with \(|\Delta_i|\le d_i\) a.s., then
 \[
 \mathbb{P}(M_n - M_0 \ge \varepsilon) \le \exp\!\left(-\frac{\varepsilon^2}{2\sum_{i=1}^n d_i^2}\right).
 \]
@@ -346,7 +346,7 @@ F - \mathbb{E}[F] = M_n - M_0 = \sum_{i=1}^n \Delta_i.
 
 </div>
 
-*Derivation:* Apply Azuma–Hoeffding with \(d_i = c_i/2\): \(\sum d_i^2 = \sum c_i^2/4\), giving the stated bound.
+*Derivation:* Apply Azuma鈥揌oeffding with \(d_i = c_i/2\): \(\sum d_i^2 = \sum c_i^2/4\), giving the stated bound.
 
 ### 18.6.4 ML connection: stability implies generalization
 
@@ -402,7 +402,7 @@ R(\hat{h}) \le \min_{h\in\mathcal{H}} R(h) + 2\sqrt{\frac{1}{2n}\log\frac{2|\mat
 
 <div class="ml-box">
 
-**The boundary.** When \(|\mathcal{H}|\) is infinite, the union bound breaks entirely: \(\log|\mathcal{H}|=\infty\). To proceed, one must replace \(\log|\mathcal{H}|\) by a genuine measure of the effective complexity of the class �?VC dimension (combinatorial), covering numbers (metric), or Rademacher complexity (probabilistic). That is where Chapter 19 begins.
+**The boundary.** When \(|\mathcal{H}|\) is infinite, the union bound breaks entirely: \(\log|\mathcal{H}|=\infty\). To proceed, one must replace \(\log|\mathcal{H}|\) by a genuine measure of the effective complexity of the class 鈥?VC dimension (combinatorial), covering numbers (metric), or Rademacher complexity (probabilistic). That is where Chapter 19 begins.
 
 </div>
 
@@ -416,7 +416,7 @@ R(\hat{h}) \le \min_{h\in\mathcal{H}} R(h) + 2\sqrt{\frac{1}{2n}\log\frac{2|\mat
 
 **The pipeline:**
 
-1. Learning compares \(R(\theta)\) with \(R_n(\theta)\) �?an expectation vs. an empirical average.
+1. Learning compares \(R(\theta)\) with \(R_n(\theta)\) 鈥?an expectation vs. an empirical average.
 2. Any such comparison is a tail probability about a random deviation \(S\).
 3. Tail control begins with Chernoff: $\mathbb{P}(S\ge a)\le e^{-ta}\mathbb{E}[e^{tS}]$.
 4. The entire difficulty is bounding \(\mathbb{E}[e^{tS}]\):
@@ -435,21 +435,19 @@ Concentration inequalities are the last purely probabilistic step. After this, t
 
 <div class="scholium-box">
 
-1. **Finite-sample learning is possible** because bounded fluctuations produce exponentially thin tails. This is not obvious from first principles; it is a consequence of the Chernoff–MGF pipeline.
+1. **Finite-sample learning is possible** because bounded fluctuations produce exponentially thin tails. This is not obvious from first principles; it is a consequence of the Chernoff鈥揗GF pipeline.
 
 2. **Variance is the correct noise measure.** Hoeffding is a worst-case bound; Bernstein reveals that low-variance problems are genuinely easier, not just heuristically so.
 
 3. **Stability is a concentration property.** McDiarmid's inequality shows that algorithmic stability (bounded sensitivity to single samples) directly implies concentration of the generalization gap.
 
-4. **The union bound is sharp for finite classes but fails for infinite ones.** The \(\log|\mathcal{H}|\) cost is not a loose bound; for finite classes under adversarial construction it can be tight. The need for a better complexity measure is not a technical annoyance �?it is the true open problem.
+4. **The union bound is sharp for finite classes but fails for infinite ones.** The \(\log|\mathcal{H}|\) cost is not a loose bound; for finite classes under adversarial construction it can be tight. The need for a better complexity measure is not a technical annoyance 鈥?it is the true open problem.
 
 5. **Deep learning generalization is not yet explained by this chapter.** Neural networks have billions of parameters (\(|\mathcal{H}|\) is astronomically large), yet generalize well. The correct explanation requires function-space complexity measures (Rademacher, spectral norms, margin bounds), not raw parameter counts. Chapter 19 begins that story.
 
 </div>
 
-**Chapter 019: Generalization Theory �?Rademacher Complexity, Covering Numbers, and Why Deep Networks Generalize.**
+**Chapter 019: Generalization Theory 鈥?Rademacher Complexity, Covering Numbers, and Why Deep Networks Generalize.**
 
-
-*Next: [Chapter 19: SDE Foundations](/book/chapters/chapter019/)*
 
 *Next: [Chapter 19: SDE Foundations](/book/chapters/chapter019/)*

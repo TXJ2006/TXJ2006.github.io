@@ -534,5 +534,3 @@ In this view, initialization is a statement about limits: we design the paramete
 The next mathematical step is to understand optimization regimes where geometry is controlled globally (e.g., convexity, cones, and monotone operators), and to identify precisely which parts of deep learning behave "as if convex" due to spectral regularities established at initialization.
 
 *Next: [Chapter 10: Convexity, Duality, and Optimization Geometry](/book/chapters/chapter010/)*
-
-*Next: [Chapter 10: Convexity, Duality, and Optimization Geometry](/book/chapters/chapter010/)*

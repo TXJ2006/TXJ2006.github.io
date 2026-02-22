@@ -1,8 +1,8 @@
----
+﻿---
 title: "Chapter 17: Law of Large Numbers & Central Limit Theorem"
 layout: "single"
 url: "/book/chapters/chapter017/"
-summary: "LLN as almost-sure measure collapse making ERM a lawful surrogate; CLT as the universal Gaussian geometry of aggregation at the √n scale; minibatch gradient noise, wide-network Gaussian processes, and scaling laws as direct corollaries."
+summary: "LLN as almost-sure measure collapse making ERM a lawful surrogate; CLT as the universal Gaussian geometry of aggregation at the 鈭歯 scale; minibatch gradient noise, wide-network Gaussian processes, and scaling laws as direct corollaries."
 draft: false
 ShowToc: true
 TocOpen: true
@@ -43,7 +43,7 @@ weight: 17
 We leave "single events" and "finite-time fluctuations" and enter the regime that actually powers modern ML: **aggregation**. Deep learning is not a theory of one sample; it is a theory of billions of samples, minibatches, and overparameterized sums. Two theorems govern this regime:
 
 - **LLN** is the unique rigidity that makes empirical averages legitimate surrogates for population integrals.
-- **CLT** is the unique universality mechanism that turns aggregated randomness into a Gaussian geometry at the \(\sqrt{n}\) scale �?the geometry that appears in minibatch gradient noise, wide-network preactivations, and random feature limits.
+- **CLT** is the unique universality mechanism that turns aggregated randomness into a Gaussian geometry at the \(\sqrt{n}\) scale 鈥?the geometry that appears in minibatch gradient noise, wide-network preactivations, and random feature limits.
 
 ---
 
@@ -87,7 +87,7 @@ Define \(\bar{X}_n := \frac{1}{n}\sum_{i=1}^n X_i\). The SLLN is not "usually cl
 - *Micro-level:* each \(X_i\) varies arbitrarily in its distribution.
 - *Macro-level:* aggregation kills randomness in the topology of almost-sure convergence.
 
-Contrast with the **Weak LLN** (Khinchin), which gives only convergence in probability: \(\bar{X}_n\xrightarrow{\mathbb{P}}\mu\). The strong law gives a stronger topology �?almost surely �?and is the basis for the "single trajectory" ergodic arguments of Chapter 15.
+Contrast with the **Weak LLN** (Khinchin), which gives only convergence in probability: \(\bar{X}_n\xrightarrow{\mathbb{P}}\mu\). The strong law gives a stronger topology 鈥?almost surely 鈥?and is the basis for the "single trajectory" ergodic arguments of Chapter 15.
 
 ### 17.1.2 ML derivation: why ERM is a lawful surrogate
 
@@ -99,8 +99,8 @@ This is the minimal physical legality of ERM: for any fixed parameter \(\theta\)
 
 <div class="ml-box">
 
-**Important ML nuance �?where naïve treatments cheat.**
-Optimization chooses \(\hat\theta_n\in\arg\min_\theta \widehat{R}_n(\theta)\), which depends on the entire sample. The SLLN *alone* does not guarantee \(R(\hat\theta_n)\to\inf_\theta R(\theta)\); that requires **uniform** control over \(\theta\) (Glivenko–Cantelli classes, Rademacher complexity, VC dimension). SLLN is the non-negotiable base: if even pointwise convergence fails, no generalization theory can be built on top.
+**Important ML nuance 鈥?where na茂ve treatments cheat.**
+Optimization chooses \(\hat\theta_n\in\arg\min_\theta \widehat{R}_n(\theta)\), which depends on the entire sample. The SLLN *alone* does not guarantee \(R(\hat\theta_n)\to\inf_\theta R(\theta)\); that requires **uniform** control over \(\theta\) (Glivenko鈥揅antelli classes, Rademacher complexity, VC dimension). SLLN is the non-negotiable base: if even pointwise convergence fails, no generalization theory can be built on top.
 
 </div>
 
@@ -119,7 +119,7 @@ where \(\delta_{Z_i}\) is the Dirac mass at \(Z_i\). Then empirical risk is the 
 
 </div>
 
-The SLLN is the statement that \(\widehat{\mathbb{P}}_n\) converges to \(\mathbb{P}\) in a sense strong enough to make these integrals converge for integrable \(\ell(\theta;\cdot)\). The precise topology is weak convergence of measures, combined with integrability conditions (or Glivenko–Cantelli for uniform convergence over function classes).
+The SLLN is the statement that \(\widehat{\mathbb{P}}_n\) converges to \(\mathbb{P}\) in a sense strong enough to make these integrals converge for integrable \(\ell(\theta;\cdot)\). The precise topology is weak convergence of measures, combined with integrability conditions (or Glivenko鈥揅antelli for uniform convergence over function classes).
 
 <div class="ml-box">
 
@@ -129,7 +129,7 @@ The SLLN is the statement that \(\widehat{\mathbb{P}}_n\) converges to \(\mathbb
 
 ### 17.1.4 Martingale proof sketch of the SLLN
 
-The SLLN can be proved using the Borel–Cantelli lemma or via a martingale argument. The martingale route (connecting to Chapter 16) defines \(M_n := \bar{X}_n - \mu\) and shows this is approximately a martingale with diminishing increments. The martingale convergence theorem (Theorem 16.6) then ensures a.s. convergence, provided the Lyapunov-type condition \(\sum_n \mathbb{E}[(X_n/n)^2] < \infty\) holds. This reveals the structural unity: SLLN is a consequence of the same operator-theoretic convergence that underlies SA in RL.
+The SLLN can be proved using the Borel鈥揅antelli lemma or via a martingale argument. The martingale route (connecting to Chapter 16) defines \(M_n := \bar{X}_n - \mu\) and shows this is approximately a martingale with diminishing increments. The martingale convergence theorem (Theorem 16.6) then ensures a.s. convergence, provided the Lyapunov-type condition \(\sum_n \mathbb{E}[(X_n/n)^2] < \infty\) holds. This reveals the structural unity: SLLN is a consequence of the same operator-theoretic convergence that underlies SA in RL.
 
 ---
 
@@ -139,7 +139,7 @@ The SLLN can be proved using the Borel–Cantelli lemma or via a martingale argu
 
 <div class="prop-box">
 
-**Theorem 17.2 (Lindeberg–Lévy CLT).** Let \(X_1,X_2,\dots\) be i.i.d. with \(\mathbb{E}[X_1]=\mu\) and \(\mathrm{Var}(X_1)=\sigma^2\in(0,\infty)\). Then
+**Theorem 17.2 (Lindeberg鈥揕茅vy CLT).** Let \(X_1,X_2,\dots\) be i.i.d. with \(\mathbb{E}[X_1]=\mu\) and \(\mathrm{Var}(X_1)=\sigma^2\in(0,\infty)\). Then
 \[
 \sqrt{n}\,\frac{\bar{X}_n-\mu}{\sigma} \;\xRightarrow[n\to\infty]{}\; \mathcal{N}(0,1).
 \]
@@ -151,7 +151,7 @@ Here \(\Rightarrow\) denotes convergence in distribution (weak convergence of pr
 
 Write the sum of centered variables \(S_n := \sum_{i=1}^n (X_i-\mu)\). Then \(\mathbb{E}[S_n]=0\) and \(\mathrm{Var}(S_n)=n\sigma^2\). The three possible normalizations:
 
-- Divide by \(n\): yield \(\bar{X}_n - \mu\to 0\) (LLN scale �?the limit is degenerate at \(0\)).
+- Divide by \(n\): yield \(\bar{X}_n - \mu\to 0\) (LLN scale 鈥?the limit is degenerate at \(0\)).
 - No normalization: variance explodes to \(\infty\) (no limit exists in distribution).
 - Divide by \(\sqrt{n}\sigma\): variance is pinned to \(1\), and the shape converges universally to Gaussian.
 
@@ -171,7 +171,7 @@ So LLN says "risk estimate becomes correct," and CLT says "its residual fluctuat
 
 ### 17.2.3 Lindeberg condition: the correct generality
 
-The Lindeberg–Lévy CLT requires identical distributions. The more general **Lindeberg CLT** allows non-identically distributed \(X_i\) (hence applying to heterogeneous batch samples, position-dependent token losses, etc.) under the condition that no single summand dominates the total variance:
+The Lindeberg鈥揕茅vy CLT requires identical distributions. The more general **Lindeberg CLT** allows non-identically distributed \(X_i\) (hence applying to heterogeneous batch samples, position-dependent token losses, etc.) under the condition that no single summand dominates the total variance:
 
 \[
 \frac{1}{s_n^2}\sum_{i=1}^n \mathbb{E}\!\left[(X_i-\mu_i)^2\,\mathbf{1}_{|X_i-\mu_i|>\varepsilon s_n}\right] \to 0 \quad\forall\,\varepsilon>0,
@@ -314,7 +314,7 @@ This is the formal reason why standard error computations remain valid for corre
 
 <div class="proof-box">
 
-**Proof sketch (Lindeberg–Lévy).** Let \(Y_i = (X_i-\mu)/\sigma\) so that \(\mathbb{E}[Y_i]=0\), \(\mathbb{E}[Y_i^2]=1\). Define \(T_n = \frac{1}{\sqrt{n}}\sum_{i=1}^n Y_i\). The characteristic function of \(T_n\) is
+**Proof sketch (Lindeberg鈥揕茅vy).** Let \(Y_i = (X_i-\mu)/\sigma\) so that \(\mathbb{E}[Y_i]=0\), \(\mathbb{E}[Y_i^2]=1\). Define \(T_n = \frac{1}{\sqrt{n}}\sum_{i=1}^n Y_i\). The characteristic function of \(T_n\) is
 \[
 \varphi_{T_n}(t) = \mathbb{E}[e^{itT_n}] = \left(\varphi_{Y_1}\!\left(\frac{t}{\sqrt{n}}\right)\right)^n.
 \]
@@ -326,7 +326,7 @@ Substituting \(s=t/\sqrt{n}\):
 \[
 \varphi_{T_n}(t) = \left(1 - \frac{t^2}{2n} + o\!\left(\frac{1}{n}\right)\right)^n \;\to\; e^{-t^2/2} \quad\text{as } n\to\infty.
 \]
-Since \(e^{-t^2/2}\) is the characteristic function of \(\mathcal{N}(0,1)\), by Lévy's continuity theorem, \(T_n\xRightarrow{}\mathcal{N}(0,1)\). \(\square\)
+Since \(e^{-t^2/2}\) is the characteristic function of \(\mathcal{N}(0,1)\), by L茅vy's continuity theorem, \(T_n\xRightarrow{}\mathcal{N}(0,1)\). \(\square\)
 
 </div>
 
@@ -351,19 +351,17 @@ At scale \(n\): collapse (LLN). At scale \(1\): explosion (no limit). At scale \
 \[
 \widehat{g}_m(\theta) \approx \nabla L(\theta) + \frac{1}{\sqrt{m}}\,\mathcal{N}(0,\Sigma(\theta)).
 \]
-This is the analytic origin of "temperature," "diffusion," and "flat minima" narratives �?derived, not asserted.
+This is the analytic origin of "temperature," "diffusion," and "flat minima" narratives 鈥?derived, not asserted.
 
 4. **Wide networks are CLT objects.** As width grows, random feature sums become Gaussian; deep compositions inherit GP/NTK structure in suitable limits. The NNGP is CLT applied recursively to function space.
 
-5. **Scaling laws reflect \(n^{-1/2}\) as a baseline.** Deviations from this rate �?power laws with exponent \(\ne -1/2\) �?indicate genuine structure beyond variance reduction. Identifying that structure is the open problem in empirical scaling laws.
+5. **Scaling laws reflect \(n^{-1/2}\) as a baseline.** Deviations from this rate 鈥?power laws with exponent \(\ne -1/2\) 鈥?indicate genuine structure beyond variance reduction. Identifying that structure is the open problem in empirical scaling laws.
 
 </div>
 
-LLN and CLT are asymptotic statements. Modern ML needs **finite-sample** control. The next mathematically forced step is concentration inequalities and uniform laws (Hoeffding, Bernstein, McDiarmid, Rademacher complexity), and their dependent-data counterparts (Azuma–Hoeffding, Freedman for martingales), because actual training data are not strictly i.i.d. and optimization is adaptive.
+LLN and CLT are asymptotic statements. Modern ML needs **finite-sample** control. The next mathematically forced step is concentration inequalities and uniform laws (Hoeffding, Bernstein, McDiarmid, Rademacher complexity), and their dependent-data counterparts (Azuma鈥揌oeffding, Freedman for martingales), because actual training data are not strictly i.i.d. and optimization is adaptive.
 
-**Chapter 018: Concentration Inequalities �?Large Deviation Bounds and the Finite-Sample Mathematics of Generalization.**
+**Chapter 018: Concentration Inequalities 鈥?Large Deviation Bounds and the Finite-Sample Mathematics of Generalization.**
 
-
-*Next: [Chapter 18: Concentration Inequalities](/book/chapters/chapter018/)*
 
 *Next: [Chapter 18: Concentration Inequalities](/book/chapters/chapter018/)*
