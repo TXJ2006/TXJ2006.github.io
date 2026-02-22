@@ -1,4 +1,4 @@
----
+﻿---
 title: "Chapter 6: The Riesz Representation Theorem"
 layout: "single"
 url: "/book/chapters/chapter006/"
@@ -466,3 +466,7 @@ This is the structural reason why proximal methods, mirror descent, and dual ave
 ## Transition to Chapter 7 (RKHS): The Algebra of Kernels as Infinite-Dimensional Substantiation
 
 Riesz tells us that continuous measurements become vectors once a Hilbert geometry is specified. RKHS theory specifies a particularly powerful geometry: evaluation becomes continuous, hence representable. Kernels therefore engineer representability: they choose a Hilbert space in which "seeing at a point" becomes a bounded measurement. This is the correct mathematical explanation for why kernels convert local constraints into global, optimizable structure&mdash;an "alchemy" not of tricks, but of geometry.
+
+*Next: [Chapter 7: RKHS and the Kernel Trick](/book/chapters/chapter007/)*
+
+*Next: [Chapter 7: RKHS and the Kernel Trick](/book/chapters/chapter007/)*

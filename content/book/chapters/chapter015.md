@@ -383,3 +383,8 @@ where \(\pi_{\min}=\min_x \pi(x)>0\). A larger gap \(\gamma\) means faster mixin
 The natural continuation is martingale theory (Chapter 16): martingales are the canonical object for analyzing the fluctuations along a Markov trajectory, and they supply the convergence proofs for stochastic approximation and RL value learning.
 
 **Chapter 016: Martingale Theory â€?Convergence of Stochastic Approximation and the Mathematics of Online Learning.**
+
+
+*Next: [Chapter 16: Martingale Theory](/book/chapters/chapter016/)*
+
+*Next: [Chapter 16: Martingale Theory](/book/chapters/chapter016/)*

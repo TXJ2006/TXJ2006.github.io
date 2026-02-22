@@ -1,4 +1,4 @@
----
+﻿---
 title: "Chapter 8: Matrix Calculus"
 layout: "single"
 url: "/book/chapters/chapter008/"
@@ -582,3 +582,7 @@ At initialization, deep networks induce random linear operators (Jacobians) whos
 This is not metaphor. It is the analytic statement that the *first* condition for learnability is spectral regularity of the random operators defining the network's local linearizations.
 
 Accordingly, Chapter 9 will study the spectral laws of large random matrices and random operator products, and then interpret those laws as constraints on trainable architectures: stability of signal, stability of gradient, and the onset of pathological curvature.
+
+*Next: [Chapter 9: Random Matrix Theory and Neural Network Spectra](/book/chapters/chapter009/)*
+
+*Next: [Chapter 9: Random Matrix Theory and Neural Network Spectra](/book/chapters/chapter009/)*

@@ -272,3 +272,8 @@ Equality in Jensen holds iff \(r\) is constant \(\mathbb{Q}\)-a.e., thus \(r=1\)
 We now possess a rigorous notion of observability (Ïƒ-algebra), uncertainty (probability measure), and aggregation (Lebesgue expectation). The next step is to introduce *conditional* structure and time: conditional expectation, filtrations, martingales, and the stochastic-process viewpoint underlying SGD, diffusion models, and modern generalization bounds.
 
 **Next chapter (proposed): Chapter 012 â€?Conditional Expectation and Martingales: Information, Filtrations, and the Mathematics of Stochastic Optimization.**
+
+
+*Next: [Chapter 12: Conditional Expectation and Martingales](/book/chapters/chapter012/)*
+
+*Next: [Chapter 12: Conditional Expectation and Martingales](/book/chapters/chapter012/)*

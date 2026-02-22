@@ -295,3 +295,8 @@ This clarifies a frequent conceptual confusion: using MSE for classification for
 This completes the geometric foundation of prediction under information constraints. Once prediction is understood as projection, the natural question is what global divergences and curvatures govern the space of probability measures. That is the domain of information geometry, KL divergence, and cross-entropy as the dominant training functional in large-scale models.
 
 **Chapter 015: Information Geometry and Divergences â€?Curvature on the Manifold of Probability Measures.**
+
+
+*Next: [Chapter 15: Information Geometry and Divergences](/book/chapters/chapter015/)*
+
+*Next: [Chapter 15: Information Geometry and Divergences](/book/chapters/chapter015/)*

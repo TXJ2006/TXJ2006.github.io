@@ -1,4 +1,4 @@
----
+﻿---
 title: "Chapter 12: Information Theory & Entropy"
 layout: "single"
 url: "/book/chapters/chapter012/"
@@ -288,3 +288,10 @@ We now possess the lawful arithmetic of uncertainty: we can integrate, we can co
 The next chapter therefore introduces the variational principle that governs modern generative learning and approximate inference:
 
 **Ch 014: Variational Inference &amp; ELBO &mdash; When Optimization Replaces Integration, and Why "Approximation" Must Be a Theorem.**
+
+*Next: [Chapter 13: KL Divergence and Information Theory](/book/chapters/chapter013/)*
+
+
+*Next: [Chapter 13: KL Divergence and Information Theory](/book/chapters/chapter013/)*
+
+*Next: [Chapter 13: KL Divergence and Information Theory](/book/chapters/chapter013/)*

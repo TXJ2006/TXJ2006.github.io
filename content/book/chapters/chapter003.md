@@ -1,4 +1,4 @@
----
+﻿---
 title: "Chapter 3: Tensor Algebra and Einstein Summation"
 layout: "single"
 url: "/book/chapters/chapter003/"
@@ -810,6 +810,6 @@ Accordingly, **Chapter 4** develops Hilbert space structure and normed spaces as
 
 **End of Chapter 3**
 
-*Next: Chapter 4 &mdash; Hilbert Spaces, Norms, and the Geometry of Learning*
+*Next: [Chapter 4: Hilbert Spaces, Norms, and the Geometry of Learning](/book/chapters/chapter004/)*
 
 </div>

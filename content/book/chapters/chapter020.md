@@ -372,3 +372,12 @@ The VP SDE replaces \(\sqrt{2D}\,dW_t\) by \(-\frac{1}{2}\beta(t)X_t\,dt + \sqrt
 </div>
 
 **Chapter 021: The Ornsteinâ€“Uhlenbeck Process, the VP SDE, and Closed-Form Marginals â€?From Mean Reversion to the DDPM Corruption Kernel.**
+
+
+*Next: [Chapter 21: The Ornstein-Uhlenbeck Process and the VP SDE](/book/chapters/chapter021/)*
+
+*Next: [Chapter 21: The Ornstein-Uhlenbeck Process and the VP SDE](/book/chapters/chapter021/)*
+
+*Next: [Chapter 21: The Ornstein-Uhlenbeck Process and the VP SDE](/book/chapters/chapter021/)*
+
+*Next: [Chapter 21: The Ornstein-Uhlenbeck Process and the VP SDE](/book/chapters/chapter021/)*

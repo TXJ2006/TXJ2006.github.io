@@ -1,5 +1,5 @@
----
-title: "Chapter 2: Spectral Theory â€?Eigen-Decomposition and SVD"
+ï»¿---
+title: "Chapter 2: Spectral Theory ï¿½?Eigen-Decomposition and SVD"
 layout: "single"
 url: "/book/chapters/chapter002/"
 summary: "Persistence, decay, oscillation, and the skeleton of information in linear operators."
@@ -502,6 +502,6 @@ The next step is to move from linear operators acting on one vector space to **m
 
 &mdash; End of Chapter 2 &mdash;
 
-**Next:** Chapter 3: Tensor Algebra and Einstein Summation Convention
+*Next: [Chapter 3: Tensor Algebra and Einstein Summation Convention](/book/chapters/chapter003/)*
 
 </div>

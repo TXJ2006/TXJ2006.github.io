@@ -1,4 +1,4 @@
----
+﻿---
 title: "Chapter 10: Convex Sets & Cones"
 layout: "single"
 url: "/book/chapters/chapter010/"
@@ -347,3 +347,7 @@ Part A has built the deterministic substrate: algebra (spaces), operator dynamic
 The next logical object is unavoidable: once the relevant state variables become distributions and measures, we must formalize observability, integration, and change of measure. This is not "probability as applied statistics"; it is the legal foundation that makes generalization, stochastic optimization, and modern generative learning mathematically well-typed.
 
 **Next chapter (proposed): Chapter 011 &mdash; Measure Theory and Probability: What Can Be Observed, What Can Be Integrated, and What Data Can Legitimately Constrain.**
+
+*Next: [Chapter 11: Measure Theory and Probability](/book/chapters/chapter011/)*
+
+*Next: [Chapter 11: Measure Theory and Probability](/book/chapters/chapter011/)*

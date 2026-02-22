@@ -418,3 +418,8 @@ for suitable \(Z_t\). This is exactly the measure-theoretic condition needed to 
 The natural continuation is concentration inequalities for dependent sequences in full generality (Chapter 17), covering Hoeffding, Bernstein, and their extensions to non-i.i.d. data â€?the tools that convert the martingale framework into quantitative learning-theoretic bounds.
 
 **Chapter 017: Concentration Inequalities â€?Large Deviation Bounds and the Mathematics of Generalization.**
+
+
+*Next: [Chapter 17: LLN and the Central Limit Theorem](/book/chapters/chapter017/)*
+
+*Next: [Chapter 17: LLN and the Central Limit Theorem](/book/chapters/chapter017/)*

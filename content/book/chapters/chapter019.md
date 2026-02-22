@@ -493,3 +493,8 @@ This connects to a broader design space: generative modeling as choosing (i) a p
 </div>
 
 **Chapter 020: Rademacher Complexity and Generalization Theory â€?From Finite Hypothesis Classes to Deep Networks.**
+
+
+*Next: [Chapter 20: Wiener Processes and Brownian Motion](/book/chapters/chapter020/)*
+
+*Next: [Chapter 20: Wiener Processes and Brownian Motion](/book/chapters/chapter020/)*

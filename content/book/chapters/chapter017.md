@@ -362,3 +362,8 @@ This is the analytic origin of "temperature," "diffusion," and "flat minima" nar
 LLN and CLT are asymptotic statements. Modern ML needs **finite-sample** control. The next mathematically forced step is concentration inequalities and uniform laws (Hoeffding, Bernstein, McDiarmid, Rademacher complexity), and their dependent-data counterparts (Azumaâ€“Hoeffding, Freedman for martingales), because actual training data are not strictly i.i.d. and optimization is adaptive.
 
 **Chapter 018: Concentration Inequalities â€?Large Deviation Bounds and the Finite-Sample Mathematics of Generalization.**
+
+
+*Next: [Chapter 18: Concentration Inequalities](/book/chapters/chapter018/)*
+
+*Next: [Chapter 18: Concentration Inequalities](/book/chapters/chapter018/)*
