@@ -73,7 +73,7 @@ math: true
 | 021 | [香农熵与互信息](/book/chapters/chapter021/) | Shannon Entropy & Mutual Information |
 | 022 | [KL 散度与相对熵](/book/chapters/chapter022/) | Kullback-Leibler Divergence |
 | 023 | [最大熵原理](/book/chapters/chapter023/) | The Maximum Entropy Principle |
-| 024 | 费雪信息矩阵 — 自然梯度的基础 | Fisher Information Matrix |
+| 024 | [费雪信息矩阵 — 自然梯度的基础](/book/chapters/chapter024/) | Fisher Information Matrix |
 | 025 | 黎曼流形与度量张量 | Riemannian Manifolds & Metric Tensors |
 | 026 | 测地线与指数映射 | Geodesics & Exponential Maps |
 | 027 | 平行移动与协变导数 | Parallel Transport & Covariant Derivatives |
