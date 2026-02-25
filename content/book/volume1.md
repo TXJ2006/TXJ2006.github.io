@@ -74,7 +74,7 @@ math: true
 | 022 | [KL 散度与相对熵](/book/chapters/chapter022/) | Kullback-Leibler Divergence |
 | 023 | [最大熵原理](/book/chapters/chapter023/) | The Maximum Entropy Principle |
 | 024 | [费雪信息矩阵 — 自然梯度的基础](/book/chapters/chapter024/) | Fisher Information Matrix |
-| 025 | 黎曼流形与度量张量 | Riemannian Manifolds & Metric Tensors |
+| 025 | [黎曼流形与度量张量](/book/chapters/chapter025/) | Riemannian Manifolds & Metric Tensors |
 | 026 | 测地线与指数映射 | Geodesics & Exponential Maps |
 | 027 | 平行移动与协变导数 | Parallel Transport & Covariant Derivatives |
 | 028 | 曲率张量与截面曲率 | Curvature Tensors |
