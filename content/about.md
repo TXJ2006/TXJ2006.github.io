@@ -47,6 +47,12 @@ I am passionate about reconstructing machine learning from rigorous mathematical
 
 ### Research Experience
 
+**Visiting Student, Johns Hopkins University (JHU)**  
+*Collaborating with Prof. Redman* | 2025 – Present
+
+- Conducting research on **out-of-distribution generalization** and **learning theory** for deep autoregressive models.
+- Paper submitted to **ICML 2026** (under review).
+
 **Independent Research on Dynamical Systems and Machine Learning**  
 *Project Lead* | Mar. 2024 – Present
 
@@ -91,7 +97,6 @@ I am passionate about reconstructing machine learning from rigorous mathematical
 - 🥇 **Regional Gold Medal**, WorldQuant International Quant Championship
 - 🏆 **Third Prize**, Graduate AI Forum, University of Chinese Academy of Sciences (UCAS) — *Only undergraduate recipient*
 - 🏅 **Multiple National Second Prizes** in mathematical modeling competitions (Future Cup, Central China Cup, Higher Education Press Cup)
-- 📝 **Reviewer**, ICLR 2026 Workshop (GRAm)
 - 🎖️ **Participation Award**, NeurIPS 2025 Open Problems in WiML & OPP Competitions
 
 ---
