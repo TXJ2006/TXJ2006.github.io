@@ -8,27 +8,36 @@ ShowToc: false
 hideMeta: true
 ---
 
+<div style="text-align:center; margin: 1.5em 0 0.5em;">
+
 ## Xujiang Tang (唐旭江)
 
-**B.Sc. Student in Mathematics and Applied Mathematics**  
-[Yangtze University College of Arts and Sciences](http://www.yangtzeu.edu.cn/), Jingzhou, Hubei, China  
+**Visiting Student, Johns Hopkins University**  
+**B.Sc. in Mathematics & Applied Mathematics**, Yangtze University  
 Expected Graduation: Jun. 2027
 
 📧 [txj_262538@163.com](mailto:txj_262538@163.com) · 📱 +86 183-2782-9197  
 🔗 [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-0008-1127-6420) · [LinkedIn](https://www.linkedin.com/in/%E7%85%A6%E6%B1%9F-%E5%94%90-7a1513392)
 
+</div>
+
+---
+
+### About Me
+
+I am an undergraduate majoring in Mathematics & Applied Mathematics, currently a visiting student at **Johns Hopkins University** collaborating with **Prof. Redman**. My research sits at the intersection of **statistical learning theory**, **AI-driven modeling**, and **interdisciplinary scientific inquiry**.
+
+Starting from mathematical modeling in my freshman year, I progressed rapidly — from classical differential equations and deterministic modeling to probabilistic methods, multi-objective optimization, and deep learning frameworks. I taught myself programming and data science through open-source platforms and GitHub, and built a strong foundation through continuous paper reading, code practice, and competition training. This self-driven approach led to my first two **EI-indexed publications** by sophomore year, and has since evolved into a sustained research trajectory spanning multiple fields.
+
 ---
 
 ### Research Interests
 
-My research lies at the intersection of **mathematical theory** and **machine learning**, with a focus on:
-
-- **Learning Theory** — Generalization bounds, learnability of unsupervised algorithms
-- **Optimization** — Convex and non-convex optimization, game-theoretic approaches
-- **Stochastic Processes** — Rough volatility, Koopman operator theory, dynamical systems
-- **Causal Inference** — Geometric disentanglement, non-Gaussian methods
-
-I am passionate about reconstructing machine learning from rigorous mathematical perspectives and exploring next-generation learning paradigms.
+- **Learning Theory** — Generalization bounds, learnability, out-of-distribution generalization
+- **Optimization & Financial Mathematics** — Convex/non-convex optimization, game-theoretic approaches, rough volatility
+- **Stochastic Processes** — Koopman operator theory, MCMC methods, dynamical systems
+- **Causal Inference** — Geometric disentanglement, non-Gaussian heterogeneity
+- **Interdisciplinary AI** — Spatial transcriptomics, multi-agent systems, AI-augmented education
 
 ---
 
@@ -38,66 +47,87 @@ I am passionate about reconstructing machine learning from rigorous mathematical
 *B.Sc. in Mathematics and Applied Mathematics* | Sep. 2023 – Jun. 2027 (Expected)  
 **GPA: 3.5 / 4.0**
 
-**Key High-Achievement Courses:**
-- Optimization Theory — **97/100** (🥇 Ranked 1st in the Major)
+**Key Courses:** Mathematical Analysis, Linear Algebra, Probability & Statistics, Differential Equations, Computational Modeling, Optimization Theory, Data Structures, Python / R / MATLAB Programming
+
+**Highlights:**
+- Optimization Theory — **97/100** (🥇 Ranked 1st)
 - Numerical Computation Methods — **96/100**
-- Mathematical Modeling, Data Structures, Ordinary Differential Equations, Probability & Mathematical Statistics
 
 ---
 
 ### Research Experience
 
-**Visiting Student, Johns Hopkins University (JHU)**  
-*Collaborating with Prof. Redman* | 2025 – Present
+**Visiting Student, Johns Hopkins University (JHU)** | 2025 – Present  
+- Collaborating with **Prof. Redman** on out-of-distribution generalization and learning theory for deep autoregressive models.
+- Co-authored a paper submitted to **ICML 2026** (under review).
 
-- Conducting research on **out-of-distribution generalization** and **learning theory** for deep autoregressive models.
-- Paper submitted to **ICML 2026** (under review).
+**Theoretical Machine Learning & Optimization** | 2024 – Present  
+- Independently authored multiple papers on learning theory, generalization bounds, and financial optimization.
+- Submitted 4 papers to **COLT** on learnability and theoretical guarantees of learning algorithms.
+- Published 2 papers on financial mathematics (game-theoretic reinsurance & investment optimization) in **AIMS Mathematics** (SCI).
+- Submitted a causal inference paper to **UAI 2026** (under review).
 
-**Independent Research on Dynamical Systems and Machine Learning**  
-*Project Lead* | Mar. 2024 – Present
+**Koopman Operator & Dynamical Systems** | Mar. 2024 – Present  
+- Collaborated with a research group at Henan University of Science and Technology on long-sequence modeling problems.
+- Proposed a Koopman Operator Linearization Skeleton system; validated on multiple chaotic datasets, outperforming baseline deep learning models.
 
-- **Koopman Operator Theory:** Collaborated with the research group of Prof. Yanbing Jia (Henan University of Science and Technology) to solve long-sequence modeling problems.
-- Proposed a Koopman Operator Linearization Skeleton system for nonlinear dynamical modeling.
-- Validated the system on multiple chaotic datasets, outperforming baseline deep learning models.
-
-**Stochastic Modeling and Quantitative Finance**  
-*Team Lead* | Oct. 2023 – Apr. 2024
-
-- **Rough Volatility & MCMC:** Led a team to investigate the rough volatility characteristics of financial markets.
-- Overcame computational bottlenecks of MCMC methods in stochastic process generation.
-- Designed a novel algorithm to resolve inductive bias in matrix representation; optimized parameter estimation strategies.
+**Rough Volatility & Quantitative Finance** | Oct. 2023 – Present  
+- Led a cross-university team (with collaborators from Xiamen University Malaysia and South China Normal University) investigating rough volatility in financial markets.
+- Overcame computational bottlenecks in MCMC-based stochastic process generation; developed novel algorithms addressing inductive bias in matrix representations and parameter estimation.
 - Open-sourced the model framework on GitHub; manuscript in preparation for a top-tier journal.
 
-**Biomedical Data Science (Spatial Transcriptomics)**  
-*Research Assistant, Northeastern University* | Advisor: Dr. Dayu Hu | Sep. 2024 – Jan. 2025
+**Spatial Transcriptomics & Biomedical Data Science** | Sep. 2024 – Jan. 2025  
+- Collaborated with a researcher at Northeastern University on single-cell data clustering, integrating geometric perspectives into computational pipelines.
+- Submitted a paper to **ICLR 2026 Workshop** (pending decision).
 
-- Assisted in designing single-cell data clustering algorithms, integrating a geometric perspective into computational pipelines.
-- Optimized computation and processing workflows for high-dimensional biological data.
+**Multi-Agent Financial Decision Systems** | 2024 – Present  
+- Collaborated with a graduate researcher at the University of Chinese Academy of Sciences (UCAS) on an intelligent multi-agent financial advisory system.
+- Handled ~50% of data processing, empirical analysis, architecture design, and backtesting experiments.
+- The project reached finals in multiple competitions including the Shenzhen International FinTech Competition (participated in on-site hackathons).
+- Currently extending the framework to multi-agent educational applications.
+
+**Empirical Education Research** | 2024 – Present  
+- Joined a faculty-led project studying higher education policies across eight Chinese universities.
+- Conducted the full research cycle: field surveys → data preprocessing → statistical analysis → report writing.
+- Developing a new framework combining educational analytics with large language models.
+
+**MIT Remote Research Group** | Winter 2025–2026  
+- Participated in a remote research group affiliated with MIT, focusing on theoretical analysis of Transformer architectures.
+- Authored a theory paper submitted to an EI-indexed international conference.
 
 ---
 
 ### Internship & Professional Experience
 
-**Peking University Open-Source Large Model Group**  
-*Research Engineering Intern (Remote)* | Jun. 2024 – Aug. 2024
+**Peking University — Open-Source LLM Group** | Jun. – Aug. 2024  
+- Contributed to engineering deployment of Large Language Models and Retrieval-Augmented Generation (RAG) systems; built a solid engineering foundation.
 
-- Participated in engineering deployment of Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) tasks.
+**Deloitte** | Jul. – Sep. 2024  
+- First exposure to rigorous professional workflows; developed team leadership and communication skills in a consulting environment.
 
-**Deloitte & Guolian Securities**  
-*Data Analysis Intern* | Jul. 2024 – Sep. 2024
-
-- Applied statistical methods to securities research and developed quantitative workflows for financial reporting.
-- Led team projects to solve business problems via data-driven approaches.
+**Guolian Securities** | Jul. – Sep. 2024  
+- Applied statistical methods to securities research; gained practical understanding of the financial system and quantitative workflows.
 
 ---
 
 ### Honors & Awards
 
-- 🥈 **Silver Medal**, Kaggle Jigsaw Toxic Comment Classification Challenge
-- 🥇 **Regional Gold Medal**, WorldQuant International Quant Championship
-- 🏆 **Third Prize**, Graduate AI Forum, University of Chinese Academy of Sciences (UCAS) — *Only undergraduate recipient*
-- 🏅 **Multiple National Second Prizes** in mathematical modeling competitions (Future Cup, Central China Cup, Higher Education Press Cup)
-- 🎖️ **Participation Award**, NeurIPS 2025 Open Problems in WiML & OPP Competitions
+| Award | Details |
+|-------|---------|
+| 🥈 **Kaggle Silver Medal** | Jigsaw Toxic Comment Classification Challenge |
+| 🥇 **Regional Gold Medal** | WorldQuant International Quant Championship (applying for Consultant status) |
+| 🏆 **Third Prize** | UCAS Graduate AI Forum — *only undergraduate recipient* |
+| 🏅 **Multiple National Second Prizes** | Mathematical Modeling (Future Cup, Central China Cup, Higher Education Press Cup) |
+| 🎖️ **NeurIPS 2025** | Open Problems in WiML & OPP Competitions |
+| 🌐 **Finalist** | Shenzhen International FinTech Competition (on-site hackathon) |
+| 📝 **Reviewer** | ICLR 2026 Workshop (GRAm) |
+
+---
+
+### Open-Source Projects
+
+- 🔬 **[GeoAI-x](https://github.com/TXJ2006)** — A geometry-based research platform for studying the evolution of future AI; planned as the foundation for a series of Generative AI studies.
+- 📖 **[The Mathematical Phenomenology of Machine Intelligence](/book/)** — A 200-chapter open treatise bridging mathematics and machine learning.
 
 ---
 
@@ -105,11 +135,17 @@ I am passionate about reconstructing machine learning from rigorous mathematical
 
 | Category | Details |
 |----------|---------|
-| **Mathematics** | Convex Optimization, Numerical Analysis, Stochastic Processes, Differential Equations, Causal Inference |
+| **Mathematics** | Optimization, Numerical Analysis, Stochastic Processes, Differential Equations, Causal Inference, Statistical Modeling |
 | **Programming** | Python (PyTorch, NumPy, Pandas), MATLAB, R, C++ |
 | **Tools** | LaTeX, Git/GitHub, Linux |
 | **Languages** | English (Professional Fluency), Mandarin (Native) |
 
 ---
 
+<div style="text-align:center; margin: 2em 0;">
+
+*"Research is not a task — it is a way of life. Every day I read papers, write code, and iterate on ideas."*
+
 📄 [Download my full CV (PDF)](/files/XujiangTang_CV.pdf)
+
+</div>
