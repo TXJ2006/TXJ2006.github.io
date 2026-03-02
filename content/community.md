@@ -4,20 +4,13 @@ layout: "single"
 url: "/community/"
 summary: "Join the discussion — ask questions, share ideas, contribute to the project."
 draft: false
-ShowToc: true
-TocOpen: true
+ShowToc: false
+TocOpen: false
 hideMeta: true
 comments: true
 ---
 
 <style>
-  .post-content,
-  .post-content h1, .post-content h2, .post-content h3, .post-content h4,
-  .post-content p, .post-content li, .post-content blockquote,
-  .post-content td, .post-content th {
-    font-family: 'Times New Roman', 'Times', 'Noto Serif', Georgia, serif;
-  }
-  .post-content { font-size: 12pt; line-height: 1.72; }
   .community-card {
     border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.2em 1.5em;
     margin: 1em 0; background: linear-gradient(135deg, #fafbfc 0%, #f5f7fa 100%);
