@@ -64,8 +64,7 @@ Starting from mathematical modeling in my freshman year, I progressed rapidly �
 **Theoretical Machine Learning & Optimization** | 2024 – Present  
 - Independently authored multiple papers on learning theory, generalization bounds, and financial optimization.
 - Submitted 4 papers to **COLT** on learnability and theoretical guarantees of learning algorithms.
-- Published 2 papers on financial mathematics (game-theoretic reinsurance & investment optimization) in **AIMS Mathematics** (SCI).
-- Submitted a causal inference paper to **UAI 2026** (under review).
+- Published a paper on financial mathematics (game-theoretic reinsurance & investment optimization) in **AIMS Mathematics** (SCI).
 
 **Koopman Operator & Dynamical Systems** | Mar. 2024 – Present  
 - Collaborated with a research group at Henan University of Science and Technology on long-sequence modeling problems.
@@ -78,7 +77,6 @@ Starting from mathematical modeling in my freshman year, I progressed rapidly �
 
 **Spatial Transcriptomics & Biomedical Data Science** | Sep. 2024 – Jan. 2025  
 - Collaborated with a researcher at Northeastern University on single-cell data clustering, integrating geometric perspectives into computational pipelines.
-- Submitted a paper to **ICLR 2026 Workshop** (pending decision).
 
 **Multi-Agent Financial Decision Systems** | 2024 – Present  
 - Collaborated with a graduate researcher at the University of Chinese Academy of Sciences (UCAS) on an intelligent multi-agent financial advisory system.
@@ -126,8 +124,7 @@ Starting from mathematical modeling in my freshman year, I progressed rapidly �
 
 ### Open-Source Projects
 
-- 🔬 **[GeoAI-x](https://github.com/TXJ2006)** — A geometry-based research platform for studying the evolution of future AI; planned as the foundation for a series of Generative AI studies.
-- 📖 **[The Mathematical Phenomenology of Machine Intelligence](/book/)** — A 200-chapter open treatise bridging mathematics and machine learning.
+-  **[The Mathematical Phenomenology of Machine Intelligence](/book/)** — A 200-chapter open treatise bridging mathematics and machine learning.
 
 ---
 
@@ -144,7 +141,7 @@ Starting from mathematical modeling in my freshman year, I progressed rapidly �
 
 <div style="text-align:center; margin: 2em 0;">
 
-*"Research is not a task — it is a way of life. Every day I read papers, write code, and iterate on ideas."*
+*"真理使我快乐，使我永恒。"*
 
 📄 [Download my full CV (PDF)](/files/XujiangTang_CV.pdf)
 
