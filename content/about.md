@@ -141,7 +141,11 @@ Starting from mathematical modeling in my freshman year, I progressed rapidly �
 
 <div style="text-align:center; margin: 2em 0;">
 
-*"真理使我快乐，使我永恒。"*
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+
+<p style="font-family: 'Dancing Script', cursive; font-size: 1.6rem; font-weight: 500; color: #6366f1; margin-bottom: 0.8em;">
+"Truth brings me joy, and makes me eternal."
+</p>
 
 📄 [Download my full CV (PDF)](/files/XujiangTang_CV.pdf)
 
