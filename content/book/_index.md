@@ -27,7 +27,7 @@ hideMeta: true
         <span>中册：机器学习的数学原理</span>
         <span>下册：人类进化时</span>
       </div>
-      <div class="book-card-status">🟢 Writing in Progress — 25 Chapters Published</div>
+      <div class="book-card-status">� Rewriting from Scratch — Coming Soon</div>
       <span class="book-card-arrow">→</span>
     </div>
   </a>
