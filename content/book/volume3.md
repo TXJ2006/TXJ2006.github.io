@@ -4,8 +4,8 @@ layout: "single"
 url: "/book/volume3/"
 summary: "The Mathematical Phenomenology of Machine Intelligence — Volume III: When Human Stars Shine"
 draft: false
-ShowToc: true
-TocOpen: true
+ShowToc: false
+TocOpen: false
 hideMeta: true
 math: true
 ---

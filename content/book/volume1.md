@@ -4,8 +4,8 @@ layout: "single"
 url: "/book/volume1/"
 summary: "The Mathematical Phenomenology of Machine Intelligence — Volume I: Machine Learning & Modern Architectures"
 draft: false
-ShowToc: true
-TocOpen: true
+ShowToc: false
+TocOpen: false
 hideMeta: true
 math: true
 ---

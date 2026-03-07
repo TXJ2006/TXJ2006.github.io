@@ -4,8 +4,8 @@ layout: "single"
 url: "/book/volume2/"
 summary: "The Mathematical Phenomenology of Machine Intelligence — Volume II: Mathematical Principles"
 draft: false
-ShowToc: true
-TocOpen: true
+ShowToc: false
+TocOpen: false
 hideMeta: true
 math: true
 ---
