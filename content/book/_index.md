@@ -24,10 +24,10 @@ hideMeta: true
       <p class="book-card-desc">从数学分析到代数拓扑，一条覆盖数学核心思想的主干逻辑线。极限、结构、对称、变分、算子、几何、概率 — 七大思想贯穿始终。</p>
       <div class="book-card-meta">
         <span>第一卷：数学分析基础</span>
-        <span>第二卷：线性结构与多元分析</span>
+        <span>第二卷：线性代数与多元分析</span>
         <span>第三卷：常微分方程与动力系统</span>
-        <span>第四卷：数学物理方程</span>
-        <span>第五卷：泛函分析与现代分析</span>
+        <span>第四卷：复分析与数学物理方程</span>
+        <span>第五卷：实分析、泛函分析与概率论</span>
         <span>第六卷：代数、几何与拓扑</span>
       </div>
       <div class="book-card-status">🟢 Writing in Progress</div>
