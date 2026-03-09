@@ -6,6 +6,7 @@ summary: "Published papers and manuscripts"
 draft: false
 ShowToc: false
 hideMeta: true
+protected: true
 ---
 
 ## Published Papers

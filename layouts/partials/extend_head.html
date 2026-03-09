@@ -5,3 +5,249 @@
     integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi"
     crossorigin="anonymous">
 {{ end }}
+
+{{- if .Params.protected }}
+<style>
+/* ===== Page Protection: Apple-style Frosted Glass Overlay ===== */
+.protected-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.15);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    backdrop-filter: blur(28px) saturate(200%);
+    transition: opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94),
+                backdrop-filter 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+body.dark .protected-overlay {
+    background: rgba(0,0,0,0.25);
+}
+
+.protected-overlay.unlocked {
+    opacity: 0;
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+    pointer-events: none;
+}
+
+.protected-box {
+    background: rgba(255,255,255,0.65);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 24px;
+    padding: 3em 2.5em;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.15) inset;
+    animation: float-in 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+body.dark .protected-box {
+    background: rgba(40,40,45,0.70);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.30),
+        0 0 0 1px rgba(255,255,255,0.05) inset;
+}
+
+@keyframes float-in {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.protected-box .lock-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5em;
+    animation: pulse-lock 2s ease-in-out infinite;
+}
+
+@keyframes pulse-lock {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.08); }
+}
+
+.protected-box h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 0.3em;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    border: none;
+}
+
+.protected-box .hint {
+    font-size: 0.92rem;
+    color: var(--secondary);
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+}
+
+.protected-input-wrap {
+    position: relative;
+    margin-bottom: 1em;
+}
+
+.protected-input-wrap input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid rgba(99,102,241,0.20);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.50);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    color: var(--primary);
+}
+
+body.dark .protected-input-wrap input {
+    background: rgba(50,50,55,0.60);
+    border-color: rgba(139,92,246,0.25);
+    color: #e0e0e0;
+}
+
+.protected-input-wrap input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99,102,241,0.12);
+}
+
+.protected-input-wrap input.shake {
+    animation: shake 0.5s ease-in-out;
+    border-color: #ef4444;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%      { transform: translateX(-8px); }
+    40%      { transform: translateX(8px); }
+    60%      { transform: translateX(-6px); }
+    80%      { transform: translateX(6px); }
+}
+
+.protected-btn {
+    display: inline-block;
+    padding: 12px 36px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #fff !important;
+    border: none;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+}
+
+.protected-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99,102,241,0.35);
+}
+
+.protected-btn:active {
+    transform: translateY(0);
+}
+
+.protected-error {
+    color: #ef4444;
+    font-size: 0.85rem;
+    margin-top: 0.8em;
+    min-height: 1.2em;
+    transition: opacity 0.3s;
+}
+
+.protected-success-icon {
+    font-size: 3.5rem;
+    animation: success-pop 0.5s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+
+@keyframes success-pop {
+    from { opacity: 0; transform: scale(0.3); }
+    to   { opacity: 1; transform: scale(1); }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var HASH = '5e737f891db1175442a39fde73e51d781a545506d71c95477a6deb5988bd7f9a';
+  var STORAGE_KEY = 'page_unlocked_' + window.location.pathname;
+
+  // Check if already unlocked
+  if (localStorage.getItem(STORAGE_KEY) === 'true') return;
+
+  // Create overlay
+  var overlay = document.createElement('div');
+  overlay.className = 'protected-overlay';
+  overlay.id = 'protectedOverlay';
+  overlay.innerHTML =
+    '<div class="protected-box" id="protectedBox">' +
+      '<div class="lock-icon">\uD83D\uDD12</div>' +
+      '<h2>This Page is Protected</h2>' +
+      '<p class="hint">What is my favorite fruit?<br><span style="font-size:0.82rem;opacity:0.6">(Answer in English, lowercase)</span></p>' +
+      '<div class="protected-input-wrap">' +
+        '<input type="text" id="protectedAnswer" placeholder="Type your answer..." autocomplete="off">' +
+      '</div>' +
+      '<button class="protected-btn" id="protectedSubmit">Unlock \uD83D\uDD13</button>' +
+      '<div class="protected-error" id="protectedError">&nbsp;</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+
+  // Focus input
+  setTimeout(function() { document.getElementById('protectedAnswer').focus(); }, 100);
+
+  async function sha256(message) {
+    var msgBuffer = new TextEncoder().encode(message);
+    var hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    var hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+  }
+
+  async function tryUnlock() {
+    var input = document.getElementById('protectedAnswer');
+    var error = document.getElementById('protectedError');
+    var answer = input.value.trim().toLowerCase();
+
+    if (!answer) {
+      input.classList.add('shake');
+      setTimeout(function() { input.classList.remove('shake'); }, 500);
+      return;
+    }
+
+    var hash = await sha256(answer);
+
+    if (hash === HASH) {
+      localStorage.setItem(STORAGE_KEY, 'true');
+      var box = document.getElementById('protectedBox');
+      box.innerHTML = '<div class="protected-success-icon">\uD83D\uDD13</div><h2 style="margin-top:0.5em">Welcome!</h2>';
+      setTimeout(function() {
+        overlay.classList.add('unlocked');
+        document.body.style.overflow = '';
+        setTimeout(function() { overlay.style.display = 'none'; }, 700);
+      }, 800);
+    } else {
+      error.textContent = 'Wrong answer, try again \uD83D\uDE0A';
+      input.classList.add('shake');
+      input.value = '';
+      setTimeout(function() { input.classList.remove('shake'); }, 500);
+      setTimeout(function() { error.innerHTML = '&nbsp;'; }, 2500);
+    }
+  }
+
+  document.getElementById('protectedSubmit').addEventListener('click', tryUnlock);
+  document.getElementById('protectedAnswer').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') tryUnlock();
+  });
+});
+</script>
+{{- end }}
