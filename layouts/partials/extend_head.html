@@ -9,6 +9,13 @@
 {{- if .Params.protected }}
 <style>
 /* ===== Page Protection: Apple-style Frosted Glass Overlay ===== */
+.page-locked,
+.page-locked body {
+    overflow: hidden !important;
+    height: 100vh !important;
+    touch-action: none;
+}
+
 .protected-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -185,6 +192,20 @@ document.addEventListener('DOMContentLoaded', function() {
   // Check if already unlocked
   if (localStorage.getItem(STORAGE_KEY) === 'true') return;
 
+  // Lock page: scroll to top and prevent all scrolling
+  window.scrollTo(0, 0);
+  document.documentElement.classList.add('page-locked');
+
+  // Block scroll/touch/wheel events
+  function preventScroll(e) { e.preventDefault(); }
+  window.addEventListener('wheel', preventScroll, { passive: false });
+  window.addEventListener('touchmove', preventScroll, { passive: false });
+  window.addEventListener('keydown', function lockKeys(e) {
+    if (['ArrowDown','ArrowUp','PageDown','PageUp','Space','Home','End'].indexOf(e.code) !== -1) {
+      if (e.target.id !== 'protectedAnswer') e.preventDefault();
+    }
+  });
+
   // Create overlay
   var overlay = document.createElement('div');
   overlay.className = 'protected-overlay';
@@ -201,7 +222,6 @@ document.addEventListener('DOMContentLoaded', function() {
       '<div class="protected-error" id="protectedError">&nbsp;</div>' +
     '</div>';
   document.body.appendChild(overlay);
-  document.body.style.overflow = 'hidden';
 
   // Focus input
   setTimeout(function() { document.getElementById('protectedAnswer').focus(); }, 100);
@@ -232,7 +252,9 @@ document.addEventListener('DOMContentLoaded', function() {
       box.innerHTML = '<div class="protected-success-icon">\uD83D\uDD13</div><h2 style="margin-top:0.5em">Welcome!</h2>';
       setTimeout(function() {
         overlay.classList.add('unlocked');
-        document.body.style.overflow = '';
+        document.documentElement.classList.remove('page-locked');
+        window.removeEventListener('wheel', preventScroll);
+        window.removeEventListener('touchmove', preventScroll);
         setTimeout(function() { overlay.style.display = 'none'; }, 700);
       }, 800);
     } else {
