@@ -188,9 +188,15 @@ body.dark .protected-input-wrap input {
 document.addEventListener('DOMContentLoaded', function() {
   var HASH = '5e737f891db1175442a39fde73e51d781a545506d71c95477a6deb5988bd7f9a';
   var STORAGE_KEY = 'page_unlocked_' + window.location.pathname;
+  var EXPIRY_MS = 24 * 60 * 60 * 1000; // 24 hours
 
-  // Check if already unlocked
-  if (localStorage.getItem(STORAGE_KEY) === 'true') return;
+  // Check if already unlocked and not expired
+  var stored = localStorage.getItem(STORAGE_KEY);
+  if (stored) {
+    var ts = parseInt(stored, 10);
+    if (!isNaN(ts) && (Date.now() - ts) < EXPIRY_MS) return;
+    localStorage.removeItem(STORAGE_KEY);
+  }
 
   // Lock page: scroll to top and prevent all scrolling
   window.scrollTo(0, 0);
@@ -247,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var hash = await sha256(answer);
 
     if (hash === HASH) {
-      localStorage.setItem(STORAGE_KEY, 'true');
+      localStorage.setItem(STORAGE_KEY, String(Date.now()));
       var box = document.getElementById('protectedBox');
       box.innerHTML = '<div class="protected-success-icon">\uD83D\uDD13</div><h2 style="margin-top:0.5em">Welcome!</h2>';
       setTimeout(function() {
