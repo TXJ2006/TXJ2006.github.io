@@ -58,20 +58,23 @@ hideMeta: true
     </div>
   </a>
 
-  <div class="book-card" style="opacity: 0.5; cursor: default;">
+  <a href="https://txj2006.github.io/math-phenomenology/" target="_blank" rel="noopener" class="book-card">
     <div class="book-card-inner">
-      <div class="book-card-icon">📖</div>
+      <div class="book-card-icon">🤖</div>
       <h2>机器智能的数学现象学</h2>
       <p class="book-card-en">The Mathematical Phenomenology of Machine Intelligence</p>
-      <p class="book-card-desc">共三册 · 从机器学习的现代架构出发，深入数学根基，回望人类智能进化的伟大思想者。</p>
+      <p class="book-card-desc">25章1500节 · 从1959到2026，纵览机器学习全领域的数学基石、经典算法、深度学习、大语言模型、生成AI、强化学习、科学计算与前沿展望。</p>
       <div class="book-card-meta">
-        <span>上册：机器学习与现代架构</span>
-        <span>中册：机器学习的数学原理</span>
-        <span>下册：人类进化时</span>
+        <span>数学基石（线代·概率·优化·信息论）</span>
+        <span>经典学习（回归·分类·SVM·集成·无监督·概率图）</span>
+        <span>深度学习（前馈·CNN·RNN·Transformer·LLM·生成·扩散）</span>
+        <span>决策与专题（RL·GNN·多模态·科学计算·时序）</span>
+        <span>系统与前沿（大模型工程·AI安全·未来展望）</span>
       </div>
-      <div class="book-card-status">⏸️ On Hold — Will Return</div>
+      <div class="book-card-status">🟢 Writing in Progress</div>
+      <span class="book-card-arrow">↗</span>
     </div>
-  </div>
+  </a>
 
   <div class="book-card book-card-upcoming">
     <div class="book-card-inner">
