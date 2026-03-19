@@ -19,16 +19,17 @@ hideMeta: true
   <a href="https://txj2006.github.io/math-six-volumes/" target="_blank" rel="noopener" class="book-card">
     <div class="book-card-inner">
       <div class="book-card-icon">📐</div>
-      <h2>本科生的数学六卷</h2>
-      <p class="book-card-en">Six Volumes of Mathematics for Undergraduates</p>
-      <p class="book-card-desc">从数学分析到代数拓扑，一条覆盖数学核心思想的主干逻辑线。极限、结构、对称、变分、算子、几何、概率 — 七大思想贯穿始终。</p>
+      <h2>数学全书十六卷</h2>
+      <p class="book-card-en">Sixteen Volumes of Mathematics</p>
+      <p class="book-card-desc">从数学分析到代数几何，从概率统计到科学计算，190章约4750节，覆盖从本科到博士的数学核心主干。</p>
       <div class="book-card-meta">
         <span>第一卷：数学分析基础</span>
-        <span>第二卷：线性代数与多元分析</span>
+        <span>第二卷：线性代数与解析几何</span>
         <span>第三卷：常微分方程与动力系统</span>
-        <span>第四卷：复分析与数学物理方程</span>
-        <span>第五卷：实分析、泛函分析与概率论</span>
+        <span>第四卷：复分析与偏微分方程</span>
+        <span>第五卷：实分析、泛函分析与概率统计</span>
         <span>第六卷：代数、几何与拓扑</span>
+        <span>第七卷～第十六卷：优化、运筹、统计、信息论、金融数学、PDE、拓扑几何、代数几何、深水区专题、科学计算</span>
       </div>
       <div class="book-card-status">🟢 Writing in Progress</div>
       <span class="book-card-arrow">↗</span>
