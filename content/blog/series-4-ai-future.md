@@ -1,5 +1,5 @@
 ---
-title: "Series IV: AI & The Post-Human Era"
+title: "第四系列：AI与未来人类"
 date: 2026-01-05
 draft: false
 tags: ["Reading", "AI", "Ethics", "Philosophy", "Technology"]
@@ -10,8 +10,6 @@ TocOpen: true
 math: true
 weight: 4
 ---
-
-## 系列四：AI与未来人类
 
 **核心逻辑：** 探讨技术奇点、人机共生与伦理风险。
 

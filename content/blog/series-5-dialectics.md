@@ -1,5 +1,5 @@
 ---
-title: "Series V: Dialectics of Laws via Machines"
+title: "第五系列：从机器主义的辩证性思辨"
 date: 2026-01-04
 draft: false
 tags: ["Reading", "Philosophy", "Dialectics", "AI", "Ethics", "Political Philosophy"]
@@ -11,9 +11,7 @@ math: true
 weight: 5
 ---
 
-## 系列五：从机器主义的辩证性思辨 (Dialectics of Laws via Machines)
-
-**核心逻辑：** 最前沿的隐喻：用机器学习的语言（拟合、泛化、损失）去重新解构人类的意识形态（自由主义、功利主义、集体主义）。
+**核心逻辑：** 用机器学习的语言（拟合、泛化、损失）去重新解构人类的意识形态（自由主义、功利主义、集体主义）。
 
 > *"Philosophy is a battle against the bewitchment of our intelligence by means of language."* — Ludwig Wittgenstein
 

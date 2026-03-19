@@ -1,5 +1,5 @@
 ---
-title: "Series I: The Scientist's Lens on Humanities"
+title: "第一系列：拿着科学家眼睛看的文史哲"
 date: 2026-01-08
 draft: false
 tags: ["Reading", "Humanities", "Mathematics", "Philosophy"]
@@ -10,8 +10,6 @@ TocOpen: true
 math: true
 weight: 1
 ---
-
-## 系列一：拿着科学家眼睛看的文史哲
 
 **核心逻辑：** 用数学结构（集合论、拓扑、域、概率）去解构文学与哲学。
 

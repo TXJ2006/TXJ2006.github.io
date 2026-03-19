@@ -1,5 +1,5 @@
 ---
-title: "Series II: Global History & Political Economy"
+title: "第二系列：世界历史与政治经济学"
 date: 2026-01-07
 draft: false
 tags: ["Reading", "History", "Political Economy", "Quantitative Analysis"]
@@ -10,8 +10,6 @@ TocOpen: true
 math: true
 weight: 2
 ---
-
-## 系列二：世界历史与政治经济学
 
 **核心逻辑：** 宏观历史的量化分析，侧重地缘决定论、经济周期与博弈。
 

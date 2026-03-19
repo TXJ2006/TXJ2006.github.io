@@ -1,5 +1,5 @@
 ---
-title: "Series III: China — History & Modern Economy"
+title: "第三系列：中国近现代史与现当代政治经济学"
 date: 2026-01-06
 draft: false
 tags: ["Reading", "China", "History", "Economy", "Political Economy"]
@@ -10,8 +10,6 @@ TocOpen: true
 math: true
 weight: 3
 ---
-
-## 系列三：中国近现代史与现当代政治经济学
 
 **核心逻辑：** 关注中国特有的制度结构（城乡二元、人口红利、土地财政）。
 
