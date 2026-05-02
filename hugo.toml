@@ -24,10 +24,10 @@ theme = 'PaperMod'
     [params.homeInfoParams]
         Title = "Xujiang Tang (唐旭江)"
         Content = """
-I am an undergraduate student in **Mathematics and Applied Mathematics** at **Yangtze University**, and a visiting student at **Johns Hopkins University**. My research lies in **statistical learning theory**, **optimization**, **stochastic processes**, and the **mathematical foundations of machine learning**.\n\n
-I am especially interested in rigorous problems concerning **out-of-distribution generalization**, **learnability**, **operator-theoretic modeling of dynamical systems**, and **stochastic models in quantitative finance**.\n\n
-**Research interests:** learning theory · optimization · stochastic processes · dynamical systems · causal inference · quantitative finance\n\n
-[Research](/research/) · [Publications](/publications/) · [Curriculum Vitae](/cv/) · [Contact](mailto:txj_262538@163.com)
+I study mathematical problems in **learning theory**, **optimization**, **stochastic processes**, and the **mathematical foundations of machine learning**. I am currently an undergraduate student in Mathematics and Applied Mathematics at **Yangtze University** and a visiting student at **Johns Hopkins University**.\n\n
+My present work focuses on out-of-distribution generalization, learnability, operator-theoretic methods for dynamical systems, and stochastic models motivated by quantitative finance.\n\n
+**Research interests:** statistical learning theory · generalization · optimization · stochastic processes · dynamical systems · causal inference · quantitative finance\n\n
+[Research](/research/) · [Publications](/publications/) · [Curriculum Vitae](/cv/) · [Email](mailto:txj_262538@163.com)
 """
 
     [[params.socialIcons]]
