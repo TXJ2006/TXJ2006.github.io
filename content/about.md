@@ -10,31 +10,24 @@ hideMeta: true
 
 # Xujiang Tang (唐旭江)
 
-**Undergraduate Student in Mathematics and Applied Mathematics**  
-Yangtze University College of Arts and Sciences  
-**Visiting Student**, Johns Hopkins University  
-Expected B.Sc. graduation: June 2027
+I am an undergraduate student in **Mathematics and Applied Mathematics** at Yangtze University College of Arts and Sciences and a visiting student at **Johns Hopkins University**. My work lies at the interface of mathematical machine learning, statistical learning theory, optimization, stochastic processes, and dynamical systems.
+
+I am particularly interested in rigorous mathematical questions about how learning algorithms generalize beyond their training distributions, how structure and dynamics enter modern prediction problems, and how probabilistic and variational methods can be used to analyze complex systems.
 
 Email: [txj_262538@163.com](mailto:txj_262538@163.com)  
 Links: [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-0008-1127-6420) · [LinkedIn](https://www.linkedin.com/in/%E7%85%A6%E6%B1%9F-%E5%94%90-7a1513392)
 
 ---
 
-## Research Profile
+## Research Areas
 
-I am an undergraduate student in mathematics working on problems at the interface of **statistical learning theory**, **optimization**, **stochastic processes**, and **mathematical machine learning**. My current research focuses on theoretical questions in generalization, learnability, out-of-distribution prediction, operator-theoretic modeling of dynamical systems, and stochastic models arising in quantitative finance.
+My current interests include:
 
-My broader aim is to develop mathematically precise tools for understanding modern learning algorithms and their behavior under distribution shift, structural uncertainty, and complex dynamics.
-
----
-
-## Research Interests
-
-- Statistical learning theory: generalization bounds, learnability, and out-of-distribution generalization
-- Optimization: convex and non-convex optimization, game-theoretic methods, and decision problems
-- Stochastic processes and dynamical systems: Koopman/operator-theoretic methods, MCMC, and rough volatility
-- Causal inference and representation learning: geometric disentanglement and non-Gaussian heterogeneity
-- Applications in quantitative finance, spatial transcriptomics, and education analytics
+- **Statistical learning theory:** generalization, learnability, out-of-distribution prediction, and theoretical guarantees for learning algorithms.
+- **Optimization:** convex and non-convex optimization, game-theoretic formulations, and robust decision-making.
+- **Stochastic processes and dynamical systems:** Koopman/operator-theoretic methods, rough volatility, MCMC, and chaotic dynamics.
+- **Causal inference and representation learning:** geometric disentanglement, non-Gaussian heterogeneity, and structured latent-variable models.
+- **Applications:** quantitative finance, spatial transcriptomics, biomedical data science, and education analytics.
 
 ---
 
@@ -43,39 +36,26 @@ My broader aim is to develop mathematically precise tools for understanding mode
 **Yangtze University College of Arts and Sciences**, Jingzhou, China  
 B.Sc. in Mathematics and Applied Mathematics, expected June 2027
 
-Selected coursework includes mathematical analysis, linear algebra, probability and statistics, differential equations, computational modeling, optimization theory, numerical computation, data structures, and programming in Python, R, and MATLAB.
+Selected coursework: mathematical analysis, linear algebra, probability and statistics, differential equations, computational modeling, optimization theory, numerical computation, data structures, and programming in Python, R, and MATLAB.
 
 ---
 
-## Selected Research Experience
+## Selected Work
 
-**Visiting Student, Johns Hopkins University** · 2025–present  
-Working on out-of-distribution generalization and learning theory for deep autoregressive models.
+**Visiting Student, Johns Hopkins University** · 2025-present  
+Research on out-of-distribution generalization and learning theory for deep autoregressive models.
 
-**Theoretical Machine Learning and Optimization** · 2024–present  
-Research on learnability, generalization guarantees, and optimization-theoretic aspects of learning algorithms.
+**Theoretical Machine Learning and Optimization** · 2024-present  
+Work on learnability, generalization guarantees, and optimization-theoretic aspects of learning algorithms.
 
-**Koopman Operator Methods and Dynamical Systems** · 2024–present  
-Work on operator-theoretic approaches to long-sequence modeling and chaotic dynamics.
+**Koopman Operator Methods and Dynamical Systems** · 2024-present  
+Research on operator-theoretic approaches to long-sequence modeling and chaotic dynamics.
 
-**Rough Volatility and Quantitative Finance** · 2023–present  
-Research on stochastic-process models, MCMC-based simulation, and robust financial decision problems.
-
-**Spatial Transcriptomics and Biomedical Data Science** · 2024–2025  
-Work on single-cell and spatial data analysis, with emphasis on geometric and statistical perspectives.
+**Rough Volatility and Quantitative Finance** · 2023-present  
+Work on stochastic-process models, MCMC-based simulation, and robust financial decision problems.
 
 ---
 
-## Selected Honors and Activities
+## Curriculum Vitae
 
-- Kaggle Silver Medal, Jigsaw Toxic Comment Classification Challenge
-- Regional Gold Medal, WorldQuant International Quant Championship
-- Third Prize, UCAS Graduate AI Forum
-- Multiple national second prizes in mathematical modeling competitions
-- Reviewer, ICLR 2026 Workshop
-
----
-
-## CV
-
-A current CV is available here: [Xujiang Tang CV](/files/XujiangTang_CV.pdf).
+A web version of my CV is available at [Curriculum Vitae](/cv/). A PDF version is also linked there.
