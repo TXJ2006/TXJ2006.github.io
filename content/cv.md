@@ -11,7 +11,7 @@ hideMeta: true
 
 # Curriculum Vitae
 
-**Xujiang Tang**  
+**Xujiang Tang (唐煦江)**  
 Theoretical Mathematics Researcher; Machine Learning Theory Researcher  
 Undergraduate Student in Mathematics and Applied Mathematics, Yangtze University  
 Visiting Student, Great Bay University  
@@ -25,7 +25,20 @@ Links: [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-00
 
 ## Research Interests
 
-Theoretical mathematics; finite group theory; algebraic topology; equivariant homotopy theory; fixed point methods; formal proof and Lean; machine learning theory; statistical learning theory; optimization; stochastic processes; dynamical systems; quantitative finance.
+My central research interest is theoretical mathematics. I work primarily around algebraic topology, finite group theory, equivariant homotopy theory, formal proof, and long-range structures related to the Langlands program. I also work on foundational machine learning theory from a mathematical perspective.
+
+- **Algebraic topology and equivariant homotopy theory:** fixed point methods, geometric fixed point tomography, Bökstedt periodicity, stable homotopy-theoretic structures, and the reconstruction of global objects from fixed point or local data.
+- **Finite group theory:** Quillen's p-subgroup conjecture, subgroup complexes, centralizer energy, FRUL-WOS spheres, and p-local group-theoretic structure.
+- **Langlands program:** representation-theoretic, geometric, and categorical aspects of the Langlands program, with emphasis on the foundational path toward geometric Langlands.
+- **Formal proof:** Lean formalization, Mathlib, proof engineering, and the formalization of advanced mathematics in algebra, topology, and analysis.
+- **Foundational machine learning theory:** statistical learning theory, generalization, learnability, out-of-distribution prediction, optimization-theoretic foundations, and dynamical-systems approaches to learning.
+
+---
+
+## Collaborators and Mentors
+
+- [William Redman](https://engineering.jhu.edu/faculty/william-redman/), Johns Hopkins University
+- [Ziyue Qiao](https://qiaoziyue.com/), Great Bay University
 
 ---
 
@@ -94,11 +107,13 @@ Research on stochastic-process models, rough volatility, MCMC-based simulation, 
 
 ---
 
-## Honors and Activities
+## Honors, Competitions, and Activities
 
 - Kaggle Silver Medal, Jigsaw Toxic Comment Classification Challenge
 - Regional Gold Medal, WorldQuant International Quant Championship
 - Third Prize, UCAS Graduate AI Forum
+- Mathematical Modeling Competition, Hua Zhong Cup
+- National College Students Statistical Modeling Competition
 - Multiple national second prizes in mathematical modeling competitions
 - Reviewer, ICLR 2026 Workshop
 
@@ -119,6 +134,6 @@ Applied statistical methods to securities research and quantitative workflows.
 
 ## Skills
 
-**Mathematics:** finite group theory, algebraic topology, homotopy theory, optimization, numerical analysis, stochastic processes, differential equations, causal inference, statistical modeling.  
+**Mathematics:** algebraic topology, finite group theory, homotopy theory, representation theory, optimization, numerical analysis, stochastic processes, differential equations, causal inference, statistical modeling.  
 **Formal proof and programming:** Lean, Mathlib, Python, PyTorch, NumPy, Pandas, MATLAB, R, C++, LaTeX, Git/GitHub, Linux.  
 **Languages:** Mandarin Chinese, English.
