@@ -64,8 +64,8 @@ Research in theoretical mathematics and machine learning theory.
 **Zhejiang University Lean Formalization Summer School** · 2026  
 Formal proof, Lean, Mathlib, and computer-assisted theorem proving.
 
-**Short Winter Training with Prof. Mark Vogelsberger** · Grade: A  
-Completed a short winter training program with Prof. Mark Vogelsberger and received an A grade.
+**Neural Networks and Python Implementation**, short winter training with **Prof. Mark Vogelsberger** · Grade: A  
+Completed the course and received an A grade.
 
 ---
 
