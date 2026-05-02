@@ -10,44 +10,43 @@ hideMeta: true
 
 # Research
 
-My research is centered on mathematical questions in learning theory, optimization, stochastic processes, and machine learning. I am particularly interested in problems where rigorous mathematical structure can clarify the behavior, limitations, and generalization properties of modern learning algorithms.
+My research is centered on theoretical mathematics. I work primarily on problems in finite group theory, algebraic topology, equivariant homotopy theory, formal proof, and mathematical machine learning. A recurring theme in my work is the use of geometric, homotopical, and variational structures to understand difficult mathematical and learning-theoretic phenomena.
 
-## Statistical Learning Theory
+## Theoretical Mathematics
 
-I study theoretical problems related to generalization, learnability, and out-of-distribution prediction. Current topics include:
+My current mathematical work includes problems related to subgroup complexes, centralizer structures, equivariant fixed point methods, and periodic phenomena in stable homotopy theory. Current directions include:
 
-- generalization bounds for deep autoregressive models;
-- theoretical guarantees for unsupervised learning algorithms;
-- distribution shift, structural uncertainty, and robustness;
-- mathematical characterizations of successful prediction.
+- centralizer energy and FRUL-WOS sphere methods;
+- Quillen's p-subgroup conjecture;
+- geometric fixed point tomography;
+- spoke Bökstedt periodicity;
+- homotopical and geometric approaches to fixed point phenomena.
 
-## Optimization and Decision Theory
+## Formal Proof and Lean
 
-I am interested in optimization methods arising in machine learning, finance, and decision systems, including:
+I am interested in the interaction between modern mathematics and formal proof. My work in this direction concerns Lean formalization, proof engineering, and the long-term possibility of formalizing difficult arguments in algebra, topology, and mathematical analysis.
+
+I participate in the Zhejiang University Lean Formalization Summer School.
+
+## Machine Learning Theory
+
+A second line of work concerns mathematical questions in machine learning theory, especially problems where rigorous structure is essential. Current topics include:
+
+- generalization and learnability;
+- out-of-distribution prediction;
+- theoretical guarantees for learning algorithms;
+- mathematical foundations of deep learning and autoregressive prediction.
+
+## Optimization, Stochastic Processes, and Dynamics
+
+I also study mathematical problems in optimization, stochastic analysis, and dynamical systems, including:
 
 - convex and non-convex optimization;
 - game-theoretic formulations;
-- robust decision-making under model uncertainty;
-- optimization problems in reinsurance and investment.
-
-## Stochastic Processes and Dynamical Systems
-
-A second line of work concerns stochastic modeling and operator-theoretic methods for dynamics:
-
-- Koopman/operator-theoretic methods for long-sequence modeling;
 - stochastic processes and rough volatility models;
 - MCMC-based simulation and parameter estimation;
-- dynamical systems and chaotic data.
-
-## Interdisciplinary Applications
-
-I also work on selected applications where mathematical and statistical structure is central:
-
-- quantitative finance and financial risk modeling;
-- spatial transcriptomics and biomedical data science;
-- causal inference and geometric representation learning;
-- education analytics and AI-assisted learning systems.
+- Koopman/operator-theoretic methods for dynamics.
 
 ## Current Directions
 
-My current priority is to develop rigorous mathematical tools for understanding how learning algorithms generalize beyond their training distributions, especially in settings involving temporal dependence, latent dynamics, and non-stationarity.
+My present focus is to develop rigorous mathematical frameworks for hard structural problems: subgroup-complex methods in finite group theory, equivariant and fixed point methods in topology, and proof-theoretic/formal approaches that can eventually support high-level mathematical verification.
