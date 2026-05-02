@@ -11,12 +11,12 @@ theme = 'PaperMod'
     ShowBreadCrumbs = true
     ShowPostNavLinks = false
     ShowCodeCopyButtons = true
-    ShowReadingTime = true
+    ShowReadingTime = false
     ShowShareButtons = false
     ShowWordCount = false
     comments = false
     author = "Xujiang Tang"
-    description = "Xujiang Tang (唐旭江) — undergraduate student in mathematics, working on statistical learning theory, optimization, stochastic processes, and mathematical machine learning."
+    description = "Xujiang Tang (唐旭江) — mathematics undergraduate and visiting student at Johns Hopkins University, working on learning theory, optimization, stochastic processes, and mathematical machine learning."
 
     [params.label]
         text = "Xujiang Tang"
@@ -24,10 +24,10 @@ theme = 'PaperMod'
     [params.homeInfoParams]
         Title = "Xujiang Tang (唐旭江)"
         Content = """
-I am an undergraduate student in **Mathematics and Applied Mathematics** at **Yangtze University**, and a visiting student at **Johns Hopkins University**. My current research interests lie in **statistical learning theory**, **optimization**, **stochastic processes**, and **mathematical foundations of machine learning**.\n\n
-My recent work studies out-of-distribution generalization, learnability, Koopman/operator-theoretic methods for dynamical systems, and stochastic models in quantitative finance.\n\n
+I am an undergraduate student in **Mathematics and Applied Mathematics** at **Yangtze University**, and a visiting student at **Johns Hopkins University**. My research lies in **statistical learning theory**, **optimization**, **stochastic processes**, and the **mathematical foundations of machine learning**.\n\n
+I am especially interested in rigorous problems concerning **out-of-distribution generalization**, **learnability**, **operator-theoretic modeling of dynamical systems**, and **stochastic models in quantitative finance**.\n\n
 **Research interests:** learning theory · optimization · stochastic processes · dynamical systems · causal inference · quantitative finance\n\n
-[About](/about/) · [Research](/research/) · [Publications](/publications/) · [CV](/cv/)
+[Research](/research/) · [Publications](/publications/) · [Curriculum Vitae](/cv/) · [Contact](mailto:txj_262538@163.com)
 """
 
     [[params.socialIcons]]
@@ -65,11 +65,6 @@ My recent work studies out-of-distribution generalization, learnability, Koopman
     name = "CV"
     url = "/cv/"
     weight = 4
-
-[[menu.main]]
-    name = "Blog"
-    url = "/blog/"
-    weight = 5
 
 [markup]
     [markup.goldmark]
