@@ -12,8 +12,9 @@ hideMeta: true
 # Curriculum Vitae
 
 **Xujiang Tang**  
+Theoretical Mathematics Researcher; Machine Learning Theory Researcher  
 Undergraduate Student in Mathematics and Applied Mathematics, Yangtze University  
-Visiting Student, Johns Hopkins University  
+Visiting Student, Great Bay University  
 Email: [txj_262538@163.com](mailto:txj_262538@163.com)  
 Website: [txj2006.github.io](https://txj2006.github.io)  
 Links: [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-0008-1127-6420) · [LinkedIn](https://www.linkedin.com/in/%E7%85%A6%E6%B1%9F-%E5%94%90-7a1513392)
@@ -24,7 +25,7 @@ Links: [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-00
 
 ## Research Interests
 
-Statistical learning theory; out-of-distribution generalization; learnability; optimization; stochastic processes; dynamical systems; operator-theoretic methods; causal inference; quantitative finance; mathematical foundations of machine learning.
+Theoretical mathematics; finite group theory; algebraic topology; equivariant homotopy theory; fixed point methods; formal proof and Lean; machine learning theory; statistical learning theory; optimization; stochastic processes; dynamical systems; quantitative finance.
 
 ---
 
@@ -42,26 +43,46 @@ Selected marks:
 
 ---
 
-## Research Experience
+## Visiting Position and Training
 
-**Visiting Student, Johns Hopkins University** · 2025-present  
-Research on out-of-distribution generalization and learning theory for deep autoregressive models.
+**Visiting Student, Great Bay University** · 2025-present  
+Research in theoretical mathematics and machine learning theory.
 
-**Theoretical Machine Learning and Optimization** · 2024-present  
-Work on learnability, generalization guarantees, and optimization-theoretic aspects of learning algorithms.
-
-**Koopman Operator Methods and Dynamical Systems** · 2024-present  
-Research on operator-theoretic approaches to long-sequence modeling and chaotic dynamics.
-
-**Rough Volatility and Quantitative Finance** · 2023-present  
-Research on stochastic-process models, MCMC-based simulation, and robust financial decision problems.
-
-**Spatial Transcriptomics and Biomedical Data Science** · 2024-2025  
-Work on single-cell and spatial data analysis from geometric and statistical perspectives.
+**Zhejiang University Lean Formalization Summer School** · 2026  
+Formal proof, Lean, Mathlib, and computer-assisted theorem proving.
 
 ---
 
-## Publications
+## Research Experience
+
+**Finite Group Theory and Quillen's p-Subgroup Conjecture** · 2025-present  
+Work on centralizer energy, FRUL-WOS spheres, and subgroup-complex methods related to Quillen's p-subgroup conjecture.
+
+**Algebraic Topology and Equivariant Homotopy Theory** · 2025-present  
+Work on geometric fixed point tomography and spoke Bökstedt periodicity.
+
+**Formal Proof and Lean** · 2026-present  
+Study of Lean formalization, proof engineering, and the long-term formalization of advanced mathematical arguments.
+
+**Theoretical Machine Learning and Optimization** · 2024-present  
+Work on learnability, generalization guarantees, out-of-distribution prediction, and optimization-theoretic aspects of learning algorithms.
+
+**Stochastic Processes, Dynamical Systems, and Quantitative Finance** · 2023-present  
+Research on stochastic-process models, rough volatility, MCMC-based simulation, Koopman/operator-theoretic dynamics, and robust financial decision problems.
+
+---
+
+## Publications and Manuscripts
+
+### Submitted Manuscripts
+
+1. **X. Tang**. "Centralizer Energy, FRUL-WOS Spheres, and Quillen's p-Subgroup Conjecture." Submitted to *Annals of Mathematics*.
+
+2. **X. Tang**. "Geometric Fixed Point Tomography and Spoke Bökstedt Periodicity." Submitted to *Algebraic & Geometric Topology*.
+
+3. **X. Tang** and C. Fan. "Out-of-Distribution Generalization Error Bounds for Successful Prediction of Deep Autoregressive Algorithms." Submitted to *NeurIPS 2026*.
+
+4. **X. Tang**. "Quartic Difficulty: Assessing the Learnability of Unsupervised Learning Algorithms." Submitted to *COLT*.
 
 ### Published and Accepted Papers
 
@@ -70,12 +91,6 @@ Work on single-cell and spatial data analysis from geometric and statistical per
 2. **X. Tang** and Q. Li. "Logical Gene Encoding: A Bio-Inspired Approach for Energy-Efficient Automated Reasoning." *5th International Conference on Internet, Education and Information Technology (IEIT 2025)*, Hangzhou, China, 2025. EI-indexed. DOI: [10.2991/978-94-6463-803-5_81](https://doi.org/10.2991/978-94-6463-803-5_81)
 
 3. Q. Li and **X. Tang**. "Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions." *AIMS Mathematics*. Accepted, 2025.
-
-### Manuscripts Under Review
-
-1. **X. Tang** and C. Fan. "Out-of-Distribution Generalization Error Bounds for Successful Prediction of Deep Autoregressive Algorithms." Submitted to *ICML 2026*.
-
-2. **X. Tang**. "Quartic Difficulty: Assessing the Learnability of Unsupervised Learning Algorithms." Submitted to *COLT*.
 
 ---
 
@@ -104,6 +119,6 @@ Applied statistical methods to securities research and quantitative workflows.
 
 ## Skills
 
-**Mathematics:** optimization, numerical analysis, stochastic processes, differential equations, causal inference, statistical modeling.  
-**Programming and tools:** Python, PyTorch, NumPy, Pandas, MATLAB, R, C++, LaTeX, Git/GitHub, Linux.  
+**Mathematics:** finite group theory, algebraic topology, homotopy theory, optimization, numerical analysis, stochastic processes, differential equations, causal inference, statistical modeling.  
+**Formal proof and programming:** Lean, Mathlib, Python, PyTorch, NumPy, Pandas, MATLAB, R, C++, LaTeX, Git/GitHub, Linux.  
 **Languages:** Mandarin Chinese, English.
