@@ -32,6 +32,14 @@ My current interests include:
 
 ---
 
+## Notes
+
+I maintain a structured collection of mathematical reading notes, covering foundations, analysis, algebra, topology, geometry, PDE, variational methods, and research-level directions.
+
+[Mathematical Reading Notes](/notes/)
+
+---
+
 ## Collaborators and Mentors
 
 - [William Redman](https://engineering.jhu.edu/faculty/william-redman/), Johns Hopkins University
