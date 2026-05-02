@@ -1,5 +1,5 @@
 %PDF-1.3
-%PDF! ReportLab Generated PDF document (opensource)
+%PDF ReportLab Generated PDF document (opensource) 
 1 0 obj
 <<
 /F1 2 0 R /F2 3 0 R
@@ -17,7 +17,7 @@ endobj
 endobj
 4 0 obj
 <<
-/Contents 8 0 R /MediaBox [ 0 0 612 792 ] /Parent 7 0 R /Resources <<
+/Contents 9 0 R /MediaBox [ 0 0 612 792 ] /Parent 8 0 R /Resources <<
 /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
 >> /Rotate 0 /Trans <<
 
@@ -27,173 +27,208 @@ endobj
 endobj
 5 0 obj
 <<
-/PageMode /UseNone /Pages 7 0 R /Type /Catalog
+/Contents 10 0 R /MediaBox [ 0 0 612 792 ] /Parent 8 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
 >>
 endobj
 6 0 obj
 <<
-/Author (anonymous) /CreationDate (D:20260502153503+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20260502153503+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (unspecified) /Title (untitled) /Trapped /False
+/PageMode /UseNone /Pages 8 0 R /Type /Catalog
 >>
 endobj
 7 0 obj
 <<
-/Count 1 /Kids [ 4 0 R ] /Type /Pages
+/Author (anonymous) /CreationDate (D:20000101000000+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20000101000000+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (unspecified) /Title (untitled) /Trapped /False
 >>
 endobj
 8 0 obj
 <<
-/Length 7401
+/Count 2 /Kids [ 4 0 R 5 0 R ] /Type /Pages
+>>
+endobj
+9 0 obj
+<<
+/Length 7182
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 BT /F2 18 Tf 21.6 TL ET
-BT 1 0 0 1 51.84 745.2 Tm (Xujiang Tang) Tj T* ET
-BT /F1 9.5 Tf 11.4 TL ET
-BT 1 0 0 1 51.84 729.2 Tm (Undergraduate Student in Mathematics and Applied Mathematics, Yangtze University) Tj T* ET
-BT 1 0 0 1 51.84 717.2 Tm (Visiting Student, Johns Hopkins University) Tj T* ET
-BT 1 0 0 1 51.84 705.2 Tm (Email: txj_262538@163.com | GitHub: github.com/TXJ2006 | ORCID: 0009-0008-1127-6420 | Website: txj2006.github.io) Tj T* ET
+BT 1 0 0 1 51.84 747.36 Tm (Xujiang Tang) Tj T* ET
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 51.84 731.36 Tm (Theoretical Mathematics Researcher; Machine Learning Theory Researcher) Tj T* ET
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 51.84 720.66 Tm (Undergraduate Student in Mathematics and Applied Mathematics, Yangtze University) Tj T* ET
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 51.84 709.96 Tm (Visiting Student, Great Bay University) Tj T* ET
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 51.84 699.26 Tm (Email: txj_262538@163.com | Website: txj2006.github.io | GitHub: github.com/TXJ2006 | ORCID:) Tj T* ET
+BT 1 0 0 1 51.84 688.56 Tm (0009-0008-1127-6420) Tj T* ET
 BT /F2 10.5 Tf 12.6 TL ET
-BT 1 0 0 1 51.84 683.2 Tm (RESEARCH INTERESTS) Tj T* ET
-n 51.84 680.2 m 560.16 680.2 l S
+BT 1 0 0 1 51.84 673.86 Tm (RESEARCH INTERESTS) Tj T* ET
+n 51.84 669.86 m 560.16 669.86 l S
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 669.2 Tm (Statistical learning theory, out-of-distribution generalization, learnability, optimization, stochastic) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 658.2 Tm (processes, dynamical systems, operator-theoretic methods, causal inference, quantitative finance, and) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 647.2 Tm (mathematical foundations of machine learning.) Tj T* ET
+BT 1 0 0 1 51.84 659.86 Tm (Theoretical mathematics; finite group theory; algebraic topology; equivariant homotopy theory; fixed) Tj T* ET
+BT 1 0 0 1 51.84 649.16 Tm (point methods; formal proof and Lean; machine learning theory; statistical learning theory;) Tj T* ET
+BT 1 0 0 1 51.84 638.46 Tm (optimization; stochastic processes; dynamical systems; quantitative finance.) Tj T* ET
 BT /F2 10.5 Tf 12.6 TL ET
-BT 1 0 0 1 51.84 632.2 Tm (EDUCATION) Tj T* ET
-n 51.84 629.2 m 560.16 629.2 l S
+BT 1 0 0 1 51.84 623.76 Tm (EDUCATION) Tj T* ET
+n 51.84 619.76 m 560.16 619.76 l S
 BT /F2 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 618.2 Tm (Yangtze University College of Arts and Sciences, Jingzhou, China) Tj T* ET
+BT 1 0 0 1 51.84 609.76 Tm (Yangtze University College of Arts and Sciences, Jingzhou, China) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 607.2 Tm (B.Sc. in Mathematics and Applied Mathematics, expected June 2027) Tj T* ET
+BT 1 0 0 1 51.84 598.76 Tm (B.Sc. in Mathematics and Applied Mathematics, expected June 2027) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 596.2 Tm (- Selected coursework: mathematical analysis, linear algebra, probability and statistics, differential) Tj T* ET
+BT 1 0 0 1 59.84 588.06 Tm (- Selected coursework: mathematical analysis, linear algebra, probability and statistics,) Tj T* ET
+BT 1 0 0 1 59.84 577.56 Tm (  differential equations, computational modeling, optimization theory, numerical computation,) Tj T* ET
+BT 1 0 0 1 59.84 567.06 Tm (  data structures, Python, R, and MATLAB.) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 585.7 Tm (  equations, computational modeling, optimization theory, numerical computation, data structures,) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 575.2 Tm (  Python, R, and MATLAB.) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 564.7 Tm (- Selected marks: Optimization Theory 97/100; Numerical Computation Methods 96/100.) Tj T* ET
+BT 1 0 0 1 59.84 556.56 Tm (- Selected marks: Optimization Theory 97/100; Numerical Computation Methods 96/100.) Tj T* ET
 BT /F2 10.5 Tf 12.6 TL ET
-BT 1 0 0 1 51.84 550.2 Tm (RESEARCH EXPERIENCE) Tj T* ET
-n 51.84 547.2 m 560.16 547.2 l S
+BT 1 0 0 1 51.84 542.06 Tm (VISITING POSITION AND TRAINING) Tj T* ET
+n 51.84 538.06 m 560.16 538.06 l S
 BT /F2 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 536.2 Tm (Visiting Student, Johns Hopkins University, 2025-present) Tj T* ET
+BT 1 0 0 1 51.84 528.06 Tm (Visiting Student, Great Bay University, 2025-present) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 525.2 Tm (- Research on out-of-distribution generalization and learning theory for deep autoregressive models.) Tj T* ET
+BT 1 0 0 1 59.84 517.06 Tm (- Research in theoretical mathematics and machine learning theory.) Tj T* ET
 BT /F2 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 514.7 Tm (Theoretical Machine Learning and Optimization, 2024-present) Tj T* ET
+BT 1 0 0 1 51.84 506.56 Tm (Zhejiang University Lean Formalization Summer School, 2026) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 503.7 Tm (- Work on learnability, generalization guarantees, and optimization-theoretic aspects of learning) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 493.2 Tm (  algorithms.) Tj T* ET
-BT /F2 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 482.7 Tm (Koopman Operator Methods and Dynamical Systems, 2024-present) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 471.7 Tm (- Research on operator-theoretic approaches to long-sequence modeling and chaotic dynamics.) Tj T* ET
-BT /F2 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 461.2 Tm (Rough Volatility and Quantitative Finance, 2023-present) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 450.2 Tm (- Research on stochastic-process models, MCMC-based simulation, and robust financial decision) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 439.7 Tm (  problems.) Tj T* ET
-BT /F2 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 429.2 Tm (Spatial Transcriptomics and Biomedical Data Science, 2024-2025) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 418.2 Tm (- Work on single-cell and spatial data analysis from geometric and statistical perspectives.) Tj T* ET
+BT 1 0 0 1 59.84 495.56 Tm (- Formal proof, Lean, Mathlib, and computer-assisted theorem proving.) Tj T* ET
 BT /F2 10.5 Tf 12.6 TL ET
-BT 1 0 0 1 51.84 403.7 Tm (PUBLICATIONS) Tj T* ET
-n 51.84 400.7 m 560.16 400.7 l S
+BT 1 0 0 1 51.84 481.06 Tm (RESEARCH EXPERIENCE) Tj T* ET
+n 51.84 477.06 m 560.16 477.06 l S
 BT /F2 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 389.7 Tm (Published and accepted papers) Tj T* ET
+BT 1 0 0 1 51.84 467.06 Tm (Finite Group Theory and Quillen's p-Subgroup Conjecture, 2025-present) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 378.7 Tm (- Q. Li and X. Tang. HKGEduRec: A Knowledge Graph-Enhanced Dynamic Hybrid Framework for Educational) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 368.2 Tm (  Recommendation with Cold-Start Mitigation. IEEE ICMEIM 2025. EI-indexed.) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 357.7 Tm (- X. Tang and Q. Li. Logical Gene Encoding: A Bio-Inspired Approach for Energy-Efficient Automated) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 347.2 Tm (  Reasoning. IEIT 2025. EI-indexed. DOI: 10.2991/978-94-6463-803-5_81.) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 336.7 Tm (- Q. Li and X. Tang. Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic) Tj T* ET
-BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 326.2 Tm (  Approach and Explicit Solutions. AIMS Mathematics. Accepted, 2025.) Tj T* ET
+BT 1 0 0 1 59.84 456.06 Tm (- Work on centralizer energy, FRUL-WOS spheres, and subgroup-complex methods related to) Tj T* ET
+BT 1 0 0 1 59.84 445.56 Tm (  Quillen's p-subgroup conjecture.) Tj T* ET
 BT /F2 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 315.7 Tm (Manuscripts under review) Tj T* ET
+BT 1 0 0 1 51.84 435.06 Tm (Algebraic Topology and Equivariant Homotopy Theory, 2025-present) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 304.7 Tm (- X. Tang and C. Fan. Out-of-Distribution Generalization Error Bounds for Successful Prediction of) Tj T* ET
+BT 1 0 0 1 59.84 424.06 Tm (- Work on geometric fixed point tomography and spoke Bokstedt periodicity.) Tj T* ET
+BT /F2 9 Tf 10.8 TL ET
+BT 1 0 0 1 51.84 413.56 Tm (Formal Proof and Lean, 2026-present) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 294.2 Tm (  Deep Autoregressive Algorithms. Submitted to ICML 2026.) Tj T* ET
+BT 1 0 0 1 59.84 402.56 Tm (- Study of Lean formalization, proof engineering, and the long-term formalization of advanced) Tj T* ET
+BT 1 0 0 1 59.84 392.06 Tm (  mathematical arguments.) Tj T* ET
+BT /F2 9 Tf 10.8 TL ET
+BT 1 0 0 1 51.84 381.56 Tm (Theoretical Machine Learning and Optimization, 2024-present) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 283.7 Tm (- X. Tang. Quartic Difficulty: Assessing the Learnability of Unsupervised Learning Algorithms.) Tj T* ET
+BT 1 0 0 1 59.84 370.56 Tm (- Work on learnability, generalization guarantees, out-of-distribution prediction, and) Tj T* ET
+BT 1 0 0 1 59.84 360.06 Tm (  optimization-theoretic aspects of learning algorithms.) Tj T* ET
+BT /F2 9 Tf 10.8 TL ET
+BT 1 0 0 1 51.84 349.56 Tm (Stochastic Processes, Dynamical Systems, and Quantitative Finance, 2023-present) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 273.2 Tm (  Submitted to COLT.) Tj T* ET
+BT 1 0 0 1 59.84 338.56 Tm (- Research on stochastic-process models, rough volatility, MCMC-based simulation,) Tj T* ET
+BT 1 0 0 1 59.84 328.06 Tm (  Koopman/operator-theoretic dynamics, and robust financial decision problems.) Tj T* ET
 BT /F2 10.5 Tf 12.6 TL ET
-BT 1 0 0 1 51.84 258.7 Tm (HONORS AND ACTIVITIES) Tj T* ET
-n 51.84 255.7 m 560.16 255.7 l S
+BT 1 0 0 1 51.84 313.56 Tm (PUBLICATIONS AND MANUSCRIPTS) Tj T* ET
+n 51.84 309.56 m 560.16 309.56 l S
+BT /F2 9 Tf 10.8 TL ET
+BT 1 0 0 1 51.84 299.56 Tm (Submitted manuscripts) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 244.7 Tm (- Kaggle Silver Medal, Jigsaw Toxic Comment Classification Challenge.) Tj T* ET
+BT 1 0 0 1 59.84 288.56 Tm (- X. Tang. Centralizer Energy, FRUL-WOS Spheres, and Quillen's p-Subgroup Conjecture.) Tj T* ET
+BT 1 0 0 1 59.84 278.06 Tm (  Submitted to Annals of Mathematics.) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 234.2 Tm (- Regional Gold Medal, WorldQuant International Quant Championship.) Tj T* ET
+BT 1 0 0 1 59.84 267.56 Tm (- X. Tang. Geometric Fixed Point Tomography and Spoke Bokstedt Periodicity. Submitted to) Tj T* ET
+BT 1 0 0 1 59.84 257.06 Tm (  Algebraic & Geometric Topology.) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 223.7 Tm (- Third Prize, UCAS Graduate AI Forum.) Tj T* ET
+BT 1 0 0 1 59.84 246.56 Tm (- X. Tang and C. Fan. Out-of-Distribution Generalization Error Bounds for Successful) Tj T* ET
+BT 1 0 0 1 59.84 236.06 Tm (  Prediction of Deep Autoregressive Algorithms. Submitted to NeurIPS 2026.) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 213.2 Tm (- Multiple national second prizes in mathematical modeling competitions.) Tj T* ET
+BT 1 0 0 1 59.84 225.56 Tm (- X. Tang. Quartic Difficulty: Assessing the Learnability of Unsupervised Learning Algorithms.) Tj T* ET
+BT 1 0 0 1 59.84 215.06 Tm (  Submitted to COLT.) Tj T* ET
+BT /F2 9 Tf 10.8 TL ET
+BT 1 0 0 1 51.84 204.56 Tm (Published and accepted papers) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 202.7 Tm (- Reviewer, ICLR 2026 Workshop.) Tj T* ET
+BT 1 0 0 1 59.84 193.56 Tm (- Q. Li and X. Tang. HKGEduRec: A Knowledge Graph-Enhanced Dynamic Hybrid Framework for) Tj T* ET
+BT 1 0 0 1 59.84 183.06 Tm (  Educational Recommendation with Cold-Start Mitigation. IEEE ICMEIM 2025. EI-indexed.) Tj T* ET
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 59.84 172.56 Tm (- X. Tang and Q. Li. Logical Gene Encoding: A Bio-Inspired Approach for Energy-Efficient) Tj T* ET
+BT 1 0 0 1 59.84 162.06 Tm (  Automated Reasoning. IEIT 2025. EI-indexed. DOI: 10.2991/978-94-6463-803-5_81.) Tj T* ET
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 59.84 151.56 Tm (- Q. Li and X. Tang. Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-) Tj T* ET
+BT 1 0 0 1 59.84 141.06 Tm (  Theoretic Approach and Explicit Solutions. AIMS Mathematics. Accepted, 2025.) Tj T* ET
 BT /F2 10.5 Tf 12.6 TL ET
-BT 1 0 0 1 51.84 188.2 Tm (PROFESSIONAL EXPERIENCE) Tj T* ET
-n 51.84 185.2 m 560.16 185.2 l S
-BT /F2 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 174.2 Tm (Peking University - Open-Source LLM Group, Jun.-Aug. 2024) Tj T* ET
+BT 1 0 0 1 51.84 126.56 Tm (HONORS AND ACTIVITIES) Tj T* ET
+n 51.84 122.56 m 560.16 122.56 l S
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 163.2 Tm (- Contributed to LLM deployment and retrieval-augmented generation systems.) Tj T* ET
-BT /F2 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 152.7 Tm (Deloitte, Jul.-Sep. 2024) Tj T* ET
+BT 1 0 0 1 59.84 112.56 Tm (- Kaggle Silver Medal, Jigsaw Toxic Comment Classification Challenge.) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 141.7 Tm (- Professional experience in consulting workflows, teamwork, and communication.) Tj T* ET
-BT /F2 9 Tf 10.8 TL ET
-BT 1 0 0 1 51.84 131.2 Tm (Guolian Securities, Jul.-Sep. 2024) Tj T* ET
+BT 1 0 0 1 59.84 102.06 Tm (- Regional Gold Medal, WorldQuant International Quant Championship.) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 120.2 Tm (- Applied statistical methods to securities research and quantitative workflows.) Tj T* ET
+BT 1 0 0 1 59.84 91.56 Tm (- Third Prize, UCAS Graduate AI Forum.) Tj T* ET
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 59.84 81.06 Tm (- Multiple national second prizes in mathematical modeling competitions.) Tj T* ET
+ 
+endstream
+endobj
+10 0 obj
+<<
+/Length 1723
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 59.84 745.2 Tm (- Reviewer, ICLR 2026 Workshop.) Tj T* ET
 BT /F2 10.5 Tf 12.6 TL ET
-BT 1 0 0 1 51.84 105.7 Tm (SKILLS) Tj T* ET
-n 51.84 102.7 m 560.16 102.7 l S
+BT 1 0 0 1 51.84 730.7 Tm (PROFESSIONAL EXPERIENCE) Tj T* ET
+n 51.84 726.7 m 560.16 726.7 l S
+BT /F2 9 Tf 10.8 TL ET
+BT 1 0 0 1 51.84 716.7 Tm (Peking University - Open-Source LLM Group, Jun.-Aug. 2024) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 91.7 Tm (- Mathematics: optimization, numerical analysis, stochastic processes, differential equations, causal) Tj T* ET
+BT 1 0 0 1 59.84 705.7 Tm (- Contributed to LLM deployment and retrieval-augmented generation systems.) Tj T* ET
+BT /F2 9 Tf 10.8 TL ET
+BT 1 0 0 1 51.84 695.2 Tm (Deloitte, Jul.-Sep. 2024) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 81.2 Tm (  inference, statistical modeling.) Tj T* ET
+BT 1 0 0 1 59.84 684.2 Tm (- Professional experience in consulting workflows, teamwork, and communication.) Tj T* ET
+BT /F2 9 Tf 10.8 TL ET
+BT 1 0 0 1 51.84 673.7 Tm (Guolian Securities, Jul.-Sep. 2024) Tj T* ET
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 70.7 Tm (- Programming and tools: Python, PyTorch, NumPy, Pandas, MATLAB, R, C++, LaTeX, Git/GitHub, Linux.) Tj T* ET
+BT 1 0 0 1 59.84 662.7 Tm (- Applied statistical methods to securities research and quantitative workflows.) Tj T* ET
+BT /F2 10.5 Tf 12.6 TL ET
+BT 1 0 0 1 51.84 648.2 Tm (SKILLS) Tj T* ET
+n 51.84 644.2 m 560.16 644.2 l S
 BT /F1 9 Tf 10.8 TL ET
-BT 1 0 0 1 59.84 60.2 Tm (- Languages: Mandarin Chinese, English.) Tj T* ET
+BT 1 0 0 1 59.84 634.2 Tm (- Mathematics: finite group theory, algebraic topology, homotopy theory, optimization,) Tj T* ET
+BT 1 0 0 1 59.84 623.7 Tm (  numerical analysis, stochastic processes, differential equations, causal inference,) Tj T* ET
+BT 1 0 0 1 59.84 613.2 Tm (  statistical modeling.) Tj T* ET
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 59.84 602.7 Tm (- Formal proof and programming: Lean, Mathlib, Python, PyTorch, NumPy, Pandas, MATLAB, R, C++,) Tj T* ET
+BT 1 0 0 1 59.84 592.2 Tm (  LaTeX, Git/GitHub, Linux.) Tj T* ET
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 59.84 581.7 Tm (- Languages: Mandarin Chinese, English.) Tj T* ET
  
 endstream
 endobj
 xref
-0 9
+0 11
 0000000000 65535 f 
 0000000061 00000 n 
 0000000102 00000 n 
 0000000209 00000 n 
 0000000321 00000 n 
 0000000514 00000 n 
-0000000582 00000 n 
-0000000843 00000 n 
-0000000902 00000 n 
+0000000708 00000 n 
+0000000776 00000 n 
+0000001037 00000 n 
+0000001102 00000 n 
+0000008335 00000 n 
 trailer
 <<
 /ID 
-[<d9a57f25eee4daa153fdbc01705608fe><d9a57f25eee4daa153fdbc01705608fe>]
+[<1c178198fbdfa51b25995d89d4102043><1c178198fbdfa51b25995d89d4102043>]
 % ReportLab generated PDF document -- digest (opensource)
 
-/Info 6 0 R
-/Root 5 0 R
-/Size 9
+/Info 7 0 R
+/Root 6 0 R
+/Size 11
 >>
 startxref
-8354
+10110
 %%EOF
