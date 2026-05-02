@@ -27,7 +27,7 @@ theme = 'PaperMod'
 I am a **theoretical mathematics researcher** and **machine learning theory researcher**, with my work centered on mathematics. I am currently an undergraduate student in Mathematics and Applied Mathematics at **Yangtze University** and a visiting student at **Great Bay University**.\n\n
 My mathematical interests include algebraic topology, finite group theory, equivariant homotopy theory, the Langlands program, formal proof, optimization, stochastic processes, and foundational machine learning theory. My current submitted manuscripts include work on **Quillen's p-subgroup conjecture** and **geometric fixed point tomography / Bökstedt periodicity**.\n\n
 **Research interests:** algebraic topology · finite group theory · equivariant homotopy theory · Langlands program · formal proof · machine learning theory · optimization · stochastic processes\n\n
-[Research](/research/) · [Interests](/interests/) · [Publications](/publications/) · [Curriculum Vitae](/cv/) · [Email](mailto:txj_262538@163.com)
+[Research](/research/) · [Notes](/notes/) · [Interests](/interests/) · [Publications](/publications/) · [Curriculum Vitae](/cv/) · [Email](mailto:txj_262538@163.com)
 """
 
     [[params.socialIcons]]
@@ -52,24 +52,29 @@ My mathematical interests include algebraic topology, finite group theory, equiv
     weight = 1
 
 [[menu.main]]
+    name = "Notes"
+    url = "/notes/"
+    weight = 2
+
+[[menu.main]]
     name = "Research"
     url = "/research/"
-    weight = 2
+    weight = 3
 
 [[menu.main]]
     name = "Interests"
     url = "/interests/"
-    weight = 3
+    weight = 4
 
 [[menu.main]]
     name = "Publications"
     url = "/publications/"
-    weight = 4
+    weight = 5
 
 [[menu.main]]
     name = "CV"
     url = "/cv/"
-    weight = 5
+    weight = 6
 
 [markup]
     [markup.goldmark]
