@@ -64,6 +64,9 @@ Research in theoretical mathematics and machine learning theory.
 **Zhejiang University Lean Formalization Summer School** · 2026  
 Formal proof, Lean, Mathlib, and computer-assisted theorem proving.
 
+**Short Winter Training with Prof. Mark Vogelsberger** · Grade: A  
+Completed a short winter training program with Prof. Mark Vogelsberger and received an A grade.
+
 ---
 
 ## Research Experience
@@ -104,6 +107,13 @@ Research on stochastic-process models, rough volatility, MCMC-based simulation, 
 2. **X. Tang** and Q. Li. "Logical Gene Encoding: A Bio-Inspired Approach for Energy-Efficient Automated Reasoning." *5th International Conference on Internet, Education and Information Technology (IEIT 2025)*, Hangzhou, China, 2025. EI-indexed. DOI: [10.2991/978-94-6463-803-5_81](https://doi.org/10.2991/978-94-6463-803-5_81)
 
 3. Q. Li and **X. Tang**. "Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions." *AIMS Mathematics*. Accepted, 2025.
+
+---
+
+## Software Copyrights
+
+- Software copyright in financial systems.
+- Software copyright in unmanned swarm systems.
 
 ---
 
