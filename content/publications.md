@@ -2,7 +2,7 @@
 title: "Publications"
 layout: "single"
 url: "/publications/"
-summary: "Publications and manuscripts"
+summary: "Publications, manuscripts, and mathematical notes"
 draft: false
 ShowToc: false
 hideMeta: true
@@ -27,6 +27,12 @@ hideMeta: true
 2. **X. Tang** and Q. Li. "Logical Gene Encoding: A Bio-Inspired Approach for Energy-Efficient Automated Reasoning." *5th International Conference on Internet, Education and Information Technology (IEIT 2025)*, Hangzhou, China, 2025. EI-indexed. DOI: [10.2991/978-94-6463-803-5_81](https://doi.org/10.2991/978-94-6463-803-5_81)
 
 3. Q. Li and **X. Tang**. "Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions." *AIMS Mathematics*. Accepted, 2025.
+
+## Mathematical Reading Notes
+
+I maintain a structured set of reading notes on foundational and advanced mathematics, including mathematical analysis, algebra, topology, algebraic topology, differential geometry, PDE, commutative algebra, algebraic geometry, Morse theory, characteristic classes, variational methods, and Ricci flow.
+
+[View Mathematical Reading Notes](/notes/)
 
 ## Preprints and Working Papers
 
