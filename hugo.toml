@@ -16,18 +16,18 @@ theme = 'PaperMod'
     ShowWordCount = false
     comments = false
     author = "Xujiang Tang"
-    description = "Xujiang Tang (唐旭江) — theoretical mathematics and machine learning theory, with work centered on algebraic topology, finite group theory, learning theory, optimization, stochastic processes, and formal proof."
+    description = "Xujiang Tang (唐煦江) — theoretical mathematics and machine learning theory, with work centered on algebraic topology, finite group theory, the Langlands program, formal proof, and foundational machine learning theory."
 
     [params.label]
         text = "Xujiang Tang"
 
     [params.homeInfoParams]
-        Title = "Xujiang Tang (唐旭江)"
+        Title = "Xujiang Tang (唐煦江)"
         Content = """
 I am a **theoretical mathematics researcher** and **machine learning theory researcher**, with my work centered on mathematics. I am currently an undergraduate student in Mathematics and Applied Mathematics at **Yangtze University** and a visiting student at **Great Bay University**.\n\n
-My mathematical interests include finite group theory, algebraic topology, equivariant homotopy theory, formal proof, optimization, stochastic processes, and the mathematical foundations of machine learning. My current submitted manuscripts include work on **Quillen's p-subgroup conjecture** and **geometric fixed point tomography / Bökstedt periodicity**.\n\n
-**Research interests:** theoretical mathematics · algebraic topology · finite group theory · formal proof · machine learning theory · learning theory · optimization · stochastic processes\n\n
-[Research](/research/) · [Publications](/publications/) · [Curriculum Vitae](/cv/) · [Email](mailto:txj_262538@163.com)
+My mathematical interests include algebraic topology, finite group theory, equivariant homotopy theory, the Langlands program, formal proof, optimization, stochastic processes, and foundational machine learning theory. My current submitted manuscripts include work on **Quillen's p-subgroup conjecture** and **geometric fixed point tomography / Bökstedt periodicity**.\n\n
+**Research interests:** algebraic topology · finite group theory · equivariant homotopy theory · Langlands program · formal proof · machine learning theory · optimization · stochastic processes\n\n
+[Research](/research/) · [Interests](/interests/) · [Publications](/publications/) · [Curriculum Vitae](/cv/) · [Email](mailto:txj_262538@163.com)
 """
 
     [[params.socialIcons]]
@@ -57,14 +57,19 @@ My mathematical interests include finite group theory, algebraic topology, equiv
     weight = 2
 
 [[menu.main]]
+    name = "Interests"
+    url = "/interests/"
+    weight = 3
+
+[[menu.main]]
     name = "Publications"
     url = "/publications/"
-    weight = 3
+    weight = 4
 
 [[menu.main]]
     name = "CV"
     url = "/cv/"
-    weight = 4
+    weight = 5
 
 [markup]
     [markup.goldmark]
