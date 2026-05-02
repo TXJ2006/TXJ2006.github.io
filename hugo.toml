@@ -1,34 +1,33 @@
 baseURL = 'https://TXJ2006.github.io/'
-languageCode = 'zh-cn'
-title = 'XuJiang'
+languageCode = 'en-us'
+title = 'Xujiang Tang'
 theme = 'PaperMod'
 
 [params]
     math = true
     defaultTheme = "light"
     ShowToc = true
-    TocOpen = true
+    TocOpen = false
     ShowBreadCrumbs = true
     ShowPostNavLinks = false
     ShowCodeCopyButtons = true
     ShowReadingTime = true
-    ShowShareButtons = true
-    ShowWordCount = true
-    comments = true
-    author = "XuJiang"
-    description = "Xujiang Tang — Mathematics × Machine Learning. Research on learning theory, optimization, and spectral methods. Author of The Mathematical Phenomenology of Machine Intelligence."
+    ShowShareButtons = false
+    ShowWordCount = false
+    comments = false
+    author = "Xujiang Tang"
+    description = "Xujiang Tang (唐旭江) — undergraduate student in mathematics, working on statistical learning theory, optimization, stochastic processes, and mathematical machine learning."
 
     [params.label]
-        text = "XuJiang"
+        text = "Xujiang Tang"
 
     [params.homeInfoParams]
-        Title = "Welcome to XuJiang's Academic Hub 👋"
+        Title = "Xujiang Tang (唐旭江)"
         Content = """
-I am **Xujiang Tang (唐旭江)**, a Visiting Student at **Johns Hopkins University** and undergraduate in Mathematics at Yangtze University, researching at the intersection of **mathematical theory** and **machine learning**. \n\n
-📖 Currently writing [*The Mathematical Phenomenology of Machine Intelligence*](/book/) — a 200-chapter open treatise. \n
-📄 3 published papers (EI/SCI indexed) · 2 submitted to top venues (ICML, COLT). \n
-🤝 **[Open for collaboration →](/collaborate/)** \n
-💬 **[Join the community →](/community/)**
+I am an undergraduate student in **Mathematics and Applied Mathematics** at **Yangtze University**, and a visiting student at **Johns Hopkins University**. My current research interests lie in **statistical learning theory**, **optimization**, **stochastic processes**, and **mathematical foundations of machine learning**.\n\n
+My recent work studies out-of-distribution generalization, learnability, Koopman/operator-theoretic methods for dynamical systems, and stochastic models in quantitative finance.\n\n
+**Research interests:** learning theory · optimization · stochastic processes · dynamical systems · causal inference · quantitative finance\n\n
+[About](/about/) · [Research](/research/) · [Publications](/publications/) · [CV](/cv/)
 """
 
     [[params.socialIcons]]
@@ -53,8 +52,8 @@ I am **Xujiang Tang (唐旭江)**, a Visiting Student at **Johns Hopkins Univers
     weight = 1
 
 [[menu.main]]
-    name = "Blog"
-    url = "/blog/"
+    name = "Research"
+    url = "/research/"
     weight = 2
 
 [[menu.main]]
@@ -63,19 +62,14 @@ I am **Xujiang Tang (唐旭江)**, a Visiting Student at **Johns Hopkins Univers
     weight = 3
 
 [[menu.main]]
-    name = "Book"
-    url = "/book/"
+    name = "CV"
+    url = "/cv/"
     weight = 4
 
 [[menu.main]]
-    name = "Collaborate"
-    url = "/collaborate/"
+    name = "Blog"
+    url = "/blog/"
     weight = 5
-
-[[menu.main]]
-    name = "Community"
-    url = "/community/"
-    weight = 6
 
 [markup]
     [markup.goldmark]
@@ -85,8 +79,8 @@ I am **Xujiang Tang (唐旭江)**, a Visiting Student at **Johns Hopkins Univers
             [markup.goldmark.extensions.passthrough]
                 enable = true
                 [markup.goldmark.extensions.passthrough.delimiters]
-                    block = [['$$', '$$'], ['\[', '\]']]
-                    inline = [['$', '$'], ['\(', '\)']]
+                    block = [['$$', '$$'], ['\\[', '\\]']]
+                    inline = [['$', '$'], ['\\(', '\\)']]
 
 [minify]
   [minify.tdewolff]
