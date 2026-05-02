@@ -16,7 +16,7 @@ theme = 'PaperMod'
     ShowWordCount = false
     comments = false
     author = "Xujiang Tang"
-    description = "Xujiang Tang (唐旭江) — mathematics undergraduate and visiting student at Johns Hopkins University, working on learning theory, optimization, stochastic processes, and mathematical machine learning."
+    description = "Xujiang Tang (唐旭江) — theoretical mathematics and machine learning theory, with work centered on algebraic topology, finite group theory, learning theory, optimization, stochastic processes, and formal proof."
 
     [params.label]
         text = "Xujiang Tang"
@@ -24,9 +24,9 @@ theme = 'PaperMod'
     [params.homeInfoParams]
         Title = "Xujiang Tang (唐旭江)"
         Content = """
-I study mathematical problems in **learning theory**, **optimization**, **stochastic processes**, and the **mathematical foundations of machine learning**. I am currently an undergraduate student in Mathematics and Applied Mathematics at **Yangtze University** and a visiting student at **Johns Hopkins University**.\n\n
-My present work focuses on out-of-distribution generalization, learnability, operator-theoretic methods for dynamical systems, and stochastic models motivated by quantitative finance.\n\n
-**Research interests:** statistical learning theory · generalization · optimization · stochastic processes · dynamical systems · causal inference · quantitative finance\n\n
+I am a **theoretical mathematics researcher** and **machine learning theory researcher**, with my work centered on mathematics. I am currently an undergraduate student in Mathematics and Applied Mathematics at **Yangtze University** and a visiting student at **Great Bay University**.\n\n
+My mathematical interests include finite group theory, algebraic topology, equivariant homotopy theory, formal proof, optimization, stochastic processes, and the mathematical foundations of machine learning. My current submitted manuscripts include work on **Quillen's p-subgroup conjecture** and **geometric fixed point tomography / Bökstedt periodicity**.\n\n
+**Research interests:** theoretical mathematics · algebraic topology · finite group theory · formal proof · machine learning theory · learning theory · optimization · stochastic processes\n\n
 [Research](/research/) · [Publications](/publications/) · [Curriculum Vitae](/cv/) · [Email](mailto:txj_262538@163.com)
 """
 
