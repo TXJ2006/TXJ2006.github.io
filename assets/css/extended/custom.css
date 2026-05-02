@@ -1,503 +1,234 @@
-/* ===== Google Fonts: EB Garamond (academic serif) ===== */
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+/* Minimal academic homepage style */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-    --academic-font: 'EB Garamond', 'Times New Roman', Georgia, serif;
+    --academic-serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+    --academic-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --main-width: 820px;
+    --nav-width: 920px;
+    --article-font-size: 1.04rem;
+    --theme: #fbfaf7;
+    --entry: #fbfaf7;
+    --primary: #111111;
+    --secondary: #565656;
+    --tertiary: #777777;
+    --content: #191919;
+    --border: #d8d2c4;
+    --code-bg: #f2eee7;
 }
 
-/* Apply to all post content globally */
-.post-content,
+body {
+    background: #fbfaf7 !important;
+    color: #191919;
+    font-family: var(--academic-serif);
+}
+
+.nav,
+.footer,
+.post-meta,
+.breadcrumbs,
+.pagination,
+.logo,
+.menu,
+.social-icons {
+    font-family: var(--academic-sans);
+}
+
+.nav {
+    max-width: var(--nav-width);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo a {
+    font-weight: 650;
+    letter-spacing: -0.01em;
+}
+
+.menu a {
+    font-size: 0.92rem;
+    color: var(--secondary);
+}
+
+.menu a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.main {
+    max-width: var(--main-width);
+}
+
+.first-entry,
+.post-single,
+.post-entry {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+.first-entry {
+    min-height: unset;
+    margin: 1.5rem 0 2.25rem;
+}
+
+.first-entry .entry-header h1,
+.post-title {
+    font-family: var(--academic-serif);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+}
+
+.first-entry .entry-content {
+    margin-top: 1.2rem;
+    color: var(--content);
+    font-family: var(--academic-serif);
+    font-size: 1.15rem;
+    line-height: 1.65;
+    max-width: 760px;
+}
+
+.social-icons a svg {
+    height: 20px;
+    width: 20px;
+}
+
+.post-content {
+    font-family: var(--academic-serif);
+    font-size: var(--article-font-size);
+    line-height: 1.72;
+}
+
 .post-content p,
 .post-content li,
-.post-content blockquote,
 .post-content td,
 .post-content th {
-    font-family: var(--academic-font) !important;
-    font-size: 13pt !important;
-    line-height: 1.78 !important;
+    font-family: var(--academic-serif);
 }
 
 .post-content h1,
 .post-content h2,
 .post-content h3,
-.post-content h4,
-.post-content h5 {
-    font-family: var(--academic-font) !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.01em;
-}
-
-/* Also apply to definition/proof/ml boxes */
-.def-box, .prop-box, .proof-box, .ml-box, .scholium-box {
-    font-family: var(--academic-font) !important;
-    font-size: 13pt !important;
-    line-height: 1.78 !important;
-}
-
-/* ===== 左侧固定 TOC 侧边栏（复刻截图样式） ===== */
-@media (min-width: 1280px) {
-    .post-single {
-        position: relative;
-    }
-
-    .toc {
-        position: fixed;
-        top: 120px;
-        left: max(calc((100vw - 800px) / 2 - 320px), 20px);
-        width: 260px;
-        max-height: calc(100vh - 160px);
-        overflow-y: auto;
-        border: none;
-        background: none;
-        font-size: 0.85rem;
-    }
-
-    .toc details {
-        background: none;
-        border: none;
-        box-shadow: none;
-    }
-
-    .toc details summary {
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 0.9rem;
-        color: var(--primary);
-        padding: 0;
-        margin-bottom: 8px;
-    }
-
-    .toc .inner {
-        margin: 0;
-        padding: 0;
-    }
-
-    .toc ul {
-        list-style: none;
-        padding-left: 12px;
-        margin: 0;
-        line-height: 1.8;
-    }
-
-    .toc ul li a {
-        color: var(--secondary);
-        font-size: 0.82rem;
-        text-decoration: none;
-        transition: color 0.2s;
-    }
-
-    .toc ul li a:hover {
-        color: var(--primary);
-    }
-}
-
-/* ===== "Enjoy Reading This Article?" 提示文字 ===== */
-@media (min-width: 1280px) {
-    .toc::after {
-        content: "Enjoy Reading This Article?";
-        display: block;
-        margin-top: 20px;
-        padding-top: 12px;
-        border-top: 1px solid var(--border);
-        font-size: 0.8rem;
-        color: var(--secondary);
-        font-style: italic;
-    }
-}
-
-/* ===== 标签样式：粉紫色圆角 ===== */
-.post-tags li a {
-    background: linear-gradient(135deg, #e8b4f8, #c4a5f5);
-    color: #fff !important;
-    border: none;
-    border-radius: 20px;
-    padding: 4px 14px;
-    font-size: 0.78rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: opacity 0.2s;
-}
-
-.post-tags li a:hover {
-    opacity: 0.85;
-}
-
-.post-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 0;
-    list-style: none;
-}
-
-/* ===== 文章元信息（日期）样式 ===== */
-.post-meta {
-    color: var(--secondary);
-    font-size: 0.85rem;
-    margin-top: 4px;
-}
-
-/* ===== 文章标题 ===== */
-.post-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 4px;
-}
-
-/* ===== 正文排版 ===== */
-.post-content {
-    font-size: 1rem;
-    line-height: 1.8;
+.post-content h4 {
+    font-family: var(--academic-serif);
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .post-content h1 {
-    font-size: 1.6rem;
-    margin-top: 2em;
-    margin-bottom: 0.5em;
-    font-weight: 700;
+    font-size: 2.05rem;
+    margin-top: 0.4em;
 }
 
 .post-content h2 {
     font-size: 1.35rem;
-    margin-top: 1.8em;
-    margin-bottom: 0.5em;
-    font-weight: 600;
+    margin-top: 1.9em;
+    padding-bottom: 0.22rem;
+    border-bottom: 1px solid var(--border);
 }
 
 .post-content h3 {
-    font-size: 1.15rem;
-    margin-top: 1.5em;
-    margin-bottom: 0.4em;
+    font-size: 1.12rem;
+    margin-top: 1.35em;
+}
+
+.post-content a,
+.entry-content a {
+    color: #174a7c;
+    text-decoration: underline;
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 3px;
+}
+
+.post-content ul,
+.post-content ol {
+    padding-left: 1.25rem;
+}
+
+.post-content li {
+    margin: 0.22rem 0;
+}
+
+.post-content blockquote {
+    border-left: 2px solid var(--border);
+    color: var(--secondary);
+    font-style: normal;
+    padding-left: 1rem;
+}
+
+.post-content table {
+    font-family: var(--academic-serif);
+    font-size: 0.98rem;
+    border-collapse: collapse;
+}
+
+.post-content th,
+.post-content td {
+    border: 1px solid var(--border);
+    padding: 0.45rem 0.6rem;
+}
+
+.toc {
+    border: 1px solid var(--border);
+    background: #f8f5ef;
+    font-family: var(--academic-sans);
+    font-size: 0.88rem;
+}
+
+.toc details summary {
     font-weight: 600;
 }
 
-/* ===== 数学公式间距 ===== */
-.katex-display {
-    margin: 1.2em 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
-/* ===== 引用块 ===== */
-.post-content blockquote {
-    border-left: 3px solid var(--primary);
-    padding-left: 16px;
-    margin: 1.5em 0;
+.post-meta,
+.breadcrumbs,
+.footer {
     color: var(--secondary);
-    font-style: italic;
 }
 
-/* ===== 顶部导航栏微调 ===== */
-.nav {
-    max-width: 900px;
-}
-
-.post-single {
-    max-width: 800px;
-}
-
-/* ===== 隐藏 PaperMod 自带的 prev/next 卡片（使用章节末尾自定义导航） ===== */
-.post-nav-links {
+.post-tags,
+.post-nav-links,
+.share-buttons {
     display: none !important;
 }
 
-/* ==============================================
-   🍎 Apple-Style Dynamic Glassmorphism Background
-   ============================================== */
-
-/* Animated gradient orbs behind the page */
-body::before {
-    content: '';
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    z-index: -2;
-    background:
-        radial-gradient(ellipse 600px 600px at 20% 30%, rgba(120, 119, 198, 0.25), transparent),
-        radial-gradient(ellipse 500px 500px at 80% 20%, rgba(255, 166, 201, 0.20), transparent),
-        radial-gradient(ellipse 700px 700px at 60% 70%, rgba(100, 204, 240, 0.18), transparent),
-        radial-gradient(ellipse 400px 400px at 10% 80%, rgba(167, 139, 250, 0.15), transparent);
-    animation: aurora-drift 20s ease-in-out infinite alternate;
-    pointer-events: none;
+.cv-header {
+    margin-bottom: 1.4rem;
 }
 
-@keyframes aurora-drift {
-    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-    25% { transform: translate(30px, -40px) rotate(3deg) scale(1.03); }
-    50% { transform: translate(-20px, 20px) rotate(-2deg) scale(0.98); }
-    75% { transform: translate(40px, 30px) rotate(4deg) scale(1.05); }
-    100% { transform: translate(-10px, -20px) rotate(-1deg) scale(1); }
+.cv-header h1 {
+    margin-bottom: 0.1rem;
 }
 
-/* Frosted glass layer on body */
-body {
-    background: rgba(255, 255, 255, 0.55) !important;
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
-    backdrop-filter: blur(40px) saturate(180%);
-    min-height: 100vh;
-}
-
-/* Dark mode glass */
-body.dark::before {
-    background:
-        radial-gradient(ellipse 600px 600px at 25% 25%, rgba(88, 80, 180, 0.30), transparent),
-        radial-gradient(ellipse 500px 500px at 75% 15%, rgba(200, 100, 150, 0.20), transparent),
-        radial-gradient(ellipse 700px 700px at 55% 65%, rgba(50, 140, 200, 0.22), transparent),
-        radial-gradient(ellipse 400px 400px at 15% 75%, rgba(120, 100, 220, 0.18), transparent);
-}
-
-body.dark {
-    background: rgba(30, 30, 30, 0.65) !important;
-}
-
-/* Glass header / nav */
-.nav {
-    background: rgba(255, 255, 255, 0.50) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    backdrop-filter: blur(24px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-    transition: background 0.3s ease;
-}
-
-body.dark .nav {
-    background: rgba(30, 30, 30, 0.50) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-/* Glass content area */
-.main {
-    background: transparent !important;
-}
-
-.post-single,
-.post-entry {
-    background: rgba(255, 255, 255, 0.45) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 16px;
-    padding: 2em;
-    margin-bottom: 1.5em;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-    transition: all 0.3s ease;
-}
-
-body.dark .post-single,
-body.dark .post-entry {
-    background: rgba(40, 40, 40, 0.50) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-}
-
-.post-entry:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10);
-    transform: translateY(-2px);
-}
-
-/* Glass footer */
-.footer {
-    background: rgba(255, 255, 255, 0.35) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
-    backdrop-filter: blur(16px) saturate(150%);
-}
-
-body.dark .footer {
-    background: rgba(30, 30, 30, 0.40) !important;
-}
-
-/* ==============================================
-   📚 Book Grid Cards (Glassmorphism Style)
-   ============================================== */
-
-.book-hero {
-    text-align: center;
-    margin: 2em 0 1em;
-}
-
-.book-hero h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.3em;
-}
-
-.book-hero-sub {
-    font-size: 1.1rem;
+.cv-meta {
+    font-family: var(--academic-sans);
+    font-size: 0.92rem;
+    line-height: 1.55;
     color: var(--secondary);
-    font-style: italic;
-    max-width: 600px;
-    margin: 0 auto;
 }
 
-.book-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5em;
-    margin: 2em 0;
-}
-
-.book-card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.45);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.30);
-    border-radius: 20px;
-    padding: 2em;
-    text-decoration: none !important;
-    color: inherit !important;
-    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    cursor: pointer;
-    display: block;
-}
-
-body.dark .book-card {
-    background: rgba(45, 45, 50, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.30);
-}
-
-.book-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.15),
-        transparent
-    );
-    transition: left 0.6s ease;
-}
-
-.book-card:hover::before {
-    left: 100%;
-}
-
-.book-card:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-    border-color: rgba(99, 102, 241, 0.30);
-}
-
-body.dark .book-card:hover {
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.40);
-    border-color: rgba(139, 92, 246, 0.40);
-}
-
-.book-card-inner {
-    position: relative;
-    z-index: 1;
-}
-
-.book-card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.5em;
-}
-
-.book-card h2 {
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin: 0 0 0.3em;
-    border: none;
-}
-
-.book-card-en {
-    font-size: 0.9rem;
-    color: var(--secondary);
-    font-style: italic;
-    margin: 0 0 0.8em;
-}
-
-.book-card-desc {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--secondary);
-    margin: 0 0 1em;
-}
-
-.book-card-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 1em;
-}
-
-.book-card-meta span {
-    font-size: 0.82rem;
-    color: var(--secondary);
-    padding-left: 1em;
-    position: relative;
-}
-
-.book-card-meta span::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: #a855f7;
-}
-
-.book-card-status {
-    font-size: 0.85rem;
-    font-weight: 500;
-    padding: 6px 12px;
-    border-radius: 8px;
-    background: rgba(99, 102, 241, 0.08);
+.cv-download {
+    font-family: var(--academic-sans);
     display: inline-block;
+    margin: 0.6rem 0 1.2rem;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none !important;
+    color: var(--primary) !important;
+    background: #f8f5ef;
 }
 
-body.dark .book-card-status {
-    background: rgba(139, 92, 246, 0.15);
+.cv-download:hover {
+    background: #eee7dc;
 }
 
-.book-card-arrow {
-    position: absolute;
-    bottom: 1.5em;
-    right: 1.5em;
-    font-size: 1.5rem;
-    color: var(--secondary);
-    opacity: 0.4;
-    transition: all 0.3s ease;
-}
-
-.book-card:hover .book-card-arrow {
-    opacity: 1;
-    transform: translateX(4px);
-    color: #6366f1;
-}
-
-/* Upcoming book card style */
-.book-card-upcoming {
-    opacity: 0.7;
-    border-style: dashed;
-    cursor: default;
-}
-
-.book-card-upcoming:hover {
-    transform: none;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-}
-
-.book-card-upcoming:hover::before {
-    left: -100%;
-}
-
-/* Mobile responsive */
 @media (max-width: 640px) {
-    .book-grid {
-        grid-template-columns: 1fr;
+    :root {
+        --article-font-size: 1rem;
     }
-    .book-hero h1 {
-        font-size: 2rem;
+    .first-entry .entry-content {
+        font-size: 1.03rem;
     }
 }
