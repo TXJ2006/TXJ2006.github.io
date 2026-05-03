@@ -25,13 +25,10 @@ Links: [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-00
 
 ## Research Interests
 
-My central research interest is theoretical mathematics. I work primarily around algebraic topology, finite group theory, equivariant homotopy theory, formal proof, and long-range structures related to the Langlands program. I also work on foundational machine learning theory from a mathematical perspective.
-
-- **Algebraic topology and equivariant homotopy theory:** fixed point methods, geometric fixed point tomography, Bökstedt periodicity, stable homotopy-theoretic structures, and the reconstruction of global objects from fixed point or local data.
-- **Finite group theory:** Quillen's p-subgroup conjecture, subgroup complexes, centralizer energy, FRUL-WOS spheres, and p-local group-theoretic structure.
-- **Langlands program:** representation-theoretic, geometric, and categorical aspects of the Langlands program, with emphasis on the foundational path toward geometric Langlands.
-- **Formal proof:** Lean formalization, Mathlib, proof engineering, and the formalization of advanced mathematics in algebra, topology, and analysis.
-- **Foundational machine learning theory:** statistical learning theory, generalization, learnability, out-of-distribution prediction, optimization-theoretic foundations, and dynamical-systems approaches to learning.
+- **Algebraic topology and equivariant homotopy theory:** fixed point methods, geometric fixed point tomography, Bökstedt periodicity, and stable homotopy-theoretic structures.
+- **Finite group theory:** Quillen's p-subgroup conjecture, subgroup complexes, centralizer structures, and FRUL-WOS sphere methods.
+- **Formal proof:** Lean, Mathlib, and the formalization of advanced mathematics in algebra and topology.
+- **Machine learning theory:** generalization, learnability, out-of-distribution prediction, and Koopman/operator-theoretic methods for long-sequence data.
 
 ---
 
@@ -76,6 +73,15 @@ Work on centralizer energy, FRUL-WOS spheres, and subgroup-complex methods relat
 
 **Algebraic Topology and Equivariant Homotopy Theory** · 2025-present  
 Work on geometric fixed point tomography and spoke Bökstedt periodicity.
+
+**Epidemic Prevention and Population Mobility Modeling, Jingzhou** · 2023-2025  
+Worked with Prof. Qingpeng Ran, Department Chair, on mathematical modeling and statistical surveys related to epidemic prevention and population mobility in Jingzhou.
+
+**Spatial Omics Data Processing** · 2025-2026, first half  
+Worked with Dayu Hu, Northeastern University, on data processing for spatial omics.
+
+**Epilepsy and Long-Sequence Data Research** · 2025-2026, second half  
+Studied epilepsy-related data and long-sequence modeling in Prof. Huaguang Gu's group, focusing on Koopman operator methods.
 
 **Formal Proof and Lean** · 2026-present  
 Study of Lean formalization, proof engineering, and the long-term formalization of advanced mathematical arguments.
