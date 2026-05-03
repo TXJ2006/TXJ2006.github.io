@@ -10,57 +10,46 @@ hideMeta: true
 
 # Research
 
-My research is centered on theoretical mathematics. I work primarily on algebraic topology, finite group theory, equivariant homotopy theory, formal proof, and foundational machine learning theory. The organizing idea is that difficult mathematical and learning-theoretic problems often become tractable only after the correct geometric, homotopical, categorical, or variational structure has been isolated.
+My research is centered on theoretical mathematics, with a secondary line in machine learning theory and mathematical modeling. I focus on a small number of closely related directions: algebraic topology, finite group theory, formal proof, and operator-theoretic methods for long-sequence data.
 
 ## Algebraic Topology and Equivariant Homotopy Theory
 
-This is my central mathematical direction. I am interested in stable and equivariant phenomena, fixed point methods, periodicity, and the use of geometric reconstruction principles in homotopy theory. Current themes include:
+My main mathematical direction concerns fixed point methods and homotopical reconstruction. Current themes include:
 
 - geometric fixed point tomography;
 - spoke Bökstedt periodicity;
 - equivariant fixed point methods;
-- stable and unstable homotopical structures;
-- categorical and geometric methods for reconstructing global objects from local fixed point data.
+- stable homotopy-theoretic structures.
 
-## Finite Group Theory and Subgroup Complexes
+## Finite Group Theory and Quillen-Type Problems
 
-A second major direction concerns finite group theory, especially subgroup complexes and Quillen-type problems. My current work studies:
+I study finite groups through subgroup complexes and local group-theoretic structure. Current themes include:
 
 - Quillen's p-subgroup conjecture;
 - centralizer energy methods;
 - FRUL-WOS spheres;
-- centralizer and local subgroup structures;
-- geometric and topological methods for detecting group-theoretic structure.
-
-## Langlands Program
-
-I regard the Langlands program as a long-range mathematical interest. I am especially interested in the geometric and representation-theoretic side of the program: the way automorphic forms, Galois representations, algebraic geometry, representation theory, and categorical structures interact. My current orientation is foundational: to build enough algebraic geometry, representation theory, homological algebra, and derived/categorical language to eventually approach the geometric Langlands program and its connections with topology.
+- centralizer and p-local subgroup structures.
 
 ## Formal Proof and Lean
 
-I am interested in Lean formalization as a mathematical tool, not merely as software. My interest is in how proof assistants can support high-level mathematics, especially algebra, topology, category theory, and analysis. I participate in the Zhejiang University Lean Formalization Summer School, with emphasis on Lean, Mathlib, proof engineering, and the formalization of advanced mathematical arguments.
+I am interested in Lean formalization as mathematical infrastructure. My current focus is on Lean, Mathlib, proof engineering, and the formalization of advanced arguments in algebra, topology, and analysis.
 
-## Foundational Machine Learning Theory
+## Machine Learning Theory and Long-Sequence Data
 
-My machine learning work is theoretical and mathematical. I am interested in:
+My machine learning work is theoretical and mathematically oriented. I focus on generalization, learnability, out-of-distribution prediction, and Koopman/operator-theoretic methods for long-sequence data.
 
-- statistical learning theory;
-- generalization and learnability;
-- out-of-distribution prediction;
-- theoretical foundations of deep learning and autoregressive prediction;
-- optimization-theoretic and dynamical-systems approaches to learning.
+## Applied Mathematical Modeling Experience
 
-This direction is secondary to my pure mathematical program, but it remains important because many questions in modern learning theory naturally lead back to geometry, probability, dynamics, and analysis.
+- **Jingzhou epidemic prevention and population mobility modeling** · 2023-2025  
+  Worked with Prof. Qingpeng Ran on mathematical modeling and statistical surveys related to epidemic prevention and population mobility.
 
-## Optimization, Stochastic Processes, and Dynamics
+- **Spatial omics data processing** · 2025-2026, first half  
+  Worked with Dayu Hu, Northeastern University, on data processing for spatial omics.
 
-I also work on mathematical problems in optimization, stochastic analysis, and dynamical systems, including convex and non-convex optimization, game-theoretic formulations, rough volatility, MCMC-based simulation, Koopman/operator-theoretic dynamics, and robust financial decision problems.
+- **Epilepsy and long-sequence data** · 2025-2026, second half  
+  Studied epilepsy-related data and long-sequence modeling in Prof. Huaguang Gu's group, focusing on Koopman operator methods.
 
 ## Collaborators and Mentors
 
 - [William Redman](https://engineering.jhu.edu/faculty/william-redman/), Johns Hopkins University
 - [Ziyue Qiao](https://qiaoziyue.com/), Great Bay University
-
-## Current Directions
-
-My present focus is to develop rigorous mathematical frameworks for hard structural problems: subgroup-complex methods in finite group theory, equivariant and fixed point methods in topology, and formal/proof-theoretic methods that can eventually support high-level verification of advanced mathematics.
