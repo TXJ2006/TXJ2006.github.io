@@ -12,7 +12,7 @@ hideMeta: true
 
 I am a theoretical mathematics researcher and machine learning theory researcher, with my work centered on mathematics. I am an undergraduate student in **Mathematics and Applied Mathematics** at Yangtze University College of Arts and Sciences and a visiting student at **Great Bay University**.
 
-My current mathematical work concerns algebraic topology, finite group theory, equivariant homotopy theory, fixed point methods, and formal proof. I am also interested in the Langlands program as a long-range mathematical direction connecting representation theory, number theory, algebraic geometry, and topology. In parallel, I work on foundational questions in machine learning theory, including generalization, learnability, optimization, stochastic processes, and dynamical systems.
+My current work focuses on algebraic topology, finite group theory, equivariant homotopy theory, formal proof, and foundational machine learning theory. I am especially interested in fixed point methods, subgroup-complex methods, and Koopman/operator-theoretic approaches to long-sequence data.
 
 Email: [txj_262538@163.com](mailto:txj_262538@163.com)  
 Links: [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-0008-1127-6420) · [LinkedIn](https://www.linkedin.com/in/%E7%85%A6%E6%B1%9F-%E5%94%90-7a1513392)
@@ -21,14 +21,10 @@ Links: [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-00
 
 ## Research Areas
 
-My current interests include:
-
-- **Algebraic topology and equivariant homotopy theory:** fixed point methods, geometric tomography, Bökstedt periodicity, and homotopical structures arising in equivariant and stable settings.
+- **Algebraic topology and equivariant homotopy theory:** fixed point methods, Bökstedt periodicity, and geometric fixed point tomography.
 - **Finite group theory:** subgroup complexes, centralizer structures, FRUL-WOS sphere methods, and Quillen's p-subgroup conjecture.
-- **Langlands program:** representation-theoretic and geometric perspectives connecting algebraic geometry, number theory, automorphic forms, and homotopical ideas.
-- **Formal proof:** Lean formalization, proof engineering, and the interaction between formal verification and modern mathematical practice.
-- **Machine learning theory:** generalization, learnability, out-of-distribution prediction, and theoretical guarantees for learning algorithms.
-- **Optimization and stochastic analysis:** convex and non-convex optimization, game-theoretic methods, stochastic processes, rough volatility, and dynamical systems.
+- **Formal proof:** Lean, Mathlib, and formalization of advanced mathematics.
+- **Machine learning theory:** generalization, learnability, out-of-distribution prediction, and Koopman/operator-theoretic methods for long-sequence data.
 
 ---
 
@@ -62,16 +58,19 @@ Selected coursework: mathematical analysis, linear algebra, probability and stat
 Research in theoretical mathematics and machine learning theory.
 
 **Finite Group Theory and Algebraic Topology** · 2025-present  
-Work on centralizer energy, FRUL-WOS spheres, and Quillen's p-subgroup conjecture.
+Work on centralizer energy, FRUL-WOS spheres, Quillen's p-subgroup conjecture, geometric fixed point tomography, and spoke Bökstedt periodicity.
 
-**Equivariant Homotopy Theory** · 2025-present  
-Work on geometric fixed point tomography and spoke Bökstedt periodicity.
+**Mathematical Modeling and Statistical Survey, Jingzhou** · 2023-2025  
+Worked with Prof. Qingpeng Ran on mathematical modeling and statistical surveys related to epidemic prevention and population mobility in Jingzhou.
+
+**Spatial Omics Data Processing** · 2025-2026, first half  
+Worked with Dayu Hu, Northeastern University, on data processing for spatial omics.
+
+**Epilepsy and Long-Sequence Data** · 2025-2026, second half  
+Studied epilepsy-related data and long-sequence modeling in Prof. Huaguang Gu's group, focusing on Koopman operator methods.
 
 **Formal Proof and Lean** · 2026  
 Zhejiang University Lean Formalization Summer School.
-
-**Theoretical Machine Learning and Optimization** · 2024-present  
-Work on learnability, generalization guarantees, and optimization-theoretic aspects of learning algorithms.
 
 ---
 
