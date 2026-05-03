@@ -16,7 +16,7 @@ theme = 'PaperMod'
     ShowWordCount = false
     comments = false
     author = "Xujiang Tang"
-    description = "Xujiang Tang (唐煦江) — theoretical mathematics and machine learning theory, with work centered on algebraic topology, finite group theory, the Langlands program, formal proof, and foundational machine learning theory."
+    description = "Xujiang Tang (唐煦江) — theoretical mathematics and machine learning theory, with work centered on algebraic topology, finite group theory, formal proof, and operator-theoretic methods for long-sequence data."
 
     [params.label]
         text = "Xujiang Tang"
@@ -25,8 +25,8 @@ theme = 'PaperMod'
         Title = "Xujiang Tang (唐煦江)"
         Content = """
 I am a **theoretical mathematics researcher** and **machine learning theory researcher**, with my work centered on mathematics. I am currently an undergraduate student in Mathematics and Applied Mathematics at **Yangtze University** and a visiting student at **Great Bay University**.\n\n
-My mathematical interests include algebraic topology, finite group theory, equivariant homotopy theory, the Langlands program, formal proof, optimization, stochastic processes, and foundational machine learning theory. My current submitted manuscripts include work on **Quillen's p-subgroup conjecture** and **geometric fixed point tomography / Bökstedt periodicity**.\n\n
-**Research interests:** algebraic topology · finite group theory · equivariant homotopy theory · Langlands program · formal proof · machine learning theory · optimization · stochastic processes\n\n
+My current work focuses on **algebraic topology**, **finite group theory**, **formal proof**, and **machine learning theory for long-sequence data**. My submitted manuscripts include work on **Quillen's p-subgroup conjecture** and **geometric fixed point tomography / Bökstedt periodicity**.\n\n
+**Research interests:** algebraic topology · finite group theory · equivariant homotopy theory · formal proof · machine learning theory · Koopman operator methods\n\n
 [Research](/research/) · [Notes](/notes/) · [Interests](/interests/) · [Publications](/publications/) · [Curriculum Vitae](/cv/) · [Email](mailto:txj_262538@163.com)
 """
 
