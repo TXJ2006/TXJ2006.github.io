@@ -1,4 +1,4 @@
-baseURL = 'https://TXJ2006.github.io/'
+baseURL = 'https://txj2006.github.io/'
 languageCode = 'en-us'
 title = 'Xujiang Tang'
 theme = 'PaperMod'
@@ -16,7 +16,7 @@ theme = 'PaperMod'
     ShowWordCount = false
     comments = false
     author = "Xujiang Tang"
-    description = "Xujiang Tang (唐煦江) — theoretical mathematics and machine learning theory, with work centered on algebraic topology, finite group theory, formal proof, and operator-theoretic methods for long-sequence data."
+    description = "Xujiang Tang (唐煦江) — theoretical mathematics researcher and machine learning theory enthusiast. Research interests include algebraic topology, finite group theory, equivariant homotopy theory, formal proof, and mathematically grounded learning theory."
 
     [params.label]
         text = "Xujiang Tang"
@@ -24,10 +24,9 @@ theme = 'PaperMod'
     [params.homeInfoParams]
         Title = "Xujiang Tang (唐煦江)"
         Content = """
-I am a **theoretical mathematics researcher** and **machine learning theory researcher**, with my work centered on mathematics. I am currently an undergraduate student in Mathematics and Applied Mathematics at **Yangtze University** and a visiting student at **Great Bay University**.\n\n
-My current work focuses on **algebraic topology**, **finite group theory**, **formal proof**, and **machine learning theory for long-sequence data**. My submitted manuscripts include work on **Quillen's p-subgroup conjecture** and **geometric fixed point tomography / Bökstedt periodicity**.\n\n
-**Research interests:** algebraic topology · finite group theory · equivariant homotopy theory · formal proof · machine learning theory · Koopman operator methods\n\n
-[Research](/research/) · [Notes](/notes/) · [Interests](/interests/) · [Publications](/publications/) · [Curriculum Vitae](/cv/) · [Email](mailto:txj_262538@163.com)
+I am a **theoretical mathematics researcher** and a **machine learning theory enthusiast**. My work is centered on theoretical mathematics. I am currently an undergraduate student in **Mathematics and Applied Mathematics** at **Yangtze University College of Arts and Sciences** and a visiting student at **Great Bay University**.\n\n
+My main research interests are **algebraic topology**, **finite group theory**, **equivariant homotopy theory**, and **formal proof**. I also study machine learning theory from a mathematical perspective, especially **generalization**, **out-of-distribution prediction**, and **Koopman/operator-theoretic methods** for long-sequence data.\n\n
+[About](/about/) · [Research](/research/) · [Notes](/notes/) · [Publications](/publications/) · [Curriculum Vitae](/cv/) · [Email](mailto:txj_262538@163.com)
 """
 
     [[params.socialIcons]]
@@ -52,29 +51,24 @@ My current work focuses on **algebraic topology**, **finite group theory**, **fo
     weight = 1
 
 [[menu.main]]
-    name = "Notes"
-    url = "/notes/"
+    name = "Research"
+    url = "/research/"
     weight = 2
 
 [[menu.main]]
-    name = "Research"
-    url = "/research/"
+    name = "Notes"
+    url = "/notes/"
     weight = 3
-
-[[menu.main]]
-    name = "Interests"
-    url = "/interests/"
-    weight = 4
 
 [[menu.main]]
     name = "Publications"
     url = "/publications/"
-    weight = 5
+    weight = 4
 
 [[menu.main]]
     name = "CV"
     url = "/cv/"
-    weight = 6
+    weight = 5
 
 [markup]
     [markup.goldmark]
