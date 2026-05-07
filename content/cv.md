@@ -19,6 +19,8 @@ Website: [txj2006.github.io](https://txj2006.github.io)
 GitHub: [github.com/TXJ2006](https://github.com/TXJ2006)  
 ORCID: [0009-0008-1127-6420](https://orcid.org/0009-0008-1127-6420)
 
+[Download PDF CV](/files/XujiangTang_CV_2026.pdf)
+
 ---
 
 ## Research Profile
