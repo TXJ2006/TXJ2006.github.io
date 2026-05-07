@@ -1,8 +1,8 @@
 %PDF-1.4
-%ASCII
+%“Œ‹ž ReportLab Generated PDF document (opensource)
 1 0 obj
 <<
-/F1 2 0 R /F2 3 0 R
+/F1 2 0 R /F2 3 0 R /F3 4 0 R
 >>
 endobj
 2 0 obj
@@ -17,17 +17,12 @@ endobj
 endobj
 4 0 obj
 <<
-/Contents 9 0 R /MediaBox [ 0 0 612 792 ] /Parent 8 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
-
->> 
-  /Type /Page
+/BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
 >>
 endobj
 5 0 obj
 <<
-/Contents 10 0 R /MediaBox [ 0 0 612 792 ] /Parent 8 0 R /Resources <<
+/Contents 10 0 R /MediaBox [ 0 0 612 792 ] /Parent 9 0 R /Resources <<
 /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
 >> /Rotate 0 /Trans <<
 
@@ -37,480 +32,68 @@ endobj
 endobj
 6 0 obj
 <<
-/PageMode /UseNone /Pages 8 0 R /Type /Catalog
+/Contents 11 0 R /MediaBox [ 0 0 612 792 ] /Parent 9 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
 >>
 endobj
 7 0 obj
 <<
-/Author (Xujiang Tang) /CreationDate (D:20000101000000+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20000101000000+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (unspecified) /Title (Xujiang Tang - Curriculum Vitae) /Trapped /False
+/PageMode /UseNone /Pages 9 0 R /Type /Catalog
 >>
 endobj
 8 0 obj
 <<
-/Count 2 /Kids [ 4 0 R 5 0 R ] /Type /Pages
+/Author (\(anonymous\)) /CreationDate (D:20260507154557+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260507154557+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (\(unspecified\)) /Title (\(anonymous\)) /Trapped /False
 >>
 endobj
 9 0 obj
 <<
-/Length 10456
+/Count 2 /Kids [ 5 0 R 6 0 R ] /Type /Pages
 >>
-stream
-1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
-.141176 .231373 .388235 rg
-n 0 706 612 86 re f*
-1 1 1 rg
-BT /F2 21 Tf 25.2 TL ET
-BT 1 0 0 1 44 755 Tm (Xujiang Tang) Tj T* ET
-BT /F1 9.1 Tf 10.92 TL ET
-BT 1 0 0 1 44 739 Tm (Theoretical Mathematics Researcher | Machine Learning Theory Enthusiast) Tj T* ET
-BT 1 0 0 1 44 725 Tm (Undergraduate Student in Mathematics and Applied Mathematics, Yangtze University | Visiting Student, Great Bay University) Tj T* ET
-BT /F1 8.1 Tf 9.72 TL ET
-BT 1 0 0 1 44 712 Tm (txj_262538@163.com | txj2006.github.io | github.com/TXJ2006 | ORCID: 0009-0008-1127-6420 | LinkedIn) Tj T* ET
-.141176 .231373 .388235 rg
-BT /F2 10.2 Tf 12.24 TL ET
-BT 1 0 0 1 44 680 Tm (RESEARCH INTERESTS) Tj T* ET
-.847059 .870588 .913725 RG
-.7 w
-n 44 677 m 568 677 l S
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 665 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 665 Tm (Algebraic topology and equivariant homotopy theory: fixed point methods, geometric fixed point tomography, Bokstedt) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 655.45 Tm (periodicity, and stable homotopy-theoretic structures.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 644.9 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 644.9 Tm (Finite group theory: Quillen's p-subgroup conjecture, subgroup complexes, centralizer structures, and FRUL-WOS sphere) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 635.35 Tm (methods.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 624.8 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 624.8 Tm (Formal proof: Lean, Mathlib, and the formalization of advanced mathematics in algebra and topology.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 614.25 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 614.25 Tm (Machine learning theory: generalization, learnability, out-of-distribution prediction, and Koopman/operator-theoretic) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 604.7 Tm (methods for long-sequence data.) Tj T* ET
-.141176 .231373 .388235 rg
-BT /F2 10.2 Tf 12.24 TL ET
-BT 1 0 0 1 44 589.15 Tm (EDUCATION) Tj T* ET
-.847059 .870588 .913725 RG
-.7 w
-n 44 586.15 m 568 586.15 l S
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 67.7075 574.15 Tm (Expected Jun. 2027) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 574.15 Tm (Yangtze University College of Arts and Sciences) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 514.225 574.15 Tm (Jingzhou, China) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 563.95 Tm (B.Sc. in Mathematics and Applied Mathematics. Selected coursework: mathematical analysis,) Tj T* ET
-BT 1 0 0 1 149 554.55 Tm (linear algebra, probability and statistics, differential equations, computational modeling,) Tj T* ET
-BT 1 0 0 1 149 545.15 Tm (optimization theory, numerical computation, data structures, Python, R, and MATLAB. Selected) Tj T* ET
-BT 1 0 0 1 149 535.75 Tm (marks: Optimization Theory 97/100; Numerical Computation Methods 96/100.) Tj T* ET
-.141176 .231373 .388235 rg
-BT /F2 10.2 Tf 12.24 TL ET
-BT 1 0 0 1 44 519.35 Tm (VISITING POSITION AND TRAINING) Tj T* ET
-.847059 .870588 .913725 RG
-.7 w
-n 44 516.35 m 568 516.35 l S
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 89.81 504.35 Tm (2025-present) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 504.35 Tm (Visiting Student, Great Bay University) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 494.15 Tm (Research in theoretical mathematics and machine learning theory.) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 117.32 482.75 Tm (2026) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 482.75 Tm (Zhejiang University Lean Formalization Summer School) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 472.55 Tm (Formal proof, Lean, Mathlib, and computer-assisted theorem proving.) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 85.655 461.15 Tm (Winter training) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 461.15 Tm (Neural Networks and Python Implementation) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 537.985 461.15 Tm (Grade: A) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 450.95 Tm (Short winter training with Prof. Mark Vogelsberger. Completed the course and received an A) Tj T* ET
-BT 1 0 0 1 149 441.55 Tm (grade.) Tj T* ET
-.141176 .231373 .388235 rg
-BT /F2 10.2 Tf 12.24 TL ET
-BT 1 0 0 1 44 425.15 Tm (RESEARCH EXPERIENCE) Tj T* ET
-.847059 .870588 .913725 RG
-.7 w
-n 44 422.15 m 568 422.15 l S
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 89.81 410.15 Tm (2025-present) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 410.15 Tm (Finite Group Theory and Quillen's p-Subgroup Conjecture) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 399.95 Tm (Centralizer energy, FRUL-WOS spheres, and subgroup-complex methods related to Quillen's) Tj T* ET
-BT 1 0 0 1 149 390.55 Tm (p-subgroup conjecture.) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 89.81 379.15 Tm (2025-present) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 379.15 Tm (Algebraic Topology and Equivariant Homotopy Theory) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 368.95 Tm (Geometric fixed point tomography and spoke Bokstedt periodicity.) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 89.81 357.55 Tm (2026-present) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 357.55 Tm (Formal Proof and Lean) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 347.35 Tm (Lean formalization, proof engineering, and the long-term formalization of advanced) Tj T* ET
-BT 1 0 0 1 149 337.95 Tm (mathematical arguments.) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 89.81 326.55 Tm (2024-present) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 326.55 Tm (Theoretical Machine Learning and Optimization) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 316.35 Tm (Learnability, generalization guarantees, out-of-distribution prediction, and optimization-) Tj T* ET
-BT 1 0 0 1 149 306.95 Tm (theoretic aspects of learning algorithms.) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 89.81 295.55 Tm (2023-present) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 295.55 Tm (Stochastic Processes, Dynamical Systems, and Quantitative Finance) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 285.35 Tm (Stochastic-process models, rough volatility, MCMC-based simulation, Koopman/operator-) Tj T* ET
-BT 1 0 0 1 149 275.95 Tm (theoretic dynamics, and robust financial decision problems.) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 98.1425 264.55 Tm (2023-2025) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 264.55 Tm (Epidemic Prevention and Population Mobility Modeling, Jingzhou) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 254.35 Tm (Mathematical modeling and statistical surveys related to epidemic prevention and population) Tj T* ET
-BT 1 0 0 1 149 244.95 Tm (mobility in Jingzhou.) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 86.4725 233.55 Tm (2025-2026 H1) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 233.55 Tm (Spatial Omics Data Processing) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 223.35 Tm (Spatial omics data processing with Dayu Hu, Northeastern University.) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 86.4725 211.95 Tm (2025-2026 H2) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 211.95 Tm (Epilepsy and Long-Sequence Data Research) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 201.75 Tm (Epilepsy-related long-sequence modeling in Prof. Huaguang Gu's group, focusing on Koopman) Tj T* ET
-BT 1 0 0 1 149 192.35 Tm (operator methods.) Tj T* ET
-.141176 .231373 .388235 rg
-BT /F2 10.2 Tf 12.24 TL ET
-BT 1 0 0 1 44 175.95 Tm (PUBLICATIONS AND MANUSCRIPTS) Tj T* ET
-.847059 .870588 .913725 RG
-.7 w
-n 44 172.95 m 568 172.95 l S
-.133333 .133333 .133333 rg
-BT /F1 8.5 Tf 10.2 TL ET
-BT 1 0 0 1 44 160.95 Tm (Published and accepted papers) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 150.4 Tm (1.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 150.4 Tm (Q. Li and X. Tang. "HKGEduRec: A Knowledge Graph-Enhanced Dynamic Hybrid Framework for Educational Recommendation with) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 140.85 Tm (Cold-Start Mitigation." IEEE ICMEIM 2025, pp. 1-5. EI-indexed.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 130.3 Tm (2.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 130.3 Tm (X. Tang and Q. Li. "Logical Gene Encoding: A Bio-Inspired Approach for Energy-Efficient Automated Reasoning." 5th) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 120.75 Tm (International Conference on Internet, Education and Information Technology \(IEIT 2025\), Hangzhou, China, 2025. EI-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 111.2 Tm (indexed. DOI: 10.2991/978-94-6463-803-5_81.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 100.65 Tm (3.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 100.65 Tm (Q. Li and X. Tang. "Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 91.1 Tm (Explicit Solutions." AIMS Mathematics. Accepted, 2025.) Tj T* ET
-.847059 .870588 .913725 RG
-.4 w
-n 44 33 m 568 33 l S
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 237.6413 20 Tm (Xujiang Tang - Curriculum Vitae - Page 1) Tj T* ET
- 
-endstream
 endobj
 10 0 obj
 <<
-/Length 7047
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 3157
 >>
 stream
-1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
-.141176 .231373 .388235 rg
-BT /F2 10.2 Tf 12.24 TL ET
-BT 1 0 0 1 44 739 Tm (MANUSCRIPTS) Tj T* ET
-.847059 .870588 .913725 RG
-.7 w
-n 44 736 m 568 736 l S
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 724 Tm (1.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 724 Tm (X. Tang. "Centralizer Energy, FRUL-WOS Spheres, and Quillen's p-Subgroup Conjecture." Manuscript.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 713.45 Tm (2.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 713.45 Tm (X. Tang. "Geometric Fixed Point Tomography and Spoke Bokstedt Periodicity." Manuscript.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 702.9 Tm (3.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 702.9 Tm (X. Tang and C. Fan. "Out-of-Distribution Generalization Error Bounds for Successful Prediction of Deep Autoregressive) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 693.35 Tm (Algorithms." Manuscript.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 682.8 Tm (4.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 682.8 Tm (X. Tang. "Quartic Difficulty: Assessing the Learnability of Unsupervised Learning Algorithms." Manuscript.) Tj T* ET
-.141176 .231373 .388235 rg
-BT /F2 10.2 Tf 12.24 TL ET
-BT 1 0 0 1 44 667.25 Tm (COLLABORATORS AND MENTORS) Tj T* ET
-.847059 .870588 .913725 RG
-.7 w
-n 44 664.25 m 568 664.25 l S
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 652.25 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 652.25 Tm (William Redman, Johns Hopkins University.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 641.7 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 641.7 Tm (Ziyue Qiao, Great Bay University.) Tj T* ET
-.141176 .231373 .388235 rg
-BT /F2 10.2 Tf 12.24 TL ET
-BT 1 0 0 1 44 626.15 Tm (SOFTWARE COPYRIGHTS) Tj T* ET
-.847059 .870588 .913725 RG
-.7 w
-n 44 623.15 m 568 623.15 l S
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 611.15 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 611.15 Tm (Software copyright in financial systems.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 600.6 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 600.6 Tm (Software copyright in unmanned swarm systems.) Tj T* ET
-.141176 .231373 .388235 rg
-BT /F2 10.2 Tf 12.24 TL ET
-BT 1 0 0 1 44 585.05 Tm (HONORS, COMPETITIONS, AND ACTIVITIES) Tj T* ET
-.847059 .870588 .913725 RG
-.7 w
-n 44 582.05 m 568 582.05 l S
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 570.05 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 570.05 Tm (Kaggle Silver Medal, Jigsaw Toxic Comment Classification Challenge.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 559.5 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 559.5 Tm (Regional Gold Medal, WorldQuant International Quant Championship.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 548.95 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 548.95 Tm (Third Prize, UCAS Graduate AI Forum.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 538.4 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 538.4 Tm (Mathematical Modeling Competition, Hua Zhong Cup.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 527.85 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 527.85 Tm (National College Students Statistical Modeling Competition.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 517.3 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 517.3 Tm (Multiple national second prizes in mathematical modeling competitions.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 506.75 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 506.75 Tm (Reviewer, ICLR 2026 Workshop.) Tj T* ET
-.141176 .231373 .388235 rg
-BT /F2 10.2 Tf 12.24 TL ET
-BT 1 0 0 1 44 491.2 Tm (PROFESSIONAL EXPERIENCE) Tj T* ET
-.847059 .870588 .913725 RG
-.7 w
-n 44 488.2 m 568 488.2 l S
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 83.135 476.2 Tm (Jun.-Aug. 2024) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 476.2 Tm (Peking University - Open-Source LLM Group) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 466 Tm (Contributed to LLM deployment and retrieval-augmented generation systems.) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 85.64 454.6 Tm (Jul.-Sep. 2024) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 454.6 Tm (Deloitte) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 444.4 Tm (Professional experience in consulting workflows, teamwork, and communication.) Tj T* ET
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 85.64 433 Tm (Jul.-Sep. 2024) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F2 8.7 Tf 10.44 TL ET
-BT 1 0 0 1 149 433 Tm (Guolian Securities) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.2 Tf 9.84 TL ET
-BT 1 0 0 1 149 422.8 Tm (Applied statistical methods to securities research and quantitative workflows.) Tj T* ET
-.141176 .231373 .388235 rg
-BT /F2 10.2 Tf 12.24 TL ET
-BT 1 0 0 1 44 406.4 Tm (SKILLS) Tj T* ET
-.847059 .870588 .913725 RG
-.7 w
-n 44 403.4 m 568 403.4 l S
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 391.4 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 391.4 Tm (Mathematics: algebraic topology, finite group theory, homotopy theory, representation theory, optimization, numerical) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 381.85 Tm (analysis, stochastic processes, differential equations, causal inference, statistical modeling.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 371.3 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 371.3 Tm (Formal proof and programming: Lean, Mathlib, Python, PyTorch, NumPy, Pandas, MATLAB, R, C++, LaTeX, Git/GitHub, Linux.) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 44 360.75 Tm (-) Tj T* ET
-.133333 .133333 .133333 rg
-BT /F1 8.35 Tf 10.02 TL ET
-BT 1 0 0 1 54 360.75 Tm (Languages: Mandarin Chinese, English.) Tj T* ET
-.847059 .870588 .913725 RG
-.4 w
-n 44 33 m 568 33 l S
-.4 .4 .4 rg
-BT /F1 7.5 Tf 9 TL ET
-BT 1 0 0 1 237.6413 20 Tm (Xujiang Tang - Curriculum Vitae - Page 2) Tj T* ET
- 
-endstream
+Gb!#]D0+E%')nJ0d@]j>=%L^H'#OHb(h8?&]ljh+jf5b(CQJaf6uP/MS<2GHJ)-k9`/B2:I=#0i#UKdOGL,l&5M]h$JU^Adksk^i;g<_%Jn`&C%VAf2_Xn%%doX<!Wp]NCL=]\N0BHQOGSPkef3PUs^#q]b:9XX<_M!AU<bkiD9/la>;nYDIZVSPQ_;YVlksL)3+f4[dY__54a;N#kpM@[^r!B6m@JUL<pcY'F^Td%^Z9?sZ:Hu_^]%Jr8>Z\CNe*bn^gR`'2%b]Ji_Z6/AIskmZl&f&58PX+>Za&HVP*UY/W$MmqI<tunGKM4*%%3!CC$:jdj[1#,\WA?j=O'4NE6IeuO'"%4%/tcC\DT0bKFcNW9u:GGlG/[@"[78bP9S740`&HoO%c:M3P8(\,Yui'9U@l(X!;3qAB]O9G5gn#DjG0![eESH[<4]jcrdqo)2>1F7(t3a\k)<ooc5-!4oP#5DWA^JLZ/%!*"9aKC\Zk&VJ5][[qcl%/@KMG[!:bolWLVKVs_.Hm(,K3U2q+KO3ToXN&0]OiEdjP&b7</;E/lIHc)fGA!HGa8CC\u/O<IOQ/;9Gs*]?mpH6@]>G->?j*KpBfBYIE4BrQ;^*9uKkK#(T\VK'u;=F6Jb3_3c;7h$g(Yq3XlaF@\F@H3n/k'1d0c@.$/11eI.R[MSB%'(eLt9B/^fT<7n<(I*;>E)3?bj^#>k.lX(u?&Q%!er9X->uOA]8IO?j9"j)Y.ed?SF-!?=(rnm+4==<rYRgIKE/1IRt%c#JaQ6=B:s=EoI3lq]Ono1'o]V`kWeV=iu0/_Jk4COH!D'AtiN)KC[0Tq&F!/s2oTq/4V8g1<D;da;]c+,iBj"9l<Q=MXMB"Z6YPgO_[.u9SQUa4MeEO>$3r"[bD<qQAPE0`!\.iBuS6=dNskL/EHRi87dtD]Cu'QR%o%7l%eNaRP.I)E>?=V#\d!001Qo/fLm'ZIk\K]@%([&g80`t$Vgd`doqU@#4n$DKlZeA^cl)3:]^tMGccS;*h[/V/GpL@=b<U/PM3)FNqhO;Hpc,U$,XAaa'nHsDZABU\_80Oj`Qh.rgmt=LA3Q+SofL<4@5>gM'8DZ&7a=<Ef5P:!:3U$:IqW0529iO\sm)H0tHgQKAlH_?j%Q4)N@-Sb3Ydl9AdMoB5pH+Jl'ZP7/pd-4C3i2F,;k)o0\mQhE^Kt0X'>c5K@#eca!b%oO*A;iNj)_>SImq[==H%:Ul7RhK.Km"G%]=E;;QNB'8B_^I3i"`&&)?\4\f'+A$Vd<R)0*'7\+Z_D]C7d@XFc#0MdiRcU+tJ!t;AX4o:m%S&hD.uOpN6-$;'^K_h%b^O9UmN&'098>*iW-5l.C'mM>q6a.?p2:Ymq0*;j@e%NN-Lql[';RW\#mBHWk*arAM(a+4];ia!6IAp@hB=;]09`+46NdaKjq/n5c[J$hcmQQAXe=pTK/=#@P3TJ-;"ut#qGcY8'o4ooY^4(`FI;)omhj)@8U1un?><b1.:gFi)P+A$:7O^aX>5>bL.DRsC\fOCce(pE'YR*Oj<?,Q$,h5:8St/_TrOj68')<88!1-8E(Zs'b1KI9D3d'/M_R.]AQ.nH\.m->7Uj&<+j]Yt6cm:$_=V>YE?o%;HS:IQRUATYI_d:MfCkqTJY:nID&UD5pn_tB\98'ob7ju*Q_$5i;fpi5fnK>`%B_!i3F&dgM[4[6rWL)&$@JFcj!68Zh!,C.f$RA.j)KM^^Q,980%hU?][;#!JdF(r)f9T_M0+2UJ2'K8?RcfJ(UHr&aga1pQGl;T99C:EW*RU$8,3+&G4&O/C"2Pke#<Qo:UTe3*Mom`DGn\&OdAINJtmpOfLf"N*!hg5g\1!F#MsuqAa4#CC'6EL0R(($eUVS^48YhSl&38C&K%r5hC.MabscC32Gqo)dKOJJ3N;-$Y`Y,1XI[\$g'##jBb4e2bc"(?b/]N*3aD5G*[W=)D*,4E1lP/Hb#1pra:_\LBKlno7O2^t>E(/:+lJcl;Sct?H-97`bX]KH&W(>[V:HY5lKMPO!=lJ^LagI/1)G#k8^h3`(9JZUVF4F<RLr1)V>a3nN$PS6)0n^G=/[[TSBo@+5^YXk"72VURsRt1!VODtF5=2b=/t)e=7+9IgOY&hl*;k?P;N*Pi?J(a;h,kUZ"PD6n1dc^Kh<Srs41ART%iXAk+l6q42tT=eRIQa5uJa7FgtoNSp9'7>a)^AM&Ja==eQ2b2;rH/?&YRQ,Y"hjZ%ulLJKaSUQ-Y@"mNooheP4+2k:$fH`"HE"3AW49e.a,io4=/o@_5>V%.u9dOQ63EPrn^WVD*/mR@&;-0M/st-0d.P<TgE((f4:s<E5+62]:5Q%0Q,Dc3io<*^tfC\uG#UhG=d-L3GT*';8n.%Suei/c_nBAkQBk!5WU^;d)@rB]u_ND`Dm)HqAk&fAT1ICS$RbgRk[Sd<a_7L)bZ&PHUA!(,Qju12EY0afq$9i,TR=#^>M"C*l@L=-?!EFt:'\N>cOKHkGL&*X=!uBnX$V7I4.YD3EqF__"KcKmHXPnRsb2naL]Y^/^>t"/E+JiW)o$E!3A1pHJpiS)#QUH\-H?N<"d]=@.F0Eq+__Gp*f;*+u7D@I9_j;CYeKjCfc)\tHkld2=GY552iqQ4T-,(usju']AP"I(gUr3_no5c.DocVtIZjgN@?BAWl3Rk*a9Lju17BIl?X7P$*q/A[A(<,EU<9^nuQ?NZWP47r%Nf;t+d#'p]F(+L3X7iG1iS2JpGJ9oS>gUMned@^UbY&f,$jKu*P-Z5pN9B!s%&fao-]>h?,7jR^oEdt'B9!BP`WPIgP,lIoDhlG&@j[VWE0CA6#"4S5CC?i.L=mRg8OVRsXm&5*%"0gcP_l6D\@0(?s=)boYpN#>*]FfAQ[c9Y.!CIS/gKTB*e8-!SPYZp+XDi=@k(@OlB67$:q0u'$VgO,Au/9.e%P1/c%LRP$fRc%UsXu0#Q,!2uhSuUbo`_9`T%pLRSX]"D\ig7b<jAFTM8KOmj\eE`0_YToJ0YLa<F:r&,:S#\aFQB7nKu%N8#LB;tE+"7mGQ2YQhWXtLJo=$SVebh;E<pdXUufP.EI)tRl=p&^c1gIARV)H%&s;^u%G60'TXMX!E=9A6(RWY47A,n6o+*U.a&:ADk8#n0Wog)D_i:Pu:%7F4lck7`~>endstream
+endobj
+11 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 2219
+>>
+stream
+Gb!#\?!#c?&:N_CbTj`h(cumRV`^e,rLfhfP'23K->^Y%.nd$U6.92U,KgQ$!eeDmVhG8qQL<NGh3h+?55krThamk<H3&A2!XK"7=@*RE&M.O5\CgVfe'*d<7(aS]0CHTtFp*I3DZk^>)ipYBiOJj3@;]E_R_8pQ^^DLZYZ\_kh65s&,9hborRHZ*UD-?02[+S;'qmU/68An#^L6RP(4Y(u:D$L:?o5f=a&1auBEO9A5njI3Y;Z`>E#aHG`pk/k>)XI=4q-f?HZ'*"pti55G[NaKYWJbQ-5B86N+tsaP/H7^Ot&pi66VJc@`$La)OrFQRYPlBD?9S+\D+`pf6=ha,^)G4+LIf1<UGZ6q"&pS)omCe)1WM._blAi`T(VK^tDrXJP2fq^5e_="#%Z4QLWECTH$U5j?VOm)+7fpi*IWW^c=e>_0$?lALmK>k\,s-h*k)8U(p<,LLZM.9Mh*"D1\HCM+HT(=g<SW-5D`=-I%_#/@18k?*dccq&P=D4W*sHW*_$E&Cm=645e3?/XG-=iYI#Va2X@X-#/RZDBJkAl3Bi\gk$m9N3d9LK8^/;#]FZLAr%Y*U(l!H;t]7XT/'\$G&HSj"Il^8IdPZTbDt!KWhfuW0!0gMQYsF(,G%KGWk?\bCMO%?%[2;_h>TpYR\hO?LsT/NZK/)#j-r/P9FuJ8S8Se';N?!KTM$9A&Qu=@l/5HMI8,3[qL#*7,*%8I"pr0\>d4YD9-sp>f<,RlF7!W\[kW/`Es&<_pNlS<A19s?ejC7`Vfe:o=3As1kFP"$Vlret-K#.oJ*58H?T5I&cUMY9[Dk`1JX28D;QoqSid/]0F["M:Dn'uBfXKglP\!/!Sj[uMPuO;N.;5!i<9*tC9QHkIXP`C1(=ff58tHu-2>gXF.8?1Q+Xt_tm6oJF1_4(Am?sdA$Z96Q_bR">CT\J20[\ieZXf)N;%)IH8EOS&3)I(sU*hJ;\"(%ZpK?Dl;;0#48uI1u;AE9e1H.`g(!MkH8m\-_Ok2^)SLg,@qQ4(P?9()ka"NQDBe$.Z"9VZY^iZh]fQSsp)r%@:-sWgtT,[Wh)Uq[_W%Lq`?/V<U0YR_'01lXN4IF'DVp;-=i0'eb.]AfO_8!#j:6]"0BI(an(Ra4_32\7$b(I0\V">Bq\$QF9G4Jl=s%Wp#:]q;jD*58X#4;2X@Q(a3!NI4IH[jP^GsPm-LCVh9RGfFF<7j;c*^5Z:itUX7A(\[R9aSi4&^*#AKSB>XlA'c@TR[,^_fpqTW'1On3T6KcN,IhD@;Po77'L;\F"-^_jCnu;M[#cEg'e5TD5[fijAe-n3/c5)6I*_*ToT(G@IQ7TMju4Y=c30t9`+Wn3j4U!_6a?opJs%CYpGiPnc3[ajPF\F_f;/N4%H+PmgMK"P]k]Dqs^kenN`h@Z0Ir_-H.skp][Sfh+R-&@<faf9OR5q9sIktDe@kSd\CZ>0/h?>[;`QEq17<]`%(f/:-53eN*]E4KD,VWZWc5ORM;$+gXlhl<hl:iBNA\]D,W68ebIoQ@`,dHHXS*VXFkViM##UV2bWAB]3=C!9BkAX.G]cV@U>DS]-m4U]:R52PuRD=dO6XLB<u)1NRF'#.W(D6,J=$*A7"*fGSo&L[2(Z9bPKbRQ<^S-9ruN%M@\&A_Y_8^FqgQj/PE40HA*5dgP-o@ps77)^Q_Al<HP"@h!<:#feHO^UMJ=@LAd:Y92)#o-&);=?-F!P1g+3ZX2a[a2X.2a]ets_aTcgT(j2,"n$fO%>tnI?j[ZN+!7geY[i2/%-!OQ4ebl`g2sZB`BgQ&<AHS.K#1he@)GSMR$b6MBS-Y&M(K]_V96X>qOhIT;o#1[j(b5asHs51nr(,s:_`M"q9^%L1D!BX"IsN^<NNEVC;at:.`JBZa?B`q"T`i\cfCf;<H73t7nV`;FIrf'*j(S&?9N*S"G<'_E/a6?GDds(!kW-(=#pt='Ega%U[cqF,g1<1C\F'h3F'2%]A@3IT[(1'oWM(@#hGEl1(i1pBJKgKU=4f8$3Yr=/Is.:h#^ZrFZK76!H_Z0G;:M\EpIU1g35S'HCTi,e<p6[h2O2hq`Dnm(T>AS)F*3s^GMAm'VFXSBXrFmad65+ee:'"qC2shKRc4Gf42I0f>'N/8bbhRjE/&5e5Q>-_9c!@OSgRS+iQjU71uL/:bcce<*)>3LO2os6,9eohURQksfHO>>p.J)Pn+Yd;A=Vo^-61\6+9(4_?N~>endstream
 endobj
 xref
-0 11
+0 12
 0000000000 65535 f 
 0000000061 00000 n 
-0000000102 00000 n 
-0000000209 00000 n 
-0000000321 00000 n 
-0000000514 00000 n 
-0000000708 00000 n 
-0000000776 00000 n 
-0000001063 00000 n 
-0000001128 00000 n 
-0000011636 00000 n 
+0000000112 00000 n 
+0000000219 00000 n 
+0000000331 00000 n 
+0000000446 00000 n 
+0000000640 00000 n 
+0000000834 00000 n 
+0000000902 00000 n 
+0000001182 00000 n 
+0000001247 00000 n 
+0000004496 00000 n 
 trailer
 <<
 /ID 
-[<6c5a173776bb771a98419bff02fa47da><6c5a173776bb771a98419bff02fa47da>]
+[<a9facd063727930e10c55d70498238c4><a9facd063727930e10c55d70498238c4>]
 % ReportLab generated PDF document -- digest (opensource)
 
-/Info 7 0 R
-/Root 6 0 R
-/Size 11
+/Info 8 0 R
+/Root 7 0 R
+/Size 12
 >>
 startxref
-18735
+6807
 %%EOF
