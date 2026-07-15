@@ -13,6 +13,10 @@ hideMeta: true
 
 This page records my mathematical reading program and note-taking structure. Public PDF notes will be linked here after they are uploaded and ready for release.
 
+## AI and Machine Learning Notes
+
+- [A History of Artificial Intelligence: From Symbolic Reasoning to Agent Harnesses](/blog/ai-history/)
+
 ## Stage I. Foundations and Mathematical Thinking
 
 - Richard Courant and Herbert Robbins, *What is Mathematics?*
