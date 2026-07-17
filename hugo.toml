@@ -18,8 +18,6 @@ theme = 'PaperMod'
     comments = false
     author = "Xujiang Tang"
     description = "Xujiang Tang (唐煦江) is an undergraduate researcher in mathematics, optimization, machine learning, dynamical systems, and stochastic modeling."
-    mainSections = ["blog"]
-
     [params.label]
         text = "Xujiang Tang"
 
@@ -61,14 +59,9 @@ theme = 'PaperMod'
     weight = 4
 
 [[menu.main]]
-    name = "Writing"
-    url = "/blog/"
-    weight = 5
-
-[[menu.main]]
     name = "CV"
     url = "/cv/"
-    weight = 6
+    weight = 5
 
 [markup]
     [markup.goldmark]

@@ -91,7 +91,3 @@ The original reading map remains part of the site because it records the mathema
 - David Gilbarg and Neil S. Trudinger, *Elliptic Partial Differential Equations of Second Order*
 - Ralph Abraham and Jerrold E. Marsden, *Foundations of Mechanics*
 - Simon Brendle, *Ricci Flow and the Sphere Theorem*
-
-## Writing Archive
-
-The broader humanities, history, political-economy, technology, and philosophy reading series is preserved separately under [Reading & Writing](/blog/).

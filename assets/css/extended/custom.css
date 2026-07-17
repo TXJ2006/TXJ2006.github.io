@@ -209,7 +209,7 @@ a {
 
 .profile-summary {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin: 0;
   padding: 22px 0;
   border-top: 1px solid var(--border);
@@ -262,7 +262,7 @@ a {
 
 .block-heading > a,
 .research-grid a,
-.library-grid a {
+.library-note a {
   color: var(--accent);
   font-size: 14px;
   font-weight: 700;
@@ -283,7 +283,7 @@ a {
 }
 
 .research-grid h3,
-.library-grid h3 {
+.library-note h3 {
   margin: 0 0 8px;
   color: var(--primary);
   font-family: var(--serif);
@@ -292,7 +292,7 @@ a {
 }
 
 .research-grid p,
-.library-grid p {
+.library-note p {
   margin: 0;
   color: var(--secondary);
   font-size: 15px;
@@ -357,25 +357,23 @@ a {
   border-bottom: 0;
 }
 
-.library-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 42px;
+.library-note {
+  max-width: 650px;
 }
 
-.library-grid article {
+.library-note article {
   padding-top: 16px;
   border-top: 2px solid var(--warm);
 }
 
-.library-grid .section-number {
+.library-note .section-number {
   margin-bottom: 12px;
   color: var(--warm);
   font-size: 11px;
   font-weight: 700;
 }
 
-.library-grid article > p:not(.section-number) {
+.library-note article > p:not(.section-number) {
   margin-bottom: 16px;
 }
 
@@ -566,25 +564,6 @@ a {
     font-size: 48px;
   }
 
-  .profile-summary {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .profile-summary div {
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .profile-summary div:nth-child(odd) {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .profile-summary div:nth-child(3),
-  .profile-summary div:nth-child(4) {
-    border-bottom: 0;
-  }
-
   .home-block {
     grid-template-columns: 220px minmax(0, 1fr);
     gap: 38px;
@@ -688,8 +667,7 @@ a {
     font-size: 30px;
   }
 
-  .research-grid,
-  .library-grid {
+  .research-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }

@@ -6,14 +6,14 @@
     <p class="profile-role">Undergraduate researcher interested in mathematical structure across optimization, machine learning, nonlinear dynamics, and stochastic modeling.</p>
     <p class="profile-affiliation">B.Sc. candidate at Yangtze University College of Arts and Sciences and visiting student at The Hong Kong University of Science and Technology (Guangzhou), advised by Prof. Tianyuan Jin.</p>
     <div class="profile-actions">
-      <a class="button-primary" href="/research/">Research</a>
-      <a href="/publications/">Publications</a>
-      <a href="/files/XujiangTang_CV_2026.pdf">Download CV</a>
+      <a class="button-primary" href="{{ "research/" | relURL }}">Research</a>
+      <a href="{{ "publications/" | relURL }}">Publications</a>
+      <a href="{{ "files/XujiangTang_CV_2026.pdf" | relURL }}">Download CV</a>
     </div>
     {{ partial "social_icons.html" (dict "align" "left") }}
   </div>
   <figure class="profile-portrait">
-    <img src="/images/youyu-chitang-source.jpg" alt="You Yu and Chi Tang reading together" width="240" height="240">
+    <img src="{{ "images/youyu-chitang-source.jpg" | relURL }}" alt="You Yu and Chi Tang reading together" width="240" height="240">
   </figure>
 </section>
 
@@ -21,14 +21,13 @@
   <div><dt>Degree</dt><dd>B.Sc. Mathematics, 2027</dd></div>
   <div><dt>Current</dt><dd>Visiting Student, HKUST(GZ)</dd></div>
   <div><dt>GPA</dt><dd>3.5 / 4.0</dd></div>
-  <div><dt>Based in</dt><dd>Guangzhou &amp; Jingzhou, China</dd></div>
 </dl>
 
 <section class="home-block" aria-labelledby="research-heading">
   <div class="block-heading">
     <p class="eyebrow">Research</p>
     <h2 id="research-heading">A mathematical route from foundations to models.</h2>
-    <a href="/research/">Research overview</a>
+    <a href="{{ "research/" | relURL }}">Research overview</a>
   </div>
   <div class="research-grid">
     <article>
@@ -54,7 +53,7 @@
   <div class="block-heading">
     <p class="eyebrow">Selected work</p>
     <h2 id="work-heading">Publications and current manuscripts.</h2>
-    <a href="/publications/">Complete list</a>
+    <a href="{{ "publications/" | relURL }}">Complete list</a>
   </div>
   <ol class="work-list">
     <li><span class="status accepted">Accepted</span><div><strong>Robust Optimal Reinsurance and Investment with Inflation Risk</strong><small>AIMS Mathematics</small></div></li>
@@ -66,20 +65,14 @@
 <section class="home-block home-library" aria-labelledby="library-heading">
   <div class="block-heading">
     <p class="eyebrow">Library</p>
-    <h2 id="library-heading">Notes, reading, and longer-form writing.</h2>
+    <h2 id="library-heading">Technical notes and mathematical reading.</h2>
   </div>
-  <div class="library-grid">
+  <div class="library-note">
     <article>
       <p class="section-number">01</p>
       <h3>Research notes</h3>
       <p>Eight typeset PDF notes on probability, concentration, martingales, information, and bandit analysis, alongside the original mathematics reading program.</p>
-      <a href="/notes/">Browse notes</a>
-    </article>
-    <article>
-      <p class="section-number">02</p>
-      <h3>Reading &amp; writing</h3>
-      <p>The original five-part reading and essay series connecting mathematics with humanities, history, political economy, technology, and philosophy.</p>
-      <a href="/blog/">Browse writing</a>
+      <a href="{{ "notes/" | relURL }}">Browse notes</a>
     </article>
   </div>
 </section>
