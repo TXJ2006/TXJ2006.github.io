@@ -2,63 +2,56 @@
 title: "Research"
 layout: "single"
 url: "/research/"
-summary: "Research interests and selected projects"
+summary: "Research preparation in online learning, bandits, reinforcement learning, and optimization"
 draft: false
-ShowToc: true
-TocOpen: true
+ShowToc: false
 hideMeta: true
 ---
 
-My research path begins with theoretical mathematics and extends to models for learning, dynamics, and uncertainty. Across these areas, I am interested in the structure that makes an argument rigorous, a model identifiable, or a computation stable.
+My research objective is to develop mathematically principled and computationally efficient methods for **sequential decision-making under uncertainty**. I am particularly interested in online learning, bandit algorithms, reinforcement learning, and the probability and optimization tools that support their analysis.
 
-## Current Directions
+## Primary Direction
 
-### Bilevel Optimization and Implicit Differentiation
+### Online Learning and Multi-Armed Bandits
+
+**Visiting student, HKUST(GZ) · Advisor: Prof. Tianyuan Jin · 2025 - present**
+
+- Studying regret minimization, best-arm identification, exploration-exploitation tradeoffs, and adaptive decision-making.
+- Building a structured command of concentration inequalities, martingales, KL divergence, exponential families, and change-of-measure lower bounds.
+- Maintaining eight reproducible LaTeX notes that connect foundational probability to modern bandit analysis.
+
+### Reinforcement Learning and Resource-Efficient Learning
+
+- Interested in sample-efficient reinforcement learning and learning under limited feedback, memory, communication, or computation.
+- Exploring how theoretical guarantees can guide algorithms that remain effective under practical resource constraints.
+- Interested in connections between sequential decisions and cost-aware selection or orchestration of large-language-model systems.
+
+## Mathematical and Technical Foundations
+
+### Optimization and Implicit Differentiation
 
 **Independent research · 2025 - present**
 
-- Investigating hypergradient computation beyond the classical invertible-Hessian assumption by modeling lower-level solution sets as differentiable manifolds.
-- Developing a curvature-filter framework using projection operators on solution manifolds and analyzing singular behavior near focal sets.
+- Investigating hypergradient computation beyond the classical invertible-Hessian assumption using differentiable lower-level solution manifolds.
+- Developing a curvature-filter framework based on projection operators and singular behavior near focal sets.
+- This work strengthens my preparation in constrained optimization, sensitivity analysis, and proof-driven algorithm design.
 
-### Online Learning and Sequential Decisions
+### Probability, Statistics, and Stochastic Modeling
 
-**Visiting student, HKUST(GZ) · 2025 - present**
+- Experience with stochastic simulation, Bayesian inference, Markov Chain Monte Carlo, rough-volatility models, and quantitative decision problems.
+- Coursework and independent study in probability, mathematical statistics, numerical computation, and optimization.
 
-- Studying theoretical machine learning, online learning, bandit algorithms, concentration inequalities, and stochastic optimization.
-- Building a connected set of LaTeX notes that develops the probability and information-theoretic tools behind adaptive decision-making.
-
-### Dynamical Systems and Koopman Learning
-
-**Research collaborator, Prof. Yanbing Jia's group · Mar. 2024 - present**
-
-- Investigating long-horizon prediction for nonlinear dynamical systems.
-- Developing structure-preserving Koopman representations and evaluating them on chaotic and neural-dynamics benchmarks.
-
-### Stochastic Modeling and Rough Volatility
-
-**Independent and student-led research · 2023 - present**
-
-- Developing neural and numerical methods for deep hedging under rough-volatility models.
-- Applying stochastic simulation, Bayesian inference, and Markov Chain Monte Carlo to quantitative-finance problems.
-
-## Mathematical Foundations
-
-My broader mathematical interests include algebraic topology, finite groups, equivariant homotopy-theoretic ideas, and formal proof. This is also the context for my long-term [mathematical reading program](/notes/#mathematical-reading-program). I treat these interests as foundations for research rather than as a separate identity from my work in optimization and learning.
-
-## Additional Experience
-
-### Biomedical Data Science
-
-**Research assistant, Northeastern University (Shenyang) · Sep. 2024 - Jan. 2025**
-
-- Developed preprocessing, clustering, and analysis workflows for high-dimensional spatial-transcriptomics data under the supervision of Dr. Dayu Hu.
-
-### Research Engineering
+### Machine-Learning Implementation
 
 **Peking University Open-Source LLM Group · Jun. - Aug. 2024**
 
-- Contributed to large-language-model deployment and retrieval-augmented generation, including retrieval and knowledge-integration modules.
+- Contributed to large-language-model deployment and retrieval-augmented generation.
+- Implemented retrieval and knowledge-integration modules, providing experience with Python-based ML systems and experimental workflows.
+
+## Supporting Research Experience
+
+My previous projects in Koopman operator learning, neural dynamics, spatial transcriptomics, and deep hedging developed practical skills in modeling, numerical experiments, high-dimensional data processing, and evaluation. They are supporting experience; my doctoral research focus is online learning, bandits, reinforcement learning, and mathematical machine learning.
 
 ## Related Pages
 
-[Publications](/publications/) · [Research notes](/notes/) · [Curriculum vitae](/cv/)
+[Research notes](/notes/) · [Publications](/publications/) · [Curriculum vitae](/cv/)

@@ -4,8 +4,7 @@ layout: "single"
 url: "/publications/"
 summary: "Published, accepted, and submitted research"
 draft: false
-ShowToc: true
-TocOpen: true
+ShowToc: false
 hideMeta: true
 ---
 

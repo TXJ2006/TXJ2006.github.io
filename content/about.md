@@ -2,31 +2,30 @@
 title: "About"
 layout: "single"
 url: "/about/"
-summary: "Biography and academic background of Xujiang Tang"
+summary: "Biography and doctoral research preparation of Xujiang Tang"
 draft: false
 ShowToc: false
 hideMeta: true
 ---
 
-I am an undergraduate researcher with a background in **Mathematics and Applied Mathematics**. My current work uses mathematical structure to study optimization, machine learning, nonlinear dynamics, and stochastic systems.
+I am an undergraduate researcher in **Mathematics and Applied Mathematics** preparing for doctoral study in theoretical machine learning. My primary interests are **online learning, multi-armed bandits, reinforcement learning, and sequential decision-making under uncertainty**.
 
-My earlier study centered on theoretical mathematics, including algebraic topology, finite group theory, equivariant ideas, and formal proof. Those interests continue to shape how I approach applied problems: I look for the geometry, invariants, or probabilistic structure that makes a model interpretable and stable rather than treating computation as a black box.
+Since 2025, I have been a visiting student at **The Hong Kong University of Science and Technology (Guangzhou)** under the supervision of **Prof. Tianyuan Jin**. This experience has focused my research preparation on the probability, statistics, optimization, and algorithmic tools needed to study adaptive and resource-efficient learning.
 
-I am pursuing a B.Sc. at **Yangtze University College of Arts and Sciences**, with expected graduation in June 2027. My current GPA is **3.5/4.0**; selected results include Optimization Theory (97/100, ranked first) and Numerical Computation Methods (96/100).
+My immediate academic goal is to pursue a PhD in **Data Science and Analytics at HKUST(GZ)** and develop theoretically grounded algorithms for learning and decision-making with limited data, feedback, computation, or interaction.
 
-Since 2025, I have also been a visiting student at **The Hong Kong University of Science and Technology (Guangzhou)** under the supervision of **Prof. Tianyuan Jin**, studying theoretical machine learning, online learning, bandit algorithms, stochastic optimization, and mathematical research.
+## Research Preparation
 
-## Research Path
-
-- **Mathematical foundations:** topology, group-theoretic ideas, formal proof, and rigorous mathematical reading.
-- **Learning and optimization:** bilevel optimization, implicit differentiation, generalization, and sequential decision-making.
-- **Dynamics and uncertainty:** Koopman methods, stochastic processes, rough volatility, and numerical modeling.
-- **Applied collaborations:** spatial transcriptomics, neural dynamics, quantitative finance, and retrieval systems.
+- **Online learning and bandits:** regret analysis, best-arm identification, exploration-exploitation tradeoffs, and information-theoretic lower bounds.
+- **Probability and statistics:** filtrations, concentration inequalities, martingales, likelihood ratios, KL divergence, and change-of-measure arguments.
+- **Optimization:** bilevel optimization, implicit differentiation, stochastic optimization, and numerical computation.
+- **Machine-learning systems:** Python/PyTorch implementation, retrieval-augmented generation, and experience translating mathematical ideas into reproducible code.
 
 ## Education
 
 **Yangtze University College of Arts and Sciences**, Jingzhou, China<br>
-B.Sc. in Mathematics and Applied Mathematics · Sep. 2023 - Jun. 2027 (expected)
+B.Sc. in Mathematics and Applied Mathematics · Sep. 2023 - Jun. 2027 (expected)<br>
+GPA: 3.5/4.0 · Optimization Theory: 97/100 (ranked first) · Numerical Computation Methods: 96/100
 
 **The Hong Kong University of Science and Technology (Guangzhou)**, Guangzhou, China<br>
 Visiting Student · 2025 - present · Advisor: Prof. Tianyuan Jin

@@ -7,7 +7,7 @@ theme = 'PaperMod'
     math = true
     defaultTheme = "light"
     disableThemeToggle = true
-    ShowToc = true
+    ShowToc = false
     TocOpen = false
     ShowBreadCrumbs = true
     ShowPostNavLinks = false
@@ -17,7 +17,7 @@ theme = 'PaperMod'
     ShowWordCount = false
     comments = false
     author = "Xujiang Tang"
-    description = "Xujiang Tang (唐煦江) is an undergraduate researcher in mathematics, optimization, machine learning, dynamical systems, and stochastic modeling."
+    description = "Xujiang Tang (唐煦江) is an undergraduate researcher preparing for doctoral study in online learning, bandit algorithms, reinforcement learning, and mathematical machine learning."
     [params.label]
         text = "Xujiang Tang"
 
