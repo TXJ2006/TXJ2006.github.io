@@ -2,33 +2,44 @@
 title: "About"
 layout: "single"
 url: "/about/"
-summary: "Biography and doctoral research preparation of Xujiang Tang"
+summary: "Biography and research preparation of Xujiang Tang in mathematics and theoretical machine learning"
 draft: false
 ShowToc: false
 hideMeta: true
 ---
 
-I am an undergraduate researcher in **Mathematics and Applied Mathematics** preparing for doctoral study in theoretical machine learning. My primary interests are **online learning, multi-armed bandits, reinforcement learning, and sequential decision-making under uncertainty**.
+I am a researcher in **mathematics and theoretical machine learning** and an undergraduate in Mathematics and Applied Mathematics. My work spans mathematical modeling, analysis, algebra, dynamical systems, optimization, online learning, multi-armed bandits, reinforcement learning, and sequential decision-making under uncertainty.
 
-Since 2025, I have been a visiting student at **The Hong Kong University of Science and Technology (Guangzhou)** under the supervision of **Prof. Tianyuan Jin**. This experience has focused my research preparation on the probability, statistics, optimization, and algorithmic tools needed to study adaptive and resource-efficient learning.
+During 2026-2027, I am a **Research Assistant at The Hong Kong University of Science and Technology (Guangzhou)**, working with **Prof. Tianyuan Jin** on online learning, bandit algorithms, reinforcement learning, and resource-efficient learning. This appointment builds on my mathematical training in probability, statistics, optimization, analysis, and differential equations.
 
-My immediate academic goal is to pursue a PhD in **Data Science and Analytics at HKUST(GZ)** and develop theoretically grounded algorithms for learning and decision-making with limited data, feedback, computation, or interaction.
+In July 2026, I am attending the **[2026 AI4Math Summer School: Lean Formalized Mathematics at Zhejiang University](https://ai4mathematics.github.io/2026zju/)**, with intensive training in formal proof and computer-assisted mathematical reasoning.
+
+My immediate academic goal is to pursue a PhD in **Data Science and Analytics at HKUST(GZ)** and develop mathematically grounded models and algorithms for learning and decision-making with limited data, feedback, computation, or interaction.
 
 ## Research Preparation
 
-- **Online learning and bandits:** regret analysis, best-arm identification, exploration-exploitation tradeoffs, and information-theoretic lower bounds.
-- **Probability and statistics:** filtrations, concentration inequalities, martingales, likelihood ratios, KL divergence, and change-of-measure arguments.
-- **Optimization:** bilevel optimization, implicit differentiation, stochastic optimization, and numerical computation.
-- **Machine-learning systems:** Python/PyTorch implementation, retrieval-augmented generation, and experience translating mathematical ideas into reproducible code.
+- **Mathematical modeling:** mathematical modeling (96), ordinary differential equations (89), dynamical systems, stochastic models, and numerical computation.
+- **Analysis and algebra:** complex analysis (90), real analysis (95), functional analysis (99), abstract algebra (98), and current research in algebraic topology.
+- **Online learning and bandits:** regret analysis, best-arm identification, exploration-exploitation tradeoffs, reinforcement learning, and information-theoretic lower bounds.
+- **Optimization and AI:** bilevel optimization, implicit differentiation, and theoretical methods intended to transfer across multiple AI model classes.
 
 ## Education
 
 **Yangtze University College of Arts and Sciences**, Jingzhou, China<br>
 B.Sc. in Mathematics and Applied Mathematics · Sep. 2023 - Jun. 2027 (expected)<br>
-GPA: 3.5/4.0 · Optimization Theory: 97/100 (ranked first) · Numerical Computation Methods: 96/100
+GPA: 3.5/4.0 · Mathematical Modeling: 96 · ODE: 89 · Complex Analysis: 90 · Real Analysis: 95 · Functional Analysis: 99 · Abstract Algebra: 98
+
+**Zhejiang University**, Hangzhou, China<br>
+2026 AI4Math Summer School: Lean Formalized Mathematics · Jul. 2026
+
+## Research Appointment
 
 **The Hong Kong University of Science and Technology (Guangzhou)**, Guangzhou, China<br>
-Visiting Student · 2025 - present · Advisor: Prof. Tianyuan Jin
+Research Assistant · 2026-2027 · Prof. Tianyuan Jin
+
+## Mathematical Collaboration
+
+I completed the 2026 preprint **“Flagification Invariance of Vertex-Generated Quasi-Lie Subrings: A Prime-Local PBW Proof”** through research discussions and guidance from **[Prof. Stephen D. Theriault](https://www.southampton.ac.uk/people/5x9nl2/professor-stephen-theriault)**, Professor of Mathematics at the University of Southampton. The work studies Whitehead products, moment-angle complexes, graph Lie algebras, and low-prime homotopy theory.
 
 ## Contact
 
