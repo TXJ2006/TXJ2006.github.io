@@ -1,0 +1,79 @@
+{{- define "main" }}
+<section class="profile" aria-labelledby="profile-name">
+  <div class="profile-copy">
+    <p class="eyebrow">Mathematics &amp; Applied Mathematics</p>
+    <h1 id="profile-name">Xujiang Tang <span lang="zh-CN">唐煦江</span></h1>
+    <p class="profile-role">Undergraduate researcher interested in mathematical structure across optimization, machine learning, nonlinear dynamics, and stochastic modeling.</p>
+    <p class="profile-affiliation">B.Sc. candidate at Yangtze University College of Arts and Sciences and visiting student at The Hong Kong University of Science and Technology (Guangzhou), advised by Prof. Tianyuan Jin.</p>
+    <div class="profile-actions">
+      <a class="button-primary" href="{{ "research/" | relURL }}">Research</a>
+      <a href="{{ "publications/" | relURL }}">Publications</a>
+      <a href="{{ "files/XujiangTang_CV_2026.pdf" | relURL }}">Download CV</a>
+    </div>
+    {{ partial "social_icons.html" (dict "align" "left") }}
+  </div>
+  <figure class="profile-portrait">
+    <img src="{{ "images/youyu-chitang-source.jpg" | relURL }}" alt="You Yu and Chi Tang reading together" width="240" height="240">
+  </figure>
+</section>
+
+<dl class="profile-summary" aria-label="Academic profile">
+  <div><dt>Degree</dt><dd>B.Sc. Mathematics, 2027</dd></div>
+  <div><dt>Current</dt><dd>Visiting Student, HKUST(GZ)</dd></div>
+  <div><dt>GPA</dt><dd>3.5 / 4.0</dd></div>
+</dl>
+
+<section class="home-block" aria-labelledby="research-heading">
+  <div class="block-heading">
+    <p class="eyebrow">Research</p>
+    <h2 id="research-heading">A mathematical route from foundations to models.</h2>
+    <a href="{{ "research/" | relURL }}">Research overview</a>
+  </div>
+  <div class="research-grid">
+    <article>
+      <h3>Optimization &amp; learning</h3>
+      <p>Bilevel optimization, implicit differentiation, online learning, bandit algorithms, and generalization.</p>
+    </article>
+    <article>
+      <h3>Dynamical systems</h3>
+      <p>Koopman operator learning and structure-preserving models for nonlinear and neural dynamics.</p>
+    </article>
+    <article>
+      <h3>Stochastic modeling</h3>
+      <p>Rough volatility, deep hedging, Bayesian inference, and numerical methods for decision-making under uncertainty.</p>
+    </article>
+    <article>
+      <h3>Mathematical foundations</h3>
+      <p>Continuing interests in algebraic topology, finite groups, equivariant ideas, and formal proof.</p>
+    </article>
+  </div>
+</section>
+
+<section class="home-block" aria-labelledby="work-heading">
+  <div class="block-heading">
+    <p class="eyebrow">Selected work</p>
+    <h2 id="work-heading">Publications and current manuscripts.</h2>
+    <a href="{{ "publications/" | relURL }}">Complete list</a>
+  </div>
+  <ol class="work-list">
+    <li><span class="status accepted">Accepted</span><div><strong>Robust Optimal Reinsurance and Investment with Inflation Risk</strong><small>AIMS Mathematics</small></div></li>
+    <li><span class="status published">Published</span><div><strong>Logical Gene Encoding</strong><small>IEIT 2025 · EI-indexed</small></div></li>
+    <li><span class="status submitted">Submitted</span><div><strong>The Curvature Filter in Bilevel Optimization</strong><small>Implicit differentiation without nondegeneracy</small></div></li>
+  </ol>
+</section>
+
+<section class="home-block home-library" aria-labelledby="library-heading">
+  <div class="block-heading">
+    <p class="eyebrow">Library</p>
+    <h2 id="library-heading">Technical notes and mathematical reading.</h2>
+  </div>
+  <div class="library-note">
+    <article>
+      <p class="section-number">01</p>
+      <h3>Research notes</h3>
+      <p>Eight typeset PDF notes on probability, concentration, martingales, information, and bandit analysis, alongside the original mathematics reading program.</p>
+      <a href="{{ "notes/" | relURL }}">Browse notes</a>
+    </article>
+  </div>
+</section>
+{{- end }}

@@ -2,49 +2,63 @@
 title: "Research"
 layout: "single"
 url: "/research/"
-summary: "Research interests and current projects"
+summary: "Research interests and selected projects"
 draft: false
 ShowToc: true
+TocOpen: true
 hideMeta: true
 ---
 
-# Research
+My research path begins with theoretical mathematics and extends to models for learning, dynamics, and uncertainty. Across these areas, I am interested in the structure that makes an argument rigorous, a model identifiable, or a computation stable.
 
-My research is centered on theoretical mathematics. My main interests are algebraic topology, finite group theory, equivariant homotopy theory, and formal proof. I also maintain a secondary interest in machine learning theory, approached through mathematical structure rather than engineering deployment.
+## Current Directions
 
-## Algebraic Topology and Equivariant Homotopy Theory
+### Bilevel Optimization and Implicit Differentiation
 
-I am interested in fixed point methods and homotopical reconstruction. Current themes include:
+**Independent research · 2025 - present**
 
-- geometric fixed point tomography;
-- spoke Bökstedt periodicity;
-- equivariant fixed point methods;
-- stable homotopy-theoretic structures.
+- Investigating hypergradient computation beyond the classical invertible-Hessian assumption by modeling lower-level solution sets as differentiable manifolds.
+- Developing a curvature-filter framework using projection operators on solution manifolds and analyzing singular behavior near focal sets.
 
-## Finite Group Theory and Quillen-Type Problems
+### Online Learning and Sequential Decisions
 
-I study finite groups through subgroup complexes and local group-theoretic structure. Current themes include:
+**Visiting student, HKUST(GZ) · 2025 - present**
 
-- Quillen's p-subgroup conjecture;
-- centralizer energy methods;
-- FRUL-WOS sphere methods;
-- centralizer and p-local subgroup structures.
+- Studying theoretical machine learning, online learning, bandit algorithms, concentration inequalities, and stochastic optimization.
+- Building a connected set of LaTeX notes that develops the probability and information-theoretic tools behind adaptive decision-making.
 
-## Formal Proof and Lean
+### Dynamical Systems and Koopman Learning
 
-I am interested in Lean formalization as mathematical infrastructure. My current focus is on Lean, Mathlib, proof engineering, and the formalization of advanced arguments in algebra, topology, and analysis.
+**Research collaborator, Prof. Yanbing Jia's group · Mar. 2024 - present**
 
-## Machine Learning Theory
+- Investigating long-horizon prediction for nonlinear dynamical systems.
+- Developing structure-preserving Koopman representations and evaluating them on chaotic and neural-dynamics benchmarks.
 
-My machine learning theory interests are mathematical rather than engineering-oriented. I focus on generalization, learnability, out-of-distribution prediction, and Koopman/operator-theoretic methods for long-sequence data.
+### Stochastic Modeling and Rough Volatility
 
-## Applied Mathematical Modeling Experience
+**Independent and student-led research · 2023 - present**
 
-- **Jingzhou epidemic prevention and population mobility modeling** · 2023-2025  
-  Worked with Prof. Qingpeng Ran on mathematical modeling and statistical surveys related to epidemic prevention and population mobility.
+- Developing neural and numerical methods for deep hedging under rough-volatility models.
+- Applying stochastic simulation, Bayesian inference, and Markov Chain Monte Carlo to quantitative-finance problems.
 
-- **Spatial omics data processing** · 2025-2026, first half  
-  Worked with Dayu Hu, Northeastern University, on data processing for spatial omics.
+## Mathematical Foundations
 
-- **Epilepsy and long-sequence data** · 2025-2026, second half  
-  Studied epilepsy-related data and long-sequence modeling in Prof. Huaguang Gu's group, focusing on Koopman operator methods.
+My broader mathematical interests include algebraic topology, finite groups, equivariant homotopy-theoretic ideas, and formal proof. This is also the context for my long-term [mathematical reading program](/notes/#mathematical-reading-program). I treat these interests as foundations for research rather than as a separate identity from my work in optimization and learning.
+
+## Additional Experience
+
+### Biomedical Data Science
+
+**Research assistant, Northeastern University (Shenyang) · Sep. 2024 - Jan. 2025**
+
+- Developed preprocessing, clustering, and analysis workflows for high-dimensional spatial-transcriptomics data under the supervision of Dr. Dayu Hu.
+
+### Research Engineering
+
+**Peking University Open-Source LLM Group · Jun. - Aug. 2024**
+
+- Contributed to large-language-model deployment and retrieval-augmented generation, including retrieval and knowledge-integration modules.
+
+## Related Pages
+
+[Publications](/publications/) · [Research notes](/notes/) · [Curriculum vitae](/cv/)
