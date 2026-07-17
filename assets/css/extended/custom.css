@@ -328,7 +328,8 @@ a {
 }
 
 .status.accepted,
-.status.published {
+.status.published,
+.status.current {
   background: #e6f1ef;
   color: #12645f;
 }
@@ -468,6 +469,7 @@ a {
 }
 
 .toc {
+  display: none !important;
   margin: 0 0 32px;
   border: 1px solid var(--border);
   border-radius: var(--radius);

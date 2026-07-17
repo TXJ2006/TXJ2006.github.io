@@ -210,7 +210,7 @@ def build():
 
     story = [
         p("Xujiang Tang", styles["Name"]),
-        p("Undergraduate Researcher in Mathematics and Machine Learning", styles["Tagline"]),
+        p("Online Learning, Bandit Algorithms, and Mathematical Machine Learning", styles["Tagline"]),
         p(
             "txj_262538@163.com  |  txj2006.github.io  |  github.com/TXJ2006  |  ORCID: 0009-0008-1127-6420",
             styles["Contact"],
@@ -220,7 +220,7 @@ def build():
     story += section("Research Profile", styles)
     story.append(
         p(
-            "Undergraduate researcher working across mathematically grounded machine learning, optimization, nonlinear dynamics, and stochastic modeling. Current interests include bilevel optimization, online learning and bandit algorithms, Koopman operator methods, rough volatility, and sequential decision-making.",
+            "Undergraduate researcher preparing for doctoral study in online learning, multi-armed bandits, reinforcement learning, and sequential decision-making. Strong mathematical preparation in probability, statistics, and optimization, with experience translating theoretical ideas into reproducible Python and PyTorch implementations.",
             styles["Profile"],
         )
     )
@@ -228,61 +228,69 @@ def build():
     story += section("Education", styles)
     story.append(
         entry(
-            "B.Sc. in Mathematics and Applied Mathematics",
-            "Yangtze University College of Arts and Sciences, Jingzhou, China | GPA: 3.5/4.0",
-            "Sep 2023 - Jun 2027",
+            "Visiting Student",
+            "The Hong Kong University of Science and Technology (Guangzhou) | Advisor: Prof. Tianyuan Jin",
+            "2025 - Present",
             [
-                "Optimization Theory: 97/100, ranked first in the major; Numerical Computation Methods: 96/100.",
-                "Coursework: mathematical analysis, advanced algebra, probability and mathematical statistics, differential equations, number theory, mathematical modeling, and mathematical software.",
+                "Research preparation in theoretical machine learning, online learning, bandit algorithms, reinforcement learning, and stochastic optimization.",
+                "Systematic study of concentration, martingales, KL divergence, exponential families, and information-theoretic lower bounds for adaptive decisions.",
             ],
             styles,
         )
     )
     story.append(
         entry(
-            "Visiting Student",
-            "The Hong Kong University of Science and Technology (Guangzhou) | Advisor: Prof. Tianyuan Jin",
-            "2025 - Present",
+            "B.Sc. in Mathematics and Applied Mathematics",
+            "Yangtze University College of Arts and Sciences, Jingzhou, China | GPA: 3.5/4.0",
+            "Sep 2023 - Jun 2027",
             [
-                "Theoretical machine learning, online learning, bandit algorithms, stochastic optimization, and mathematical research.",
+                "Optimization Theory: 97/100, ranked first in the major; Numerical Computation Methods: 96/100.",
+                "Relevant coursework: probability and mathematical statistics, optimization, numerical computation, mathematical analysis, advanced algebra, differential equations, mathematical modeling, and programming.",
             ],
             styles,
         )
     )
 
-    story += section("Published and Accepted", styles)
+    story += section("Relevant Research Preparation", styles)
     story.extend(
         [
-            publication(1, "Q. Li and <b>X. Tang</b>. HKGEduRec: A Knowledge Graph-Enhanced Dynamic Hybrid Framework for Educational Recommendation with Cold-Start Mitigation. <i>IEEE ICMEIM 2025</i>, pp. 1-5. EI-indexed.", styles),
-            publication(2, "<b>X. Tang</b> and Q. Li. Logical Gene Encoding: A Bio-Inspired Approach for Energy-Efficient Automated Reasoning. <i>IEIT 2025</i>. EI-indexed. DOI: 10.2991/978-94-6463-803-5_81.", styles),
-            publication(3, "Q. Li and <b>X. Tang</b>. Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions. <i>AIMS Mathematics</i>. Accepted.", styles),
-        ]
-    )
-
-    story += section("Under Review and Submitted", styles)
-    story.extend(
-        [
-            publication(1, "<b>X. Tang et al.</b> Spectral Network Determinants of Seizure-like Synchronization and Spread in Coupled Hindmarsh-Rose Brain Models. <i>Cognitive Neurodynamics</i>. Under review.", styles),
-            publication(2, "<b>X. Tang et al.</b> Structure-preserving Koopman Predictive Control for Memristive Neural Dynamics: Input-exact and Commutator-defect Lifting. <i>Biological Cybernetics</i>. Under review.", styles),
-            publication(3, "Y. Fan, <b>X. Tang</b>, and R. Guan. Deep Hedging under Rough Volatility: A Fractional Kernel Embedding Approach with Optimal Convergence Rate. <i>AIMS Mathematics</i>. Under review.", styles),
-            publication(4, "<b>X. Tang et al.</b> The Curvature Filter in Bilevel Optimization: Implicit Differentiation Without Nondegeneracy. <i>Transactions on Machine Learning Research</i>. Submitted.", styles),
-        ]
-    )
-
-    story.append(PageBreak())
-    story += section("Research Experience", styles)
-    story.extend(
-        [
+            entry(
+                "Online Learning, Bandits, and Sequential Decisions",
+                "Research Training, HKUST(GZ) | Advisor: Prof. Tianyuan Jin",
+                "2025 - Present",
+                [
+                    "Studied regret minimization, best-arm identification, exploration-exploitation tradeoffs, and adaptive decision-making.",
+                    "Authored eight LaTeX notes connecting adaptive probability to confidence bounds, exponential-family models, and change-of-measure lower bounds.",
+                    "Developed a focused research agenda around sample- and resource-efficient sequential learning.",
+                ],
+                styles,
+            ),
             entry(
                 "Bilevel Optimization and Implicit Differentiation",
                 "Independent Research",
                 "2025 - Present",
                 [
                     "Investigated hypergradient computation beyond invertible-Hessian assumptions using differentiable lower-level solution manifolds.",
-                    "Developed a curvature-filter framework based on projection operators and singular behavior near focal sets.",
+                    "Developed a curvature-filter framework based on projection operators and singular behavior near focal sets; submitted to <i>TMLR</i>.",
                 ],
                 styles,
             ),
+            entry(
+                "Peking University Open-Source LLM Group",
+                "Research and Engineering Intern",
+                "Jun 2024 - Aug 2024",
+                [
+                    "Contributed to large-language-model deployment and retrieval-augmented generation systems.",
+                    "Implemented retrieval and knowledge-integration modules for external knowledge use.",
+                ],
+                styles,
+            ),
+        ]
+    )
+
+    story += section("Additional Research Experience", styles)
+    story.extend(
+        [
             entry(
                 "Deep Hedging under Rough Volatility",
                 "Independent Research",
@@ -303,36 +311,35 @@ def build():
                 ],
                 styles,
             ),
-            entry(
-                "Biomedical Data Science (Spatial Transcriptomics)",
-                "Research Assistant, Northeastern University (Shenyang) | Supervisor: Dr. Dayu Hu",
-                "Sep 2024 - Jan 2025",
-                [
-                    "Developed clustering methods and preprocessing workflows for high-dimensional single-cell data.",
-                    "Built data-processing pipelines for downstream biological analysis.",
-                ],
-                styles,
-            ),
-            entry(
-                "Peking University Open-Source LLM Group",
-                "Research and Engineering Intern",
-                "Jun 2024 - Aug 2024",
-                [
-                    "Contributed to large-language-model deployment and retrieval-augmented generation systems.",
-                    "Implemented retrieval and knowledge-integration modules for external knowledge use.",
-                ],
-                styles,
-            ),
-            entry(
-                "Stochastic Modeling and Quantitative Finance",
-                "Team Lead, Student Research Project",
-                "Oct 2023 - Apr 2024",
-                [
-                    "Led work on rough-volatility models, Bayesian inference, stochastic simulation, and MCMC parameter estimation.",
-                ],
-                styles,
-            ),
         ]
+    )
+
+    story.append(PageBreak())
+    story += section("Published and Accepted", styles)
+    story.extend(
+        [
+            publication(1, "Q. Li and <b>X. Tang</b>. HKGEduRec: A Knowledge Graph-Enhanced Dynamic Hybrid Framework for Educational Recommendation with Cold-Start Mitigation. <i>IEEE ICMEIM 2025</i>, pp. 1-5. EI-indexed.", styles),
+            publication(2, "<b>X. Tang</b> and Q. Li. Logical Gene Encoding: A Bio-Inspired Approach for Energy-Efficient Automated Reasoning. <i>IEIT 2025</i>. EI-indexed. DOI: 10.2991/978-94-6463-803-5_81.", styles),
+            publication(3, "Q. Li and <b>X. Tang</b>. Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions. <i>AIMS Mathematics</i>. Accepted.", styles),
+        ]
+    )
+
+    story += section("Under Review and Submitted", styles)
+    story.extend(
+        [
+            publication(1, "<b>X. Tang et al.</b> The Curvature Filter in Bilevel Optimization: Implicit Differentiation Without Nondegeneracy. <i>Transactions on Machine Learning Research</i>. Submitted.", styles),
+            publication(2, "Y. Fan, <b>X. Tang</b>, and R. Guan. Deep Hedging under Rough Volatility: A Fractional Kernel Embedding Approach with Optimal Convergence Rate. <i>AIMS Mathematics</i>. Under review.", styles),
+            publication(3, "<b>X. Tang et al.</b> Structure-preserving Koopman Predictive Control for Memristive Neural Dynamics: Input-exact and Commutator-defect Lifting. <i>Biological Cybernetics</i>. Under review.", styles),
+            publication(4, "<b>X. Tang et al.</b> Spectral Network Determinants of Seizure-like Synchronization and Spread in Coupled Hindmarsh-Rose Brain Models. <i>Cognitive Neurodynamics</i>. Under review.", styles),
+        ]
+    )
+
+    story += section("Selected Technical Notes", styles)
+    story.append(
+        p(
+            "Eight reproducible LaTeX notes on sequential decisions: regret and exploration; adaptive data and filtrations; concentration bounds; martingales and optional stopping; KL divergence; exponential-family bandit models; and change-of-measure lower bounds. Available at txj2006.github.io/notes/.",
+            styles["Body"],
+        )
     )
 
     story += section("Honors", styles)
@@ -346,7 +353,7 @@ def build():
     story += section("Skills", styles)
     story.append(
         p(
-            "<b>Programming and tools:</b> Python, PyTorch, NumPy, Pandas, C++, R, MATLAB, Git/GitHub, Linux, LaTeX.<br/><b>Methods:</b> machine learning, statistical modeling, optimization, causal inference, LLM deployment, retrieval-augmented generation.<br/><b>Languages:</b> Mandarin Chinese; English.",
+            "<b>Programming and tools:</b> Python, PyTorch, NumPy, Pandas, C++, R, MATLAB, Git/GitHub, Linux, LaTeX.<br/><b>Theory and methods:</b> online learning, bandit algorithms, probability, statistical modeling, optimization, stochastic simulation, LLM deployment, retrieval-augmented generation.<br/><b>Languages:</b> Mandarin Chinese; English.",
             styles["Body"],
         )
     )
