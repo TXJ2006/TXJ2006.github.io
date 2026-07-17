@@ -1,59 +1,46 @@
 ---
-title: "Notes"
+title: "Research Notes"
 layout: "single"
 url: "/notes/"
-summary: "Mathematical reading notes"
+summary: "LaTeX-native PDF notes on probability, online learning, and bandit algorithms"
 draft: false
 ShowToc: true
 TocOpen: false
 hideMeta: true
 ---
 
-# Mathematical Reading Notes
+# Research Notes
 
-This page records my mathematical reading program and note-taking structure. Public PDF notes will be linked here after they are uploaded and ready for release.
+This collection develops the probability tools behind sequential decision-making and bandit algorithms. Each note is typeset as a standalone PDF and includes mathematical derivations, examples, or simulations.
 
-## Stage I. Foundations and Mathematical Thinking
+## Foundations
 
-- Richard Courant and Herbert Robbins, *What is Mathematics?*
-- G. Polya, *How to Solve It*
-- Daniel J. Velleman, *How to Prove It: A Structured Approach*
-- G. M. Fichtenholz, *Course of Differential and Integral Calculus*
-- Sheldon Axler, *Linear Algebra Done Right*
-- Paul R. Halmos, *Naive Set Theory*
+1. **[Why Bandits Matter](/files/notes/why-bandits-matter.pdf)**<br>
+   A conceptual introduction to sequential decisions under uncertainty.
 
-## Stage II. Undergraduate Core
+2. **[Regret and the Language of Exploration](/files/notes/regret-exploration-language.pdf)**<br>
+   Regret, exploration-exploitation tradeoffs, and common analytical viewpoints.
 
-- Walter Rudin, *Principles of Mathematical Analysis*
-- David S. Dummit and Richard M. Foote, *Abstract Algebra*
-- James R. Munkres, *Topology*
-- Lars Ahlfors, *Complex Analysis*
-- V. I. Arnold, *Ordinary Differential Equations*
-- Michael Spivak, *Calculus on Manifolds*
+3. **[Probability, Filtrations, and Adaptive Data](/files/notes/probability-filtrations-adaptive-data.pdf)**<br>
+   Filtrations, stopping, post-selection effects, and adaptive observations.
 
-## Stage III. Advanced Undergraduate and Early Graduate Mathematics
+## Concentration and Evidence
 
-- Walter Rudin, *Real and Complex Analysis*
-- Serge Lang, *Algebra*
-- Allen Hatcher, *Algebraic Topology*
-- Manfredo P. do Carmo, *Differential Geometry of Curves and Surfaces*
-- John M. Lee, *Introduction to Smooth Manifolds*
-- Jean-Pierre Serre, *A Course in Arithmetic*
+4. **[Concentration Bounds for Bandit Analysis](/files/notes/concentration-bounds-bandit-analysis.pdf)**<br>
+   Fixed-time bounds, confidence radii, and their role in UCB-style algorithms.
 
-## Stage IV. Graduate-Level Analysis, Geometry, and Algebra
+5. **[Martingales and Optional Stopping](/files/notes/martingales-optional-stopping.pdf)**<br>
+   Martingale tools, stopped processes, and anytime-valid reasoning.
 
-- Lawrence C. Evans, *Partial Differential Equations*
-- Peter D. Lax, *Functional Analysis*
-- Manfredo P. do Carmo, *Riemannian Geometry*
-- Raoul Bott and Loring W. Tu, *Differential Forms in Algebraic Topology*
-- M. F. Atiyah and I. G. Macdonald, *Introduction to Commutative Algebra*
-- Robin Hartshorne, *Algebraic Geometry*
+6. **[KL Divergence as Statistical Evidence](/files/notes/kl-divergence-statistical-evidence.pdf)**<br>
+   Information geometry, likelihood evidence, and KL-based confidence methods.
 
-## Stage V. Research-Level Directions
+## Models and Lower Bounds
 
-- Hajime Urakawa, *Calculus of Variations and Harmonic Maps*
-- John Milnor, *Morse Theory*
-- John Milnor and James Stasheff, *Characteristic Classes*
-- David Gilbarg and Neil S. Trudinger, *Elliptic Partial Differential Equations of Second Order*
-- Ralph Abraham and Jerrold E. Marsden, *Foundations of Mechanics*
-- Simon Brendle, *Ricci Flow and the Sphere Theorem*
+7. **[Exponential Families for Bandit Models](/files/notes/exponential-families-bandit-models.pdf)**<br>
+   Sufficient statistics, log-partition geometry, conjugacy, and bandit examples.
+
+8. **[Change of Measure and Bandit Lower Bounds](/files/notes/change-of-measure-bandit-lower-bounds.pdf)**<br>
+   Alternative models, information allocation, and lower-bound arguments.
+
+The LaTeX source is maintained in the [elegantbook-tech-blog repository](https://github.com/TXJ2006/elegantbook-tech-blog).

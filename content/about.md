@@ -2,19 +2,28 @@
 title: "About"
 layout: "single"
 url: "/about/"
-summary: "About Xujiang Tang"
+summary: "Biography and academic background of Xujiang Tang"
 draft: false
 ShowToc: false
 hideMeta: true
 ---
 
-# Xujiang Tang (唐煦江)
+# About
 
-I am an undergraduate student in **Mathematics and Applied Mathematics** at **Yangtze University College of Arts and Sciences** and a visiting student at **Great Bay University**. My work centers on theoretical mathematics, especially algebraic topology, finite group theory, equivariant homotopy theory, and formal proof.
+I am an undergraduate researcher working at the intersection of mathematics, machine learning, optimization, and nonlinear dynamics. I am pursuing a B.Sc. in **Mathematics and Applied Mathematics** at **Yangtze University College of Arts and Sciences**, where I expect to graduate in June 2027. My current GPA is **3.5/4.0**; I ranked first in my major in Optimization Theory (97/100) and earned 96/100 in Numerical Computation Methods.
 
-I also study machine learning theory from a mathematical perspective, with interests in generalization, out-of-distribution prediction, and Koopman/operator-theoretic methods.
+Since 2025, I have been a visiting student at **The Hong Kong University of Science and Technology (Guangzhou)** under the supervision of **Prof. Tianyuan Jin**. My study there includes theoretical machine learning, online learning, bandit algorithms, stochastic optimization, and mathematical research.
 
-Email: [txj_262538@163.com](mailto:txj_262538@163.com)  
-Links: [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-0008-1127-6420) · [LinkedIn](https://www.linkedin.com/in/%E7%85%A6%E6%B1%9F-%E5%94%90-7a1513392)
+My research experience spans bilevel optimization, Koopman operator learning, rough-volatility hedging, spatial transcriptomics, and large-language-model retrieval systems. Across these projects, I am most interested in the mathematical structure that makes a model identifiable, stable, and useful beyond a benchmark.
 
-[Research](/research/) · [Notes](/notes/) · [Curriculum Vitae](/cv/)
+## Education
+
+**Yangtze University College of Arts and Sciences**, Jingzhou, China<br>
+B.Sc. in Mathematics and Applied Mathematics · Sep. 2023 - Jun. 2027 (expected)
+
+**The Hong Kong University of Science and Technology (Guangzhou)**, Guangzhou, China<br>
+Visiting Student · 2025 - present · Advisor: Prof. Tianyuan Jin
+
+## Contact
+
+[Email](mailto:txj_262538@163.com) · [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-0008-1127-6420) · [LinkedIn](https://www.linkedin.com/in/%E7%85%A6%E6%B1%9F-%E5%94%90-7a1513392)

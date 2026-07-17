@@ -11,135 +11,60 @@ hideMeta: true
 
 # Xujiang Tang
 
-**Undergraduate in Mathematics**  
-Algebraic Topology, Finite Groups, Equivariant Homotopy Theory
+**Undergraduate researcher in mathematics and machine learning**<br>
+[Email](mailto:txj_262538@163.com) · [Website](https://txj2006.github.io) · [GitHub](https://github.com/TXJ2006) · [ORCID](https://orcid.org/0009-0008-1127-6420)
 
-Email: [txj_262538@163.com](mailto:txj_262538@163.com)  
-Website: [txj2006.github.io](https://txj2006.github.io)  
-GitHub: [github.com/TXJ2006](https://github.com/TXJ2006)  
-ORCID: [0009-0008-1127-6420](https://orcid.org/0009-0008-1127-6420)
-
-[Download PDF CV](/files/XujiangTang_CV_2026.pdf)
-
----
-
-## Research Profile
-
-Early-stage researcher in pure mathematics, with current work centered on Quillen-type p-subgroup complexes, finite group topology, subgroup-complex homology, and equivariant homotopy-theoretic methods. I am especially interested in the interface between atom/crosscut models, centralizer and orbit-carrier geometry, group cohomology, classifying-space methods, and stable or proper equivariant homotopy theory.
-
----
-
-## Research Interests
-
-- Algebraic topology and equivariant homotopy theory; subgroup complexes, classifying spaces, stable homotopy-theoretic structures, and geometric fixed point methods.
-- Finite group theory; Quillen's p-subgroup conjecture, elementary abelian p-subgroups, centralizer structures, group cohomology, and FRUL-WOS sphere methods.
-- Formalized mathematics; Lean, Mathlib, proof engineering, and long-term formalization of algebraic and topological arguments.
-- Additional interests: machine learning theory, optimization, stochastic processes, and operator-theoretic methods.
-
----
+<a class="cv-download" href="/files/XujiangTang_CV_2026.pdf">Download PDF CV</a>
 
 ## Education
 
-**Yangtze University College of Arts and Sciences**, Jingzhou, China  
-B.Sc. in Mathematics and Applied Mathematics, expected June 2027
+**Yangtze University College of Arts and Sciences**, Jingzhou, China<br>
+B.Sc. in Mathematics and Applied Mathematics · Sep. 2023 - Jun. 2027 (expected)<br>
+GPA: 3.5/4.0
 
-- Selected coursework: mathematical analysis, linear algebra, probability and statistics, differential equations, computational modeling, optimization theory, numerical computation, data structures, Python, R, and MATLAB.
-- Selected marks: Optimization Theory 97/100; Numerical Computation Methods 96/100.
+- Optimization Theory: 97/100, ranked first in the major.
+- Numerical Computation Methods: 96/100.
+- Coursework includes mathematical analysis, advanced algebra, probability and mathematical statistics, differential equations, number theory, mathematical modeling, and mathematical software.
 
-**Great Bay University**, China  
-Visiting Student, 2025-present
+**The Hong Kong University of Science and Technology (Guangzhou)**, Guangzhou, China<br>
+Visiting Student · 2025 - present · Advisor: Prof. Tianyuan Jin
 
-- Research in theoretical mathematics and machine learning theory.
+- Theoretical machine learning, online learning, bandit algorithms, stochastic optimization, and mathematical research.
 
----
+## Research Experience
 
-## Publications and Manuscripts
+**Bilevel Optimization and Implicit Differentiation** · Independent Research · 2025 - present<br>
+Hypergradient computation on differentiable lower-level solution manifolds; curvature-filter methods near singular and focal sets.
 
-### Submitted Manuscripts and Preprints
+**Deep Hedging under Rough Volatility** · Independent Research · 2025 - present<br>
+Fractional-kernel neural architecture for variance-optimal hedging; stochastic analysis and numerical optimization.
 
-1. **X. Tang**. "Centralizer Energy, FRUL-WOS Spheres, and Quillen's p-Subgroup Conjecture." Submitted to *Annals of Mathematics*.
-   - Develops an atom/crosscut-complex approach to Quillen-type p-subgroup complexes using centralizer-energy descent, orbit-carrier Mayer-Vietoris methods, controlled-flat certificates, class-2 commutator-polar data, and protected cross-polytope obstructions.
+**Dynamical Systems and Koopman Operator Learning** · Research Collaborator · Mar. 2024 - present<br>
+Long-horizon nonlinear prediction with Prof. Yanbing Jia's group; proposed and benchmarked a Koopman Operator Linearization Skeleton.
 
-2. **X. Tang**. "Geometric Fixed Point Tomography and Spoke Bokstedt Periodicity." Submitted to *Algebraic & Geometric Topology*.
+**Biomedical Data Science** · Research Assistant, Northeastern University · Sep. 2024 - Jan. 2025<br>
+Spatial-transcriptomics clustering and high-dimensional single-cell preprocessing under Dr. Dayu Hu.
 
-3. **X. Tang** and C. Fan. "Out-of-Distribution Generalization Error Bounds for Successful Prediction of Deep Autoregressive Algorithms." Submitted to NeurIPS 2026.
+**Peking University Open-Source LLM Group** · Research and Engineering Intern · Jun. - Aug. 2024<br>
+Large-language-model deployment, retrieval-augmented generation, and external knowledge integration.
 
-4. **X. Tang**. "Quartic Difficulty: Assessing the Learnability of Unsupervised Learning Algorithms." Submitted to COLT.
+**Stochastic Modeling and Quantitative Finance** · Team Lead · Oct. 2023 - Apr. 2024<br>
+Rough-volatility modeling, Bayesian inference, stochastic simulation, and MCMC parameter estimation.
 
-### Published and Accepted Papers
+## Publications
 
-1. Q. Li and **X. Tang**. "HKGEduRec: A Knowledge Graph-Enhanced Dynamic Hybrid Framework for Educational Recommendation with Cold-Start Mitigation." *IEEE ICMEIM 2025*, EI-indexed.
+See the dedicated [Publications page](/publications/) for published, accepted, under-review, and submitted work.
 
-2. **X. Tang** and Q. Li. "Logical Gene Encoding: A Bio-Inspired Approach for Energy-Efficient Automated Reasoning." *IEIT 2025*, EI-indexed. DOI: [10.2991/978-94-6463-803-5_81](https://doi.org/10.2991/978-94-6463-803-5_81).
-
-3. Q. Li and **X. Tang**. "Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions." *AIMS Mathematics*, accepted, 2025.
-
----
-
-## Selected Research Experience
-
-**Finite Group Theory and Quillen's p-Subgroup Conjecture**  
-Independent research, 2025-present
-
-- Developed a subgroup-complex approach involving atom complexes, centralizer energy, FRUL-WOS spheres, orbit carriers, and controlled fillings.
-- Current focus: homological and equivariant-topological methods for Quillen-type problems and related subgroup-complex obstructions.
-
-**Algebraic Topology and Equivariant Homotopy Theory**  
-Independent research, 2025-present
-
-- Research on geometric fixed point tomography, spoke Bokstedt periodicity, and stable homotopy-theoretic structures.
-
-**Formal Proof and Lean**  
-Formalized mathematics, 2026-present
-
-- Study of Lean, Mathlib, proof engineering, and long-term formalization of advanced arguments in algebra and topology.
-
-**Theoretical Machine Learning and Optimization**  
-Research projects, 2024-present
-
-- Work on learnability, generalization guarantees, out-of-distribution prediction, and optimization-theoretic aspects of learning algorithms.
-
-**Additional Applied Research**  
-Mathematical modeling, spatial omics, long-sequence data, and quantitative finance, 2023-present
-
-- Epidemic prevention and population-mobility modeling in Jingzhou; spatial omics data processing; epilepsy-related long-sequence modeling using Koopman/operator-theoretic methods; stochastic-process models and robust financial decision problems.
-
----
-
-## Visiting Position and Training
-
-- Zhejiang University Lean Formalization Summer School, 2026. Formal proof, Lean, Mathlib, and computer-assisted theorem proving.
-- Neural Networks and Python Implementation, short winter training with Prof. Mark Vogelsberger. Grade: A.
-
----
-
-## Honors, Competitions, and Activities
+## Honors
 
 - Kaggle Silver Medal, Jigsaw Toxic Comment Classification Challenge.
 - Regional Gold Medal, WorldQuant International Quant Championship.
 - Third Prize, UCAS Graduate AI Forum.
-- Mathematical Modeling Competition, Hua Zhong Cup; National College Students Statistical Modeling Competition; multiple national second prizes in mathematical modeling competitions.
-- Reviewer, ICLR 2026 Workshop.
-
----
-
-## Professional Experience
-
-- **Peking University Open-Source LLM Group**, Jun.-Aug. 2024. Contributed to LLM deployment and retrieval-augmented generation systems.
-- **Deloitte**, Jul.-Sep. 2024. Consulting workflows, teamwork, and communication.
-- **Guolian Securities**, Jul.-Sep. 2024. Statistical methods in securities research and quantitative workflows.
-
----
-
-## Selected Academic Contacts and Collaborations
-
-- William Redman, Johns Hopkins University.
-- Ziyue Qiao, Great Bay University.
-
----
+- National Second Prize, National College Students Statistical Modeling Competition.
+- National Second Prize, Hua Zhong Cup Mathematical Modeling Competition.
 
 ## Skills
 
-**Mathematics:** algebraic topology, finite group theory, homotopy theory, representation theory, optimization, numerical analysis, stochastic processes, differential equations, causal inference, and statistical modeling.  
-**Formal proof and programming:** Lean, Mathlib, Python, PyTorch, NumPy, Pandas, MATLAB, R, C++, LaTeX, Git/GitHub, and Linux.  
+**Programming and tools:** Python, PyTorch, NumPy, Pandas, C++, R, MATLAB, Git/GitHub, Linux, LaTeX.<br>
+**Methods:** machine learning, statistical modeling, optimization, causal inference, LLM deployment, retrieval-augmented generation.<br>
 **Languages:** Mandarin Chinese; English.
