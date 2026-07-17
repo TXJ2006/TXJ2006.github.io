@@ -8,13 +8,20 @@ ShowToc: false
 hideMeta: true
 ---
 
-# About
+I am an undergraduate researcher with a background in **Mathematics and Applied Mathematics**. My current work uses mathematical structure to study optimization, machine learning, nonlinear dynamics, and stochastic systems.
 
-I am an undergraduate researcher working at the intersection of mathematics, machine learning, optimization, and nonlinear dynamics. I am pursuing a B.Sc. in **Mathematics and Applied Mathematics** at **Yangtze University College of Arts and Sciences**, where I expect to graduate in June 2027. My current GPA is **3.5/4.0**; I ranked first in my major in Optimization Theory (97/100) and earned 96/100 in Numerical Computation Methods.
+My earlier study centered on theoretical mathematics, including algebraic topology, finite group theory, equivariant ideas, and formal proof. Those interests continue to shape how I approach applied problems: I look for the geometry, invariants, or probabilistic structure that makes a model interpretable and stable rather than treating computation as a black box.
 
-Since 2025, I have been a visiting student at **The Hong Kong University of Science and Technology (Guangzhou)** under the supervision of **Prof. Tianyuan Jin**. My study there includes theoretical machine learning, online learning, bandit algorithms, stochastic optimization, and mathematical research.
+I am pursuing a B.Sc. at **Yangtze University College of Arts and Sciences**, with expected graduation in June 2027. My current GPA is **3.5/4.0**; selected results include Optimization Theory (97/100, ranked first) and Numerical Computation Methods (96/100).
 
-My research experience spans bilevel optimization, Koopman operator learning, rough-volatility hedging, spatial transcriptomics, and large-language-model retrieval systems. Across these projects, I am most interested in the mathematical structure that makes a model identifiable, stable, and useful beyond a benchmark.
+Since 2025, I have also been a visiting student at **The Hong Kong University of Science and Technology (Guangzhou)** under the supervision of **Prof. Tianyuan Jin**, studying theoretical machine learning, online learning, bandit algorithms, stochastic optimization, and mathematical research.
+
+## Research Path
+
+- **Mathematical foundations:** topology, group-theoretic ideas, formal proof, and rigorous mathematical reading.
+- **Learning and optimization:** bilevel optimization, implicit differentiation, generalization, and sequential decision-making.
+- **Dynamics and uncertainty:** Koopman methods, stochastic processes, rough volatility, and numerical modeling.
+- **Applied collaborations:** spatial transcriptomics, neural dynamics, quantitative finance, and retrieval systems.
 
 ## Education
 
