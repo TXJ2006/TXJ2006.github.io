@@ -2,6 +2,7 @@ baseURL = 'https://txj2006.github.io/'
 languageCode = 'en-us'
 title = 'Xujiang Tang'
 theme = 'PaperMod'
+disableKinds = ['taxonomy', 'term']
 
 [params]
     math = true

@@ -34,7 +34,7 @@ I believe **mathematics can open broader frontiers for machine learning and arti
 
 - Studying regret minimization, best-arm identification, exploration-exploitation tradeoffs, and adaptive decision-making.
 - Building a structured command of concentration inequalities, martingales, KL divergence, exponential families, and change-of-measure lower bounds.
-- Maintaining eight reproducible LaTeX notes that connect foundational probability to modern bandit analysis.
+- Maintaining eight online Markdown notes that connect foundational probability to modern bandit analysis.
 
 ### Reinforcement Learning and Resource-Efficient Learning
 

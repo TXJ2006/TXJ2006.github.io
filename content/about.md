@@ -27,7 +27,7 @@ My immediate academic goal is to pursue a PhD in **Data Science and Analytics at
 
 **Yangtze University College of Arts and Sciences**, Jingzhou, China<br>
 B.Sc. in Mathematics and Applied Mathematics · Sep. 2023 - Jun. 2027 (expected)<br>
-GPA: 3.5/4.0 · Mathematical Modeling: 96 · ODE: 89 · Complex Analysis: 90 · Real Analysis: 95 · Functional Analysis: 99 · Abstract Algebra: 98
+Mathematical Modeling: 96 · ODE: 89 · Complex Analysis: 90 · Real Analysis: 95 · Functional Analysis: 99 · Abstract Algebra: 98
 
 **Zhejiang University**, Hangzhou, China<br>
 2026 AI4Math Summer School: Lean Formalized Mathematics · Jul. 2026

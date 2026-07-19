@@ -1,0 +1,16 @@
+<aside class="note-author" aria-label="Author profile">
+  <a class="note-author-image" href="{{ "/" | relURL }}" aria-label="Xujiang Tang home">
+    <img src="{{ "images/youyu-chitang-source.jpg" | relURL }}" alt="You Yu and Chi Tang reading together" width="132" height="132">
+  </a>
+  <div class="note-author-copy">
+    <p class="note-author-name">Xujiang Tang <span lang="zh-CN">唐煦江</span></p>
+    <p>Mathematics and theoretical machine learning</p>
+    <p>Research Assistant<br>HKUST(GZ)</p>
+  </div>
+  <nav class="note-author-links" aria-label="Author links">
+    <a href="{{ "research/" | relURL }}">Research</a>
+    <a href="{{ "publications/" | relURL }}">Publications</a>
+    <a href="{{ "cv/" | relURL }}">Curriculum Vitae</a>
+  </nav>
+  {{ partial "social_icons.html" (dict "align" "left") }}
+</aside>

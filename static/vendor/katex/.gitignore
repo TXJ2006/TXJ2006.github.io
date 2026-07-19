@@ -1,0 +1,11 @@
+*
+!.gitignore
+!LICENSE
+!katex.min.css
+!katex.min.js
+!contrib/
+contrib/*
+!contrib/auto-render.min.js
+!fonts/
+fonts/*
+!fonts/*.woff2

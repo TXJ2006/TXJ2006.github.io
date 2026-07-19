@@ -229,7 +229,7 @@ def build():
     story.append(
         entry(
             "B.Sc. in Mathematics and Applied Mathematics",
-            "Yangtze University College of Arts and Sciences, Jingzhou, China | GPA: 3.5/4.0",
+            "Yangtze University College of Arts and Sciences, Jingzhou, China",
             "Sep 2023 - Jun 2027",
             [
                 "Core strengths: Mathematical Modeling 96; Ordinary Differential Equations 89; Complex Analysis 90; Real Analysis 95; Functional Analysis 99; Abstract Algebra 98.",
@@ -345,7 +345,7 @@ def build():
     story += section("Selected Technical Notes", styles)
     story.append(
         p(
-            "Eight reproducible LaTeX notes on sequential decisions: regret and exploration; adaptive data and filtrations; concentration bounds; martingales and optional stopping; KL divergence; exponential-family bandit models; and change-of-measure lower bounds. Available at txj2006.github.io/notes/.",
+            "Eight online Markdown notes on sequential decisions: regret and exploration; adaptive data and filtrations; concentration bounds; martingales and optional stopping; KL divergence; exponential-family bandit models; and change-of-measure lower bounds. Available at txj2006.github.io/notes/.",
             styles["Body"],
         )
     )

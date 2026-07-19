@@ -1,0 +1,111 @@
+{{- define "main" }}
+<section class="editor-page" data-repo="TXJ2006/TXJ2006.github.io" data-branch="main">
+  <header class="editor-header">
+    <div>
+      <p class="eyebrow">Private Publishing Workspace</p>
+      <h1>Markdown Editor</h1>
+    </div>
+    <a href="{{ "notes/" | relURL }}">View library</a>
+  </header>
+
+  <section class="editor-auth" id="editor-auth" aria-labelledby="auth-heading">
+    <div>
+      <h2 id="auth-heading">Connect GitHub</h2>
+      <p><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Fine-grained token</a> · Contents read/write · current session only</p>
+      <p class="editor-auth-status" id="editor-auth-status" role="status" aria-live="polite"></p>
+    </div>
+    <label>
+      <span>Access token</span>
+      <input id="editor-token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_...">
+    </label>
+    <button class="button-primary" id="editor-connect" type="button">Connect</button>
+  </section>
+
+  <div class="editor-workspace" id="editor-workspace" hidden>
+    <aside class="editor-library">
+      <div class="editor-library-heading">
+        <span>Notes</span>
+        <button id="editor-new" type="button">New</button>
+      </div>
+      <div id="editor-files" class="editor-files" role="listbox" aria-label="Markdown notes"></div>
+      <button class="editor-disconnect" id="editor-disconnect" type="button">Disconnect</button>
+    </aside>
+
+    <main class="editor-document">
+      <div class="editor-toolbar">
+        <label class="editor-filename">
+          <span>File</span>
+          <input id="editor-filename" type="text" inputmode="url" spellcheck="false" aria-label="Markdown filename">
+        </label>
+        <div class="editor-modes" aria-label="Editor mode">
+          <button class="active" type="button" data-mode="split">Split</button>
+          <button type="button" data-mode="edit">Edit</button>
+          <button type="button" data-mode="preview">Preview</button>
+        </div>
+      </div>
+
+      <div class="markdown-toolbar" id="markdown-toolbar" aria-label="Markdown formatting">
+        <button type="button" data-md-action="h1" title="Heading 1">H1</button>
+        <button type="button" data-md-action="h2" title="Heading 2">H2</button>
+        <button type="button" data-md-action="h3" title="Heading 3">H3</button>
+        <button type="button" data-md-action="h4" title="Heading 4">H4</button>
+        <span aria-hidden="true"></span>
+        <button type="button" data-md-action="bold" title="Bold"><strong>B</strong></button>
+        <button type="button" data-md-action="italic" title="Italic"><em>I</em></button>
+        <button type="button" data-md-action="strike" title="Strikethrough"><s>S</s></button>
+        <button type="button" data-md-action="quote" title="Block quote">“</button>
+        <span aria-hidden="true"></span>
+        <button type="button" data-md-action="link" title="Link">Link</button>
+        <button type="button" data-md-action="inline-code" title="Inline code">&lt;/&gt;</button>
+        <button type="button" data-md-action="code-block" title="Code block">Code</button>
+        <span aria-hidden="true"></span>
+        <button type="button" data-md-action="unordered-list" title="Bulleted list">• List</button>
+        <button type="button" data-md-action="ordered-list" title="Numbered list">1. List</button>
+        <button type="button" data-md-action="task-list" title="Task list">☑ List</button>
+        <button type="button" data-md-action="table" title="Table">Table</button>
+        <button type="button" data-md-action="rule" title="Horizontal rule">―</button>
+        <button type="button" data-md-action="footnote" title="Footnote">[^]</button>
+        <button id="editor-image" type="button" title="Insert image">Image</button>
+        <input id="editor-image-file" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+      </div>
+
+      <div class="editor-insertbar" aria-label="Formula tools">
+        <div class="formula-controls">
+          <label>
+            <span>Formula</span>
+            <select id="formula-category" aria-label="Formula category"></select>
+          </label>
+          <div class="formula-display" aria-label="Formula display mode">
+            <button class="active" type="button" data-formula-mode="inline">Inline</button>
+            <button type="button" data-formula-mode="display">Display</button>
+          </div>
+        </div>
+        <div class="formula-symbols" id="formula-symbols" aria-label="Formula symbols"></div>
+      </div>
+
+      <div class="editor-panes" data-mode="split">
+        <label class="editor-pane editor-input-pane">
+          <span>Markdown</span>
+          <textarea id="editor-content" spellcheck="true" aria-label="Markdown content"></textarea>
+        </label>
+        <div class="editor-pane editor-preview-pane">
+          <span>Preview</span>
+          <iframe id="editor-preview" sandbox="allow-scripts" title="Markdown preview"></iframe>
+        </div>
+      </div>
+
+      <footer class="editor-publish">
+        <label>
+          <span>Commit message</span>
+          <input id="editor-message" type="text" value="Publish research note" maxlength="120">
+        </label>
+        <p id="editor-status" role="status" aria-live="polite"></p>
+        <button class="button-primary" id="editor-publish" type="button">Publish</button>
+      </footer>
+    </main>
+  </div>
+
+</section>
+<script src="{{ "js/marked.umd.js" | relURL }}"></script>
+<script src="{{ "js/notes-editor.js" | relURL }}"></script>
+{{- end }}
