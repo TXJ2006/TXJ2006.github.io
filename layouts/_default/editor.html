@@ -11,13 +11,17 @@
   <section class="editor-auth" id="editor-auth" aria-labelledby="auth-heading">
     <div>
       <h2 id="auth-heading">验证编辑身份</h2>
-      <p><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Fine-grained token</a> · Repository contents: Read and write · 仅保留在本次浏览器会话</p>
+      <p><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Fine-grained token</a> · Repository contents: Read and write · 令牌只保存在当前设备</p>
       <p class="editor-auth-status" id="editor-auth-status" role="status" aria-live="polite"></p>
     </div>
-    <label>
-      <span>GitHub access token</span>
+    <div class="editor-auth-fields">
+      <label class="editor-token-field" for="editor-token">GitHub access token</label>
       <input id="editor-token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_...">
-    </label>
+      <label class="editor-remember">
+        <input id="editor-remember" type="checkbox" checked>
+        <span>在此设备保持登录，下次自动进入</span>
+      </label>
+    </div>
     <button class="button-primary" id="editor-connect" type="button">验证并进入</button>
   </section>
 

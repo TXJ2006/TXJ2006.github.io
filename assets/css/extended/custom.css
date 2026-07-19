@@ -933,7 +933,7 @@ a {
   color: #12645f;
 }
 
-.editor-auth label,
+.editor-auth-fields,
 .editor-filename,
 .editor-publish label {
   display: grid;
@@ -1021,6 +1021,34 @@ a {
 .editor-library-heading button {
   color: var(--accent);
   font-weight: 700;
+}
+
+.editor-token-field {
+  color: var(--secondary);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.editor-auth-fields {
+  gap: 6px;
+}
+
+.editor-remember {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 2px;
+  color: var(--secondary);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.editor-remember input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: var(--accent);
 }
 
 .editor-files {

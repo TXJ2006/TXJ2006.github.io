@@ -181,12 +181,13 @@
     preview: document.querySelector('#editor-preview'),
     previewStatus: document.querySelector('#editor-preview-status'),
     publish: document.querySelector('#editor-publish'),
+    remember: document.querySelector('#editor-remember'),
     status: document.querySelector('#editor-status'),
     token: document.querySelector('#editor-token'),
     workspace: document.querySelector('#editor-workspace'),
   };
 
-  let token = sessionStorage.getItem(tokenKey) || '';
+  let token = localStorage.getItem(tokenKey) || sessionStorage.getItem(tokenKey) || '';
   let currentPath = '';
   let currentSha = '';
   let formulaMode = 'inline';
@@ -205,6 +206,17 @@
   function setAuthStatus(message, kind = '') {
     elements.authStatus.textContent = message;
     elements.authStatus.dataset.kind = kind;
+  }
+
+  function clearStoredToken() {
+    localStorage.removeItem(tokenKey);
+    sessionStorage.removeItem(tokenKey);
+  }
+
+  function storeToken() {
+    clearStoredToken();
+    const storage = elements.remember.checked ? localStorage : sessionStorage;
+    storage.setItem(tokenKey, token);
   }
 
   function updateCompileLog(issues) {
@@ -645,7 +657,7 @@ Write the note here.
       if (!repository.permissions?.push) {
         throw new Error('Token 缺少此仓库 Contents 的写入权限。');
       }
-      sessionStorage.setItem(tokenKey, token);
+      storeToken();
       setAuthStatus(`已验证 ${user.login}`, 'success');
       elements.identity.textContent = `${user.login} · ${repository.full_name}`;
       elements.auth.hidden = true;
@@ -659,7 +671,7 @@ Write the note here.
       else if (files.length) await loadFile(files[0].path);
     } catch (error) {
       setAuthStatus(error.message, 'error');
-      sessionStorage.removeItem(tokenKey);
+      clearStoredToken();
       token = '';
     } finally {
       elements.connect.disabled = false;
@@ -683,7 +695,7 @@ Write the note here.
   });
   elements.connect.addEventListener('click', connect);
   elements.token.addEventListener('keydown', (event) => { if (event.key === 'Enter') connect(); });
-  elements.disconnect.addEventListener('click', () => { sessionStorage.removeItem(tokenKey); window.location.reload(); });
+  elements.disconnect.addEventListener('click', () => { clearStoredToken(); window.location.reload(); });
   elements.compileCopy.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(compileLogText);
@@ -713,7 +725,9 @@ Write the note here.
   }));
 
   if (token) {
+    elements.remember.checked = Boolean(localStorage.getItem(tokenKey));
     elements.token.value = token;
+    setAuthStatus('正在恢复此设备的编辑身份...');
     connect();
   }
 })();
