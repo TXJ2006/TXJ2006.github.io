@@ -651,7 +651,8 @@ Write the note here.
       elements.auth.hidden = true;
       elements.workspace.hidden = false;
       const requested = params.get('path');
-      const requestedPath = requested ? `content/${requested.replace(/^content\//, '')}` : '';
+      const normalizedRequested = requested ? requested.replaceAll('\\', '/').replace(/^content\//, '') : '';
+      const requestedPath = normalizedRequested ? `content/${normalizedRequested}` : '';
       const files = await loadFiles(requestedPath);
       if (params.has('new')) newNote();
       else if (requestedPath) await loadFile(requestedPath);

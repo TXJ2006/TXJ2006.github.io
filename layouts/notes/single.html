@@ -17,6 +17,10 @@
         </ul>
         <div class="notes-actions" aria-label="Document actions">
           <a href="{{ "notes/" | relURL }}">All notes</a>
+          {{ with .File }}
+          {{ $sourcePath := replace .Path "\\" "/" }}
+          <a href="{{ "admin/" | relURL }}?path={{ $sourcePath | urlquery }}" rel="nofollow">Edit</a>
+          {{ end }}
         </div>
       </header>
 
