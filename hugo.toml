@@ -4,6 +4,14 @@ title = 'Xujiang Tang'
 theme = 'PaperMod'
 disableKinds = ['taxonomy', 'term']
 
+[outputFormats.Share]
+    mediaType = "text/html"
+    baseName = "index"
+    path = "share"
+    isHTML = true
+    permalinkable = true
+    notAlternative = true
+
 [params]
     math = true
     defaultTheme = "light"

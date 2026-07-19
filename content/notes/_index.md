@@ -6,6 +6,12 @@ description: "A living research library on probability, online learning, bandit 
 draft: false
 ShowToc: false
 hideMeta: true
+cascade:
+  - outputs:
+      - HTML
+      - Share
+    _target:
+      kind: page
 ---
 
 This library develops the mathematical language of **online learning, bandit algorithms, and sequential decision-making**. Every entry is maintained as Markdown and rendered directly in the browser, allowing explanations, formulas, code, figures, and references to evolve as a single online document.
