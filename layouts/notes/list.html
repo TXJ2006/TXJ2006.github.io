@@ -1,0 +1,38 @@
+{{- define "main" }}
+<section class="notes-page">
+  <header class="notes-header">
+    <p class="eyebrow">Markdown Research Library</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description }}<p class="notes-deck">{{ . }}</p>{{ end }}
+  </header>
+
+  <div class="notes-shell">
+    {{ partial "note_author.html" . }}
+    <main class="notes-index" aria-label="Research notes">
+      <div class="notes-intro post-content">{{ .Content }}</div>
+      <div class="notes-list">
+        {{ range $index, $page := .Pages.ByWeight }}
+        <article class="note-row">
+          <p class="note-number">{{ printf "%02d" (add $index 1) }}</p>
+          <div class="note-row-main">
+            <div class="note-row-heading">
+              <h2><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h2>
+              <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2, 2006" }}</time>
+            </div>
+            {{ with $page.Params.subtitle }}<p class="note-subtitle">{{ . }}</p>{{ end }}
+            <p class="note-summary">{{ $page.Params.summary }}</p>
+            <div class="note-row-footer">
+              <ul class="note-tags" aria-label="Topics">
+                {{ range first 3 $page.Params.tags }}<li>{{ . }}</li>{{ end }}
+              </ul>
+              <span>{{ $page.WordCount }} words</span>
+              <a href="{{ $page.RelPermalink }}">Read</a>
+            </div>
+          </div>
+        </article>
+        {{ end }}
+      </div>
+    </main>
+  </div>
+</section>
+{{- end }}

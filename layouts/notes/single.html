@@ -1,0 +1,29 @@
+{{- define "main" }}
+<section class="note-page">
+  <div class="notes-shell note-single-shell">
+    {{ partial "note_author.html" . }}
+    <article class="note-article">
+      <header class="note-header">
+        <p class="note-kicker"><a href="{{ "notes/" | relURL }}">Research Notes</a></p>
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.subtitle }}<p class="note-deck">{{ . }}</p>{{ end }}
+        <div class="note-meta">
+          <span>Published {{ .Date.Format "January 2, 2006" }}</span>
+          <span>{{ .ReadingTime }} min read</span>
+          <span>{{ .WordCount }} words</span>
+        </div>
+        <ul class="note-tags" aria-label="Topics">
+          {{ range .Params.tags }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        <div class="notes-actions" aria-label="Document actions">
+          <a href="{{ "notes/" | relURL }}">All notes</a>
+        </div>
+      </header>
+
+      <div class="note-content post-content">
+        {{ .Content }}
+      </div>
+    </article>
+  </div>
+</section>
+{{- end }}

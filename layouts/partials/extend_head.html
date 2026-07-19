@@ -1,4 +1,7 @@
 {{ $noop := .WordCount }}
+{{ if eq .Section "notes" }}
+{{ partial "math.html" . }}
+{{ end }}
 {{ if .Page.Store.Get "hasMath" }}
 <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css"
