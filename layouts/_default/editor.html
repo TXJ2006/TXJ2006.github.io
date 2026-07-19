@@ -96,12 +96,16 @@
       <div class="editor-insertbar" aria-label="Formula tools">
         <div class="formula-controls">
           <label>
-            <span>Formula</span>
+            <span>公式类别</span>
             <select id="formula-category" aria-label="Formula category"></select>
           </label>
+          <label>
+            <span>搜索公式</span>
+            <input id="formula-search" type="search" autocomplete="off" spellcheck="false" placeholder="名称或符号">
+          </label>
           <div class="formula-display" aria-label="Formula display mode">
-            <button class="active" type="button" data-formula-mode="inline">Inline</button>
-            <button type="button" data-formula-mode="display">Display</button>
+            <button class="active" type="button" data-formula-mode="inline">行内</button>
+            <button type="button" data-formula-mode="display">独立</button>
           </div>
         </div>
         <div class="formula-symbols" id="formula-symbols" aria-label="Formula symbols"></div>

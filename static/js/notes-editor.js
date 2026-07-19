@@ -48,31 +48,135 @@
   };
 
   const formulaCatalog = {
-    Structures: [
-      ['a/b', 'Fraction', '\\frac{a}{b}'],
-      ['x²', 'Superscript', '{{selection}}^{2}'],
-      ['xᵢ', 'Subscript', '{{selection}}_{i}'],
-      ['√x', 'Square root', '\\sqrt{{{selection}}}'],
-      ['ⁿ√x', 'Nth root', '\\sqrt[n]{{{selection}}}'],
-      ['|x|', 'Absolute value', '\\left|{{selection}}\\right|'],
-      ['‖x‖', 'Norm', '\\left\\|{{selection}}\\right\\|'],
-      ['(n k)', 'Binomial coefficient', '\\binom{n}{k}'],
-      ['cases', 'Piecewise function', 'f(x)=\\begin{cases}x^2,&x\\ge 0,\\\\-x,&x<0.\\end{cases}'],
-      ['align', 'Aligned equations', '\\begin{aligned}a&=b+c,\\\\d&=e+f.\\end{aligned}'],
+    '常用结构': [
+      ['a/b', '普通分式', '\\frac{a}{b}'], ['x²', '上标', '{{selection}}^{2}'],
+      ['xᵢ', '下标', '{{selection}}_{i}'], ['xᵢ²', '上下标', '{{selection}}_{i}^{2}'],
+      ['√x', '平方根', '\\sqrt{{{selection}}}'], ['ⁿ√x', 'n 次根', '\\sqrt[n]{{{selection}}}'],
+      ['|x|', '绝对值', '\\left|{{selection}}\\right|'], ['‖x‖', '范数', '\\left\\|{{selection}}\\right\\|'],
+      ['⟨x,y⟩', '内积', '\\langle x,y\\rangle'], ['(n k)', '二项式系数', '\\binom{n}{k}'],
+      ['Σ', '求和', '\\sum_{i=1}^{n} {{selection}}'], ['Π', '连乘', '\\prod_{i=1}^{n} {{selection}}'],
+      ['∫', '定积分', '\\int_a^b {{selection}}\\,\\dd x'], ['lim', '极限', '\\lim_{n\\to\\infty} {{selection}}'],
+      ['d/dx', '导数', '\\frac{\\dd}{\\dd x}{{selection}}'], ['∂/∂x', '偏导数', '\\frac{\\partial}{\\partial x}{{selection}}'],
+      ['cases', '分段函数', 'f(x)=\\begin{cases}x^2,&x\\ge 0,\\\\-x,&x<0.\\end{cases}'],
+      ['align', '对齐公式', '\\begin{aligned}a&=b+c,\\\\d&=e+f.\\end{aligned}'],
+      ['2×2', '二阶矩阵', '\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}'],
+      ['3×3', '三阶矩阵', '\\begin{pmatrix}a&b&c\\\\d&e&f\\\\g&h&i\\end{pmatrix}'],
+      ['→', '趋于', '\\to'], ['⇒', '推出', '\\Rightarrow'], ['∈', '属于', '\\in'], ['∀', '任意', '\\forall'],
     ],
-    Greek: [
+    '分式': [
+      ['a/b', '普通分式', '\\frac{a}{b}'], ['a⁄b', '显示型分式', '\\dfrac{a}{b}'],
+      ['a/bₛ', '文本型分式', '\\tfrac{a}{b}'], ['1/x', '倒数', '\\frac{1}{{{selection}}}'],
+      ['dx/dt', '微分商', '\\frac{\\dd x}{\\dd t}'], ['∂f/∂x', '偏微分商', '\\frac{\\partial f}{\\partial x}'],
+      ['Δy/Δx', '差商', '\\frac{\\Delta y}{\\Delta x}'], ['a/(b/c)', '嵌套分式', '\\frac{a}{\\frac{b}{c}}'],
+      ['(a/b)/(c/d)', '复合分式', '\\frac{\\frac{a}{b}}{\\frac{c}{d}}'],
+      ['Σ/Π', '求和除以连乘', '\\frac{\\sum_{i=1}^{n}a_i}{\\prod_{j=1}^{m}b_j}'],
+      ['binom', '二项式系数', '\\binom{n}{k}'], ['1/(1+)', '连分式', 'a_0+\\cfrac{1}{a_1+\\cfrac{1}{a_2}}'],
+      ['dy/dx|₀', '指定点导数', '\\left.\\frac{\\dd y}{\\dd x}\\right|_{x=x_0}'],
+      ['P(A|B)', '条件概率分式', '\\frac{\\Pbb(A\\cap B)}{\\Pbb(B)}'],
+    ],
+    '上下标': [
+      ['x²', '上标', '{{selection}}^{2}'], ['xⁿ', 'n 次幂', '{{selection}}^{n}'],
+      ['x⁻¹', '逆或负一次幂', '{{selection}}^{-1}'], ['xᵢ', '下标', '{{selection}}_{i}'],
+      ['xᵢⱼ', '多重下标', '{{selection}}_{ij}'], ['xᵢ²', '上下标', '{{selection}}_{i}^{2}'],
+      ['xᵢ₌₁ⁿ', '上下限', '{{selection}}_{i=1}^{n}'], ['ₐXᵇ', '左上下标', '{}_{a}^{b}{{selection}}'],
+      ['x₍ᵢⱼ₎', '括号下标', '{{selection}}_{(i,j)}'], ['xₜ₋₁', '时间滞后下标', '{{selection}}_{t-1}'],
+      ['x⁽ⁿ⁾', 'n 阶导数上标', '{{selection}}^{(n)}'], ['eˣ', '指数函数', 'e^{{{selection}}}'],
+      ['aₙₖ', '双指标', 'a_{n,k}'], ['Σᵢ₌₁ⁿ', '求和上下限', '\\sum_{i=1}^{n}{{selection}}'],
+    ],
+    '根式': [
+      ['√x', '平方根', '\\sqrt{{{selection}}}'], ['∛x', '立方根', '\\sqrt[3]{{{selection}}}'],
+      ['ⁿ√x', 'n 次根', '\\sqrt[n]{{{selection}}}'], ['√a/b', '根式分式', '\\sqrt{\\frac{a}{b}}'],
+      ['1/√x', '根式倒数', '\\frac{1}{\\sqrt{{{selection}}}}'], ['√(a+b)', '和的平方根', '\\sqrt{a+b}'],
+      ['√Σ', '求和的平方根', '\\sqrt{\\sum_{i=1}^{n}x_i^2}'], ['√√x', '嵌套根式', '\\sqrt{a+\\sqrt{b}}'],
+      ['√[m]{xⁿ}', '幂的 m 次根', '\\sqrt[m]{x^n}'], ['±√x', '正负平方根', '\\pm\\sqrt{{{selection}}}'],
+      ['‖x‖₂', '二范数根式', '\\left(\\sum_{i=1}^{n}x_i^2\\right)^{1/2}'],
+      ['geom', '几何平均', '\\sqrt[n]{\\prod_{i=1}^{n}x_i}'],
+    ],
+    '积分与微分': [
+      ['∫f dx', '不定积分', '\\int {{selection}}\\,\\dd x'], ['∫ₐᵇ', '定积分', '\\int_a^b {{selection}}\\,\\dd x'],
+      ['∫₀∞', '无穷区间积分', '\\int_0^{\\infty} {{selection}}\\,\\dd x'],
+      ['∬D', '二重积分', '\\iint_D {{selection}}\\,\\dd x\\,\\dd y'],
+      ['∭V', '三重积分', '\\iiint_V {{selection}}\\,\\dd x\\,\\dd y\\,\\dd z'],
+      ['∮γ', '曲线积分', '\\oint_{\\gamma} {{selection}}\\,\\dd z'],
+      ['∮F·dr', '向量线积分', '\\oint_C \\mathbf{F}\\cdot\\dd\\mathbf{r}'],
+      ['∫S', '曲面积分', '\\iint_S {{selection}}\\,\\dd S'],
+      ['d/dx', '一阶导数算子', '\\frac{\\dd}{\\dd x}{{selection}}'], ['d²/dx²', '二阶导数', '\\frac{\\dd^2}{\\dd x^2}{{selection}}'],
+      ['f′', '一阶撇导数', "{{selection}}'"], ['f″', '二阶撇导数', "{{selection}}''"],
+      ['∂/∂x', '一阶偏导', '\\frac{\\partial}{\\partial x}{{selection}}'],
+      ['∂²/∂x²', '二阶偏导', '\\frac{\\partial^2}{\\partial x^2}{{selection}}'],
+      ['∂²/∂x∂y', '混合偏导', '\\frac{\\partial^2 {{selection}}}{\\partial x\\,\\partial y}'],
+      ['∇f', '梯度', '\\nabla {{selection}}'], ['∇·F', '散度', '\\nabla\\cdot\\mathbf{F}'],
+      ['∇×F', '旋度', '\\nabla\\times\\mathbf{F}'], ['Δf', '拉普拉斯算子', '\\Delta {{selection}}'],
+      ['Jf', '雅可比矩阵', 'J_f(x)=\\left[\\frac{\\partial f_i}{\\partial x_j}\\right]_{ij}'],
+      ['Hf', '海森矩阵', 'H_f(x)=\\left[\\frac{\\partial^2 f}{\\partial x_i\\partial x_j}\\right]_{ij}'],
+      ['δF/δu', '变分导数', '\\frac{\\delta F}{\\delta u}'], ['Dᵥf', '方向导数', 'D_v f(x)=\\nabla f(x)\\cdot v'],
+    ],
+    '大型运算符': [
+      ['Σ', '求和', '\\sum_{i=1}^{n} {{selection}}'], ['Σ∞', '无穷求和', '\\sum_{n=0}^{\\infty} {{selection}}'],
+      ['Π', '连乘', '\\prod_{i=1}^{n} {{selection}}'], ['∐', '余积', '\\coprod_{i\\in I} X_i'],
+      ['⋃', '大并集', '\\bigcup_{i\\in I} A_i'], ['⋂', '大交集', '\\bigcap_{i\\in I} A_i'],
+      ['⨁', '大直和', '\\bigoplus_{i\\in I} V_i'], ['⨂', '大张量积', '\\bigotimes_{i=1}^{n} V_i'],
+      ['⋁', '大析取', '\\bigvee_{i\\in I} P_i'], ['⋀', '大合取', '\\bigwedge_{i\\in I} P_i'],
+      ['lim', '极限', '\\lim_{x\\to a} {{selection}}'], ['lim∞', '无穷远极限', '\\lim_{n\\to\\infty} {{selection}}'],
+      ['lim sup', '上极限', '\\limsup_{n\\to\\infty} {{selection}}'], ['lim inf', '下极限', '\\liminf_{n\\to\\infty} {{selection}}'],
+      ['max', '最大值', '\\max_{x\\in X} {{selection}}'], ['min', '最小值', '\\min_{x\\in X} {{selection}}'],
+      ['sup', '上确界', '\\sup_{x\\in X} {{selection}}'], ['inf', '下确界', '\\inf_{x\\in X} {{selection}}'],
+      ['arg max', '最大值点', '\\argmax_{x\\in X} {{selection}}'], ['arg min', '最小值点', '\\argmin_{x\\in X} {{selection}}'],
+      ['ess sup', '本质上确界', '\\operatorname*{ess\\,sup}_{x\\in X} {{selection}}'],
+    ],
+    '括号与定界符': [
+      ['(x)', '圆括号', '\\left({{selection}}\\right)'], ['[x]', '方括号', '\\left[{{selection}}\\right]'],
+      ['{x}', '花括号', '\\left\\{{{selection}}\\right\\}'], ['⟨x⟩', '尖括号', '\\langle{{selection}}\\rangle'],
+      ['|x|', '绝对值', '\\left|{{selection}}\\right|'], ['‖x‖', '双竖线范数', '\\left\\|{{selection}}\\right\\|'],
+      ['⌊x⌋', '向下取整', '\\lfloor{{selection}}\\rfloor'], ['⌈x⌉', '向上取整', '\\lceil{{selection}}\\rceil'],
+      ['[a,b]', '闭区间', '[a,b]'], ['(a,b)', '开区间', '(a,b)'], ['[a,b)', '左闭右开区间', '[a,b)'],
+      ['{x:P}', '集合描述', '\\left\\{x\\in X\\middle|P(x)\\right\\}'],
+      ['⟨x|y⟩', '狄拉克内积', '\\left\\langle x\\middle|y\\right\\rangle'],
+      ['f|ₐᵇ', '上下限代入', '\\left.{{selection}}\\right|_{a}^{b}'],
+      ['(a/b)', '自动缩放分式括号', '\\left(\\frac{a}{b}\\right)'],
+      ['‖A‖F', 'Frobenius 范数', '\\left\\|A\\right\\|_{\\mathrm F}'],
+    ],
+    '函数': [
+      ['sin', '正弦', '\\sin({{selection}})'], ['cos', '余弦', '\\cos({{selection}})'],
+      ['tan', '正切', '\\tan({{selection}})'], ['cot', '余切', '\\cot({{selection}})'],
+      ['sec', '正割', '\\sec({{selection}})'], ['csc', '余割', '\\csc({{selection}})'],
+      ['arcsin', '反正弦', '\\arcsin({{selection}})'], ['arccos', '反余弦', '\\arccos({{selection}})'],
+      ['arctan', '反正切', '\\arctan({{selection}})'], ['sinh', '双曲正弦', '\\sinh({{selection}})'],
+      ['cosh', '双曲余弦', '\\cosh({{selection}})'], ['tanh', '双曲正切', '\\tanh({{selection}})'],
+      ['log', '对数', '\\log({{selection}})'], ['logₐ', '以 a 为底的对数', '\\log_a({{selection}})'],
+      ['ln', '自然对数', '\\ln({{selection}})'], ['exp', '指数函数', '\\exp({{selection}})'],
+      ['gcd', '最大公因数', '\\gcd(a,b)'], ['lcm', '最小公倍数', '\\operatorname{lcm}(a,b)'],
+      ['sgn', '符号函数', '\\operatorname{sgn}({{selection}})'], ['Re', '实部', '\\operatorname{Re}(z)'],
+      ['Im', '虚部', '\\operatorname{Im}(z)'], ['arg', '辐角', '\\arg(z)'],
+      ['mod', '模运算', 'a\\bmod n'], ['pmod', '同余模数', 'a\\equiv b\\pmod n'],
+    ],
+    '重音与标记': [
+      ['x̂', '帽子', '\\hat{{{selection}}}'], ['x̂wide', '宽帽子', '\\widehat{{{selection}}}'],
+      ['x̃', '波浪号', '\\tilde{{{selection}}}'], ['x̃wide', '宽波浪号', '\\widetilde{{{selection}}}'],
+      ['x̄', '短上划线', '\\bar{{{selection}}}'], ['x̅', '长上划线', '\\overline{{{selection}}}'],
+      ['x̲', '下划线', '\\underline{{{selection}}}'], ['x⃗', '向量箭头', '\\vec{{{selection}}}'],
+      ['AB→', '长右向量', '\\overrightarrow{{{selection}}}'], ['AB←', '长左向量', '\\overleftarrow{{{selection}}}'],
+      ['ẋ', '一点', '\\dot{{{selection}}}'], ['ẍ', '两点', '\\ddot{{{selection}}}'],
+      ['x̆', '短音符', '\\breve{{{selection}}}'], ['x̌', '倒帽子', '\\check{{{selection}}}'],
+      ['x́', '锐音符', '\\acute{{{selection}}}'], ['x̀', '钝音符', '\\grave{{{selection}}}'],
+      ['x̊', '圆环', '\\mathring{{{selection}}}'], ['overbrace', '上大括号', '\\overbrace{{{selection}}}^{\\text{说明}}'],
+      ['underbrace', '下大括号', '\\underbrace{{{selection}}}_{\\text{说明}}'],
+      ['boxed', '公式方框', '\\boxed{{{selection}}}'], ['cancel', '删除线', '\\cancel{{{selection}}}'],
+      ['overset', '上方标注', '\\overset{*}{{{selection}}}'], ['underset', '下方标注', '\\underset{n\\to\\infty}{{{selection}}}'],
+    ],
+    '希腊字母': [
       ['α', 'alpha', '\\alpha'], ['β', 'beta', '\\beta'], ['γ', 'gamma', '\\gamma'],
-      ['δ', 'delta', '\\delta'], ['ε', 'epsilon', '\\varepsilon'], ['ζ', 'zeta', '\\zeta'],
-      ['η', 'eta', '\\eta'], ['θ', 'theta', '\\theta'], ['κ', 'kappa', '\\kappa'],
+      ['δ', 'delta', '\\delta'], ['ε', 'epsilon', '\\epsilon'], ['ϵ', 'varepsilon', '\\varepsilon'], ['ζ', 'zeta', '\\zeta'],
+      ['η', 'eta', '\\eta'], ['θ', 'theta', '\\theta'], ['ϑ', 'vartheta', '\\vartheta'], ['ι', 'iota', '\\iota'], ['κ', 'kappa', '\\kappa'],
       ['λ', 'lambda', '\\lambda'], ['μ', 'mu', '\\mu'], ['ν', 'nu', '\\nu'],
-      ['ξ', 'xi', '\\xi'], ['π', 'pi', '\\pi'], ['ρ', 'rho', '\\rho'],
-      ['σ', 'sigma', '\\sigma'], ['τ', 'tau', '\\tau'], ['φ', 'phi', '\\phi'],
+      ['ξ', 'xi', '\\xi'], ['π', 'pi', '\\pi'], ['ϖ', 'varpi', '\\varpi'], ['ρ', 'rho', '\\rho'], ['ϱ', 'varrho', '\\varrho'],
+      ['σ', 'sigma', '\\sigma'], ['ς', 'varsigma', '\\varsigma'], ['τ', 'tau', '\\tau'], ['υ', 'upsilon', '\\upsilon'], ['φ', 'phi', '\\phi'], ['ϕ', 'varphi', '\\varphi'],
       ['χ', 'chi', '\\chi'], ['ψ', 'psi', '\\psi'], ['ω', 'omega', '\\omega'],
       ['Γ', 'Gamma', '\\Gamma'], ['Δ', 'Delta', '\\Delta'], ['Θ', 'Theta', '\\Theta'],
-      ['Λ', 'Lambda', '\\Lambda'], ['Σ', 'Sigma', '\\Sigma'], ['Φ', 'Phi', '\\Phi'],
+      ['Λ', 'Lambda', '\\Lambda'], ['Ξ', 'Xi', '\\Xi'], ['Π', 'Pi', '\\Pi'], ['Σ', 'Sigma', '\\Sigma'], ['Υ', 'Upsilon', '\\Upsilon'], ['Φ', 'Phi', '\\Phi'],
       ['Ψ', 'Psi', '\\Psi'], ['Ω', 'Omega', '\\Omega'],
     ],
-    Operators: [
+    '基础运算': [
       ['Σ', 'Summation', '\\sum_{i=1}^{n} {{selection}}'],
       ['Π', 'Product', '\\prod_{i=1}^{n} {{selection}}'],
       ['∫', 'Integral', '\\int_a^b {{selection}}\\,\\dd x'],
@@ -88,7 +192,7 @@
       ['arg max', 'Arg maximum', '\\argmax_{x\\in X} {{selection}}'],
       ['arg min', 'Arg minimum', '\\argmin_{x\\in X} {{selection}}'],
     ],
-    Relations: [
+    '关系符号': [
       ['=', 'Equal', '='], ['≠', 'Not equal', '\\ne'], ['≈', 'Approximately', '\\approx'],
       ['∼', 'Similar', '\\sim'], ['≅', 'Congruent', '\\cong'], ['≤', 'Less than or equal', '\\le'],
       ['≥', 'Greater than or equal', '\\ge'], ['≪', 'Much less than', '\\ll'],
@@ -96,7 +200,7 @@
       ['⊥', 'Perpendicular', '\\perp'], ['∥', 'Parallel', '\\parallel'],
       ['≡', 'Equivalent', '\\equiv'], [':=', 'Defined as', ':='],
     ],
-    Sets: [
+    '集合与逻辑': [
       ['∈', 'Element of', '\\in'], ['∉', 'Not an element of', '\\notin'],
       ['⊂', 'Subset', '\\subset'], ['⊆', 'Subset or equal', '\\subseteq'],
       ['⊃', 'Superset', '\\supset'], ['⊇', 'Superset or equal', '\\supseteq'],
@@ -107,7 +211,7 @@
       ['ℚ', 'Rationals', '\\mathbb{Q}'], ['ℝ', 'Real numbers', '\\mathbb{R}'],
       ['ℂ', 'Complex numbers', '\\mathbb{C}'],
     ],
-    Arrows: [
+    '箭头': [
       ['→', 'Right arrow', '\\to'], ['←', 'Left arrow', '\\leftarrow'],
       ['↔', 'Left-right arrow', '\\leftrightarrow'], ['⇒', 'Implies', '\\Rightarrow'],
       ['⇐', 'Implied by', '\\Leftarrow'], ['⇔', 'If and only if', '\\Longleftrightarrow'],
@@ -115,7 +219,7 @@
       ['↓', 'Down arrow', '\\downarrow'], ['⟶', 'Long right arrow', '\\longrightarrow'],
       ['⇀', 'Weak convergence', '\\rightharpoonup'], ['↗', 'North-east arrow', '\\nearrow'],
     ],
-    'Linear algebra': [
+    '矩阵与线性代数': [
       ['v⃗', 'Vector', '\\vec{{{selection}}}'], ['𝐱', 'Bold vector', '\\bm{{{selection}}}'],
       ['Aᵀ', 'Transpose', 'A^{\\mathsf T}'], ['A⁻¹', 'Inverse', 'A^{-1}'],
       ['⟨x,y⟩', 'Inner product', '\\langle x,y\\rangle'],
@@ -126,10 +230,34 @@
       ['span', 'Span', '\\operatorname{span}\\{v_1,\\ldots,v_n\\}'],
       ['⊗', 'Tensor product', '\\otimes'], ['⊕', 'Direct sum', '\\oplus'],
     ],
-    Probability: [
+    '数学字体': [
+      ['𝐱', '粗体', '\\mathbf{{{selection}}}'], ['𝒙', '粗斜体向量', '\\boldsymbol{{{selection}}}'],
+      ['𝑥', '数学斜体', '\\mathit{{{selection}}}'], ['x', '正体', '\\mathrm{{{selection}}}'],
+      ['𝖷', '无衬线体', '\\mathsf{{{selection}}}'], ['𝚡', '打字机体', '\\mathtt{{{selection}}}'],
+      ['𝒜', '花体', '\\mathcal{{{selection}}}'], ['𝔄', '哥特体', '\\mathfrak{{{selection}}}'],
+      ['𝔸', '黑板粗体', '\\mathbb{{{selection}}}'], ['text', '公式内文字', '\\text{说明文字}'],
+      ['ℓ', '手写小写 l', '\\ell'], ['ℏ', '约化普朗克常数', '\\hbar'], ['ℑ', '虚部符号', '\\Im'], ['ℜ', '实部符号', '\\Re'],
+      ['∂', '偏微分符号', '\\partial'], ['∇', 'nabla', '\\nabla'], ['∞', '无穷', '\\infty'],
+      ['…', '低位省略号', '\\ldots'], ['⋯', '居中省略号', '\\cdots'], ['⋮', '竖直省略号', '\\vdots'], ['⋱', '对角省略号', '\\ddots'],
+    ],
+    '代数与拓扑': [
+      ['G/H', '商群或商空间', 'G/H'], ['⟨S⟩', '生成子群', '\\langle S\\rangle'],
+      ['◁', '正规子群', 'N\\triangleleft G'], ['⋊', '半直积', 'N\\rtimes H'], ['×', '直积', 'G\\times H'],
+      ['⊕', '直和', 'M\\oplus N'], ['⊗', '张量积', 'M\\otimes_R N'], ['Hom', '同态集', '\\operatorname{Hom}(A,B)'],
+      ['End', '自同态', '\\operatorname{End}(V)'], ['Aut', '自同构群', '\\operatorname{Aut}(G)'],
+      ['im', '像', '\\operatorname{im}(f)'], ['coker', '余核', '\\operatorname{coker}(f)'],
+      ['Spec', '素谱', '\\operatorname{Spec}(R)'], ['char', '特征', '\\operatorname{char}(K)'],
+      ['deg', '次数', '\\deg(f)'], ['≅', '同构', 'A\\cong B'], ['≃', '同伦等价', 'X\\simeq Y'],
+      ['πₙ', '同伦群', '\\pi_n(X,x_0)'], ['Hₙ', '同调群', 'H_n(X;R)'], ['Hⁿ', '上同调群', 'H^n(X;R)'],
+      ['∂ₙ', '边界算子', '\\partial_n:C_n\\to C_{n-1}'], ['dⁿ', '上边缘算子', 'd^n:C^n\\to C^{n+1}'],
+      ['exact', '短正合列', '0\\longrightarrow A\\longrightarrow B\\longrightarrow C\\longrightarrow0'],
+      ['closure', '闭包', '\\overline{A}'], ['interior', '内部', 'A^{\\circ}'], ['boundary', '边界', '\\partial A'],
+      ['π₁', '基本群', '\\pi_1(X,x_0)'], ['χ(X)', '欧拉示性数', '\\chi(X)=\\sum_{n\\ge0}(-1)^n\\operatorname{rank}H_n(X)'],
+    ],
+    '概率与统计': [
       ['E', 'Expectation', '\\E[{{selection}}]'], ['P', 'Probability', '\\Pbb({{selection}})'],
       ['Var', 'Variance', '\\Var({{selection}})'], ['Cov', 'Covariance', '\\Cov(X,Y)'],
-      ['1', 'Indicator', '\\one\\{A\\}'], ['|', 'Conditional bar', '\\given'],
+      ['1', 'Indicator', '\\one\\{A\\}'], ['|', 'Conditional bar', '\\mid'],
       ['N', 'Normal distribution', '\\Normal(\\mu,\\sigma^2)'],
       ['Bern', 'Bernoulli distribution', '\\Ber(p)'], ['Beta', 'Beta distribution', '\\Beta(\\alpha,\\beta)'],
       ['Poi', 'Poisson distribution', '\\Poi(\\lambda)'],
@@ -138,7 +266,7 @@
       ['→d', 'Convergence in distribution', '\\xrightarrow{d}'],
       ['a.s.', 'Almost surely', '\\text{a.s.}'],
     ],
-    'Bandits and ML': [
+    '机器学习与 Bandit': [
       ['R(T)', 'Regret', '\\Reg(T)=\\sum_{t=1}^{T}(\\mu^*-\\mu_{A_t})'],
       ['Nₐ(t)', 'Pull count', 'N_a(t)=\\sum_{s=1}^{t}\\one\\{A_s=a\\}'],
       ['μ̂', 'Empirical mean', '\\widehat\\mu_a(t)'], ['UCB', 'UCB index', '\\widehat\\mu_a(t)+\\sqrt{\\frac{2\\log t}{N_a(t)}}'],
@@ -169,6 +297,7 @@
     files: document.querySelector('#editor-files'),
     formulaCategory: document.querySelector('#formula-category'),
     formulaModes: [...document.querySelectorAll('[data-formula-mode]')],
+    formulaSearch: document.querySelector('#formula-search'),
     formulaSymbols: document.querySelector('#formula-symbols'),
     image: document.querySelector('#editor-image'),
     imageFile: document.querySelector('#editor-image-file'),
@@ -532,21 +661,35 @@ Write the note here.
   function insertFormula(template) {
     const selected = elements.content.value.slice(elements.content.selectionStart, elements.content.selectionEnd) || 'x';
     const formula = template.replaceAll('{{selection}}', selected);
-    const wrapped = formulaMode === 'display' ? `\n$$\n${formula}\n$$\n` : `$${formula}$`;
+    const wrapped = formulaMode === 'display' ? `\n$$\n${formula}\n$$\n` : ` $${formula}$ `;
     insertAtCursor(wrapped);
   }
 
   function renderFormulaPalette(category) {
     elements.formulaSymbols.replaceChildren();
-    formulaCatalog[category].forEach(([label, title, template]) => {
+    const query = elements.formulaSearch.value.trim().toLocaleLowerCase('zh-CN');
+    const entries = query
+      ? Object.entries(formulaCatalog)
+        .flatMap(([group, items]) => items.map((item) => [group, item]))
+        .filter(([group, [label, title, template]]) => (
+          `${group} ${label} ${title} ${template}`.toLocaleLowerCase('zh-CN').includes(query)
+        ))
+      : (formulaCatalog[category] || []).map((item) => [category, item]);
+    entries.forEach(([group, [label, title, template]]) => {
       const button = document.createElement('button');
       button.type = 'button';
       button.textContent = label;
-      button.title = title;
+      button.title = `${title} · ${group}`;
       button.setAttribute('aria-label', title);
       button.addEventListener('click', () => insertFormula(template));
       elements.formulaSymbols.append(button);
     });
+    if (!entries.length) {
+      const empty = document.createElement('p');
+      empty.className = 'formula-empty';
+      empty.textContent = '没有匹配的公式';
+      elements.formulaSymbols.append(empty);
+    }
   }
 
   function initializeFormulaPalette() {
@@ -680,7 +823,11 @@ Write the note here.
 
   initializeFormulaPalette();
   elements.markdownActions.forEach((button) => button.addEventListener('click', () => transformSelection(button.dataset.mdAction)));
-  elements.formulaCategory.addEventListener('change', () => renderFormulaPalette(elements.formulaCategory.value));
+  elements.formulaCategory.addEventListener('change', () => {
+    elements.formulaSearch.value = '';
+    renderFormulaPalette(elements.formulaCategory.value);
+  });
+  elements.formulaSearch.addEventListener('input', () => renderFormulaPalette(elements.formulaCategory.value));
   elements.formulaModes.forEach((button) => button.addEventListener('click', () => {
     formulaMode = button.dataset.formulaMode;
     elements.formulaModes.forEach((item) => item.classList.toggle('active', item === button));
