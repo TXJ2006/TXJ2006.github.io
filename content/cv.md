@@ -12,7 +12,6 @@ This two-page academic CV presents my work across **mathematics, mathematical mo
 
 <div class="document-actions">
   <a class="button-primary" href="/files/XujiangTang_CV_2026.pdf">Download CV (PDF)</a>
-  <a href="/files/XujiangTang_Transcript.pdf">Academic transcript (PDF)</a>
 </div>
 
 ## Research Profile
