@@ -10,6 +10,7 @@ tags: ["Artificial Intelligence", "History of AI", "Machine Learning"]
 draft: false
 ShowToc: false
 hideMeta: true
+sharePage: "/ai-history/"
 ---
 
 ## Introduction

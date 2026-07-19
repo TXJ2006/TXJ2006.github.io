@@ -1,10 +1,12 @@
 {{- define "main" }}
+{{- $source := site.GetPage .Params.sourceNote }}
+{{- with $source }}
 <section class="note-page">
   <div class="notes-shell note-single-shell">
-    {{ partial "note_author.html" . }}
+    {{ partial "note_author_static.html" . }}
     <article class="note-article">
       <header class="note-header">
-        <p class="note-kicker"><a href="{{ "notes/" | relURL }}">Research Notes</a></p>
+        <p class="note-kicker">Research Notes</p>
         <h1>{{ .Title }}</h1>
         {{ with .Params.subtitle }}<p class="note-deck">{{ . }}</p>{{ end }}
         <div class="note-meta">
@@ -17,22 +19,14 @@
           {{ range . }}<li>{{ . }}</li>{{ end }}
         </ul>
         {{ end }}
-        <div class="notes-actions" aria-label="Document actions">
-          <a href="{{ "notes/" | relURL }}">All notes</a>
-          {{ with .Params.sharePage }}
-          <a href="{{ . | relURL }}" target="_blank" rel="noopener">Share</a>
-          {{ end }}
-          {{ with .File }}
-          {{ $sourcePath := replace .Path "\\" "/" }}
-          <a href="{{ "admin/" | relURL }}?path={{ $sourcePath | urlquery }}" rel="nofollow">Edit</a>
-          {{ end }}
-        </div>
       </header>
-
       <div class="note-content post-content markdown-content">
         {{ .Content }}
       </div>
     </article>
   </div>
 </section>
+{{- else }}
+{{- errorf "Standalone source note %q was not found" $.Params.sourceNote }}
+{{- end }}
 {{- end }}
