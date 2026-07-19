@@ -1,8 +1,8 @@
 ---
 title: "Linear Layers and Trainable Learning Systems"
 subtitle: "Classification, Regression, Optimization, Generalization, and PyTorch"
-summary: "A rigorous development of linear layers from prediction rules into complete learning systems, including optimization, evaluation, regularization, deep composition, automatic differentiation, and implementation."
-description: "A rigorous development of linear layers from prediction rules into complete learning systems, including optimization, evaluation, regularization, deep composition, automatic differentiation, and implementation."
+summary: "Beginning with a handwritten-digit classifier, this chapter derives the losses, optimization arguments, regression estimators, deep-network components, and PyTorch workflow built around a linear layer."
+description: "Beginning with a handwritten-digit classifier, this chapter derives the losses, optimization arguments, regression estimators, deep-network components, and PyTorch workflow built around a linear layer."
 date: 2026-07-19
 lastmod: 2026-07-19
 weight: 70
@@ -24,17 +24,9 @@ $$
 
 It multiplies an input by a matrix and adds a bias. By itself, this operation cannot represent an arbitrary nonlinear relationship. Yet it is the basic trainable transformation inside classifiers, regressors, multilayer perceptrons, convolutional networks, recurrent networks, attention blocks, and many modern generative models.
 
-The importance of the linear layer is therefore not that it is powerful in isolation. It is that it exposes, in the cleanest possible setting, almost every ingredient of a learning system:
+The formula is almost disappointingly simple. The interesting questions begin when $W$ and $b$ are unknown. What should the input coordinates mean? How can a numerical score stand for a class? What quantity should be minimized, and how can millions of parameters move in a direction that lowers it? Even after the training loss falls, why should the result work on an image that was never shown during training?
 
-- data must be represented numerically;
-- predictions must be connected to targets;
-- a loss must convert disagreement into an optimization objective;
-- gradients must be computed and used to update parameters;
-- performance must be measured on data that did not determine those parameters;
-- model capacity must be controlled so that fitting becomes generalization;
-- nonlinearities and architectural structure must be added when one affine map is not expressive enough.
-
-This chapter follows that chain from beginning to end. The goal is not merely to know the formula for a linear layer. It is to understand what the formula assumes, how it is trained, why the optimization step can work, where it fails, and how the same ideas scale into a complete neural network.
+Following those questions leads through most of the machinery of machine learning. A loss connects predictions to data; differentiation turns the loss into an update; held-out data separate fitting from generalization. When one affine map finally reaches the limit of what it can express, nonlinear activations and depth enter for a reason rather than as architectural decoration. The linear layer will remain the same object throughout. What changes is the system built around it.
 
 ## What Machine Learning Is Trying to Do
 
@@ -88,6 +80,8 @@ Adding parameters may reduce approximation error and increase estimation difficu
 With the learning problem now defined, the simplest useful place to see all of its parts interact is binary classification. It turns abstract ideas about risk, representation, and optimization into a concrete geometric question: can two kinds of observations be separated in feature space?
 
 Consider images of two handwritten digits. A $28\times28$ grayscale image can be flattened into a vector $x\in\mathbb{R}^{784}$. The coordinates are pixel intensities. Flattening discards explicit two-dimensional neighborhood structure, but it gives a simple space in which to introduce linear classification.
+
+At first, this may seem unnecessarily abstract. Why not distinguish zero from one by looking for an enclosed region? The rule works often enough to be tempting: a zero usually encloses one, whereas a one does not. It also fails almost immediately. Some handwritten fours enclose a region; some hurried zeros do not close at all. The difficulty is not finding one clever visual clue. It is finding a rule that survives changes in handwriting and continues to make sense when the two classes are no longer zero and one. This is where learning begins.
 
 An affine score has the form
 
@@ -154,6 +148,8 @@ Interpreting $p_\theta(x)$ as $\mathbb{P}_\theta(Y=1\mid X=x)$ gives logistic re
 
 The zero-one loss $\mathbf{1}\{\widehat{y}\neq y\}$ matches the final classification error but is discontinuous and provides no graded information about how to improve the score. Training therefore uses a surrogate loss whose geometry is easier to optimize and whose minimization is connected to good classification.
 
+One could, in principle, generate many hyperplanes, count their errors, and retain the best. But even this toy image problem has $784$ weights and one bias. Blind search in that space throws away the most useful information available: whether a small change to the current hyperplane makes the fit better or worse. A smooth surrogate turns that information into a gradient.
+
 For a Bernoulli target $y\in\{0,1\}$, the negative log-likelihood is binary cross-entropy:
 
 <div class="display-equation">
@@ -180,29 +176,63 @@ This identity is one reason the sigmoid and Bernoulli log-likelihood belong toge
 
 **A complete one-example gradient.**
 
-For one observation, let $z=w^\top x+b$, $p=\sigma(z)$, and use binary cross-entropy. The chain rule gives $\nabla_w\ell=(p-y)x$ and $\partial\ell/\partial b=p-y$.
-
-Take $x=(2,3)^\top$, $y=1$, $w=(1,2)^\top$, and $b=3$. Then $z=11$ and $p\approx0.999983$. The prediction, gradient, and update can be read as one continuous calculation:
+The same numbers can show both how backpropagation works and why the loss matters. Take $x=(2,3)^\top$, $y=1$, $w=(1,2)^\top$, $b=3$, and $\eta=0.1$. The forward pass is short:
 
 <div class="display-equation">
 $$
 \begin{aligned}
-p-y&\approx-1.67\times10^{-5},\\
-\nabla_w\ell&\approx
-\begin{pmatrix}
--3.34\times10^{-5}\\
--5.01\times10^{-5}
-\end{pmatrix},
-\qquad
-\frac{\partial\ell}{\partial b}\approx-1.67\times10^{-5},\\
-w^+&=w-\eta\nabla_w\ell,
-\qquad
-b^+=b-\eta\frac{\partial\ell}{\partial b}.
+z&=w^\top x+b=1\cdot2+2\cdot3+3=11,\\
+p&=\sigma(11)\approx0.9999832986.
 \end{aligned}
 $$
 </div>
 
-With $\eta=0.1$, the update is small because this example is already classified with extreme confidence. A useful derivation should make the causal chain visible: parameters determine a score, the score determines a probability, the probability determines a loss, and the loss sends an error signal back through every dependency.
+Begin with squared loss, $\ell_{\mathrm{MSE}}=(p-y)^2$. Writing every local derivative before multiplying them keeps the chain rule visible:
+
+<div class="display-equation">
+$$
+\begin{aligned}
+\ell_{\mathrm{MSE}}&\approx2.789\times10^{-10},
+&\frac{\partial\ell}{\partial p}&=2(p-y)\approx-3.340\times10^{-5},\\
+\frac{\partial p}{\partial z}&=p(1-p)\approx1.670\times10^{-5},
+&\frac{\partial z}{\partial w}&=x,
+\qquad \frac{\partial z}{\partial b}=1.
+\end{aligned}
+$$
+</div>
+
+Now multiply along each path from the loss to a parameter. Here it is worth keeping the powers of ten visible: multiplying two quantities of order $10^{-5}$ produces a quantity of order $10^{-10}$.
+
+<div class="display-equation">
+$$
+\begin{aligned}
+\frac{\partial\ell_{\mathrm{MSE}}}{\partial z}
+&=2(p-y)p(1-p)\approx-5.578\times10^{-10},\\
+\nabla_w\ell_{\mathrm{MSE}}
+&\approx(-1.116\times10^{-9},-1.673\times10^{-9})^\top,
+&\frac{\partial\ell_{\mathrm{MSE}}}{\partial b}&\approx-5.578\times10^{-10},\\
+w^+&\approx(1.000000000112,2.000000000167)^\top,
+&b^+&\approx3.000000000056.
+\end{aligned}
+$$
+</div>
+
+Repeat the backward pass with binary cross-entropy. The sigmoid derivative cancels inside the likelihood derivative, leaving $\partial\ell_{\mathrm{BCE}}/\partial z=p-y$:
+
+<div class="display-equation">
+$$
+\begin{aligned}
+\nabla_w\ell_{\mathrm{BCE}}
+&=(p-y)x\approx(-3.340\times10^{-5},-5.010\times10^{-5})^\top,\\
+\frac{\partial\ell_{\mathrm{BCE}}}{\partial b}
+&=p-y\approx-1.670\times10^{-5},\\
+w^+&\approx(1.000003340,2.000005010)^\top,
+&b^+&\approx3.000001670.
+\end{aligned}
+$$
+</div>
+
+Both updates are small because this positive example is already classified with extreme confidence. The comparison is the useful part: MSE places one more saturated-sigmoid derivative in the path, so its signal is far smaller. The chain rule is not just bookkeeping. It shows exactly where a learning signal is amplified, attenuated, or lost.
 
 ## Optimization: Why Gradient Descent Descends
 
@@ -220,7 +250,9 @@ Under the Euclidean norm, $-\nabla F(\theta)$ is the direction of steepest local
 
 ### From Newton's method to first-order methods
 
-Newton's method builds a local quadratic model and chooses the step by solving its first-order condition:
+Newton's method first appears as a root finder: $x_{k+1}=x_k-f(x_k)/f'(x_k)$. To minimize a scalar objective $F$, apply the same idea to the equation $F'(x)=0$, obtaining $x_{k+1}=x_k-F'(x_k)/F''(x_k)$. In several dimensions, division by the second derivative becomes a linear system involving the Hessian.
+
+Equivalently, Newton's method builds a local quadratic model and chooses the step by solving its first-order condition:
 
 <div class="display-equation">
 $$
@@ -247,19 +279,49 @@ L\|u-v\|_2.
 $$
 </div>
 
-Define $g(t)=F(\theta+ts)$ and express the change in $F$ as the integral of $g'$. Add and subtract $\nabla F(\theta)$ inside that integral. Cauchy-Schwarz and gradient Lipschitzness then give
+Why does this assumption control a finite step? Put $g(t)=F(\theta+ts)$, so that $g'(t)=\langle\nabla F(\theta+ts),s\rangle$. The fundamental theorem of calculus turns the change in the objective into an integral along the line segment from $\theta$ to $\theta+s$. Add and subtract the gradient at the starting point:
+
+<div class="display-equation">
+$$
+\begin{aligned}
+F(\theta+s)-F(\theta)
+&=\int_0^1\langle\nabla F(\theta+ts),s\rangle\,dt\\
+&=\langle\nabla F(\theta),s\rangle
++\int_0^1
+\langle\nabla F(\theta+ts)-\nabla F(\theta),s\rangle\,dt.
+\end{aligned}
+$$
+</div>
+
+Only the second term needs a bound. Cauchy-Schwarz first separates the two factors; Lipschitz continuity then bounds the gradient difference by $Lt\|s\|_2$. Integrating $t$ from zero to one gives
+
+<div class="display-equation">
+$$
+\begin{aligned}
+\int_0^1
+\langle\nabla F(\theta+ts)-\nabla F(\theta),s\rangle\,dt
+&\leq
+\int_0^1
+\|\nabla F(\theta+ts)-\nabla F(\theta)\|_2\|s\|_2\,dt\\
+&\leq
+\int_0^1 Lt\|s\|_2^2\,dt
+=\frac{L}{2}\|s\|_2^2.
+\end{aligned}
+$$
+</div>
+
+Combining the two lines proves the descent lemma:
 
 <div class="display-equation">
 $$
 F(\theta+s)
 \leq
-F(\theta)
-+\langle\nabla F(\theta),s\rangle
+F(\theta)+\langle\nabla F(\theta),s\rangle
 +\frac{L}{2}\|s\|_2^2.
 $$
 </div>
 
-This is the descent lemma. Substituting $s=-\eta\nabla F(\theta)$ gives the actual one-step guarantee:
+Now choose the actual gradient step $s=-\eta\nabla F(\theta)$. Its linear contribution is negative, while its quadratic contribution is positive:
 
 <div class="display-equation">
 $$
@@ -271,11 +333,21 @@ F(\theta)
 $$
 </div>
 
-Therefore every nonstationary step decreases the objective when $0\lt\eta\lt2/L$.
+The coefficient is positive precisely when $0\lt\eta\lt2/L$. Thus every nonstationary step decreases the objective. Convexity was never used; smoothness controlled how quickly the gradient could turn while the algorithm moved.
 
 ### What the theorem does and does not guarantee
 
-For an $L$-smooth objective bounded below, the inequality shows that the objective values decrease and that the accumulated squared gradient norms are finite. Under standard fixed-step assumptions, this implies that gradients approach zero. It does **not** by itself prove convergence to a local minimum. A stationary point may be a local minimum, local maximum, saddle point, or a point on a flat manifold.
+There is one more step between monotone descent and convergence. Let $F_{\inf}$ be a lower bound and write $c=\eta(1-L\eta/2)\gt0$. Summing the one-step inequality from $k=0$ to $K-1$ makes the objective differences telescope:
+
+<div class="display-equation">
+$$
+c\sum_{k=0}^{K-1}\|\nabla F(\theta_k)\|_2^2
+\leq F(\theta_0)-F(\theta_K)
+\leq F(\theta_0)-F_{\inf}.
+$$
+</div>
+
+The right-hand side does not grow with $K$, so the infinite sum of squared gradient norms is finite and $\|\nabla F(\theta_k)\|_2\to0$. We have proved approach to stationarity, not convergence to a local minimum. A stationary point may be a local minimum, a local maximum, a saddle, or part of a flat manifold.
 
 Additional structure gives stronger conclusions.
 
@@ -299,7 +371,7 @@ g_k=
 $$
 </div>
 
-With appropriate sampling, $g_k$ is an unbiased or nearly unbiased estimate of the full gradient. Its variance decreases with batch size, but computation and memory increase. Gradient noise is not merely a trick for escaping local minima. It changes the optimization trajectory, interacts with the learning rate, and can bias training toward regions with different local geometry.
+With appropriate sampling, $g_k$ is an unbiased or nearly unbiased estimate of the full gradient. Its variance decreases with batch size, but computation and memory increase. The resulting noise changes the optimization trajectory, interacts with the learning rate, and can favor regions with different local geometry. Occasional movement away from a shallow basin is only one part of that behavior.
 
 ## Backpropagation as Organized Chain Rule
 
@@ -337,6 +409,8 @@ A conventional workflow uses three disjoint roles.
 - The **test set** estimates the performance of the finalized procedure and should be consulted only after major choices are fixed.
 
 The exact percentages are not universal. They depend on dataset size, class balance, temporal structure, and the cost of uncertainty. What matters is the separation of roles.
+
+An examination analogy is useful here. Exercises used while studying are training data. Mock examinations influence what to revise and therefore play the role of validation data. The final examination is meant to assess the completed preparation. If its questions are revealed and used for revision, it is no longer a final examination, however carefully one continues to call it one.
 
 Repeatedly selecting models according to test performance turns the test set into another validation set. The reported score then becomes optimistically biased. A fresh holdout, nested cross-validation, or an external evaluation set is required to recover an honest estimate.
 
@@ -395,6 +469,8 @@ $$
 </div>
 
 Assigning a derivative of zero at the origin is an implementation convention, not a proof of differentiability. Proximal gradient and coordinate-descent methods exploit the correct nonsmooth structure directly.
+
+There is also a geometric way to see the difference between the two penalties. Minimizing a loss under an $L_2$ constraint asks where an elliptical loss contour first touches a Euclidean ball. The boundary is smooth, so contact usually occurs away from a coordinate axis. An $L_1$ constraint has corners on those axes. A moving contour often reaches a corner first, making one or more coordinates exactly zero. The picture explains the tendency toward sparsity; it does not promise that every lasso solution is sparse or uniquely determined.
 
 Other regularizers act differently.
 
@@ -500,11 +576,27 @@ Specificity is $TN/(TN+FP)$. Balanced accuracy averages recall and specificity a
 
 Accuracy can be nearly useless for rare-event detection. A classifier that always predicts the majority class may have excellent accuracy and zero recall for the event of interest. Precision also depends on prevalence. Even with fixed sensitivity and specificity, the fraction of positive predictions that are correct changes when the base rate changes.
 
+A hypothetical HIV screening calculation makes the arithmetic memorable; the numbers below do not describe a particular clinical assay. Suppose a population of one million contains $1{,}000$ infected people, and a test has both sensitivity and specificity equal to $99.9\%$. It would produce about $999$ true positives and one false negative. Among the $999{,}000$ uninfected people, the same specificity would produce about $999$ false positives. The confusion matrix contains twice as many reported positives as true cases:
+
+<div class="display-equation">
+$$
+\operatorname{precision}
+=\frac{999}{999+999}=0.5,
+\qquad
+\operatorname{recall}
+=\frac{999}{999+1}=0.999.
+$$
+</div>
+
+Nothing contradictory has happened. The false-positive rate is tiny, but it acts on a much larger group. If the same hypothetical test is applied to a population with $10\%$ prevalence, its positive predictive value rises to roughly $99.1\%$. Sensitivity and specificity describe conditional behavior of the test; precision also depends on the population in which the test is used. This is why a metric cannot be interpreted apart from its base rate and decision setting.
+
 Threshold-free summaries add other perspectives. ROC-AUC measures ranking across false-positive and true-positive rates. Precision-recall curves are often more revealing when the positive class is rare. Neither directly measures probability calibration. A calibrated model should satisfy the approximate frequency statement that among cases assigned probability $0.7$, about $70\%$ experience the event, within the relevant population and sampling uncertainty.
 
 No metric is universally authoritative. The right criterion follows from decision costs. Missing a dangerous condition, triggering an unnecessary intervention, rejecting a qualified applicant, and displaying a poor recommendation carry different consequences. Model evaluation should state whose errors matter and how they are weighted.
 
 ## Multiclass Linear Classification
+
+One hyperplane separates two sides, so ten classes cannot be represented by one binary decision. It is possible to train one classifier per class or one classifier per pair of classes; ten classes would require $45$ pairwise classifiers. Such reductions are legitimate methods, but they create an extra reconciliation problem when several classifiers disagree. A joint model instead lets all class scores compete inside one objective.
 
 With $C$ mutually exclusive classes, a linear classifier produces one logit per class:
 
@@ -521,6 +613,28 @@ $$
 Each row $w_c^\top$ supplies one class score. All class parameters are optimized jointly, and the predicted class is usually $\arg\max_c z_c$.
 
 ### Softmax and categorical cross-entropy
+
+The logarithm in cross-entropy is easier to accept once information is measured before loss is defined. An event with probability one is unsurprising; an event with very small probability is informative when it occurs. If independent events are to contribute additive information, then the only continuous choice, up to the unit of measurement, is the negative logarithm:
+
+<div class="display-equation">
+$$
+I(x)=-\log P(x),
+\qquad
+H(P)=\mathbb E_{X\sim P}[I(X)]
+=-\sum_x P(x)\log P(x).
+$$
+</div>
+
+Entropy averages surprise under the distribution that actually generates the outcomes. Cross-entropy asks a different question: how surprised would a model $Q$ be when outcomes still come from $P$?
+
+<div class="display-equation">
+$$
+H(P,Q)=-\sum_xP(x)\log Q(x)
+=H(P)+D_{\mathrm{KL}}(P\|Q).
+$$
+</div>
+
+For a fixed data distribution, $H(P)$ cannot be changed by the learner. Minimizing cross-entropy is therefore equivalent to reducing the KL discrepancy from $P$ to $Q$. With a one-hot observed label, the empirical contribution is simply the negative log-probability assigned to the observed class.
 
 Softmax maps logits to a categorical distribution. Because adding a common constant to all logits changes no probability, implementations subtract the maximum logit $m$ before exponentiation:
 
@@ -550,6 +664,18 @@ $$
 </div>
 
 If the true class is $t$, the loss reduces to $-\log p_t$. The compact gradient says exactly how learning redistributes score: it pushes the true class upward and every competing class downward in proportion to its current probability.
+
+The compact form is worth deriving once. Since $\ell=-z_t+\log\sum_j e^{z_j}$, differentiating the first term contributes $-1$ only when $c=t$, while differentiating the log-sum-exp contributes $e^{z_c}/\sum_j e^{z_j}=p_c$. Hence
+
+<div class="display-equation">
+$$
+\frac{\partial\ell}{\partial z_c}
+=-\mathbf 1\{c=t\}+p_c
+=p_c-y_c.
+$$
+</div>
+
+This derivation also explains why a numerical implementation should consume logits and evaluate log-sum-exp stably. Computing probabilities, taking their logarithms, and then applying the loss as separate floating-point operations needlessly exposes underflow.
 
 The classes compete through the shared denominator. Increasing one class probability necessarily changes the others. This is different from fitting $C$ independent sigmoid classifiers, which is appropriate for multi-label tasks where several labels may be true simultaneously.
 
@@ -598,6 +724,35 @@ $$
 
 The Hessian is positive semidefinite, so every local minimum is global. The final equality is the normal equation. It has a geometric interpretation that is more important than memorizing the algebra: at the optimum, the residual $r=y-X\widehat w$ is orthogonal to every column of $X$. The fitted vector is therefore the orthogonal projection of $y$ onto the feature space spanned by those columns.
 
+The familiar one-feature formula falls out of the same calculation. Write the prediction as $\widehat y_i=ax_i+b$ and minimize $\sum_i(ax_i+b-y_i)^2$. The derivative with respect to the intercept gives
+
+<div class="display-equation">
+$$
+\sum_{i=1}^n(ax_i+b-y_i)=0
+\qquad\Longrightarrow\qquad
+b=\bar y-a\bar x.
+$$
+</div>
+
+Insert this expression into the derivative with respect to $a$. The residuals sum to zero, so replacing each multiplier $x_i$ by $x_i-\bar x$ leaves that derivative equation unchanged. The residual itself becomes $a(x_i-\bar x)-(y_i-\bar y)$, and therefore
+
+<div class="display-equation">
+$$
+\begin{aligned}
+0
+&=\sum_{i=1}^n(x_i-\bar x)
+\left[a(x_i-\bar x)-(y_i-\bar y)\right],\\
+\widehat a
+&=\frac{\sum_i(x_i-\bar x)(y_i-\bar y)}
+{\sum_i(x_i-\bar x)^2},
+\qquad
+\widehat b=\bar y-\widehat a\,\bar x.
+\end{aligned}
+$$
+</div>
+
+This is the covariance-over-variance formula encountered in elementary least squares. The matrix normal equation is not a different method; it is the same orthogonality condition written for many features at once.
+
 When $X$ has full column rank, this projection has a unique coefficient vector, conventionally displayed as $\widehat w=(X^\top X)^{-1}X^\top y$. That expression explains the estimator but should not be read as a numerical recipe. Forming $X^\top X$ squares the condition number, and explicitly constructing an inverse performs unnecessary work. QR factorization is normally more stable for a full-rank problem. SVD is more informative when rank deficiency or near-collinearity matters because it exposes the weakly determined directions directly.
 
 If $X$ is rank deficient, several coefficient vectors may generate the same fitted values. The Moore-Penrose choice $\widehat w=X^+y$ selects the least-squares solution with minimum Euclidean norm. This is a canonical computational convention, not evidence that the individual coefficients have uniquely identified scientific meanings. Prediction can remain stable even while coefficient interpretation is fragile.
@@ -612,13 +767,26 @@ Collinearity creates a characteristic problem: several coefficient combinations 
 
 <div class="display-equation">
 $$
-J_\lambda(w)=\frac{1}{2}\|Xw-y\|_2^2+rac{\lambda}{2}\|w\|_2^2,
+J_\lambda(w)=\frac{1}{2}\|Xw-y\|_2^2+\frac{\lambda}{2}\|w\|_2^2,
 \qquad
 \widehat w_\lambda=(X^\top X+\lambda I)^{-1}X^\top y,\quad \lambda\gt0.
 $$
 </div>
 
-The added term changes both statistics and geometry. For every nonzero $v$, the quadratic form $v^\top(X^\top X+\lambda I)v$ equals $\|Xv\|_2^2+\lambda\|v\|_2^2$ and is strictly positive. The regularized objective therefore has a unique minimizer even when the original design is rank deficient, and its linear system is better conditioned.
+Why is the inverse now guaranteed to exist? The argument is short enough to prove in full. Take any nonzero $v\in\mathbb R^d$. Then
+
+<div class="display-equation">
+$$
+\begin{aligned}
+v^\top(X^\top X+\lambda I)v
+&=v^\top X^\top Xv+\lambda v^\top v\\
+&=\|Xv\|_2^2+\lambda\|v\|_2^2\\
+&\gt0.
+\end{aligned}
+$$
+</div>
+
+Thus $X^\top X+\lambda I$ is positive definite. A positive-definite matrix has only positive eigenvalues, hence nonzero determinant and full rank; it is invertible. The regularized objective therefore has a unique minimizer even when the original design is rank deficient, and its linear system is better conditioned. This is the precise sense in which the diagonal term raises weak directions away from zero.
 
 The SVD makes the shrinkage selective rather than mysterious. If $X=U\Sigma V^\top$, ridge multiplies the data coordinate associated with singular value $\sigma_j$ by $\sigma_j/(\sigma_j^2+\lambda)$. Well-supported directions change relatively little; directions with tiny singular values shrink strongly. Ridge does not recover information destroyed by collinearity. It accepts bias in exchange for lower variance and more stable prediction.
 
@@ -636,13 +804,54 @@ $$
 $$
 </div>
 
-The interval-valued subgradient at zero is exactly what allows a coefficient to remain zero while still satisfying optimality. In the special case of an orthonormal design, each unregularized coefficient $a$ is transformed by the soft-threshold rule $\operatorname{sign}(a)\max(|a|-\lambda,0)$. Coordinate-descent and proximal-gradient algorithms generalize this thresholding logic to ordinary designs.
+The interval-valued subgradient at zero is exactly what allows a coefficient to remain zero while still satisfying optimality. The mechanism can be derived without hand-waving in the special case $X^\top X=I$. Let $a=X^\top y$. Up to a constant independent of $w$, the objective separates into scalar problems
+
+<div class="display-equation">
+$$
+q_j(u)=\frac{1}{2}(u-a_j)^2+\lambda|u|.
+$$
+</div>
+
+There are three cases. If $u\gt0$, stationarity gives $u-a_j+\lambda=0$, so $u=a_j-\lambda$, which is consistent only when $a_j\gt\lambda$. If $u\lt0$, stationarity gives $u-a_j-\lambda=0$, so $u=a_j+\lambda$, consistent only when $a_j\lt-\lambda$. At $u=0$, the subgradient condition is $0\in-a_j+\lambda[-1,1]$, or $|a_j|\leq\lambda$. Combining the cases yields
+
+<div class="display-equation">
+$$
+\widehat w_j
+=
+\begin{cases}
+a_j-\lambda, & a_j\gt\lambda,\\
+0, & |a_j|\leq\lambda,\\
+a_j+\lambda, & a_j\lt-\lambda,
+\end{cases}
+=\operatorname{sign}(a_j)\max(|a_j|-\lambda,0).
+$$
+</div>
+
+This is soft thresholding. Coordinate-descent and proximal-gradient algorithms extend the same operation to general designs, one coordinate or one gradient step at a time.
 
 Sparsity can make a predictor easier to inspect and cheaper to deploy, but it is not automatic causal discovery. When several features carry nearly the same signal, a small sample perturbation may change which one lasso retains. The selected support may be unstable even when predictions are stable. Elastic-net regularization combines $L_1$ selection with $L_2$ shrinkage when grouped, correlated features should be treated less competitively.
 
 ### Nonlinearity through representation
 
 Linear regression is not limited to straight lines in the original coordinates. It remains linear in its parameters after a fixed feature map $\phi$: one may fit $f_w(x)=w^\top\phi(x)$ using polynomial terms, splines, Fourier features, or kernel-induced representations. Polynomial regression, for example, uses $\phi(x)=(1,x,x^2,\ldots,x^p)^\top$ while retaining a least-squares objective in $w$.
+
+For a quadratic fit through observations $(x_i,y_i)$, nothing new is required from the optimizer. Replace each scalar input by the row $(1,x_i,x_i^2)$ and solve the ordinary three-feature least-squares problem:
+
+<div class="display-equation">
+$$
+\begin{pmatrix}
+1&x_1&x_1^2\\
+1&x_2&x_2^2\\
+\vdots&\vdots&\vdots\\
+1&x_n&x_n^2
+\end{pmatrix}
+\begin{pmatrix}w_0\\w_1\\w_2\end{pmatrix}
+\approx
+\begin{pmatrix}y_1\\y_2\\\vdots\\y_n\end{pmatrix}.
+$$
+</div>
+
+An exponential relation can sometimes be linearized by taking logarithms, and periodic structure may suggest Fourier features. Each transformation also changes the implied error model and extrapolation behavior, so it should be justified by the problem rather than chosen only because it lowers the observed residual sum of squares.
 
 This observation connects regression back to classification. A linear predictor is only as expressive as the representation it receives. Hand-designed features move the modeling question from "which nonlinear optimizer should be used?" to "which coordinates make a simple predictor appropriate?" They can be powerful when they encode genuine structure, but a high-degree polynomial may fit the observed interval and oscillate violently outside it. Extrapolation behavior, units, invariances, and domain knowledge matter as much as training error.
 
@@ -685,14 +894,27 @@ Sigmoid and hyperbolic tangent are smooth and bounded, while ReLU keeps the posi
 <div class="display-equation">
 $$
 \sigma(x)=\frac{1}{1+e^{-x}},
+\quad \sigma'(x)=\sigma(x)(1-\sigma(x));
 \qquad
 \tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}},
+\quad \tanh'(x)=1-\tanh^2(x);
 \qquad
 \operatorname{ReLU}(x)=\max(0,x).
 $$
 </div>
 
 The derivatives of sigmoid and tanh approach zero for inputs of large magnitude. Across many layers, repeated multiplication by small derivatives can weaken the gradient reaching early parameters. ReLU avoids saturation on its positive side and is inexpensive, but a unit that remains negative for all relevant inputs receives zero local gradient and may become inactive. Leaky ReLU retains a small slope $\alpha$ on that side instead of setting it exactly to zero.
+
+<div class="display-equation">
+$$
+\operatorname{LReLU}_\alpha(x)
+=
+\begin{cases}
+x, & x\geq0,\\
+\alpha x, & x\lt0.
+\end{cases}
+$$
+</div>
 
 GELU and SiLU use smooth input-dependent gates. They are common in modern architectures, but no activation is uniformly best. Its range, derivative, smoothness, computational cost, and interaction with initialization and normalization all matter.
 
@@ -706,6 +928,32 @@ Variance-scaled initialization chooses weight variance according to fan-in and s
 
 Input features measured in incompatible units can produce severely anisotropic objectives. A single learning rate must then negotiate directions with very different curvature. Input standardization often improves conditioning.
 
+A numerical example shows how quickly scale enters the gradient. Consider one linear neuron $\widehat y=w^\top x+b$, squared loss $\ell=(\widehat y-y)^2/2$, initial $w=(1,1,1,1)^\top$, $b=0$, and step size $\eta=10^{-3}$. For $x=(1,2.5,-0.5,-1)^\top$ and $y=8$, the prediction is $2$, so
+
+<div class="display-equation">
+$$
+\nabla_w\ell=(\widehat y-y)x=(-6,-15,3,6)^\top,
+\qquad
+w^+=(1.006,1.015,0.997,0.994)^\top,
+\qquad b^+=0.006.
+$$
+</div>
+
+Now multiply both the input and target by $100$. The underlying input-output relation has not changed, but the prediction error is multiplied by $100$ and the input in the gradient is also multiplied by $100$. The gradient is therefore $10{,}000$ times larger:
+
+<div class="display-equation">
+$$
+\begin{aligned}
+x'&=(100,250,-50,-100)^\top,\qquad y'=800,\qquad \widehat y'=200,\\
+\nabla_w\ell'&=(-60000,-150000,30000,60000)^\top,\\
+w^+&=(61,151,-29,-59)^\top,
+\qquad b^+=0.6.
+\end{aligned}
+$$
+</div>
+
+The same learning rate that made a modest first update now throws the parameters far away. Calling this simply "large data values" misses the optimization issue: feature scale changes the curvature seen by gradient descent.
+
 Min-max scaling maps a declared range to a target interval. Z-score standardization subtracts the training mean and divides by the training standard deviation:
 
 <div class="display-equation">
@@ -717,6 +965,19 @@ $$
 </div>
 
 The statistics must be estimated on training data and then reused on validation, test, and deployment data. Recomputing them from a test set leaks information and makes predictions depend on the evaluation batch.
+
+For linear least squares, the connection to the descent theorem can be stated exactly. The Hessian is $H=X^\top X/n$, so the smallest valid Lipschitz constant of the gradient is the largest eigenvalue of $H$:
+
+<div class="display-equation">
+$$
+\|\nabla J(u)-\nabla J(v)\|_2
+=\left\|\frac{X^\top X}{n}(u-v)\right\|_2
+\leq
+\lambda_{\max}\!\left(\frac{X^\top X}{n}\right)\|u-v\|_2.
+$$
+</div>
+
+A feature with a much larger numerical scale can dominate this eigenvalue and force a small global step size. Standardization rescales the columns and removes this purely unit-induced imbalance. It does not remove correlation between columns, make the Hessian equal to the identity, or guarantee an optimal condition number. Whitening goes further by addressing correlation, but it changes the representation more aggressively and may be statistically or computationally undesirable.
 
 ### Batch normalization
 
@@ -745,6 +1006,8 @@ The learnable scale $\gamma$ and shift $\beta$ preserve representational flexibi
 
 BatchNorm was originally motivated by reducing internal covariate shift, but later work showed that this story is incomplete. Its benefits are better understood through several interacting effects: reparameterization, smoother or better-conditioned optimization along training trajectories, scale invariance, tolerance of larger learning rates, and stochastic regularization from batch statistics.
 
+The decisive experiment is more instructive than the slogan. Santurkar and colleagues compared an ordinary network, a BatchNorm network, and a BatchNorm network whose post-normalization activations were deliberately perturbed so that their distributions became unstable again. If stable internal distributions were the main cause, destroying that stability should also destroy the optimization benefit. It did not: the perturbed BatchNorm model retained much of the faster training, while applying comparable noise without BatchNorm made optimization far worse. The experiment does not assign BatchNorm one universal mechanism, but it rules out the simple claim that its success is explained solely by freezing internal distributions.
+
 There is no universal rule that BatchNorm must always appear before or after an activation. Both arrangements exist, and residual architectures distinguish pre-activation and post-activation designs. Placement is an architectural choice that must be stated, not a theorem derived from the word "input."
 
 Small or nonrepresentative batches make batch statistics noisy. Distributed training also raises the question of whether statistics are local or synchronized across devices.
@@ -763,7 +1026,7 @@ $$
 
 It then applies the same normalize-and-affine pattern. Because it does not depend on other examples in the batch and uses input statistics in both training and evaluation, LayerNorm is well suited to sequence models, online inference, and variable batch sizes. It is not simply BatchNorm with batch size one; the normalized axes and affine parameterization are different.
 
-Normalization is a reparameterization and statistical operation, not a substitute for inspecting invalid values, poorly scaled targets, unstable losses, or inappropriate optimization.
+Normalization changes the coordinates in which learning takes place. It cannot repair invalid values, a badly chosen target scale, or an unstable objective. More importantly, stabilizing one layer does not settle what happens when the backward pass multiplies derivatives through fifty or a hundred layers. That remaining problem leads to residual connections.
 
 ## Residual Connections
 
@@ -781,13 +1044,29 @@ $$
 
 This form requires matching input and output shapes. The identity contribution gives gradients a direct route through each block, so a chain of residual blocks multiplies factors of the form $I+J_{F_k}(x_k)$ rather than unrelated unconstrained Jacobians. Residual connections do not guarantee nonvanishing gradients, but they make identity-like propagation representationally and dynamically accessible.
 
+To see the whole backward path, let $x_{k+1}=x_k+F_k(x_k)$ for $k=0,\ldots,L-1$. Repeated application of the chain rule gives
+
+<div class="display-equation">
+$$
+\frac{\partial\mathcal L}{\partial x_\ell}
+=
+\frac{\partial\mathcal L}{\partial x_L}
+\prod_{k=L-1}^{\ell}
+\left(I+J_{F_k}(x_k)\right),
+$$
+</div>
+
+where the product is ordered along the reverse path. In a plain network, the corresponding product contains only layer Jacobians. If each has norm below one, repeated multiplication can suppress the signal exponentially. In the residual product, every factor contains an identity term. Expanding the product reveals paths that skip one residual transformation, several transformations, or all of them. The gradient is not forced to travel only through the deepest chain.
+
+The scalar case makes the contrast visible. A plain recurrence $x_{k+1}=a_kx_k$ contributes the derivative $\prod_k a_k$. A residual recurrence $x_{k+1}=x_k+f_k(x_k)$ contributes $\prod_k(1+f_k'(x_k))$. If the learned residual derivatives are initially small, each factor begins near one rather than near zero. That is a favorable route for optimization, not a mathematical guarantee: large or adversarial Jacobians can still produce vanishing or exploding products.
+
 When shapes differ, a projection may replace the identity shortcut. The shortcut then preserves a direct route while adapting dimension.
 
-Residual design also changes the function class. Setting $F$ near zero makes a block close to identity, so adding depth need not immediately destroy a useful representation. This helps optimization, but deeper networks still require appropriate initialization, normalization, step sizes, and computational budgets.
+Residual design also changes the function class. Setting $F$ near zero makes a block close to identity, so adding depth need not immediately destroy a useful representation. This advantage becomes especially important as depth grows; a two-layer network may not need a shortcut to preserve gradients, though residual parameterization can still be useful for other reasons. Deeper networks continue to require appropriate initialization, normalization, step sizes, and computational budgets.
 
 ## Computation Graphs
 
-A computation graph is a directed acyclic graph whose nodes are elementary operations and whose edges carry tensors. Forward evaluation follows a topological order. Reverse-mode differentiation traverses the graph backward, applying local derivative rules and summing contributions at branches.
+A residual block also breaks the picture of a network as one long chain: $x$ travels through $F$ and around it, then the two paths meet at an addition. Once branches appear, a graph is the natural description. A computation graph is a directed acyclic graph whose nodes are elementary operations and whose edges carry tensors. Forward evaluation follows a topological order. Reverse-mode differentiation traverses the graph backward, applying local derivative rules and summing contributions at branches.
 
 For a small scalar example, consider the forward computation $a=3$, $b=4$, $c=a+b$, $d=2c$, and $L=d^2$. The values are $c=7$, $d=14$, and $L=196$. Reverse propagation can be read in one line:
 
@@ -806,9 +1085,38 @@ $$
 
 The multiplication node scales the incoming derivative by its local factor, while the addition node sends the same upstream gradient to both parents. This tiny example is the same mechanism used by a network with millions of operations; only the graph and tensor dimensions are larger.
 
+A branching graph adds the one rule that a chain cannot show. Let
+
+<div class="display-equation">
+$$
+u=xy,\qquad v=xz,\qquad L=u+v,
+\qquad (x,y,z)=(2,3,4).
+$$
+</div>
+
+The forward values are $u=6$, $v=8$, and $L=14$. In reverse, the addition sends unit gradient to both $u$ and $v$. The first multiplication returns $3$ to $x$ and $2$ to $y$; the second returns $4$ to $x$ and $2$ to $z$. Because $x$ influenced the loss along two paths, its contributions must be added:
+
+<div class="display-equation">
+$$
+\frac{\partial L}{\partial x}
+=
+\frac{\partial L}{\partial u}\frac{\partial u}{\partial x}
++
+\frac{\partial L}{\partial v}\frac{\partial v}{\partial x}
+=1\cdot3+1\cdot4=7,
+\qquad
+\frac{\partial L}{\partial y}=2,\quad
+\frac{\partial L}{\partial z}=2.
+$$
+</div>
+
+This addition is not a special convention invented by software. It is the multivariable chain rule. The same rule accumulates gradients for a shared parameter used at many time steps or for an input feeding several architectural branches.
+
 Intermediate tensors required for local backward rules must remain available, which creates a memory cost. Gradient checkpointing trades additional forward recomputation for reduced activation storage. In-place modification can invalidate saved values and must obey the framework's autograd rules.
 
-The graph abstraction unifies chains, branches, residual paths, and shared parameters. If one parameter is used at several nodes, its gradient is the sum of all path contributions. This is why one general reverse-mode engine can train architectures whose forward structures look very different.
+There are two common ways to turn this abstraction into software. A static-graph system records a graph before execution and can optimize the complete program globally, but changing the structure at runtime is less direct. An eager or dynamic system records operations as the forward pass executes, so ordinary loops, branches, and debugging tools remain available. Modern frameworks increasingly mix the two: eager execution for development, with optional tracing or compilation for performance.
+
+The graph abstraction unifies chains, branches, residual paths, and shared parameters. Once the forward computation is defined from differentiable operations, the reverse engine needs only local derivative rules, a reverse topological traversal, and gradient accumulation at joins. That mechanical structure is what makes it possible to change a network architecture without deriving a new training algorithm from scratch.
 
 ## From the Mathematics to a PyTorch Program
 
@@ -904,6 +1212,8 @@ test_loader = DataLoader(
 ```
 
 Training data are shuffled because each epoch should form fresh minibatches. Validation and test data need no shuffle because their order does not change aggregate metrics. Setting `num_workers=0` favors portability, especially on Windows and in notebooks; larger projects should benchmark parallel loading rather than copy this value blindly.
+
+Batch size is both a systems choice and an optimization choice. Larger batches use parallel hardware efficiently and reduce the variance of the gradient estimate, but they consume more memory and provide fewer parameter updates per pass through the data. Smaller batches produce noisier updates and may regularize the trajectory, though they can also make training inefficient or unstable. Powers of two are common because they often fit hardware and memory layouts conveniently, not because the learning problem contains a theorem preferring them. Linear learning-rate scaling for SGD and square-root rules sometimes used with adaptive methods are starting heuristics; after changing batch size, the learning rate and final validation behavior still have to be checked together.
 
 The shape entering the model is `(batch, 1, 28, 28)`. The first layer expects 784 features, so `nn.Flatten()` converts each image to `(batch, 784)` while preserving the batch dimension.
 
@@ -1084,17 +1394,15 @@ When a training run fails, checking invariants is usually more useful than immed
 - Confirm that validation and test examples, groups, and preprocessing statistics did not influence training.
 - Compare against a simple linear baseline before attributing gains to a deeper architecture.
 
-The purpose of this checklist is not ceremonial reproducibility. It connects each software symptom to the mathematical pipeline developed throughout the chapter.
+Each item checks a particular link in the pipeline developed above. Debugging becomes much less mysterious once a failed run can be located in the data, forward map, loss, backward pass, update, or evaluation procedure.
 
 ## The Role of the Linear Layer
 
-We began with one affine score and arrived at a complete learning system. The path was not accidental.
+It is worth looking back at how little the central formula changed. In classification, $Wx+b$ described signed distance and then a vector of competing logits. In regression, it described a conditional numerical prediction. Inside a multilayer network, it became one stage of a learned representation. The algebra stayed simple; the interpretation depended on the loss, the data, and the layers around it.
 
-A linear layer first turned data into geometry: a weight vector defined a direction, a bias located a boundary, and a margin measured separation. A probabilistic output then connected that score to a data model. The loss converted likelihood into an objective, and the chain rule converted the objective into parameter gradients. Smoothness explained when a gradient step must decrease the objective, while statistical reasoning explained why decreasing training loss is not enough.
+Most of the chapter was therefore about the questions that the formula cannot answer by itself. A loss had to say what counted as an error. Optimization had to turn that error into a controlled update. Validation had to reveal whether fitting survived outside the training sample. Nonlinearity supplied expressive power, while normalization, initialization, and residual paths made that power trainable. The computation graph finally gave software a mechanical way to carry the chain rule through the entire construction.
 
-The same layer then appeared in regression, where least squares, ridge, and lasso exposed identifiability, conditioning, shrinkage, and sparsity. Stacking linear layers revealed why nonlinearity is indispensable. Normalization, initialization, and residual paths showed that representational power must be accompanied by controlled signal and gradient propagation. Finally, the computation graph turned those mathematical dependencies into an executable reverse-mode algorithm.
-
-The linear layer is therefore not merely the easiest neural-network component. It is the point at which representation, probability, optimization, statistics, and software first become one coherent mechanism.
+This is why the linear layer is a useful place to begin. It is small enough to calculate by hand, but already sits at the meeting point of geometry, probability, optimization, statistics, and implementation. The larger models change the scale and the architecture. They do not remove these questions.
 
 ## References
 
