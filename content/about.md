@@ -2,13 +2,13 @@
 title: "About"
 layout: "single"
 url: "/about/"
-summary: "Biography and research preparation of Xujiang Tang in mathematics and theoretical machine learning"
+summary: "Biography and research vision of Xujiang Tang across mathematics and artificial intelligence"
 draft: false
 ShowToc: false
 hideMeta: true
 ---
 
-I am a researcher in **mathematics and theoretical machine learning** and an undergraduate in Mathematics and Applied Mathematics. My work spans mathematical modeling, analysis, algebra, dynamical systems, optimization, online learning, multi-armed bandits, reinforcement learning, and sequential decision-making under uncertainty.
+I believe **mathematics can open broader frontiers for machine learning and artificial intelligence**, extending their foundations beyond the calculus-centered framework that has shaped modern AI. My research interests are **algebraic topology, efficient AI reasoning, bandit algorithms, reinforcement learning, machine-learning theory, algorithm design, and formalized mathematics**.
 
 During 2026-2027, I am a **Research Assistant at The Hong Kong University of Science and Technology (Guangzhou)**, working with **Prof. Tianyuan Jin** on online learning, bandit algorithms, reinforcement learning, and resource-efficient learning. This appointment builds on my mathematical training in probability, statistics, optimization, analysis, and differential equations.
 
