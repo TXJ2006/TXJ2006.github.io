@@ -1,34 +1,35 @@
 {{- define "main" }}
-<section class="editor-page" data-repo="TXJ2006/TXJ2006.github.io" data-branch="main">
+<section class="editor-page" data-repo="TXJ2006/TXJ2006.github.io" data-owner="TXJ2006" data-branch="main">
   <header class="editor-header">
     <div>
       <p class="eyebrow">Private Publishing Workspace</p>
-      <h1>Markdown Editor</h1>
+      <h1>Markdown 写作台</h1>
     </div>
     <a href="{{ "notes/" | relURL }}">View library</a>
   </header>
 
   <section class="editor-auth" id="editor-auth" aria-labelledby="auth-heading">
     <div>
-      <h2 id="auth-heading">Connect GitHub</h2>
-      <p><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Fine-grained token</a> · Contents read/write · current session only</p>
+      <h2 id="auth-heading">验证编辑身份</h2>
+      <p><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Fine-grained token</a> · Repository contents: Read and write · 仅保留在本次浏览器会话</p>
       <p class="editor-auth-status" id="editor-auth-status" role="status" aria-live="polite"></p>
     </div>
     <label>
-      <span>Access token</span>
+      <span>GitHub access token</span>
       <input id="editor-token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_...">
     </label>
-    <button class="button-primary" id="editor-connect" type="button">Connect</button>
+    <button class="button-primary" id="editor-connect" type="button">验证并进入</button>
   </section>
 
   <div class="editor-workspace" id="editor-workspace" hidden>
     <aside class="editor-library">
       <div class="editor-library-heading">
-        <span>Notes</span>
-        <button id="editor-new" type="button">New</button>
+        <span>笔记</span>
+        <button id="editor-new" type="button">新建</button>
       </div>
+      <p class="editor-identity" id="editor-identity"></p>
       <div id="editor-files" class="editor-files" role="listbox" aria-label="Markdown notes"></div>
-      <button class="editor-disconnect" id="editor-disconnect" type="button">Disconnect</button>
+      <button class="editor-disconnect" id="editor-disconnect" type="button">退出编辑</button>
     </aside>
 
     <main class="editor-document">
@@ -42,7 +43,26 @@
           <button type="button" data-mode="edit">Edit</button>
           <button type="button" data-mode="preview">Preview</button>
         </div>
+        <span class="editor-preview-status" id="editor-preview-status" role="status"></span>
       </div>
+
+      <div class="editor-draft-banner" id="editor-draft-banner" hidden>
+        <p id="editor-draft-message"></p>
+        <button id="editor-draft-restore" type="button">恢复草稿</button>
+        <button id="editor-draft-discard" type="button">放弃草稿</button>
+      </div>
+
+      <details class="editor-compile-log" id="editor-compile-log">
+        <summary>
+          <span>编译日志</span>
+          <strong id="editor-compile-summary">等待编译</strong>
+        </summary>
+        <div class="editor-compile-body">
+          <p id="editor-compile-meta"></p>
+          <button id="editor-compile-copy" type="button">复制日志</button>
+          <ol id="editor-compile-items"></ol>
+        </div>
+      </details>
 
       <div class="markdown-toolbar" id="markdown-toolbar" aria-label="Markdown formatting">
         <button type="button" data-md-action="h1" title="Heading 1">H1</button>
@@ -85,27 +105,30 @@
 
       <div class="editor-panes" data-mode="split">
         <label class="editor-pane editor-input-pane">
-          <span>Markdown</span>
+          <span>Markdown 源文档</span>
           <textarea id="editor-content" spellcheck="true" aria-label="Markdown content"></textarea>
         </label>
         <div class="editor-pane editor-preview-pane">
-          <span>Preview</span>
-          <iframe id="editor-preview" sandbox="allow-scripts" title="Markdown preview"></iframe>
+          <span>实时渲染</span>
+          <iframe id="editor-preview" sandbox="allow-same-origin" title="Markdown preview"></iframe>
         </div>
       </div>
 
       <footer class="editor-publish">
         <label>
-          <span>Commit message</span>
+          <span>发布说明</span>
           <input id="editor-message" type="text" value="Publish research note" maxlength="120">
         </label>
         <p id="editor-status" role="status" aria-live="polite"></p>
-        <button class="button-primary" id="editor-publish" type="button">Publish</button>
+        <button class="button-primary" id="editor-publish" type="button">发布</button>
       </footer>
     </main>
   </div>
 
 </section>
 <script src="{{ "js/marked.umd.js" | relURL }}"></script>
+<script src="{{ "js/markdown-pipeline.js" | relURL }}"></script>
+<script src="{{ "vendor/katex/katex.min.js" | relURL }}"></script>
+<script src="{{ "vendor/katex/contrib/auto-render.min.js" | relURL }}"></script>
 <script src="{{ "js/notes-editor.js" | relURL }}"></script>
 {{- end }}

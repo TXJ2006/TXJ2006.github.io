@@ -24,9 +24,11 @@ Nothing about that sentence is unusual. In fact, it is exactly what a sequential
 
 The difficulty is more subtle. A confidence interval designed for a fixed sample size answers a fixed-time question: $\text{``What can happen at time }n\text{?''}$ A sequential procedure asks a different question:
 
-\[
+<div class="display-equation">
+$$
 \text{``What can happen at any time at which the data persuade us to stop?''}
-\]
+$$
+</div>
 
  Those are not the same event.
 
@@ -38,12 +40,14 @@ A bandit algorithm is full of such random times. It may stop exploring an arm wh
 
 Martingales are the language that keeps this dependence honest (Williams 1991; Lattimore and Szepesvari 2020). They do not make adaptivity disappear. They separate it into two pieces:
 
-\[
+<div class="display-equation">
+$$
 \boxed{\text{a choice made from the past}}
 \qquad+
 \qquad
 \boxed{\text{new noise whose conditional mean is zero}.}
-\]
+$$
+</div>
 
  Once this separation is visible, many proofs become simple bookkeeping.
 
@@ -74,13 +78,15 @@ A process $H_t$ is *predictable* when $H_t$ is known just before round $t$. In d
 
 The distinction is small in notation and decisive in proofs:
 
-\[
+<div class="display-equation">
+$$
 \underbrace{A_t}_{\text{chosen before reward}}
 \quad\text{is predictable,}
 \qquad
 \underbrace{X_t}_{\text{revealed after action}}
 \quad\text{is adapted but not predictable.}
-\]
+$$
+</div>
 
 
 A legal bandit policy cannot choose $A_t$ using $X_t$, because $X_t$ has not yet happened. That simple chronological fact is exactly what predictability records.
@@ -91,11 +97,13 @@ The ordinary mean $\E[X_t]$ averages over every possible history. The conditiona
 
 For a stochastic bandit with arm means $\mu_1,\ldots,\mu_K$, once $A_t$ has been chosen we have
 
-\[
+<div class="display-equation">
+$$
 \E[X_t\mid \F_{t-1}]
 =
 \mu_{A_t}.
-\]
+$$
+</div>
 
  This equation does not say the reward equals $\mu_{A_t}$. It says that after all past information and the current action are known, the remaining uncertainty has mean $\mu_{A_t}$.
 
@@ -109,16 +117,20 @@ A martingale is often introduced through gambling. The useful idea is simpler:
 
 Let $M_0,M_1,M_2,\ldots$ be an adapted process with finite expectations. It is a martingale when
 
-\[
+<div class="display-equation">
+$$
 \E[M_t\mid \F_{t-1}]=M_{t-1}
 \qquad\text{for every }t\ge 1.
-\]
+$$
+</div>
 
  Subtract $M_{t-1}$ from both sides: $\E[M_t-M_{t-1}\mid \F_{t-1}]=0.$ If we write $D_t=M_t-M_{t-1},$ then
 
-\[
+<div class="display-equation">
+$$
 \boxed{\E[D_t\mid \F_{t-1}]=0.}
-\]
+$$
+</div>
 
  The sequence $D_t$ is called a *martingale difference sequence*.
 
@@ -130,14 +142,17 @@ Let $M_0,M_1,M_2,\ldots$ be an adapted process with finite expectations. It is a
 
 Let $\xi_t\in\{-1,+1\}$ be a fair coin step: $\Pbb(\xi_t=1)=\Pbb(\xi_t=-1)=\frac12.$ Define
 
-\[
+<div class="display-equation">
+$$
 S_t=\sum_{s=1}^{t}\xi_s,
 \qquad S_0=0.
-\]
+$$
+</div>
 
  Then
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E[S_t\mid\F_{t-1}]
 &=\E[S_{t-1}+\xi_t\mid\F_{t-1}]\\
@@ -145,7 +160,8 @@ S_t=\sum_{s=1}^{t}\xi_s,
 &=S_{t-1}+0\\
 &=S_{t-1}.
 \end{align*}
-\]
+$$
+</div>
 
  So $S_t$ is a martingale.
 
@@ -155,7 +171,8 @@ Notice what the equation does *not* say. It does not say the path stays near zer
 
 Let $A_t$ be the arm selected at round $t$, and let $X_t$ be its reward. Define the centered reward $D_t=X_t-\mu_{A_t}.$ Then
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E[D_t\mid\F_{t-1}]
 &=\E[X_t-\mu_{A_t}\mid\F_{t-1}]\\
@@ -163,7 +180,8 @@ Let $A_t$ be the arm selected at round $t$, and let $X_t$ be its reward. Define 
 &=\mu_{A_t}-\mu_{A_t}\\
 &=0.
 \end{align*}
-\]
+$$
+</div>
 
  Therefore $M_t=\sum_{s=1}^{t}(X_s-\mu_{A_s})$ is a martingale.
 
@@ -173,13 +191,15 @@ This is the first important research pattern:
 >
 > Write an adaptive observation as
 
-\[
+<div class="display-equation">
+$$
 \text{observation}
 =
 \text{conditional mean given the past}
 +
 \text{martingale noise}.
-\]
+$$
+</div>
 
  The policy may be highly adaptive. The centered noise can still have conditional mean zero.
 
@@ -189,14 +209,16 @@ Suppose $D_t$ is a martingale difference and $H_t$ is chosen using only the past
 
 The proof is one line, but every symbol matters:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E[H_tD_t\mid\F_{t-1}]
 &=H_t\E[D_t\mid\F_{t-1}]\\
 &=H_t\cdot 0\\
 &=0.
 \end{align*}
-\]
+$$
+</div>
 
  We were allowed to move $H_t$ outside the conditional expectation because $H_t$ was already known at time $t-1$.
 
@@ -212,36 +234,43 @@ Fix an arm $a$. Define $I_{a,t}=\one\{A_t=a\}.$ Because the learner chooses $A_t
 
 Now define the arm-specific centered increment $D_{a,t}=I_{a,t}(X_t-\mu_a).$ Its conditional mean is
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E[D_{a,t}\mid\F_{t-1}]
 &=\E[I_{a,t}(X_t-\mu_a)\mid\F_{t-1}]\\
 &=I_{a,t}\E[X_t-\mu_a\mid\F_{t-1}]\\
 &=I_{a,t}(\mu_{A_t}-\mu_a).
 \end{align*}
-\]
+$$
+</div>
 
  There are two cases:
 
-\[
+<div class="display-equation">
+$$
 A_t\neq a
 \quad\Longrightarrow\quad
 I_{a,t}=0,
-\]
+$$
+</div>
 
  and
 
-\[
+<div class="display-equation">
+$$
 A_t=a
 \quad\Longrightarrow\quad
 \mu_{A_t}-\mu_a=0.
-\]
+$$
+</div>
 
  Hence $\E[D_{a,t}\mid\F_{t-1}]=0.$ Therefore $S_a(t)=\sum_{s=1}^{t}I_{a,s}(X_s-\mu_a)$ is a martingale.
 
 The corresponding number of observations is $N_a(t)=\sum_{s=1}^{t}I_{a,s}.$ Whenever $N_a(t)>0$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 S_a(t)
 &=\sum_{s=1}^{t}I_{a,s}X_s
@@ -249,17 +278,20 @@ S_a(t)
 &=N_a(t)\widehat\mu_a(t)-N_a(t)\mu_a\\
 &=N_a(t)\bigl(\widehat\mu_a(t)-\mu_a\bigr).
 \end{align*}
-\]
+$$
+</div>
 
  Thus
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \widehat\mu_a(t)-\mu_a
 =
 \frac{S_a(t)}{N_a(t)}.
 }
-\]
+$$
+</div>
 
  The numerator is martingale noise. The denominator is a random sample size chosen by the algorithm.
 
@@ -267,11 +299,13 @@ S_a(t)
 >
 > The stopped sample mean need not be unbiased, even when the stopped sum has mean zero. Ratios are nonlinear:
 
-\[
+<div class="display-equation">
+$$
 \E\left[\frac{S_\tau}{\tau}\right]
 \neq
 \frac{\E[S_\tau]}{\E[\tau]}.
-\]
+$$
+</div>
 
  Optional stopping controls the martingale itself. It does not automatically validate every statistic built from it.
 
@@ -279,7 +313,8 @@ S_a(t)
 
 Suppose the learner chooses arm $a$ with known probability $p_t(a)>0$, where $p_t(a)$ is determined from $\F_{t-1}$. Consider $Y_t(a)=\frac{\one\{A_t=a\}X_t}{p_t(a)}.$ Then
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E[Y_t(a)\mid\F_{t-1}]
 &=\frac{1}{p_t(a)}
@@ -290,7 +325,8 @@ Suppose the learner chooses arm $a$ with known probability $p_t(a)>0$, where $p_
 &=\frac{1}{p_t(a)}\,p_t(a)\mu_a\\
 &=\mu_a.
 \end{align*}
-\]
+$$
+</div>
 
  So $Y_t(a)-\mu_a$ is a martingale difference. This calculation is the backbone of inverse-propensity estimators in contextual bandits and adaptive experiments.
 
@@ -300,10 +336,12 @@ A random time $\tau$ is a stopping time when, at every time $t$, we can decide w
 
 Formally,
 
-\[
+<div class="display-equation">
+$$
 \{\tau\le t\}\in\F_t
 \qquad\text{for every }t.
-\]
+$$
+</div>
 
 
 The definition is easier to understand through examples.
@@ -324,22 +362,26 @@ The time of the final maximum over a future horizon, $\tau=\argmax_{0\le s\le T}
 
 Given a process $M_t$ and a stopping time $\tau$, define
 
-\[
+<div class="display-equation">
+$$
 M_{t\wedge\tau}
 =
 M_{\min\{t,\tau\}}.
-\]
+$$
+</div>
 
  Before stopping, this follows the original process. After stopping, it stays frozen:
 
-\[
+<div class="display-equation">
+$$
 M_{t\wedge\tau}
 =
 \begin{cases}
-M_t, & t<\tau,\\
+M_t, & t&lt;\tau,\\
 M_\tau, & t\ge\tau.
 \end{cases}
-\]
+$$
+</div>
 
  The stopped process is the clean object used in optional-stopping proofs.
 
@@ -357,21 +399,25 @@ The proof is worth learning because the same shape appears throughout sequential
 
 Let $D_t=M_t-M_{t-1}.$ Then $M_t=M_0+\sum_{s=1}^{t}D_s.$ At the random time $\tau$, $M_\tau=M_0+\sum_{s=1}^{\tau}D_s.$ Because $\tau\le n$, we can rewrite the random-length sum as a fixed-length sum:
 
-\[
+<div class="display-equation">
+$$
 \sum_{s=1}^{\tau}D_s
 =
 \sum_{s=1}^{n}\one\{\tau\ge s\}D_s.
-\]
+$$
+</div>
 
  Why? The indicator keeps exactly the increments that occur before stopping.
 
 Hence
 
-\[
+<div class="display-equation">
+$$
 M_\tau-M_0
 =
 \sum_{s=1}^{n}\one\{\tau\ge s\}D_s.
-\]
+$$
+</div>
 
 
 ### Step 2: notice what is known before the next increment
@@ -382,7 +428,8 @@ The event $\{\tau\ge s\}$ is the complement of $\{\tau\le s-1\}$. Since $\tau$ i
 
 For every $s$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E\bigl[\one\{\tau\ge s\}D_s\bigr]
 &=\E\left[
@@ -396,11 +443,13 @@ For every $s$,
 \right]\\
 &=0.
 \end{align*}
-\]
+$$
+</div>
 
  Now sum:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E[M_\tau-M_0]
 &=\E\left[
@@ -410,26 +459,31 @@ For every $s$,
 \E\bigl[\one\{\tau\ge s\}D_s\bigr]\\
 &=0.
 \end{align*}
-\]
+$$
+</div>
 
  Therefore
 
-\[
+<div class="display-equation">
+$$
 \boxed{\E[M_\tau]=\E[M_0].}
-\]
+$$
+</div>
 
 
 > **Proof pattern.**
 >
 > The proof has three moves:
 
-\[
+<div class="display-equation">
+$$
 \text{random stopping}
 \to
 \text{predictable indicators}
 \to
 \text{zero conditional means}.
-\]
+$$
+</div>
 
  This is the discrete-time core of optional stopping.
 
@@ -451,84 +505,100 @@ A clean counterexample shows what can go wrong.
 
 Flip a fair coin repeatedly. Let $H_t=\one\{\text{the first }t\text{ tosses are all heads}\}$ and define
 
-\[
+<div class="display-equation">
+$$
 M_t=2^tH_t,
 \qquad M_0=1.
-\]
+$$
+</div>
 
  If a tail has already occurred, then $M_t=0$ forever. If all first $t$ tosses were heads, then at the next toss
 
-\[
+<div class="display-equation">
+$$
 M_{t+1}
 =
 \begin{cases}
 2^{t+1}, & \text{with probability }1/2,\\
 0, & \text{with probability }1/2.
 \end{cases}
-\]
+$$
+</div>
 
  Therefore, on the all-heads history,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E[M_{t+1}\mid\F_t]
 &=\frac12\,2^{t+1}+\frac12\,0\\
 &=2^t\\
 &=M_t.
 \end{align*}
-\]
+$$
+</div>
 
  On every history containing a tail, both sides are zero. Hence $(M_t)$ is a nonnegative martingale.
 
 Let $\tau=\inf\{t\ge1:\text{toss }t\text{ is tails}\}.$ A tail eventually occurs with probability one, so
 
-\[
+<div class="display-equation">
+$$
 M_\tau=0
 \qquad\text{almost surely}.
-\]
+$$
+</div>
 
  Thus
 
-\[
+<div class="display-equation">
+$$
 \E[M_\tau]=0
 \neq
 1=\E[M_0].
-\]
+$$
+</div>
 
 
 Where did the expectation go?
 
 For every finite $n$,
 
-\[
+<div class="display-equation">
+$$
 M_{\tau\wedge n}
 =
 \begin{cases}
 2^n, & \text{if the first }n\text{ tosses are all heads},\\
 0, & \text{otherwise}.
 \end{cases}
-\]
+$$
+</div>
 
  Hence
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E[M_{\tau\wedge n}]
 &=2^n\Pbb(\text{first }n\text{ tosses are all heads})\\
 &=2^n\left(\frac12\right)^n\\
 &=1.
 \end{align*}
-\]
+$$
+</div>
 
  But for almost every path, $M_{\tau\wedge n}\longrightarrow 0.$ So
 
-\[
+<div class="display-equation">
+$$
 \lim_{n\to\infty}\E[M_{\tau\wedge n}]
 =1,
 \qquad
 \E\left[\lim_{n\to\infty}M_{\tau\wedge n}\right]
 =0.
-\]
+$$
+</div>
 
  The limit and expectation cannot be exchanged. Rare all-heads paths become exponentially large and keep the finite-time expectation equal to one.
 
@@ -548,10 +618,12 @@ Optional stopping becomes especially powerful when the process is nonnegative.
 >
 > Let $(L_t)$ be a nonnegative supermartingale with $\E[L_0]\le 1.$ Then for every $\alpha\in(0,1)$,
 
-\[
+<div class="display-equation">
+$$
 \Pbb\left(\sup_{t\ge0}L_t\ge\frac1\alpha\right)
 \le\alpha.
-\]
+$$
+</div>
 
 
 This is Ville's inequality (Ville 1939; Howard et al. 2020). Its proof is optional stopping in its cleanest form.
@@ -560,32 +632,38 @@ This is Ville's inequality (Ville 1939; Howard et al. 2020). Its proof is option
 
 Define the first crossing time $\tau=\inf\left\{t\ge0:L_t\ge\frac1\alpha\right\}.$ For a fixed integer $n$, the truncated time $\tau\wedge n$ is bounded. Since $L_t$ is a supermartingale,
 
-\[
+<div class="display-equation">
+$$
 \E[L_{\tau\wedge n}]
 \le
 \E[L_0]
 \le1.
-\]
+$$
+</div>
 
  On the event $\{\tau\le n\}$, $L_{\tau\wedge n}=L_\tau\ge\frac1\alpha.$ Because $L_{\tau\wedge n}\ge0$ everywhere,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 1
 &\ge\E[L_{\tau\wedge n}]\\
 &\ge\E\left[L_{\tau\wedge n}\one\{\tau\le n\}\right]\\
 &\ge\frac1\alpha\Pbb(\tau\le n).
 \end{align*}
-\]
+$$
+</div>
 
  Therefore $\Pbb(\tau\le n)\le\alpha.$ As $n\to\infty$, the events $\{\tau\le n\}$ increase to $\{\tau<\infty\}$. Hence $\Pbb(\tau<\infty)\le\alpha.$ Equivalently,
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \Pbb\left(\exists t\ge0:L_t\ge\frac1\alpha\right)
 \le\alpha.
 }
-\]
+$$
+</div>
 
 
 The important word is *exists*. One threshold controls every possible monitoring time at once.
@@ -600,36 +678,43 @@ A nonnegative process with this property is often called an *e-process*. The rul
 
 Consider Bernoulli observations. Under the null hypothesis, $H_0:p=p_0.$ Choose a fixed alternative $p_1$. Define the likelihood ratio
 
-\[
+<div class="display-equation">
+$$
 L_t
 =
 \prod_{s=1}^{t}
 \frac{p_1^{X_s}(1-p_1)^{1-X_s}}
      {p_0^{X_s}(1-p_0)^{1-X_s}}.
-\]
+$$
+</div>
 
  If $C_t=\sum_{s=1}^{t}X_s,$ then
 
-\[
+<div class="display-equation">
+$$
 L_t
 =
 \left(\frac{p_1}{p_0}\right)^{C_t}
 \left(\frac{1-p_1}{1-p_0}\right)^{t-C_t}.
-\]
+$$
+</div>
 
 
 Under $H_0$, this is a martingale. To see it, write $L_t=L_{t-1}R_t,$ where
 
-\[
+<div class="display-equation">
+$$
 R_t
 =
 \left(\frac{p_1}{p_0}\right)^{X_t}
 \left(\frac{1-p_1}{1-p_0}\right)^{1-X_t}.
-\]
+$$
+</div>
 
  Then
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E_{p_0}[L_t\mid\F_{t-1}]
 &=L_{t-1}\E_{p_0}[R_t\mid\F_{t-1}]\\
@@ -640,14 +725,17 @@ R_t
 &=L_{t-1}[p_1+(1-p_1)]\\
 &=L_{t-1}.
 \end{align*}
-\]
+$$
+</div>
 
  Therefore Ville's inequality gives
 
-\[
+<div class="display-equation">
+$$
 \Pbb_{p_0}\left(\exists t:L_t\ge\frac1\alpha\right)
 \le\alpha.
-\]
+$$
+</div>
 
 
 This is a sequential test with no fixed horizon. It can be checked after every observation.
@@ -662,29 +750,34 @@ Likelihood ratios are one route to sequential evidence. Concentration inequaliti
 
 Let $D_t$ be a martingale difference satisfying the conditional sub-Gaussian bound
 
-\[
+<div class="display-equation">
+$$
 \E\left[e^{\lambda D_t}\mid\F_{t-1}\right]
 \le
 \exp\left(\frac{\lambda^2\sigma^2}{2}\right)
 \qquad\text{for every }\lambda\in\R.
-\]
+$$
+</div>
 
  Define $S_t=\sum_{s=1}^{t}D_s$ and
 
-\[
+<div class="display-equation">
+$$
 L_t(\lambda)
 =
 \exp\left(
 \lambda S_t-\frac{\lambda^2\sigma^2 t}{2}
 \right).
-\]
+$$
+</div>
 
 
 ### Why this is a supermartingale
 
 Because $S_t=S_{t-1}+D_t$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 L_t(\lambda)
 &=\exp\left(
@@ -698,11 +791,13 @@ L_t(\lambda)
 \lambda D_t-\frac{\lambda^2\sigma^2}{2}
 \right).
 \end{align*}
-\]
+$$
+</div>
 
  Take conditional expectation:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E[L_t(\lambda)\mid\F_{t-1}]
 &=L_{t-1}(\lambda)e^{-\lambda^2\sigma^2/2}
@@ -711,24 +806,28 @@ L_t(\lambda)
 e^{\lambda^2\sigma^2/2}\\
 &=L_{t-1}(\lambda).
 \end{align*}
-\]
+$$
+</div>
 
  Thus $L_t(\lambda)$ is a nonnegative supermartingale with $L_0(\lambda)=1$.
 
 Ville's inequality now gives
 
-\[
+<div class="display-equation">
+$$
 \Pbb\left(
 \exists t:\
 \lambda S_t-\frac{\lambda^2\sigma^2t}{2}
 \ge\log\frac1\alpha
 \right)
 \le\alpha.
-\]
+$$
+</div>
 
  For $\lambda>0$, rearrange:
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \Pbb\left(
 \exists t:\
@@ -740,7 +839,8 @@ S_t
 \right)
 \le\alpha.
 }
-\]
+$$
+</div>
 
  This is a time-uniform linear boundary.
 
@@ -748,34 +848,41 @@ S_t
 
 For one fixed time $t$, minimize
 
-\[
+<div class="display-equation">
+$$
 \frac{\log(1/\alpha)}{\lambda}
 +
 \frac{\lambda\sigma^2t}{2}
-\]
+$$
+</div>
 
  over $\lambda>0$. Differentiate:
 
-\[
+<div class="display-equation">
+$$
 -\frac{\log(1/\alpha)}{\lambda^2}
 +
 \frac{\sigma^2t}{2}
 =0.
-\]
+$$
+</div>
 
  Hence
 
-\[
+<div class="display-equation">
+$$
 \lambda^*
 =
 \sqrt{
 \frac{2\log(1/\alpha)}{\sigma^2t}
 }.
-\]
+$$
+</div>
 
  Substitute the optimizer:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \frac{\log(1/\alpha)}{\lambda^*}
 &=
@@ -784,24 +891,29 @@ For one fixed time $t$, minimize
 &=
 \sigma\sqrt{\frac{t\log(1/\alpha)}{2}}.
 \end{align*}
-\]
+$$
+</div>
 
  Adding the two terms,
 
-\[
+<div class="display-equation">
+$$
 S_t
 \le
 \sigma\sqrt{2t\log(1/\alpha)}.
-\]
+$$
+</div>
 
  So
 
-\[
+<div class="display-equation">
+$$
 \Pbb\left(
 S_t\ge\sigma\sqrt{2t\log(1/\alpha)}
 \right)
 \le\alpha.
-\]
+$$
+</div>
 
 
 There is one subtle point. The optimizing $\lambda^*$ depends on $t$. A different $t$ gives a different supermartingale. We may optimize for a predetermined time, but we cannot choose $\lambda$ after seeing which random time looked most favorable and pretend it was fixed all along.
@@ -812,27 +924,32 @@ Modern confidence-sequence methods solve this by mixing many $\lambda$ values or
 
 Suppose $X_1,X_2,\ldots\in[0,1]$ are independent with common mean $\mu$. Hoeffding gives, at any fixed time $t$,
 
-\[
+<div class="display-equation">
+$$
 \Pbb\left(
 |\widehat\mu_t-\mu|\ge r
 \right)
 \le
 2e^{-2tr^2}.
-\]
+$$
+</div>
 
  We want one event that holds for every $t$.
 
 Allocate a small failure budget to each time:
 
-\[
+<div class="display-equation">
+$$
 \delta_t
 =
 \frac{6\delta}{\pi^2t^2}.
-\]
+$$
+</div>
 
  Because $\sum_{t=1}^{\infty}\frac1{t^2}=\frac{\pi^2}{6},$ we have $\sum_{t=1}^{\infty}\delta_t=\delta.$ Choose $r_t$ so that $2e^{-2tr_t^2}=\delta_t.$ Then
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 -2tr_t^2
 &=\log\frac{\delta_t}{2},\\
@@ -845,11 +962,13 @@ r_t^2
 \frac{\pi^2t^2}{3\delta}
 \right).
 \end{align*}
-\]
+$$
+</div>
 
  Therefore
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 r_t
 =
@@ -860,11 +979,13 @@ r_t
 \right)
 }.
 }
-\]
+$$
+</div>
 
  Now apply the union bound:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \Pbb\left(
 \exists t\ge1:
@@ -879,11 +1000,13 @@ r_t
 \sum_{t=1}^{\infty}\delta_t\\
 &=\delta.
 \end{align*}
-\]
+$$
+</div>
 
  Equivalently,
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \Pbb\left(
 \forall t\ge1:
@@ -891,7 +1014,8 @@ r_t
 \right)
 \ge1-\delta.
 }
-\]
+$$
+</div>
 
  This sequence of intervals can be inspected continuously. It is wider than a fixed-time interval because it protects against every possible inspection time.
 
@@ -903,27 +1027,32 @@ r_t
 
 Return to arm $a$. Recall
 
-\[
+<div class="display-equation">
+$$
 S_a(t)
 =
 \sum_{s=1}^{t}I_{a,s}(X_s-\mu_a),
 \qquad
 N_a(t)=\sum_{s=1}^{t}I_{a,s}.
-\]
+$$
+</div>
 
  For rewards in $[0,1]$, Hoeffding's lemma gives
 
-\[
+<div class="display-equation">
+$$
 \E\left[
 \exp\bigl(\lambda(X_t-\mu_a)\bigr)
 \mid A_t=a,\F_{t-1}
 \right]
 \le e^{\lambda^2/8}.
-\]
+$$
+</div>
 
  Define
 
-\[
+<div class="display-equation">
+$$
 L_{a,t}(\lambda)
 =
 \exp\left(
@@ -931,13 +1060,15 @@ L_{a,t}(\lambda)
 -
 \frac{\lambda^2}{8}N_a(t)
 \right).
-\]
+$$
+</div>
 
  We now verify the supermartingale property directly.
 
 Let $I_t=I_{a,t}$. The one-step ratio is
 
-\[
+<div class="display-equation">
+$$
 \frac{L_{a,t}(\lambda)}{L_{a,t-1}(\lambda)}
 =
 \exp\left(
@@ -945,13 +1076,15 @@ Let $I_t=I_{a,t}$. The one-step ratio is
 -
 \frac{\lambda^2}{8}I_t
 \right).
-\]
+$$
+</div>
 
  Since $I_t$ is known before $X_t$, there are two cases.
 
 If $I_t=0$, $\frac{L_{a,t}(\lambda)}{L_{a,t-1}(\lambda)}=1.$ If $I_t=1$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E\left[
 \frac{L_{a,t}(\lambda)}{L_{a,t-1}(\lambda)}
@@ -964,20 +1097,24 @@ e^{-\lambda^2/8}
 e^{-\lambda^2/8}e^{\lambda^2/8}\\
 &=1.
 \end{align*}
-\]
+$$
+</div>
 
  Thus
 
-\[
+<div class="display-equation">
+$$
 \E[L_{a,t}(\lambda)\mid\F_{t-1}]
 \le L_{a,t-1}(\lambda).
-\]
+$$
+</div>
 
  The algorithm may decide adaptively when to pull arm $a$. The process remains valid because the decision is made before the new reward arrives.
 
 Ville's inequality gives
 
-\[
+<div class="display-equation">
+$$
 \Pbb\left(
 \exists t:\
 S_a(t)
@@ -987,7 +1124,8 @@ S_a(t)
 \frac{\lambda}{8}N_a(t)
 \right)
 \le\alpha.
-\]
+$$
+</div>
 
  This is the martingale form of a confidence statement indexed by a random number of pulls.
 
@@ -995,31 +1133,38 @@ S_a(t)
 
 For a transparent construction, allocate failure probability across arms and sample counts:
 
-\[
+<div class="display-equation">
+$$
 \delta_{a,n}
 =
 \frac{6\delta}{K\pi^2n^2}.
-\]
+$$
+</div>
 
  Then
 
-\[
+<div class="display-equation">
+$$
 \sum_{a=1}^{K}\sum_{n=1}^{\infty}\delta_{a,n}
 =\delta.
-\]
+$$
+</div>
 
  Using the two-sided Hoeffding bound at the $n$th observation of arm $a$,
 
-\[
+<div class="display-equation">
+$$
 \Pbb\left(
 |\widehat\mu_{a,n}-\mu_a|>r_{a,n}
 \right)
 \le\delta_{a,n}
-\]
+$$
+</div>
 
  with
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 r_{a,n}
 =
@@ -1030,24 +1175,29 @@ r_{a,n}
 \right)
 }.
 }
-\]
+$$
+</div>
 
  Therefore, with probability at least $1-\delta$, simultaneously for every arm and every sample count,
 
-\[
+<div class="display-equation">
+$$
 |\widehat\mu_{a,n}-\mu_a|
 \le r_{a,n}.
-\]
+$$
+</div>
 
  At calendar time $t$, simply insert the random count $N_a(t)$:
 
-\[
+<div class="display-equation">
+$$
 U_a(t)
 =
 \widehat\mu_a(t)
 +
 r_{a,N_a(t)}.
-\]
+$$
+</div>
 
  The random sample size causes no difficulty because the guarantee was built to hold at all counts at once.
 
@@ -1086,29 +1236,27 @@ Second, we test a Bernoulli null hypothesis $H_0:p=0.5$ against the alternative 
 *Sample paths of a fair random walk. Each path stops at the first boundary crossing or at the finite horizon. The rule reacts to the past but never sees the future.*
 
 Across $100{,}000$ independent runs, the empirical mean of the stopped value was $-0.0198,$ close to the theoretical value zero. The upper and lower boundaries were reached with nearly equal probability.
+| Quantity                          |    Estimate |
+|:----------------------------------|------------:|
+| Mean stopped value $\E[S_\tau]$ | $-0.0198$ |
+| Probability of reaching $+12$   | $0.49039$ |
+| Probability of reaching $-12$   | $0.49209$ |
+| Mean stopping time                |  $141.84$ |
 
-  Quantity                             Estimate
-  --------------------------------- -----------
-  Mean stopped value $\E[S_\tau]$     $-0.0198$
-  Probability of reaching $+12$       $0.49039$
-  Probability of reaching $-12$       $0.49209$
-  Mean stopping time                   $141.84$
-
-  : Bounded optional-stopping experiment.
+<p class="table-caption">Bounded optional-stopping experiment.</p>
 
 ### Repeated fixed-time testing
 
 Under the null $p=0.5$, the final-horizon exact test rejected in about $4.74\%$ of runs, close to the nominal $5\%$. When the same fixed-time test was checked repeatedly, the false-alarm probability rose to $27.27\%$.
 
 The e-process was checked at every time as well, but its false-alarm probability remained $4.29\%$. The difference is not how often the dashboard was opened. The difference is whether the probability statement was designed for continuous monitoring.
+| Procedure | Null $p=0.5$ | Alternative $p=0.6$ |
+|:---|:--:|:--:|
+| Exact test at final horizon only | $0.04740$ | $0.96430$ |
+| Exact fixed-time test, checked repeatedly | $0.27270$ | $0.98614$ |
+| Likelihood-ratio e-process | $0.04288$ | $0.89798$ |
 
-  Procedure                                    Null $p=0.5$   Alternative $p=0.6$
-  ------------------------------------------- -------------- ---------------------
-  Exact test at final horizon only              $0.04740$          $0.96430$
-  Exact fixed-time test, checked repeatedly     $0.27270$          $0.98614$
-  Likelihood-ratio e-process                    $0.04288$          $0.89798$
-
-  : Probability of stopping and rejecting by time $300$ over $50{,}000$ Monte Carlo runs.
+<p class="table-caption">Probability of stopping and rejecting by time $300$ over $50{,}000$ Monte Carlo runs.</p>
 
 ![Repeated fixed-time testing gains a little speed under the alternative by spending far more than the advertised false-alarm budget. The e-process can also stop early, while preserving the null guarantee.](/images/notes/assets/martingales/peeking_false_alarms.webp)
 
@@ -1227,11 +1375,13 @@ The stopping time is the output. The algorithm ends when evidence separates one 
 
 The scalar martingale becomes a vector martingale. The random denominator becomes a design matrix. Self-normalized martingale inequalities control (Abbasi-Yadkori et al. 2011)
 
-\[
+<div class="display-equation">
+$$
 \left\|\sum_{t=1}^{T}x_t\eta_t\right\|_{V_T^{-1}},
 \qquad
 V_T=\lambda I+\sum_{t=1}^{T}x_tx_t^\top.
-\]
+$$
+</div>
 
  The contexts $x_t$ may be chosen adaptively, as in modern contextual-bandit models developed at ETH and elsewhere (Kirschner and Krause 2019), but they are predictable: they are known before the new noise $\eta_t$ arrives.
 
@@ -1243,13 +1393,15 @@ An anytime algorithm does not need the horizon in advance. This makes random-tim
 >
 > The mature way to read a sequential proof is not to ask only "which inequality is used?" Ask instead:
 
-\[
+<div class="display-equation">
+$$
 \begin{gathered}
 \text{What is predictable?}\qquad
 \text{What is the martingale noise?}\\
 \text{At which random time is the process stopped?}
 \end{gathered}
-\]
+$$
+</div>
 
  Those three questions reveal the architecture of the argument.
 
@@ -1269,7 +1421,8 @@ Ville's inequality turns a nonnegative supermartingale into a statement that is 
 
 The entire chain can be summarized as
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \begin{gathered}
 \text{history}
@@ -1283,50 +1436,49 @@ The entire chain can be summarized as
 \text{time-uniform guarantee}
 \end{gathered}
 }
-\]
+$$
+</div>
 
  That chain is one of the central proof paradigms of bandits, sequential testing, and adaptive data analysis.
 
 ## Appendix A. Formula Sheet
+| Object | Formula |
+|:---|:---|
+| Filtration | $\F_0\subseteq\F_1\subseteq\cdots$ |
+| Martingale | $\E[M_t\mid\F_{t-1}]=M_{t-1}$ |
+| Martingale difference | $D_t=M_t-M_{t-1}$ and $\E[D_t\mid\F_{t-1}]=0$ |
+| Predictable multiplier | $H_t\in\F_{t-1}$ implies $\E[H_tD_t\mid\F_{t-1}]=0$ |
+| Stopping time | $\{\tau\le t\}\in\F_t$ for every $t$ |
+| Stopped process | $M_{t\wedge\tau}=M_{\min\{t,\tau\}}$ |
+| Bounded optional stopping | $\tau\le n\Rightarrow\E[M_\tau]=\E[M_0]$ |
+| Ville’s inequality | $\Pbb(\sup_tL_t\ge1/\alpha)\le\alpha$ for nonnegative supermartingale $L_t$ with $\E L_0\le1$ |
+| Exponential supermartingale | $L_t(\lambda)=\exp(\lambda S_t-\lambda^2\sigma^2t/2)$ |
+| Bernoulli likelihood ratio | $L_t=(p_1/p_0)^{C_t}((1-p_1)/(1-p_0))^{t-C_t}$ |
+| Arm-specific martingale | $S_a(t)=\sum_{s\le t}\one\{A_s=a\}(X_s-\mu_a)$ |
+| Arm pull count | $N_a(t)=\sum_{s\le t}\one\{A_s=a\}$ |
+| Anytime Hoeffding radius | $\sqrt{\log(\pi^2t^2/(3\delta))/(2t)}$ |
 
-  Object                        Formula
-  ----------------------------- -----------------------------------------------------------------------------------------------
-  Filtration                    $\F_0\subseteq\F_1\subseteq\cdots$
-  Martingale                    $\E[M_t\mid\F_{t-1}]=M_{t-1}$
-  Martingale difference         $D_t=M_t-M_{t-1}$ and $\E[D_t\mid\F_{t-1}]=0$
-  Predictable multiplier        $H_t\in\F_{t-1}$ implies $\E[H_tD_t\mid\F_{t-1}]=0$
-  Stopping time                 $\{\tau\le t\}\in\F_t$ for every $t$
-  Stopped process               $M_{t\wedge\tau}=M_{\min\{t,\tau\}}$
-  Bounded optional stopping     $\tau\le n\Rightarrow\E[M_\tau]=\E[M_0]$
-  Ville's inequality            $\Pbb(\sup_tL_t\ge1/\alpha)\le\alpha$ for nonnegative supermartingale $L_t$ with $\E L_0\le1$
-  Exponential supermartingale   $L_t(\lambda)=\exp(\lambda S_t-\lambda^2\sigma^2t/2)$
-  Bernoulli likelihood ratio    $L_t=(p_1/p_0)^{C_t}((1-p_1)/(1-p_0))^{t-C_t}$
-  Arm-specific martingale       $S_a(t)=\sum_{s\le t}\one\{A_s=a\}(X_s-\mu_a)$
-  Arm pull count                $N_a(t)=\sum_{s\le t}\one\{A_s=a\}$
-  Anytime Hoeffding radius      $\sqrt{\log(\pi^2t^2/(3\delta))/(2t)}$
-
-  : Core formulas.
+<p class="table-caption">Core formulas.</p>
 
 ## Appendix B. Notation Table
+| Symbol | Meaning |
+|:---|:---|
+| $\F_t$ | all information available after round $t$ |
+| $A_t$ | action chosen at round $t$ |
+| $X_t$ | reward observed at round $t$ |
+| $\mu_a$ | mean reward of arm $a$ |
+| $M_t$ | martingale or supermartingale |
+| $D_t$ | martingale difference $M_t-M_{t-1}$ |
+| $H_t$ | predictable quantity known before round $t$ |
+| $\tau$ | stopping time |
+| $S_t$ | centered cumulative sum |
+| $L_t$ | nonnegative test martingale or e-process |
+| $\alpha$ | allowed probability of ever crossing the rejection threshold |
+| $I_{a,t}$ | indicator $\one\{A_t=a\}$ |
+| $N_a(t)$ | number of pulls of arm $a$ by time $t$ |
+| $\widehat\mu_a(t)$ | empirical mean of arm $a$ |
 
-  Symbol               Meaning
-  -------------------- --------------------------------------------------------------
-  $\F_t$               all information available after round $t$
-  $A_t$                action chosen at round $t$
-  $X_t$                reward observed at round $t$
-  $\mu_a$              mean reward of arm $a$
-  $M_t$                martingale or supermartingale
-  $D_t$                martingale difference $M_t-M_{t-1}$
-  $H_t$                predictable quantity known before round $t$
-  $\tau$               stopping time
-  $S_t$                centered cumulative sum
-  $L_t$                nonnegative test martingale or e-process
-  $\alpha$             allowed probability of ever crossing the rejection threshold
-  $I_{a,t}$            indicator $\one\{A_t=a\}$
-  $N_a(t)$             number of pulls of arm $a$ by time $t$
-  $\widehat\mu_a(t)$   empirical mean of arm $a$
-
-  : Notation.
+<p class="table-caption">Notation.</p>
 
 ## Further Reading
 

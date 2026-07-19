@@ -26,23 +26,27 @@ For an observed outcome $x$, the simplest way to compare the two worlds is $\fra
 
 For a click,
 
-\[
+<div class="display-equation">
+$$
 \frac{P(X=1)}{Q(X=1)}
 =
 \frac{0.62}{0.50}
 =
 1.24.
-\]
+$$
+</div>
 
  For a non-click,
 
-\[
+<div class="display-equation">
+$$
 \frac{P(X=0)}{Q(X=0)}
 =
 \frac{0.38}{0.50}
 =
 0.76.
-\]
+$$
+</div>
 
  A click leans toward $P$. A non-click leans toward $Q$.
 
@@ -60,17 +64,20 @@ This ratio is called a *likelihood ratio*. The name is less important than the i
 
 Suppose we observe $x_1,x_2,\ldots,x_n$ independently. The likelihood ratio of the entire sample is
 
-\[
+<div class="display-equation">
+$$
 \frac{P(x_1,\ldots,x_n)}{Q(x_1,\ldots,x_n)}
 =
 \frac{\prod_{t=1}^{n}P(x_t)}{\prod_{t=1}^{n}Q(x_t)}
 =
 \prod_{t=1}^{n}\frac{P(x_t)}{Q(x_t)}.
-\]
+$$
+</div>
 
  Products are awkward to read. Logs turn them into sums:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \log\frac{P(x_1,\ldots,x_n)}{Q(x_1,\ldots,x_n)}
 &=
@@ -78,7 +85,8 @@ Suppose we observe $x_1,x_2,\ldots,x_n$ independently. The likelihood ratio of t
 &=
 \sum_{t=1}^{n}\log\frac{P(x_t)}{Q(x_t)}.
 \end{align*}
-\]
+$$
+</div>
 
 
 One observation contributes one term. The next observation contributes another. Evidence accumulates additively.
@@ -90,29 +98,35 @@ This is why log-likelihood ratios appear everywhere in statistics, information t
 
 Let
 
-\[
+<div class="display-equation">
+$$
 L_n
 =
 \log\frac{P(X_1,\ldots,X_n)}{Q(X_1,\ldots,X_n)}.
-\]
+$$
+</div>
 
  Then
 
-\[
+<div class="display-equation">
+$$
 L_n>0
 \quad\Longleftrightarrow\quad
 P(X_1,\ldots,X_n)>Q(X_1,\ldots,X_n),
-\]
+$$
+</div>
 
  so the observed sample is more likely under $P$.
 
 Similarly,
 
-\[
-L_n<0
+<div class="display-equation">
+$$
+L_n&lt;0
 \quad\Longleftrightarrow\quad
-P(X_1,\ldots,X_n)<Q(X_1,\ldots,X_n),
-\]
+P(X_1,\ldots,X_n)&lt;Q(X_1,\ldots,X_n),
+$$
+</div>
 
  so the observed sample is more likely under $Q$.
 
@@ -122,29 +136,35 @@ The number $L_n$ is random because the data are random. The next question is the
 
 Suppose $P$ is the true data-generating distribution. The one-step log-evidence is $\log\frac{P(X)}{Q(X)}.$ Its average under the true world $P$ is $\E_{X\sim P}\left[\log\frac{P(X)}{Q(X)}\right].$ This is the Kullback--Leibler divergence:
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \KL(P\Vert Q)
 =
 \E_{X\sim P}\left[\log\frac{P(X)}{Q(X)}\right].
 }
-\]
+$$
+</div>
 
  For a discrete sample space,
 
-\[
+<div class="display-equation">
+$$
 \KL(P\Vert Q)
 =
 \sum_x P(x)\log\frac{P(x)}{Q(x)}.
-\]
+$$
+</div>
 
  For densities $p$ and $q$,
 
-\[
+<div class="display-equation">
+$$
 \KL(P\Vert Q)
 =
 \int p(x)\log\frac{p(x)}{q(x)}\,\dd x.
-\]
+$$
+</div>
 
 
 The notation $P\Vert Q$ is deliberately directional. The expectation is taken under $P$. We are asking:
@@ -163,19 +183,23 @@ This interpretation, emphasized in classic information-theoretic treatments such
 
 Using the natural logarithm gives units called *nats*. Using $\log_2$ gives bits:
 
-\[
+<div class="display-equation">
+$$
 \log_2 z
 =
 \frac{\log z}{\log 2}.
-\]
+$$
+</div>
 
  Therefore,
 
-\[
+<div class="display-equation">
+$$
 \KL_{\mathrm{bits}}(P\Vert Q)
 =
 \frac{\KL_{\mathrm{nats}}(P\Vert Q)}{\log 2}.
-\]
+$$
+</div>
 
  The mathematics is unchanged. Only the unit changes.
 
@@ -183,7 +207,8 @@ Using the natural logarithm gives units called *nats*. Using $\log_2$ gives bits
 
 For $P=\Ber(0.62)$ and $Q=\Ber(0.50)$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \KL(P\Vert Q)
 &=
@@ -193,15 +218,18 @@ For $P=\Ber(0.62)$ and $Q=\Ber(0.50)$,
 &\approx
 0.02908.
 \end{align*}
-\]
+$$
+</div>
 
  After $220$ independent observations, the expected cumulative evidence is
 
-\[
+<div class="display-equation">
+$$
 220\times0.02908
 \approx
 6.40\text{ nats}.
-\]
+$$
+</div>
 
  Equivalently, the expected likelihood ratio is not $e^{6.40}$ because expectation and exponentiation do not commute. What $6.40$ means is that the *expected log* likelihood ratio is $6.40$.
 
@@ -217,11 +245,13 @@ The Bernoulli case is the smallest model in which all the ideas are visible.
 
 Let
 
-\[
+<div class="display-equation">
+$$
 X_t\in\{0,1\},
 \qquad
 X_t\overset{\mathrm{iid}}{\sim}\Ber(p).
-\]
+$$
+</div>
 
  We compare two candidate means $p$ and $q$.
 
@@ -231,15 +261,18 @@ Let $S_n=\sum_{t=1}^{n}X_t$ be the number of successes. Then the number of failu
 
 Under mean $p$,
 
-\[
+<div class="display-equation">
+$$
 P_p(X_1=x_1,\ldots,X_n=x_n)
 =
 \prod_{t=1}^{n}p^{x_t}(1-p)^{1-x_t}.
-\]
+$$
+</div>
 
  Collect the powers:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \prod_{t=1}^{n}p^{x_t}(1-p)^{1-x_t}
 &=
@@ -248,22 +281,26 @@ p^{\sum_{t=1}^{n}x_t}
 &=
 p^{S_n}(1-p)^{n-S_n}.
 \end{align*}
-\]
+$$
+</div>
 
  Under mean $q$,
 
-\[
+<div class="display-equation">
+$$
 P_q(X_1=x_1,\ldots,X_n=x_n)
 =
 q^{S_n}(1-q)^{n-S_n}.
-\]
+$$
+</div>
 
 
 ### The sample log-likelihood ratio
 
 Divide the two likelihoods:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \frac{P_p(X_{1:n})}{P_q(X_{1:n})}
 &=
@@ -273,11 +310,13 @@ Divide the two likelihoods:
 \left(\frac{p}{q}\right)^{S_n}
 \left(\frac{1-p}{1-q}\right)^{n-S_n}.
 \end{align*}
-\]
+$$
+</div>
 
  Take logs:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 L_n(p,q)
 &=
@@ -287,11 +326,13 @@ S_n\log\frac{p}{q}
 +
 (n-S_n)\log\frac{1-p}{1-q}.
 \end{align*}
-\]
+$$
+</div>
 
  Write $\widehat p_n=S_n/n$:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 L_n(p,q)
 &=
@@ -303,14 +344,16 @@ n\left[
 +(1-\widehat p_n)\log\frac{1-p}{1-q}
 \right].
 \end{align*}
-\]
+$$
+</div>
 
 
 ### Take the expectation under the true mean
 
 Because $\E_p[\widehat p_n]=p$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E_p[L_n(p,q)]
 &=
@@ -326,28 +369,33 @@ p\log\frac{p}{q}
 (1-p)\log\frac{1-p}{1-q}
 \right].
 \end{align*}
-\]
+$$
+</div>
 
  Define
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \kl(p,q)
 =
 p\log\frac{p}{q}
 +(1-p)\log\frac{1-p}{1-q}.
 }
-\]
+$$
+</div>
 
  Then
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \E_p[L_n(p,q)]
 =
 n\,\kl(p,q).
 }
-\]
+$$
+</div>
 
 
 The formula is not an arbitrary definition placed on top of the problem. It is what remains after we average the log-likelihood ratio generated by the observations.
@@ -362,14 +410,17 @@ A single observation can favor the wrong model. A run of observations can also f
 
 The proof uses one elementary inequality:
 
-\[
+<div class="display-equation">
+$$
 \log u\le u-1,
 \qquad u>0.
-\]
+$$
+</div>
 
  Equivalently, $-\log u\ge 1-u.$ Set $u(x)=\frac{Q(x)}{P(x)}.$ Then
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \KL(P\Vert Q)
 &=
@@ -385,23 +436,28 @@ The proof uses one elementary inequality:
 &=
 0.
 \end{align*}
-\]
+$$
+</div>
 
  Hence
 
-\[
+<div class="display-equation">
+$$
 \boxed{\KL(P\Vert Q)\ge0.}
-\]
+$$
+</div>
 
 
 The inequality $-\log u\ge1-u$ becomes equality only at $u=1$. Therefore, under the usual absolute-continuity conditions,
 
-\[
+<div class="display-equation">
+$$
 \KL(P\Vert Q)=0
 \quad\Longleftrightarrow\quad
 P=Q
 \quad\text{almost surely.}
-\]
+$$
+</div>
 
 
 > **Think.**
@@ -414,17 +470,21 @@ An ordinary distance satisfies symmetry: $d(P,Q)=d(Q,P).$ KL generally does not:
 
 For Bernoulli means,
 
-\[
+<div class="display-equation">
+$$
 \kl(0.10,0.05)
 \approx0.02065,
-\]
+$$
+</div>
 
  while
 
-\[
+<div class="display-equation">
+$$
 \kl(0.05,0.10)
 \approx0.01671.
-\]
+$$
+</div>
 
  The two questions are different:
 
@@ -444,7 +504,8 @@ KL is not a Euclidean distance globally. Near the truth, however, it looks quadr
 
 Fix $p\in(0,1)$ and write $q=p+h,$ where $h$ is small. Consider $f(q)=\kl(p,q).$ Differentiate with respect to $q$:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 f'(q)
 &=
@@ -452,11 +513,13 @@ f'(q)
 +
 \frac{1-p}{1-q}.
 \end{align*}
-\]
+$$
+</div>
 
  At $q=p$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 f'(p)
 &=
@@ -468,11 +531,13 @@ f'(p)
 &=
 0.
 \end{align*}
-\]
+$$
+</div>
 
  Differentiate again:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 f''(q)
 &=
@@ -480,11 +545,13 @@ f''(q)
 +
 \frac{1-p}{(1-q)^2}.
 \end{align*}
-\]
+$$
+</div>
 
  At $q=p$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 f''(p)
 &=
@@ -498,11 +565,13 @@ f''(p)
 &=
 \frac{1}{p(1-p)}.
 \end{align*}
-\]
+$$
+</div>
 
  Taylor's formula gives
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \kl(p,p+h)
 &=
@@ -510,17 +579,20 @@ f(p)+f'(p)h+\frac12f''(p)h^2+O(h^3)\\
 &=
 0+0+\frac{h^2}{2p(1-p)}+O(h^3).
 \end{align*}
-\]
+$$
+</div>
 
  Therefore,
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \kl(p,p+h)
 =
 \frac{h^2}{2p(1-p)}+O(h^3).
 }
-\]
+$$
+</div>
 
 
 The denominator $p(1-p)$ is the Bernoulli variance. The same mean error $h$ is more informative when the observation noise is smaller.
@@ -531,11 +603,13 @@ At $p=0.50$, $p(1-p)=0.25.$ At $p=0.05$, $p(1-p)=0.0475.$ A shift of size $0.02$
 
 For the Bernoulli family, the Fisher information in one observation is $I(p)=\frac{1}{p(1-p)}.$ The local expansion becomes
 
-\[
+<div class="display-equation">
+$$
 \kl(p,p+h)
 =
 \frac12 I(p)h^2+O(h^3).
-\]
+$$
+</div>
 
  This is the precise sense in which KL supplies a local geometry for statistical models. The curvature is not chosen by hand. It is determined by how quickly the likelihood changes.
 
@@ -547,7 +621,8 @@ For the Bernoulli family, the Fisher information in one observation is $I(p)=\fr
 
 For Bernoulli means, Pinsker's inequality becomes $\kl(p,q)\ge2(p-q)^2.$ A short calculus proof is possible. Fix $q$ and define $g(p)=\kl(p,q)-2(p-q)^2.$ Then $g(q)=0.$ Also,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 g'(p)
 &=
@@ -555,11 +630,13 @@ g'(p)
 g'(q)
 &=0.
 \end{align*}
-\]
+$$
+</div>
 
  Finally,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 g''(p)
 &=
@@ -568,13 +645,16 @@ g''(p)
 \frac{1}{p(1-p)}-4\\
 &\ge0,
 \end{align*}
-\]
+$$
+</div>
 
  where the last step follows from $p(1-p)\le\frac14.$ Thus $g$ is convex and has a stationary point at $p=q$. That point is its minimum, so $g(p)\ge g(q)=0.$ Hence
 
-\[
+<div class="display-equation">
+$$
 \boxed{\kl(p,q)\ge2(p-q)^2.}
-\]
+$$
+</div>
 
 
 This inequality explains the relation between KL-based bounds and Hoeffding bounds. Hoeffding replaces the exact Bernoulli evidence by a universal quadratic lower bound. It is simpler, but it forgets the variance-dependent shape.
@@ -585,25 +665,30 @@ We now derive the tail bound that places KL directly inside confidence intervals
 
 Let
 
-\[
+<div class="display-equation">
+$$
 X_1,\ldots,X_n\overset{\mathrm{iid}}{\sim}\Ber(p),
 \qquad
 \widehat p_n=\frac1n\sum_{t=1}^{n}X_t.
-\]
+$$
+</div>
 
  We want an upper bound on
 
-\[
+<div class="display-equation">
+$$
 \Pbb_p(\widehat p_n\ge x),
 \qquad x>p.
-\]
+$$
+</div>
 
 
 ### Step 1: turn the event into an exponential event
 
 For any $\lambda>0$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \widehat p_n\ge x
 &\Longleftrightarrow
@@ -613,13 +698,15 @@ For any $\lambda>0$,
 \ge
 \exp(\lambda nx).
 \end{align*}
-\]
+$$
+</div>
 
 
 ### Step 2: apply Markov's inequality
 
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \Pbb_p(\widehat p_n\ge x)
 &=
@@ -634,13 +721,15 @@ For any $\lambda>0$,
 \right]
 }{e^{\lambda nx}}.
 \end{align*}
-\]
+$$
+</div>
 
 
 ### Step 3: use independence
 
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E_p\left[
 \exp\left(\lambda\sum_{t=1}^{n}X_t\right)
@@ -654,11 +743,13 @@ For any $\lambda>0$,
 &=
 \left(\E_p[e^{\lambda X_1}]\right)^n.
 \end{align*}
-\]
+$$
+</div>
 
  For one Bernoulli variable,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E_p[e^{\lambda X_1}]
 &=
@@ -666,11 +757,13 @@ For any $\lambda>0$,
 &=
 1-p+pe^\lambda.
 \end{align*}
-\]
+$$
+</div>
 
  Therefore,
 
-\[
+<div class="display-equation">
+$$
 \Pbb_p(\widehat p_n\ge x)
 \le
 \exp\left
@@ -678,30 +771,36 @@ For any $\lambda>0$,
 \log(1-p+pe^\lambda)-\lambda x
 \right]
 \right\}.
-\]
+$$
+</div>
 
 
 ### Step 4: choose the best exponential tilt
 
 Define
 
-\[
+<div class="display-equation">
+$$
 \phi(\lambda)
 =
 \log(1-p+pe^\lambda)-\lambda x.
-\]
+$$
+</div>
 
  Differentiate:
 
-\[
+<div class="display-equation">
+$$
 \phi'(\lambda)
 =
 \frac{pe^\lambda}{1-p+pe^\lambda}-x.
-\]
+$$
+</div>
 
  Set $\phi'(\lambda)=0$:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \frac{pe^\lambda}{1-p+pe^\lambda}
 &=x\\
@@ -713,15 +812,18 @@ e^\lambda
 &=
 \frac{x(1-p)}{p(1-x)}.
 \end{align*}
-\]
+$$
+</div>
 
  Thus
 
-\[
+<div class="display-equation">
+$$
 \lambda^*
 =
 \log\frac{x(1-p)}{p(1-x)}.
-\]
+$$
+</div>
 
  Because $x>p$, we have $\lambda^*>0$.
 
@@ -729,7 +831,8 @@ e^\lambda
 
 First,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 1-p+pe^{\lambda^*}
 &=
@@ -741,11 +844,13 @@ First,
 &=
 \frac{1-p}{1-x}.
 \end{align*}
-\]
+$$
+</div>
 
  Therefore,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \phi(\lambda^*)
 &=
@@ -766,36 +871,42 @@ First,
 &=
 -\kl(x,p).
 \end{align*}
-\]
+$$
+</div>
 
  We have proved
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \Pbb_p(\widehat p_n\ge x)
 \le
 \exp\{-n\kl(x,p)\},
 \qquad x>p.
 }
-\]
+$$
+</div>
 
  Similarly,
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \Pbb_p(\widehat p_n\le x)
 \le
 \exp\{-n\kl(x,p)\},
-\qquad x<p.
+\qquad x&lt;p.
 }
-\]
+$$
+</div>
 
 
 > **Proof pattern.**
 >
 > The proof pattern is:
 
-\[
+<div class="display-equation">
+$$
 \text{rare event}
 \to
 \text{exponential transform}
@@ -805,7 +916,8 @@ First,
 \text{optimize the exponent}
 \to
 \text{KL divergence}.
-\]
+$$
+</div>
 
  This pattern reappears in large deviations, sequential tests, confidence sequences, and bandit analysis.
 
@@ -813,7 +925,8 @@ First,
 
 Pinsker gives $\kl(x,p)\ge2(x-p)^2.$ Therefore,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \Pbb_p(\widehat p_n\ge x)
 &\le
@@ -821,7 +934,8 @@ Pinsker gives $\kl(x,p)\ge2(x-p)^2.$ Therefore,
 &\le
 \exp\{-2n(x-p)^2\}.
 \end{align*}
-\]
+$$
+</div>
 
  The KL-Chernoff bound is at least as sharp as the Hoeffding bound in this Bernoulli setting.
 
@@ -841,14 +955,16 @@ Suppose the empirical mean is $\widehat p_n$. A candidate upper mean $q\ge\wideh
 
 Given an evidence budget $\beta>0$, define the upper endpoint
 
-\[
+<div class="display-equation">
+$$
 U_n
 =
 \sup\left\{
 q\in[\widehat p_n,1]:
  n\kl(\widehat p_n,q)\le\beta
 \right\}.
-\]
+$$
+</div>
 
  The set $\left\{q:n\kl(\widehat p_n,q)\le\beta\right\}$ contains candidate means that the data have not separated strongly enough from the empirical mean.
 
@@ -885,15 +1001,18 @@ There is usually no elementary closed form for $U_n$. That is not a practical pr
 
 Using the local approximation
 
-\[
+<div class="display-equation">
+$$
 \kl(\widehat p_n,\widehat p_n+h)
 \approx
 \frac{h^2}{2\widehat p_n(1-\widehat p_n)},
-\]
+$$
+</div>
 
  the condition $n\kl(\widehat p_n,\widehat p_n+h)\le\beta$ becomes
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 n\frac{h^2}{2\widehat p_n(1-\widehat p_n)}
 &\lesssim\beta\\
@@ -906,7 +1025,8 @@ h
 \frac{2\widehat p_n(1-\widehat p_n)\beta}{n}
 }.
 \end{align*}
-\]
+$$
+</div>
 
  The radius shrinks near $0$ and $1$ because Bernoulli variance shrinks there.
 
@@ -920,17 +1040,20 @@ Hoeffding uses the worst-case variance $1/4$ for every mean. It therefore produc
 
 UCB chooses the action with the largest plausible mean. The simplest version builds plausibility from a quadratic Hoeffding radius:
 
-\[
+<div class="display-equation">
+$$
 \widehat\mu_a(t)
 +
 \sqrt{\frac{2\log t}{N_a(t)}}.
-\]
+$$
+</div>
 
  KL-UCB keeps the same optimistic principle but replaces the generic radius by a distribution-aware evidence constraint (Garivier and Cappé 2011).
 
 For Bernoulli rewards, define
 
-\[
+<div class="display-equation">
+$$
 U_a(t)
 =
 \sup\left\{
@@ -939,7 +1062,8 @@ N_a(t)\kl(\widehat\mu_a(t),q)
 \le
 f(t)
 \right\},
-\]
+$$
+</div>
 
  where a common exploration function is $f(t)=\log t+c\log\log t.$ Then choose $A_t\in\argmax_a U_a(t).$
 
@@ -978,29 +1102,35 @@ f(t)
 
 For a suboptimal Bernoulli arm $a$ with mean $\mu_a<\mu_*$, the classical logarithmic scale is
 
-\[
+<div class="display-equation">
+$$
 \E[N_a(T)]
 \approx
 \frac{\log T}{\kl(\mu_a,\mu_*)}.
-\]
+$$
+</div>
 
  The denominator is the evidence obtained from one pull of arm $a$ when we compare its true distribution with an alternative in which it could look as good as the best arm.
 
 Large KL:
 
-\[
+<div class="display-equation">
+$$
 \text{one pull is informative}
 \quad\Longrightarrow\quad
 \text{few pulls are needed}.
-\]
+$$
+</div>
 
  Small KL:
 
-\[
+<div class="display-equation">
+$$
 \text{the worlds are hard to distinguish}
 \quad\Longrightarrow\quad
 \text{many pulls are unavoidable}.
-\]
+$$
+</div>
 
  This is the deeper meaning of the Lai--Robbins lower bound and the matching behavior of KL-UCB (Lai and Robbins 1985; Garivier and Cappé 2011; Lattimore and Szepesvari 2020).
 
@@ -1010,15 +1140,18 @@ Suppose $X_1,\ldots,X_n\overset{\mathrm{iid}}{\sim}P$ under one world and $X_1,\
 
 The likelihood ratio factorizes:
 
-\[
+<div class="display-equation">
+$$
 \frac{P^n(X_{1:n})}{Q^n(X_{1:n})}
 =
 \prod_{t=1}^{n}\frac{P(X_t)}{Q(X_t)}.
-\]
+$$
+</div>
 
  Hence
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \KL(P^n\Vert Q^n)
 &=
@@ -1037,13 +1170,16 @@ The likelihood ratio factorizes:
 &=
 n\KL(P\Vert Q).
 \end{align*}
-\]
+$$
+</div>
 
  Thus
 
-\[
+<div class="display-equation">
+$$
 \boxed{\KL(P^n\Vert Q^n)=n\KL(P\Vert Q).}
-\]
+$$
+</div>
 
 
 This exact additivity is one reason KL is so central. It turns sample size into an information budget.
@@ -1054,35 +1190,42 @@ The data in a bandit are not iid as a single sequence. The selected arm changes 
 
 Consider two bandit environments:
 
-\[
+<div class="display-equation">
+$$
 \nu=(P_1,\ldots,P_K),
 \qquad
 \nu'=(Q_1,\ldots,Q_K).
-\]
+$$
+</div>
 
  Use the same algorithm in both environments. Let the history through time $T$ be $H_T=(A_1,X_1,\ldots,A_T,X_T).$ The algorithm chooses $A_t$ according to a policy $\pi_t(a\mid H_{t-1}).$ Under environment $\nu$, the history density is
 
-\[
+<div class="display-equation">
+$$
 p_\nu(H_T)
 =
 \prod_{t=1}^{T}
 \pi_t(A_t\mid H_{t-1})
 \,p_{A_t}(X_t).
-\]
+$$
+</div>
 
  Under environment $\nu'$, it is
 
-\[
+<div class="display-equation">
+$$
 p_{\nu'}(H_T)
 =
 \prod_{t=1}^{T}
 \pi_t(A_t\mid H_{t-1})
 \,q_{A_t}(X_t).
-\]
+$$
+</div>
 
  Divide:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \frac{p_\nu(H_T)}{p_{\nu'}(H_T)}
 &=
@@ -1097,13 +1240,15 @@ p_{\nu'}(H_T)
 \prod_{t=1}^{T}
 \frac{p_{A_t}(X_t)}{q_{A_t}(X_t)}.
 \end{align*}
-\]
+$$
+</div>
 
  The policy terms cancel. The algorithm reacts differently because its observed histories differ, but conditional on a given history it uses the same rule in both worlds.
 
 Take logs and expectations under $\nu$:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \KL(\Pbb_\nu^{H_T}\Vert\Pbb_{\nu'}^{H_T})
 &=
@@ -1127,20 +1272,24 @@ H_{t-1},A_t
 \KL(P_{A_t}\Vert Q_{A_t})
 \right].
 \end{align*}
-\]
+$$
+</div>
 
  Now use indicators:
 
-\[
+<div class="display-equation">
+$$
 \KL(P_{A_t}\Vert Q_{A_t})
 =
 \sum_{a=1}^{K}
 \one\{A_t=a\}\KL(P_a\Vert Q_a).
-\]
+$$
+</div>
 
  Therefore,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \KL(\Pbb_\nu^{H_T}\Vert\Pbb_{\nu'}^{H_T})
 &=
@@ -1161,14 +1310,16 @@ H_{t-1},A_t
 \KL(P_a\Vert Q_a)
 }.
 \end{align*}
-\]
+$$
+</div>
 
 
 > **Proof pattern.**
 >
 > Bandit information accounting:
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \text{total information}
 =
@@ -1177,7 +1328,8 @@ H_{t-1},A_t
 \times
 \text{information per pull}.
 }
-\]
+$$
+</div>
 
  Adaptivity changes the random pull counts. It does not destroy the accounting identity.
 
@@ -1188,24 +1340,29 @@ An algorithm may observe a long transcript and finally output one bit: $Z=\one\{
 
 Let $E$ be any event determined by the data. Write
 
-\[
+<div class="display-equation">
+$$
 p=P(E),
 \qquad
 q=Q(E).
-\]
+$$
+</div>
 
  The binary KL divergence between the event probabilities is
 
-\[
+<div class="display-equation">
+$$
 \kl(p,q)
 =
 p\log\frac{p}{q}
 +(1-p)\log\frac{1-p}{1-q}.
-\]
+$$
+</div>
 
  The chain rule for the indicator $Z=\one_E$ gives
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \KL(P\Vert Q)
 &=
@@ -1215,17 +1372,20 @@ P(E)\KL(P(\cdot\mid E)\Vert Q(\cdot\mid E))\\
 &\quad+
 P(E^c)\KL(P(\cdot\mid E^c)\Vert Q(\cdot\mid E^c)).
 \end{align*}
-\]
+$$
+</div>
 
  The last two terms are nonnegative. Therefore,
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \KL(P\Vert Q)
 \ge
 \kl(P(E),Q(E)).
 }
-\]
+$$
+</div>
 
  This is a binary form of the data-processing inequality.
 
@@ -1239,30 +1399,36 @@ Suppose an algorithm must identify the best arm in two nearby environments.
 
 Let $E=\{\text{algorithm outputs arm 1}\}.$ In environment $\nu$, arm 1 is best, so a $\delta$-correct algorithm satisfies $\Pbb_\nu(E)\ge1-\delta.$ In environment $\nu'$, arm 1 is not best, so $\Pbb_{\nu'}(E)\le\delta.$ Data processing gives
 
-\[
+<div class="display-equation">
+$$
 \KL(\Pbb_\nu^{H_T}\Vert\Pbb_{\nu'}^{H_T})
 \ge
 \kl(1-\delta,\delta).
-\]
+$$
+</div>
 
  Combine this with bandit information accounting:
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \sum_{a=1}^{K}
 \E_\nu[N_a(T)]\KL(P_a\Vert Q_a)
 \ge
 \kl(1-\delta,\delta).
 }
-\]
+$$
+</div>
 
  For small $\delta$,
 
-\[
+<div class="display-equation">
+$$
 \kl(1-\delta,\delta)
 \asymp
 \log\frac1\delta.
-\]
+$$
+</div>
 
  So reliable identification requires a logarithmic amount of evidence.
 
@@ -1272,11 +1438,13 @@ This is the central research paradigm behind modern bandit lower bounds and best
 
 We now run the algorithms in the same four-arm Bernoulli environment:
 
-\[
+<div class="display-equation">
+$$
 (\mu_1,\mu_2,\mu_3,\mu_4)
 =
 (0.03,0.05,0.08,0.12).
-\]
+$$
+</div>
 
  The horizon is $T=12000,$ and every curve is averaged over $220$ independent runs.
 
@@ -1286,11 +1454,13 @@ The environment is deliberately near the lower boundary. Bernoulli variance is s
 
 Let $\mu_*=0.12.$ The cumulative pseudo-regret is
 
-\[
+<div class="display-equation">
+$$
 R_T
 =
 \sum_{t=1}^{T}(\mu_*-\mu_{A_t}).
-\]
+$$
+</div>
 
  It depends on the selected arms, not on the realized reward noise. This makes the comparison easier to read.
 
@@ -1303,14 +1473,13 @@ R_T
 ![Mean pull counts after 12000 rounds. Better evidence accounting means fewer pulls of clearly inferior arms.](/images/notes/assets/kl-divergence/kl_ucb_pull_counts.webp)
 
 *Mean pull counts after 12000 rounds. Better evidence accounting means fewer pulls of clearly inferior arms.*
+| Algorithm         | Regret |  Arm 1 |   Arm 2 |   Arm 3 |    Arm 4 |
+|:------------------|-------:|-------:|--------:|--------:|---------:|
+| UCB1              | 270.64 | 967.43 | 1303.31 | 2308.53 |  7420.74 |
+| KL-UCB            |  86.20 | 227.61 |  372.99 |  990.07 | 10409.33 |
+| Thompson sampling |  37.42 | 103.01 |  156.88 |  429.17 | 11310.94 |
 
-  Algorithm             Regret    Arm 1     Arm 2     Arm 3      Arm 4
-  ------------------- -------- -------- --------- --------- ----------
-  UCB1                  270.64   967.43   1303.31   2308.53    7420.74
-  KL-UCB                 86.20   227.61    372.99    990.07   10409.33
-  Thompson sampling      37.42   103.01    156.88    429.17   11310.94
-
-  : Simulation summary. Values are means over $220$ runs.
+<p class="table-caption">Simulation summary. Values are means over $220$ runs.</p>
 
 The experiment is not a theorem. Different instances and horizons can change the numerical ranking. The durable lesson is structural:
 
@@ -1328,13 +1497,15 @@ This probabilistic-learning view is part of the Cambridge tradition associated w
 
 Mutual information is an expected KL divergence:
 
-\[
+<div class="display-equation">
+$$
 I(\Theta;Y)
 =
 \E_Y\left[
 \KL\bigl(P(\Theta\mid Y)\Vert P(\Theta)\bigr)
 \right].
-\]
+$$
+</div>
 
  It measures how far the posterior is expected to move after seeing $Y$.
 
@@ -1362,11 +1533,13 @@ KL is tailored to statistical discrimination. It need not agree with Euclidean d
 
 Locally, both directions share the same leading quadratic term:
 
-\[
+<div class="display-equation">
+$$
 \KL(P_\theta\Vert P_{\theta+h})
 =
 \frac12h^\top I(\theta)h+o(\|h\|^2).
-\]
+$$
+</div>
 
  But outside a small neighborhood, direction can matter greatly.
 
@@ -1384,39 +1557,48 @@ KL divergence is the expected log-likelihood ratio under the true world.
 
 For Bernoulli observations,
 
-\[
+<div class="display-equation">
+$$
 \kl(p,q)
 =
 p\log\frac pq+(1-p)\log\frac{1-p}{1-q}.
-\]
+$$
+</div>
 
  Near the truth,
 
-\[
+<div class="display-equation">
+$$
 \kl(p,p+h)
 \approx
 \frac{h^2}{2p(1-p)}.
-\]
+$$
+</div>
 
  For independent observations, $\KL(P^n\Vert Q^n)=n\KL(P\Vert Q).$ For an adaptive bandit,
 
-\[
+<div class="display-equation">
+$$
 \KL(\Pbb_\nu^{H_T}\Vert\Pbb_{\nu'}^{H_T})
 =
 \sum_a\E_\nu[N_a(T)]\KL(P_a\Vert Q_a).
-\]
+$$
+</div>
 
  For any final decision event $E$,
 
-\[
+<div class="display-equation">
+$$
 \KL(P\Vert Q)
 \ge
 \kl(P(E),Q(E)).
-\]
+$$
+</div>
 
  Together, these identities say:
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \text{samples create evidence,}
 \quad
@@ -1424,50 +1606,49 @@ p\log\frac pq+(1-p)\log\frac{1-p}{1-q}.
 \quad
 \text{decisions consume evidence.}
 }
-\]
+$$
+</div>
 
  That is the role of KL divergence in bandit theory.
 
 ## Appendix A. Formula Sheet
+| Object | Formula |
+|:---|:---|
+| Likelihood ratio | $P(x)/Q(x)$ |
+| Log-likelihood ratio | $\log(P(x)/Q(x))$ |
+| KL divergence | $\KL(P\Vert Q)=\E_P[\log(P(X)/Q(X))]$ |
+| Bernoulli KL | $\kl(p,q)=p\log(p/q)+(1-p)\log((1-p)/(1-q))$ |
+| Nonnegativity | $\KL(P\Vert Q)\ge0$ |
+| Local Bernoulli expansion | $\kl(p,p+h)=h^2/[2p(1-p)]+O(h^3)$ |
+| Bernoulli Pinsker | $\kl(p,q)\ge2(p-q)^2$ |
+| KL-Chernoff upper tail | $\Pbb_p(\widehat p_n\ge x)\le e^{-n\kl(x,p)}$, $x>p$ |
+| KL upper endpoint | $\sup\{q\ge\widehat p:n\kl(\widehat p,q)\le\beta\}$ |
+| Product additivity | $\KL(P^n\Vert Q^n)=n\KL(P\Vert Q)$ |
+| Bandit information identity | $\KL(\Pbb_\nu^{H_T}\Vert\Pbb_{\nu'}^{H_T})=\sum_a\E_\nu[N_a(T)]\KL(P_a\Vert Q_a)$ |
+| Binary data processing | $\KL(P\Vert Q)\ge\kl(P(E),Q(E))$ |
+| Mutual information | $I(\Theta;Y)=\E_Y[\KL(P(\Theta\mid Y)\Vert P(\Theta))]$ |
 
-  Object                        Formula
-  ----------------------------- -----------------------------------------------------------------------------------
-  Likelihood ratio              $P(x)/Q(x)$
-  Log-likelihood ratio          $\log(P(x)/Q(x))$
-  KL divergence                 $\KL(P\Vert Q)=\E_P[\log(P(X)/Q(X))]$
-  Bernoulli KL                  $\kl(p,q)=p\log(p/q)+(1-p)\log((1-p)/(1-q))$
-  Nonnegativity                 $\KL(P\Vert Q)\ge0$
-  Local Bernoulli expansion     $\kl(p,p+h)=h^2/[2p(1-p)]+O(h^3)$
-  Bernoulli Pinsker             $\kl(p,q)\ge2(p-q)^2$
-  KL-Chernoff upper tail        $\Pbb_p(\widehat p_n\ge x)\le e^{-n\kl(x,p)}$, $x>p$
-  KL upper endpoint             $\sup\{q\ge\widehat p:n\kl(\widehat p,q)\le\beta\}$
-  Product additivity            $\KL(P^n\Vert Q^n)=n\KL(P\Vert Q)$
-  Bandit information identity   $\KL(\Pbb_\nu^{H_T}\Vert\Pbb_{\nu'}^{H_T})=\sum_a\E_\nu[N_a(T)]\KL(P_a\Vert Q_a)$
-  Binary data processing        $\KL(P\Vert Q)\ge\kl(P(E),Q(E))$
-  Mutual information            $I(\Theta;Y)=\E_Y[\KL(P(\Theta\mid Y)\Vert P(\Theta))]$
-
-  : Core formulas.
+<p class="table-caption">Core formulas.</p>
 
 ## Appendix B. Notation Table
+| Symbol | Meaning |
+|:---|:---|
+| $P,Q$ | competing probability distributions |
+| $p,q$ | Bernoulli means or probability mass/density functions, according to context |
+| $X_t$ | observation at time $t$ |
+| $S_n$ | number of Bernoulli successes in $n$ observations |
+| $\widehat p_n$ | empirical Bernoulli mean $S_n/n$ |
+| $L_n(P,Q)$ | cumulative log-likelihood ratio for $P$ against $Q$ |
+| $\KL(P\Vert Q)$ | expected log-evidence under $P$ against $Q$ |
+| $\kl(p,q)$ | binary/Bernoulli KL divergence |
+| $A_t$ | arm chosen at time $t$ |
+| $N_a(T)$ | number of pulls of arm $a$ through time $T$ |
+| $H_T$ | complete bandit history through time $T$ |
+| $U_a(t)$ | upper confidence index of arm $a$ |
+| $\delta$ | target error probability |
+| $\beta$ | evidence threshold used in a confidence set |
 
-  Symbol            Meaning
-  ----------------- -----------------------------------------------------------------------------
-  $P,Q$             competing probability distributions
-  $p,q$             Bernoulli means or probability mass/density functions, according to context
-  $X_t$             observation at time $t$
-  $S_n$             number of Bernoulli successes in $n$ observations
-  $\widehat p_n$    empirical Bernoulli mean $S_n/n$
-  $L_n(P,Q)$        cumulative log-likelihood ratio for $P$ against $Q$
-  $\KL(P\Vert Q)$   expected log-evidence under $P$ against $Q$
-  $\kl(p,q)$        binary/Bernoulli KL divergence
-  $A_t$             arm chosen at time $t$
-  $N_a(T)$          number of pulls of arm $a$ through time $T$
-  $H_T$             complete bandit history through time $T$
-  $U_a(t)$          upper confidence index of arm $a$
-  $\delta$          target error probability
-  $\beta$           evidence threshold used in a confidence set
-
-  : Notation.
+<p class="table-caption">Notation.</p>
 
 ## Appendix C. Minimal Implementation Notes
 

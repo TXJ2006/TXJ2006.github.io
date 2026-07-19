@@ -42,13 +42,15 @@ We will first see the pattern inside familiar distributions. Only then will we g
 
 Let $X\in\{0,1\}$ and let $p$ be the probability of a success. Then $\Pbb_p(X=x)=p^x(1-p)^{1-x}.$ For observations $x_1,\ldots,x_n$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 L(p;x_1,\ldots,x_n)
 &=\prod_{i=1}^{n}p^{x_i}(1-p)^{1-x_i}\\
 &=p^{\sum_{i=1}^{n}x_i}(1-p)^{n-\sum_{i=1}^{n}x_i}.
 \end{align*}
-\]
+$$
+</div>
 
  Define $S_n=\sum_{i=1}^{n}x_i.$ Then $L(p;x_1,\ldots,x_n)=p^{S_n}(1-p)^{n-S_n}.$ The order of clicks and non-clicks has disappeared. The likelihood remembers only how many clicks occurred.
 
@@ -56,16 +58,19 @@ L(p;x_1,\ldots,x_n)
 
 Suppose $X\sim\Normal(\mu,\sigma^2)$ and the variance $\sigma^2$ is known. Its density is
 
-\[
+<div class="display-equation">
+$$
 p_\mu(x)
 =
 \frac{1}{\sqrt{2\pi\sigma^2}}
 \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}.
-\]
+$$
+</div>
 
  For $n$ independent observations,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \log L(\mu)
 &=
@@ -77,7 +82,8 @@ p_\mu(x)
 +\frac{\mu}{\sigma^2}\sum_{i=1}^{n}x_i
 -\frac{n\mu^2}{2\sigma^2}.
 \end{align*}
-\]
+$$
+</div>
 
  As a function of $\mu$, the sample enters through $S_n=\sum_{i=1}^{n}x_i.$ Again, the full history can be compressed to a running total.
 
@@ -85,23 +91,27 @@ p_\mu(x)
 
 Suppose $X\sim\Poi(\lambda)$. Then
 
-\[
+<div class="display-equation">
+$$
 \Pbb_\lambda(X=x)
 =
 \frac{e^{-\lambda}\lambda^x}{x!},
 \qquad x=0,1,2,\ldots.
-\]
+$$
+</div>
 
  For $n$ independent observations,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 L(\lambda)
 &=\prod_{i=1}^{n}\frac{e^{-\lambda}\lambda^{x_i}}{x_i!}\\
 &=\frac{1}{\prod_{i=1}^{n}x_i!}
 \exp\left\{-n\lambda+\left(\sum_{i=1}^{n}x_i\right)\log\lambda\right\}.
 \end{align*}
-\]
+$$
+</div>
 
  The parameter-dependent part again uses only $S_n=\sum_{i=1}^{n}x_i.$
 
@@ -115,16 +125,16 @@ L(\lambda)
 
 A one-parameter exponential family has probability mass or density
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:canonical-family">
+$$
 \boxed{
  p_\eta(x)
  =
  h(x)\exp\{\eta T(x)-A(\eta)\}.
 }
-\label{eq:canonical-family}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 1">(1)</span>
+</div>
 
 
 The notation is easiest to understand one piece at a time.
@@ -141,13 +151,15 @@ The notation is easiest to understand one piece at a time.
 
 The word "natural" does not mean that $\eta$ is always the parameter a practitioner would report. A practitioner reports a click probability $p$, a mean $\mu$, or a rate $\lambda$. The natural parameter is the coordinate that makes the log-likelihood linear in the data summary.
 
-Taking logs in [\[eq:canonical-family\]](#eq:canonical-family){reference-type="eqref" reference="eq:canonical-family"},
+Taking logs in [Eq. (1)](#eq:canonical-family),
 
-\[
+<div class="display-equation">
+$$
 \log p_\eta(x)
 =
 \log h(x)+\eta T(x)-A(\eta).
-\]
+$$
+</div>
 
  The unknown parameter and the observed statistic meet through the simple product $\eta T(x).$ Everything else has a separate job.
 
@@ -159,15 +171,18 @@ Taking logs in [\[eq:canonical-family\]](#eq:canonical-family){reference-type="e
 
 Let
 
-\[
+<div class="display-equation">
+$$
 Z(\eta)
 =
 \int h(x)e^{\eta T(x)}\,\dd\nu(x),
-\]
+$$
+</div>
 
- where the integral means a sum for a discrete model and an ordinary integral for a continuous model. To make [\[eq:canonical-family\]](#eq:canonical-family){reference-type="eqref" reference="eq:canonical-family"} integrate to one, we need
+ where the integral means a sum for a discrete model and an ordinary integral for a continuous model. To make [Eq. (1)](#eq:canonical-family) integrate to one, we need
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 1
 &=\int p_\eta(x)\,\dd\nu(x)\\
@@ -175,20 +190,21 @@ Z(\eta)
 &=e^{-A(\eta)}\int h(x)e^{\eta T(x)}\,\dd\nu(x)\\
 &=e^{-A(\eta)}Z(\eta).
 \end{align*}
-\]
+$$
+</div>
 
  Therefore $e^{A(\eta)}=Z(\eta),$ and hence
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:log-partition">
+$$
 \boxed{
 A(\eta)
 =
 \log\int h(x)e^{\eta T(x)}\,\dd\nu(x).
 }
-\label{eq:log-partition}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 2">(2)</span>
+</div>
 
 
 At first, $A$ looks like a normalization term that we must carry around. In fact, it stores almost everything we want to know.
@@ -197,7 +213,8 @@ At first, $A$ looks like a normalization term that we must carry around. In fact
 
 Write $Z(\eta)=e^{A(\eta)}.$ Differentiate $A(\eta)=\log Z(\eta)$:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 A'(\eta)
 &=\frac{Z'(\eta)}{Z(\eta)}\\
@@ -207,16 +224,17 @@ A'(\eta)
 &=\int T(x)p_\eta(x)\,\dd\nu(x)\\
 &=\E_\eta[T(X)].
 \end{align*}
-\]
+$$
+</div>
 
  Thus
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:first-derivative">
+$$
 \boxed{A'(\eta)=\E_\eta[T(X)].}
-\label{eq:first-derivative}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 3">(3)</span>
+</div>
 
 
 The derivative of the normalizer is the mean of the statistic.
@@ -225,7 +243,8 @@ The derivative of the normalizer is the mean of the statistic.
 
 Differentiate once more:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 A''(\eta)
 &=\frac{Z''(\eta)Z(\eta)-[Z'(\eta)]^2}{[Z(\eta)]^2}\\
@@ -234,16 +253,17 @@ A''(\eta)
 &=\E_\eta[T(X)^2]-\E_\eta[T(X)]^2\\
 &=\Var_\eta(T(X)).
 \end{align*}
-\]
+$$
+</div>
 
  Therefore
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:second-derivative">
+$$
 \boxed{A''(\eta)=\Var_\eta(T(X))\ge 0.}
-\label{eq:second-derivative}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 4">(4)</span>
+</div>
 
 
 So $A$ is convex. This convexity is not a decorative theorem. It gives uniqueness of the mean map, concavity of the likelihood, the local form of KL divergence, and the curvature used in concentration bounds.
@@ -252,12 +272,14 @@ So $A$ is convex. This convexity is not a decorative theorem. It gives uniquenes
 >
 > For a regular one-parameter exponential family,
 
-\[
+<div class="display-equation">
+$$
 A(\eta)\quad\longrightarrow\quad
 A'(\eta)=\text{mean statistic}
 \quad\longrightarrow\quad
 A''(\eta)=\text{variance of the statistic}.
-\]
+$$
+</div>
 
  One function stores normalization, location, and uncertainty.
 
@@ -265,11 +287,13 @@ A''(\eta)=\text{variance of the statistic}.
 
 If the statistic and natural parameter are vectors,
 
-\[
+<div class="display-equation">
+$$
 p_{\bm\eta}(x)
 =
 h(x)\exp\{\bm\eta^\top\bm T(x)-A(\bm\eta)\},
-\]
+$$
+</div>
 
  then the same calculation gives $\nabla A(\bm\eta)=\E_{\bm\eta}[\bm T(X)]$ and $\nabla^2A(\bm\eta)=\Cov_{\bm\eta}(\bm T(X)).$ The Hessian is positive semidefinite because every covariance matrix is positive semidefinite.
 
@@ -285,71 +309,85 @@ The one-dimensional case is enough for the present bandit chapter, but the vecto
 
 Start from
 
-\[
+<div class="display-equation">
+$$
 p_p(x)=p^x(1-p)^{1-x},
 \qquad x\in\{0,1\}.
-\]
+$$
+</div>
 
  Take logs inside the exponential:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 p_p(x)
 &=\exp\{x\log p+(1-x)\log(1-p)\}\\
 &=\exp\{x\log p+\log(1-p)-x\log(1-p)\}\\
 &=\exp\left\{x\log\frac{p}{1-p}+\log(1-p)\right\}.
 \end{align*}
-\]
+$$
+</div>
 
  Define the natural parameter $\eta=\log\frac{p}{1-p}.$ Solving for $p$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 e^\eta&=\frac{p}{1-p},\\
 e^\eta(1-p)&=p,\\
 e^\eta&=p(1+e^\eta),\\
 p&=\frac{e^\eta}{1+e^\eta}.
 \end{align*}
-\]
+$$
+</div>
 
  Also, $1-p=\frac{1}{1+e^\eta},$ so $\log(1-p)=-\log(1+e^\eta).$ Therefore
 
-\[
+<div class="display-equation">
+$$
 p_\eta(x)
 =
 \exp\{\eta x-\log(1+e^\eta)\}.
-\]
+$$
+</div>
 
  We can now read off
 
-\[
+<div class="display-equation">
+$$
 T(x)=x,
 \qquad
 h(x)=1,
 \qquad
 A(\eta)=\log(1+e^\eta).
-\]
+$$
+</div>
 
  Differentiate:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 A'(\eta)
 &=\frac{e^\eta}{1+e^\eta}\\
 &=p,
 \end{align*}
-\]
+$$
+</div>
 
  and
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 A''(\eta)
 &=\frac{e^\eta(1+e^\eta)-e^{2\eta}}{(1+e^\eta)^2}\\
 &=\frac{e^\eta}{(1+e^\eta)^2}\\
 &=p(1-p).
 \end{align*}
-\]
+$$
+</div>
 
  The derivative identities reproduce the Bernoulli mean and variance.
 
@@ -357,16 +395,19 @@ A''(\eta)
 
 Let
 
-\[
+<div class="display-equation">
+$$
 p_\mu(x)
 =
 \frac{1}{\sqrt{2\pi\sigma^2}}
 \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}.
-\]
+$$
+</div>
 
  Expand the square:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 -\frac{(x-\mu)^2}{2\sigma^2}
 &=-\frac{x^2-2\mu x+\mu^2}{2\sigma^2}\\
@@ -374,41 +415,50 @@ p_\mu(x)
 +\frac{\mu x}{\sigma^2}
 -\frac{\mu^2}{2\sigma^2}.
 \end{align*}
-\]
+$$
+</div>
 
  Hence
 
-\[
+<div class="display-equation">
+$$
 p_\mu(x)
 =
 \underbrace{\frac{1}{\sqrt{2\pi\sigma^2}}
 \exp\left\{-\frac{x^2}{2\sigma^2}\right\}}_{h(x)}
 \exp\left\{\frac{\mu}{\sigma^2}x-\frac{\mu^2}{2\sigma^2}\right\}.
-\]
+$$
+</div>
 
  Set $\eta=\frac{\mu}{\sigma^2}.$ Then $\mu=\sigma^2\eta$ and
 
-\[
+<div class="display-equation">
+$$
 \frac{\mu^2}{2\sigma^2}
 =
 \frac{\sigma^2\eta^2}{2}.
-\]
+$$
+</div>
 
  Thus
 
-\[
+<div class="display-equation">
+$$
 p_\eta(x)
 =
 h(x)\exp\left\{\eta x-\frac{\sigma^2\eta^2}{2}\right\},
-\]
+$$
+</div>
 
  so
 
-\[
+<div class="display-equation">
+$$
 T(x)=x,
 \qquad
 A(\eta)=\frac{\sigma^2\eta^2}{2}.
-\]
+$$
+</div>
 
  Differentiate: $A'(\eta)=\sigma^2\eta=\mu$ and $A''(\eta)=\sigma^2.$ Again the mean and variance are recovered immediately.
 
@@ -416,38 +466,46 @@ A(\eta)=\frac{\sigma^2\eta^2}{2}.
 
 Start from $p_\lambda(x)=\frac{e^{-\lambda}\lambda^x}{x!}.$ Write it as one exponential:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 p_\lambda(x)
 &=\frac{1}{x!}\exp\{-\lambda+x\log\lambda\}.
 \end{align*}
-\]
+$$
+</div>
 
  Set
 
-\[
+<div class="display-equation">
+$$
 \eta=\log\lambda,
 \qquad
 \lambda=e^\eta.
-\]
+$$
+</div>
 
  Then
 
-\[
+<div class="display-equation">
+$$
 p_\eta(x)
 =
 \frac{1}{x!}\exp\{\eta x-e^\eta\}.
-\]
+$$
+</div>
 
  Therefore
 
-\[
+<div class="display-equation">
+$$
 T(x)=x,
 \qquad
 h(x)=\frac{1}{x!},
 \qquad
 A(\eta)=e^\eta.
-\]
+$$
+</div>
 
  Differentiate: $A'(\eta)=e^\eta=\lambda$ and $A''(\eta)=e^\eta=\lambda.$ The Poisson mean and variance are both equal to the rate.
 
@@ -466,29 +524,31 @@ The family is broad enough to cover many reward models, but not every parameteri
 
 ## A Dataset Collapses to a Running Statistic
 
-Let $X_1,\ldots,X_n$ be independent observations from [\[eq:canonical-family\]](#eq:canonical-family){reference-type="eqref" reference="eq:canonical-family"}. Their joint density is
+Let $X_1,\ldots,X_n$ be independent observations from [Eq. (1)](#eq:canonical-family). Their joint density is
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 p_\eta(x_1,\ldots,x_n)
 &=\prod_{i=1}^{n}h(x_i)e^{\eta T(x_i)-A(\eta)}\\
 &=\left(\prod_{i=1}^{n}h(x_i)\right)
 \exp\left\{\eta\sum_{i=1}^{n}T(x_i)-nA(\eta)\right\}.
 \end{align*}
-\]
+$$
+</div>
 
  Define $S_n=\sum_{i=1}^{n}T(X_i).$ Then
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:joint-family">
+$$
 \boxed{
 p_\eta(x_1,\ldots,x_n)
 =H(x_1,\ldots,x_n)
 \exp\{\eta S_n-nA(\eta)\}.
 }
-\label{eq:joint-family}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 5">(5)</span>
+</div>
 
 
 Once $n$ and $S_n$ are known, the rest of the sample no longer changes the likelihood ratio between two parameter values. This is the operational meaning of sufficiency here.
@@ -501,39 +561,43 @@ Once $n$ and $S_n$ are known, the rest of the sample no longer changes the likel
 
 Ignoring terms that do not depend on $\eta$, the log-likelihood is $\ell_n(\eta)=\eta S_n-nA(\eta).$ Differentiate: $\ell_n'(\eta)=S_n-nA'(\eta).$ At an interior maximum,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 0&=S_n-nA'(\widehat\eta_n),\\
 A'(\widehat\eta_n)&=\frac{S_n}{n}.
 \end{align*}
-\]
+$$
+</div>
 
  But $A'(\eta)=\E_\eta[T(X)]$. Therefore
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:moment-matching">
+$$
 \boxed{
 \E_{\widehat\eta_n}[T(X)]
 =
 \frac{1}{n}\sum_{i=1}^{n}T(X_i).
 }
-\label{eq:moment-matching}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 6">(6)</span>
+</div>
 
 
 The fitted model chooses the parameter whose expected statistic matches the observed average statistic.
 
 The second derivative is
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \ell_n''(\eta)
 &=-nA''(\eta)\\
 &=-n\Var_\eta(T(X))\\
 &\le 0.
 \end{align*}
-\]
+$$
+</div>
 
  So the log-likelihood is concave. In a regular nondegenerate family, the stationary point is the unique maximum.
 
@@ -541,31 +605,37 @@ The second derivative is
 
 For Bernoulli rewards,
 
-\[
+<div class="display-equation">
+$$
 A'(\eta)=p,
 \qquad
 T(X)=X,
-\]
+$$
+</div>
 
  so $\widehat p_n=\frac{1}{n}\sum_{i=1}^{n}X_i.$
 
 For Gaussian rewards with known variance,
 
-\[
+<div class="display-equation">
+$$
 A'(\eta)=\mu,
 \qquad
 T(X)=X,
-\]
+$$
+</div>
 
  so $\widehat\mu_n=\frac{1}{n}\sum_{i=1}^{n}X_i.$
 
 For Poisson rewards,
 
-\[
+<div class="display-equation">
+$$
 A'(\eta)=\lambda,
 \qquad
 T(X)=X,
-\]
+$$
+</div>
 
  so $\widehat\lambda_n=\frac{1}{n}\sum_{i=1}^{n}X_i.$
 
@@ -575,11 +645,13 @@ These estimators look identical because the three models use the same statistic 
 >
 > The reusable state of a one-parameter exponential-family arm is often just two numbers:
 
-\[
+<div class="display-equation">
+$$
 N_a(t)
 \quad\text{and}\quad
 S_a(t)=\sum_{s\le t:A_s=a}T(X_s).
-\]
+$$
+</div>
 
  This is more than a coding convenience. It is the exact likelihood state needed by maximum likelihood, KL-UCB, and conjugate Bayesian updates.
 
@@ -589,20 +661,21 @@ A Bayesian learner begins with a prior and multiplies it by the likelihood. A co
 
 For the canonical family, consider a prior on $\eta$ of the form
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:generic-conjugate">
+$$
 \pi(\eta\mid\xi,\nu)
 \propto
 \exp\{\xi\eta-\nu A(\eta)\}\ind\{\eta\in\mathcal H\}.
-\label{eq:generic-conjugate}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 7">(7)</span>
+</div>
 
  Here $\mathcal H$ is the natural-parameter space. The constants $\xi$ and $\nu$ must be chosen so that the prior is integrable.
 
 After observing $x_1,\ldots,x_n$, Bayes' rule gives
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \pi(\eta\mid x_1,\ldots,x_n)
 &\propto
@@ -612,20 +685,21 @@ After observing $x_1,\ldots,x_n$, Bayes' rule gives
 \exp\{\eta S_n-nA(\eta)\}\\
 &=\exp\{(\xi+S_n)\eta-(\nu+n)A(\eta)\}.
 \end{align*}
-\]
+$$
+</div>
 
  Thus
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:generic-update">
+$$
 \boxed{
 \xi\leftarrow\xi+S_n,
 \qquad
 \nu\leftarrow\nu+n.
 }
-\label{eq:generic-update}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 8">(8)</span>
+</div>
 
 
 The posterior has the same form as the prior. The old pseudo-total and new total are added; the old pseudo-count and new count are added.
@@ -634,23 +708,28 @@ The posterior has the same form as the prior. The old pseudo-total and new total
 
 For Bernoulli rewards,
 
-\[
+<div class="display-equation">
+$$
 \eta=\log\frac{p}{1-p},
 \qquad
 A(\eta)=\log(1+e^\eta).
-\]
+$$
+</div>
 
  The canonical prior in $\eta$ is $\pi_\eta(\eta)\propto e^{\xi\eta-\nu A(\eta)}.$ Since
 
-\[
+<div class="display-equation">
+$$
 p=\frac{e^\eta}{1+e^\eta},
 \qquad
 \frac{\dd\eta}{\dd p}=\frac{1}{p(1-p)},
-\]
+$$
+</div>
 
  the induced density in $p$ is
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \pi_p(p)
 &=\pi_\eta(\eta(p))\left|\frac{\dd\eta}{\dd p}\right|\\
@@ -659,38 +738,46 @@ p=\frac{e^\eta}{1+e^\eta},
 \frac{1}{p(1-p)}\\
 &=p^{\xi-1}(1-p)^{\nu-\xi-1}.
 \end{align*}
-\]
+$$
+</div>
 
  This is a Beta distribution with
 
-\[
+<div class="display-equation">
+$$
 \alpha=\xi,
 \qquad
 \beta=\nu-\xi.
-\]
+$$
+</div>
 
  If $S_n$ successes are observed in $n$ trials, then
 
-\[
+<div class="display-equation">
+$$
 \alpha\leftarrow\alpha+S_n,
 \qquad
 \beta\leftarrow\beta+n-S_n.
-\]
+$$
+</div>
 
 
 ### Normal-Normal with known observation variance
 
 For $X\sim\Normal(\mu,\sigma^2)$,
 
-\[
+<div class="display-equation">
+$$
 \eta=\frac{\mu}{\sigma^2},
 \qquad
 A(\eta)=\frac{\sigma^2\eta^2}{2}.
-\]
+$$
+</div>
 
  The generic prior is
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \pi(\eta)
 &\propto
@@ -699,28 +786,34 @@ A(\eta)=\frac{\sigma^2\eta^2}{2}.
 \exp\left\{-\frac{\nu\sigma^2}{2}
 \left(\eta-\frac{\xi}{\nu\sigma^2}\right)^2\right\}.
 \end{align*}
-\]
+$$
+</div>
 
  Hence
 
-\[
+<div class="display-equation">
+$$
 \eta\sim\Normal\left(\frac{\xi}{\nu\sigma^2},\frac{1}{\nu\sigma^2}\right).
-\]
+$$
+</div>
 
  Because $\mu=\sigma^2\eta$, $\mu\sim\Normal\left(\frac{\xi}{\nu},\frac{\sigma^2}{\nu}\right).$ After $n$ observations,
 
-\[
+<div class="display-equation">
+$$
 \mu\mid X_{1:n}
 \sim
 \Normal\left(
 \frac{\xi+\sum_iX_i}{\nu+n},
 \frac{\sigma^2}{\nu+n}
 \right).
-\]
+$$
+</div>
 
  The posterior mean is a weighted average:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \frac{\xi+\sum_iX_i}{\nu+n}
 &=
@@ -728,37 +821,44 @@ A(\eta)=\frac{\sigma^2\eta^2}{2}.
 +
 \frac{n}{\nu+n}\frac{1}{n}\sum_iX_i.
 \end{align*}
-\]
+$$
+</div>
 
 
 ### Gamma-Poisson
 
 For Poisson rewards,
 
-\[
+<div class="display-equation">
+$$
 \eta=\log\lambda,
 \qquad
 A(\eta)=e^\eta.
-\]
+$$
+</div>
 
  The prior in $\eta$ is $\pi_\eta(\eta)\propto e^{\xi\eta-\nu e^\eta}.$ Since $\lambda=e^\eta$ and $\dd\eta/\dd\lambda=1/\lambda$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \pi_\lambda(\lambda)
 &\propto
 \lambda^\xi e^{-\nu\lambda}\frac{1}{\lambda}\\
 &=\lambda^{\xi-1}e^{-\nu\lambda}.
 \end{align*}
-\]
+$$
+</div>
 
  This is a Gamma distribution with shape $\xi$ and rate $\nu$. After observing counts $X_1,\ldots,X_n$,
 
-\[
+<div class="display-equation">
+$$
 \xi\leftarrow\xi+\sum_{i=1}^{n}X_i,
 \qquad
 \nu\leftarrow\nu+n.
-\]
+$$
+</div>
 
 
 ![The posterior keeps the same shape because sufficient statistics add. Dashed lines mark empirical means.](/images/notes/assets/exponential-families/conjugate_updates.webp)
@@ -775,38 +875,42 @@ The previous chapter treated KL divergence as average log-evidence. Inside an ex
 
 Take two members of the same family, $P_\eta$ and $P_\zeta$. The log-likelihood ratio is
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \log\frac{p_\eta(x)}{p_\zeta(x)}
 &=\log\frac{h(x)e^{\eta T(x)-A(\eta)}}
                  {h(x)e^{\zeta T(x)-A(\zeta)}}\\
 &=(\eta-\zeta)T(x)-A(\eta)+A(\zeta).
 \end{align*}
-\]
+$$
+</div>
 
  Take expectation under $P_\eta$:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \KL(P_\eta\Vert P_\zeta)
 &=(\eta-\zeta)\E_\eta[T(X)]-A(\eta)+A(\zeta)\\
 &=(\eta-\zeta)A'(\eta)-A(\eta)+A(\zeta)\\
 &=A(\zeta)-A(\eta)-A'(\eta)(\zeta-\eta).
 \end{align*}
-\]
+$$
+</div>
 
  Therefore
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:kl-bregman-natural">
+$$
 \boxed{
 \KL(P_\eta\Vert P_\zeta)
 =
 A(\zeta)-A(\eta)-A'(\eta)(\zeta-\eta).
 }
-\label{eq:kl-bregman-natural}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 9">(9)</span>
+</div>
 
 
 The right side is the gap between the convex function $A(\zeta)$ and the tangent line to $A$ at $\eta$. Convexity makes the gap nonnegative.
@@ -816,34 +920,41 @@ The right side is the gap between the convex function $A(\zeta)$ and the tangent
 
 Let $\zeta=\eta+h$. Taylor expand $A(\eta+h)$:
 
-\[
+<div class="display-equation">
+$$
 A(\eta+h)
 =
 A(\eta)+A'(\eta)h+\frac{1}{2}A''(\eta)h^2+O(h^3).
-\]
+$$
+</div>
 
- Insert this into [\[eq:kl-bregman-natural\]](#eq:kl-bregman-natural){reference-type="eqref" reference="eq:kl-bregman-natural"}:
+ Insert this into [Eq. (9)](#eq:kl-bregman-natural):
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \KL(P_\eta\Vert P_{\eta+h})
 &=A(\eta+h)-A(\eta)-A'(\eta)h\\
 &=\frac{1}{2}A''(\eta)h^2+O(h^3).
 \end{align*}
-\]
+$$
+</div>
 
  The score is
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \frac{\partial}{\partial\eta}\log p_\eta(X)
 &=T(X)-A'(\eta).
 \end{align*}
-\]
+$$
+</div>
 
  Therefore the Fisher information is
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 I(\eta)
 &=\E_\eta\left[
@@ -853,26 +964,28 @@ I(\eta)
 &=\Var_\eta(T(X))\\
 &=A''(\eta).
 \end{align*}
-\]
+$$
+</div>
 
  Thus
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 \boxed{
 \KL(P_\eta\Vert P_{\eta+h})
 =
 \frac{1}{2}I(\eta)h^2+O(h^3).
 }
-\end{equation}
-\]
+$$
+</div>
 
 
 ### The mean coordinate and the convex dual
 
 Define the mean parameter $\mu=A'(\eta).$ The convex conjugate of $A$ is $A^*(\mu)=\sup_\eta\{\eta\mu-A(\eta)\}.$ At the matching pair $\mu=A'(\eta)$, $A^*(\mu)=\eta\mu-A(\eta).$ Let $\mu_\eta=A'(\eta)$ and $\mu_\zeta=A'(\zeta)$. The Bregman divergence generated by $A^*$ is
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 D_{A^*}(\mu_\eta,\mu_\zeta)
 &=A^*(\mu_\eta)-A^*(\mu_\zeta)
@@ -882,7 +995,8 @@ D_{A^*}(\mu_\eta,\mu_\zeta)
 &=(\eta-\zeta)\mu_\eta-A(\eta)+A(\zeta)\\
 &=\KL(P_\eta\Vert P_\zeta).
 \end{align*}
-\]
+$$
+</div>
 
  So KL is a Bregman divergence in either coordinate system, with the order changing through convex duality. This link underlies a broad connection between exponential families and Bregman geometry (Banerjee et al. 2005; Wainwright and Jordan 2008).
 
@@ -890,7 +1004,8 @@ D_{A^*}(\mu_\eta,\mu_\zeta)
 
 The moment-generating function of $T(X)$ is almost free once $A$ is known. For any $\lambda$ such that $\eta+\lambda$ remains in the natural-parameter space,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E_\eta[e^{\lambda T(X)}]
 &=\int e^{\lambda T(x)}h(x)e^{\eta T(x)-A(\eta)}\,\dd\nu(x)\\
@@ -898,20 +1013,21 @@ The moment-generating function of $T(X)$ is almost free once $A$ is known. For a
 &=e^{-A(\eta)}e^{A(\eta+\lambda)}\\
 &=\exp\{A(\eta+\lambda)-A(\eta)\}.
 \end{align*}
-\]
+$$
+</div>
 
  Hence, with $\mu=A'(\eta)$,
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:centered-mgf">
+$$
 \boxed{
 \E_\eta[e^{\lambda(T(X)-\mu)}]
 =
 \exp\{A(\eta+\lambda)-A(\eta)-\lambda\mu\}.
 }
-\label{eq:centered-mgf}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 10">(10)</span>
+</div>
 
 
 This identity turns the log-partition function into a concentration engine.
@@ -920,7 +1036,8 @@ This identity turns the log-partition function into a concentration engine.
 
 Let $T_1,\ldots,T_n$ be independent copies of $T(X)$, and let $\overline T_n=\frac{1}{n}\sum_{i=1}^{n}T_i.$ For $x>\mu$ and $\lambda>0$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \Pbb_\eta(\overline T_n\ge x)
 &=\Pbb_\eta\left(e^{\lambda\sum_iT_i}\ge e^{\lambda nx}\right)\\
@@ -928,58 +1045,67 @@ Let $T_1,\ldots,T_n$ be independent copies of $T(X)$, and let $\overline T_n=\fr
 &=e^{-\lambda nx}\prod_{i=1}^{n}\E_\eta[e^{\lambda T_i}]\\
 &=\exp\{-n[\lambda x-A(\eta+\lambda)+A(\eta)]\}.
 \end{align*}
-\]
+$$
+</div>
 
  We choose the best $\lambda$:
 
-\[
+<div class="display-equation">
+$$
 \Pbb_\eta(\overline T_n\ge x)
 \le
 \exp\left\{-n\sup_{\lambda>0}
 [\lambda x-A(\eta+\lambda)+A(\eta)]\right\}.
-\]
+$$
+</div>
 
  Let $\eta_x$ satisfy $A'(\eta_x)=x.$ Differentiate the expression inside the supremum:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \frac{\dd}{\dd\lambda}
 [\lambda x-A(\eta+\lambda)+A(\eta)]
 &=x-A'(\eta+\lambda).
 \end{align*}
-\]
+$$
+</div>
 
  The optimum is reached at
 
-\[
+<div class="display-equation">
+$$
 \eta+\lambda^*=\eta_x,
 \qquad
 \lambda^*=\eta_x-\eta.
-\]
+$$
+</div>
 
  Substitute:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \lambda^*x-A(\eta+\lambda^*)+A(\eta)
 &=(\eta_x-\eta)x-A(\eta_x)+A(\eta)\\
 &=(\eta_x-\eta)A'(\eta_x)-A(\eta_x)+A(\eta)\\
 &=\KL(P_{\eta_x}\Vert P_\eta).
 \end{align*}
-\]
+$$
+</div>
 
  Therefore
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:family-chernoff">
+$$
 \boxed{
 \Pbb_\eta(\overline T_n\ge x)
 \le
 \exp\{-n\KL(P_{\eta_x}\Vert P_\eta)\}.
 }
-\label{eq:family-chernoff}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 11">(11)</span>
+</div>
 
 
 The same KL divergence that measures evidence also controls rare sample means.
@@ -988,7 +1114,8 @@ The same KL divergence that measures evidence also controls rare sample means.
 >
 > A recurring proof pattern in bandit theory is
 
-\[
+<div class="display-equation">
+$$
 \text{log-partition}
 \longrightarrow
 \text{moment-generating function}
@@ -996,7 +1123,8 @@ The same KL divergence that measures evidence also controls rare sample means.
 \text{convex optimization}
 \longrightarrow
 \text{KL exponent}.
-\]
+$$
+</div>
 
  Once the family is identified, many concentration calculations become instances of this one pattern.
 
@@ -1010,7 +1138,8 @@ Consider $K$ arms. Arm $a$ has parameter $\eta_a$ and mean $\mu_a=A'(\eta_a).$ A
 
 The adaptive choice of arms changes which observations are collected. It does not change the form of the reward likelihood. Up to terms independent of the parameters,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \log p_{\bm\eta}(H_T)
 &=\sum_{t=1}^{T}
@@ -1022,21 +1151,22 @@ The adaptive choice of arms changes which observations are collected. It does no
 A(\eta_a)\sum_{t=1}^{T}\ind\{A_t=a\}
 \right]+    ext{constant}.
 \end{align*}
-\]
+$$
+</div>
 
  Define $N_a(T)=\sum_{t=1}^{T}\ind\{A_t=a\}$ and $S_a(T)=\sum_{t=1}^{T}\ind\{A_t=a\}T(X_t).$ Then
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:bandit-ledger">
+$$
 \boxed{
 \log p_{\bm\eta}(H_T)
 =
 \sum_{a=1}^{K}\left[\eta_aS_a(T)-N_a(T)A(\eta_a)\right]
 +\text{constant}.
 }
-\label{eq:bandit-ledger}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 12">(12)</span>
+</div>
 
 
 Every arm needs a count and a sufficient-statistic total. The algorithm decides where the next line is written; the exponential family decides how the ledger is interpreted.
@@ -1049,33 +1179,33 @@ For arm $a$, the maximum-likelihood equation is $A'(\widehat\eta_a)=\frac{S_a}{N
 
 Let $d(\mu,q)=\KL(P_\mu\Vert P_q)$ be the KL divergence written in mean coordinates. A generic KL upper confidence index is
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:generic-kl-ucb">
+$$
 U_a(t)
 =
 \sup\left\{
 q:\ N_a(t)d(\widehat\mu_a(t),q)\le\beta(t)
 \right\}.
-\label{eq:generic-kl-ucb}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 13">(13)</span>
+</div>
 
  The policy chooses $A_t\in\argmax_a U_a(t).$
 
 The same line of code means different confidence shapes in different families:
+| Family | $d(\mu,q)=\KL(P_\mu\Vert P_q)$ |
+|:---|:---|
+| Bernoulli | $\mu\log(\mu/q)+(1-\mu)\log[(1-\mu)/(1-q)]$ |
+| Gaussian, known $\sigma^2$ | $(\mu-q)^2/(2\sigma^2)$ |
+| Poisson | $\mu\log(\mu/q)+q-\mu$ |
+| Exponential, mean $\mu$ | $\log(q/\mu)+\mu/q-1$ |
 
-  Family                       $d(\mu,q)=\KL(P_\mu\Vert P_q)$
-  ---------------------------- ---------------------------------------------
-  Bernoulli                    $\mu\log(\mu/q)+(1-\mu)\log[(1-\mu)/(1-q)]$
-  Gaussian, known $\sigma^2$   $(\mu-q)^2/(2\sigma^2)$
-  Poisson                      $\mu\log(\mu/q)+q-\mu$
-  Exponential, mean $\mu$      $\log(q/\mu)+\mu/q-1$
+<p class="table-caption">KL divergence between two mean parameters.</p>
 
-  : KL divergence between two mean parameters.
+For the Gaussian family, [Eq. (13)](#eq:generic-kl-ucb) can be solved directly:
 
-For the Gaussian family, [\[eq:generic-kl-ucb\]](#eq:generic-kl-ucb){reference-type="eqref" reference="eq:generic-kl-ucb"} can be solved directly:
-
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 N_a\frac{(\widehat\mu_a-q)^2}{2\sigma^2}
 &\le\beta(t),\\
@@ -1084,15 +1214,18 @@ N_a\frac{(\widehat\mu_a-q)^2}{2\sigma^2}
 q
 &\le\widehat\mu_a+\sqrt{\frac{2\sigma^2\beta(t)}{N_a}}.
 \end{align*}
-\]
+$$
+</div>
 
  Thus
 
-\[
+<div class="display-equation">
+$$
 U_a(t)
 =
 \widehat\mu_a(t)+\sqrt{\frac{2\sigma^2\beta(t)}{N_a(t)}}.
-\]
+$$
+</div>
 
  For Bernoulli and Poisson rewards, a one-dimensional binary search finds the endpoint.
 
@@ -1100,20 +1233,24 @@ U_a(t)
 
 With independent conjugate priors, the posterior of arm $a$ updates as
 
-\[
+<div class="display-equation">
+$$
 \xi_a(t)=\xi_{a,0}+S_a(t),
 \qquad
 \nu_a(t)=\nu_{a,0}+N_a(t).
-\]
+$$
+</div>
 
  Thompson sampling draws one parameter from each posterior and acts as if the draw were true:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \widetilde\eta_a(t)&\sim\pi_a(\eta_a\mid H_{t-1}),\\
 A_t&\in\argmax_a A'(\widetilde\eta_a(t)).
 \end{align*}
-\]
+$$
+</div>
 
 
 For Bernoulli, this is Beta sampling. For Gaussian rewards with known variance, it is Normal sampling. For Poisson rewards, it is Gamma sampling.
@@ -1197,11 +1334,13 @@ The supplied script builds three four-armed environments:
 
 For each environment, it runs a family-aware KL-UCB policy and conjugate Thompson sampling for $T=5000$ rounds over $240$ independent runs. The performance measure is pseudo-regret,
 
-\[
+<div class="display-equation">
+$$
 R_T
 =
 \sum_{t=1}^{T}(\mu^*-\mu_{A_t}).
-\]
+$$
+</div>
 
 
 ![The algorithmic skeleton is unchanged; the family determines the KL and posterior operations.](/images/notes/assets/exponential-families/exponential_family_regret.webp)
@@ -1211,17 +1350,16 @@ R_T
 ![Both methods eventually allocate most observations to the arm with the largest mean.](/images/notes/assets/exponential-families/exponential_family_pull_counts.webp)
 
 *Both methods eventually allocate most observations to the arm with the largest mean.*
+| Family    | Algorithm         | Final pseudo-regret | Pulls of best arm |
+|:----------|:------------------|--------------------:|------------------:|
+| Bernoulli | KL-UCB            |    $92.98\pm1.32$ |        $3806.2$ |
+| Bernoulli | Thompson sampling |    $44.66\pm1.49$ |        $4402.2$ |
+| Gaussian  | KL-UCB            |    $54.74\pm0.76$ |        $4470.0$ |
+| Gaussian  | Thompson sampling |    $23.74\pm0.67$ |        $4766.5$ |
+| Poisson   | KL-UCB            |   $265.43\pm3.69$ |        $4388.0$ |
+| Poisson   | Thompson sampling |   $101.14\pm3.01$ |        $4761.7$ |
 
-  Family      Algorithm             Final pseudo-regret   Pulls of best arm
-  ----------- ------------------- --------------------- -------------------
-  Bernoulli   KL-UCB                     $92.98\pm1.32$            $3806.2$
-  Bernoulli   Thompson sampling          $44.66\pm1.49$            $4402.2$
-  Gaussian    KL-UCB                     $54.74\pm0.76$            $4470.0$
-  Gaussian    Thompson sampling          $23.74\pm0.67$            $4766.5$
-  Poisson     KL-UCB                    $265.43\pm3.69$            $4388.0$
-  Poisson     Thompson sampling         $101.14\pm3.01$            $4761.7$
-
-  : Simulation results at $T=5000$. Standard errors are across 240 runs.
+<p class="table-caption">Simulation results at $T=5000$. Standard errors are across 240 runs.</p>
 
 The numerical ranking is not a universal benchmark. It depends on the selected instances, priors, and exploration schedule. The experiment is designed to demonstrate a structural point: one decision loop can operate across reward types when the model supplies the right sufficient statistic, KL divergence, and posterior update.
 
@@ -1231,7 +1369,8 @@ The Bernoulli policy stores successes and failures. The Gaussian policy stores a
 
 This is the computational meaning of the exponential family:
 
-\[
+<div class="display-equation">
+$$
 \boxed{
 \text{raw history}
 \longrightarrow
@@ -1241,7 +1380,8 @@ This is the computational meaning of the exponential family:
 \longrightarrow
 \text{next action}.
 }
-\]
+$$
+</div>
 
 
 ## What the Definition Does Not Say
@@ -1250,13 +1390,15 @@ This is the computational meaning of the exponential family:
 
 The reported mean and the natural parameter may be very different:
 
-\[
+<div class="display-equation">
+$$
 \eta=\log\frac{p}{1-p},
 \qquad
 \eta=\frac{\mu}{\sigma^2},
 \qquad
 \eta=\log\lambda.
-\]
+$$
+</div>
 
  The natural coordinate simplifies likelihood algebra. The mean coordinate simplifies decisions and regret statements. Good proofs move between them deliberately.
 
@@ -1270,7 +1412,7 @@ The variance is $A''(\eta).$ For Bernoulli rewards it is $p(1-p)$; for Poisson r
 
 ### It does not automatically give anytime validity
 
-The fixed-$n$ Chernoff bound in [\[eq:family-chernoff\]](#eq:family-chernoff){reference-type="eqref" reference="eq:family-chernoff"} is not automatically valid after arbitrary repeated peeking. The filtration and martingale tools from the previous chapter are still needed to construct time-uniform confidence sequences.
+The fixed-$n$ Chernoff bound in [Eq. (11)](#eq:family-chernoff) is not automatically valid after arbitrary repeated peeking. The filtration and martingale tools from the previous chapter are still needed to construct time-uniform confidence sequences.
 
 ### It does not remove modeling risk
 
@@ -1282,25 +1424,31 @@ An exponential family is a compact statistical machine.
 
 The density has the form $p_\eta(x)=h(x)e^{\eta T(x)-A(\eta)}.$ The log-partition function normalizes the model: $A(\eta)=\log\int h(x)e^{\eta T(x)}\,\dd\nu(x).$ Its first two derivatives give the mean and variance:
 
-\[
+<div class="display-equation">
+$$
 A'(\eta)=\E_\eta[T(X)],
 \qquad
 A''(\eta)=\Var_\eta(T(X)).
-\]
+$$
+</div>
 
  A sample is compressed to $S_n=\sum_{i=1}^{n}T(X_i).$ Maximum likelihood matches the empirical statistic to the model mean: $A'(\widehat\eta_n)=\frac{S_n}{n}.$ Conjugate Bayes adds counts and sufficient statistics: $(\xi,\nu)\leftarrow(\xi+S_n,\nu+n).$ KL divergence is the convexity gap of $A$:
 
-\[
+<div class="display-equation">
+$$
 \KL(P_\eta\Vert P_\zeta)
 =A(\zeta)-A(\eta)-A'(\eta)(\zeta-\eta).
-\]
+$$
+</div>
 
  Concentration follows from the shifted log-partition function:
 
-\[
+<div class="display-equation">
+$$
 \log\E_\eta[e^{\lambda T(X)}]
 =A(\eta+\lambda)-A(\eta).
-\]
+$$
+</div>
 
  And an adaptive bandit needs only one likelihood ledger per arm: $(N_a,S_a).$
 
@@ -1308,49 +1456,47 @@ A''(\eta)=\Var_\eta(T(X)).
 This is why exponential families are a natural language for bandit theory. They do not make every model identical. They reveal which calculations are identical, which quantities remain model-specific, and where statistical evidence enters the decision rule.
 
 ## Appendix A. Formula Sheet
+| Object | Formula |
+|:---|:---|
+| Canonical family | $p_\eta(x)=h(x)e^{\eta T(x)-A(\eta)}$ |
+| Log-partition | $A(\eta)=\log\int h(x)e^{\eta T(x)}\,\dd\nu(x)$ |
+| Mean statistic | $A'(\eta)=\E_\eta[T(X)]$ |
+| Variance statistic | $A''(\eta)=\Var_\eta(T(X))$ |
+| Vector mean | $\nabla A(\bm\eta)=\E_{\bm\eta}[\bm T(X)]$ |
+| Vector covariance | $\nabla^2A(\bm\eta)=\Cov_{\bm\eta}(\bm T(X))$ |
+| Joint sufficient statistic | $S_n=\sum_{i=1}^{n}T(X_i)$ |
+| MLE equation | $A'(\widehat\eta_n)=S_n/n$ |
+| Conjugate prior | $\pi(\eta\mid\xi,\nu)\propto e^{\xi\eta-\nu A(\eta)}$ |
+| Conjugate update | $(\xi,\nu)\mapsto(\xi+S_n,\nu+n)$ |
+| Family KL | $\KL(P_\eta\Vert P_\zeta)=A(\zeta)-A(\eta)-A'(\eta)(\zeta-\eta)$ |
+| Fisher information | $I(\eta)=A''(\eta)$ |
+| Moment-generating function | $\E_\eta[e^{\lambda T(X)}]=e^{A(\eta+\lambda)-A(\eta)}$ |
+| Chernoff exponent | $\Pbb_\eta(\overline T_n\ge x)\le e^{-n\KL(P_{\eta_x}\Vert P_\eta)}$ |
+| Bandit ledger | $N_a(t),\ S_a(t)=\sum_{s\le t:A_s=a}T(X_s)$ |
+| KL-UCB index | $\sup\{q:N_a d(\widehat\mu_a,q)\le\beta(t)\}$ |
 
-  Object                       Formula
-  ---------------------------- ----------------------------------------------------------------------
-  Canonical family             $p_\eta(x)=h(x)e^{\eta T(x)-A(\eta)}$
-  Log-partition                $A(\eta)=\log\int h(x)e^{\eta T(x)}\,\dd\nu(x)$
-  Mean statistic               $A'(\eta)=\E_\eta[T(X)]$
-  Variance statistic           $A''(\eta)=\Var_\eta(T(X))$
-  Vector mean                  $\nabla A(\bm\eta)=\E_{\bm\eta}[\bm T(X)]$
-  Vector covariance            $\nabla^2A(\bm\eta)=\Cov_{\bm\eta}(\bm T(X))$
-  Joint sufficient statistic   $S_n=\sum_{i=1}^{n}T(X_i)$
-  MLE equation                 $A'(\widehat\eta_n)=S_n/n$
-  Conjugate prior              $\pi(\eta\mid\xi,\nu)\propto e^{\xi\eta-\nu A(\eta)}$
-  Conjugate update             $(\xi,\nu)\mapsto(\xi+S_n,\nu+n)$
-  Family KL                    $\KL(P_\eta\Vert P_\zeta)=A(\zeta)-A(\eta)-A'(\eta)(\zeta-\eta)$
-  Fisher information           $I(\eta)=A''(\eta)$
-  Moment-generating function   $\E_\eta[e^{\lambda T(X)}]=e^{A(\eta+\lambda)-A(\eta)}$
-  Chernoff exponent            $\Pbb_\eta(\overline T_n\ge x)\le e^{-n\KL(P_{\eta_x}\Vert P_\eta)}$
-  Bandit ledger                $N_a(t),\ S_a(t)=\sum_{s\le t:A_s=a}T(X_s)$
-  KL-UCB index                 $\sup\{q:N_a d(\widehat\mu_a,q)\le\beta(t)\}$
-
-  : Core formulas.
+<p class="table-caption">Core formulas.</p>
 
 ## Appendix B. Notation Table
+| Symbol           | Meaning                                                 |
+|:-----------------|:--------------------------------------------------------|
+| $X$            | one observation or reward                               |
+| $T(X)$         | canonical statistic of one observation                  |
+| $h(x)$         | base density or mass independent of the parameter       |
+| $\eta$         | natural parameter                                       |
+| $\mathcal H$   | natural-parameter space                                 |
+| $A(\eta)$      | log-partition function                                  |
+| $\mu=A'(\eta)$ | mean parameter for the statistic                        |
+| $S_n$          | sum of sufficient statistics through $n$ observations |
+| $\xi,\nu$      | conjugate-prior hyperparameters                         |
+| $A^*$          | convex conjugate of $A$                               |
+| $d(\mu,q)$     | family KL divergence in mean coordinates                |
+| $A_t$          | arm selected at round $t$                             |
+| $N_a(t)$       | number of pulls of arm $a$ by time $t$              |
+| $S_a(t)$       | sufficient-statistic total for arm $a$                |
+| $U_a(t)$       | upper confidence index                                  |
 
-  Symbol           Meaning
-  ---------------- -------------------------------------------------------
-  $X$              one observation or reward
-  $T(X)$           canonical statistic of one observation
-  $h(x)$           base density or mass independent of the parameter
-  $\eta$           natural parameter
-  $\mathcal H$     natural-parameter space
-  $A(\eta)$        log-partition function
-  $\mu=A'(\eta)$   mean parameter for the statistic
-  $S_n$            sum of sufficient statistics through $n$ observations
-  $\xi,\nu$        conjugate-prior hyperparameters
-  $A^*$            convex conjugate of $A$
-  $d(\mu,q)$       family KL divergence in mean coordinates
-  $A_t$            arm selected at round $t$
-  $N_a(t)$         number of pulls of arm $a$ by time $t$
-  $S_a(t)$         sufficient-statistic total for arm $a$
-  $U_a(t)$         upper confidence index
-
-  : Notation.
+<p class="table-caption">Notation.</p>
 
 ## Appendix C. Minimal Implementation Notes
 
