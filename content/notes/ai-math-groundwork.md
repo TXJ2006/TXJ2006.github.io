@@ -1,17 +1,16 @@
 ---
-title: "Ai Math Groundwork"
-subtitle: ""
+title: "The Mathematical Foundations of Artificial Intelligence"
+subtitle: "Structure, Change, and Uncertainty"
 summary: "The Mathematical Foundations of Artificial Intelligence: Structure, Change, and Uncertainty"
 description: "The Mathematical Foundations of Artificial Intelligence: Structure, Change, and Uncertainty"
 date: 2026-07-19
 lastmod: 2026-07-19
-weight: 90
-tags: []
+weight: 80
+tags: ["Mathematics for AI", "Analysis", "Linear Algebra", "Probability", "Statistics"]
 draft: false
 ShowToc: false
 hideMeta: true
 ---
-The Mathematical Foundations of Artificial Intelligence: Structure, Change, and Uncertainty
 
 ## Introduction
 
@@ -69,6 +68,42 @@ $$
 
 The constant $L$ measures how strongly perturbations may be amplified. This distinction matters in adversarial robustness and numerical stability. Continuity says that sufficiently small changes remain small. A Lipschitz estimate says how small.
 
+#### One-sided limits and discontinuities
+
+A two-sided limit exists only when the left and right limits both exist and agree:
+
+<div class="display-equation">
+$$
+\lim_{x\to x_0}f(x)=L
+\quad\Longleftrightarrow\quad
+\lim_{x\to x_0^-}f(x)=
+\lim_{x\to x_0^+}f(x)=L.
+$$
+</div>
+
+This distinction is essential at boundaries and thresholds. For $f(x)=1/x$, the one-sided limits at zero diverge with opposite signs, so there is no two-sided limit. By contrast, $\sin x/x$ is undefined at zero but has limit one there. Defining its value at zero to be one removes the discontinuity.
+
+Whenever the relevant limits exist and the denominator does not approach zero, limits obey the familiar algebraic laws:
+
+<div class="display-equation">
+$$
+\lim(f+g)=\lim f+\lim g,
+\qquad
+\lim(fg)=(\lim f)(\lim g),
+\qquad
+\lim\frac{f}{g}=\frac{\lim f}{\lim g}.
+$$
+</div>
+
+Discontinuities are usefully separated by mechanism.
+
+- A **removable discontinuity** has a finite two-sided limit, but the function is missing or assigned the wrong value at the point.
+- A **jump discontinuity** has finite left and right limits that are unequal.
+- An **infinite discontinuity** occurs when at least one one-sided limit diverges.
+- An **oscillatory discontinuity** occurs when values continue to oscillate without settling, as in $\sin(1/x)$ near zero.
+
+This classification matters in learning systems. A hard decision threshold creates a jump. A reciprocal or logarithmic singularity may create an infinite discontinuity. Rapid oscillation can make a model locally unpredictable even when its output remains bounded.
+
 ### Derivatives and differentials
 
 For a scalar function, the derivative is defined by
@@ -118,6 +153,73 @@ $$
 </div>
 
 The gradient therefore depends on the geometry used to identify linear functionals with vectors. Under a different inner product or on a curved space, the coordinate vector called the gradient changes even when the underlying differential does not. This is the mathematical idea behind natural gradients and Riemannian optimization.
+
+#### Differentiation rules and differential algebra
+
+For differentiable scalar functions, the elementary rules are
+
+<div class="display-equation">
+$$
+(f+g)'=f'+g',
+\qquad
+(fg)'=f'g+fg',
+\qquad
+\left(\frac{f}{g}\right)'=\frac{f'g-fg'}{g^2},
+$$
+</div>
+
+together with the chain rule $(f\circ g)'(x)=f'(g(x))g'(x)$. Written in differential form, the same identities become
+
+<div class="display-equation">
+$$
+d(u+v)=du+dv,
+\qquad
+d(uv)=u\,dv+v\,du,
+\qquad
+d\left(\frac{u}{v}\right)=\frac{v\,du-u\,dv}{v^2}.
+$$
+</div>
+
+The differential is not merely another notation for a derivative. It is the linear part of an increment. If $y=f(x)$, then
+
+<div class="display-equation">
+$$
+\Delta y=f(x+\Delta x)-f(x)
+=f'(x)\Delta x+o(|\Delta x|),
+$$
+</div>
+
+so $dy=f'(x)dx$ is the first-order approximation, while $\Delta y$ is the actual change. For the area $S=\pi r^2$ of a circle,
+
+<div class="display-equation">
+$$
+\Delta S=2\pi r\Delta r+\pi(\Delta r)^2,
+\qquad
+dS=2\pi r\,dr.
+$$
+</div>
+
+The quadratic remainder explains why the differential becomes accurate for small radius changes.
+
+First differentials are form-invariant under substitution. If $y=f(u)$ and $u=g(x)$, then
+
+<div class="display-equation">
+$$
+dy=f'(u)\,du=f'(g(x))g'(x)\,dx.
+$$
+</div>
+
+This immediately yields the inverse-function and parametric-curve formulas, whenever the relevant denominators are nonzero:
+
+<div class="display-equation">
+$$
+\frac{dx}{dy}=\frac{1}{dy/dx},
+\qquad
+\frac{dy}{dx}=\frac{dy/dt}{dx/dt}.
+$$
+</div>
+
+Higher derivatives describe higher-order change, but higher differentials are not generally form-invariant under nonlinear substitutions. It is also useful to reserve **smooth** for functions with derivatives of all orders, or at least to state explicitly whether $C^1$, $C^2$, or $C^k$ regularity is intended. Merely being differentiable once is not normally called smooth in analysis.
 
 ### The chain rule and computational graphs
 
@@ -180,6 +282,46 @@ The distinction matters because many useful convex objectives, including absolut
 
 Differentiation studies local change. Integration aggregates local quantities.
 
+#### Antiderivatives and the two meanings of integration
+
+An antiderivative of $f$ is a function $F$ satisfying $F'=f$. The indefinite integral denotes the full family
+
+<div class="display-equation">
+$$
+\int f(x)\,dx=F(x)+C.
+$$
+</div>
+
+The constant $C$ is necessary because differentiation erases additive constants. An indefinite integral is therefore an inverse operation to differentiation only up to a constant. A definite integral has a different origin: it is a limit of signed sums. The fundamental theorem of calculus is what connects these two constructions.
+
+Two indispensable computational rules follow from the chain and product rules. Substitution gives
+
+<div class="display-equation">
+$$
+\int f(g(x))g'(x)\,dx
+=
+\int f(u)\,du,
+$$
+</div>
+
+while integration by parts gives
+
+<div class="display-equation">
+$$
+\int u\,dv=uv-\int v\,du.
+$$
+</div>
+
+For example,
+
+<div class="display-equation">
+$$
+\int x^3\log x\,dx
+=
+\frac{x^4}{4}\log x-\frac{x^4}{16}+C.
+$$
+</div>
+
 For a continuous function on a closed interval, the fundamental theorem of calculus connects derivatives and integrals:
 
 <div class="display-equation">
@@ -204,6 +346,82 @@ $$
 </div>
 
 provided that the limit exists and is finite. Bounded partial integrals alone do not guarantee convergence. The partial integrals of $\sin x$, for example, remain bounded but do not converge as the upper limit tends to infinity.
+
+There are two basic kinds of improper integral. An integral over an unbounded domain is defined by sending a finite endpoint to infinity. An integral with a singularity is defined by approaching the singular point from within the domain. If $c\in(a,b)$ is singular, both one-sided integrals must converge separately:
+
+<div class="display-equation">
+$$
+\int_a^b f(x)\,dx
+=
+\lim_{u\to c^-}\int_a^u f(x)\,dx
++
+\lim_{v\to c^+}\int_v^b f(x)\,dx.
+$$
+</div>
+
+The Cauchy convergence criterion gives the correct test at infinity: $\int_a^\infty f$ converges if and only if for every $\varepsilon>0$ there is $M$ such that
+
+<div class="display-equation">
+$$
+\left|\int_u^v f(x)\,dx\right|<\varepsilon
+\qquad\text{for all }v>u>M.
+$$
+</div>
+
+A Cauchy principal value is a different object. Symmetric cancellation can make
+
+<div class="display-equation">
+$$
+\operatorname{p.v.}\int_{-\infty}^{\infty}f(x)\,dx
+=
+\lim_{R\to\infty}\int_{-R}^{R}f(x)\,dx
+$$
+</div>
+
+exist even when the ordinary improper integral diverges. Thus principal-value existence is weaker, not stronger, than separate convergence of the two tails.
+
+#### Several variables: joint limits, partial derivatives, and repeated integrals
+
+For $f:\mathbb{R}^2\to\mathbb{R}$, a joint limit requires the same value along every path approaching $(x_0,y_0)$. Iterated limits instead take one coordinate limit and then the other:
+
+<div class="display-equation">
+$$
+\lim_{y\to y_0}\lim_{x\to x_0}f(x,y),
+\qquad
+\lim_{x\to x_0}\lim_{y\to y_0}f(x,y).
+$$
+</div>
+
+Agreement of these two iterated limits alone does not guarantee the joint limit. A diagonal or curved path may behave differently. This is why total differentiability is stronger than the existence of coordinatewise partial derivatives.
+
+For a rectangular domain $D=[a,b]\times[c,d]$, a repeated integral has the form
+
+<div class="display-equation">
+$$
+\int_a^b\int_c^d f(x,y)\,dy\,dx.
+$$
+</div>
+
+Under the hypotheses of Fubini or Tonelli, it represents the corresponding double integral and the order may be exchanged. A change to polar coordinates,
+
+<div class="display-equation">
+$$
+x=r\cos\theta,
+\qquad
+y=r\sin\theta,
+$$
+</div>
+
+introduces the Jacobian factor $r$:
+
+<div class="display-equation">
+$$
+\iint_D f(x,y)\,dx\,dy
+=
+\int_{\theta_1}^{\theta_2}\int_{r_1(\theta)}^{r_2(\theta)}
+f(r\cos\theta,r\sin\theta)\,r\,dr\,d\theta.
+$$
+</div>
 
 In several variables, integration introduces an additional question: when may the order of integration be exchanged? Tonelli's theorem permits this for nonnegative measurable functions, even when the integral is infinite. Fubini's theorem permits it for integrable functions. These conditions are not technical decoration. They prevent invalid rearrangements of infinite positive and negative contributions.
 
@@ -255,6 +473,92 @@ is affine. Most neural-network layers are affine maps followed by nonlinear tran
 
 Matrix multiplication represents composition. If $B$ acts first and $A$ acts second, the composite map is $AB$. The order matters because matrix multiplication is generally not commutative.
 
+#### From linear systems to matrix form
+
+A system of $m$ linear equations in $n$ unknowns can be compressed into
+
+<div class="display-equation">
+$$
+Ax=b,
+\qquad
+A\in\mathbb{R}^{m\times n},
+\quad
+x\in\mathbb{R}^n,
+\quad
+b\in\mathbb{R}^m.
+$$
+</div>
+
+The matrix $A$ stores the coefficients, and the augmented matrix $[A\mid b]$ stores both coefficients and targets. Componentwise,
+
+<div class="display-equation">
+$$
+(Ax)_i=\sum_{j=1}^n a_{ij}x_j.
+$$
+</div>
+
+More generally, if $A\in\mathbb{R}^{m\times n}$ and $B\in\mathbb{R}^{n\times k}$, then
+
+<div class="display-equation">
+$$
+(AB)_{ij}=\sum_{\ell=1}^n a_{i\ell}b_{\ell j}.
+$$
+</div>
+
+The inner dimensions must agree. This shape rule is the coordinate form of composition: the output space of the first map must match the input space of the second. Matrix multiplication is associative and distributive, while
+
+<div class="display-equation">
+$$
+(AB)^\top=B^\top A^\top.
+$$
+</div>
+
+The zero matrix maps every vector to zero, and the identity matrix $I$ leaves every vector unchanged. These are the additive and compositional neutral elements of matrix algebra.
+
+#### Determinants and inverses
+
+For a square matrix, the determinant measures oriented volume scaling. In two dimensions,
+
+<div class="display-equation">
+$$
+\det\begin{pmatrix}a&b\\c&d\end{pmatrix}=ad-bc.
+$$
+</div>
+
+A zero determinant means that some dimension has collapsed: the columns are linearly dependent and the transformation is not invertible. Elementary row operations expose the determinant efficiently:
+
+- exchanging two rows changes its sign;
+- multiplying one row by $c$ multiplies the determinant by $c$;
+- adding a multiple of one row to another leaves it unchanged;
+- a triangular matrix has determinant equal to the product of its diagonal entries.
+
+For an $n\times n$ matrix, the following statements are equivalent:
+
+<div class="display-equation">
+$$
+\det(A)\neq 0
+\quad\Longleftrightarrow\quad
+\operatorname{rank}(A)=n
+\quad\Longleftrightarrow\quad
+\ker(A)=\{0\}
+\quad\Longleftrightarrow\quad
+A^{-1}\text{ exists}.
+$$
+</div>
+
+The inverse is defined by $AA^{-1}=A^{-1}A=I$. For a $2\times2$ matrix,
+
+<div class="display-equation">
+$$
+\begin{pmatrix}a&b\\c&d\end{pmatrix}^{-1}
+=
+\frac{1}{ad-bc}
+\begin{pmatrix}d&-b\\-c&a\end{pmatrix}.
+$$
+</div>
+
+For larger matrices, Gaussian elimination transforms $[A\mid I]$ into $[I\mid A^{-1}]$ when the inverse exists. This construction is valuable theoretically. In numerical machine learning, however, solving a system or using a factorization is usually preferable to explicitly constructing the inverse.
+
 ### Rank, null spaces, and identifiability
 
 The rank of a matrix is the dimension of its image:
@@ -292,6 +596,23 @@ $$
 </div>
 
 When solutions are not unique, $A^+b$ is the solution with minimum Euclidean norm.
+
+The augmented matrix gives a complete classification of an exact linear system:
+
+<div class="display-equation">
+$$
+\begin{aligned}
+\operatorname{rank}(A)&=\operatorname{rank}([A\mid b])=n
+&&\Longrightarrow &&\text{one solution},\\
+\operatorname{rank}(A)&=\operatorname{rank}([A\mid b])&lt;n
+&&\Longrightarrow &&\text{infinitely many solutions},\\
+\operatorname{rank}(A)&lt;\operatorname{rank}([A\mid b])
+&&\Longrightarrow &&\text{no solution}.
+\end{aligned}
+$$
+</div>
+
+This is not merely a classroom classification. In regression, collinear features reduce rank and make parameters non-identifiable. Ridge regularization replaces $X^\top X$ with $X^\top X+\lambda I$, improving invertibility and conditioning, although the resulting estimate solves a modified problem rather than recovering information that the data never contained.
 
 ### Least squares without explicit inversion
 
@@ -351,6 +672,42 @@ $$
 
 Their eigenvalues are real, and eigenvectors associated with distinct eigenvalues can be chosen orthogonal.
 
+Eigenvalues are found from the characteristic equation
+
+<div class="display-equation">
+$$
+\det(A-\lambda I)=0.
+$$
+</div>
+
+For example, with
+
+<div class="display-equation">
+$$
+A=\begin{pmatrix}4&1\\2&3\end{pmatrix},
+$$
+</div>
+
+the characteristic polynomial is $\lambda^2-7\lambda+10$, so the eigenvalues are $5$ and $2$. Solving $(A-5I)v=0$ gives a direction proportional to $(1,1)^\top$, while solving $(A-2I)v=0$ gives one proportional to $(1,-2)^\top$. The trace and determinant provide useful checks:
+
+<div class="display-equation">
+$$
+\operatorname{tr}(A)=\sum_i\lambda_i,
+\qquad
+\det(A)=\prod_i\lambda_i.
+$$
+</div>
+
+If $A=V\Lambda V^{-1}$, then powers and analytic matrix functions reduce to scalar operations on eigenvalues:
+
+<div class="display-equation">
+$$
+A^k=V\Lambda^kV^{-1}.
+$$
+</div>
+
+This is central in Markov chains, linear dynamical systems, stability analysis, and repeated message propagation.
+
 Positive-semidefinite matrices satisfy
 
 <div class="display-equation">
@@ -382,6 +739,28 @@ $$
 </div>
 
 The singular values measure the principal amounts of stretching performed by the map. The right singular vectors identify input directions, and the left singular vectors identify the corresponding output directions.
+
+The decomposition is connected to two symmetric positive-semidefinite matrices:
+
+<div class="display-equation">
+$$
+A^\top A=V\Sigma^2V^\top,
+\qquad
+AA^\top=U\Sigma^2U^\top.
+$$
+</div>
+
+Thus the nonzero singular values are square roots of the nonzero eigenvalues of either product. For $\sigma_i>0$, the singular vectors satisfy
+
+<div class="display-equation">
+$$
+Av_i=\sigma_i u_i,
+\qquad
+A^\top u_i=\sigma_i v_i.
+$$
+</div>
+
+This construction also reveals the four fundamental subspaces. Right singular vectors with positive singular values span the row space, left singular vectors with positive singular values span the column space, and zero singular values identify null directions.
 
 Truncating the decomposition after $k$ components gives
 
@@ -541,6 +920,52 @@ $$
 
 If $A$ is symmetric, this becomes $2Ax$.
 
+Derivative shape follows from the input-output pair:
+
+- a scalar with respect to a vector gives a gradient vector;
+- a scalar with respect to a matrix gives a matrix of the same shape;
+- a vector with respect to a vector gives a Jacobian matrix;
+- a matrix with respect to a matrix gives a fourth-order coordinate derivative;
+- in general, an order-$p$ output differentiated with respect to an order-$q$ input produces an order-$(p+q)$ coordinate object before contractions are applied.
+
+For $f:\mathbb{R}^n\to\mathbb{R}^m$, the Jacobian convention used here is
+
+<div class="display-equation">
+$$
+[J_f(x)]_{ij}=\frac{\partial f_i}{\partial x_j},
+\qquad
+J_f(x)\in\mathbb{R}^{m\times n}.
+$$
+</div>
+
+Consider the affine map $f(W)=W^\top x+b$, where $W\in\mathbb{R}^{n\times m}$. Differentiating the vector output with respect to the matrix $W$ formally produces a third-order object. If a scalar loss $L$ follows the affine map, however, the chain rule contracts that object with $\nabla_f L$. The result is the familiar matrix
+
+<div class="display-equation">
+$$
+\nabla_W L=x(\nabla_f L)^\top,
+$$
+</div>
+
+which has the same shape as $W$. The apparent reduction in tensor order is a contraction, not a disappearance of mathematical structure.
+
+For scalar-valued functions of a tensor, linearity and product rules retain their familiar form:
+
+<div class="display-equation">
+$$
+\nabla_X(\alpha f+\beta g)
+=
+\alpha\nabla_X f+\beta\nabla_X g,
+$$
+</div>
+
+<div class="display-equation">
+$$
+\nabla_X(fg)=f\nabla_X g+g\nabla_X f.
+$$
+</div>
+
+The chain rule is likewise a composition of derivatives, but its coordinate implementation requires the correct index contraction. Writing it as ordinary multiplication without checking dimensions can conceal transposes or entire tensor axes.
+
 When both the input and output are tensors, the full coordinate derivative may itself have high order. In practice, automatic differentiation rarely materializes it. It computes the Jacobian-vector or vector-Jacobian products required by the surrounding computation. The slogan that a gradient has the same shape as a parameter is correct for a scalar objective under a chosen inner product. It is not a general statement about derivatives of tensor-valued functions.
 
 ## Probability: A Language for Uncertainty
@@ -623,6 +1048,32 @@ $$
 The denominator is the marginal probability of the evidence. In statistical language, it is also called the evidence or marginal likelihood.
 
 Diagnostic testing illustrates the base-rate effect. A highly sensitive and specific test can still have a modest positive predictive value when the condition is rare. Repeating the test does not justify multiplying likelihoods unless the test outcomes are conditionally independent given the true state. Shared laboratory conditions, systematic calibration errors, and correlated sampling can violate that assumption.
+
+Suppose a test has sensitivity $0.95$, specificity $0.98$, and the prevalence of the condition is $0.01$. Let $D$ denote the condition and $+$ a positive result. Then
+
+<div class="display-equation">
+$$
+\mathbb{P}(D\mid +)
+=
+\frac{0.95\times0.01}
+{0.95\times0.01+0.02\times0.99}
+\approx 0.324.
+$$
+</div>
+
+The posterior probability is only about $32.4\%$ despite the apparently strong test, because false positives are applied to a much larger healthy population. If a second result is conditionally independent with the same operating characteristics, the first posterior becomes the second prior:
+
+<div class="display-equation">
+$$
+\mathbb{P}(D\mid +,+)
+=
+\frac{0.95\times0.324}
+{0.95\times0.324+0.02\times(1-0.324)}
+\approx 0.958.
+$$
+</div>
+
+The numerical jump is real only under the conditional-independence model. Bayes' rule does not create independence; that assumption must come from the data-generating process.
 
 ### Expectation, variance, and covariance
 
@@ -771,6 +1222,104 @@ $$
 </div>
 
 Priors need not be understood as claims that a physical parameter changes randomly. They can encode uncertainty about a fixed but unknown quantity. Their influence should be examined through sensitivity analysis, especially when data are limited.
+
+#### A pooled-testing example: why MLE and MAP differ
+
+Consider a pool of ten independent individuals. The infection prevalence is $0.1$, test sensitivity is $0.95$, and specificity is one. Let $X$ be the number of infected individuals and let $B$ denote a positive pooled result. Conditional on $X=x>0$, the test misses every infected individual with probability $0.05^x$, so
+
+<div class="display-equation">
+$$
+\mathbb{P}(B\mid X=x)=1-0.05^x,
+\qquad
+\mathbb{P}(B\mid X=0)=0.
+$$
+</div>
+
+As a function of $x$, this likelihood increases monotonically. If $x$ alone is treated as the parameter, maximum likelihood therefore chooses $\widehat{x}_{\mathrm{MLE}}=10$. This answer is mathematically consistent with the likelihood and practically implausible because the likelihood ignores how rare ten simultaneous infections are.
+
+The prevalence supplies a binomial prior:
+
+<div class="display-equation">
+$$
+\mathbb{P}(X=x)
+=
+\binom{10}{x}0.1^x0.9^{10-x}.
+$$
+</div>
+
+The posterior mass is proportional to
+
+<div class="display-equation">
+$$
+\mathbb{P}(X=x\mid B)
+\propto
+(1-0.05^x)\binom{10}{x}0.1^x0.9^{10-x},
+$$
+</div>
+
+whose mode is $x=1$. The contrast is not evidence that MAP is universally better. It shows that MLE and MAP answer different questions and that a sparse-data result can be dominated by modeling choices.
+
+#### A continuous example: exponential-scale estimation
+
+Let $X_1,\ldots,X_n$ be independent with density
+
+<div class="display-equation">
+$$
+p(x\mid\theta)
+=
+\frac{1}{\theta}e^{-x/\theta}\mathbf{1}\{x\geq0\},
+\qquad \theta>0.
+$$
+</div>
+
+Nonnegativity is immediate, and normalization follows from
+
+<div class="display-equation">
+$$
+\int_0^\infty \frac{1}{\theta}e^{-x/\theta}\,dx=1.
+$$
+</div>
+
+The likelihood and log-likelihood are
+
+<div class="display-equation">
+$$
+L(\theta)
+=
+\theta^{-n}\exp\left(-\frac{1}{\theta}\sum_{i=1}^n x_i\right),
+$$
+</div>
+
+<div class="display-equation">
+$$
+\ell(\theta)
+=
+-n\log\theta-\frac{1}{\theta}\sum_{i=1}^n x_i.
+$$
+</div>
+
+Differentiating gives
+
+<div class="display-equation">
+$$
+\ell'(\theta)
+=
+-\frac{n}{\theta}
++\frac{1}{\theta^2}\sum_{i=1}^n x_i.
+$$
+</div>
+
+Setting this derivative to zero yields
+
+<div class="display-equation">
+$$
+\widehat{\theta}_{\mathrm{MLE}}
+=
+\frac{1}{n}\sum_{i=1}^n x_i.
+$$
+</div>
+
+Here the sample mean is not chosen by intuition; it emerges from the likelihood model. A different observation distribution would generally produce a different estimator.
 
 ### Point estimates and uncertainty intervals
 
