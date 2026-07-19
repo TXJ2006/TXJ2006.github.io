@@ -1,0 +1,141 @@
+.markdown-content {
+  color: #30393c;
+  font: 16px/1.78 Arial, sans-serif;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4 {
+  color: #182124;
+  font-family: "Times New Roman", Times, serif;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.markdown-content h2 {
+  margin-top: 46px;
+  padding-top: 13px;
+  border-top: 1px solid #d9dfdd;
+}
+
+.markdown-content blockquote {
+  margin: 24px 0;
+  padding: 14px 20px;
+  border-left: 3px solid #a54e39;
+  background: #f5f7f6;
+  color: #495356;
+}
+
+.markdown-content pre {
+  overflow-x: auto;
+  padding: 17px;
+  border-radius: 4px;
+  background: #182124;
+  color: #edf3f2;
+}
+
+.markdown-content code {
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.markdown-content img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 620px;
+  margin: 28px auto 10px;
+}
+
+.markdown-content table {
+  display: table;
+  width: 100%;
+  margin: 22px 0 8px;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.markdown-content th,
+.markdown-content td {
+  padding: 8px 10px;
+  border: 1px solid #d9dfdd;
+  text-align: left;
+  vertical-align: top;
+}
+
+.markdown-content th {
+  background: #f5f7f6;
+}
+
+.markdown-content .table-caption {
+  margin: 0 0 24px;
+  color: #5e696c;
+  font-size: 13px;
+  text-align: center;
+}
+
+.markdown-content .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 34px 4px 0;
+}
+
+.markdown-content .numbered-equation {
+  position: relative;
+  scroll-margin-top: 92px;
+}
+
+.markdown-content .display-equation,
+.markdown-content .numbered-equation {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.markdown-content .equation-number {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  color: #5e696c;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  transform: translateY(-50%);
+}
+
+.markdown-content .footnotes {
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid #d9dfdd;
+  color: #5e696c;
+  font-size: 13px;
+}
+
+.markdown-content .footnotes li {
+  margin: 8px 0;
+}
+
+.markdown-content .footnote-ref,
+.markdown-content .footnote-backref {
+  font-size: 0.8em;
+}
+
+.markdown-content .task-list-item {
+  list-style: none;
+}
+
+@media (max-width: 620px) {
+  .markdown-content {
+    max-width: 100%;
+    overflow-x: hidden;
+    font-size: 15px;
+  }
+
+  .markdown-content table {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .markdown-content .katex-display {
+    padding-right: 26px;
+  }
+}

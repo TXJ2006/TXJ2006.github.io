@@ -50,14 +50,16 @@ Only now do the symbols become useful. Let $A_t$ be the action chosen at time $t
 
 > **The feedback pattern.**
 >
-> \[
+> <div class="display-equation">
+> $$
 > \begin{aligned}
 > \text{choose }A_t
 > &\quad\Longrightarrow\quad \text{observe }X_t(A_t),\\
 > \text{do not choose }a
 > &\quad\Longrightarrow\quad \text{do not observe }X_t(a).
 > \end{aligned}
-> \]
+> $$
+> </div>
 
 The second line is the source of almost everything in bandit theory. The missing outcome is not a nuisance. It is the problem.
 
@@ -66,14 +68,16 @@ The second line is the source of almost everything in bandit theory. The missing
 Imagine two possible actions, $A$ and $B$. For a single user, there are two potential outcomes: $X(A),\qquad X(B).$ One says what would happen if we chose $A$. The other says what would happen if we chose $B$. We can reveal only one.
 
 
-\[
+<div class="display-equation">
+$$
 \begin{array}{c|cc|c}
 \text{chosen action} & X(A) & X(B) & \text{observed outcome}\\
 \midrule
 A & \text{visible} & \text{hidden} & X(A)\\
 B & \text{hidden} & \text{visible} & X(B)
 \end{array}
-\]
+$$
+</div>
 
 
 A supervised-learning dataset tries to fill the label column for every example. A bandit dataset has a hole in every row. The hole is exactly where the unchosen actions would have been.
@@ -187,15 +191,14 @@ Read the code slowly. The full-feedback learner has the line $\texttt{rewards\_a
 ### What the code produces
 
 I ran the experiment for $T=2000$ rounds and averaged over $400$ independent runs. The table reports the final cumulative regret and the average number of pulls of each arm.
+| Algorithm         | Final regret | Pulls of arm 1 | Pulls of arm 2 | Pulls of arm 3 |
+|:------------------|-------------:|---------------:|---------------:|---------------:|
+| Full feedback     |     $4.57$ |       $26.2$ |       $74.8$ |     $1899.0$ |
+| Greedy bandit     |    $98.08$ |     $1504.0$ |      $196.0$ |      $300.0$ |
+| UCB               |    $49.81$ |      $448.7$ |      $572.2$ |      $979.1$ |
+| Thompson sampling |    $21.23$ |      $160.6$ |      $289.8$ |     $1549.5$ |
 
-  Algorithm             Final regret   Pulls of arm 1   Pulls of arm 2   Pulls of arm 3
-  ------------------- -------------- ---------------- ---------------- ----------------
-  Full feedback               $4.57$           $26.2$           $74.8$         $1899.0$
-  Greedy bandit              $98.08$         $1504.0$          $196.0$          $300.0$
-  UCB                        $49.81$          $448.7$          $572.2$          $979.1$
-  Thompson sampling          $21.23$          $160.6$          $289.8$         $1549.5$
-
-  : Average behavior over 400 runs with true means $(0.10,0.12,0.16)$ and horizon $T=2000$.
+<p class="table-caption">Average behavior over 400 runs with true means $(0.10,0.12,0.16)$ and horizon $T=2000$.</p>
 
 The numbers tell the story without any theorem.
 
@@ -215,12 +218,14 @@ A supervised learner can be viewed as a reader of a completed table. A bandit le
 
 > **The one-line difference.**
 >
-> \[
+> <div class="display-equation">
+> $$
 > \begin{aligned}
 > \text{full feedback:}&\qquad (X_t(1),X_t(2),X_t(3))\text{ is observed},\\
 > \text{bandit feedback:}&\qquad X_t(A_t)\text{ is observed, and }X_t(a)\text{ for }a\neq A_t\text{ is missing}.
 > \end{aligned}
-> \]
+> $$
+> </div>
 
 Now the later formulas have a concrete object to explain. Regret measures the cost of not knowing the best arm. Confidence intervals explain why UCB does not blindly trust early averages. Posterior sampling explains why Bayesian uncertainty can be converted into action.
 
@@ -234,31 +239,37 @@ Before an item is shown, its click outcome is unknown. After it is shown, the ou
 
 For a click/no-click reward,
 
-\[
+<div class="display-equation">
+$$
 X=\begin{cases}
 1, & \text{click},\\
 0, & \text{no click}.
 \end{cases}
-\]
+$$
+</div>
 
  If the click probability is $\mu$, then
 
-\[
+<div class="display-equation">
+$$
 \Pp(X=1)=\mu,
 \qquad
 \Pp(X=0)=1-\mu.
-\]
+$$
+</div>
 
  The average value of this random reward is
 
-\[
+<div class="display-equation">
+$$
 \begin{aligned}
 \E[X]
 &=1\cdot \Pp(X=1)+0\cdot \Pp(X=0)\\
 &=1\cdot \mu+0\cdot(1-\mu)\\
 &=\mu.
 \end{aligned}
-\]
+$$
+</div>
 
 
 So in a click model, the mean reward is simply the click probability.
@@ -275,21 +286,25 @@ The first probability question is therefore:
 
 For bounded rewards in $[0,1]$, Hoeffding's inequality says that large errors become exponentially unlikely:
 
-\[
+<div class="display-equation">
+$$
 \Pp\left(\left|\widehat\mu_n-\mu\right|\geq r\right)
 \leq
 2\exp(-2nr^2).
-\]
+$$
+</div>
 
 
 This line is not meant to be memorized as a magic spell. Read it from right to left:
 
-\[
+<div class="display-equation">
+$$
 \begin{array}{ccl}
  n \text{ grows} &\Longrightarrow& \exp(-2nr^2) \text{ shrinks},\\
  r \text{ grows} &\Longrightarrow& \exp(-2nr^2) \text{ shrinks}.
 \end{array}
-\]
+$$
+</div>
 
  More data makes a fixed error less likely. A larger error is also less likely.
 
@@ -297,16 +312,19 @@ This line is not meant to be memorized as a magic spell. Read it from right to l
 
 Algorithms usually want an error bar. That means choosing $r$ so that the probability of error is at most a small number $\delta$:
 
-\[
+<div class="display-equation">
+$$
 \Pp\left(\left|\widehat\mu_n-\mu\right|\geq r\right)
 \leq \delta.
-\]
+$$
+</div>
 
  Hoeffding gives the sufficient condition $2\exp(-2nr^2)=\delta.$ Solve this slowly:
 
 > **From Hoeffding to a confidence radius.**
 >
-> \[
+> <div class="display-equation">
+> $$
 > \begin{aligned}
 > 2\exp(-2nr^2)&=\delta\\
 > \exp(-2nr^2)&=\frac{\delta}{2}\\
@@ -316,15 +334,18 @@ Algorithms usually want an error bar. That means choosing $r$ so that the probab
 > r^2&=\frac{\log(2/\delta)}{2n}\\
 > r&=\sqrt{\frac{\log(2/\delta)}{2n}}.
 > \end{aligned}
-> \]
+> $$
+> </div>
 
 Thus a clean error bar is
 
-\[
+<div class="display-equation">
+$$
 \left|\widehat\mu_n-\mu\right|
 \leq
 \sqrt{\frac{\log(2/\delta)}{2n}}
-\]
+$$
+</div>
 
  with probability at least $1-\delta$.
 
@@ -340,30 +361,36 @@ Many proofs need a statement to hold for many arms and many times. We first cont
 
 The only tool needed is the union bound:
 
-\[
+<div class="display-equation">
+$$
 \Pp(E_1\cup E_2\cup\cdots\cup E_m)
 \leq
 \Pp(E_1)+\Pp(E_2)+\cdots+\Pp(E_m).
-\]
+$$
+</div>
 
 
 Why is this true? If two alarms can ring, the chance that at least one rings cannot exceed the sum of their separate chances. The sum may double-count worlds where both alarms ring, so it is an upper bound.
 
 For two events, the exact identity is
 
-\[
+<div class="display-equation">
+$$
 \Pp(E_1\cup E_2)
 =
 \Pp(E_1)+\Pp(E_2)-\Pp(E_1\cap E_2).
-\]
+$$
+</div>
 
  Since probabilities are nonnegative, $\Pp(E_1\cap E_2)\geq 0,$ so
 
-\[
+<div class="display-equation">
+$$
 \Pp(E_1\cup E_2)
 \leq
 \Pp(E_1)+\Pp(E_2).
-\]
+$$
+</div>
 
  For many events, repeat the same idea.
 
@@ -375,11 +402,13 @@ Let $\calF_t$ denote everything known before choosing at time $t$: $\calF_t=\{A_
 
 Conditional probability simply means probability after opening the notebook:
 
-\[
+<div class="display-equation">
+$$
 \Pp(\text{event}\mid \calF_t)
 =
 \text{probability of the event given the current notebook}.
-\]
+$$
+</div>
 
 
 > **A nontechnical reading of $\calF_t$.**
@@ -408,19 +437,22 @@ This compares the learner with the best fixed arm, not with a magical oracle tha
 
 For each arm define its gap $\Delta_a=\mu_* - \mu_a,$ and define the number of times arm $a$ is played by $N_a(T)=\sum_{t=1}^T \ind\{A_t=a\}.$ The indicator $\ind\{A_t=a\}$ is just a switch:
 
-\[
+<div class="display-equation">
+$$
 \ind\{A_t=a\}=\begin{cases}
 1,& A_t=a,\\
 0,& A_t\neq a.
 \end{cases}
-\]
+$$
+</div>
 
 
 Now decompose regret:
 
 > **Regret as gap times count.**
 >
-> \[
+> <div class="display-equation">
+> $$
 > \begin{aligned}
 > \Reg_T
 > &=\sum_{t=1}^T(\mu_* - \mu_{A_t})\\
@@ -428,7 +460,8 @@ Now decompose regret:
 > &=\sum_{a=1}^K(\mu_* - \mu_a)\sum_{t=1}^T\ind\{A_t=a\}\\
 > &=\sum_{a=1}^K\Delta_a N_a(T).
 > \end{aligned}
-> \]
+> $$
+> </div>
 
 This formula is the first serious piece of bandit analysis. It says that a bad arm hurts in two ways: how bad it is, and how often it is played.
 
@@ -436,15 +469,18 @@ This formula is the first serious piece of bandit analysis. It says that a bad a
 
 Suppose that at time $t$ the algorithm chose arm $j$. Then exactly one indicator is equal to $1$:
 
-\[
+<div class="display-equation">
+$$
 \ind\{A_t=j\}=1,
 \qquad
 \ind\{A_t=a\}=0\quad(a\neq j).
-\]
+$$
+</div>
 
  Therefore
 
-\[
+<div class="display-equation">
+$$
 \begin{aligned}
 \sum_{a=1}^K(\mu_* - \mu_a)\ind\{A_t=a\}
 &=(\mu_* - \mu_1)\ind\{j=1\}+\cdots+(\mu_* - \mu_K)\ind\{j=K\}\\
@@ -452,7 +488,8 @@ Suppose that at time $t$ the algorithm chose arm $j$. Then exactly one indicator
 &=\mu_* - \mu_j\\
 &=\mu_* - \mu_{A_t}.
 \end{aligned}
-\]
+$$
+</div>
 
 
 No probability is being used here. It is bookkeeping.
@@ -463,30 +500,36 @@ The count $N_a(T)$ is random because the algorithm's choices depend on random re
 
 For any event $E$,
 
-\[
+<div class="display-equation">
+$$
 \E[\ind\{E\}]
 =1\cdot\Pp(E)+0\cdot\Pp(E^c)
 =\Pp(E).
-\]
+$$
+</div>
 
  Therefore
 
-\[
+<div class="display-equation">
+$$
 \begin{aligned}
 \E[N_a(T)]
 &=\E\left[\sum_{t=1}^T\ind\{A_t=a\}\right]\\
 &=\sum_{t=1}^T\E[\ind\{A_t=a\}]\\
 &=\sum_{t=1}^T\Pp(A_t=a).
 \end{aligned}
-\]
+$$
+</div>
 
  Taking expectation in the regret decomposition gives
 
-\[
+<div class="display-equation">
+$$
 \E[\Reg_T]
 =
 \sum_{a=1}^K\Delta_a\E[N_a(T)].
-\]
+$$
+</div>
 
 
 > **Takeaway.**
@@ -507,11 +550,13 @@ This is called explore-then-commit. The name is plain because the algorithm is p
 
 Let there be two arms. Arm 1 is better:
 
-\[
+<div class="display-equation">
+$$
 \mu_1>\mu_2,
 \qquad
 \Delta=\mu_1-\mu_2>0.
-\]
+$$
+</div>
 
  Explore-then-commit pulls each arm $m$ times. Then it chooses the arm with larger empirical mean.
 
@@ -521,17 +566,21 @@ There are two possible sources of regret.
 
 First, exploration pulls the bad arm $m$ times: $\text{exploration regret}=m\Delta.$ Second, after exploration, the algorithm may wrongly commit to arm 2. If this happens, it pays roughly $\Delta$ for every remaining round:
 
-\[
+<div class="display-equation">
+$$
 \text{wrong-commit regret}\leq (T-2m)\Delta\cdot \Pp(\widehat\mu_2\geq \widehat\mu_1).
-\]
+$$
+</div>
 
  Thus
 
-\[
+<div class="display-equation">
+$$
 \E[\Reg_T]
 \leq
 m\Delta+(T-2m)\Delta\Pp(\widehat\mu_2\geq \widehat\mu_1).
-\]
+$$
+</div>
 
 
 > **Diagram.** Explore-then-commit separates learning and earning. The separation makes the analysis easy and exposes what later algorithms improve.
@@ -542,43 +591,52 @@ The algorithm commits wrongly if $\widehat\mu_2\geq \widehat\mu_1.$ This event c
 
 Since $\mu_1-\mu_2=\Delta,$ the midpoint between the two means is $\frac{\mu_1+\mu_2}{2}=\mu_1-\frac{\Delta}{2}=\mu_2+\frac{\Delta}{2}.$ If both estimates are on the correct side of this midpoint, then arm 1 wins: $\widehat\mu_1>\frac{\mu_1+\mu_2}{2}>\widehat\mu_2.$ Therefore, the wrong event implies at least one failure:
 
-\[
+<div class="display-equation">
+$$
 \{\widehat\mu_2\geq\widehat\mu_1\}
 \subseteq
 \left\{\widehat\mu_1\leq \mu_1-\frac{\Delta}{2}\right\}
 \cup
 \left\{\widehat\mu_2\geq \mu_2+\frac{\Delta}{2}\right\}.
-\]
+$$
+</div>
 
 
 For bounded rewards in $[0,1]$, Hoeffding's inequality says
 
-\[
+<div class="display-equation">
+$$
 \Pp(\widehat\mu-\mu\geq \varepsilon)
 \leq
 \exp(-2m\varepsilon^2),
-\]
+$$
+</div>
 
  and the same bound holds for downward deviations. With $\varepsilon=\Delta/2$,
 
-\[
+<div class="display-equation">
+$$
 \exp\left(-2m\left(\frac{\Delta}{2}\right)^2\right)
 =
 \exp\left(-\frac{m\Delta^2}{2}\right).
-\]
+$$
+</div>
 
  Using a union bound: $\Pp(E_1\cup E_2)\leq \Pp(E_1)+\Pp(E_2).$ So
 
-\[
+<div class="display-equation">
+$$
 \Pp(\widehat\mu_2\geq \widehat\mu_1)
 \leq
 2\exp\left(-\frac{m\Delta^2}{2}\right).
-\]
+$$
+</div>
 
 
 > **Wrong commitment, line by line.**
 >
-> \[
+> <div class="display-equation">
+> $$
 > \begin{aligned}
 > \Pp(\widehat\mu_2\geq\widehat\mu_1)
 > &\leq
@@ -592,15 +650,18 @@ For bounded rewards in $[0,1]$, Hoeffding's inequality says
 > &=
 > 2\exp\left(-\frac{m\Delta^2}{2}\right).
 > \end{aligned}
-> \]
+> $$
+> </div>
 
 Plugging this into regret gives
 
-\[
+<div class="display-equation">
+$$
 \E[\Reg_T]
 \leq
 m\Delta+2T\Delta\exp\left(-\frac{m\Delta^2}{2}\right).
-\]
+$$
+</div>
 
 
 ### What this simple algorithm teaches
@@ -637,17 +698,20 @@ $A_t\in\argmax_a\left\{\widehat\mu_a(t)+r_a(t)\right\}.$
 
 Let an arm be pulled $n$ times. Let its rewards be $Y_1,\ldots,Y_n$, each in $[0,1]$, with mean $\mu$. The empirical mean is $\widehat\mu_n=\frac{1}{n}\sum_{i=1}^n Y_i.$ Hoeffding's inequality says
 
-\[
+<div class="display-equation">
+$$
 \Pp\left(\widehat\mu_n-\mu\geq r\right)
 \leq
 \exp(-2nr^2).
-\]
+$$
+</div>
 
  We want the right side to be a tiny number, say $t^{-4}$. So choose $r$ by solving $\exp(-2nr^2)=t^{-4}.$ Now solve it slowly:
 
 > **Solving for the UCB radius.**
 >
-> \[
+> <div class="display-equation">
+> $$
 > \begin{aligned}
 > \exp(-2nr^2)&=t^{-4}\\
 > \log\left(\exp(-2nr^2)\right)&=\log(t^{-4})\\
@@ -656,7 +720,8 @@ Let an arm be pulled $n$ times. Let its rewards be $Y_1,\ldots,Y_n$, each in $[0
 > r^2&=\frac{2\log t}{n}\\
 > r&=\sqrt{\frac{2\log t}{n}}.
 > \end{aligned}
-> \]
+> $$
+> </div>
 
 Thus a natural confidence radius is $r_a(t)=\sqrt{\frac{2\log t}{N_a(t)}}.$ It shrinks when the arm is sampled often. It grows slowly with time because the algorithm makes many decisions and we want confidence to hold across many of them.
 
@@ -664,12 +729,14 @@ Thus a natural confidence radius is $r_a(t)=\sqrt{\frac{2\log t}{N_a(t)}}.$ It s
 
 Here is the event we want:
 
-\[
+<div class="display-equation">
+$$
 \left|\widehat\mu_a(t)-\mu_a\right|
 \leq
 r_a(t)
 \quad\text{for all arms and relevant times.}
-\]
+$$
+</div>
 
  Call this event $G$. On $G$, every confidence interval contains its true mean.
 
@@ -679,35 +746,43 @@ Why can we hope $G$ holds? Because each individual failure is rare, and a union 
 >
 > For one arm and one sample size $n$,
 
-\[
+<div class="display-equation">
+$$
 \Pp\left(\widehat\mu_{a,n}-\mu_a>\sqrt{\frac{2\log T}{n}}\right)
 \leq
 \exp\left(-2n\cdot\frac{2\log T}{n}\right)
 =T^{-4}.
-\]
+$$
+</div>
 
  The lower tail is the same:
 
-\[
+<div class="display-equation">
+$$
 \Pp\left(\mu_a-\widehat\mu_{a,n}>\sqrt{\frac{2\log T}{n}}\right)
 \leq T^{-4}.
-\]
+$$
+</div>
 
  Therefore
 
-\[
+<div class="display-equation">
+$$
 \Pp\left(\left|\widehat\mu_{a,n}-\mu_a\right|>\sqrt{\frac{2\log T}{n}}\right)
 \leq 2T^{-4}.
-\]
+$$
+</div>
 
  There are at most $KT$ pairs $(a,n)$, so
 
-\[
+<div class="display-equation">
+$$
 \Pp(G^c)
 \leq
 \sum_{a=1}^K\sum_{n=1}^T 2T^{-4}
 =2KT^{-3}.
-\]
+$$
+</div>
 
 
 No mystery is hidden here. The good event is just the statement that all sample averages are close to their true means. The union bound is just the rule that if many bad things can happen, the chance that at least one happens is at most the sum of their chances.
@@ -716,47 +791,57 @@ No mystery is hidden here. The good event is just the statement that all sample 
 
 Let $a$ be a suboptimal arm. Its gap is $\Delta_a=\mu_* - \mu_a>0.$ Suppose the good event $G$ holds and UCB chooses arm $a$ at time $t$. Since UCB chose $a$, its index must be at least the index of the best arm $*$:
 
-\[
+<div class="display-equation">
+$$
 \widehat\mu_a(t)+r_a(t)
 \geq
 \widehat\mu_*(t)+r_*(t).
-\]
+$$
+</div>
 
  On $G$, $\widehat\mu_*(t)+r_*(t)\geq \mu_*.$ Also on $G$,
 
-\[
+<div class="display-equation">
+$$
 \widehat\mu_a(t)
 \leq \mu_a+r_a(t).
-\]
+$$
+</div>
 
  Thus
 
-\[
+<div class="display-equation">
+$$
 \widehat\mu_a(t)+r_a(t)
 \leq
 \mu_a+2r_a(t).
-\]
+$$
+</div>
 
  Putting the inequalities together:
 
-\[
+<div class="display-equation">
+$$
 \mu_*
 \leq
 \mu_a+2r_a(t).
-\]
+$$
+</div>
 
  Therefore $\Delta_a\leq 2r_a(t).$ Using $r_a(t)=\sqrt{2\log T/N_a(t)}$: $\Delta_a\leq 2\sqrt{\frac{2\log T}{N_a(t)}}.$ Now solve for $N_a(t)$:
 
 > **A bad arm can be chosen only while its radius is large.**
 >
-> \[
+> <div class="display-equation">
+> $$
 > \begin{aligned}
 > \Delta_a&\leq 2\sqrt{\frac{2\log T}{N_a(t)}}\\
 > \frac{\Delta_a}{2}&\leq \sqrt{\frac{2\log T}{N_a(t)}}\\
 > \frac{\Delta_a^2}{4}&\leq \frac{2\log T}{N_a(t)}\\
 > N_a(t)&\leq \frac{8\log T}{\Delta_a^2}.
 > \end{aligned}
-> \]
+> $$
+> </div>
 
 This is the entire UCB proof in one picture: a bad arm is played only while it can still hide behind uncertainty. Once its confidence interval is narrow enough, it cannot beat the best arm's lower reality anymore.
 
@@ -764,19 +849,23 @@ This is the entire UCB proof in one picture: a bad arm is played only while it c
 
 On the good event, each bad arm $a$ is pulled at most about $\frac{8\log T}{\Delta_a^2}$ times after initialization. Its regret contribution is gap times count:
 
-\[
+<div class="display-equation">
+$$
 \Delta_a\cdot \frac{8\log T}{\Delta_a^2}
 =
 \frac{8\log T}{\Delta_a}.
-\]
+$$
+</div>
 
  Adding arms gives
 
-\[
+<div class="display-equation">
+$$
 \E[\Reg_T]
 \lesssim
 \sum_{a:\Delta_a>0}\frac{\log T}{\Delta_a}.
-\]
+$$
+</div>
 
 
 > **Takeaway.**
@@ -803,7 +892,8 @@ Suppose each thumbnail has an unknown click probability $\theta_a$. A click is $
 
 > **Beta-Bernoulli update.**
 >
-> \[
+> <div class="display-equation">
+> $$
 > \begin{aligned}
 > \text{prior density:}\quad
 > p(\theta)&\propto \theta^{\alpha-1}(1-\theta)^{\beta-1},\\
@@ -814,9 +904,11 @@ Suppose each thumbnail has an unknown click probability $\theta_a$. A click is $
 > &=\theta^{\alpha}(1-\theta)^{\beta-1},\\
 > \theta\mid 1&\sim \Beta(\alpha+1,\beta).
 > \end{aligned}
-> \]
+> $$
+> </div>
 
-\[
+<div class="display-equation">
+$$
 \begin{aligned}
 \text{one no-click:}\quad
 p(0\mid\theta)&=1-\theta,\\
@@ -824,7 +916,8 @@ p(\theta\mid 0)&\propto (1-\theta)\theta^{\alpha-1}(1-\theta)^{\beta-1}\\
 &=\theta^{\alpha-1}(1-\theta)^{\beta},\\
 \theta\mid 0&\sim\Beta(\alpha,\beta+1).
 \end{aligned}
-\]
+$$
+</div>
 
 
 After $S_a$ clicks and $F_a$ no-clicks on arm $a$, $\theta_a\mid\text{data}\sim\Beta(\alpha_a+S_a,\beta_a+F_a).$
@@ -847,10 +940,12 @@ So the exploration is not manually scheduled. It emerges from uncertainty.
 
 Let $A^*$ be the optimal arm under the unknown true parameter. Given the history $\calF_t$, posterior sampling satisfies
 
-\[
+<div class="display-equation">
+$$
 \Pp(A_t=a\mid\calF_t)
 =\Pp(A^*=a\mid\calF_t).
-\]
+$$
+</div>
 
  This identity is the clean algebraic soul of Thompson sampling.
 
@@ -858,27 +953,33 @@ Let $A^*$ be the optimal arm under the unknown true parameter. Given the history
 
 Let $\theta$ be the unknown vector of arm means. Let $g(\theta)=\argmax_a \theta_a.$ The true optimal arm is $A^*=g(\theta).$ Thompson sampling draws $\widetilde\theta\sim \text{posterior of }\theta\text{ given }\calF_t,$ and plays $A_t=g(\widetilde\theta).$ Because $\theta$ and $\widetilde\theta$ have the same conditional distribution given $\calF_t$,
 
-\[
+<div class="display-equation">
+$$
 \theta\mid\calF_t
 \quad\overset{d}{=}\quad
 \widetilde\theta\mid\calF_t.
-\]
+$$
+</div>
 
  Therefore applying the same map $g$ preserves the conditional distribution:
 
-\[
+<div class="display-equation">
+$$
 g(\theta)\mid\calF_t
 \quad\overset{d}{=}\quad
 g(\widetilde\theta)\mid\calF_t.
-\]
+$$
+</div>
 
  Thus
 
-\[
+<div class="display-equation">
+$$
 A^*\mid\calF_t
 \quad\overset{d}{=}\quad
 A_t\mid\calF_t.
-\]
+$$
+</div>
 
  So for each arm $a$, $\Pp(A^*=a\mid\calF_t)=\Pp(A_t=a\mid\calF_t).$
 
@@ -902,11 +1003,13 @@ The homepage example was too simple: every visitor was treated the same. In prac
 
 A contextual bandit sees a context $x_t$, chooses an action $A_t$, and receives the reward of that action. The missing counterfactual remains:
 
-\[
+<div class="display-equation">
+$$
 \text{observe }X_t(A_t,x_t),
 \qquad
 \text{miss }X_t(a,x_t),\ a\neq A_t.
-\]
+$$
+</div>
 
  The setting becomes richer, but the wound is the same.
 
@@ -922,7 +1025,8 @@ The UCB idea becomes geometric: $\text{score}(x)=x^\top\widehat\theta+\beta\sqrt
 
 > **Linear confidence in one line.**
 >
-> \[
+> <div class="display-equation">
+> $$
 > \begin{aligned}
 > |x^\top(\widehat\theta-\theta_*)|
 > &=|\langle x,\widehat\theta-\theta_*\rangle|\\
@@ -930,7 +1034,8 @@ The UCB idea becomes geometric: $\text{score}(x)=x^\top\widehat\theta+\beta\sqrt
 > &\leq \|V^{-1/2}x\|_2\cdot\|V^{1/2}(\widehat\theta-\theta_*)\|_2\\
 > &\leq \sqrt{x^\top V^{-1}x}\cdot \beta.
 > \end{aligned}
-> \]
+> $$
+> </div>
 
 The last inequality is just Cauchy-Schwarz plus a confidence ellipsoid. This is the geometric heart of linear UCB.
 
@@ -942,9 +1047,11 @@ Gaussian-process bandits model the unknown function as a random smooth landscape
 
 The same old idea appears again: $\text{mean prediction} + \text{uncertainty bonus}.$ For GP-UCB this takes the form
 
-\[
+<div class="display-equation">
+$$
 A_t\in\argmax_{x\in\calX}\left\{m_{t-1}(x)+\sqrt{\beta_t}\sigma_{t-1}(x)\right\}.
-\]
+$$
+</div>
 
  This line connects finite-armed bandits to Bayesian optimization, a major line of work including Srinivas, Krause, Kakade, and Seeger (Srinivas et al. 2010), the Cambridge probabilistic modelling tradition (Ghahramani 2015), and Oxford work on Gaussian-process global optimization (Osborne et al. 2009).
 
@@ -968,9 +1075,7 @@ Explore-then-commit buys information on a fixed schedule. UCB buys it adaptively
 
 The deepest lesson is not a formula. It is a research habit: before designing an algorithm, ask what feedback is actually visible. Most of the mathematics follows from that one question.
 
-\[heading=bibintoc,title=References\]
-
-
+## References
 Ghahramani, Z. 2015. "Probabilistic Machine Learning and Artificial Intelligence." *Nature* 521: 452--59.
 
 

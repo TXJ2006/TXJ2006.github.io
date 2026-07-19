@@ -48,36 +48,40 @@ The first step is model design. The second is information accounting. The third 
 
 We begin without bandits. Suppose a coin has bias either $p$ or $q$, where $p\neq q$. Let
 
-\[
+<div class="display-equation">
+$$
 P=\Ber(p),
 \qquad
 Q=\Ber(q).
-\]
+$$
+</div>
 
  One toss produces $X\in\{0,1\}$.
 
 If $X=1$, the probability of the observation is $p$ under $P$ and $q$ under $Q$. If $X=0$, the probabilities are $1-p$ and $1-q$. The likelihood ratio is therefore
 
-\[
+<div class="display-equation">
+$$
 \frac{P(X)}{Q(X)}
 =
 \begin{cases}
 \dfrac{p}{q}, & X=1,\\[0.8em]
 \dfrac{1-p}{1-q}, & X=0.
 \end{cases}
-\]
+$$
+</div>
 
  Its logarithm can be written without cases:
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:one-step-llr">
+$$
 \ell(X)
 =
 X\log\frac{p}{q}
 +(1-X)\log\frac{1-p}{1-q}.
-\label{eq:one-step-llr}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 1">(1)</span>
+</div>
 
 
 A positive value favors $P$; a negative value favors $Q$.
@@ -86,7 +90,8 @@ A positive value favors $P$; a negative value favors $Q$.
 
 For independent observations $X_1,\ldots,X_n$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \frac{P^n(X_1,\ldots,X_n)}{Q^n(X_1,\ldots,X_n)}
 &=
@@ -97,14 +102,16 @@ L_n
 &=
 \sum_{i=1}^{n}\ell(X_i).
 \end{align*}
-\]
+$$
+</div>
 
 
 The log-likelihood ratio is a ledger. Every observation adds one entry.
 
 Under $P$, the expected entry is
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E_P[\ell(X)]
 &=
@@ -121,18 +128,19 @@ p\log\frac{p}{q}
 &=
 \kl(p,q).
 \end{align*}
-\]
+$$
+</div>
 
  Hence
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:iid-evidence-drift">
+$$
 \boxed{
 \E_P[L_n]=n\,\kl(p,q).
 }
-\label{eq:iid-evidence-drift}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 2">(2)</span>
+</div>
 
 
 KL divergence is not merely a distance-like quantity. In this experiment it is the expected evidence supplied by one observation.
@@ -151,25 +159,27 @@ Some paths can favor the wrong model for a long time. That is not a defect in th
 
 Let $P$ and $Q$ be two probability laws with densities $p$ and $q$ on the same sample space. Define $L(x)=\log\frac{p(x)}{q(x)}.$ Then $q(x)=p(x)e^{-L(x)}.$ For any event $E$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 Q(E)
 &=\int_E q(x)\,\dd x\\
 &=\int_E p(x)e^{-L(x)}\,\dd x\\
 &=\E_P\left[\one_E e^{-L}\right].
 \end{align*}
-\]
+$$
+</div>
 
  Thus
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:change-measure-event">
+$$
 \boxed{
 Q(E)=\E_P\left[\one_E e^{-L}\right].
 }
-\label{eq:change-measure-event}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 3">(3)</span>
+</div>
 
 
 This is the change-of-measure identity. It says that a probability in the $Q$-world can be computed by averaging in the $P$-world, provided each outcome is reweighted by how much more or less plausible it is under $Q$.
@@ -180,49 +190,56 @@ There is no algorithm in this identity. It is a statement about two probability 
 
 Suppose the final decision is summarized by an event $E$. Let
 
-\[
+<div class="display-equation">
+$$
 \alpha=P(E),
 \qquad
 \beta=Q(E).
-\]
+$$
+</div>
 
  The entire observation may be complicated, but the event records only one bit: did $E$ occur?
 
 Information cannot increase when data are compressed. In this binary case,
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:binary-data-processing">
+$$
 \boxed{
 \KL(P\Vert Q)\geq \kl(\alpha,\beta).
 }
-\label{eq:binary-data-processing}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 4">(4)</span>
+</div>
 
 
 We now derive it directly.
 
 On the event $E$, write $P_E$ and $Q_E$ for the conditional laws. Then
 
-\[
+<div class="display-equation">
+$$
 P(\dd x)=\alpha P_E(\dd x),
 \qquad
 Q(\dd x)=\beta Q_E(\dd x),
 \qquad x\in E.
-\]
+$$
+</div>
 
  Therefore, on $E$,
 
-\[
+<div class="display-equation">
+$$
 \frac{\dd P}{\dd Q}
 =
 \frac{\alpha}{\beta}
 \frac{\dd P_E}{\dd Q_E}.
-\]
+$$
+</div>
 
  The contribution of $E$ to KL is
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \int_E \log\frac{\dd P}{\dd Q}\,\dd P
 &=
@@ -236,19 +253,23 @@ Q(\dd x)=\beta Q_E(\dd x),
 +
 \alpha\KL(P_E\Vert Q_E).
 \end{align*}
-\]
+$$
+</div>
 
  The same calculation on $E^c$ gives
 
-\[
+<div class="display-equation">
+$$
 (1-\alpha)\log\frac{1-\alpha}{1-\beta}
 +
 (1-\alpha)\KL(P_{E^c}\Vert Q_{E^c}).
-\]
+$$
+</div>
 
  Adding both pieces,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \KL(P\Vert Q)
 &=
@@ -264,7 +285,8 @@ Q(\dd x)=\beta Q_E(\dd x),
 &=
 \kl(\alpha,\beta).
 \end{align*}
-\]
+$$
+</div>
 
  The inequality uses only the nonnegativity of KL divergence.
 
@@ -276,27 +298,29 @@ Q(\dd x)=\beta Q_E(\dd x),
 
 Another common form is the Bretagnolle--Huber inequality. For every event $E$,
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:bh">
+$$
 \boxed{
 P(E)+Q(E^c)
 \geq
 \frac{1}{2}\exp\{-\KL(P\Vert Q)\}.
 }
-\label{eq:bh}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 5">(5)</span>
+</div>
 
 
-Interpret $E$ as the decision "choose $Q$." Then $P(E)$ is an error under $P$, while $Q(E^c)$ is an error under $Q$. Equation [\[eq:bh\]](#eq:bh){reference-type="eqref" reference="eq:bh"} says that the two errors cannot both be tiny unless the two laws have accumulated substantial KL divergence.
+Interpret $E$ as the decision "choose $Q$." Then $P(E)$ is an error under $P$, while $Q(E^c)$ is an error under $Q$. Equation [Eq. (5)](#eq:bh) says that the two errors cannot both be tiny unless the two laws have accumulated substantial KL divergence.
 
-The complete proof is given in Appendix [\[app:bh-proof\]](#app:bh-proof){reference-type="ref" reference="app:bh-proof"}. For now, the important shape is
+The complete proof is given in Appendix [the appendix](#proof-of-the-bretagnolle-huber-inequality). For now, the important shape is
 
-\[
+<div class="display-equation">
+$$
 \text{testing error}
 \gtrsim
 e^{-\text{information}}.
-\]
+$$
+</div>
 
 
 ![The exact error of the optimal likelihood-ratio test and the Bretagnolle–Huber lower bound for $\Ber(0.4)$ versus $\Ber(0.6)$. The bound is not exact, but it captures the unavoidable exponential scale.](/images/notes/assets/change-of-measure/testing_error_bound.webp)
@@ -313,34 +337,35 @@ At round $t$, the policy chooses an arm $A_t$ from the past history $H_{t-1}=(A_
 
 For a realized history $h_T=(a_1,x_1,\ldots,a_T,x_T),$ the density under $\nu$ factors as
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:history-factorization-nu">
+$$
 P_\nu(h_T)
 =
 \prod_{t=1}^{T}
 \pi_t(a_t\mid h_{t-1})p_{a_t}(x_t).
-\label{eq:history-factorization-nu}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 6">(6)</span>
+</div>
 
  Under $\nu'$,
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:history-factorization-nup">
+$$
 P_{\nu'}(h_T)
 =
 \prod_{t=1}^{T}
 \pi_t(a_t\mid h_{t-1})p'_{a_t}(x_t).
-\label{eq:history-factorization-nup}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 7">(7)</span>
+</div>
 
 
 ### The policy terms cancel
 
-Divide [\[eq:history-factorization-nu\]](#eq:history-factorization-nu){reference-type="eqref" reference="eq:history-factorization-nu"} by [\[eq:history-factorization-nup\]](#eq:history-factorization-nup){reference-type="eqref" reference="eq:history-factorization-nup"}:
+Divide [Eq. (6)](#eq:history-factorization-nu) by [Eq. (7)](#eq:history-factorization-nup):
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \frac{P_\nu(h_T)}{P_{\nu'}(h_T)}
 &=
@@ -349,19 +374,20 @@ Divide [\[eq:history-factorization-nu\]](#eq:history-factorization-nu){reference
 &=
 \prod_{t=1}^{T}\frac{p_{a_t}(x_t)}{p'_{a_t}(x_t)}.
 \end{align*}
-\]
+$$
+</div>
 
  Therefore the history log-likelihood ratio is
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:bandit-llr">
+$$
 L_T
 =
 \sum_{t=1}^{T}
 \log\frac{p_{A_t}(X_t)}{p'_{A_t}(X_t)}.
-\label{eq:bandit-llr}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 8">(8)</span>
+</div>
 
 
 This cancellation is the central algebraic fact. The policy may be adaptive, randomized, and highly nonlinear. None of those policy probabilities appears in the final likelihood ratio, because the same decision rule is used in both worlds.
@@ -370,9 +396,10 @@ This cancellation is the central algebraic fact. The policy may be adaptive, ran
 
 ### Expected evidence equals pulls times armwise KL
 
-Take expectations under $\nu$. From [\[eq:bandit-llr\]](#eq:bandit-llr){reference-type="eqref" reference="eq:bandit-llr"},
+Take expectations under $\nu$. From [Eq. (8)](#eq:bandit-llr),
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E_\nu[L_T]
 &=
@@ -381,11 +408,13 @@ Take expectations under $\nu$. From [\[eq:bandit-llr\]](#eq:bandit-llr){referenc
 \log\frac{p_{A_t}(X_t)}{p'_{A_t}(X_t)}
 \right].
 \end{align*}
-\]
+$$
+</div>
 
  Condition on the selected arm. If $A_t=a$, then $X_t\sim\nu_a$ under $\nu$, and therefore
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E_\nu\left[
 \left.
@@ -397,11 +426,13 @@ Take expectations under $\nu$. From [\[eq:bandit-llr\]](#eq:bandit-llr){referenc
 &=
 \KL(\nu_a\Vert\nu'_a).
 \end{align*}
-\]
+$$
+</div>
 
  Hence
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E_\nu[L_T]
 &=
@@ -418,12 +449,13 @@ Take expectations under $\nu$. From [\[eq:bandit-llr\]](#eq:bandit-llr){referenc
 \right]
 \KL(\nu_a\Vert\nu'_a).
 \end{align*}
-\]
+$$
+</div>
 
  Define the number of pulls $N_a(T)=\sum_{t=1}^{T}\one\{A_t=a\}.$ Then
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:divergence-decomposition">
+$$
 \boxed{
 \KL(P_\nu^T\Vert P_{\nu'}^T)
 =
@@ -432,9 +464,9 @@ Take expectations under $\nu$. From [\[eq:bandit-llr\]](#eq:bandit-llr){referenc
 \sum_{a=1}^{K}
 \E_\nu[N_a(T)]\KL(\nu_a\Vert\nu'_a).
 }
-\label{eq:divergence-decomposition}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 9">(9)</span>
+</div>
 
 
 This is often called the divergence decomposition. It turns a complicated adaptive experiment into a simple information ledger:
@@ -454,15 +486,14 @@ The supplied code runs UCB under $\nu=(\Ber(0.62),\Ber(0.50))$ and compares it w
 ![The empirical mean log-likelihood ratio matches the pull-count information ledger, even though the sampling rule is adaptive.](/images/notes/assets/change-of-measure/adaptive_information_identity.webp)
 
 *The empirical mean log-likelihood ratio matches the pull-count information ledger, even though the sampling rule is adaptive.*
+| Horizon | $\E[N_2(T)]$ | empirical $\E[L_T]$ | $\E[N_2(T)]\kl(0.50,0.68)$ |
+|--------:|---------------:|----------------------:|-----------------------------:|
+|     100 |          37.05 |                 2.581 |                        2.572 |
+|     400 |         114.50 |                 7.997 |                        7.946 |
+|     800 |         187.81 |                13.040 |                       13.034 |
+|    1200 |         244.16 |                16.966 |                       16.945 |
 
-    Horizon   $\E[N_2(T)]$   empirical $\E[L_T]$   $\E[N_2(T)]\kl(0.50,0.68)$
-  --------- -------------- --------------------- ----------------------------
-        100          37.05                 2.581                        2.572
-        400         114.50                 7.997                        7.946
-        800         187.81                13.040                       13.034
-       1200         244.16                16.966                       16.945
-
-  : Adaptive information accounting under UCB, based on 12,000 replications.
+<p class="table-caption">Adaptive information accounting under UCB, based on 12,000 replications.</p>
 
 The code performing the essential update is short:
 
@@ -489,51 +520,55 @@ Many bandit algorithms do not stop at a fixed horizon. They stop when the data a
 
 The stopped log-likelihood ratio is
 
-\[
+<div class="display-equation">
+$$
 L_\tau
 =
 \sum_{t=1}^{\tau}
 \log\frac{p_{A_t}(X_t)}{p'_{A_t}(X_t)}.
-\]
+$$
+</div>
 
  Under the usual integrability conditions, the same information ledger holds:
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:stopped-ledger">
+$$
 \E_\nu[L_\tau]
 =
 \sum_{a=1}^{K}
 \E_\nu[N_a(\tau)]\KL(\nu_a\Vert\nu'_a).
-\label{eq:stopped-ledger}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 10">(10)</span>
+</div>
 
 
 Now take any event $E\in\calF_\tau$. It could be the event that the algorithm recommends arm 1, eliminates arm 4, or stops before a given time. Applying binary data processing to the stopped history gives
 
-\[
+<div class="display-equation">
+$$
 \E_\nu[L_\tau]
 \geq
 \kl\bigl(\Pbb_\nu(E),\Pbb_{\nu'}(E)\bigr).
-\]
+$$
+</div>
 
- Combining with [\[eq:stopped-ledger\]](#eq:stopped-ledger){reference-type="eqref" reference="eq:stopped-ledger"} yields the fundamental bandit change-of-measure inequality.
+ Combining with [Eq. (10)](#eq:stopped-ledger) yields the fundamental bandit change-of-measure inequality.
 
 > **Bandit transportation inequality.**
 >
 > For two bandit environments $\nu$ and $\nu'$, an almost surely finite stopping time $\tau$, and any event $E\in\calF_\tau$,
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:transportation">
+$$
 \boxed{
 \sum_{a=1}^{K}
 \E_\nu[N_a(\tau)]\KL(\nu_a\Vert\nu'_a)
 \geq
 \kl\bigl(\Pbb_\nu(E),\Pbb_{\nu'}(E)\bigr).
 }
-\label{eq:transportation}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 11">(11)</span>
+</div>
 
 
 The word "transportation" is helpful. The left side measures how much information the algorithm transports from observations into its history. The right side measures how far apart the algorithm's behavior must be in the two worlds.
@@ -542,72 +577,86 @@ The word "transportation" is helpful. The left side measures how much informatio
 
 **Step 1: the stopped change-of-measure identity.** For $E\in\calF_\tau$,
 
-\[
+<div class="display-equation">
+$$
 \Pbb_{\nu'}(E)
 =
 \E_\nu\left[\one_E e^{-L_\tau}\right].
-\]
+$$
+</div>
 
 
 **Step 2: compress the stopped history to $E$.** The laws of the whole stopped history satisfy
 
-\[
+<div class="display-equation">
+$$
 \KL(P_\nu^{H_\tau}\Vert P_{\nu'}^{H_\tau})
 \geq
 \kl\bigl(\Pbb_\nu(E),\Pbb_{\nu'}(E)\bigr).
-\]
+$$
+</div>
 
  Since the log density ratio of the stopped histories is $L_\tau$,
 
-\[
+<div class="display-equation">
+$$
 \KL(P_\nu^{H_\tau}\Vert P_{\nu'}^{H_\tau})
 =
 \E_\nu[L_\tau].
-\]
+$$
+</div>
 
 
 **Step 3: expand the expected evidence arm by arm.** Write the observations from arm $a$ in their order of appearance as $Y_{a,1},Y_{a,2},\ldots.$ Then
 
-\[
+<div class="display-equation">
+$$
 L_\tau
 =
 \sum_{a=1}^{K}
 \sum_{s=1}^{N_a(\tau)}
 \log\frac{p_a(Y_{a,s})}{p'_a(Y_{a,s})}.
-\]
+$$
+</div>
 
  The expected increment from arm $a$ is
 
-\[
+<div class="display-equation">
+$$
 \E_\nu\left[
 \log\frac{p_a(Y_{a,s})}{p'_a(Y_{a,s})}
 \right]
 =
 \KL(\nu_a\Vert\nu'_a).
-\]
+$$
+</div>
 
  Wald's identity therefore gives
 
-\[
+<div class="display-equation">
+$$
 \E_\nu[L_\tau]
 =
 \sum_{a=1}^{K}
 \E_\nu[N_a(\tau)]\KL(\nu_a\Vert\nu'_a).
-\]
+$$
+</div>
 
- Putting the three steps together proves [\[eq:transportation\]](#eq:transportation){reference-type="eqref" reference="eq:transportation"}.
+ Putting the three steps together proves [Eq. (11)](#eq:transportation).
 
 > **Proof pattern.**
 >
 > A change-of-measure lower bound usually has the same skeleton:
 
-\[
+<div class="display-equation">
+$$
 \text{sample allocation}
 \longrightarrow
 \text{KL information}
 \longrightarrow
 \text{separation of a decision event}.
-\]
+$$
+</div>
 
  The creativity lies mainly in choosing the alternative environment and the event.
 
@@ -615,15 +664,18 @@ L_\tau
 
 Return once more to the two-coin problem. Suppose a decision rule observes $n$ tosses and must identify whether the coin is $P=\Ber(p)$ or $Q=\Ber(q)$. Let $E=\{\text{the rule declares }P\}.$ Assume the rule has error at most $\delta$ in both worlds:
 
-\[
+<div class="display-equation">
+$$
 P^n(E)\geq 1-\delta,
 \qquad
 Q^n(E)\leq\delta.
-\]
+$$
+</div>
 
- By [\[eq:binary-data-processing\]](#eq:binary-data-processing){reference-type="eqref" reference="eq:binary-data-processing"},
+ By [Eq. (4)](#eq:binary-data-processing),
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \KL(P^n\Vert Q^n)
 &\geq
@@ -631,52 +683,59 @@ Q^n(E)\leq\delta.
 &\geq
 \kl(1-\delta,\delta).
 \end{align*}
-\]
+$$
+</div>
 
  Independence gives $\KL(P^n\Vert Q^n)=n\KL(P\Vert Q)=n\kl(p,q).$ Therefore
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:coin-lower-bound">
+$$
 \boxed{
  n
  \geq
  \frac{\kl(1-\delta,\delta)}{\kl(p,q)}.
 }
-\label{eq:coin-lower-bound}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 12">(12)</span>
+</div>
 
 
 Every part has an interpretation:
 
 
-\[
+<div class="display-equation">
+$$
 \underbrace{n}_{\text{number of observations}}
 \times
 \underbrace{\kl(p,q)}_{\text{evidence per observation}}
 \geq
 \underbrace{\kl(1-\delta,\delta)}_{\text{evidence demanded by reliability}}.
-\]
+$$
+</div>
 
 
 For $p=0.55$, $q=0.45$, and $\delta=0.05$,
 
-\[
+<div class="display-equation">
+$$
 \kl(0.55,0.45)\approx0.02007,
 \qquad
 \kl(0.95,0.05)\approx2.650.
-\]
+$$
+</div>
 
  Thus $n\geq\frac{2.650}{0.02007}\approx132.1.$ A rule that promises five-percent error in both directions needs at least about 133 tosses according to this information bound.
 
 As $\delta\downarrow0$,
 
-\[
+<div class="display-equation">
+$$
 \kl(1-\delta,\delta)
 =(1-2\delta)\log\frac{1-\delta}{\delta}
 \sim
 \log\frac{1}{\delta}.
-\]
+$$
+</div>
 
  So the familiar logarithm in fixed-confidence sample complexity is not an artifact of one algorithm. It is the amount of evidence required to drive an error probability down to $\delta$.
 
@@ -688,50 +747,54 @@ Fix the true environment $\nu$. Now choose an alternative $\lambda$ whose best a
 
 Insert this event into the transportation inequality:
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:bai-one-alternative">
+$$
 \boxed{
 \sum_{a=1}^{K}
 \E_\nu[N_a(\tau)]\KL(\nu_a\Vert\lambda_a)
 \geq
 \kl(1-\delta,\delta).
 }
-\label{eq:bai-one-alternative}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 13">(13)</span>
+</div>
 
 
 This inequality holds for *every* alternative that changes the best arm.
 
 ### A first, deliberately simple alternative
 
-Suppose there are two Bernoulli arms with $\mu_1>\mu_2.$ Keep arm 1 unchanged and raise arm 2 to a mean $\lambda_2>\mu_1$. Then only arm 2 differs, and [\[eq:bai-one-alternative\]](#eq:bai-one-alternative){reference-type="eqref" reference="eq:bai-one-alternative"} becomes
+Suppose there are two Bernoulli arms with $\mu_1>\mu_2.$ Keep arm 1 unchanged and raise arm 2 to a mean $\lambda_2>\mu_1$. Then only arm 2 differs, and [Eq. (13)](#eq:bai-one-alternative) becomes
 
-\[
+<div class="display-equation">
+$$
 \E_\nu[N_2(\tau)]\kl(\mu_2,\lambda_2)
 \geq
 \kl(1-\delta,\delta).
-\]
+$$
+</div>
 
  Hence
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:single-arm-bai-bound">
+$$
 \E_\nu[N_2(\tau)]
 \geq
 \frac{\kl(1-\delta,\delta)}{\kl(\mu_2,\lambda_2)}.
-\label{eq:single-arm-bai-bound}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 14">(14)</span>
+</div>
 
 
 Let $\lambda_2$ approach $\mu_1$ from above. The alternative becomes as close as possible while still changing the best arm, yielding
 
-\[
+<div class="display-equation">
+$$
 \E_\nu[N_2(\tau)]
 \gtrsim
 \frac{\kl(1-\delta,\delta)}{\kl(\mu_2,\mu_1)}.
-\]
+$$
+</div>
 
 
 This already explains why a suboptimal arm cannot simply be ignored. If the learner rarely samples arm 2, it cannot rule out the nearby world in which arm 2 is actually best.
@@ -744,60 +807,68 @@ This already explains why a suboptimal arm cannot simply be ignored. If the lear
 
 Let
 
-\[
+<div class="display-equation">
+$$
 \Alt(\nu)
 =
 \{\lambda:a^*(\lambda)\neq a^*(\nu)\}
-\]
+$$
+</div>
 
  be the set of answer-changing alternatives. Define the expected allocation proportions
 
-\[
+<div class="display-equation">
+$$
 w_a
 =
 \frac{\E_\nu[N_a(\tau)]}{\E_\nu[\tau]},
 \qquad
 \sum_{a=1}^{K}w_a=1.
-\]
+$$
+</div>
 
- Then [\[eq:bai-one-alternative\]](#eq:bai-one-alternative){reference-type="eqref" reference="eq:bai-one-alternative"} can be written
+ Then [Eq. (13)](#eq:bai-one-alternative) can be written
 
-\[
+<div class="display-equation">
+$$
 \E_\nu[\tau]
 \sum_{a=1}^{K}w_a\KL(\nu_a\Vert\lambda_a)
 \geq
 \kl(1-\delta,\delta).
-\]
+$$
+</div>
 
  Because this must hold for every $\lambda\in\Alt(\nu)$,
 
-\[
+<div class="display-equation">
+$$
 \E_\nu[\tau]
 \inf_{\lambda\in\Alt(\nu)}
 \sum_{a=1}^{K}w_a\KL(\nu_a\Vert\lambda_a)
 \geq
 \kl(1-\delta,\delta).
-\]
+$$
+</div>
 
  Thus
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:allocation-specific-lb">
+$$
 \E_\nu[\tau]
 \geq
 \frac{\kl(1-\delta,\delta)}
 {\displaystyle
 \inf_{\lambda\in\Alt(\nu)}
 \sum_{a=1}^{K}w_a\KL(\nu_a\Vert\lambda_a)}.
-\label{eq:allocation-specific-lb}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 15">(15)</span>
+</div>
 
 
 The algorithm chooses $w$. The lower-bound argument then chooses the hardest alternative against that allocation. This leads to the characteristic information value
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:t-star">
+$$
 \boxed{
 \frac{1}{T^*(\nu)}
 =
@@ -805,83 +876,92 @@ The algorithm chooses $w$. The lower-bound argument then chooses the hardest alt
 \inf_{\lambda\in\Alt(\nu)}
 \sum_{a=1}^{K}w_a\KL(\nu_a\Vert\lambda_a),
 }
-\label{eq:t-star}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 16">(16)</span>
+</div>
 
  where
 
-\[
+<div class="display-equation">
+$$
 \Delta_K
 =
 \left\{w\in[0,1]^K:\sum_{a=1}^{K}w_a=1\right\}.
-\]
+$$
+</div>
 
  Consequently,
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:tstar-lb">
+$$
 \E_\nu[\tau]
 \geq
 T^*(\nu)\,\kl(1-\delta,\delta).
-\label{eq:tstar-lb}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 17">(17)</span>
+</div>
 
 
 > **Research connection.**
 >
-> Equation [\[eq:t-star\]](#eq:t-star){reference-type="eqref" reference="eq:t-star"} is not only a lower bound. It is an algorithm-design target. Track-and-Stop and later best-arm identification methods attempt to learn and track the allocation that maximizes the worst-case information rate. The same information-allocation viewpoint also underlies modern batched BAI and regret-aware BAI, including research directions developed by Tianyuan Jin and collaborators.
+> Equation [Eq. (16)](#eq:t-star) is not only a lower bound. It is an algorithm-design target. Track-and-Stop and later best-arm identification methods attempt to learn and track the allocation that maximizes the worst-case information rate. The same information-allocation viewpoint also underlies modern batched BAI and regret-aware BAI, including research directions developed by Tianyuan Jin and collaborators.
 
 ## Two Gaussian Arms: Solve the Lower-Bound Game Completely
 
 Consider two Gaussian arms with known common variance $\sigma^2$:
 
-\[
+<div class="display-equation">
+$$
 \nu_1=\Normal(\mu_1,\sigma^2),
 \qquad
 \nu_2=\Normal(\mu_2,\sigma^2),
 \qquad
 \mu_1>\mu_2.
-\]
+$$
+</div>
 
  Let $\Delta=\mu_1-\mu_2>0.$ Assign a fraction $w$ of samples to arm 1 and $1-w$ to arm 2.
 
 For an alternative mean vector $(\lambda_1,\lambda_2)$, Gaussian KL gives
 
-\[
+<div class="display-equation">
+$$
 \KL\bigl(\Normal(\mu_a,\sigma^2)\Vert\Normal(\lambda_a,\sigma^2)\bigr)
 =
 \frac{(\mu_a-\lambda_a)^2}{2\sigma^2}.
-\]
+$$
+</div>
 
  The information rate is therefore
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:gaussian-rate">
+$$
 I_w(\lambda_1,\lambda_2)
 =
 \frac{w(\mu_1-\lambda_1)^2
 +(1-w)(\mu_2-\lambda_2)^2}{2\sigma^2}.
-\label{eq:gaussian-rate}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 18">(18)</span>
+</div>
 
 
 The alternative must make arm 2 at least as good as arm 1: $\lambda_1\leq\lambda_2.$ The closest point in this half-space lies on the boundary $\lambda_1=\lambda_2=m.$ Thus we minimize
 
-\[
+<div class="display-equation">
+$$
 I_w(m)
 =
 \frac{w(\mu_1-m)^2+(1-w)(\mu_2-m)^2}{2\sigma^2}.
-\]
+$$
+</div>
 
 
 ### Step 1: find the hardest common mean
 
 Differentiate with respect to $m$:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \frac{\dd}{\dd m}
 \left[
@@ -890,11 +970,13 @@ Differentiate with respect to $m$:
 &=
 2w(m-\mu_1)+2(1-w)(m-\mu_2).
 \end{align*}
-\]
+$$
+</div>
 
  Set this equal to zero:
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 0
 &=
@@ -902,18 +984,19 @@ w(m-\mu_1)+(1-w)(m-\mu_2)\\
 &=
 m-w\mu_1-(1-w)\mu_2.
 \end{align*}
-\]
+$$
+</div>
 
  Therefore
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:hardest-m">
+$$
 \boxed{
  m_w=w\mu_1+(1-w)\mu_2.
 }
-\label{eq:hardest-m}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 19">(19)</span>
+</div>
 
 
 The hard alternative moves toward the arm receiving fewer samples. If arm 1 receives most of the budget, then its mean is well measured and the alternative moves close to $\mu_1$, leaving the poorly measured arm 2 to do most of the work.
@@ -924,9 +1007,10 @@ The hard alternative moves toward the arm receiving fewer samples. If arm 1 rece
 
 ### Step 2: substitute the minimizer
 
-From [\[eq:hardest-m\]](#eq:hardest-m){reference-type="eqref" reference="eq:hardest-m"},
+From [Eq. (19)](#eq:hardest-m),
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \mu_1-m_w
 &=
@@ -936,11 +1020,13 @@ From [\[eq:hardest-m\]](#eq:hardest-m){reference-type="eqref" reference="eq:hard
 &=
 (1-w)\Delta,
 \end{align*}
-\]
+$$
+</div>
 
  and
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \mu_2-m_w
 &=
@@ -950,11 +1036,13 @@ From [\[eq:hardest-m\]](#eq:hardest-m){reference-type="eqref" reference="eq:hard
 &=
 -w\Delta.
 \end{align*}
-\]
+$$
+</div>
 
  Therefore
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \inf_{\lambda_1\leq\lambda_2}I_w(\lambda_1,\lambda_2)
 &=
@@ -964,43 +1052,46 @@ From [\[eq:hardest-m\]](#eq:hardest-m){reference-type="eqref" reference="eq:hard
 &=
 \frac{w(1-w)\Delta^2}{2\sigma^2}.
 \end{align*}
-\]
+$$
+</div>
 
 
 ### Step 3: choose the best allocation
 
 Since
 
-\[
+<div class="display-equation">
+$$
 w(1-w)
 =
 \frac14-\left(w-\frac12\right)^2,
-\]
+$$
+</div>
 
  the maximum occurs at $w^*=\frac12.$ The optimal information rate is
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:gaussian-tstar-rate">
+$$
 \frac{1}{T^*(\nu)}
 =
 \frac{\Delta^2}{8\sigma^2}.
-\label{eq:gaussian-tstar-rate}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 20">(20)</span>
+</div>
 
  Hence
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:gaussian-bai-lb">
+$$
 \boxed{
 \E_\nu[\tau]
 \geq
 \frac{8\sigma^2}{\Delta^2}
 \kl(1-\delta,\delta).
 }
-\label{eq:gaussian-bai-lb}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 21">(21)</span>
+</div>
 
 
 ![The worst-case information rate is maximized by equal allocation in the symmetric two-Gaussian problem.](/images/notes/assets/change-of-measure/gaussian_information_rate.webp)
@@ -1013,26 +1104,31 @@ This conclusion is easy to say after the calculation: both sample means enter th
 
 With a fixed total budget $n$, let
 
-\[
+<div class="display-equation">
+$$
 n_1=wn,
 \qquad
 n_2=(1-w)n.
-\]
+$$
+</div>
 
  The sample-mean difference satisfies
 
-\[
+<div class="display-equation">
+$$
 \widehat\mu_1-\widehat\mu_2
 \sim
 \Normal\left(
 \Delta,
 \sigma^2\left(\frac1{n_1}+\frac1{n_2}\right)
 \right).
-\]
+$$
+</div>
 
  If the learner recommends the larger sample mean, then
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \Pbb(\text{error})
 &=
@@ -1043,23 +1139,23 @@ n_2=(1-w)n.
 {\sigma\sqrt{1/n_1+1/n_2}}
 \right).
 \end{align*}
-\]
+$$
+</div>
 
  The denominator is minimized at $n_1=n_2$. Thus the finite-sample testing calculation and the information lower bound select the same allocation.
 
 ![For n = 400, (μ1, μ2) = (0.2, 0), and σ = 1, both exact calculation and Monte Carlo show that equal allocation minimizes the recommendation error.](/images/notes/assets/change-of-measure/gaussian_allocation_error.webp)
 
 *For n = 400, (μ1, μ2) = (0.2, 0), and σ = 1, both exact calculation and Monte Carlo show that equal allocation minimizes the recommendation error.*
+| Fraction $w$ on arm 1 | exact error probability | information rate |
+|------------------------:|------------------------:|-----------------:|
+|                    0.10 |                  0.1151 |          0.00180 |
+|                    0.30 |                  0.0334 |          0.00420 |
+|                    0.50 |                  0.0228 |          0.00500 |
+|                    0.70 |                  0.0334 |          0.00420 |
+|                    0.90 |                  0.1151 |          0.00180 |
 
-    Fraction $w$ on arm 1   exact error probability   information rate
-  ----------------------- ------------------------- ------------------
-                     0.10                    0.1151            0.00180
-                     0.30                    0.0334            0.00420
-                     0.50                    0.0228            0.00500
-                     0.70                    0.0334            0.00420
-                     0.90                    0.1151            0.00180
-
-  : Selected Gaussian allocation results.
+<p class="table-caption">Selected Gaussian allocation results.</p>
 
     n1 = max(1, int(round(total_budget * weight)))
     n2 = total_budget - n1
@@ -1083,47 +1179,49 @@ Suppose arm $a$ is suboptimal under $\nu$: $\mu_a<\mu^*.$ Construct an alternati
 
 Choose an event such as $E_T=\left\{N_a(T)<\frac{T}{2}\right\}.$ For a sufficiently efficient policy,
 
-\[
+<div class="display-equation">
+$$
 \Pbb_\nu(E_T)\to1,
 \qquad
 \Pbb_{\nu'}(E_T)\to0.
-\]
+$$
+</div>
 
  The transportation inequality gives
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:regret-preview">
+$$
 \E_\nu[N_a(T)]\KL(\nu_a\Vert\nu'_a)
 \geq
 \kl\bigl(\Pbb_\nu(E_T),\Pbb_{\nu'}(E_T)\bigr).
-\label{eq:regret-preview}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 22">(22)</span>
+</div>
 
  Under the consistency conditions used by Lai and Robbins, the right side grows like $\log T$. Moving $\nu'_a$ down toward the boundary where its mean equals $\mu^*$ yields
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:lai-robbins-pull-preview">
+$$
 \liminf_{T\to\infty}
 \frac{\E_\nu[N_a(T)]}{\log T}
 \geq
 \frac{1}{\KL(\nu_a\Vert\nu^*)}.
-\label{eq:lai-robbins-pull-preview}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 23">(23)</span>
+</div>
 
  Multiplying by the regret gap $\Delta_a=\mu^*-\mu_a$ and summing gives the classical shape
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:lai-robbins-preview">
+$$
 \liminf_{T\to\infty}
 \frac{R_T(\nu)}{\log T}
 \geq
 \sum_{a:\Delta_a>0}
 \frac{\Delta_a}{\KL(\nu_a\Vert\nu^*)}.
-\label{eq:lai-robbins-preview}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 24">(24)</span>
+</div>
 
 
 This section is only the proof skeleton. The next chapter will state the consistency assumptions carefully, construct the event with the correct polynomial probabilities, and derive the full Lai--Robbins lower bound without hiding the asymptotic steps.
@@ -1140,7 +1238,8 @@ The numerical work in this chapter serves as a proof audit rather than as eviden
 
 For $X_t\sim\Ber(p)$, the cumulative evidence against $q$ is
 
-\[
+<div class="display-equation">
+$$
 L_t
 =
 \sum_{s=1}^{t}
@@ -1148,23 +1247,23 @@ L_t
 X_s\log\frac{p}{q}
 +(1-X_s)\log\frac{1-p}{1-q}
 \right].
-\]
+$$
+</div>
 
  The experiment checks that paths are noisy while their mean slope is $\kl(p,q)$.
 
 ### Testing error
 
 For each $n$, the script computes the exact sum of type-I and type-II errors of the equal-prior likelihood-ratio test between $\Ber(0.4)^n$ and $\Ber(0.6)^n$. It compares this with $\frac12e^{-n\kl(0.4,0.6)}.$
+| $n$ | exact sum of errors |           lower bound |
+|------:|--------------------:|----------------------:|
+|    10 |              0.5331 |                0.2222 |
+|    20 |              0.3722 |                0.0988 |
+|    40 |              0.2041 |                0.0195 |
+|    80 |              0.0716 |              0.000761 |
+|   160 |              0.0107 | $1.16\times10^{-6}$ |
 
-    $n$   exact sum of errors           lower bound
-  ----- --------------------- ---------------------
-     10                0.5331                0.2222
-     20                0.3722                0.0988
-     40                0.2041                0.0195
-     80                0.0716              0.000761
-    160                0.0107   $1.16\times10^{-6}$
-
-  : Optimal testing error versus the Bretagnolle--Huber lower bound.
+<p class="table-caption">Optimal testing error versus the Bretagnolle–Huber lower bound.</p>
 
 The lower bound becomes loose in this example because it sacrifices constants for generality. It is still correct, and it preserves the central message that the error cannot decay independently of accumulated information.
 
@@ -1172,11 +1271,13 @@ The lower bound becomes loose in this example because it sacrifices constants fo
 
 The UCB experiment checks
 
-\[
+<div class="display-equation">
+$$
 \E_\nu[L_T]
 =
 \sum_a\E_\nu[N_a(T)]\KL(\nu_a\Vert\nu'_a)
-\]
+$$
+</div>
 
  under an adaptive policy. The near overlap of the two curves is a direct numerical check that the likelihood-ratio implementation, pull counts, and KL formula agree.
 
@@ -1185,19 +1286,23 @@ The UCB experiment checks
 The Gaussian experiment checks two linked predictions:
 
 
-\[
+<div class="display-equation">
+$$
 \text{hardest alternative for allocation }w
 \quad\Longrightarrow\quad
 m_w=w\mu_1+(1-w)\mu_2,
-\]
+$$
+</div>
 
  and
 
-\[
+<div class="display-equation">
+$$
 \text{best worst-case information rate}
 \quad\Longrightarrow\quad
 w^*=\frac12.
-\]
+$$
+</div>
 
  The exact finite-sample error confirms the same symmetry.
 
@@ -1209,7 +1314,7 @@ w^*=\frac12.
 
 ### Choosing an alternative that does not change the answer
 
-If $a^*(\lambda)=a^*(\nu)$, then the recommendation event need not have very different probabilities. The right side of [\[eq:transportation\]](#eq:transportation){reference-type="eqref" reference="eq:transportation"} may be small, and no useful lower bound follows.
+If $a^*(\lambda)=a^*(\nu)$, then the recommendation event need not have very different probabilities. The right side of [Eq. (11)](#eq:transportation) may be small, and no useful lower bound follows.
 
 ### Choosing an alternative that is too far away
 
@@ -1219,11 +1324,13 @@ A dramatic alternative has a large KL cost per observation. Since the lower boun
 
 The expected log-likelihood ratio under $\nu$ is
 
-\[
+<div class="display-equation">
+$$
 \E_\nu\left[\log\frac{\dd P_\nu}{\dd P_{\nu'}}\right]
 =
 \KL(P_\nu\Vert P_{\nu'}),
-\]
+$$
+</div>
 
  not the reverse divergence. The pull counts are also averaged under $\nu$. Both directions must match.
 
@@ -1249,49 +1356,59 @@ The chapter can be compressed to five equations.
 
 For two laws,
 
-\[
+<div class="display-equation">
+$$
 Q(E)=\E_P[\one_Ee^{-L}],
 \qquad
 L=\log\frac{\dd P}{\dd Q}.
-\]
+$$
+</div>
 
 
 Compressing an experiment to an event cannot increase information:
 
-\[
+<div class="display-equation">
+$$
 \KL(P\Vert Q)
 \geq
 \kl(P(E),Q(E)).
-\]
+$$
+</div>
 
 
 For a fixed-horizon adaptive bandit,
 
-\[
+<div class="display-equation">
+$$
 \KL(P_\nu^T\Vert P_{\nu'}^T)
 =
 \sum_a\E_\nu[N_a(T)]\KL(\nu_a\Vert\nu'_a).
-\]
+$$
+</div>
 
 
 For a stopped experiment and $E\in\calF_\tau$,
 
-\[
+<div class="display-equation">
+$$
 \sum_a\E_\nu[N_a(\tau)]\KL(\nu_a\Vert\nu'_a)
 \geq
 \kl(\Pbb_\nu(E),\Pbb_{\nu'}(E)).
-\]
+$$
+</div>
 
 
 For fixed-confidence best-arm identification,
 
-\[
+<div class="display-equation">
+$$
 \frac1{T^*(\nu)}
 =
 \sup_{w\in\Delta_K}
 \inf_{\lambda\in\Alt(\nu)}
 \sum_a w_a\KL(\nu_a\Vert\lambda_a).
-\]
+$$
+</div>
 
 
 These equations express one idea in progressively richer settings:
@@ -1306,7 +1423,8 @@ These equations express one idea in progressively richer settings:
 
 Let $p$ and $q$ be densities of $P$ and $Q$ with respect to a common measure. For any event $E$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 P(E)+Q(E^c)
 &=
@@ -1314,11 +1432,13 @@ P(E)+Q(E^c)
 &\geq
 \int \min\{p,q\}.
 \end{align*}
-\]
+$$
+</div>
 
  Define the affinity $\rho(P,Q)=\int\sqrt{pq}.$ By Cauchy--Schwarz,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \rho(P,Q)^2
 &=
@@ -1331,31 +1451,35 @@ P(E)+Q(E^c)
 \left(\int\min\{p,q\}\right)
 \left(\int\max\{p,q\}\right).
 \end{align*}
-\]
+$$
+</div>
 
  Since
 
-\[
+<div class="display-equation">
+$$
 \int\max\{p,q\}
 =2-\int\min\{p,q\}
 \leq2,
-\]
+$$
+</div>
 
  we obtain
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:min-affinity">
+$$
 \int\min\{p,q\}
 \geq
 \frac{\rho(P,Q)^2}{2}.
-\label{eq:min-affinity}
-\end{equation}
-\]
+$$
+<span class="equation-number" aria-label="Equation 25">(25)</span>
+</div>
 
 
 Next relate affinity to KL. Under $P$,
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \rho(P,Q)
 &=
@@ -1363,11 +1487,13 @@ Next relate affinity to KL. Under $P$,
 &=
 \E_P\left[\sqrt{\frac{q}{p}}\right].
 \end{align*}
-\]
+$$
+</div>
 
  Because $-\log$ is convex, Jensen's inequality gives
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 -\log\rho(P,Q)
 &\leq
@@ -1379,79 +1505,97 @@ Next relate affinity to KL. Under $P$,
 &=
 \frac12\KL(P\Vert Q).
 \end{align*}
-\]
+$$
+</div>
 
  Therefore
 
-\[
+<div class="display-equation">
+$$
 \rho(P,Q)
 \geq
 \exp\left\{-\frac12\KL(P\Vert Q)\right\}.
-\]
+$$
+</div>
 
- Squaring and substituting into [\[eq:min-affinity\]](#eq:min-affinity){reference-type="eqref" reference="eq:min-affinity"},
+ Squaring and substituting into [Eq. (25)](#eq:min-affinity),
 
-\[
+<div class="display-equation">
+$$
 \int\min\{p,q\}
 \geq
 \frac12e^{-\KL(P\Vert Q)}.
-\]
+$$
+</div>
 
  Finally,
 
-\[
+<div class="display-equation">
+$$
 P(E)+Q(E^c)
 \geq
 \int\min\{p,q\}
 \geq
 \frac12e^{-\KL(P\Vert Q)}.
-\]
+$$
+</div>
 
 
 ## A Direct Jensen Proof of Event Compression
 
 The change-of-measure identity gives $Q(E)=\E_P[\one_Ee^{-L}].$ Condition on $E$:
 
-\[
+<div class="display-equation">
+$$
 Q(E)
 =P(E)\E_P[e^{-L}\mid E].
-\]
+$$
+</div>
 
  Jensen's inequality for the convex exponential function yields
 
-\[
+<div class="display-equation">
+$$
 \E_P[e^{-L}\mid E]
 \geq
 e^{-\E_P[L\mid E]}.
-\]
+$$
+</div>
 
  Hence
 
-\[
+<div class="display-equation">
+$$
 Q(E)
 \geq
 P(E)e^{-\E_P[L\mid E]},
-\]
+$$
+</div>
 
  which rearranges to
 
-\[
+<div class="display-equation">
+$$
 \E_P[L\mid E]
 \geq
 \log\frac{P(E)}{Q(E)}.
-\]
+$$
+</div>
 
  The same argument on $E^c$ gives
 
-\[
+<div class="display-equation">
+$$
 \E_P[L\mid E^c]
 \geq
 \log\frac{P(E^c)}{Q(E^c)}.
-\]
+$$
+</div>
 
  Therefore
 
-\[
+<div class="display-equation">
+$$
 \begin{align*}
 \E_P[L]
 &=
@@ -1463,9 +1607,10 @@ P(E)\log\frac{P(E)}{Q(E)}
 &=
 \kl(P(E),Q(E)).
 \end{align*}
-\]
+$$
+</div>
 
- Since $\E_P[L]=\KL(P\Vert Q)$, this proves [\[eq:binary-data-processing\]](#eq:binary-data-processing){reference-type="eqref" reference="eq:binary-data-processing"}.
+ Since $\E_P[L]=\KL(P\Vert Q)$, this proves [Eq. (4)](#eq:binary-data-processing).
 
 ## Formula Sheet
 

@@ -29,9 +29,11 @@ This note is about the grammar that prevents those mistakes.
 >
 > A bandit proof does not start with "let $\Omega$ be a probability space." It starts with a simple rule of order:
 
-\[
+<div class="display-equation">
+$$
 \text{past} \quad \longrightarrow \quad \text{action} \quad \longrightarrow \quad \text{reward}.
-\]
+$$
+</div>
 
  The formal probability notation is just a clean way to respect this order.
 
@@ -41,39 +43,47 @@ A random variable is a number whose value has not yet been revealed.
 
 For a Bernoulli reward, the number is either $0$ or $1$. If the click probability is $p$, then
 
-\[
+<div class="display-equation">
+$$
 X=\begin{cases}
 1, & \text{with probability }p,\\
 0, & \text{with probability }1-p.
 \end{cases}
-\]
+$$
+</div>
 
 
 The expectation is the long-run average value. Here there are only two possible values, so the calculation is direct:
 
-\[
+<div class="numbered-equation" id="eq:bernoulli_mean">
+$$
 \begin{align}
 \E[X]
 &= 1\cdot \Pp(X=1) + 0\cdot \Pp(X=0) \\
 &= 1\cdot p + 0\cdot (1-p) \\
-&= p. \label{eq:bernoulli_mean}
+&= p.
 \end{align}
-\]
+$$
+<span class="equation-number" aria-label="Equation 1">(1)</span>
+</div>
 
 
 If we observe $n$ independent rewards $X_1,\ldots,X_n$, the sample average is $\widehat p_n = \frac{1}{n}\sum_{s=1}^n X_s.$
 
 The sample average is random before the experiment is run. Its expectation is easy to compute:
 
-\[
+<div class="numbered-equation" id="eq:sample_mean_unbiased">
+$$
 \begin{align}
 \E[\widehat p_n]
 &= \E\left[\frac{1}{n}\sum_{s=1}^n X_s\right] \\
 &= \frac{1}{n}\sum_{s=1}^n \E[X_s] \\
 &= \frac{1}{n}\sum_{s=1}^n p \\
-&= p. \label{eq:sample_mean_unbiased}
+&= p.
 \end{align}
-\]
+$$
+<span class="equation-number" aria-label="Equation 2">(2)</span>
+</div>
 
 
 This is the first comfort: the sample average points to the right target on average.
@@ -84,42 +94,47 @@ But an average can point in the right direction and still wobble. Probability in
 
 For Bernoulli rewards, Hoeffding's inequality says
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:hoeffding">
+$$
 \Pp\left(\left|\widehat p_n-p\right|\geq \varepsilon\right)
-\leq 2\exp(-2n\varepsilon^2). \label{eq:hoeffding}
-\end{equation}
-\]
+\leq 2\exp(-2n\varepsilon^2).
+$$
+<span class="equation-number" aria-label="Equation 3">(3)</span>
+</div>
 
 
 This formula is not meant to be memorized as decoration. It answers a practical question: how large should the error bar be if we want failure probability at most $\delta$?
 
 Start from the right-hand side and set it equal to $\delta$:
 
-\[
+<div class="numbered-equation" id="eq:hoeffding_radius">
+$$
 \begin{align}
 2\exp(-2n\varepsilon^2) &= \delta,\\
 \exp(-2n\varepsilon^2) &= \frac{\delta}{2},\\
 -2n\varepsilon^2 &= \log\left(\frac{\delta}{2}\right),\\
 2n\varepsilon^2 &= \log\left(\frac{2}{\delta}\right),\\
 \varepsilon^2 &= \frac{\log(2/\delta)}{2n},\\
-\varepsilon &= \sqrt{\frac{\log(2/\delta)}{2n}}. \label{eq:hoeffding_radius}
+\varepsilon &= \sqrt{\frac{\log(2/\delta)}{2n}}.
 \end{align}
-\]
+$$
+<span class="equation-number" aria-label="Equation 4">(4)</span>
+</div>
 
 
 So we may write the fixed-time confidence statement as
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:fixed_time_ci">
+$$
 \Pp\left(
 \left|\widehat p_n-p\right|
 \leq
 \sqrt{\frac{\log(2/\delta)}{2n}}
 \right)
-\geq 1-\delta. \label{eq:fixed_time_ci}
-\end{equation}
-\]
+\geq 1-\delta.
+$$
+<span class="equation-number" aria-label="Equation 5">(5)</span>
+</div>
 
 
 > **Think.**
@@ -145,21 +160,19 @@ The same idea appears when we keep checking an error bar many times.
 *A normal-looking error bar is reasonable for one final look, but repeated peeking with the same bar creates many false alarms. A union-bound bar is crude but safe.*
 
 The experiment used $20{,}000$ runs of a fair Bernoulli process with horizon $T=200$. The stopped rule begins checking after $20$ samples and stops when the running mean first exceeds $0.56$.
+| Quantity                                                 | Value |
+|:---------------------------------------------------------|------:|
+| True Bernoulli mean                                      | 0.500 |
+| Probability of stopping early                            | 0.555 |
+| Average fixed-time mean                                  | 0.500 |
+| Average stopped mean                                     | 0.548 |
+| One final look false alarm with normal bar               | 0.057 |
+| Many peeks false alarm with same normal bar              | 0.414 |
+| Many peeks false alarm with union bar                    | 0.000 |
+| Post-selection average of one fixed arm                  | 0.500 |
+| Post-selection average of empirical winner among 20 arms | 0.705 |
 
-
-  Quantity                                                     Value
-  ---------------------------------------------------------- -------
-  True Bernoulli mean                                          0.500
-  Probability of stopping early                                0.555
-  Average fixed-time mean                                      0.500
-  Average stopped mean                                         0.548
-  One final look false alarm with normal bar                   0.057
-  Many peeks false alarm with same normal bar                  0.414
-  Many peeks false alarm with union bar                        0.000
-  Post-selection average of one fixed arm                      0.500
-  Post-selection average of empirical winner among 20 arms     0.705
-
-  : The important number is not the exact decimal. The important lesson is that adapting to the observed noise changes the distribution of what we report.
+<p class="table-caption">The important number is not the exact decimal. The important lesson is that adapting to the observed noise changes the distribution of what we report.</p>
 
 
 ## Histories: the learner's notebook
@@ -168,47 +181,47 @@ In a bandit problem, the learner accumulates a notebook.
 
 At the beginning of round $t$, the notebook contains all past actions and rewards:
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 H_{t-1}=(A_1,R_1,A_2,R_2,\ldots,A_{t-1},R_{t-1}).
-\end{equation}
-\]
+$$
+</div>
 
 
 Then the learner chooses an action using only this notebook:
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 A_t = \pi_t(H_{t-1}).
-\end{equation}
-\]
+$$
+</div>
 
 
 Then the environment reveals one reward:
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 R_t \sim \text{reward distribution of arm }A_t.
-\end{equation}
-\]
+$$
+</div>
 
 
 Then the notebook becomes
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 H_t=(H_{t-1},A_t,R_t).
-\end{equation}
-\]
+$$
+</div>
 
 
 A filtration is just the mathematical name for this growing notebook. We write
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 \F_t = \text{all information contained in }H_t.
-\end{equation}
-\]
+$$
+</div>
 
 
 So $\F_{t-1}$ means "everything known before choosing and observing at time $t$."
@@ -223,42 +236,46 @@ The ordinary expectation $\E[X]$ averages before anything is known. The conditio
 
 For a bandit reward, suppose arm $i$ has mean $\mu_i$. If the learner chooses $A_t=i$, then
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 \E[R_t \mid \F_{t-1}, A_t=i] = \mu_i.
-\end{equation}
-\]
+$$
+</div>
 
 
 But $A_t$ itself is chosen using $\F_{t-1}$, so once the past is known, $A_t$ is also known. Hence
 
-\[
-\begin{equation}
-\E[R_t \mid \F_{t-1}] = \mu_{A_t}. \label{eq:conditional_reward_mean}
-\end{equation}
-\]
+<div class="numbered-equation" id="eq:conditional_reward_mean">
+$$
+\E[R_t \mid \F_{t-1}] = \mu_{A_t}.
+$$
+<span class="equation-number" aria-label="Equation 6">(6)</span>
+</div>
 
 
 Now define the one-step noise
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 \eta_t = R_t - \mu_{A_t}.
-\end{equation}
-\]
+$$
+</div>
 
 
-Using [\[eq:conditional_reward_mean\]](#eq:conditional_reward_mean){reference-type="eqref" reference="eq:conditional_reward_mean"},
+Using [Eq. (6)](#eq:conditional_reward_mean),
 
-\[
+<div class="numbered-equation" id="eq:martingale_difference">
+$$
 \begin{align}
 \E[\eta_t\mid \F_{t-1}]
 &= \E[R_t-\mu_{A_t}\mid \F_{t-1}] \\
 &= \E[R_t\mid \F_{t-1}] - \mu_{A_t} \\
 &= \mu_{A_t} - \mu_{A_t} \\
-&= 0. \label{eq:martingale_difference}
+&= 0.
 \end{align}
-\]
+$$
+<span class="equation-number" aria-label="Equation 7">(7)</span>
+</div>
 
 
 This tiny equation is everywhere in bandit theory. It says: after we condition on the past, the remaining reward noise is fair.
@@ -267,11 +284,11 @@ This tiny equation is everywhere in bandit theory. It says: after we condition o
 
 A sequence $\eta_t$ satisfying
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 \E[\eta_t\mid \F_{t-1}]=0
-\end{equation}
-\]
+$$
+</div>
 
  is called a martingale difference sequence.
 
@@ -284,27 +301,28 @@ This is why adaptive data is not hopeless. The actions are adaptive, but the rew
 
 For arm $i$, define the number of times it has been pulled by time $t$:
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 N_i(t)=\sum_{s=1}^t \one\{A_s=i\}.
-\end{equation}
-\]
+$$
+</div>
 
 
 Define the empirical mean of arm $i$:
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 \widehat\mu_i(t)=
 \frac{\sum_{s=1}^t \one\{A_s=i\}R_s}{N_i(t)}
 \quad\text{when }N_i(t)>0.
-\end{equation}
-\]
+$$
+</div>
 
 
 The numerator has two pieces:
 
-\[
+<div class="display-equation">
+$$
 \begin{align}
 \sum_{s=1}^t \one\{A_s=i\}R_s
 &= \sum_{s=1}^t \one\{A_s=i\}(\mu_i + R_s-\mu_i) \\
@@ -313,33 +331,40 @@ The numerator has two pieces:
 &= \mu_i N_i(t)
 + \sum_{s=1}^t \one\{A_s=i\}(R_s-\mu_i).
 \end{align}
-\]
+$$
+</div>
 
 
 Divide by $N_i(t)$:
 
-\[
+<div class="numbered-equation" id="eq:adaptive_empirical_error">
+$$
 \begin{align}
 \widehat\mu_i(t)-\mu_i
 &=
 \frac{1}{N_i(t)}
-\sum_{s=1}^t \one\{A_s=i\}(R_s-\mu_i). \label{eq:adaptive_empirical_error}
+\sum_{s=1}^t \one\{A_s=i\}(R_s-\mu_i).
 \end{align}
-\]
+$$
+<span class="equation-number" aria-label="Equation 8">(8)</span>
+</div>
 
 
 The error is still an average of centered noise terms, but the number of terms is random and chosen adaptively. That is the reason for filtrations and anytime confidence bounds.
 
 The key centering step is
 
-\[
+<div class="numbered-equation" id="eq:adaptive_centering">
+$$
 \begin{align}
 \E\left[\one\{A_s=i\}(R_s-\mu_i)\mid \F_{s-1}\right]
 &= \one\{A_s=i\}\,\E\left[(R_s-\mu_i)\mid \F_{s-1},A_s=i\right] \\
 &= \one\{A_s=i\}\cdot 0 \\
-&= 0. \label{eq:adaptive_centering}
+&= 0.
 \end{align}
-\]
+$$
+<span class="equation-number" aria-label="Equation 9">(9)</span>
+</div>
 
 
 The indicator $\one\{A_s=i\}$ is allowed because the action is chosen from the past. It is known at the moment we average over the new reward.
@@ -354,27 +379,29 @@ The union bound says that the probability that at least one bad event happens is
 
 For events $E_1,\ldots,E_m$,
 
-\[
-\begin{equation}
-\Pp\left(\bigcup_{j=1}^m E_j\right)\leq \sum_{j=1}^m \Pp(E_j). \label{eq:union_bound}
-\end{equation}
-\]
+<div class="numbered-equation" id="eq:union_bound">
+$$
+\Pp\left(\bigcup_{j=1}^m E_j\right)\leq \sum_{j=1}^m \Pp(E_j).
+$$
+<span class="equation-number" aria-label="Equation 10">(10)</span>
+</div>
 
 
 A one-line proof uses indicators. For every outcome,
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 \one\left\{\bigcup_{j=1}^m E_j\right\}
 \leq
 \sum_{j=1}^m \one\{E_j\}.
-\end{equation}
-\]
+$$
+</div>
 
 
 Take expectations:
 
-\[
+<div class="display-equation">
+$$
 \begin{align}
 \Pp\left(\bigcup_{j=1}^m E_j\right)
 &= \E\left[\one\left\{\bigcup_{j=1}^m E_j\right\}\right] \\
@@ -382,41 +409,45 @@ Take expectations:
 &= \sum_{j=1}^m \E[\one\{E_j\}] \\
 &= \sum_{j=1}^m \Pp(E_j).
 \end{align}
-\]
+$$
+</div>
 
 
 Now suppose we want confidence intervals for $K$ arms and $T$ possible times. There are at most $KT$ things we want to be simultaneously correct about.
 
 Give each one failure probability
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 \delta' = \frac{\delta}{KT}.
-\end{equation}
-\]
+$$
+</div>
 
 
 For each arm-time pair, Hoeffding gives
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 \Pp\left(
 |\widehat\mu_i(t)-\mu_i|>
 \sqrt{\frac{\log(2/\delta')}{2N_i(t)}}
 \right)
 \leq \delta'.
-\end{equation}
-\]
+$$
+</div>
 
 
 Substitute $\delta'=\delta/(KT)$:
 
-\[
+<div class="numbered-equation" id="eq:union_radius">
+$$
 \begin{align}
 \sqrt{\frac{\log(2/\delta')}{2N_i(t)}}
-&= \sqrt{\frac{\log(2KT/\delta)}{2N_i(t)}}. \label{eq:union_radius}
+&= \sqrt{\frac{\log(2KT/\delta)}{2N_i(t)}}.
 \end{align}
-\]
+$$
+<span class="equation-number" aria-label="Equation 11">(11)</span>
+</div>
 
 
 Then the union bound says that all these intervals are correct together with probability at least $1-\delta$.
@@ -431,45 +462,46 @@ UCB is built from one sentence:
 
 At time $t$, define the radius
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 \operatorname{rad}_i(t)
 =\sqrt{\frac{\log(2KT/\delta)}{2N_i(t)}}.
-\end{equation}
-\]
+$$
+</div>
 
 
 The optimistic index is
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 \operatorname{UCB}_i(t)
 =\widehat\mu_i(t)+\operatorname{rad}_i(t).
-\end{equation}
-\]
+$$
+</div>
 
 
 The algorithm chooses
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 A_{t+1}\in \argmax_i \operatorname{UCB}_i(t).
-\end{equation}
-\]
+$$
+</div>
 
 
 The confidence event is
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:good_event">
+$$
 \mathcal{G}=
 \left\{
 \forall i,\forall t:\ |
 \widehat\mu_i(t)-\mu_i|
 \leq \operatorname{rad}_i(t)
-\right\}. \label{eq:good_event}
-\end{equation}
-\]
+\right\}.
+$$
+<span class="equation-number" aria-label="Equation 12">(12)</span>
+</div>
 
 
 On $\mathcal{G}$, every empirical mean is close to its truth at every relevant time. That single event drives the UCB proof.
@@ -478,56 +510,61 @@ On $\mathcal{G}$, every empirical mean is close to its truth at every relevant t
 
 Let $i^*$ be an optimal arm and let $i$ be a suboptimal arm. Define the gap
 
-\[
-\begin{equation}
+<div class="display-equation">
+$$
 \Delta_i=\mu_{i^*}-\mu_i>0.
-\end{equation}
-\]
+$$
+</div>
 
 
 Suppose UCB pulls arm $i$ at some time. Since UCB chose $i$ instead of $i^*$,
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:ucb_chose_i">
+$$
 \widehat\mu_i + \operatorname{rad}_i
 \geq
-\widehat\mu_{i^*}+\operatorname{rad}_{i^*}. \label{eq:ucb_chose_i}
-\end{equation}
-\]
+\widehat\mu_{i^*}+\operatorname{rad}_{i^*}.
+$$
+<span class="equation-number" aria-label="Equation 13">(13)</span>
+</div>
 
 
 On the good event $\mathcal{G}$,
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:optimal_still_plausible">
+$$
 \widehat\mu_{i^*}+\operatorname{rad}_{i^*}
-\geq \mu_{i^*}. \label{eq:optimal_still_plausible}
-\end{equation}
-\]
+\geq \mu_{i^*}.
+$$
+<span class="equation-number" aria-label="Equation 14">(14)</span>
+</div>
 
 
-Combining [\[eq:ucb_chose_i\]](#eq:ucb_chose_i){reference-type="eqref" reference="eq:ucb_chose_i"} and [\[eq:optimal_still_plausible\]](#eq:optimal_still_plausible){reference-type="eqref" reference="eq:optimal_still_plausible"},
+Combining [Eq. (13)](#eq:ucb_chose_i) and [Eq. (14)](#eq:optimal_still_plausible),
 
-\[
-\begin{equation}
+<div class="numbered-equation" id="eq:chosen_index_above_opt">
+$$
 \widehat\mu_i + \operatorname{rad}_i
-\geq \mu_{i^*}. \label{eq:chosen_index_above_opt}
-\end{equation}
-\]
+\geq \mu_{i^*}.
+$$
+<span class="equation-number" aria-label="Equation 15">(15)</span>
+</div>
 
 
 Again on $\mathcal{G}$,
 
-\[
-\begin{equation}
-\widehat\mu_i \leq \mu_i + \operatorname{rad}_i. \label{eq:suboptimal_upper}
-\end{equation}
-\]
+<div class="numbered-equation" id="eq:suboptimal_upper">
+$$
+\widehat\mu_i \leq \mu_i + \operatorname{rad}_i.
+$$
+<span class="equation-number" aria-label="Equation 16">(16)</span>
+</div>
 
 
-Substitute [\[eq:suboptimal_upper\]](#eq:suboptimal_upper){reference-type="eqref" reference="eq:suboptimal_upper"} into [\[eq:chosen_index_above_opt\]](#eq:chosen_index_above_opt){reference-type="eqref" reference="eq:chosen_index_above_opt"}:
+Substitute [Eq. (16)](#eq:suboptimal_upper) into [Eq. (15)](#eq:chosen_index_above_opt):
 
-\[
+<div class="numbered-equation" id="eq:radius_large">
+$$
 \begin{align}
 \mu_i + \operatorname{rad}_i + \operatorname{rad}_i
 &\geq \mu_{i^*},\\
@@ -536,14 +573,17 @@ Substitute [\[eq:suboptimal_upper\]](#eq:suboptimal_upper){reference-type="eqref
 2\operatorname{rad}_i
 &\geq \Delta_i,\\
 \operatorname{rad}_i
-&\geq \frac{\Delta_i}{2}. \label{eq:radius_large}
+&\geq \frac{\Delta_i}{2}.
 \end{align}
-\]
+$$
+<span class="equation-number" aria-label="Equation 17">(17)</span>
+</div>
 
 
 Now plug in the radius:
 
-\[
+<div class="numbered-equation" id="eq:ucb_pull_count_simple">
+$$
 \begin{align}
 \sqrt{\frac{\log(2KT/\delta)}{2N_i(t)}}
 &\geq \frac{\Delta_i}{2},\\
@@ -552,9 +592,11 @@ Now plug in the radius:
 4\log(2KT/\delta)
 &\geq 2N_i(t)\Delta_i^2,\\
 N_i(t)
-&\leq \frac{2\log(2KT/\delta)}{\Delta_i^2}. \label{eq:ucb_pull_count_simple}
+&\leq \frac{2\log(2KT/\delta)}{\Delta_i^2}.
 \end{align}
-\]
+$$
+<span class="equation-number" aria-label="Equation 18">(18)</span>
+</div>
 
 
 Depending on the exact convention for the radius, constants change. The message does not change: a bad arm can only be pulled many times if its uncertainty radius is still large. Once it has been sampled enough, its upper confidence bound drops below the optimal arm's plausible value.
@@ -563,13 +605,15 @@ Depending on the exact convention for the radius, constants change. The message 
 >
 > The UCB proof is not magic. It is a bookkeeping argument:
 
-\[
+<div class="display-equation">
+$$
 \text{bad arm chosen}
 \Rightarrow
 \text{its uncertainty must still be large}
 \Rightarrow
 \text{it has not been sampled too often}.
-\]
+$$
+</div>
 
 
 ## Post-selection bias: the quiet enemy
@@ -678,7 +722,8 @@ So probability is not a decorative layer. It is the language that keeps time, in
 ## Appendix B. Core Formulas
 
 
-\[
+<div class="display-equation">
+$$
 \begin{align}
 \E[X] &= \sum_x x\,\Pp(X=x),\\
 \widehat p_n &= \frac{1}{n}\sum_{s=1}^n X_s,\\
@@ -693,7 +738,8 @@ N_i(t)&=\sum_{s=1}^t \one\{A_s=i\},\\
 \Pp\left(\bigcup_j E_j\right)&\leq \sum_j \Pp(E_j),\\
 \operatorname{UCB}_i(t)&=\widehat\mu_i(t)+\sqrt{\frac{\log(2KT/\delta)}{2N_i(t)}}.
 \end{align}
-\]
+$$
+</div>
 
 
 ## Appendix C. Full Simulation Code
@@ -904,9 +950,7 @@ if __name__ == "__main__":
     main()
 ```
 
-\[heading=bibintoc,title=References\]
-
-
+## References
 Auer, P., N. Cesa-Bianchi, and P. Fischer. 2002. "Finite-Time Analysis of the Multiarmed Bandit Problem." *Machine Learning* 47: 235--56.
 
 

@@ -3,9 +3,11 @@
   if (!page) return;
 
   const repo = page.dataset.repo;
+  const owner = page.dataset.owner;
   const branch = page.dataset.branch;
   const apiRoot = `https://api.github.com/repos/${repo}`;
   const tokenKey = 'txj_notes_editor_token';
+  const draftsKey = 'txj_notes_editor_drafts';
   const params = new URLSearchParams(window.location.search);
 
   const mathMacros = {
@@ -152,8 +154,17 @@
     auth: document.querySelector('#editor-auth'),
     authStatus: document.querySelector('#editor-auth-status'),
     connect: document.querySelector('#editor-connect'),
+    compileCopy: document.querySelector('#editor-compile-copy'),
+    compileItems: document.querySelector('#editor-compile-items'),
+    compileLog: document.querySelector('#editor-compile-log'),
+    compileMeta: document.querySelector('#editor-compile-meta'),
+    compileSummary: document.querySelector('#editor-compile-summary'),
     content: document.querySelector('#editor-content'),
     disconnect: document.querySelector('#editor-disconnect'),
+    draftBanner: document.querySelector('#editor-draft-banner'),
+    draftDiscard: document.querySelector('#editor-draft-discard'),
+    draftMessage: document.querySelector('#editor-draft-message'),
+    draftRestore: document.querySelector('#editor-draft-restore'),
     filename: document.querySelector('#editor-filename'),
     files: document.querySelector('#editor-files'),
     formulaCategory: document.querySelector('#formula-category'),
@@ -161,12 +172,14 @@
     formulaSymbols: document.querySelector('#formula-symbols'),
     image: document.querySelector('#editor-image'),
     imageFile: document.querySelector('#editor-image-file'),
+    identity: document.querySelector('#editor-identity'),
     message: document.querySelector('#editor-message'),
     markdownActions: [...document.querySelectorAll('[data-md-action]')],
     modes: [...document.querySelectorAll('.editor-modes [data-mode]')],
     newNote: document.querySelector('#editor-new'),
     panes: document.querySelector('.editor-panes'),
     preview: document.querySelector('#editor-preview'),
+    previewStatus: document.querySelector('#editor-preview-status'),
     publish: document.querySelector('#editor-publish'),
     status: document.querySelector('#editor-status'),
     token: document.querySelector('#editor-token'),
@@ -177,7 +190,12 @@
   let currentPath = '';
   let currentSha = '';
   let formulaMode = 'inline';
+  let compileLogText = '';
+  let currentCompileIssues = [];
+  let markdownIssues = [];
+  let pendingDraft = null;
   let previewTimer;
+  let saveTimer;
 
   function setStatus(message, kind = '') {
     elements.status.textContent = message;
@@ -189,6 +207,28 @@
     elements.authStatus.dataset.kind = kind;
   }
 
+  function updateCompileLog(issues) {
+    const unique = issues.filter((issue, index, all) => (
+      all.findIndex((item) => item.stage === issue.stage && item.line === issue.line && item.message === issue.message) === index
+    ));
+    currentCompileIssues = unique;
+    const timestamp = new Date().toLocaleTimeString('zh-CN', { hour12: false });
+    elements.compileItems.replaceChildren();
+    unique.forEach((issue) => {
+      const item = document.createElement('li');
+      const location = issue.line ? ` · 第 ${issue.line} 行` : '';
+      item.textContent = `[${issue.stage}]${location} · ${issue.message}`;
+      elements.compileItems.append(item);
+    });
+    elements.compileSummary.textContent = unique.length ? `${unique.length} 个问题` : '通过 · 0 个问题';
+    elements.compileSummary.dataset.kind = unique.length ? 'error' : 'success';
+    elements.compileMeta.textContent = `最后编译 ${timestamp} · Markdown / GFM / KaTeX`;
+    compileLogText = unique.length
+      ? unique.map((issue) => `[${issue.stage}]${issue.line ? ` line ${issue.line}` : ''}: ${issue.message}`).join('\n')
+      : `[${timestamp}] Compilation passed with 0 issues.`;
+    if (unique.length) elements.compileLog.open = true;
+  }
+
   function apiHeaders() {
     return {
       Accept: 'application/vnd.github+json',
@@ -197,8 +237,8 @@
     };
   }
 
-  async function api(path, options = {}) {
-    const response = await fetch(`${apiRoot}${path}`, {
+  async function githubRequest(url, options = {}) {
+    const response = await fetch(url, {
       ...options,
       headers: { ...apiHeaders(), ...(options.headers || {}) },
     });
@@ -211,6 +251,10 @@
       throw new Error(message);
     }
     return response.status === 204 ? null : response.json();
+  }
+
+  function api(path, options = {}) {
+    return githubRequest(`${apiRoot}${path}`, options);
   }
 
   function decodeBase64(value) {
@@ -232,6 +276,77 @@
   function prettyName(path) {
     return path.split('/').pop().replace(/\.md$/, '').split('-')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  }
+
+  function readDrafts() {
+    try {
+      return JSON.parse(localStorage.getItem(draftsKey) || '{}');
+    } catch (_) {
+      return {};
+    }
+  }
+
+  function draftPath() {
+    const filename = elements.filename.value.trim().toLowerCase() || 'new-note.md';
+    return currentPath || `content/notes/${filename}`;
+  }
+
+  function saveDraft() {
+    if (!elements.content.value.trim()) return;
+    const drafts = readDrafts();
+    const path = draftPath();
+    drafts[path] = {
+      content: elements.content.value,
+      filename: elements.filename.value,
+      path: currentPath,
+      sha: currentSha,
+      updatedAt: new Date().toISOString(),
+    };
+    localStorage.setItem(draftsKey, JSON.stringify(drafts));
+    setStatus('草稿已保存在本机', 'success');
+  }
+
+  function removeDraft(path = draftPath()) {
+    const drafts = readDrafts();
+    delete drafts[path];
+    localStorage.setItem(draftsKey, JSON.stringify(drafts));
+  }
+
+  function hideDraftOffer() {
+    pendingDraft = null;
+    elements.draftBanner.hidden = true;
+  }
+
+  function offerDraft(path, remoteContent) {
+    const draft = readDrafts()[path];
+    if (!draft || draft.content === remoteContent) {
+      if (draft?.content === remoteContent) removeDraft(path);
+      hideDraftOffer();
+      return;
+    }
+    pendingDraft = { ...draft, key: path };
+    const updated = new Date(draft.updatedAt).toLocaleString('zh-CN', { hour12: false });
+    elements.draftMessage.textContent = `发现 ${updated} 保存的本地草稿`;
+    elements.draftBanner.hidden = false;
+  }
+
+  function restoreDraft() {
+    if (!pendingDraft) return;
+    currentPath = pendingDraft.path;
+    currentSha = pendingDraft.sha;
+    elements.filename.value = pendingDraft.filename;
+    elements.filename.disabled = Boolean(currentPath);
+    elements.content.value = pendingDraft.content;
+    hideDraftOffer();
+    renderPreview();
+    setStatus('已恢复本地草稿', 'success');
+  }
+
+  function discardDraft() {
+    if (!pendingDraft) return;
+    removeDraft(pendingDraft.key);
+    hideDraftOffer();
+    setStatus('已放弃本地草稿');
   }
 
   function selectFile(path) {
@@ -260,6 +375,10 @@
   }
 
   async function loadFile(path) {
+    if (saveTimer) {
+      clearTimeout(saveTimer);
+      saveDraft();
+    }
     setStatus('Loading...');
     try {
       const file = await api(`/contents/${path}?ref=${encodeURIComponent(branch)}`);
@@ -267,9 +386,12 @@
       currentSha = file.sha;
       elements.filename.value = path.split('/').pop();
       elements.filename.disabled = true;
-      elements.content.value = decodeBase64(file.content);
+      const remoteContent = decodeBase64(file.content);
+      const editableContent = window.MarkdownPipeline.prepareForEdit(remoteContent);
+      elements.content.value = editableContent;
       selectFile(path);
       renderPreview();
+      offerDraft(path, editableContent);
       setStatus('Ready', 'success');
     } catch (error) {
       setStatus(error.message, 'error');
@@ -277,6 +399,10 @@
   }
 
   function newNote() {
+    if (saveTimer) {
+      clearTimeout(saveTimer);
+      saveDraft();
+    }
     const today = new Date().toISOString().slice(0, 10);
     currentPath = '';
     currentSha = '';
@@ -299,30 +425,57 @@ Write the note here.
 `;
     selectFile('');
     renderPreview();
+    offerDraft(draftPath(), elements.content.value);
     elements.filename.focus();
     elements.filename.select();
     setStatus('New document', 'success');
   }
 
   function renderPreview() {
-    const markdown = elements.content.value.replace(/^---\s*[\s\S]*?\s*---\s*/, '');
-    const rendered = window.marked.parse(markdown, { gfm: true, breaks: false });
-    const macros = JSON.stringify(mathMacros).replace(/</g, '\\u003c');
+    markdownIssues = window.MarkdownPipeline.diagnose(elements.content.value);
+    let rendered = '';
+    try {
+      rendered = window.MarkdownPipeline.render(elements.content.value);
+    } catch (error) {
+      markdownIssues.push({ stage: 'Markdown', line: 0, message: error.message });
+      rendered = '<p>Preview compilation failed.</p>';
+    }
+    updateCompileLog(markdownIssues);
     const katexBase = `${window.location.origin}/vendor/katex`;
+    const contentCss = `${window.location.origin}/css/markdown-content.css`;
+    elements.preview.onload = () => {
+      const mathErrors = [];
+      try {
+        window.renderMathInElement(elements.preview.contentDocument.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+            { left: '\\(', right: '\\)', display: false },
+            { left: '\\[', right: '\\]', display: true },
+          ],
+          throwOnError: false,
+          strict: false,
+          errorCallback: (message) => mathErrors.push(String(message)),
+          macros: mathMacros,
+        });
+      } catch (error) {
+        mathErrors.push(error.message);
+      }
+      updateCompileLog([
+        ...markdownIssues,
+        ...mathErrors.map((message) => ({ stage: 'KaTeX', line: 0, message })),
+      ]);
+      elements.previewStatus.textContent = mathErrors.length ? `${mathErrors.length} 个公式需要检查` : 'Markdown · GFM · KaTeX';
+      elements.previewStatus.dataset.kind = mathErrors.length ? 'error' : 'success';
+    };
     elements.preview.srcdoc = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="${katexBase}/katex.min.css">
+<link rel="stylesheet" href="${contentCss}">
 <style>
-:root{--ink:#1d2528;--muted:#5e696c;--line:#d9dfdd;--soft:#f5f7f6;--accent:#176d73}
-*{box-sizing:border-box}body{margin:0;padding:24px;color:var(--ink);font:16px/1.75 Arial,sans-serif}
-h1,h2,h3,h4{font-family:"Times New Roman",serif;line-height:1.15}h1{font-size:34px}h2{margin-top:38px;padding-top:12px;border-top:1px solid var(--line);font-size:28px}h3{font-size:22px}
-a{color:var(--accent)}blockquote{margin:22px 0;padding:13px 18px;border-left:3px solid #a54e39;background:var(--soft)}
-pre{overflow:auto;padding:16px;background:#182124;color:#eef4f3;border-radius:4px}code{font-family:Consolas,monospace}img{display:block;max-width:100%;margin:26px auto}table{display:block;overflow:auto;border-collapse:collapse}th,td{padding:8px 10px;border:1px solid var(--line)}.katex-display{overflow-x:auto;overflow-y:hidden;padding:4px 0}
+*{box-sizing:border-box}body{margin:0;padding:24px}a{color:#176d73}.markdown-content h1{font-size:34px}.markdown-content h2{font-size:28px}.markdown-content h3{font-size:22px}
 </style></head><body>${rendered}
-<script defer src="${katexBase}/katex.min.js"><\/script>
-<script defer src="${katexBase}/contrib/auto-render.min.js"><\/script>
-<script>window.addEventListener('load',()=>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\\\(',right:'\\\\)',display:false},{left:'\\\\[',right:'\\\\]',display:true}],throwOnError:false,macros:${macros}}));<\/script>
-</body></html>`;
+</body></html>`.replace('<body>', '<body class="markdown-content">');
   }
 
   function insertAtCursor(value) {
@@ -425,25 +578,31 @@ pre{overflow:auto;padding:16px;background:#182124;color:#eef4f3;border-radius:4p
   }
 
   async function publish() {
-    const filename = elements.filename.value.trim().toLowerCase();
-    if (!/^[a-z0-9][a-z0-9-]*\.md$/.test(filename)) {
-      setStatus('Use a lowercase filename such as my-note.md', 'error');
-      return;
-    }
-    const path = currentPath || `content/notes/${filename}`;
-    const today = new Date().toISOString().slice(0, 10);
-    let content = elements.content.value;
-    if (/^lastmod:/m.test(content)) content = content.replace(/^lastmod:.*$/m, `lastmod: ${today}`);
-    const payload = {
-      message: elements.message.value.trim() || `Publish ${filename}`,
-      content: encodeBase64(content),
-      branch,
-    };
-    if (currentSha) payload.sha = currentSha;
-
     elements.publish.disabled = true;
-    setStatus('Publishing...');
     try {
+      const filename = elements.filename.value.trim().toLowerCase();
+      if (!/^[a-z0-9][a-z0-9-]*\.md$/.test(filename)) {
+        throw new Error('文件名请使用小写字母、数字和连字符，例如 my-note.md。');
+      }
+      const path = currentPath || `content/notes/${filename}`;
+      const today = new Date().toISOString().slice(0, 10);
+      let editableContent = elements.content.value;
+      if (/^lastmod:/m.test(editableContent)) editableContent = editableContent.replace(/^lastmod:.*$/m, `lastmod: ${today}`);
+      const content = window.MarkdownPipeline.prepareForPublish(editableContent);
+      const publishIssues = window.MarkdownPipeline.diagnose(content);
+      const katexIssues = currentCompileIssues.filter((issue) => issue.stage === 'KaTeX');
+      if (publishIssues.length || katexIssues.length) {
+        updateCompileLog([...publishIssues, ...katexIssues]);
+        throw new Error('请先处理编译日志中的问题。');
+      }
+      const payload = {
+        message: elements.message.value.trim() || `Publish ${filename}`,
+        content: encodeBase64(content),
+        branch,
+      };
+      if (currentSha) payload.sha = currentSha;
+
+      setStatus('Publishing...');
       const result = await api(`/contents/${path}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -452,11 +611,16 @@ pre{overflow:auto;padding:16px;background:#182124;color:#eef4f3;border-radius:4p
       currentPath = result.content.path;
       currentSha = result.content.sha;
       elements.filename.disabled = true;
-      elements.content.value = content;
+      elements.content.value = editableContent;
+      removeDraft(path);
+      hideDraftOffer();
       await loadFiles(currentPath);
       setStatus(`Published | ${result.commit.sha.slice(0, 7)}`, 'success');
     } catch (error) {
       setStatus(error.message, 'error');
+      if (!currentCompileIssues.length && error.message !== '请先处理编译日志中的问题。') {
+        updateCompileLog([{ stage: 'Publish', line: 0, message: error.message }]);
+      }
     } finally {
       elements.publish.disabled = false;
     }
@@ -465,15 +629,25 @@ pre{overflow:auto;padding:16px;background:#182124;color:#eef4f3;border-radius:4p
   async function connect() {
     token = elements.token.value.trim() || token;
     if (!token) {
-      setAuthStatus('Enter a token to connect.', 'error');
+      setAuthStatus('请输入 GitHub token。', 'error');
       return;
     }
     elements.connect.disabled = true;
-    setAuthStatus('Connecting...');
+    setAuthStatus('正在验证身份与仓库权限...');
     try {
-      await api('');
+      const [user, repository] = await Promise.all([
+        githubRequest('https://api.github.com/user'),
+        api(''),
+      ]);
+      if (user.login.toLowerCase() !== owner.toLowerCase()) {
+        throw new Error(`当前账号 ${user.login} 没有编辑权限，仅 ${owner} 可以进入。`);
+      }
+      if (!repository.permissions?.push) {
+        throw new Error('Token 缺少此仓库 Contents 的写入权限。');
+      }
       sessionStorage.setItem(tokenKey, token);
-      setAuthStatus('Connected', 'success');
+      setAuthStatus(`已验证 ${user.login}`, 'success');
+      elements.identity.textContent = `${user.login} · ${repository.full_name}`;
       elements.auth.hidden = true;
       elements.workspace.hidden = false;
       const requested = params.get('path');
@@ -509,11 +683,28 @@ pre{overflow:auto;padding:16px;background:#182124;color:#eef4f3;border-radius:4p
   elements.connect.addEventListener('click', connect);
   elements.token.addEventListener('keydown', (event) => { if (event.key === 'Enter') connect(); });
   elements.disconnect.addEventListener('click', () => { sessionStorage.removeItem(tokenKey); window.location.reload(); });
+  elements.compileCopy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(compileLogText);
+      elements.compileCopy.textContent = '已复制';
+      setTimeout(() => { elements.compileCopy.textContent = '复制日志'; }, 1200);
+    } catch (_) {
+      setStatus('浏览器未允许复制日志', 'error');
+    }
+  });
+  elements.draftRestore.addEventListener('click', restoreDraft);
+  elements.draftDiscard.addEventListener('click', discardDraft);
   elements.newNote.addEventListener('click', newNote);
   elements.publish.addEventListener('click', publish);
   elements.content.addEventListener('input', () => {
     clearTimeout(previewTimer);
     previewTimer = setTimeout(renderPreview, 180);
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveDraft, 650);
+  });
+  elements.filename.addEventListener('input', () => {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveDraft, 650);
   });
   elements.modes.forEach((button) => button.addEventListener('click', () => {
     elements.modes.forEach((item) => item.classList.toggle('active', item === button));
