@@ -385,10 +385,16 @@
     });
     if (!response.ok) {
       let message = `${response.status} ${response.statusText}`;
+      let details = '';
       try {
         const payload = await response.json();
-        if (payload.message) message = payload.message;
+        details = payload.message || '';
       } catch (_) {}
+      if (response.status === 401) message = '编辑身份已过期，请重新验证 GitHub token。';
+      else if (response.status === 403) message = 'GitHub 拒绝了这次操作，请检查 token 的 Contents 读写权限。';
+      else if (response.status === 409) message = '远端文章刚刚发生变化，请重新打开文章后再发布。';
+      else if (response.status === 422) message = '文件名已存在或提交内容无效，请换一个文件名后重试。';
+      else if (details) message = details;
       throw new Error(message);
     }
     return response.status === 204 ? null : response.json();
@@ -417,6 +423,93 @@
   function prettyName(path) {
     return path.split('/').pop().replace(/\.md$/, '').split('-')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  }
+
+  function unwrapDocumentFence(value) {
+    const source = value.replaceAll('\r\n', '\n').trim();
+    const wrapped = /^```(?:markdown|md)?\s*\n([\s\S]*?)\n```\s*$/i.exec(source);
+    return wrapped ? wrapped[1].trim() : source;
+  }
+
+  function inferDocumentTitle(markdown, filename) {
+    const heading = /^#\s+(.+)$/m.exec(markdown);
+    if (heading) return heading[1].replace(/[*_`]/g, '').trim();
+    return prettyName(filename || 'research-note.md');
+  }
+
+  function inferDocumentSummary(markdown) {
+    return markdown.split(/\n\s*\n/)
+      .map((paragraph) => paragraph.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1').replace(/[*_`>#]/g, '').trim())
+      .find((paragraph) => paragraph && !/^(?:---|title:|subtitle:|summary:|date:|tags:)/i.test(paragraph))
+      ?.slice(0, 220) || '';
+  }
+
+  function filenameFromTitle(title) {
+    const slug = title.normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .slice(0, 72)
+      .replace(/-+$/g, '');
+    return `${slug || `note-${new Date().toISOString().replace(/\D/g, '').slice(0, 14)}`}.md`;
+  }
+
+  function normalizeDocument(markdown, filename) {
+    let source = unwrapDocumentFence(markdown);
+    if (/^---\s*\n/.test(source)) return `${source.trimEnd()}\n`;
+
+    const today = new Date().toISOString().slice(0, 10);
+    const title = inferDocumentTitle(source, filename);
+    source = source.replace(/^#\s+.+\n+/, '');
+    const summary = inferDocumentSummary(source);
+    const frontMatter = [
+      '---',
+      `title: ${JSON.stringify(title)}`,
+      'subtitle: ""',
+      `summary: ${JSON.stringify(summary)}`,
+      `description: ${JSON.stringify(summary)}`,
+      `date: ${today}`,
+      `lastmod: ${today}`,
+      'weight: 90',
+      'tags: []',
+      'draft: false',
+      'ShowToc: false',
+      'hideMeta: true',
+      '---',
+      '',
+    ].join('\n');
+    return `${frontMatter}${source.trim()}\n`;
+  }
+
+  function wait(milliseconds) {
+    return new Promise((resolve) => setTimeout(resolve, milliseconds));
+  }
+
+  async function monitorDeployment(commitSha) {
+    for (let attempt = 0; attempt < 30; attempt += 1) {
+      await wait(attempt < 2 ? 2500 : 4000);
+      try {
+        const data = await api(`/actions/runs?head_sha=${encodeURIComponent(commitSha)}&per_page=5`);
+        const run = data.workflow_runs?.find((item) => item.event === 'push');
+        if (!run) continue;
+        if (run.status !== 'completed') {
+          setStatus('已提交，网站正在更新...', 'success');
+          continue;
+        }
+        if (run.conclusion === 'success') {
+          setStatus(`已发布上线 | ${commitSha.slice(0, 7)}`, 'success');
+        } else {
+          setStatus('内容已提交，但网站构建失败；详情已写入编译日志。', 'error');
+          updateCompileLog([{ stage: 'Deploy', line: 0, message: `GitHub Pages 构建结果：${run.conclusion || 'failure'}` }]);
+        }
+        return;
+      } catch (_) {
+        setStatus(`已提交 | ${commitSha.slice(0, 7)} · 网站正在后台更新`, 'success');
+        return;
+      }
+    }
+    setStatus(`已提交 | ${commitSha.slice(0, 7)} · 网站仍在后台更新`, 'success');
   }
 
   function readDrafts() {
@@ -544,26 +637,11 @@
       clearTimeout(saveTimer);
       saveDraft();
     }
-    const today = new Date().toISOString().slice(0, 10);
     currentPath = '';
     currentSha = '';
     elements.filename.disabled = false;
     elements.filename.value = 'new-note.md';
-    elements.content.value = `---
-title: "New Note"
-subtitle: ""
-summary: ""
-date: ${today}
-lastmod: ${today}
-weight: 90
-tags: []
-draft: false
-ShowToc: false
-hideMeta: true
----
-
-Write the note here.
-`;
+    elements.content.value = '# Note title\n\nStart writing here.\n';
     selectFile('');
     renderPreview();
     offerDraft(draftPath(), elements.content.value);
@@ -735,13 +813,17 @@ Write the note here.
   async function publish() {
     elements.publish.disabled = true;
     try {
-      const filename = elements.filename.value.trim().toLowerCase();
+      let filename = elements.filename.value.trim().toLowerCase();
+      if (!currentPath && filename === 'new-note.md') {
+        filename = filenameFromTitle(inferDocumentTitle(elements.content.value, filename));
+        elements.filename.value = filename;
+      }
       if (!/^[a-z0-9][a-z0-9-]*\.md$/.test(filename)) {
         throw new Error('文件名请使用小写字母、数字和连字符，例如 my-note.md。');
       }
       const path = currentPath || `content/notes/${filename}`;
       const today = new Date().toISOString().slice(0, 10);
-      let editableContent = elements.content.value;
+      let editableContent = normalizeDocument(elements.content.value, filename);
       if (/^lastmod:/m.test(editableContent)) editableContent = editableContent.replace(/^lastmod:.*$/m, `lastmod: ${today}`);
       const content = window.MarkdownPipeline.prepareForPublish(editableContent);
       const publishIssues = window.MarkdownPipeline.diagnose(content);
@@ -769,8 +851,13 @@ Write the note here.
       elements.content.value = editableContent;
       removeDraft(path);
       hideDraftOffer();
-      await loadFiles(currentPath);
-      setStatus(`Published | ${result.commit.sha.slice(0, 7)}`, 'success');
+      setStatus(`已提交 | ${result.commit.sha.slice(0, 7)} · 网站正在更新`, 'success');
+      try {
+        await loadFiles(currentPath);
+      } catch (_) {
+        selectFile(currentPath);
+      }
+      monitorDeployment(result.commit.sha);
     } catch (error) {
       setStatus(error.message, 'error');
       if (!currentCompileIssues.length && error.message !== '请先处理编译日志中的问题。') {

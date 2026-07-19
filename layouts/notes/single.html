@@ -8,13 +8,15 @@
         <h1>{{ .Title }}</h1>
         {{ with .Params.subtitle }}<p class="note-deck">{{ . }}</p>{{ end }}
         <div class="note-meta">
-          <span>Published {{ .Date.Format "January 2, 2006" }}</span>
+          {{ if not .Date.IsZero }}<span>Published {{ .Date.Format "January 2, 2006" }}</span>{{ end }}
           <span>{{ .ReadingTime }} min read</span>
           <span>{{ .WordCount }} words</span>
         </div>
+        {{ with .Params.tags }}
         <ul class="note-tags" aria-label="Topics">
-          {{ range .Params.tags }}<li>{{ . }}</li>{{ end }}
+          {{ range . }}<li>{{ . }}</li>{{ end }}
         </ul>
+        {{ end }}
         <div class="notes-actions" aria-label="Document actions">
           <a href="{{ "notes/" | relURL }}">All notes</a>
           {{ with .File }}

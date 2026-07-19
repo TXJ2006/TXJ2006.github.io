@@ -17,14 +17,16 @@
           <div class="note-row-main">
             <div class="note-row-heading">
               <h2><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h2>
-              <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2, 2006" }}</time>
+              {{ if not $page.Date.IsZero }}<time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2, 2006" }}</time>{{ end }}
             </div>
             {{ with $page.Params.subtitle }}<p class="note-subtitle">{{ . }}</p>{{ end }}
-            <p class="note-summary">{{ $page.Params.summary }}</p>
+            {{ with $page.Params.summary }}<p class="note-summary">{{ . }}</p>{{ end }}
             <div class="note-row-footer">
+              {{ with $page.Params.tags }}
               <ul class="note-tags" aria-label="Topics">
-                {{ range first 3 $page.Params.tags }}<li>{{ . }}</li>{{ end }}
+                {{ range first 3 . }}<li>{{ . }}</li>{{ end }}
               </ul>
+              {{ end }}
               <span>{{ $page.WordCount }} words</span>
               <a href="{{ $page.RelPermalink }}">Read</a>
             </div>

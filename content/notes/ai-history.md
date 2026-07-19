@@ -1,5 +1,16 @@
-
-# A History of Artificial Intelligence: Ideas, Winters, and the Search for Intelligence
+---
+title: "A History of Artificial Intelligence: Ideas, Winters, and the Search for Intelligence"
+subtitle: "Ideas, Winters, and the Search for Intelligence"
+summary: "A historical account of artificial intelligence as an evolving conversation among symbolic reasoning, statistical learning, neural computation, and mathematics."
+description: "A historical account of artificial intelligence as an evolving conversation among symbolic reasoning, statistical learning, neural computation, and mathematics."
+date: 2026-07-19
+lastmod: 2026-07-19
+weight: 90
+tags: ["Artificial Intelligence", "History of AI", "Machine Learning"]
+draft: false
+ShowToc: false
+hideMeta: true
+---
 
 ## Introduction
 
