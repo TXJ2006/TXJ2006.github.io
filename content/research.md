@@ -2,13 +2,13 @@
 title: "Research"
 layout: "single"
 url: "/research/"
-summary: "Research in mathematics, mathematical modeling, online learning, and theoretical machine learning"
+summary: "Research in algebraic topology, efficient AI reasoning, learning theory, and formalized mathematics"
 draft: false
 ShowToc: false
 hideMeta: true
 ---
 
-My research spans **pure and applied mathematics, mathematical modeling, and theoretical machine learning**. I study mathematical structure in topology, analysis, dynamical systems, and optimization, alongside computationally efficient methods for sequential decision-making under uncertainty.
+I believe **mathematics can open broader frontiers for machine learning and artificial intelligence**, extending their foundations beyond the calculus-centered framework that has shaped modern AI. My work connects **algebraic topology and formalized mathematics** with **efficient AI reasoning, bandit algorithms, reinforcement learning, machine-learning theory, and algorithm design**.
 
 ## Mathematics and Mathematical Modeling
 

@@ -17,7 +17,7 @@ theme = 'PaperMod'
     ShowWordCount = false
     comments = false
     author = "Xujiang Tang"
-    description = "Xujiang Tang (唐煦江) is a mathematics and theoretical machine-learning researcher working in mathematical modeling, analysis, optimization, online learning, bandit algorithms, and reinforcement learning."
+    description = "Xujiang Tang (唐煦江) researches algebraic topology, efficient AI reasoning, bandit algorithms, reinforcement learning, machine-learning theory, algorithm design, and formalized mathematics."
     [params.label]
         text = "Xujiang Tang"
 
