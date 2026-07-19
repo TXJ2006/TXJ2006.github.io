@@ -60,9 +60,14 @@ disableKinds = ['taxonomy', 'term']
     weight = 4
 
 [[menu.main]]
+    name = "Write"
+    url = "/admin/"
+    weight = 5
+
+[[menu.main]]
     name = "CV"
     url = "/cv/"
-    weight = 5
+    weight = 6
 
 [markup]
     [markup.goldmark]
