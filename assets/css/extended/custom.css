@@ -1182,7 +1182,13 @@ a {
 
 .editor-files {
   display: grid;
-  gap: 3px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  align-content: start;
+  max-height: 390px;
+  overflow-y: auto;
+  padding: 2px 3px 7px 2px;
+  scrollbar-width: thin;
 }
 
 .editor-folders {
@@ -1295,39 +1301,110 @@ a {
 }
 
 .editor-files button {
-  padding: 8px 9px;
-  border-radius: 3px;
+  --file-accent: #4f9bd7;
+  display: grid;
+  min-width: 0;
+  min-height: 122px;
+  align-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #e1e6e8;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #fff, #f7fafc);
+  box-shadow: 0 5px 14px rgba(35,45,52,0.055);
+  cursor: grab;
   text-align: left;
-  transition: background 120ms ease, opacity 120ms ease, transform 120ms ease;
+  transition: border-color 130ms ease, box-shadow 130ms ease, opacity 120ms ease, transform 120ms ease;
 }
 
 .editor-files button:hover,
 .editor-files button.active {
-  background: var(--soft);
+  border-color: color-mix(in srgb, var(--file-accent) 68%, #d7dfe3);
+  background: linear-gradient(145deg, #fff, color-mix(in srgb, var(--file-accent) 7%, #fff));
+  box-shadow: 0 8px 19px rgba(35,45,52,0.105), 0 0 0 2px color-mix(in srgb, var(--file-accent) 11%, transparent);
   color: var(--accent-dark);
+  transform: translateY(-1px);
 }
 
-.editor-files button[data-repository="private"]::before {
-  content: "私";
-  display: inline-grid;
-  width: 20px;
-  height: 20px;
-  place-items: center;
-  margin-right: 7px;
-  border: 1px solid #b7cbc8;
-  border-radius: 50%;
-  color: var(--accent-dark);
+.editor-files button[data-repository="private"] {
+  --file-accent: #6978cf;
+}
+
+.editor-file-icon {
+  position: relative;
+  display: block;
+  width: 36px;
+  height: 44px;
+  border: 1px solid color-mix(in srgb, var(--file-accent) 46%, #cbd4d9);
+  border-radius: 5px;
+  background:
+    linear-gradient(var(--file-accent), var(--file-accent)) 8px 16px / 18px 2px no-repeat,
+    linear-gradient(color-mix(in srgb, var(--file-accent) 55%, #fff), color-mix(in srgb, var(--file-accent) 55%, #fff)) 8px 23px / 20px 2px no-repeat,
+    linear-gradient(color-mix(in srgb, var(--file-accent) 38%, #fff), color-mix(in srgb, var(--file-accent) 38%, #fff)) 8px 30px / 14px 2px no-repeat,
+    linear-gradient(145deg, #fff, color-mix(in srgb, var(--file-accent) 8%, #fff));
+  box-shadow: 0 5px 9px rgba(35,45,52,0.09);
+}
+
+.editor-file-icon::after {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 11px;
+  height: 11px;
+  border-bottom: 1px solid color-mix(in srgb, var(--file-accent) 42%, #cbd4d9);
+  border-left: 1px solid color-mix(in srgb, var(--file-accent) 42%, #cbd4d9);
+  border-radius: 0 4px 0 3px;
+  background: color-mix(in srgb, var(--file-accent) 13%, #fff);
+  content: "";
+}
+
+.editor-file-copy {
+  display: grid;
+  min-width: 0;
+  gap: 7px;
+}
+
+.editor-file-title {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--primary);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.editor-file-meta {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 5px;
+  color: var(--secondary);
   font-size: 9px;
   font-weight: 700;
-  vertical-align: middle;
+}
+
+.editor-file-meta::before {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #37a66f;
+  content: "";
+}
+
+.editor-files button[data-repository="private"] .editor-file-meta::before {
+  background: #6978cf;
 }
 
 .editor-files button.is-dragging {
   opacity: 0.42;
-  transform: scale(0.98);
+  cursor: grabbing;
+  transform: rotate(-1deg) scale(0.94);
 }
 
 .editor-files-empty {
+  grid-column: 1 / -1;
   margin: 4px 0 0;
   padding: 18px 9px;
   border: 1px dashed var(--border);
@@ -2256,13 +2333,15 @@ a {
 
   .editor-files {
     display: flex;
+    max-height: none;
     overflow-x: auto;
+    overflow-y: hidden;
     gap: 5px;
-    padding-bottom: 5px;
+    padding: 2px 2px 7px;
   }
 
   .editor-files button {
-    flex: 0 0 170px;
+    flex: 0 0 148px;
   }
 
   .editor-disconnect {

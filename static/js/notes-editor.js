@@ -688,7 +688,19 @@
       button.draggable = true;
       button.dataset.path = file.path;
       button.dataset.repository = file.repository;
-      button.textContent = libraryState.labels[libraryFileKey(file)] || prettyName(file.path);
+      const icon = document.createElement('span');
+      icon.className = 'editor-file-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      const copy = document.createElement('span');
+      copy.className = 'editor-file-copy';
+      const title = document.createElement('strong');
+      title.className = 'editor-file-title';
+      title.textContent = libraryState.labels[libraryFileKey(file)] || prettyName(file.path);
+      const meta = document.createElement('small');
+      meta.className = 'editor-file-meta';
+      meta.textContent = file.repository === 'private' ? '私密' : '公开';
+      copy.append(title, meta);
+      button.append(icon, copy);
       button.title = file.repository === 'private' ? '仅你可见 · 可拖入文件夹' : '公开文章 · 可拖入文件夹';
       button.addEventListener('click', () => loadFile(file.path, file.repository));
       button.addEventListener('dragstart', (event) => {
