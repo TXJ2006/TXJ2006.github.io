@@ -646,6 +646,18 @@
     setStatus(`已提交 | ${commitSha.slice(0, 7)} · 网站仍在后台更新`, 'success');
   }
 
+  async function waitForPublishedUrl(url, attempts = 30) {
+    for (let attempt = 0; attempt < attempts; attempt += 1) {
+      try {
+        const separator = url.includes('?') ? '&' : '?';
+        const response = await fetch(`${url}${separator}ready=${Date.now()}`, { cache: 'no-store' });
+        if (response.ok) return true;
+      } catch (_) {}
+      await wait(3000);
+    }
+    return false;
+  }
+
   function readDrafts() {
     try {
       return JSON.parse(localStorage.getItem(draftsKey) || '{}');
@@ -1336,8 +1348,12 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
   async function publish(options = {}) {
     const targetVisibility = options.targetVisibility || currentVisibility;
     const targetRepository = targetVisibility === 'private' ? 'private' : 'public';
+    const shareWasDisabled = elements.share.disabled;
+    const unshareWasDisabled = elements.unshare.disabled;
     elements.publish.disabled = true;
     elements.privacyToggle.disabled = true;
+    elements.share.disabled = true;
+    elements.unshare.disabled = true;
     try {
       let filename = elements.filename.value.trim().toLowerCase();
       if (!currentPath && filename === 'new-note.md') {
@@ -1409,6 +1425,8 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
     } finally {
       elements.publish.disabled = false;
       elements.privacyToggle.disabled = false;
+      elements.share.disabled = shareWasDisabled;
+      elements.unshare.disabled = unshareWasDisabled;
     }
   }
 
@@ -1465,8 +1483,13 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       const metadataResult = await putEncoded(privateApi, metadataPath, encodeBase64(`${JSON.stringify(metadata, null, 2)}\n`), `Update share state for ${elements.filename.value}`, currentShare?.metadataSha || '');
       currentShare = { ...metadata, metadataPath, metadataSha: metadataResult.content.sha };
       updatePrivacyUI();
-      await copyShareLink(metadata.url);
       monitorDeployment(contentResult.commit.sha);
+      setStatus('独立分享页已生成，正在等待网站部署...');
+      const ready = await waitForPublishedUrl(metadata.url);
+      await copyShareLink(metadata.url);
+      if (!ready) {
+        setStatus(`分享链接已复制 | ${metadata.url} · 页面仍在后台部署`, 'success');
+      }
     } catch (error) {
       if (pendingShare) {
         await deleteRemoteIfExists(api, pendingShare.contentPath, pendingShare.contentSha, 'Rollback incomplete private share').catch(() => null);
