@@ -43,6 +43,7 @@
   display: block;
   width: auto;
   max-width: 100%;
+  height: auto;
   max-height: 620px;
   margin: 28px auto 10px;
 }

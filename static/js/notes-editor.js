@@ -300,7 +300,13 @@
     formulaSearch: document.querySelector('#formula-search'),
     formulaSymbols: document.querySelector('#formula-symbols'),
     image: document.querySelector('#editor-image'),
+    imageAlt: document.querySelector('#editor-image-alt'),
+    imageControls: document.querySelector('#editor-image-controls'),
+    imageDelete: document.querySelector('#editor-image-delete'),
     imageFile: document.querySelector('#editor-image-file'),
+    imageReset: document.querySelector('#editor-image-reset'),
+    imageWidth: document.querySelector('#editor-image-width'),
+    imageWidthValue: document.querySelector('#editor-image-width-value'),
     identity: document.querySelector('#editor-identity'),
     message: document.querySelector('#editor-message'),
     markdownActions: [...document.querySelectorAll('[data-md-action]')],
@@ -325,7 +331,77 @@
   let markdownIssues = [];
   let pendingDraft = null;
   let previewTimer;
+  let previewSyncTimer;
   let saveTimer;
+  let selectedPreviewImage = null;
+  let savedPreviewRange = null;
+  let activeEditingSurface = 'source';
+  let pendingImageTarget = 'source';
+  let imageSequence = 0;
+  const localImageUrls = new Map();
+  const frontMatterPattern = /^---\s*\n[\s\S]*?\n---\s*(?:\n|$)/;
+
+  const turndownService = new window.TurndownService({
+    headingStyle: 'atx',
+    codeBlockStyle: 'fenced',
+    bulletListMarker: '-',
+    emDelimiter: '_',
+  });
+  if (window.turndownPluginGfm?.gfm) turndownService.use(window.turndownPluginGfm.gfm);
+
+  function htmlAttribute(value) {
+    return String(value || '')
+      .replaceAll('&', '&amp;')
+      .replaceAll('"', '&quot;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;');
+  }
+
+  function markdownAlt(value) {
+    return String(value || '').replace(/([\\\[\]])/g, '\\$1');
+  }
+
+  turndownService.addRule('mathSource', {
+    filter: (node) => node.nodeType === 1 && node.hasAttribute('data-md-math-source'),
+    replacement: (_content, node) => {
+      try { return decodeURIComponent(node.getAttribute('data-md-math-source')); }
+      catch (_) { return node.textContent; }
+    },
+  });
+
+  turndownService.addRule('footnoteReference', {
+    filter: (node) => node.nodeType === 1 && node.classList.contains('footnote-ref'),
+    replacement: (_content, node) => {
+      const id = node.querySelector('a')?.getAttribute('href')?.replace(/^#fn-/, '');
+      return id ? `[^${id}]` : '';
+    },
+  });
+
+  turndownService.addRule('footnoteDefinitions', {
+    filter: (node) => node.nodeType === 1 && node.classList.contains('footnotes'),
+    replacement: (_content, node) => {
+      const definitions = [...node.querySelectorAll(':scope > ol > li')].map((item) => {
+        const clone = item.cloneNode(true);
+        clone.querySelectorAll('.footnote-backref').forEach((backlink) => backlink.remove());
+        const id = item.id.replace(/^fn-/, '');
+        return `[^${id}]: ${turndownService.turndown(clone.innerHTML).trim()}`;
+      });
+      return definitions.length ? `\n\n${definitions.join('\n')}` : '';
+    },
+  });
+
+  turndownService.addRule('responsiveImage', {
+    filter: 'img',
+    replacement: (_content, node) => {
+      const source = node.dataset.markdownSrc || node.getAttribute('src') || '';
+      const alt = node.getAttribute('alt') || '';
+      const width = Number.parseInt(node.style.width || node.dataset.width || '', 10);
+      if (Number.isFinite(width) && width >= 10 && width <= 100 && (node.dataset.width || node.style.width)) {
+        return `\n\n<img src="${htmlAttribute(source)}" alt="${htmlAttribute(alt)}" style="width: ${width}%;">\n\n`;
+      }
+      return `\n\n![${markdownAlt(alt)}](${source})\n\n`;
+    },
+  });
 
   function setStatus(message, kind = '') {
     elements.status.textContent = message;
@@ -650,11 +726,164 @@
     setStatus('New document', 'success');
   }
 
+  function hideImageControls() {
+    selectedPreviewImage?.classList.remove('is-selected');
+    selectedPreviewImage = null;
+    elements.imageControls.hidden = true;
+  }
+
+  function selectPreviewImage(image) {
+    if (!image) return;
+    selectedPreviewImage?.classList.remove('is-selected');
+    selectedPreviewImage = image;
+    selectedPreviewImage.classList.add('is-selected');
+    const width = Number.parseInt(image.style.width || image.dataset.width || '100', 10);
+    elements.imageWidth.value = String(Math.min(100, Math.max(10, width || 100)));
+    elements.imageWidthValue.value = `${elements.imageWidth.value}%`;
+    elements.imageWidthValue.textContent = `${elements.imageWidth.value}%`;
+    elements.imageAlt.value = image.getAttribute('alt') || '';
+    elements.imageControls.hidden = false;
+  }
+
+  function scheduleDraftSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveDraft, 650);
+  }
+
+  function syncPreviewToMarkdown() {
+    const document = elements.preview.contentDocument;
+    const body = document?.body;
+    if (!body) return;
+    const clone = body.cloneNode(true);
+    clone.querySelectorAll('[data-upload-marker]').forEach((marker) => marker.remove());
+    const frontMatter = frontMatterPattern.exec(elements.content.value)?.[0] || '';
+    const markdown = turndownService.turndown(clone.innerHTML).trim();
+    const nextValue = `${frontMatter}${markdown}${markdown ? '\n' : ''}`;
+    if (nextValue === elements.content.value) return;
+    elements.content.value = nextValue;
+    markdownIssues = window.MarkdownPipeline.diagnose(nextValue);
+    updateCompileLog(markdownIssues);
+    elements.previewStatus.textContent = '可视化修改已同步到 Markdown';
+    elements.previewStatus.dataset.kind = 'success';
+    scheduleDraftSave();
+  }
+
+  function schedulePreviewSync() {
+    clearTimeout(previewSyncTimer);
+    previewSyncTimer = setTimeout(syncPreviewToMarkdown, 220);
+  }
+
+  function rememberPreviewRange() {
+    const document = elements.preview.contentDocument;
+    const selection = document?.getSelection();
+    if (!selection?.rangeCount || !document.body.contains(selection.anchorNode)) return;
+    savedPreviewRange = selection.getRangeAt(0).cloneRange();
+    activeEditingSurface = 'preview';
+  }
+
+  function insertPreviewUploadMarker() {
+    const document = elements.preview.contentDocument;
+    if (!document?.body) return null;
+    const marker = document.createElement('span');
+    marker.dataset.uploadMarker = String(Date.now());
+    marker.contentEditable = 'false';
+    marker.textContent = '正在上传图片...';
+    marker.className = 'image-upload-marker';
+    const range = savedPreviewRange?.cloneRange();
+    if (range && document.body.contains(range.commonAncestorContainer)) {
+      range.collapse(false);
+      range.insertNode(marker);
+    } else {
+      document.body.append(marker);
+    }
+    marker.scrollIntoView({ block: 'nearest' });
+    return marker;
+  }
+
+  function applyLocalImageSources(document) {
+    document.querySelectorAll('img').forEach((image) => {
+      const markdownSource = image.dataset.markdownSrc || image.getAttribute('src') || '';
+      image.dataset.markdownSrc = markdownSource;
+      const localSource = localImageUrls.get(markdownSource);
+      if (localSource) image.src = localSource;
+      const width = Number.parseInt(image.style.width, 10);
+      if (Number.isFinite(width)) image.dataset.width = String(width);
+    });
+  }
+
+  function imageFilesFromTransfer(transfer) {
+    const files = [...(transfer?.files || [])];
+    const keys = new Set(files.map((file) => `${file.name}:${file.size}:${file.type}:${file.lastModified}`));
+    for (const item of [...(transfer?.items || [])]) {
+      if (item.kind !== 'file' || !item.type.startsWith('image/')) continue;
+      const file = item.getAsFile();
+      const key = file ? `${file.name}:${file.size}:${file.type}:${file.lastModified}` : '';
+      if (file && !keys.has(key)) {
+        keys.add(key);
+        files.push(file);
+      }
+    }
+    return files.filter((file) => file.type.startsWith('image/'));
+  }
+
+  function hasImageTransfer(transfer) {
+    return imageFilesFromTransfer(transfer).length > 0
+      || [...(transfer?.items || [])].some((item) => item.kind === 'file' && item.type.startsWith('image/'));
+  }
+
+  function attachPreviewInteractions(document) {
+    const body = document.body;
+    body.contentEditable = 'true';
+    body.spellcheck = true;
+    body.setAttribute('aria-label', '可直接编辑的 Markdown 预览');
+    document.querySelectorAll('[data-md-math-source]').forEach((math) => {
+      math.contentEditable = 'false';
+      math.title = '公式请在 Markdown 源文档中编辑';
+    });
+    document.addEventListener('selectionchange', rememberPreviewRange);
+    body.addEventListener('focus', () => { activeEditingSurface = 'preview'; });
+    body.addEventListener('input', schedulePreviewSync);
+    body.addEventListener('click', (event) => {
+      const image = event.target.closest?.('img');
+      if (image) {
+        event.preventDefault();
+        selectPreviewImage(image);
+        return;
+      }
+      if (event.target.closest?.('a')) event.preventDefault();
+      if (!event.target.closest?.('[data-md-math-source]')) hideImageControls();
+    });
+    body.addEventListener('paste', (event) => {
+      const files = imageFilesFromTransfer(event.clipboardData);
+      if (!files.length) return;
+      event.preventDefault();
+      rememberPreviewRange();
+      uploadImages(files, 'preview');
+    });
+    body.addEventListener('dragover', (event) => {
+      if (!hasImageTransfer(event.dataTransfer)) return;
+      event.preventDefault();
+      body.classList.add('image-drop-active');
+    });
+    body.addEventListener('dragleave', () => body.classList.remove('image-drop-active'));
+    body.addEventListener('drop', (event) => {
+      const files = imageFilesFromTransfer(event.dataTransfer);
+      body.classList.remove('image-drop-active');
+      if (!files.length) return;
+      event.preventDefault();
+      const range = document.caretRangeFromPoint?.(event.clientX, event.clientY);
+      if (range) savedPreviewRange = range.cloneRange();
+      activeEditingSurface = 'preview';
+      uploadImages(files, 'preview');
+    });
+  }
+
   function renderPreview() {
+    hideImageControls();
     markdownIssues = window.MarkdownPipeline.diagnose(elements.content.value);
     let rendered = '';
     try {
-      rendered = window.MarkdownPipeline.render(elements.content.value);
+      rendered = window.MarkdownPipeline.render(elements.content.value, { preserveMathSource: true });
     } catch (error) {
       markdownIssues.push({ stage: 'Markdown', line: 0, message: error.message });
       rendered = '<p>Preview compilation failed.</p>';
@@ -664,8 +893,10 @@
     const contentCss = `${window.location.origin}/css/markdown-content.css`;
     elements.preview.onload = () => {
       const mathErrors = [];
+      const document = elements.preview.contentDocument;
+      applyLocalImageSources(document);
       try {
-        window.renderMathInElement(elements.preview.contentDocument.body, {
+        window.renderMathInElement(document.body, {
           delimiters: [
             { left: '$$', right: '$$', display: true },
             { left: '$', right: '$', display: false },
@@ -680,6 +911,7 @@
       } catch (error) {
         mathErrors.push(error.message);
       }
+      attachPreviewInteractions(document);
       updateCompileLog([
         ...markdownIssues,
         ...mathErrors.map((message) => ({ stage: 'KaTeX', line: 0, message })),
@@ -692,7 +924,10 @@
 <link rel="stylesheet" href="${katexBase}/katex.min.css">
 <link rel="stylesheet" href="${contentCss}">
 <style>
-*{box-sizing:border-box}body{margin:0;padding:24px}a{color:#176d73}.markdown-content h1{font-size:34px}.markdown-content h2{font-size:28px}.markdown-content h3{font-size:22px}
+*{box-sizing:border-box}body{min-height:100%;margin:0;padding:24px;outline:0}a{color:#176d73}.markdown-content h1{font-size:34px}.markdown-content h2{font-size:28px}.markdown-content h3{font-size:22px}
+.markdown-content img{cursor:pointer;transition:outline-color .15s ease}.markdown-content img.is-selected{outline:2px solid #176d73;outline-offset:4px}
+.md-math-source{cursor:not-allowed}.image-upload-marker{display:inline-block;margin:8px 0;padding:5px 8px;background:#f0f5f4;color:#176d73;font:12px Arial,sans-serif}
+body.image-drop-active::after{content:'松开以上传图片';position:fixed;inset:12px;display:grid;place-items:center;border:1px dashed #176d73;background:rgba(255,255,255,.94);color:#176d73;font:700 14px Arial,sans-serif;pointer-events:none}
 </style></head><body>${rendered}
 </body></html>`.replace('<body>', '<body class="markdown-content">');
   }
@@ -789,14 +1024,22 @@
     });
   }
 
-  async function uploadImage(file, altText = 'Research figure') {
-    if (!file.type.startsWith('image/')) throw new Error('Choose a PNG, JPEG, WebP, or GIF image.');
-    if (file.size > 8 * 1024 * 1024) throw new Error('Image must be smaller than 8 MB.');
-    const extension = (file.name.split('.').pop() || 'png').toLowerCase().replace(/[^a-z0-9]/g, '');
+  function validateImage(file) {
+    const allowedTypes = new Set(['image/png', 'image/jpeg', 'image/webp', 'image/gif']);
+    if (!allowedTypes.has(file.type)) throw new Error('图片仅支持 PNG、JPEG、WebP 或 GIF。');
+    if (file.size > 8 * 1024 * 1024) throw new Error(`${file.name} 超过 8 MB，请压缩后重试。`);
+  }
+
+  async function uploadImageAsset(file, index, total) {
+    validateImage(file);
+    const extensions = { 'image/png': 'png', 'image/jpeg': 'jpg', 'image/webp': 'webp', 'image/gif': 'gif' };
+    const extension = extensions[file.type];
     const noteSlug = (elements.filename.value || 'note').replace(/\.md$/i, '').replace(/[^a-z0-9-]/gi, '-').toLowerCase();
-    const assetName = `${noteSlug}-${Date.now()}.${extension}`;
+    imageSequence += 1;
+    const assetName = `${noteSlug}-${Date.now()}-${imageSequence}.${extension}`;
     const assetPath = `static/images/notes/uploads/${assetName}`;
-    setStatus('Uploading image...');
+    const publicPath = `/images/notes/uploads/${assetName}`;
+    setStatus(`正在上传图片 ${index + 1}/${total}...`);
     const result = await api(`/contents/${assetPath}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -806,8 +1049,83 @@
         branch,
       }),
     });
-    insertAtCursor(`\n![${altText}](/images/notes/uploads/${assetName})\n`);
-    setStatus(`Image uploaded | ${result.commit.sha.slice(0, 7)}`, 'success');
+    localImageUrls.set(publicPath, URL.createObjectURL(file));
+    return {
+      alt: file.name.replace(/\.[^.]+$/, '') || 'Research figure',
+      commit: result.commit?.sha || '',
+      publicPath,
+    };
+  }
+
+  function createPreviewImage(document, image) {
+    const element = document.createElement('img');
+    element.src = localImageUrls.get(image.publicPath) || image.publicPath;
+    element.dataset.markdownSrc = image.publicPath;
+    element.alt = image.alt;
+    return element;
+  }
+
+  async function uploadImages(files, target = 'source') {
+    const images = [...files];
+    if (!images.length || elements.image.disabled) return;
+    try {
+      images.forEach(validateImage);
+    } catch (error) {
+      setStatus(error.message, 'error');
+      updateCompileLog([{ stage: 'Upload', line: 0, message: error.message }]);
+      return;
+    }
+
+    elements.image.disabled = true;
+    elements.publish.disabled = true;
+    let sourceMarker = '';
+    let previewMarker = null;
+    if (target === 'preview') {
+      previewMarker = insertPreviewUploadMarker();
+    } else {
+      sourceMarker = `<!-- image-upload-${Date.now()}-${imageSequence} -->`;
+      elements.content.setRangeText(sourceMarker, elements.content.selectionStart, elements.content.selectionEnd, 'end');
+      renderPreview();
+    }
+
+    try {
+      const uploaded = [];
+      for (let index = 0; index < images.length; index += 1) {
+        uploaded.push(await uploadImageAsset(images[index], index, images.length));
+      }
+      if (target === 'preview') {
+        if (previewMarker?.isConnected) {
+          const document = elements.preview.contentDocument;
+          const fragment = document.createDocumentFragment();
+          uploaded.forEach((image) => fragment.append(createPreviewImage(document, image)));
+          const lastImage = fragment.lastChild;
+          previewMarker.replaceWith(fragment);
+          syncPreviewToMarkdown();
+          if (lastImage) selectPreviewImage(lastImage);
+        } else {
+          const markdown = uploaded.map((image) => `![${markdownAlt(image.alt)}](${image.publicPath})`).join('\n\n');
+          elements.content.value = `${elements.content.value.trimEnd()}\n\n${markdown}\n`;
+          renderPreview();
+          scheduleDraftSave();
+        }
+      } else {
+        const markdown = uploaded.map((image) => `![${markdownAlt(image.alt)}](${image.publicPath})`).join('\n\n');
+        elements.content.value = elements.content.value.replace(sourceMarker, `\n${markdown}\n`);
+        renderPreview();
+        scheduleDraftSave();
+      }
+      const lastCommit = uploaded.at(-1)?.commit;
+      setStatus(`已上传 ${uploaded.length} 张图片${lastCommit ? ` · ${lastCommit.slice(0, 7)}` : ''}`, 'success');
+    } catch (error) {
+      if (sourceMarker) elements.content.value = elements.content.value.replace(sourceMarker, '');
+      previewMarker?.remove();
+      renderPreview();
+      setStatus(error.message, 'error');
+      updateCompileLog([{ stage: 'Upload', line: 0, message: error.message }]);
+    } finally {
+      elements.image.disabled = false;
+      elements.publish.disabled = false;
+    }
   }
 
   async function publish() {
@@ -919,13 +1237,43 @@
     formulaMode = button.dataset.formulaMode;
     elements.formulaModes.forEach((item) => item.classList.toggle('active', item === button));
   }));
-  elements.image.addEventListener('click', () => elements.imageFile.click());
+  elements.image.addEventListener('click', () => {
+    pendingImageTarget = activeEditingSurface;
+    elements.imageFile.click();
+  });
   elements.imageFile.addEventListener('change', async () => {
-    const file = elements.imageFile.files[0];
-    if (!file) return;
-    try { await uploadImage(file, file.name.replace(/\.[^.]+$/, '')); }
-    catch (error) { setStatus(error.message, 'error'); }
-    finally { elements.imageFile.value = ''; }
+    const files = [...elements.imageFile.files];
+    if (files.length) await uploadImages(files, pendingImageTarget);
+    elements.imageFile.value = '';
+  });
+  elements.imageWidth.addEventListener('input', () => {
+    if (!selectedPreviewImage) return;
+    const width = Number.parseInt(elements.imageWidth.value, 10);
+    selectedPreviewImage.style.width = `${width}%`;
+    selectedPreviewImage.dataset.width = String(width);
+    elements.imageWidthValue.value = `${width}%`;
+    elements.imageWidthValue.textContent = `${width}%`;
+    schedulePreviewSync();
+  });
+  elements.imageAlt.addEventListener('input', () => {
+    if (!selectedPreviewImage) return;
+    selectedPreviewImage.alt = elements.imageAlt.value;
+    schedulePreviewSync();
+  });
+  elements.imageReset.addEventListener('click', () => {
+    if (!selectedPreviewImage) return;
+    selectedPreviewImage.style.removeProperty('width');
+    delete selectedPreviewImage.dataset.width;
+    elements.imageWidth.value = '100';
+    elements.imageWidthValue.value = '自动';
+    elements.imageWidthValue.textContent = '自动';
+    syncPreviewToMarkdown();
+  });
+  elements.imageDelete.addEventListener('click', () => {
+    if (!selectedPreviewImage) return;
+    selectedPreviewImage.remove();
+    hideImageControls();
+    syncPreviewToMarkdown();
   });
   elements.connect.addEventListener('click', connect);
   elements.token.addEventListener('keydown', (event) => { if (event.key === 'Enter') connect(); });
@@ -943,6 +1291,30 @@
   elements.draftDiscard.addEventListener('click', discardDraft);
   elements.newNote.addEventListener('click', newNote);
   elements.publish.addEventListener('click', publish);
+  elements.content.addEventListener('focus', () => { activeEditingSurface = 'source'; });
+  elements.content.addEventListener('paste', (event) => {
+    const files = imageFilesFromTransfer(event.clipboardData);
+    if (!files.length) return;
+    event.preventDefault();
+    activeEditingSurface = 'source';
+    uploadImages(files, 'source');
+  });
+  elements.content.addEventListener('dragover', (event) => {
+    if (!hasImageTransfer(event.dataTransfer)) return;
+    event.preventDefault();
+    elements.content.closest('.editor-pane').classList.add('image-drop-active');
+  });
+  elements.content.addEventListener('dragleave', () => {
+    elements.content.closest('.editor-pane').classList.remove('image-drop-active');
+  });
+  elements.content.addEventListener('drop', (event) => {
+    const files = imageFilesFromTransfer(event.dataTransfer);
+    elements.content.closest('.editor-pane').classList.remove('image-drop-active');
+    if (!files.length) return;
+    event.preventDefault();
+    activeEditingSurface = 'source';
+    uploadImages(files, 'source');
+  });
   elements.content.addEventListener('input', () => {
     clearTimeout(previewTimer);
     previewTimer = setTimeout(renderPreview, 180);
@@ -957,6 +1329,9 @@
     elements.modes.forEach((item) => item.classList.toggle('active', item === button));
     elements.panes.dataset.mode = button.dataset.mode;
   }));
+  window.addEventListener('beforeunload', () => {
+    localImageUrls.forEach((url) => URL.revokeObjectURL(url));
+  });
 
   if (token) {
     elements.remember.checked = Boolean(localStorage.getItem(tokenKey));

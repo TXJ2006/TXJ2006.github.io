@@ -103,10 +103,13 @@
     return { markdown: output.join('\n'), math };
   }
 
-  function restoreMath(html, math) {
+  function restoreMath(html, math, preserveSource = false) {
     return math.reduce((result, item) => {
       const placeholder = `<span data-md-math="${item.token}"></span>`;
-      return result.replaceAll(placeholder, item.value);
+      const value = preserveSource
+        ? `<span class="md-math-source" data-md-math-source="${encodeURIComponent(item.value)}">${escapeHtml(item.value)}</span>`
+        : item.value;
+      return result.replaceAll(placeholder, value);
     }, html);
   }
 
@@ -203,7 +206,7 @@
     return `${output.join('\n').trimEnd()}\n`;
   }
 
-  function render(markdown) {
+  function render(markdown, options = {}) {
     const withoutFrontMatter = stripFrontMatter(markdown.replaceAll('\r\n', '\n'));
     const withFootnotes = extractFootnotes(withoutFrontMatter);
     const protectedSource = protectMath(withFootnotes);
@@ -212,7 +215,7 @@
       breaks: false,
       gfm: true,
     });
-    return restoreMath(html, protectedSource.math);
+    return restoreMath(html, protectedSource.math, Boolean(options.preserveMathSource));
   }
 
   function diagnose(markdown) {
