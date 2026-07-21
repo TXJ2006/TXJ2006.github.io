@@ -12,13 +12,9 @@ Publication status is stated explicitly below. Manuscripts under review or submi
 
 ## Published and Accepted
 
-1. Q. Li and **X. Tang**. "HKGEduRec: A Knowledge Graph-Enhanced Dynamic Hybrid Framework for Educational Recommendation with Cold-Start Mitigation." *IEEE ICMEIM 2025*, pp. 1-5. **Published; EI-indexed.** [DOI: 10.1109/ICMEIM66684.2025.11307032](https://doi.org/10.1109/ICMEIM66684.2025.11307032)
+1. Q. Li and **X. Tang**. "Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions." *AIMS Mathematics*, 11(3), 7330-7352, 2026. **Published.** [DOI: 10.3934/math.2026302](https://doi.org/10.3934/math.2026302)
 
-2. **X. Tang** and Q. Li. "Logical Gene Encoding: A Bio-Inspired Approach for Energy-Efficient Automated Reasoning." *5th International Conference on Internet, Education and Information Technology (IEIT 2025)*. **Published; EI-indexed.** [DOI: 10.2991/978-94-6463-803-5_81](https://doi.org/10.2991/978-94-6463-803-5_81)
-
-3. Q. Li and **X. Tang**. "Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions." *AIMS Mathematics*, 11(3), 7330-7352, 2026. **Published.** [DOI: 10.3934/math.2026302](https://doi.org/10.3934/math.2026302)
-
-4. **X. Tang et al.** "Structure-preserving Koopman Predictive Control for Memristive Neural Dynamics: Input-exact and Commutator-defect Lifting." *Biological Cybernetics*. **Accepted.** [Public preprint](https://doi.org/10.21203/rs.3.rs-9200134/v1)
+2. **X. Tang et al.** "Structure-preserving Koopman Predictive Control for Memristive Neural Dynamics: Input-exact and Commutator-defect Lifting." *Biological Cybernetics*. **Accepted.** [Public preprint](https://doi.org/10.21203/rs.3.rs-9200134/v1)
 
 ## Under Review, Submitted, and Manuscripts
 

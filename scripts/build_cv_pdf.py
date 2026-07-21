@@ -325,19 +325,19 @@ def build():
     story += section("Published and Accepted", styles)
     story.extend(
         [
-            publication(1, "Q. Li and <b>X. Tang</b>. HKGEduRec: A Knowledge Graph-Enhanced Dynamic Hybrid Framework for Educational Recommendation with Cold-Start Mitigation. <i>IEEE ICMEIM 2025</i>, pp. 1-5. EI-indexed.", styles),
-            publication(2, "<b>X. Tang</b> and Q. Li. Logical Gene Encoding: A Bio-Inspired Approach for Energy-Efficient Automated Reasoning. <i>IEIT 2025</i>. EI-indexed. DOI: 10.2991/978-94-6463-803-5_81.", styles),
-            publication(3, "Q. Li and <b>X. Tang</b>. Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions. <i>AIMS Mathematics</i>. Accepted.", styles),
-            publication(4, "<b>X. Tang et al.</b> Structure-preserving Koopman Predictive Control for Memristive Neural Dynamics: Input-exact and Commutator-defect Lifting. <i>Biological Cybernetics</i>. Accepted.", styles),
+            publication(1, "Q. Li and <b>X. Tang</b>. Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions. <i>AIMS Mathematics</i>, 11(3), 7330-7352, 2026. Published. DOI: 10.3934/math.2026302.", styles),
+            publication(2, "<b>X. Tang et al.</b> Structure-preserving Koopman Predictive Control for Memristive Neural Dynamics: Input-exact and Commutator-defect Lifting. <i>Biological Cybernetics</i>. Accepted.", styles),
         ]
     )
 
-    story += section("Under Review and Submitted", styles)
+    story += section("Under Review, Submitted, and Manuscripts", styles)
     story.extend(
         [
             publication(1, "<b>X. Tang et al.</b> The Curvature Filter in Bilevel Optimization: Implicit Differentiation Without Nondegeneracy. <i>Journal of Machine Learning Research</i>, Theory and Methods. Submitted.", styles),
-            publication(2, "Y. Fan, <b>X. Tang</b>, and R. Guan. Deep Hedging under Rough Volatility: A Fractional Kernel Embedding Approach with Optimal Convergence Rate. <i>AIMS Mathematics</i>. Under review.", styles),
-            publication(3, "<b>X. Tang et al.</b> Spectral Network Determinants of Seizure-like Synchronization and Spread in Coupled Hindmarsh-Rose Brain Models. <i>Cognitive Neurodynamics</i>. Under review.", styles),
+            publication(2, "<b>X. Tang</b>, R. Guan, and Z. Wang. Moment Order in Unsupervised Direction Learning. <i>Journal of Machine Learning Research</i>. Submitted.", styles),
+            publication(3, "Y. Fan, <b>X. Tang</b>, and R. Guan. Deep Hedging under Rough Volatility: A Fractional Kernel Embedding Approach with Optimal Convergence Rate. <i>Journal of Computational and Applied Mathematics</i>. Under review.", styles),
+            publication(4, "<b>X. Tang et al.</b> Spectral Network Determinants of Seizure-like Synchronization and Spread in Coupled Hindmarsh-Rose Brain Models. <i>Cognitive Neurodynamics</i>. Under review.", styles),
+            publication(5, "<b>X. Tang et al.</b> Trajectory-Level Out-of-Distribution Success Bounds for Deep Autoregressive Models. Manuscript, 2026.", styles),
         ]
     )
 
