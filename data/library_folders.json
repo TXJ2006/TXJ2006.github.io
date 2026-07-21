@@ -7,11 +7,6 @@
       "color": 0
     },
     {
-      "id": "bandit-learning",
-      "name": "Bandit 与在线学习",
-      "color": 1
-    },
-    {
       "id": "probability-statistics",
       "name": "概率与统计基础",
       "color": 2
