@@ -3,9 +3,12 @@
   if (!page) return;
 
   const repo = page.dataset.repo;
+  const privateRepo = page.dataset.privateRepo;
   const owner = page.dataset.owner;
   const branch = page.dataset.branch;
+  const siteUrl = page.dataset.siteUrl.replace(/\/$/, '');
   const apiRoot = `https://api.github.com/repos/${repo}`;
+  const privateApiRoot = `https://api.github.com/repos/${privateRepo}`;
   const tokenKey = 'txj_notes_editor_token';
   const draftsKey = 'txj_notes_editor_drafts';
   const params = new URLSearchParams(window.location.search);
@@ -315,16 +318,24 @@
     panes: document.querySelector('.editor-panes'),
     preview: document.querySelector('#editor-preview'),
     previewStatus: document.querySelector('#editor-preview-status'),
+    privacy: document.querySelector('.editor-privacy'),
+    privacyState: document.querySelector('#editor-privacy-state'),
+    privacyToggle: document.querySelector('#editor-privacy-toggle'),
     publish: document.querySelector('#editor-publish'),
     remember: document.querySelector('#editor-remember'),
     status: document.querySelector('#editor-status'),
+    share: document.querySelector('#editor-share'),
     token: document.querySelector('#editor-token'),
+    unshare: document.querySelector('#editor-unshare'),
     workspace: document.querySelector('#editor-workspace'),
   };
 
   let token = localStorage.getItem(tokenKey) || sessionStorage.getItem(tokenKey) || '';
   let currentPath = '';
   let currentSha = '';
+  let currentRepository = 'public';
+  let currentVisibility = 'public';
+  let currentShare = null;
   let formulaMode = 'inline';
   let compileLogText = '';
   let currentCompileIssues = [];
@@ -471,13 +482,31 @@
       else if (response.status === 409) message = '远端文章刚刚发生变化，请重新打开文章后再发布。';
       else if (response.status === 422) message = '文件名已存在或提交内容无效，请换一个文件名后重试。';
       else if (details) message = details;
-      throw new Error(message);
+      const error = new Error(message);
+      error.status = response.status;
+      throw error;
     }
     return response.status === 204 ? null : response.json();
   }
 
   function api(path, options = {}) {
     return githubRequest(`${apiRoot}${path}`, options);
+  }
+
+  function privateApi(path, options = {}) {
+    return githubRequest(`${privateApiRoot}${path}`, options);
+  }
+
+  function repositoryApi(repository) {
+    return repository === 'private' ? privateApi : api;
+  }
+
+  async function optionalContents(request) {
+    try { return await request(); }
+    catch (error) {
+      if (error.status === 404) return null;
+      throw error;
+    }
   }
 
   function decodeBase64(value) {
@@ -494,6 +523,35 @@
       binary += String.fromCharCode(...bytes.subarray(index, index + chunk));
     }
     return btoa(binary);
+  }
+
+  function base64ToBytes(value) {
+    const binary = atob(value.replace(/\s/g, ''));
+    return Uint8Array.from(binary, (character) => character.charCodeAt(0));
+  }
+
+  function mimeTypeFromPath(path) {
+    const extension = path.split('.').pop()?.toLowerCase();
+    return ({ png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp', gif: 'image/gif' })[extension] || 'application/octet-stream';
+  }
+
+  function randomId(bytes = 16) {
+    const values = crypto.getRandomValues(new Uint8Array(bytes));
+    return [...values].map((value) => value.toString(16).padStart(2, '0')).join('');
+  }
+
+  function replaceSource(markdown, source, replacement) {
+    return markdown.split(source).join(replacement);
+  }
+
+  function documentImageSources(markdown) {
+    try {
+      const html = window.MarkdownPipeline.render(markdown);
+      const document = new DOMParser().parseFromString(html, 'text/html');
+      return [...new Set([...document.querySelectorAll('img')].map((image) => image.getAttribute('src')).filter(Boolean))];
+    } catch (_) {
+      return [];
+    }
   }
 
   function prettyName(path) {
@@ -598,7 +656,8 @@
 
   function draftPath() {
     const filename = elements.filename.value.trim().toLowerCase() || 'new-note.md';
-    return currentPath || `content/notes/${filename}`;
+    const path = currentPath || (currentVisibility === 'private' ? `notes/${filename}` : `content/notes/${filename}`);
+    return `${currentRepository}:${path}`;
   }
 
   function saveDraft() {
@@ -609,6 +668,7 @@
       content: elements.content.value,
       filename: elements.filename.value,
       path: currentPath,
+      repository: currentRepository,
       sha: currentSha,
       updatedAt: new Date().toISOString(),
     };
@@ -644,9 +704,12 @@
     if (!pendingDraft) return;
     currentPath = pendingDraft.path;
     currentSha = pendingDraft.sha;
+    currentRepository = pendingDraft.repository || 'public';
+    currentVisibility = currentRepository;
     elements.filename.value = pendingDraft.filename;
     elements.filename.disabled = Boolean(currentPath);
     elements.content.value = pendingDraft.content;
+    updatePrivacyUI();
     hideDraftOffer();
     renderPreview();
     setStatus('已恢复本地草稿', 'success');
@@ -659,50 +722,103 @@
     setStatus('已放弃本地草稿');
   }
 
-  function selectFile(path) {
+  function selectFile(path, repository = currentRepository) {
     elements.files.querySelectorAll('button').forEach((button) => {
-      button.classList.toggle('active', button.dataset.path === path);
+      button.classList.toggle('active', button.dataset.path === path && button.dataset.repository === repository);
     });
   }
 
-  async function loadFiles(selectedPath = '') {
-    const files = await api(`/contents/content/notes?ref=${encodeURIComponent(branch)}`);
-    const markdownFiles = files
-      .filter((file) => file.type === 'file' && file.name.endsWith('.md') && file.name !== '_index.md')
-      .sort((left, right) => left.name.localeCompare(right.name));
+  function updatePrivacyUI() {
+    const isPrivate = currentVisibility === 'private';
+    elements.privacy.dataset.private = String(isPrivate);
+    elements.privacyState.textContent = isPrivate ? '私密' : '公开';
+    elements.privacyToggle.textContent = isPrivate ? '改为公开' : '设为私密';
+    elements.share.textContent = isPrivate
+      ? (currentShare ? '更新并复制分享链接' : '创建分享链接')
+      : '复制分享链接';
+    elements.unshare.hidden = !(isPrivate && currentShare);
+  }
+
+  async function loadShareState(filename) {
+    currentShare = null;
+    if (currentRepository !== 'private' || !filename) {
+      updatePrivacyUI();
+      return;
+    }
+    const file = await optionalContents(() => privateApi(`/contents/shares/${encodeURIComponent(filename)}.json?ref=${encodeURIComponent(branch)}`));
+    if (file) {
+      try {
+        currentShare = { ...JSON.parse(decodeBase64(file.content)), metadataPath: file.path, metadataSha: file.sha };
+      } catch (_) {
+        updateCompileLog([{ stage: 'Privacy', line: 0, message: '私密分享状态文件无法读取。' }]);
+      }
+    }
+    updatePrivacyUI();
+  }
+
+  async function hydratePrivateImages(markdown) {
+    const sources = documentImageSources(markdown).filter((source) => source.startsWith('private-image://'));
+    await Promise.all(sources.map(async (source) => {
+      if (localImageUrls.has(source)) return;
+      const path = source.replace('private-image://', '');
+      const file = await privateApi(`/contents/${path}?ref=${encodeURIComponent(branch)}`);
+      const blob = new Blob([base64ToBytes(file.content)], { type: mimeTypeFromPath(path) });
+      localImageUrls.set(source, URL.createObjectURL(blob));
+    }));
+  }
+
+  async function loadFiles(selectedPath = '', selectedRepository = currentRepository) {
+    const [publicFiles, privateFiles] = await Promise.all([
+      api(`/contents/content/notes?ref=${encodeURIComponent(branch)}`),
+      optionalContents(() => privateApi(`/contents/notes?ref=${encodeURIComponent(branch)}`)),
+    ]);
+    const markdownFiles = [
+      ...publicFiles
+        .filter((file) => file.type === 'file' && file.name.endsWith('.md') && file.name !== '_index.md')
+        .map((file) => ({ ...file, repository: 'public' })),
+      ...(privateFiles || [])
+        .filter((file) => file.type === 'file' && file.name.endsWith('.md'))
+        .map((file) => ({ ...file, repository: 'private' })),
+    ].sort((left, right) => left.name.localeCompare(right.name) || left.repository.localeCompare(right.repository));
 
     elements.files.replaceChildren();
     markdownFiles.forEach((file) => {
       const button = document.createElement('button');
       button.type = 'button';
       button.dataset.path = file.path;
+      button.dataset.repository = file.repository;
       button.textContent = prettyName(file.path);
-      button.addEventListener('click', () => loadFile(file.path));
+      button.title = file.repository === 'private' ? '仅你可见' : '公开笔记';
+      button.addEventListener('click', () => loadFile(file.path, file.repository));
       elements.files.append(button);
     });
-    if (selectedPath) selectFile(selectedPath);
+    if (selectedPath) selectFile(selectedPath, selectedRepository);
     return markdownFiles;
   }
 
-  async function loadFile(path) {
+  async function loadFile(path, repository = 'public') {
     if (saveTimer) {
       clearTimeout(saveTimer);
       saveDraft();
     }
     setStatus('Loading...');
     try {
-      const file = await api(`/contents/${path}?ref=${encodeURIComponent(branch)}`);
+      const file = await repositoryApi(repository)(`/contents/${path}?ref=${encodeURIComponent(branch)}`);
       currentPath = path;
       currentSha = file.sha;
+      currentRepository = repository;
+      currentVisibility = repository;
       elements.filename.value = path.split('/').pop();
       elements.filename.disabled = true;
       const remoteContent = decodeBase64(file.content);
       const editableContent = window.MarkdownPipeline.prepareForEdit(remoteContent);
       elements.content.value = editableContent;
-      selectFile(path);
+      await hydratePrivateImages(editableContent);
+      await loadShareState(elements.filename.value);
+      selectFile(path, repository);
       renderPreview();
-      offerDraft(path, editableContent);
-      setStatus('Ready', 'success');
+      offerDraft(`${repository}:${path}`, editableContent);
+      setStatus(repository === 'private' ? '私密笔记 · 仅你可见' : 'Ready', 'success');
     } catch (error) {
       setStatus(error.message, 'error');
     }
@@ -715,10 +831,14 @@
     }
     currentPath = '';
     currentSha = '';
+    currentRepository = 'public';
+    currentVisibility = 'public';
+    currentShare = null;
     elements.filename.disabled = false;
     elements.filename.value = 'new-note.md';
     elements.content.value = '# Note title\n\nStart writing here.\n';
-    selectFile('');
+    updatePrivacyUI();
+    selectFile('', 'public');
     renderPreview();
     offerDraft(draftPath(), elements.content.value);
     elements.filename.focus();
@@ -1037,14 +1157,19 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
     const noteSlug = (elements.filename.value || 'note').replace(/\.md$/i, '').replace(/[^a-z0-9-]/gi, '-').toLowerCase();
     imageSequence += 1;
     const assetName = `${noteSlug}-${Date.now()}-${imageSequence}.${extension}`;
-    const assetPath = `static/images/notes/uploads/${assetName}`;
-    const publicPath = `/images/notes/uploads/${assetName}`;
+    const isPrivate = currentVisibility === 'private';
+    const assetPath = isPrivate
+      ? `images/${noteSlug}/${assetName}`
+      : `static/images/notes/uploads/${assetName}`;
+    const publicPath = isPrivate
+      ? `private-image://${assetPath}`
+      : `/images/notes/uploads/${assetName}`;
     setStatus(`正在上传图片 ${index + 1}/${total}...`);
-    const result = await api(`/contents/${assetPath}`, {
+    const result = await repositoryApi(isPrivate ? 'private' : 'public')(`/contents/${assetPath}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message: `Upload figure for ${noteSlug}`,
+        message: `${isPrivate ? 'Store private' : 'Upload'} figure for ${noteSlug}`,
         content: await fileToBase64(file),
         branch,
       }),
@@ -1128,8 +1253,91 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
     }
   }
 
-  async function publish() {
+  async function putEncoded(apiFunction, path, encodedContent, message, sha = '') {
+    const payload = { message, content: encodedContent, branch };
+    if (sha) payload.sha = sha;
+    return apiFunction(`/contents/${path}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  }
+
+  async function deleteRemote(apiFunction, path, sha, message) {
+    return apiFunction(`/contents/${path}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, sha, branch }),
+    });
+  }
+
+  async function deleteRemoteIfExists(apiFunction, path, sha, message) {
+    try { return await deleteRemote(apiFunction, path, sha, message); }
+    catch (error) {
+      if (error.status === 404) return null;
+      throw error;
+    }
+  }
+
+  async function rewriteImagesForRepository(markdown, targetRepository, filename, options = {}) {
+    let rewritten = markdown;
+    const assets = [];
+    const sources = documentImageSources(markdown);
+    const noteSlug = filename.replace(/\.md$/i, '');
+    for (const source of sources) {
+      if (targetRepository === 'private' && source.startsWith('/images/')) {
+        const publicPath = `static${source}`;
+        const file = await api(`/contents/${publicPath}?ref=${encodeURIComponent(branch)}`);
+        const basename = publicPath.split('/').pop();
+        const privatePath = `images/${noteSlug}/${randomId(6)}-${basename}`;
+        await putEncoded(privateApi, privatePath, file.content.replace(/\s/g, ''), `Store private image for ${noteSlug}`);
+        const privateSource = `private-image://${privatePath}`;
+        const blob = new Blob([base64ToBytes(file.content)], { type: mimeTypeFromPath(privatePath) });
+        localImageUrls.set(privateSource, URL.createObjectURL(blob));
+        rewritten = replaceSource(rewritten, source, privateSource);
+      }
+      if (targetRepository === 'public' && source.startsWith('private-image://')) {
+        const privatePath = source.replace('private-image://', '');
+        const file = await privateApi(`/contents/${privatePath}?ref=${encodeURIComponent(branch)}`);
+        const basename = privatePath.split('/').pop();
+        const existing = (options.existingAssets || []).find((asset) => asset.source === source);
+        const publicPath = existing?.path || (options.shareId
+          ? `static/images/private-shares/${options.shareId}/${basename}`
+          : `static/images/notes/uploads/${noteSlug}-${randomId(6)}-${basename}`);
+        const result = await putEncoded(api, publicPath, file.content.replace(/\s/g, ''), `Publish image for ${noteSlug}`, existing?.sha || '');
+        const publicSource = `/${publicPath.replace(/^static\//, '')}`;
+        assets.push({ source, path: publicPath, sha: result.content.sha, publicSource });
+        rewritten = replaceSource(rewritten, source, publicSource);
+      }
+    }
+    return { assets, markdown: rewritten };
+  }
+
+  function setFrontMatterScalar(markdown, key, yamlValue) {
+    const normalized = normalizeDocument(markdown, elements.filename.value);
+    const match = frontMatterPattern.exec(normalized);
+    if (!match) return normalized;
+    let frontMatter = match[0].trimEnd();
+    const pattern = new RegExp(`^${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}:.*$`, 'm');
+    if (pattern.test(frontMatter)) frontMatter = frontMatter.replace(pattern, `${key}: ${yamlValue}`);
+    else frontMatter = frontMatter.replace(/\n---$/, `\n${key}: ${yamlValue}\n---`);
+    return `${frontMatter}\n\n${normalized.slice(match[0].length).trimStart()}`;
+  }
+
+  function buildShareDocument(markdown, shareId) {
+    let result = setFrontMatterScalar(markdown, 'url', `"/s/${shareId}/"`);
+    result = setFrontMatterScalar(result, 'privateShare', 'true');
+    result = setFrontMatterScalar(result, 'robotsNoIndex', 'true');
+    result = setFrontMatterScalar(result, 'sitemap', '{ disable: true }');
+    result = setFrontMatterScalar(result, 'outputs', '["HTML"]');
+    return `${result.trimEnd()}\n`;
+  }
+
+  async function publish(options = {}) {
+    const targetVisibility = options.targetVisibility || currentVisibility;
+    const targetRepository = targetVisibility === 'private' ? 'private' : 'public';
     elements.publish.disabled = true;
+    elements.privacyToggle.disabled = true;
     try {
       let filename = elements.filename.value.trim().toLowerCase();
       if (!currentPath && filename === 'new-note.md') {
@@ -1139,10 +1347,12 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       if (!/^[a-z0-9][a-z0-9-]*\.md$/.test(filename)) {
         throw new Error('文件名请使用小写字母、数字和连字符，例如 my-note.md。');
       }
-      const path = currentPath || `content/notes/${filename}`;
+      const path = targetRepository === 'private' ? `notes/${filename}` : `content/notes/${filename}`;
       const today = new Date().toISOString().slice(0, 10);
       let editableContent = normalizeDocument(elements.content.value, filename);
       if (/^lastmod:/m.test(editableContent)) editableContent = editableContent.replace(/^lastmod:.*$/m, `lastmod: ${today}`);
+      const rewritten = await rewriteImagesForRepository(editableContent, targetRepository, filename);
+      editableContent = rewritten.markdown;
       const content = window.MarkdownPipeline.prepareForPublish(editableContent);
       const publishIssues = window.MarkdownPipeline.diagnose(content);
       const katexIssues = currentCompileIssues.filter((issue) => issue.stage === 'KaTeX');
@@ -1150,39 +1360,160 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
         updateCompileLog([...publishIssues, ...katexIssues]);
         throw new Error('请先处理编译日志中的问题。');
       }
-      const payload = {
-        message: elements.message.value.trim() || `Publish ${filename}`,
-        content: encodeBase64(content),
-        branch,
-      };
-      if (currentSha) payload.sha = currentSha;
-
-      setStatus('Publishing...');
-      const result = await api(`/contents/${path}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
+      const source = { path: currentPath, repository: currentRepository, sha: currentSha };
+      const sameLocation = source.path === path && source.repository === targetRepository;
+      const message = elements.message.value.trim() || `${targetRepository === 'private' ? 'Save private' : 'Publish'} ${filename}`;
+      setStatus(targetRepository === 'private' ? '正在保存到私密仓库...' : 'Publishing...');
+      const result = await putEncoded(repositoryApi(targetRepository), path, encodeBase64(content), message, sameLocation ? source.sha : '');
+      let publicCommit = targetRepository === 'public' ? result.commit?.sha : '';
+      if (source.path && !sameLocation) {
+        let deleted;
+        try {
+          deleted = await deleteRemote(repositoryApi(source.repository), source.path, source.sha, `Move ${filename} to ${targetVisibility}`);
+        } catch (error) {
+          await deleteRemoteIfExists(repositoryApi(targetRepository), path, result.content.sha, `Rollback failed move of ${filename}`);
+          throw error;
+        }
+        if (source.repository === 'public') publicCommit = deleted.commit?.sha || publicCommit;
+      }
+      if (targetRepository === 'public' && currentShare) {
+        await removePrivateShare({ silent: true, state: currentShare });
+      }
       currentPath = result.content.path;
       currentSha = result.content.sha;
+      currentRepository = targetRepository;
+      currentVisibility = targetVisibility;
+      if (targetRepository === 'public') currentShare = null;
       elements.filename.disabled = true;
       elements.content.value = editableContent;
-      removeDraft(path);
+      if (source.path) removeDraft(`${source.repository}:${source.path}`);
+      removeDraft(`${targetRepository}:${path}`);
       hideDraftOffer();
-      setStatus(`已提交 | ${result.commit.sha.slice(0, 7)} · 网站正在更新`, 'success');
+      updatePrivacyUI();
+      setStatus(targetRepository === 'private'
+        ? `已保存到私密仓库 | ${result.commit.sha.slice(0, 7)} · 仅你可见`
+        : `已提交 | ${result.commit.sha.slice(0, 7)} · 网站正在更新`, 'success');
       try {
-        await loadFiles(currentPath);
+        await loadFiles(currentPath, currentRepository);
       } catch (_) {
-        selectFile(currentPath);
+        selectFile(currentPath, currentRepository);
       }
-      monitorDeployment(result.commit.sha);
+      if (publicCommit && !options.skipMonitor) monitorDeployment(publicCommit);
+      return true;
     } catch (error) {
       setStatus(error.message, 'error');
       if (!currentCompileIssues.length && error.message !== '请先处理编译日志中的问题。') {
         updateCompileLog([{ stage: 'Publish', line: 0, message: error.message }]);
       }
+      return false;
     } finally {
       elements.publish.disabled = false;
+      elements.privacyToggle.disabled = false;
+    }
+  }
+
+  async function copyShareLink(link) {
+    try {
+      await navigator.clipboard.writeText(link);
+      setStatus(`分享链接已复制 | ${link}`, 'success');
+    } catch (_) {
+      setStatus(`分享链接：${link}`, 'success');
+    }
+  }
+
+  async function shareCurrentNote() {
+    elements.share.disabled = true;
+    elements.unshare.disabled = true;
+    let pendingShare = null;
+    try {
+      if (currentVisibility === 'public') {
+        if (!currentPath || currentRepository !== 'public') {
+          const published = await publish({ targetVisibility: 'public' });
+          if (!published) return;
+        }
+        const slug = elements.filename.value.replace(/\.md$/i, '');
+        await copyShareLink(`${siteUrl}/notes/${slug}/share/`);
+        return;
+      }
+
+      const saved = await publish({ targetVisibility: 'private', skipMonitor: true });
+      if (!saved) return;
+      const shareId = currentShare?.id || randomId(16);
+      const rewritten = await rewriteImagesForRepository(elements.content.value, 'public', elements.filename.value, {
+        shareId,
+        existingAssets: currentShare?.assets || [],
+      });
+      const shareDocument = window.MarkdownPipeline.prepareForPublish(buildShareDocument(rewritten.markdown, shareId));
+      const contentPath = currentShare?.contentPath || `content/share/${shareId}.md`;
+      const contentResult = await putEncoded(api, contentPath, encodeBase64(shareDocument), `Publish private share ${shareId}`, currentShare?.contentSha || '');
+      pendingShare = { contentPath, contentSha: contentResult.content.sha, assets: rewritten.assets };
+      const staleAssets = (currentShare?.assets || []).filter((asset) => (
+        !rewritten.assets.some((current) => current.path === asset.path)
+      ));
+      for (const asset of staleAssets) {
+        await deleteRemoteIfExists(api, asset.path, asset.sha, `Remove stale shared asset for ${shareId}`);
+      }
+      const metadata = {
+        id: shareId,
+        url: `${siteUrl}/s/${shareId}/`,
+        contentPath,
+        contentSha: contentResult.content.sha,
+        assets: rewritten.assets,
+        updatedAt: new Date().toISOString(),
+      };
+      const metadataPath = `shares/${elements.filename.value}.json`;
+      const metadataResult = await putEncoded(privateApi, metadataPath, encodeBase64(`${JSON.stringify(metadata, null, 2)}\n`), `Update share state for ${elements.filename.value}`, currentShare?.metadataSha || '');
+      currentShare = { ...metadata, metadataPath, metadataSha: metadataResult.content.sha };
+      updatePrivacyUI();
+      await copyShareLink(metadata.url);
+      monitorDeployment(contentResult.commit.sha);
+    } catch (error) {
+      if (pendingShare) {
+        await deleteRemoteIfExists(api, pendingShare.contentPath, pendingShare.contentSha, 'Rollback incomplete private share').catch(() => null);
+        const cleanupAssets = [...(pendingShare.assets || []), ...(currentShare?.assets || [])];
+        for (const asset of cleanupAssets) {
+          await deleteRemoteIfExists(api, asset.path, asset.sha, 'Remove incomplete shared asset').catch(() => null);
+        }
+        if (currentShare?.metadataPath && currentShare?.metadataSha) {
+          await deleteRemoteIfExists(privateApi, currentShare.metadataPath, currentShare.metadataSha, 'Remove invalid share state').catch(() => null);
+        }
+        currentShare = null;
+        updatePrivacyUI();
+      }
+      setStatus(error.message, 'error');
+      updateCompileLog([{ stage: 'Share', line: 0, message: error.message }]);
+    } finally {
+      elements.share.disabled = false;
+      elements.unshare.disabled = false;
+    }
+  }
+
+  async function removePrivateShare(options = {}) {
+    const state = options.state || currentShare;
+    if (!state) return true;
+    if (!options.silent && !window.confirm('取消分享后，现有分享链接将失效。确定继续吗？')) return false;
+    elements.share.disabled = true;
+    elements.unshare.disabled = true;
+    try {
+      const contentDelete = await deleteRemoteIfExists(api, state.contentPath, state.contentSha, `Revoke private share ${state.id}`);
+      let lastCommit = contentDelete?.commit?.sha || '';
+      for (const asset of state.assets || []) {
+        const deleted = await deleteRemoteIfExists(api, asset.path, asset.sha, `Remove shared asset for ${state.id}`);
+        lastCommit = deleted?.commit?.sha || lastCommit;
+      }
+      await deleteRemoteIfExists(privateApi, state.metadataPath || `shares/${elements.filename.value}.json`, state.metadataSha, `Remove share state for ${state.id}`);
+      if (state === currentShare) currentShare = null;
+      updatePrivacyUI();
+      if (!options.silent) setStatus('分享已取消，原链接将在部署完成后失效。', 'success');
+      if (lastCommit && !options.silent) monitorDeployment(lastCommit);
+      return true;
+    } catch (error) {
+      setStatus(error.message, 'error');
+      updateCompileLog([{ stage: 'Share', line: 0, message: error.message }]);
+      return false;
+    } finally {
+      elements.share.disabled = false;
+      elements.unshare.disabled = false;
     }
   }
 
@@ -1195,9 +1526,15 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
     elements.connect.disabled = true;
     setAuthStatus('正在验证身份与仓库权限...');
     try {
-      const [user, repository] = await Promise.all([
+      const [user, repository, privateRepository] = await Promise.all([
         githubRequest('https://api.github.com/user'),
         api(''),
+        privateApi('').catch((error) => {
+          if (error.status === 404) {
+            throw new Error(`当前 token 无法访问私密仓库 ${privateRepo}。请在 Fine-grained token 中同时选择两个仓库，并授予 Contents 读写权限。`);
+          }
+          throw error;
+        }),
       ]);
       if (user.login.toLowerCase() !== owner.toLowerCase()) {
         throw new Error(`当前账号 ${user.login} 没有编辑权限，仅 ${owner} 可以进入。`);
@@ -1205,18 +1542,21 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       if (!repository.permissions?.push) {
         throw new Error('Token 缺少此仓库 Contents 的写入权限。');
       }
+      if (!privateRepository.private || !privateRepository.permissions?.push) {
+        throw new Error('私密仓库未处于 Private 状态，或 token 缺少其 Contents 读写权限。');
+      }
       storeToken();
       setAuthStatus(`已验证 ${user.login}`, 'success');
-      elements.identity.textContent = `${user.login} · ${repository.full_name}`;
+      elements.identity.textContent = `${user.login} · 公开库 + 私密库已连接`;
       elements.auth.hidden = true;
       elements.workspace.hidden = false;
       const requested = params.get('path');
       const normalizedRequested = requested ? requested.replaceAll('\\', '/').replace(/^content\//, '') : '';
       const requestedPath = normalizedRequested ? `content/${normalizedRequested}` : '';
-      const files = await loadFiles(requestedPath);
+      const files = await loadFiles(requestedPath, 'public');
       if (params.has('new')) newNote();
-      else if (requestedPath) await loadFile(requestedPath);
-      else if (files.length) await loadFile(files[0].path);
+      else if (requestedPath) await loadFile(requestedPath, 'public');
+      else if (files.length) await loadFile(files[0].path, files[0].repository);
     } catch (error) {
       setAuthStatus(error.message, 'error');
       clearStoredToken();
@@ -1290,7 +1630,19 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
   elements.draftRestore.addEventListener('click', restoreDraft);
   elements.draftDiscard.addEventListener('click', discardDraft);
   elements.newNote.addEventListener('click', newNote);
-  elements.publish.addEventListener('click', publish);
+  elements.publish.addEventListener('click', () => publish());
+  elements.privacyToggle.addEventListener('click', async () => {
+    const targetVisibility = currentVisibility === 'private' ? 'public' : 'private';
+    const message = targetVisibility === 'private'
+      ? (currentPath
+        ? '这会把正文和文中本站图片迁入私密仓库，并删除公开页面。已经公开过的内容仍可能存在于 Git 历史或外部缓存中。继续吗？'
+        : '这篇新笔记将只保存到私密仓库，不会进入公开网站。继续吗？')
+      : '公开后，任何人都可以访问这篇笔记。确定公开吗？';
+    if (!window.confirm(message)) return;
+    await publish({ targetVisibility });
+  });
+  elements.share.addEventListener('click', shareCurrentNote);
+  elements.unshare.addEventListener('click', () => removePrivateShare());
   elements.content.addEventListener('focus', () => { activeEditingSurface = 'source'; });
   elements.content.addEventListener('paste', (event) => {
     const files = imageFilesFromTransfer(event.clipboardData);

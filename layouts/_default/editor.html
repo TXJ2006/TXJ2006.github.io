@@ -1,5 +1,5 @@
 {{- define "main" }}
-<section class="editor-page" data-repo="TXJ2006/TXJ2006.github.io" data-owner="TXJ2006" data-branch="main">
+<section class="editor-page" data-repo="TXJ2006/TXJ2006.github.io" data-private-repo="TXJ2006/TXJ2006-private-notes" data-owner="TXJ2006" data-branch="main" data-site-url="{{ site.BaseURL }}">
   <header class="editor-header">
     <div>
       <p class="eyebrow">Private Publishing Workspace</p>
@@ -11,7 +11,7 @@
   <section class="editor-auth" id="editor-auth" aria-labelledby="auth-heading">
     <div>
       <h2 id="auth-heading">验证编辑身份</h2>
-      <p><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Fine-grained token</a> · Repository contents: Read and write · 令牌只保存在当前设备</p>
+      <p><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Fine-grained token</a> · 同时授权公开站点与私密笔记仓库的 Contents 读写权限 · 令牌只保存在当前设备</p>
       <p class="editor-auth-status" id="editor-auth-status" role="status" aria-live="polite"></p>
     </div>
     <div class="editor-auth-fields">
@@ -46,6 +46,10 @@
           <button class="active" type="button" data-mode="split">Split</button>
           <button type="button" data-mode="edit">Edit</button>
           <button type="button" data-mode="preview">Preview</button>
+        </div>
+        <div class="editor-privacy" aria-label="笔记可见性">
+          <span id="editor-privacy-state">公开</span>
+          <button id="editor-privacy-toggle" type="button">设为私密</button>
         </div>
         <span class="editor-preview-status" id="editor-preview-status" role="status"></span>
       </div>
@@ -140,6 +144,10 @@
           <input id="editor-message" type="text" value="Publish research note" maxlength="120">
         </label>
         <p id="editor-status" role="status" aria-live="polite"></p>
+        <div class="editor-share-controls">
+          <button id="editor-unshare" type="button" hidden>取消分享</button>
+          <button id="editor-share" type="button">复制分享链接</button>
+        </div>
         <button class="button-primary" id="editor-publish" type="button">发布</button>
       </footer>
     </main>

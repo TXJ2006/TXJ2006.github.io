@@ -1,32 +1,31 @@
 {{- define "main" }}
-{{- $source := site.GetPage .Params.sourceNote }}
-{{- with $source }}
+{{- $document := . }}
+{{- with .Params.sourceNote }}
+  {{- with site.GetPage . }}{{- $document = . }}{{- end }}
+{{- end }}
 <section class="note-page">
   <div class="notes-shell note-single-shell">
-    {{ partial "note_author_static.html" . }}
+    {{ partial "note_author_static.html" $document }}
     <article class="note-article">
       <header class="note-header">
         <p class="note-kicker">Research Notes</p>
-        <h1>{{ .Title }}</h1>
-        {{ with .Params.subtitle }}<p class="note-deck">{{ . }}</p>{{ end }}
+        <h1>{{ $document.Title }}</h1>
+        {{ with $document.Params.subtitle }}<p class="note-deck">{{ . }}</p>{{ end }}
         <div class="note-meta">
-          {{ if not .Date.IsZero }}<span>Published {{ .Date.Format "January 2, 2006" }}</span>{{ end }}
-          <span>{{ .ReadingTime }} min read</span>
-          <span>{{ .WordCount }} words</span>
+          {{ if not $document.Date.IsZero }}<span>Published {{ $document.Date.Format "January 2, 2006" }}</span>{{ end }}
+          <span>{{ $document.ReadingTime }} min read</span>
+          <span>{{ $document.WordCount }} words</span>
         </div>
-        {{ with .Params.tags }}
+        {{ with $document.Params.tags }}
         <ul class="note-tags" aria-label="Topics">
           {{ range . }}<li>{{ . }}</li>{{ end }}
         </ul>
         {{ end }}
       </header>
       <div class="note-content post-content markdown-content">
-        {{ .Content }}
+        {{ $document.Content }}
       </div>
     </article>
   </div>
 </section>
-{{- else }}
-{{- errorf "Standalone source note %q was not found" $.Params.sourceNote }}
-{{- end }}
 {{- end }}

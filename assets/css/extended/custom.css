@@ -1068,6 +1068,21 @@ a {
   color: var(--accent-dark);
 }
 
+.editor-files button[data-repository="private"]::before {
+  content: "私";
+  display: inline-grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  margin-right: 7px;
+  border: 1px solid #b7cbc8;
+  border-radius: 50%;
+  color: var(--accent-dark);
+  font-size: 9px;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
 .editor-disconnect {
   margin-top: auto;
   padding-top: 22px;
@@ -1102,6 +1117,37 @@ a {
 .editor-preview-status[data-kind="error"] {
   color: #9a3f2e;
   font-weight: 700;
+}
+
+.editor-privacy {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 3px 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--secondary);
+  font: 11px/1.2 var(--sans);
+  white-space: nowrap;
+}
+
+.editor-privacy[data-private="true"] {
+  border-color: #b7cbc8;
+  background: #f0f5f4;
+  color: var(--accent-dark);
+}
+
+.editor-privacy button {
+  min-height: 26px;
+  padding: 4px 8px;
+  border: 0;
+  border-left: 1px solid var(--border);
+  background: transparent;
+  color: var(--accent-dark);
+  cursor: pointer;
+  font: 700 11px/1.2 var(--sans);
 }
 
 .editor-draft-banner {
@@ -1514,11 +1560,38 @@ a {
 
 .editor-publish {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) minmax(140px, auto) auto;
+  grid-template-columns: minmax(220px, 1fr) minmax(140px, auto) auto auto;
   gap: 18px;
   align-items: end;
   padding: 15px 0;
   border-top: 1px solid var(--border);
+}
+
+.editor-share-controls {
+  display: flex;
+  gap: 6px;
+  align-items: end;
+}
+
+.editor-share-controls button {
+  min-height: 38px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--accent-dark);
+  cursor: pointer;
+  font: 700 11px/1.2 var(--sans);
+  white-space: nowrap;
+}
+
+.editor-share-controls #editor-unshare {
+  color: #9a3f2e;
+}
+
+.editor-share-controls button:disabled {
+  cursor: wait;
+  opacity: 0.55;
 }
 
 .editor-publish p {
@@ -1838,6 +1911,10 @@ a {
     text-align: left;
   }
 
+  .editor-privacy {
+    justify-self: start;
+  }
+
   .editor-draft-banner {
     flex-wrap: wrap;
   }
@@ -1895,5 +1972,14 @@ a {
 
   .editor-publish {
     grid-template-columns: 1fr;
+  }
+
+  .editor-share-controls,
+  .editor-share-controls button {
+    width: 100%;
+  }
+
+  .editor-share-controls button {
+    flex: 1;
   }
 }
