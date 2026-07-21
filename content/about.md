@@ -39,7 +39,7 @@ Research Assistant · 2026-2027 · Prof. Tianyuan Jin
 
 ## Mathematical Collaboration
 
-I completed the 2026 preprint **“Flagification Invariance of Vertex-Generated Quasi-Lie Subrings: A Prime-Local PBW Proof”** through research discussions and guidance from **[Prof. Stephen D. Theriault](https://www.southampton.ac.uk/people/5x9nl2/professor-stephen-theriault)**, Professor of Mathematics at the University of Southampton. The work studies Whitehead products, moment-angle complexes, graph Lie algebras, and low-prime homotopy theory.
+Through ongoing research discussions and guidance from **[Prof. Stephen D. Theriault](https://www.southampton.ac.uk/people/5x9nl2/professor-stephen-theriault)**, Professor of Mathematics at the University of Southampton, I am developing my background in algebraic topology. My current study includes Whitehead products, moment-angle complexes, graph Lie algebras, quasi-Lie structures, and low-prime homotopy theory.
 
 ## Contact
 

@@ -20,15 +20,13 @@ Publication status is stated explicitly below. Manuscripts under review or submi
 
 4. **X. Tang et al.** "Structure-preserving Koopman Predictive Control for Memristive Neural Dynamics: Input-exact and Commutator-defect Lifting." *Biological Cybernetics*. **Accepted.**
 
-## Preprints, Under Review, and Submitted
+## Under Review and Submitted
 
-1. **X. Tang**. "Flagification Invariance of Vertex-Generated Quasi-Lie Subrings: A Prime-Local PBW Proof." **Preprint, 2026.** Research developed through discussions and guidance from Prof. Stephen D. Theriault, University of Southampton.
+1. **X. Tang et al.** "The Curvature Filter in Bilevel Optimization: Implicit Differentiation Without Nondegeneracy." *Journal of Machine Learning Research*, Theory and Methods. **Submitted.**
 
-2. **X. Tang et al.** "The Curvature Filter in Bilevel Optimization: Implicit Differentiation Without Nondegeneracy." *Journal of Machine Learning Research*, Theory and Methods. **Submitted.**
+2. Y. Fan, **X. Tang**, and R. Guan. "Deep Hedging under Rough Volatility: A Fractional Kernel Embedding Approach with Optimal Convergence Rate." *AIMS Mathematics*. **Under review.**
 
-3. Y. Fan, **X. Tang**, and R. Guan. "Deep Hedging under Rough Volatility: A Fractional Kernel Embedding Approach with Optimal Convergence Rate." *AIMS Mathematics*. **Under review.**
-
-4. **X. Tang et al.** "Spectral Network Determinants of Seizure-like Synchronization and Spread in Coupled Hindmarsh-Rose Brain Models." *Cognitive Neurodynamics*. **Under review.**
+3. **X. Tang et al.** "Spectral Network Determinants of Seizure-like Synchronization and Spread in Coupled Hindmarsh-Rose Brain Models." *Cognitive Neurodynamics*. **Under review.**
 
 > Full author lists will replace “et al.” when final public metadata is available.
 

@@ -14,11 +14,10 @@ I believe **mathematics can open broader frontiers for machine learning and arti
 
 ### Algebraic Topology and Polyhedral Products
 
-**Research collaboration with [Prof. Stephen D. Theriault](https://www.southampton.ac.uk/people/5x9nl2/professor-stephen-theriault), University of Southampton · 2026**
+**Ongoing research discussions and guidance from [Prof. Stephen D. Theriault](https://www.southampton.ac.uk/people/5x9nl2/professor-stephen-theriault), University of Southampton · 2026**
 
-- Proved that flagification preserves vertex-generated quasi-Lie subrings, answering a recent open question with a prime-local PBW argument.
-- Worked with Whitehead products, moment-angle complexes, graph Lie algebras, low-characteristic operations, and completion methods.
-- Prepared the preprint *Flagification Invariance of Vertex-Generated Quasi-Lie Subrings: A Prime-Local PBW Proof*.
+- Studying questions in algebraic topology involving Whitehead products, moment-angle complexes, graph Lie algebras, and quasi-Lie structures.
+- Developing background in prime-local methods, low-characteristic operations, completion methods, and PBW-type arguments.
 
 ### Analysis, Differential Equations, and Formalized Mathematics
 

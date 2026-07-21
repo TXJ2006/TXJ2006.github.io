@@ -265,11 +265,11 @@ def build():
             ),
             entry(
                 "Algebraic Topology and Polyhedral Products",
-                "Research collaboration with Prof. Stephen D. Theriault, University of Southampton",
+                "Ongoing research discussions and guidance from Prof. Stephen D. Theriault, University of Southampton",
                 "2026",
                 [
-                    "Proved flagification invariance of vertex-generated quasi-Lie subrings, answering an open question with a prime-local PBW argument.",
-                    "Developed low-characteristic and completion arguments for Whitehead products, moment-angle complexes, and graph Lie algebras.",
+                    "Studying Whitehead products, moment-angle complexes, graph Lie algebras, quasi-Lie structures, and low-prime homotopy theory.",
+                    "Developing background in prime-local methods, low-characteristic operations, completion methods, and PBW-type arguments.",
                 ],
                 styles,
             ),
@@ -332,13 +332,12 @@ def build():
         ]
     )
 
-    story += section("Preprints, Under Review, and Submitted", styles)
+    story += section("Under Review and Submitted", styles)
     story.extend(
         [
-            publication(1, "<b>X. Tang</b>. Flagification Invariance of Vertex-Generated Quasi-Lie Subrings: A Prime-Local PBW Proof. Preprint, 2026. Research developed in collaboration with Prof. Stephen D. Theriault.", styles),
-            publication(2, "<b>X. Tang et al.</b> The Curvature Filter in Bilevel Optimization: Implicit Differentiation Without Nondegeneracy. <i>Journal of Machine Learning Research</i>, Theory and Methods. Submitted.", styles),
-            publication(3, "Y. Fan, <b>X. Tang</b>, and R. Guan. Deep Hedging under Rough Volatility: A Fractional Kernel Embedding Approach with Optimal Convergence Rate. <i>AIMS Mathematics</i>. Under review.", styles),
-            publication(4, "<b>X. Tang et al.</b> Spectral Network Determinants of Seizure-like Synchronization and Spread in Coupled Hindmarsh-Rose Brain Models. <i>Cognitive Neurodynamics</i>. Under review.", styles),
+            publication(1, "<b>X. Tang et al.</b> The Curvature Filter in Bilevel Optimization: Implicit Differentiation Without Nondegeneracy. <i>Journal of Machine Learning Research</i>, Theory and Methods. Submitted.", styles),
+            publication(2, "Y. Fan, <b>X. Tang</b>, and R. Guan. Deep Hedging under Rough Volatility: A Fractional Kernel Embedding Approach with Optimal Convergence Rate. <i>AIMS Mathematics</i>. Under review.", styles),
+            publication(3, "<b>X. Tang et al.</b> Spectral Network Determinants of Seizure-like Synchronization and Spread in Coupled Hindmarsh-Rose Brain Models. <i>Cognitive Neurodynamics</i>. Under review.", styles),
         ]
     )
 
