@@ -30,7 +30,8 @@ B.Sc. in Mathematics and Applied Mathematics · Sep. 2023 - Jun. 2027 (expected)
 Mathematical Modeling: 96 · ODE: 89 · Complex Analysis: 90 · Real Analysis: 95 · Functional Analysis: 99 · Abstract Algebra: 98
 
 **Zhejiang University**, Hangzhou, China<br>
-2026 AI4Math Summer School: Lean Formalized Mathematics · Jul. 2026
+2026 AI4Math Summer School: Lean Formalized Mathematics · Jul. 2026<br>
+<a href="/files/ZJU_AI4Math_Inner_Product_Norm_Tactic_2026.pdf" download>Download presentation slides (PDF)</a>
 
 ## Research Appointment
 
