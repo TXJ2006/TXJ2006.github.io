@@ -6,9 +6,9 @@ description: "A historical account of artificial intelligence as an evolving con
 date: 2026-07-19
 lastmod: 2026-07-19
 weight: 90
-libraryFolder: "ai-foundations"
-libraryFolderName: "人工智能基础"
-libraryFolderColor: 0
+libraryFolder: "probability-statistics"
+libraryFolderName: "概率与统计基础"
+libraryFolderColor: 2
 tags: ["Artificial Intelligence", "History of AI", "Machine Learning"]
 draft: false
 ShowToc: false
