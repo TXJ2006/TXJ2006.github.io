@@ -6,9 +6,9 @@ description: "Sequential decisions under uncertainty and the basic bandit abstra
 date: 2026-06-15
 lastmod: 2026-06-15
 weight: 10
-libraryFolder: "bandit-learning"
-libraryFolderName: "Bandit 与在线学习"
-libraryFolderColor: 1
+libraryFolder: "probability-statistics"
+libraryFolderName: "概率与统计基础"
+libraryFolderColor: 2
 tags: ["Bandits", "Online Learning", "Sequential Decisions"]
 draft: false
 ShowToc: false
