@@ -6,6 +6,9 @@ description: "Alternative environments, indistinguishability, and information-th
 date: 2026-06-20
 lastmod: 2026-06-20
 weight: 80
+libraryFolder: "probability-statistics"
+libraryFolderName: "概率与统计基础"
+libraryFolderColor: 2
 tags: ["Change of Measure", "Lower Bounds", "Best-Arm Identification"]
 draft: false
 ShowToc: false

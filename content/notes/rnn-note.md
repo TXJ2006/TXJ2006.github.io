@@ -6,6 +6,9 @@ description: "Beginning with the failure of stateless predictors on ordered data
 date: 2026-07-21
 lastmod: 2026-07-21
 weight: 60
+libraryFolder: "ai-foundations"
+libraryFolderName: "人工智能基础"
+libraryFolderColor: 0
 tags: ["Machine Learning", "Recurrent Neural Networks", "Sequential Models", "Dynamical Systems", "PyTorch"]
 draft: false
 ShowToc: false

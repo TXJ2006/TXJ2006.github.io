@@ -6,6 +6,9 @@ description: "Filtrations, stopping, post-selection effects, and adaptive observ
 date: 2026-06-18
 lastmod: 2026-06-18
 weight: 30
+libraryFolder: "probability-statistics"
+libraryFolderName: "概率与统计基础"
+libraryFolderColor: 2
 tags: ["Probability", "Filtrations", "Adaptive Data"]
 draft: false
 ShowToc: false

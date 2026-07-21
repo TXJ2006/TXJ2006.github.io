@@ -6,6 +6,9 @@ description: "Beginning with a handwritten-digit classifier, this chapter derive
 date: 2026-07-19
 lastmod: 2026-07-19
 weight: 70
+libraryFolder: "ai-foundations"
+libraryFolderName: "人工智能基础"
+libraryFolderColor: 0
 tags: ["Machine Learning", "Linear Models", "Optimization", "Neural Networks", "PyTorch"]
 draft: false
 ShowToc: false

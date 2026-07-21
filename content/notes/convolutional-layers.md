@@ -6,6 +6,9 @@ description: "Beginning with the failure of flattened image models, this chapter
 date: 2026-07-20
 lastmod: 2026-07-20
 weight: 80
+libraryFolder: "ai-foundations"
+libraryFolderName: "人工智能基础"
+libraryFolderColor: 0
 tags: ["Machine Learning", "Convolutional Neural Networks", "Computer Vision", "Equivariance", "PyTorch"]
 draft: false
 ShowToc: false

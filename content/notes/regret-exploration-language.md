@@ -6,6 +6,9 @@ description: "Regret, exploration-exploitation tradeoffs, and analytical viewpoi
 date: 2026-06-17
 lastmod: 2026-06-17
 weight: 20
+libraryFolder: "bandit-learning"
+libraryFolderName: "Bandit 与在线学习"
+libraryFolderColor: 1
 tags: ["Bandits", "Regret", "Exploration"]
 draft: false
 ShowToc: false

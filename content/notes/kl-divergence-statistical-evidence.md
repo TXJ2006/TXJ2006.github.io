@@ -6,6 +6,9 @@ description: "Relative entropy, likelihood ratios, and evidence accumulation."
 date: 2026-06-19
 lastmod: 2026-06-19
 weight: 60
+libraryFolder: "probability-statistics"
+libraryFolderName: "概率与统计基础"
+libraryFolderColor: 2
 tags: ["KL Divergence", "Statistical Evidence", "KL-UCB"]
 draft: false
 ShowToc: false

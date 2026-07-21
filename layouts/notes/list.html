@@ -1,18 +1,42 @@
 {{- define "main" }}
 <section class="notes-page">
   <header class="notes-header">
-    <p class="eyebrow">Markdown Research Library</p>
+    <p class="eyebrow">Research Library</p>
     <h1>{{ .Title }}</h1>
     {{ with .Params.description }}<p class="notes-deck">{{ . }}</p>{{ end }}
   </header>
 
   <div class="notes-shell">
     {{ partial "note_author.html" . }}
-    <main class="notes-index" aria-label="Research notes">
-      <div class="notes-intro post-content">{{ .Content }}</div>
+    <main class="notes-index" aria-label="图书馆文章">
+      {{- $pages := .Pages.ByWeight -}}
+      {{- $groups := $pages.GroupByParam "libraryFolder" -}}
+      {{- $unfiled := where $pages "Params.libraryFolder" "eq" nil -}}
+      <nav class="library-folders" aria-label="图书馆文件夹">
+        <button class="library-folder-card folder-color-neutral is-active" type="button" data-library-filter="all" aria-pressed="true">
+          <span class="folder-glyph" aria-hidden="true"></span>
+          <span class="library-folder-copy"><strong>全部文章</strong><small>{{ len $pages }} 篇</small></span>
+        </button>
+        {{ range $groups }}
+          {{- $first := index .Pages 0 -}}
+          {{- $name := $first.Params.libraryFolderName | default "未命名文件夹" -}}
+          {{- $color := $first.Params.libraryFolderColor | default 0 -}}
+          <button class="library-folder-card folder-color-{{ $color }}" type="button" data-library-filter="{{ .Key }}" aria-pressed="false">
+            <span class="folder-glyph" aria-hidden="true"></span>
+            <span class="library-folder-copy"><strong>{{ $name }}</strong><small>{{ len .Pages }} 篇</small></span>
+          </button>
+        {{ end }}
+        {{ if gt (len $unfiled) 0 }}
+        <button class="library-folder-card folder-color-neutral" type="button" data-library-filter="unfiled" aria-pressed="false">
+          <span class="folder-glyph" aria-hidden="true"></span>
+          <span class="library-folder-copy"><strong>未分类</strong><small>{{ len $unfiled }} 篇</small></span>
+        </button>
+        {{ end }}
+      </nav>
+      <div class="library-results" aria-live="polite"><span id="library-result-label">全部文章</span><span id="library-result-count">{{ len $pages }}</span></div>
       <div class="notes-list">
-        {{ range $index, $page := .Pages.ByWeight }}
-        <article class="note-row">
+        {{ range $index, $page := $pages }}
+        <article class="note-row" data-library-folder="{{ $page.Params.libraryFolder | default "unfiled" }}">
           <p class="note-number">{{ printf "%02d" (add $index 1) }}</p>
           <div class="note-row-main">
             <div class="note-row-heading">
@@ -37,4 +61,5 @@
     </main>
   </div>
 </section>
+<script src="{{ "js/library.js" | relURL }}"></script>
 {{- end }}

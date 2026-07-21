@@ -4,7 +4,7 @@
     {{ partial "note_author.html" . }}
     <article class="note-article">
       <header class="note-header">
-        <p class="note-kicker"><a href="{{ "notes/" | relURL }}">Research Notes</a></p>
+        <p class="note-kicker"><a href="{{ "notes/" | relURL }}">图书馆</a></p>
         <h1>{{ .Title }}</h1>
         {{ with .Params.subtitle }}<p class="note-deck">{{ . }}</p>{{ end }}
         <div class="note-meta">
@@ -18,7 +18,7 @@
         </ul>
         {{ end }}
         <div class="notes-actions" aria-label="Document actions">
-          <a href="{{ "notes/" | relURL }}">All notes</a>
+          <a href="{{ "notes/" | relURL }}">返回图书馆</a>
           {{ with .OutputFormats.Get "Share" }}
           <a href="{{ .RelPermalink }}" target="_blank" rel="noopener">Share</a>
           {{ end }}

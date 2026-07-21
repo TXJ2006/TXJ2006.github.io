@@ -33,7 +33,7 @@ I believe **mathematics can open broader frontiers for machine learning and arti
 
 - Studying regret minimization, best-arm identification, exploration-exploitation tradeoffs, and adaptive decision-making.
 - Building a structured command of concentration inequalities, martingales, KL divergence, exponential families, and change-of-measure lower bounds.
-- Maintaining eight online Markdown notes that connect foundational probability to modern bandit analysis.
+- Maintaining a structured online research library that connects foundational probability to modern bandit analysis.
 
 ### Reinforcement Learning and Resource-Efficient Learning
 
@@ -67,4 +67,4 @@ My projects in Koopman operator learning, neural dynamics, spatial transcriptomi
 
 ## Related Pages
 
-[Research notes](/notes/) · [Publications](/publications/) · [Curriculum vitae](/cv/)
+[Research library](/notes/) · [Publications](/publications/) · [Curriculum vitae](/cv/)

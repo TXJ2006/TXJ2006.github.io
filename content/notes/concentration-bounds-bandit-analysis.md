@@ -6,6 +6,9 @@ description: "Fixed-time bounds, confidence radii, and UCB-style reasoning."
 date: 2026-06-18
 lastmod: 2026-06-18
 weight: 40
+libraryFolder: "probability-statistics"
+libraryFolderName: "概率与统计基础"
+libraryFolderColor: 2
 tags: ["Concentration", "UCB", "Probability"]
 draft: false
 ShowToc: false

@@ -2,10 +2,10 @@
 <section class="editor-page" data-repo="TXJ2006/TXJ2006.github.io" data-private-repo="TXJ2006/TXJ2006-private-notes" data-owner="TXJ2006" data-branch="main" data-site-url="{{ site.BaseURL }}">
   <header class="editor-header">
     <div>
-      <p class="eyebrow">Private Publishing Workspace</p>
-      <h1>Markdown 写作台</h1>
+      <p class="eyebrow">Private Research Library</p>
+      <h1>图书馆写作台</h1>
     </div>
-    <a href="{{ "notes/" | relURL }}">View library</a>
+    <a href="{{ "notes/" | relURL }}">浏览图书馆</a>
   </header>
 
   <section class="editor-auth" id="editor-auth" aria-labelledby="auth-heading">
@@ -28,10 +28,18 @@
   <div class="editor-workspace" id="editor-workspace" hidden>
     <aside class="editor-library">
       <div class="editor-library-heading">
-        <span>笔记</span>
-        <button id="editor-new" type="button">新建</button>
+        <span>图书馆</span>
+        <div class="editor-library-actions">
+          <button id="editor-folder-new" type="button" title="新建文件夹"><span aria-hidden="true">＋</span> 文件夹</button>
+          <button id="editor-new" type="button" title="新建文章"><span aria-hidden="true">＋</span> 文章</button>
+        </div>
       </div>
       <p class="editor-identity" id="editor-identity"></p>
+      <div id="editor-folders" class="editor-folders" aria-label="图书馆文件夹"></div>
+      <div class="editor-file-heading">
+        <span id="editor-file-heading">全部文章</span>
+        <span id="editor-file-count">0</span>
+      </div>
       <div id="editor-files" class="editor-files" role="listbox" aria-label="Markdown notes"></div>
       <button class="editor-disconnect" id="editor-disconnect" type="button">退出编辑</button>
     </aside>
@@ -152,6 +160,25 @@
       </footer>
     </main>
   </div>
+
+  <dialog class="library-folder-dialog" id="library-folder-dialog">
+    <form method="dialog" id="library-folder-form">
+      <div class="library-dialog-heading">
+        <span class="folder-glyph folder-color-preview" aria-hidden="true"></span>
+        <div>
+          <p class="eyebrow">New Collection</p>
+          <h2>新建文件夹</h2>
+        </div>
+      </div>
+      <label for="library-folder-name">文件夹名称</label>
+      <input id="library-folder-name" type="text" maxlength="32" autocomplete="off" required placeholder="例如：强化学习理论">
+      <p id="library-folder-error" class="library-folder-error" role="alert"></p>
+      <div class="library-dialog-actions">
+        <button id="library-folder-cancel" type="button">取消</button>
+        <button class="button-primary" id="library-folder-create" type="submit">创建文件夹</button>
+      </div>
+    </form>
+  </dialog>
 
 </section>
 <script src="{{ "js/marked.umd.js" | relURL }}"></script>

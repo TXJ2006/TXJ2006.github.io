@@ -6,6 +6,9 @@ description: "Martingale tools for adaptive processes and stopping-time argument
 date: 2026-06-18
 lastmod: 2026-06-18
 weight: 50
+libraryFolder: "probability-statistics"
+libraryFolderName: "概率与统计基础"
+libraryFolderColor: 2
 tags: ["Martingales", "Optional Stopping", "Bandit Theory"]
 draft: false
 ShowToc: false

@@ -1,8 +1,8 @@
 ---
-title: "Research Notes"
+title: "图书馆"
 url: "/notes/"
 summary: "Markdown research notes with integrated Bandit Theory PDFs"
-description: "A living research library on probability, online learning, bandit algorithms, and sequential decision-making."
+description: "按主题整理的研究文章、数学笔记与持续写作。"
 draft: false
 ShowToc: false
 hideMeta: true

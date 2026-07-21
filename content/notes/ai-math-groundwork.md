@@ -6,6 +6,9 @@ description: "The Mathematical Foundations of Artificial Intelligence: Structure
 date: 2026-07-19
 lastmod: 2026-07-19
 weight: 80
+libraryFolder: "ai-foundations"
+libraryFolderName: "人工智能基础"
+libraryFolderColor: 0
 tags: ["Mathematics for AI", "Analysis", "Linear Algebra", "Probability", "Statistics"]
 draft: false
 ShowToc: false
