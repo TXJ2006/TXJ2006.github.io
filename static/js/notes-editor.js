@@ -12,6 +12,7 @@
   const tokenKey = 'txj_notes_editor_token';
   const draftsKey = 'txj_notes_editor_drafts';
   const libraryStatePath = 'library/folders.json';
+  const publicLibraryCatalogPath = 'data/library_folders.json';
   const params = new URLSearchParams(window.location.search);
 
   const mathMacros = {
@@ -350,9 +351,11 @@
   let libraryFiles = [];
   let libraryState = { version: 1, folders: [], assignments: {}, labels: {} };
   let libraryStateSha = '';
+  let publicLibraryCatalogSha = '';
   let selectedFolderId = 'all';
   let pendingFolderId = '';
   let draggedFile = null;
+  let libraryBusy = false;
   let formulaMode = 'inline';
   let compileLogText = '';
   let currentCompileIssues = [];
@@ -621,8 +624,12 @@
   }
 
   async function loadLibraryState() {
-    const file = await optionalContents(() => privateApi(`/contents/${libraryStatePath}?ref=${encodeURIComponent(branch)}`));
+    const [file, publicCatalog] = await Promise.all([
+      optionalContents(() => privateApi(`/contents/${libraryStatePath}?ref=${encodeURIComponent(branch)}`)),
+      optionalContents(() => api(`/contents/${publicLibraryCatalogPath}?ref=${encodeURIComponent(branch)}`)),
+    ]);
     libraryStateSha = file?.sha || '';
+    publicLibraryCatalogSha = publicCatalog?.sha || '';
     if (!file) {
       libraryState = { version: 1, folders: [], assignments: {}, labels: {} };
       return;
@@ -639,6 +646,23 @@
     const body = `${JSON.stringify(libraryState, null, 2)}\n`;
     const result = await putEncoded(privateApi, libraryStatePath, encodeBase64(body), message, libraryStateSha);
     libraryStateSha = result.content.sha;
+    return result;
+  }
+
+  function publicFolderDefinitions() {
+    const publicFolderIds = new Set(Object.entries(libraryState.assignments)
+      .filter(([key]) => key.startsWith('public:'))
+      .map(([, folderId]) => folderId));
+    return libraryState.folders
+      .filter((folder) => publicFolderIds.has(folder.id))
+      .map(({ id, name, color }) => ({ id, name, color }));
+  }
+
+  async function savePublicLibraryCatalog(message) {
+    const catalog = { version: 1, folders: publicFolderDefinitions() };
+    const body = `${JSON.stringify(catalog, null, 2)}\n`;
+    const result = await putEncoded(api, publicLibraryCatalogPath, encodeBase64(body), message, publicLibraryCatalogSha);
+    publicLibraryCatalogSha = result.content.sha;
     return result;
   }
 
@@ -692,12 +716,13 @@
   }
 
   function createFolderCard({ id, name, color, count, dropEnabled = true }) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = `editor-folder-card ${id === 'all' || id === 'unfiled' ? 'folder-color-neutral' : `folder-color-${color}`}`;
-    button.dataset.folderId = id;
-    button.classList.toggle('is-active', selectedFolderId === id);
-    button.setAttribute('aria-pressed', String(selectedFolderId === id));
+    const card = document.createElement('div');
+    card.className = `editor-folder-card ${id === 'all' || id === 'unfiled' ? 'folder-color-neutral' : `folder-color-${color}`}`;
+    card.dataset.folderId = id;
+    card.classList.toggle('is-active', selectedFolderId === id);
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-pressed', String(selectedFolderId === id));
     const glyph = document.createElement('span');
     glyph.className = 'folder-glyph';
     glyph.setAttribute('aria-hidden', 'true');
@@ -708,27 +733,43 @@
     const meta = document.createElement('small');
     meta.textContent = `${count} 篇`;
     copy.append(title, meta);
-    button.append(glyph, copy);
-    button.addEventListener('click', () => {
+    card.append(glyph, copy);
+    card.addEventListener('click', () => {
+      if (libraryBusy) return;
       selectedFolderId = id;
       renderLibraryFolders();
       renderLibraryFiles();
     });
-    if (dropEnabled) {
-      button.addEventListener('dragover', (event) => {
-        if (!draggedFile) return;
-        event.preventDefault();
-        event.dataTransfer.dropEffect = 'move';
-        button.classList.add('is-drop-target');
-      });
-      button.addEventListener('dragleave', () => button.classList.remove('is-drop-target'));
-      button.addEventListener('drop', async (event) => {
-        event.preventDefault();
-        button.classList.remove('is-drop-target');
-        if (draggedFile) await moveFileToFolder(draggedFile, id === 'unfiled' ? '' : id);
+    card.addEventListener('keydown', (event) => {
+      if (libraryBusy || event.target !== card || !['Enter', ' '].includes(event.key)) return;
+      event.preventDefault();
+      selectedFolderId = id;
+      renderLibraryFolders();
+      renderLibraryFiles();
+    });
+    const folder = folderById(id);
+    if (folder) {
+      title.title = '点击修改文件夹名称';
+      title.addEventListener('click', (event) => {
+        event.stopPropagation();
+        beginFolderRename(card, folder, title);
       });
     }
-    return button;
+    if (dropEnabled) {
+      card.addEventListener('dragover', (event) => {
+        if (!draggedFile || libraryBusy) return;
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+        card.classList.add('is-drop-target');
+      });
+      card.addEventListener('dragleave', () => card.classList.remove('is-drop-target'));
+      card.addEventListener('drop', async (event) => {
+        event.preventDefault();
+        card.classList.remove('is-drop-target');
+        if (draggedFile && !libraryBusy) await moveFileToFolder(draggedFile, id === 'unfiled' ? '' : id);
+      });
+    }
+    return card;
   }
 
   function renderLibraryFolders() {
@@ -743,9 +784,102 @@
   }
 
   function setLibraryBusy(busy) {
+    libraryBusy = busy;
     elements.folderNew.disabled = busy;
     elements.files.querySelectorAll('button').forEach((button) => { button.disabled = busy; });
-    elements.folders.querySelectorAll('button').forEach((button) => { button.disabled = busy; });
+    elements.folders.querySelectorAll('.editor-folder-card').forEach((card) => {
+      card.classList.toggle('is-disabled', busy);
+      card.setAttribute('aria-disabled', String(busy));
+    });
+  }
+
+  function beginFolderRename(card, folder, title) {
+    if (libraryBusy || card.querySelector('input')) return;
+    const input = document.createElement('input');
+    input.className = 'editor-folder-name-input';
+    input.type = 'text';
+    input.maxLength = 32;
+    input.value = folder.name;
+    input.setAttribute('aria-label', '文件夹名称');
+    title.replaceWith(input);
+    let settled = false;
+    const finish = async (save) => {
+      if (settled) return;
+      settled = true;
+      if (!save) {
+        renderLibraryFolders();
+        return;
+      }
+      await renameLibraryFolder(folder, input.value);
+    };
+    input.addEventListener('click', (event) => event.stopPropagation());
+    input.addEventListener('keydown', (event) => {
+      event.stopPropagation();
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        finish(true);
+      } else if (event.key === 'Escape') {
+        event.preventDefault();
+        finish(false);
+      }
+    });
+    input.addEventListener('blur', () => finish(true));
+    input.focus();
+    input.select();
+  }
+
+  async function renameLibraryFolder(folder, requestedName) {
+    const name = requestedName.trim();
+    if (!name) {
+      setStatus('文件夹名称不能为空。', 'error');
+      renderLibraryFolders();
+      return false;
+    }
+    if (libraryState.folders.some((item) => item !== folder && item.name.toLocaleLowerCase() === name.toLocaleLowerCase())) {
+      setStatus('已经存在同名文件夹。', 'error');
+      renderLibraryFolders();
+      return false;
+    }
+    if (name === folder.name) {
+      renderLibraryFolders();
+      return true;
+    }
+    const previousName = folder.name;
+    const hasPublicArticles = Object.entries(libraryState.assignments)
+      .some(([key, folderId]) => key.startsWith('public:') && folderId === folder.id);
+    let privateStateSaved = false;
+    setLibraryBusy(true);
+    setStatus(`正在将“${previousName}”重命名为“${name}”...`);
+    folder.name = name;
+    try {
+      await saveLibraryState(`Rename library folder ${previousName} to ${name}`);
+      privateStateSaved = true;
+      let publicResult = null;
+      if (hasPublicArticles) {
+        publicResult = await savePublicLibraryCatalog(`Rename public library folder to ${name}`);
+      }
+      const currentKey = currentPath ? libraryFileKey({ path: currentPath, repository: currentRepository }) : '';
+      if (libraryState.assignments[currentKey] === folder.id) {
+        elements.content.value = applyFolderFrontMatter(elements.content.value, folder);
+        renderPreview();
+        scheduleDraftSave();
+      }
+      renderLibraryFolders();
+      renderLibraryFiles();
+      setStatus(`文件夹已重命名为“${name}”`, 'success');
+      if (publicResult?.commit?.sha) monitorDeployment(publicResult.commit.sha);
+      return true;
+    } catch (error) {
+      folder.name = previousName;
+      if (privateStateSaved) await saveLibraryState(`Rollback rename of ${previousName}`).catch(() => null);
+      setStatus(error.message, 'error');
+      updateCompileLog([{ stage: 'Library', line: 0, message: error.message }]);
+      renderLibraryFolders();
+      renderLibraryFiles();
+      return false;
+    } finally {
+      setLibraryBusy(false);
+    }
   }
 
   async function moveFileToFolder(file, folderId) {
@@ -757,6 +891,7 @@
     const previousAssignments = { ...libraryState.assignments };
     let remote;
     let updateResult;
+    let publicCatalogResult = null;
     setLibraryBusy(true);
     setStatus(`正在将 ${libraryState.labels[key] || prettyName(file.path)} 移入${folder ? `“${folder.name}”` : '“未分类”'}...`);
     try {
@@ -774,8 +909,13 @@
       else delete libraryState.assignments[key];
       try {
         await saveLibraryState(`Organize ${file.name} in research library`);
+        if (file.repository === 'public') {
+          publicCatalogResult = await savePublicLibraryCatalog(`Update public library folders for ${file.name}`);
+        }
       } catch (error) {
         libraryState.assignments = previousAssignments;
+        await saveLibraryState(`Rollback library assignment for ${file.name}`).catch(() => null);
+        if (file.repository === 'public') await savePublicLibraryCatalog(`Rollback public library folders for ${file.name}`).catch(() => null);
         await putEncoded(repositoryApi(file.repository), file.path, remote.content.replace(/\s/g, ''), `Rollback library move for ${file.name}`, updateResult.content.sha).catch(() => null);
         throw error;
       }
@@ -790,7 +930,7 @@
       renderLibraryFolders();
       renderLibraryFiles();
       setStatus(`已移入${folder ? `“${folder.name}”` : '“未分类”'}`, 'success');
-      if (file.repository === 'public') monitorDeployment(updateResult.commit.sha);
+      if (file.repository === 'public') monitorDeployment(publicCatalogResult?.commit?.sha || updateResult.commit.sha);
     } catch (error) {
       libraryState.assignments = previousAssignments;
       setStatus(error.message, 'error');
@@ -1662,6 +1802,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
     let previousLibraryAssignments = null;
     let previousLibraryLabels = null;
     let libraryMetadataChanged = false;
+    let publicCatalogChanged = false;
     elements.publish.disabled = true;
     elements.privacyToggle.disabled = true;
     elements.share.disabled = true;
@@ -1702,9 +1843,16 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       else delete libraryState.assignments[targetKey];
       if (sourceKey && sourceKey !== targetKey) delete libraryState.labels[sourceKey];
       libraryState.labels[targetKey] = markdownDocumentTitle(editableContent, path);
-      libraryMetadataChanged = JSON.stringify(previousLibraryAssignments) !== JSON.stringify(libraryState.assignments)
-        || JSON.stringify(previousLibraryLabels) !== JSON.stringify(libraryState.labels);
-      if (libraryMetadataChanged) await saveLibraryState(`Update library location for ${filename}`);
+      const assignmentsChanged = JSON.stringify(previousLibraryAssignments) !== JSON.stringify(libraryState.assignments);
+      const labelsChanged = JSON.stringify(previousLibraryLabels) !== JSON.stringify(libraryState.labels);
+      libraryMetadataChanged = assignmentsChanged || labelsChanged;
+      if (libraryMetadataChanged) {
+        await saveLibraryState(`Update library location for ${filename}`);
+        if (assignmentsChanged && ((source.path && source.repository === 'public') || targetRepository === 'public')) {
+          await savePublicLibraryCatalog(`Update public library catalog for ${filename}`);
+          publicCatalogChanged = true;
+        }
+      }
       const message = elements.message.value.trim() || `${targetRepository === 'private' ? 'Save private' : 'Publish'} ${filename}`;
       setStatus(targetRepository === 'private' ? '正在保存到私密仓库...' : 'Publishing...');
       const result = await putEncoded(repositoryApi(targetRepository), path, encodeBase64(content), message, sameLocation ? source.sha : '');
@@ -1749,6 +1897,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
         libraryState.assignments = previousLibraryAssignments;
         libraryState.labels = previousLibraryLabels || {};
         await saveLibraryState('Rollback incomplete library update').catch(() => null);
+        if (publicCatalogChanged) await savePublicLibraryCatalog('Rollback incomplete public library update').catch(() => null);
         renderLibraryFolders();
         renderLibraryFiles();
       }

@@ -21,6 +21,12 @@
           {{- $first := index .Pages 0 -}}
           {{- $name := $first.Params.libraryFolderName | default "未命名文件夹" -}}
           {{- $color := $first.Params.libraryFolderColor | default 0 -}}
+          {{- $definitions := where site.Data.library_folders.folders "id" .Key -}}
+          {{- if gt (len $definitions) 0 -}}
+            {{- $definition := index $definitions 0 -}}
+            {{- $name = $definition.name -}}
+            {{- $color = $definition.color -}}
+          {{- end -}}
           <button class="library-folder-card folder-color-{{ $color }}" type="button" data-library-filter="{{ .Key }}" aria-pressed="false">
             <span class="folder-glyph" aria-hidden="true"></span>
             <span class="library-folder-copy"><strong>{{ $name }}</strong><small>{{ len .Pages }} 篇</small></span>
