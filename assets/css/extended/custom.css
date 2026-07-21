@@ -725,10 +725,10 @@ a {
 .folder-glyph {
   position: relative;
   display: block;
-  width: 54px;
-  height: 38px;
+  width: 64px;
+  height: 47px;
   flex: 0 0 auto;
-  filter: drop-shadow(0 5px 7px rgba(34, 43, 50, 0.16));
+  filter: drop-shadow(0 4px 5px rgba(34, 43, 50, 0.14));
 }
 
 .folder-glyph::before,
@@ -739,72 +739,77 @@ a {
 }
 
 .folder-glyph::before {
-  top: 2px;
-  left: 3px;
-  width: 23px;
-  height: 12px;
+  top: 1px;
+  left: 5px;
+  width: 28px;
+  height: 14px;
   border-radius: 6px 6px 2px 2px;
   background: var(--folder-top);
 }
 
 .folder-glyph::after {
-  inset: 8px 0 0;
-  border: 1px solid color-mix(in srgb, var(--folder-edge) 78%, #fff);
-  border-radius: 6px;
+  inset: 10px 0 0;
+  border: 1px solid color-mix(in srgb, var(--folder-edge) 68%, #fff);
+  border-radius: 7px;
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.32), rgba(255,255,255,0) 28%),
+    linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0) 32%),
     var(--folder-front);
-  box-shadow: inset 0 1px rgba(255,255,255,0.36), inset 0 -1px rgba(0,0,0,0.08);
+  box-shadow: inset 0 1px rgba(255,255,255,0.42), inset 0 -1px rgba(0,0,0,0.06);
 }
 
 .library-folders {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
-  gap: 12px;
-  margin: 0 0 32px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 36px;
 }
 
 .library-folder-card {
   display: grid;
-  min-height: 104px;
-  grid-template-columns: 54px minmax(0, 1fr);
-  gap: 13px;
-  align-items: center;
-  padding: 16px;
+  min-height: 132px;
+  justify-items: center;
+  align-content: center;
+  gap: 12px;
+  padding: 14px 10px;
   overflow: hidden;
-  border: 1px solid #e0e5e8;
+  border: 1px solid transparent;
   border-radius: 8px;
-  background: linear-gradient(145deg, #fff 0%, var(--folder-tint) 100%);
-  box-shadow: 0 8px 22px rgba(35, 45, 52, 0.07), inset 0 1px rgba(255,255,255,0.8);
+  background: transparent;
+  box-shadow: none;
   color: var(--primary);
   cursor: pointer;
   font-family: var(--sans);
-  text-align: left;
-  transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+  text-align: center;
+  transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
 }
 
 .library-folder-card:hover {
-  border-color: color-mix(in srgb, var(--folder-front) 50%, #d6dde0);
-  box-shadow: 0 11px 26px rgba(35, 45, 52, 0.11), inset 0 1px rgba(255,255,255,0.88);
-  transform: translateY(-2px);
+  border-color: #e6eaed;
+  background: #f6f7f8;
+  box-shadow: none;
+  transform: translateY(-1px);
 }
 
 .library-folder-card.is-active {
-  border-color: var(--folder-front);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--folder-front) 14%, transparent), 0 10px 25px rgba(35,45,52,0.1);
+  border-color: #c7daf1;
+  background: #edf5ff;
+  box-shadow: none;
 }
 
 .library-folder-copy {
   display: grid;
   min-width: 0;
-  gap: 6px;
+  justify-items: center;
+  gap: 4px;
 }
 
 .library-folder-copy strong {
+  display: -webkit-box;
   overflow: hidden;
-  font-size: 14px;
-  line-height: 1.35;
-  text-overflow: ellipsis;
+  font-size: 13px;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .library-folder-copy small {
@@ -1090,7 +1095,7 @@ a {
 
 .editor-workspace {
   display: grid;
-  grid-template-columns: 292px minmax(0, 1fr);
+  grid-template-columns: 336px minmax(0, 1fr);
   min-height: 720px;
   margin-top: 22px;
   border-top: 2px solid var(--primary);
@@ -1183,37 +1188,39 @@ a {
 .editor-files {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
+  gap: 6px;
   align-content: start;
   max-height: 390px;
   overflow-y: auto;
-  padding: 2px 3px 7px 2px;
+  padding: 2px 5px 7px 0;
   scrollbar-width: thin;
+  scrollbar-color: #cbd1d5 transparent;
 }
 
 .editor-folders {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-  margin: 2px 0 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+  margin: 2px 0 20px;
 }
 
 .editor-folder-card {
   display: grid;
   min-width: 0;
-  min-height: 102px;
-  align-content: space-between;
-  gap: 9px;
-  padding: 12px;
-  border: 1px solid #e1e6e8 !important;
+  min-height: 112px;
+  justify-items: center;
+  align-content: center;
+  gap: 10px;
+  padding: 9px 5px;
+  border: 1px solid transparent !important;
   border-radius: 8px;
-  background: linear-gradient(145deg, #fff 0%, var(--folder-tint) 100%) !important;
-  box-shadow: 0 6px 16px rgba(35, 45, 52, 0.06);
+  background: transparent !important;
+  box-shadow: none;
   color: var(--secondary);
   cursor: pointer;
   font: 12px/1.35 var(--sans);
-  text-align: left;
-  transition: border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+  text-align: center;
+  transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
 }
 
 .editor-folder-card:focus-visible {
@@ -1227,31 +1234,38 @@ a {
 }
 
 .editor-folder-card .folder-glyph {
-  width: 46px;
-  height: 33px;
+  width: 58px;
+  height: 43px;
 }
 
-.editor-folder-card:hover,
-.editor-folder-card.is-active {
-  border-color: var(--folder-front) !important;
+.editor-folder-card:hover {
+  border-color: #e7eaed !important;
+  background: #f6f7f8 !important;
   color: var(--primary) !important;
-  box-shadow: 0 8px 20px rgba(35,45,52,0.11), 0 0 0 2px color-mix(in srgb, var(--folder-front) 12%, transparent);
   transform: translateY(-1px);
+}
+
+.editor-folder-card.is-active {
+  border-color: #c7daf1 !important;
+  background: #edf5ff !important;
+  color: var(--primary) !important;
 }
 
 .editor-folder-card.is-drop-target {
   border-color: var(--folder-front) !important;
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--folder-front) 22%, transparent), 0 12px 24px rgba(35,45,52,0.13);
-  transform: translateY(-2px) scale(1.015);
+  background: color-mix(in srgb, var(--folder-front) 9%, #fff) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--folder-front) 18%, transparent);
+  transform: translateY(-1px) scale(1.01);
 }
 
 .editor-folder-copy {
   display: grid;
   min-width: 0;
+  width: 100%;
+  justify-items: center;
   gap: 3px;
 }
 
-.editor-folder-copy strong,
 .editor-folder-copy small {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1259,9 +1273,14 @@ a {
 }
 
 .editor-folder-copy strong {
+  display: -webkit-box;
+  overflow: hidden;
   color: var(--primary);
   cursor: text;
-  font-size: 11px;
+  font-size: 10px;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .editor-folder-copy strong:hover {
@@ -1304,26 +1323,31 @@ a {
   --file-accent: #4f9bd7;
   display: grid;
   min-width: 0;
-  min-height: 122px;
-  align-content: space-between;
-  gap: 12px;
-  padding: 12px;
-  border: 1px solid #e1e6e8;
+  min-height: 138px;
+  justify-items: center;
+  align-content: center;
+  gap: 11px;
+  padding: 11px 8px;
+  border: 1px solid transparent;
   border-radius: 8px;
-  background: linear-gradient(145deg, #fff, #f7fafc);
-  box-shadow: 0 5px 14px rgba(35,45,52,0.055);
+  background: transparent;
+  box-shadow: none;
   cursor: grab;
-  text-align: left;
-  transition: border-color 130ms ease, box-shadow 130ms ease, opacity 120ms ease, transform 120ms ease;
+  text-align: center;
+  transition: background-color 130ms ease, border-color 130ms ease, opacity 120ms ease, transform 120ms ease;
 }
 
-.editor-files button:hover,
-.editor-files button.active {
-  border-color: color-mix(in srgb, var(--file-accent) 68%, #d7dfe3);
-  background: linear-gradient(145deg, #fff, color-mix(in srgb, var(--file-accent) 7%, #fff));
-  box-shadow: 0 8px 19px rgba(35,45,52,0.105), 0 0 0 2px color-mix(in srgb, var(--file-accent) 11%, transparent);
+.editor-files button:hover {
+  border-color: #e7eaed;
+  background: #f6f7f8;
   color: var(--accent-dark);
   transform: translateY(-1px);
+}
+
+.editor-files button.active {
+  border-color: #c7daf1;
+  background: #edf5ff;
+  color: var(--accent-dark);
 }
 
 .editor-files button[data-repository="private"] {
@@ -1333,14 +1357,14 @@ a {
 .editor-file-icon {
   position: relative;
   display: block;
-  width: 36px;
-  height: 44px;
+  width: 42px;
+  height: 52px;
   border: 1px solid color-mix(in srgb, var(--file-accent) 46%, #cbd4d9);
   border-radius: 5px;
   background:
-    linear-gradient(var(--file-accent), var(--file-accent)) 8px 16px / 18px 2px no-repeat,
-    linear-gradient(color-mix(in srgb, var(--file-accent) 55%, #fff), color-mix(in srgb, var(--file-accent) 55%, #fff)) 8px 23px / 20px 2px no-repeat,
-    linear-gradient(color-mix(in srgb, var(--file-accent) 38%, #fff), color-mix(in srgb, var(--file-accent) 38%, #fff)) 8px 30px / 14px 2px no-repeat,
+    linear-gradient(var(--file-accent), var(--file-accent)) 9px 19px / 21px 2px no-repeat,
+    linear-gradient(color-mix(in srgb, var(--file-accent) 55%, #fff), color-mix(in srgb, var(--file-accent) 55%, #fff)) 9px 27px / 23px 2px no-repeat,
+    linear-gradient(color-mix(in srgb, var(--file-accent) 38%, #fff), color-mix(in srgb, var(--file-accent) 38%, #fff)) 9px 35px / 17px 2px no-repeat,
     linear-gradient(145deg, #fff, color-mix(in srgb, var(--file-accent) 8%, #fff));
   box-shadow: 0 5px 9px rgba(35,45,52,0.09);
 }
@@ -1361,6 +1385,7 @@ a {
 .editor-file-copy {
   display: grid;
   min-width: 0;
+  justify-items: center;
   gap: 7px;
 }
 
@@ -1371,8 +1396,9 @@ a {
   font-size: 10px;
   font-weight: 700;
   line-height: 1.4;
+  text-align: center;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
 }
 
 .editor-file-meta {
@@ -1383,6 +1409,7 @@ a {
   color: var(--secondary);
   font-size: 9px;
   font-weight: 700;
+  justify-self: center;
 }
 
 .editor-file-meta::before {
@@ -2065,7 +2092,7 @@ a {
   }
 
   .editor-workspace {
-    grid-template-columns: 250px minmax(0, 1fr);
+    grid-template-columns: 280px minmax(0, 1fr);
   }
 }
 
@@ -2281,15 +2308,14 @@ a {
   }
 
   .library-folder-card {
-    min-height: 94px;
-    grid-template-columns: 46px minmax(0, 1fr);
-    gap: 10px;
-    padding: 12px;
+    min-height: 118px;
+    gap: 9px;
+    padding: 12px 8px;
   }
 
   .library-folder-card .folder-glyph {
-    width: 46px;
-    height: 33px;
+    width: 56px;
+    height: 41px;
   }
 
   .note-row-heading {
@@ -2328,7 +2354,7 @@ a {
   }
 
   .editor-folder-card {
-    flex: 0 0 120px;
+    flex: 0 0 108px;
   }
 
   .editor-files {
@@ -2341,7 +2367,7 @@ a {
   }
 
   .editor-files button {
-    flex: 0 0 148px;
+    flex: 0 0 132px;
   }
 
   .editor-disconnect {
