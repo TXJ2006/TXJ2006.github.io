@@ -63,7 +63,7 @@ disableKinds = ['taxonomy', 'term']
     weight = 3
 
 [[menu.main]]
-    name = "图书馆"
+    name = "Library"
     url = "/notes/"
     weight = 4
 
