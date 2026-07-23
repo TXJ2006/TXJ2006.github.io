@@ -1,4 +1,7 @@
 {{ $noop := .WordCount }}
+{{ if .Params.noindex }}
+<meta name="robots" content="noindex, nofollow, noarchive">
+{{ end }}
 {{ if eq .Section "notes" }}
 <link rel="stylesheet" href="{{ "css/markdown-content.css" | relURL }}">
 {{ partial "math.html" . }}

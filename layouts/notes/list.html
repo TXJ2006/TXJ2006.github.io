@@ -4,6 +4,7 @@
   data-private-repo="TXJ2006/TXJ2006-private-notes"
   data-owner="TXJ2006"
   data-branch="main"
+  data-private-reader-url="{{ "notes/private/" | relURL }}"
 >
   <header class="notes-header">
     <p class="eyebrow">Research Library</p>
@@ -72,22 +73,6 @@
     </main>
   </div>
 
-  <dialog class="private-reader-dialog" id="private-reader-dialog">
-    <article>
-      <header class="private-reader-header">
-        <div>
-          <p class="eyebrow">Owner-only Preview</p>
-          <h2 id="private-reader-title">私密笔记</h2>
-          <span class="note-privacy-badge">私密 · 仅你可见</span>
-        </div>
-        <button id="private-reader-close" type="button" aria-label="关闭私密预览" title="关闭">×</button>
-      </header>
-      <p class="private-reader-status" id="private-reader-status" role="status" aria-live="polite"></p>
-      <div class="private-reader-content markdown-content" id="private-reader-content" tabindex="-1"></div>
-    </article>
-  </dialog>
 </section>
-<script src="{{ "js/marked.umd.js" | relURL }}"></script>
-<script src="{{ "js/markdown-pipeline.js" | relURL }}"></script>
-<script src="{{ "js/library.js" | relURL }}?v=20260723-private-reader"></script>
+<script src="{{ "js/library.js" | relURL }}?v=20260723-private-page"></script>
 {{- end }}

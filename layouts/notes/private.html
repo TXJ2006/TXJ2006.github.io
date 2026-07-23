@@ -1,0 +1,58 @@
+{{- define "main" }}
+<section class="note-page">
+  <div class="notes-shell note-single-shell">
+    {{ partial "note_author.html" . }}
+    <main
+      class="private-note-main"
+      data-private-repo="TXJ2006/TXJ2006-private-notes"
+      data-owner="TXJ2006"
+      data-branch="main"
+      data-site-title="{{ site.Title }}"
+    >
+      <section class="private-note-gate" id="private-note-gate" aria-live="polite">
+        <header class="note-header">
+          <p class="note-kicker"><a href="{{ "notes/" | relURL }}">图书馆</a></p>
+          <h1>Owner verification</h1>
+          <p class="note-deck">This private note is available only after verifying the repository owner.</p>
+        </header>
+        <form class="private-note-auth" id="private-note-auth">
+          <label for="private-note-token">GitHub access token</label>
+          <div class="private-note-auth-row">
+            <input id="private-note-token" type="password" autocomplete="current-password" spellcheck="false">
+            <button class="button-primary" type="submit">Verify</button>
+          </div>
+          <label class="private-note-remember">
+            <input id="private-note-remember" type="checkbox" checked>
+            <span>Keep me signed in on this device</span>
+          </label>
+        </form>
+        <p class="private-note-status" id="private-note-status" role="status"></p>
+      </section>
+
+      <article class="note-article" id="private-note-article" hidden>
+        <header class="note-header">
+          <p class="note-kicker"><a href="{{ "notes/" | relURL }}">图书馆</a></p>
+          <h1 id="private-note-title"></h1>
+          <p class="note-deck" id="private-note-subtitle" hidden></p>
+          <div class="note-meta">
+            <span id="private-note-date" hidden></span>
+            <span id="private-note-reading-time"></span>
+            <span id="private-note-word-count"></span>
+          </div>
+          <ul class="note-tags" id="private-note-tags" aria-label="Topics" hidden></ul>
+          <div class="notes-actions" aria-label="Document actions">
+            <a href="{{ "notes/" | relURL }}">返回图书馆</a>
+            <a id="private-note-share" href="#" target="_blank" rel="noopener" hidden>Share</a>
+            <a id="private-note-edit" href="{{ "admin/" | relURL }}" rel="nofollow">Edit</a>
+          </div>
+        </header>
+
+        <div class="note-content post-content markdown-content" id="private-note-content"></div>
+      </article>
+    </main>
+  </div>
+</section>
+<script src="{{ "js/marked.umd.js" | relURL }}"></script>
+<script src="{{ "js/markdown-pipeline.js" | relURL }}"></script>
+<script src="{{ "js/private-note.js" | relURL }}?v=20260723-public-layout"></script>
+{{- end }}

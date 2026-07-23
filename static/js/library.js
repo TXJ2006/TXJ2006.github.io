@@ -4,29 +4,16 @@
   const articleList = document.querySelector('.notes-list');
   const label = document.querySelector('#library-result-label');
   const count = document.querySelector('#library-result-count');
-  const reader = {
-    dialog: document.querySelector('#private-reader-dialog'),
-    title: document.querySelector('#private-reader-title'),
-    status: document.querySelector('#private-reader-status'),
-    content: document.querySelector('#private-reader-content'),
-    close: document.querySelector('#private-reader-close'),
-  };
   if (!page || !folderList || !articleList || !label || !count) return;
 
   const privateRepo = page.dataset.privateRepo;
   const owner = page.dataset.owner;
   const branch = page.dataset.branch || 'main';
+  const privateReaderUrl = page.dataset.privateReaderUrl || '/notes/private/';
   const tokenKey = 'txj_notes_editor_token';
   let cards = [];
   let articles = [];
   let selectedFolderId = 'all';
-  let ownerToken = '';
-  let privateApiRoot = '';
-  let privateState = {};
-  let privateFilesByPath = new Map();
-  let activePrivatePath = '';
-  let readerRequest = 0;
-  const readerObjectUrls = new Set();
 
   function refreshCollections() {
     cards = [...folderList.querySelectorAll('[data-library-filter]')];
@@ -73,11 +60,6 @@
     return new TextDecoder().decode(bytes);
   }
 
-  function base64ToBytes(value) {
-    const binary = atob(value.replace(/\s/g, ''));
-    return Uint8Array.from(binary, (character) => character.charCodeAt(0));
-  }
-
   function prettyName(path) {
     return path.split('/').pop().replace(/\.md$/i, '').split('-')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
@@ -95,168 +77,6 @@
     const response = await fetch(url, { headers: requestHeaders(token), cache: 'no-store' });
     if (!response.ok) throw new Error(`GitHub request failed (${response.status})`);
     return response.json();
-  }
-
-  function encodeRepositoryPath(path) {
-    return path.split('/').map((part) => encodeURIComponent(part)).join('/');
-  }
-
-  function mimeTypeFromPath(path) {
-    const extension = path.split('.').pop()?.toLowerCase();
-    return ({
-      gif: 'image/gif',
-      jpeg: 'image/jpeg',
-      jpg: 'image/jpeg',
-      png: 'image/png',
-      webp: 'image/webp',
-    })[extension] || 'application/octet-stream';
-  }
-
-  function markdownTitle(markdown, fallback) {
-    const frontMatter = /^---\s*\n([\s\S]*?)\n---(?:\s*\n|$)/.exec(markdown);
-    const match = frontMatter?.[1].match(/^title:\s*(.+?)\s*$/m);
-    if (!match) return fallback;
-    const value = match[1].trim();
-    if ((value.startsWith('"') && value.endsWith('"'))
-        || (value.startsWith("'") && value.endsWith("'"))) {
-      return value.slice(1, -1);
-    }
-    return value;
-  }
-
-  function sanitizeMarkdownHtml(html) {
-    const template = document.createElement('template');
-    template.innerHTML = html;
-    template.content.querySelectorAll('base, embed, form, iframe, link, meta, object, script, style')
-      .forEach((element) => element.remove());
-    template.content.querySelectorAll('*').forEach((element) => {
-      [...element.attributes].forEach((attribute) => {
-        const name = attribute.name.toLowerCase();
-        const value = attribute.value.trim();
-        if (name.startsWith('on')
-            || ((name === 'href' || name === 'src' || name === 'xlink:href')
-              && /^(?:javascript|vbscript|data:text\/html)/i.test(value))) {
-          element.removeAttribute(attribute.name);
-          return;
-        }
-        if (name === 'style') {
-          const width = element.tagName === 'IMG'
-            ? /(?:^|;)\s*width\s*:\s*(\d{1,3})%\s*(?:;|$)/i.exec(value)
-            : null;
-          if (width) {
-            const normalized = Math.min(100, Math.max(10, Number.parseInt(width[1], 10)));
-            element.setAttribute('style', `width: ${normalized}%`);
-          } else {
-            element.removeAttribute('style');
-          }
-        }
-      });
-      if (element.tagName === 'A') element.setAttribute('rel', 'noopener noreferrer');
-    });
-    return template.innerHTML;
-  }
-
-  function privateReaderUrl(path = '') {
-    const url = new URL(window.location.href);
-    if (path) url.searchParams.set('private', path);
-    else url.searchParams.delete('private');
-    return url;
-  }
-
-  function releaseReaderContent() {
-    readerRequest += 1;
-    readerObjectUrls.forEach((url) => URL.revokeObjectURL(url));
-    readerObjectUrls.clear();
-    if (reader.content) {
-      reader.content.replaceChildren();
-      reader.content.removeAttribute('aria-busy');
-    }
-    if (reader.status) reader.status.textContent = '';
-    activePrivatePath = '';
-  }
-
-  function dismissPrivateReader(updateHistory = true) {
-    const previousPath = activePrivatePath;
-    if (reader.dialog?.open) reader.dialog.close();
-    releaseReaderContent();
-    if (updateHistory && (previousPath || new URLSearchParams(location.search).has('private'))) {
-      history.pushState(null, '', privateReaderUrl());
-    }
-  }
-
-  async function hydratePrivateReaderImages(token, requestId) {
-    const images = [...reader.content.querySelectorAll('img[src^="private-image://"]')];
-    await Promise.all(images.map(async (image) => {
-      const source = image.getAttribute('src');
-      const path = source.slice('private-image://'.length).replace(/^\/+/, '');
-      if (!path || path.split('/').includes('..')) {
-        image.removeAttribute('src');
-        return;
-      }
-      try {
-        const file = await githubJson(
-          `${privateApiRoot}/contents/${encodeRepositoryPath(path)}?ref=${encodeURIComponent(branch)}`,
-          token,
-        );
-        if (requestId !== readerRequest) return;
-        const blob = new Blob([base64ToBytes(file.content)], { type: mimeTypeFromPath(path) });
-        const objectUrl = URL.createObjectURL(blob);
-        readerObjectUrls.add(objectUrl);
-        image.src = objectUrl;
-      } catch (_) {
-        image.removeAttribute('src');
-        image.alt = `${image.alt || 'Private image'}（读取失败）`;
-      }
-    }));
-  }
-
-  async function openPrivateNote(file, state, updateHistory = true) {
-    if (!reader.dialog || !reader.content || !ownerToken || !privateApiRoot) return;
-    releaseReaderContent();
-    const requestId = readerRequest;
-    const key = `private:${file.path}`;
-    const fallbackTitle = state.labels?.[key] || prettyName(file.path);
-    activePrivatePath = file.path;
-    reader.title.textContent = fallbackTitle;
-    reader.status.textContent = '正在验证并读取私密笔记…';
-    reader.content.setAttribute('aria-busy', 'true');
-    if (!reader.dialog.open) reader.dialog.showModal();
-    if (updateHistory && new URLSearchParams(location.search).get('private') !== file.path) {
-      history.pushState(null, '', privateReaderUrl(file.path));
-    }
-
-    try {
-      const documentFile = await githubJson(
-        `${privateApiRoot}/contents/${encodeRepositoryPath(file.path)}?ref=${encodeURIComponent(branch)}`,
-        ownerToken,
-      );
-      if (requestId !== readerRequest) return;
-      const markdown = decodeBase64(documentFile.content);
-      reader.title.textContent = markdownTitle(markdown, fallbackTitle);
-      const rendered = window.MarkdownPipeline.render(markdown);
-      reader.content.innerHTML = sanitizeMarkdownHtml(rendered);
-      await hydratePrivateReaderImages(ownerToken, requestId);
-      if (requestId !== readerRequest) return;
-      if (typeof window.renderMathInElement === 'function') {
-        window.renderMathInElement(reader.content, window.siteMathOptions || {
-          delimiters: [
-            { left: '$$', right: '$$', display: true },
-            { left: '$', right: '$', display: false },
-            { left: '\\(', right: '\\)', display: false },
-            { left: '\\[', right: '\\]', display: true },
-          ],
-          throwOnError: false,
-        });
-      }
-      reader.content.removeAttribute('aria-busy');
-      reader.status.textContent = '私密预览 · 正文未写入公开页面';
-      reader.content.focus({ preventScroll: true });
-    } catch (_) {
-      if (requestId !== readerRequest) return;
-      reader.content.removeAttribute('aria-busy');
-      reader.content.innerHTML = '<p class="private-reader-error">暂时无法读取这篇私密笔记。请检查当前设备的所有者令牌后重试。</p>';
-      reader.status.textContent = '读取失败';
-    }
   }
 
   function createFolderCard(folder, privateCount) {
@@ -286,11 +106,8 @@
     const key = `private:${file.path}`;
     const folderId = state.assignments?.[key] || 'unfiled';
     const title = state.labels?.[key] || prettyName(file.path);
-    const privateUrl = privateReaderUrl(file.path);
-    const openReader = (event) => {
-      event.preventDefault();
-      openPrivateNote(file, state);
-    };
+    const privateUrl = new URL(privateReaderUrl, window.location.href);
+    privateUrl.searchParams.set('path', file.path);
 
     const article = document.createElement('article');
     article.className = 'note-row note-row-private';
@@ -310,7 +127,6 @@
     titleLink.href = privateUrl.href;
     titleLink.rel = 'nofollow';
     titleLink.textContent = title;
-    titleLink.addEventListener('click', openReader);
     h2.append(titleLink);
     const privacy = document.createElement('span');
     privacy.className = 'note-privacy-badge';
@@ -329,7 +145,6 @@
     open.href = privateUrl.href;
     open.rel = 'nofollow';
     open.textContent = '私密阅读';
-    open.addEventListener('click', openReader);
     footer.append(ownerOnly, open);
 
     main.append(heading, summary, footer);
@@ -387,8 +202,6 @@
       if (user.login?.toLowerCase() !== owner.toLowerCase()
           || !repository.private
           || !repository.permissions?.push) return;
-      ownerToken = token;
-      privateApiRoot = apiRoot;
 
       const [privateFiles, stateFile] = await Promise.all([
         githubJson(`${apiRoot}/contents/notes?ref=${encodeURIComponent(branch)}`, token),
@@ -396,39 +209,15 @@
       ]);
       const files = privateFiles.filter((file) => file.type === 'file' && file.name.endsWith('.md'));
       const state = JSON.parse(decodeBase64(stateFile.content));
-      privateState = state;
-      privateFilesByPath = new Map(files.map((file) => [file.path, file]));
       addOwnerFolders(state, files);
       files.forEach((file) => articleList.append(createPrivateArticle(file, state)));
       page.dataset.ownerView = 'true';
       updateFolderCounts();
       selectFolder(selectedFolderId, false);
-      const requestedPrivatePath = new URLSearchParams(location.search).get('private');
-      if (requestedPrivatePath && privateFilesByPath.has(requestedPrivatePath)) {
-        openPrivateNote(privateFilesByPath.get(requestedPrivatePath), privateState, false);
-      }
     } catch (_) {
       // A missing or expired owner token leaves the public library unchanged.
     }
   }
-
-  reader.close?.addEventListener('click', () => dismissPrivateReader());
-  reader.dialog?.addEventListener('cancel', (event) => {
-    event.preventDefault();
-    dismissPrivateReader();
-  });
-  reader.dialog?.addEventListener('click', (event) => {
-    if (event.target === reader.dialog) dismissPrivateReader();
-  });
-  window.addEventListener('popstate', () => {
-    const path = new URLSearchParams(location.search).get('private');
-    if (!path) {
-      if (reader.dialog?.open) dismissPrivateReader(false);
-      return;
-    }
-    const file = privateFilesByPath.get(path);
-    if (file && path !== activePrivatePath) openPrivateNote(file, privateState, false);
-  });
 
   refreshCollections();
   cards.forEach(bindFolderCard);
