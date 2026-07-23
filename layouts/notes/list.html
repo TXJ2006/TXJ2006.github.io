@@ -1,5 +1,11 @@
 {{- define "main" }}
-<section class="notes-page">
+<section
+  class="notes-page"
+  data-private-repo="TXJ2006/TXJ2006-private-notes"
+  data-owner="TXJ2006"
+  data-branch="main"
+  data-admin-url="{{ "admin/" | relURL }}"
+>
   <header class="notes-header">
     <p class="eyebrow">Research Library</p>
     <h1>{{ .Title }}</h1>
@@ -67,5 +73,5 @@
     </main>
   </div>
 </section>
-<script src="{{ "js/library.js" | relURL }}"></script>
+<script src="{{ "js/library.js" | relURL }}?v=20260723-private-library"></script>
 {{- end }}

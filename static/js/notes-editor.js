@@ -335,6 +335,13 @@
     privacyToggle: document.querySelector('#editor-privacy-toggle'),
     publish: document.querySelector('#editor-publish'),
     remember: document.querySelector('#editor-remember'),
+    shareCopy: document.querySelector('#editor-copy-share'),
+    shareDialog: document.querySelector('#share-link-dialog'),
+    shareDialogClose: document.querySelector('#share-link-close'),
+    shareDialogCopy: document.querySelector('#share-link-copy'),
+    shareDialogOpen: document.querySelector('#share-link-open'),
+    shareDialogStatus: document.querySelector('#share-link-copy-status'),
+    shareDialogValue: document.querySelector('#share-link-value'),
     status: document.querySelector('#editor-status'),
     share: document.querySelector('#editor-share'),
     token: document.querySelector('#editor-token'),
@@ -1185,11 +1192,14 @@
   function updatePrivacyUI() {
     const isPrivate = currentVisibility === 'private';
     elements.privacy.dataset.private = String(isPrivate);
-    elements.privacyState.textContent = isPrivate ? '私密' : '公开';
+    elements.privacyState.textContent = isPrivate
+      ? (currentShare ? '私密 · 已分享副本' : '私密')
+      : '公开';
     elements.privacyToggle.textContent = isPrivate ? '改为公开' : '设为私密';
     elements.share.textContent = isPrivate
-      ? (currentShare ? '更新并复制分享链接' : '创建分享链接')
-      : '复制分享链接';
+      ? (currentShare ? '更新分享页' : '创建分享链接')
+      : '复制公开链接';
+    elements.shareCopy.hidden = !(isPrivate && currentShare);
     elements.unshare.hidden = !(isPrivate && currentShare);
   }
 
@@ -1266,7 +1276,9 @@
       selectFile(path, repository);
       renderPreview();
       offerDraft(`${repository}:${path}`, editableContent);
-      setStatus(repository === 'private' ? '私密笔记 · 仅你可见' : 'Ready', 'success');
+      setStatus(repository === 'private'
+        ? (currentShare ? '私密原文 · 仅你可见；独立分享副本已启用' : '私密笔记 · 仅你可见')
+        : 'Ready', 'success');
     } catch (error) {
       setStatus(error.message, 'error');
     }
@@ -1810,6 +1822,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
     const targetVisibility = options.targetVisibility || currentVisibility;
     const targetRepository = targetVisibility === 'private' ? 'private' : 'public';
     const shareWasDisabled = elements.share.disabled;
+    const shareCopyWasDisabled = elements.shareCopy.disabled;
     const unshareWasDisabled = elements.unshare.disabled;
     let previousLibraryAssignments = null;
     let previousLibraryLabels = null;
@@ -1818,6 +1831,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
     elements.publish.disabled = true;
     elements.privacyToggle.disabled = true;
     elements.share.disabled = true;
+    elements.shareCopy.disabled = true;
     elements.unshare.disabled = true;
     try {
       let filename = elements.filename.value.trim().toLowerCase();
@@ -1922,23 +1936,60 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       elements.publish.disabled = false;
       elements.privacyToggle.disabled = false;
       elements.share.disabled = shareWasDisabled;
+      elements.shareCopy.disabled = shareCopyWasDisabled;
       elements.unshare.disabled = unshareWasDisabled;
     }
   }
 
-  async function copyShareLink(link) {
+  async function writeClipboard(link) {
     try {
       await navigator.clipboard.writeText(link);
-      setStatus(`分享链接已复制 | ${link}`, 'success');
-    } catch (_) {
-      setStatus(`分享链接：${link}`, 'success');
+      return true;
+    } catch (_) {}
+
+    const textarea = document.createElement('textarea');
+    textarea.value = link;
+    textarea.readOnly = true;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
+    document.body.append(textarea);
+    textarea.select();
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch (_) {}
+    textarea.remove();
+    return copied;
+  }
+
+  function showShareLink(link, copied) {
+    elements.shareDialogValue.value = link;
+    elements.shareDialogOpen.href = link;
+    elements.shareDialogStatus.textContent = copied
+      ? '链接已复制到剪贴板。'
+      : '浏览器没有自动复制，请点击“复制链接”。';
+    if (!elements.shareDialog.open) elements.shareDialog.showModal();
+    setTimeout(() => {
+      elements.shareDialogValue.focus();
+      elements.shareDialogValue.select();
+    }, 0);
+  }
+
+  async function copyShareLink(link, options = {}) {
+    const copied = await writeClipboard(link);
+    if (options.showDialog) showShareLink(link, copied);
+    if (options.setStatus !== false) {
+      setStatus(copied ? `分享链接已复制 | ${link}` : '分享链接已生成，请在弹出的窗口中复制。', 'success');
     }
+    return copied;
   }
 
   async function shareCurrentNote() {
     elements.share.disabled = true;
+    elements.shareCopy.disabled = true;
     elements.unshare.disabled = true;
     let pendingShare = null;
+    const wasUpdate = Boolean(currentShare);
     try {
       if (currentVisibility === 'public') {
         if (!currentPath || currentRepository !== 'public') {
@@ -1946,7 +1997,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
           if (!published) return;
         }
         const slug = elements.filename.value.replace(/\.md$/i, '');
-        await copyShareLink(`${siteUrl}/notes/${slug}/share/`);
+        await copyShareLink(`${siteUrl}/notes/${slug}/share/`, { showDialog: true });
         return;
       }
 
@@ -1980,12 +2031,14 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       currentShare = { ...metadata, metadataPath, metadataSha: metadataResult.content.sha };
       updatePrivacyUI();
       monitorDeployment(contentResult.commit.sha);
-      setStatus('独立分享页已生成，正在等待网站部署...');
-      const ready = await waitForPublishedUrl(metadata.url);
-      await copyShareLink(metadata.url);
-      if (!ready) {
-        setStatus(`分享链接已复制 | ${metadata.url} · 页面仍在后台部署`, 'success');
-      }
+      const copied = await copyShareLink(metadata.url, { showDialog: true, setStatus: false });
+      const action = wasUpdate ? '分享页已更新' : '分享页已创建';
+      const clipboard = copied ? '，链接已复制' : '，请在窗口中复制链接';
+      setStatus(`${action}${clipboard}，页面正在后台部署`, 'success');
+      waitForPublishedUrl(metadata.url).then((ready) => {
+        if (!ready || currentShare?.id !== shareId) return;
+        setStatus(`分享页已上线 | ${metadata.url}`, 'success');
+      });
     } catch (error) {
       if (pendingShare) {
         await deleteRemoteIfExists(api, pendingShare.contentPath, pendingShare.contentSha, 'Rollback incomplete private share').catch(() => null);
@@ -2003,6 +2056,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       updateCompileLog([{ stage: 'Share', line: 0, message: error.message }]);
     } finally {
       elements.share.disabled = false;
+      elements.shareCopy.disabled = false;
       elements.unshare.disabled = false;
     }
   }
@@ -2034,6 +2088,12 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       elements.share.disabled = false;
       elements.unshare.disabled = false;
     }
+  }
+
+  function setEditorMode(mode) {
+    if (!['split', 'edit', 'preview'].includes(mode)) return;
+    elements.modes.forEach((item) => item.classList.toggle('active', item.dataset.mode === mode));
+    elements.panes.dataset.mode = mode;
   }
 
   async function connect() {
@@ -2070,13 +2130,19 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       elements.auth.hidden = true;
       elements.workspace.hidden = false;
       const requested = params.get('path');
-      const normalizedRequested = requested ? requested.replaceAll('\\', '/').replace(/^content\//, '') : '';
-      const requestedPath = normalizedRequested ? `content/${normalizedRequested}` : '';
+      const requestedRepository = params.get('repository') === 'private' ? 'private' : 'public';
+      const normalizedRequested = requested ? requested.replaceAll('\\', '/').replace(/^\/+/, '') : '';
+      const requestedPath = normalizedRequested
+        ? (requestedRepository === 'private'
+          ? `notes/${normalizedRequested.replace(/^notes\//, '')}`
+          : `content/${normalizedRequested.replace(/^content\//, '')}`)
+        : '';
       await loadLibraryState();
-      const files = await loadFiles(requestedPath, 'public');
+      const files = await loadFiles(requestedPath, requestedRepository);
       if (params.has('new')) newNote();
-      else if (requestedPath) await loadFile(requestedPath, 'public');
+      else if (requestedPath) await loadFile(requestedPath, requestedRepository);
       else if (files.length) await loadFile(files[0].path, files[0].repository);
+      setEditorMode(params.get('mode') || 'split');
     } catch (error) {
       setAuthStatus(error.message, 'error');
       clearStoredToken();
@@ -2169,7 +2235,26 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
     await publish({ targetVisibility });
   });
   elements.share.addEventListener('click', shareCurrentNote);
+  elements.shareCopy.addEventListener('click', async () => {
+    if (!currentShare?.url) return;
+    await copyShareLink(currentShare.url, { showDialog: true });
+  });
   elements.unshare.addEventListener('click', () => removePrivateShare());
+  elements.shareDialogClose.addEventListener('click', () => elements.shareDialog.close());
+  elements.shareDialogCopy.addEventListener('click', async () => {
+    const link = elements.shareDialogValue.value;
+    const copied = await writeClipboard(link);
+    elements.shareDialogStatus.textContent = copied
+      ? '链接已复制到剪贴板。'
+      : '请选中地址后按 Ctrl+C 复制。';
+    if (!copied) {
+      elements.shareDialogValue.focus();
+      elements.shareDialogValue.select();
+    }
+  });
+  elements.shareDialog.addEventListener('click', (event) => {
+    if (event.target === elements.shareDialog) elements.shareDialog.close();
+  });
   elements.content.addEventListener('focus', () => { activeEditingSurface = 'source'; });
   elements.content.addEventListener('paste', (event) => {
     const files = imageFilesFromTransfer(event.clipboardData);
@@ -2204,10 +2289,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
     clearTimeout(saveTimer);
     saveTimer = setTimeout(saveDraft, 650);
   });
-  elements.modes.forEach((button) => button.addEventListener('click', () => {
-    elements.modes.forEach((item) => item.classList.toggle('active', item === button));
-    elements.panes.dataset.mode = button.dataset.mode;
-  }));
+  elements.modes.forEach((button) => button.addEventListener('click', () => setEditorMode(button.dataset.mode)));
   window.addEventListener('beforeunload', () => {
     localImageUrls.forEach((url) => URL.revokeObjectURL(url));
   });

@@ -153,8 +153,9 @@
         </label>
         <p id="editor-status" role="status" aria-live="polite"></p>
         <div class="editor-share-controls">
+          <button id="editor-share" type="button">创建分享链接</button>
+          <button id="editor-copy-share" type="button" hidden>复制链接</button>
           <button id="editor-unshare" type="button" hidden>取消分享</button>
-          <button id="editor-share" type="button">复制分享链接</button>
         </div>
         <button class="button-primary" id="editor-publish" type="button">发布</button>
       </footer>
@@ -180,6 +181,24 @@
     </form>
   </dialog>
 
+  <dialog class="share-link-dialog" id="share-link-dialog">
+    <form method="dialog">
+      <div class="share-dialog-heading">
+        <p class="eyebrow">Private Share</p>
+        <h2>独立分享链接</h2>
+        <p>分享副本不会出现在图书馆列表中；获得链接的人可以打开。原始私密笔记仍只保存在私密仓库中。</p>
+      </div>
+      <label for="share-link-value">分享地址</label>
+      <input id="share-link-value" type="text" readonly spellcheck="false">
+      <p id="share-link-copy-status" class="share-link-copy-status" role="status"></p>
+      <div class="library-dialog-actions">
+        <button type="button" id="share-link-close">关闭</button>
+        <a id="share-link-open" href="#" target="_blank" rel="noopener">打开页面</a>
+        <button class="button-primary" type="button" id="share-link-copy">复制链接</button>
+      </div>
+    </form>
+  </dialog>
+
 </section>
 <script src="{{ "js/marked.umd.js" | relURL }}"></script>
 <script src="{{ "js/markdown-pipeline.js" | relURL }}"></script>
@@ -187,5 +206,5 @@
 <script src="{{ "vendor/katex/contrib/auto-render.min.js" | relURL }}"></script>
 <script src="{{ "vendor/turndown/turndown.js" | relURL }}"></script>
 <script src="{{ "vendor/turndown/turndown-plugin-gfm.js" | relURL }}"></script>
-<script src="{{ "js/notes-editor.js" | relURL }}"></script>
+<script src="{{ "js/notes-editor.js" | relURL }}?v=20260723-private-library"></script>
 {{- end }}
