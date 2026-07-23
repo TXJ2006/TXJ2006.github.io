@@ -48,7 +48,7 @@
       <div class="editor-toolbar">
         <label class="editor-filename">
           <span>File</span>
-          <input id="editor-filename" type="text" inputmode="url" spellcheck="false" aria-label="Markdown filename">
+          <input id="editor-filename" type="text" inputmode="url" spellcheck="false" aria-label="Markdown filename" title="Renamed when you publish">
         </label>
         <div class="editor-modes" aria-label="Editor mode">
           <button class="active" type="button" data-mode="split">Split</button>
@@ -206,5 +206,5 @@
 <script src="{{ "vendor/katex/contrib/auto-render.min.js" | relURL }}"></script>
 <script src="{{ "vendor/turndown/turndown.js" | relURL }}"></script>
 <script src="{{ "vendor/turndown/turndown-plugin-gfm.js" | relURL }}"></script>
-<script src="{{ "js/notes-editor.js" | relURL }}?v=20260723-library-sync"></script>
+<script src="{{ "js/notes-editor.js" | relURL }}?v=20260723-editable-file"></script>
 {{- end }}

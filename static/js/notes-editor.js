@@ -1187,7 +1187,7 @@
     currentRepository = pendingDraft.repository || 'public';
     currentVisibility = currentRepository;
     elements.filename.value = pendingDraft.filename;
-    elements.filename.disabled = Boolean(currentPath);
+    elements.filename.disabled = false;
     elements.content.value = pendingDraft.content;
     updatePrivacyUI();
     hideDraftOffer();
@@ -1284,7 +1284,7 @@
       currentVisibility = repository;
       pendingFolderId = libraryState.assignments[libraryFileKey({ path, repository })] || '';
       elements.filename.value = path.split('/').pop();
-      elements.filename.disabled = true;
+      elements.filename.disabled = false;
       const remoteContent = decodeBase64(file.content);
       libraryState.labels[libraryFileKey({ path, repository })] = markdownDocumentTitle(remoteContent, path);
       renderLibraryFiles();
@@ -1852,6 +1852,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
     elements.share.disabled = true;
     elements.shareCopy.disabled = true;
     elements.unshare.disabled = true;
+    elements.filename.disabled = true;
     try {
       let filename = elements.filename.value.trim().toLowerCase();
       if (!currentPath && filename === 'new-note.md') {
@@ -1921,7 +1922,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       currentVisibility = targetVisibility;
       pendingFolderId = assignedFolder?.id || '';
       if (targetRepository === 'public') currentShare = null;
-      elements.filename.disabled = true;
+      elements.filename.disabled = false;
       elements.content.value = editableContent;
       if (source.path) removeDraft(`${source.repository}:${source.path}`);
       removeDraft(`${targetRepository}:${path}`);
@@ -1958,6 +1959,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       elements.share.disabled = shareWasDisabled;
       elements.shareCopy.disabled = shareCopyWasDisabled;
       elements.unshare.disabled = unshareWasDisabled;
+      elements.filename.disabled = false;
     }
   }
 
@@ -2114,6 +2116,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
     if (!['split', 'edit', 'preview'].includes(mode)) return;
     elements.modes.forEach((item) => item.classList.toggle('active', item.dataset.mode === mode));
     elements.panes.dataset.mode = mode;
+    if (mode === 'edit') requestAnimationFrame(() => elements.content.focus());
   }
 
   async function connect() {
