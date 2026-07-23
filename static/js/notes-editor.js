@@ -13,7 +13,12 @@
   const draftsKey = 'txj_notes_editor_drafts';
   const libraryStatePath = 'library/folders.json';
   const publicLibraryCatalogPath = 'data/library_folders.json';
+  const librarySyncChannelName = 'txj_library_sync';
+  const librarySyncStorageKey = 'txj_library_sync_event';
   const params = new URLSearchParams(window.location.search);
+  const librarySyncChannel = 'BroadcastChannel' in window
+    ? new BroadcastChannel(librarySyncChannelName)
+    : null;
 
   const mathMacros = {
     '\\E': '\\mathbb{E}',
@@ -528,6 +533,18 @@
     return repository === 'private' ? privateApi : api;
   }
 
+  function notifyLibrarySync(repository, action = 'update') {
+    const event = {
+      action,
+      repository,
+      revision: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+    };
+    librarySyncChannel?.postMessage(event);
+    try {
+      localStorage.setItem(librarySyncStorageKey, JSON.stringify(event));
+    } catch (_) {}
+  }
+
   async function optionalContents(request) {
     try { return await request(); }
     catch (error) {
@@ -649,10 +666,11 @@
     }
   }
 
-  async function saveLibraryState(message) {
+  async function saveLibraryState(message, options = {}) {
     const body = `${JSON.stringify(libraryState, null, 2)}\n`;
     const result = await putEncoded(privateApi, libraryStatePath, encodeBase64(body), message, libraryStateSha);
     libraryStateSha = result.content.sha;
+    if (options.notify !== false) notifyLibrarySync('private', 'metadata');
     return result;
   }
 
@@ -1069,7 +1087,7 @@
     return new Promise((resolve) => setTimeout(resolve, milliseconds));
   }
 
-  async function monitorDeployment(commitSha) {
+  async function monitorDeployment(commitSha, options = {}) {
     for (let attempt = 0; attempt < 30; attempt += 1) {
       await wait(attempt < 2 ? 2500 : 4000);
       try {
@@ -1082,6 +1100,7 @@
         }
         if (run.conclusion === 'success') {
           setStatus(`已发布上线 | ${commitSha.slice(0, 7)}`, 'success');
+          if (options.notifyLibrary !== false) notifyLibrarySync('public', 'deployed');
         } else {
           setStatus('内容已提交，但网站构建失败；详情已写入编译日志。', 'error');
           updateCompileLog([{ stage: 'Deploy', line: 0, message: `GitHub Pages 构建结果：${run.conclusion || 'failure'}` }]);
@@ -1873,7 +1892,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       const labelsChanged = JSON.stringify(previousLibraryLabels) !== JSON.stringify(libraryState.labels);
       libraryMetadataChanged = assignmentsChanged || labelsChanged;
       if (libraryMetadataChanged) {
-        await saveLibraryState(`Update library location for ${filename}`);
+        await saveLibraryState(`Update library location for ${filename}`, { notify: false });
         if (assignmentsChanged && ((source.path && source.repository === 'public') || targetRepository === 'public')) {
           await savePublicLibraryCatalog(`Update public library catalog for ${filename}`);
           publicCatalogChanged = true;
@@ -1916,13 +1935,14 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       } catch (_) {
         selectFile(currentPath, currentRepository);
       }
+      if (targetRepository === 'private') notifyLibrarySync('private', 'published');
       if (publicCommit && !options.skipMonitor) monitorDeployment(publicCommit);
       return true;
     } catch (error) {
       if (libraryMetadataChanged && previousLibraryAssignments) {
         libraryState.assignments = previousLibraryAssignments;
         libraryState.labels = previousLibraryLabels || {};
-        await saveLibraryState('Rollback incomplete library update').catch(() => null);
+        await saveLibraryState('Rollback incomplete library update', { notify: false }).catch(() => null);
         if (publicCatalogChanged) await savePublicLibraryCatalog('Rollback incomplete public library update').catch(() => null);
         renderLibraryFolders();
         renderLibraryFiles();
@@ -2030,7 +2050,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       const metadataResult = await putEncoded(privateApi, metadataPath, encodeBase64(`${JSON.stringify(metadata, null, 2)}\n`), `Update share state for ${elements.filename.value}`, currentShare?.metadataSha || '');
       currentShare = { ...metadata, metadataPath, metadataSha: metadataResult.content.sha };
       updatePrivacyUI();
-      monitorDeployment(contentResult.commit.sha);
+      monitorDeployment(contentResult.commit.sha, { notifyLibrary: false });
       const copied = await copyShareLink(metadata.url, { showDialog: true, setStatus: false });
       const action = wasUpdate ? '分享页已更新' : '分享页已创建';
       const clipboard = copied ? '，链接已复制' : '，请在窗口中复制链接';
@@ -2078,7 +2098,7 @@ body.image-drop-active::after{content:'松开以上传图片';position:fixed;ins
       if (state === currentShare) currentShare = null;
       updatePrivacyUI();
       if (!options.silent) setStatus('分享已取消，原链接将在部署完成后失效。', 'success');
-      if (lastCommit && !options.silent) monitorDeployment(lastCommit);
+      if (lastCommit && !options.silent) monitorDeployment(lastCommit, { notifyLibrary: false });
       return true;
     } catch (error) {
       setStatus(error.message, 'error');

@@ -11,9 +11,12 @@
   const branch = page.dataset.branch || 'main';
   const privateReaderUrl = page.dataset.privateReaderUrl || '/notes/private/';
   const tokenKey = 'txj_notes_editor_token';
+  const librarySyncChannelName = 'txj_library_sync';
+  const librarySyncStorageKey = 'txj_library_sync_event';
   let cards = [];
   let articles = [];
   let selectedFolderId = 'all';
+  let ownerLoadSequence = 0;
 
   function refreshCollections() {
     cards = [...folderList.querySelectorAll('[data-library-filter]')];
@@ -84,6 +87,7 @@
     card.className = `library-folder-card folder-color-${folder.color ?? 0}`;
     card.type = 'button';
     card.dataset.libraryFilter = folder.id;
+    card.dataset.ownerLibraryFolder = 'true';
     card.setAttribute('aria-pressed', 'false');
 
     const glyph = document.createElement('span');
@@ -189,7 +193,15 @@
     }
   }
 
+  function clearOwnerLibrary() {
+    articleList.querySelectorAll('[data-private-note="true"]').forEach((article) => article.remove());
+    folderList.querySelectorAll('[data-owner-library-folder="true"]').forEach((card) => card.remove());
+    delete page.dataset.ownerView;
+    refreshCollections();
+  }
+
   async function loadOwnerLibrary() {
+    const sequence = ++ownerLoadSequence;
     const token = localStorage.getItem(tokenKey) || sessionStorage.getItem(tokenKey);
     if (!token || !privateRepo || !owner) return;
 
@@ -209,6 +221,8 @@
       ]);
       const files = privateFiles.filter((file) => file.type === 'file' && file.name.endsWith('.md'));
       const state = JSON.parse(decodeBase64(stateFile.content));
+      if (sequence !== ownerLoadSequence) return;
+      clearOwnerLibrary();
       addOwnerFolders(state, files);
       files.forEach((file) => articleList.append(createPrivateArticle(file, state)));
       page.dataset.ownerView = 'true';
@@ -218,6 +232,26 @@
       // A missing or expired owner token leaves the public library unchanged.
     }
   }
+
+  function handleLibrarySync(event) {
+    if (!event || (event.repository !== 'private' && event.repository !== 'public')) return;
+    if (event.repository === 'public' && event.action === 'deployed') {
+      location.reload();
+      return;
+    }
+    loadOwnerLibrary();
+  }
+
+  if ('BroadcastChannel' in window) {
+    const channel = new BroadcastChannel(librarySyncChannelName);
+    channel.addEventListener('message', (event) => handleLibrarySync(event.data));
+  }
+  window.addEventListener('storage', (event) => {
+    if (event.key !== librarySyncStorageKey || !event.newValue) return;
+    try {
+      handleLibrarySync(JSON.parse(event.newValue));
+    } catch (_) {}
+  });
 
   refreshCollections();
   cards.forEach(bindFolderCard);
