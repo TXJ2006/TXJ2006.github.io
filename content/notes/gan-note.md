@@ -1,5 +1,5 @@
 ---
-title: "Gan Note"
+title: "GAN learning"
 subtitle: ""
 summary: "第七章 对抗学习"
 description: "第七章 对抗学习"
