@@ -6,9 +6,9 @@ description: "从 ResNet、Pre-Norm 与 MuP，到 mHC 和 Attention Residuals：
 date: 2026-08-01
 lastmod: 2026-08-01
 weight: 86
-libraryFolder: "ai-foundations"
-libraryFolderName: "人工智能基础"
-libraryFolderColor: 0
+libraryFolder: "bandit-learning"
+libraryFolderName: "文献阅读与学习"
+libraryFolderColor: 1
 tags: ["Residual Connections", "Deep Learning", "Transformers", "Optimization", "Architecture Design"]
 draft: false
 ShowToc: false
