@@ -7,6 +7,11 @@
       "color": 0
     },
     {
+      "id": "bandit-learning",
+      "name": "文献阅读与学习",
+      "color": 1
+    },
+    {
       "id": "probability-statistics",
       "name": "bandit基础",
       "color": 2
