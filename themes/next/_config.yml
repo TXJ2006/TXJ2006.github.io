@@ -665,11 +665,11 @@ gitment:
 # Gitalk
 # Demo: https://gitalk.github.io
 gitalk:
-  enable: false
+  enable: true
   github_id: TXJ2006 # Github repo owner
   repo: TXJ2006.github.io # Repository name to store issues
-  client_id:  # Github Application Client ID
-  client_secret:  # Github Application Client Secret
+  client_id: Ov23lifjeZQrhcAk7XNh # Github Application Client ID
+  client_secret: 4b0814e0c43b14b28c66fa68f15f81578baed400 # Github Application Client Secret
   admin_user: TXJ2006 # GitHub repo owner and collaborators, only these guys can initialize github issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # Gitalk's display language depends on user's browser or system environment
