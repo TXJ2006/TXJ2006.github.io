@@ -1,0 +1,73 @@
+title: Xujiang Tang
+author: Xujiang Tang
+email: txj_262538@163.com
+description: Mathematics, theoretical machine learning, and research notes by Xujiang Tang (唐煦江).
+language: zh-CN
+timezone: Asia/Shanghai
+url: https://txj2006.github.io
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+  lang: zh-CN
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+new_post_name: :title.md
+default_layout: post
+external_link:
+  enable: true
+  field: site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: false
+skip_render:
+  - '**/*.js'
+  - '**/*.css'
+  - '**/*.map'
+  - '**/*.html'
+  - '**/*.tex'
+  - '**/*.aux'
+  - '**/*.log'
+  - '**/*.out'
+  - 'images/**/*.md'
+  - 'js/**/*.md'
+  - 'lib/**/*.html'
+  - 'vendor/**/*.txt'
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  order_by: -date
+index_generator:
+  path: ''
+  per_page: 10
+archive_generator:
+  per_page: 20
+  yearly: true
+  monthly: true
+category_generator:
+  per_page: 20
+tag_generator:
+  per_page: 20
+search_generator:
+  path: search.xml
+  field: post
+  content: true
+theme: next
+deploy:
+  type: ''

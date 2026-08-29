@@ -1,5 +1,10 @@
-# Hugo generated files
+# Generated site and local build state
 public/
+db.json
+debug.log
+node_modules/
+
+# Hugo generated files retained by the source repository
 resources/_gen/
 output/
 tmp/

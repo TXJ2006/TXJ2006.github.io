@@ -1,0 +1,153 @@
+% !TeX program = xelatex
+\documentclass[9pt,letterpaper]{extarticle}
+
+\usepackage[margin=0.55in]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{ragged2e}
+\usepackage{needspace}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+\setmainfont{Noto Serif}
+\setsansfont{Noto Sans}
+\newfontfamily\chinesefont{Noto Serif CJK SC}
+
+\definecolor{accent}{HTML}{243B63}
+\definecolor{textgray}{HTML}{333333}
+\definecolor{muted}{HTML}{666666}
+\definecolor{rulegray}{HTML}{D6DCE8}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=accent,
+  linkcolor=accent
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{\sffamily\footnotesize\color{muted}Xujiang Tang - Curriculum Vitae - Page \thepage\ of \pageref*{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\renewcommand{\arraystretch}{1.08}
+\setlist[itemize]{leftmargin=1.05em, topsep=1pt, itemsep=0.6pt, parsep=0pt}
+\setlist[enumerate]{leftmargin=1.25em, topsep=1pt, itemsep=1.1pt, parsep=0pt}
+\linespread{0.98}
+
+\titleformat{\section}
+  {\Needspace{5\baselineskip}\sffamily\large\bfseries\color{accent}}
+  {}{0pt}{}[\vspace{-0.55em}\color{rulegray}\titlerule]
+\titlespacing*{\section}{0pt}{0.62em}{0.35em}
+
+\newcommand{\name}[1]{\begin{center}{\fontsize{23}{26}\selectfont\bfseries\color{accent}#1}\end{center}}
+\newcommand{\tagline}[1]{\begin{center}{\sffamily\small\color{textgray}#1}\end{center}\vspace{-0.25em}}
+\newcommand{\contact}[1]{\begin{center}{\small\color{muted}#1}\end{center}}
+
+\newcolumntype{L}{>{\RaggedLeft\arraybackslash\color{muted}\sffamily\footnotesize}p{0.18\linewidth}}
+\newcolumntype{R}{>{\RaggedRight\arraybackslash}p{0.77\linewidth}}
+\newcommand{\entry}[4]{%
+  \begin{tabularx}{\linewidth}{@{}L@{\hspace{0.035\linewidth}}R@{}}
+  #1 & {\bfseries #2}\hfill {\sffamily\footnotesize\color{muted}#3}\\[-0.15em]
+     & #4
+  \end{tabularx}\vspace{0.18em}
+}
+\newcommand{\paper}[2]{\item #1. ``#2.''}
+\newcommand{\skill}[2]{\textbf{#1:} #2\par\vspace{0.05em}}
+
+\begin{document}
+
+\name{Xujiang Tang {\chinesefont 唐煦江}}
+\tagline{Theoretical Mathematics Researcher \; | \; Machine Learning Theory Enthusiast}
+\tagline{Undergraduate Student in Mathematics and Applied Mathematics, Yangtze University \; | \; Visiting Student, Great Bay University}
+\contact{\href{mailto:txj_262538@163.com}{txj\_262538@163.com} \;\textbar\; \href{https://txj2006.github.io}{txj2006.github.io} \;\textbar\; \href{https://github.com/TXJ2006}{GitHub} \;\textbar\; \href{https://orcid.org/0009-0008-1127-6420}{ORCID} \;\textbar\; \href{https://www.linkedin.com/in/\%E7\%85\%A6\%E6\%B1\%9F-\%E5\%94\%90-7a1513392}{LinkedIn}}
+\vspace{0.45em}
+\color{rulegray}\hrule height 0.9pt\color{textgray}
+\vspace{0.55em}
+
+\section{Research Interests}
+\begin{itemize}
+  \item \textbf{Algebraic topology and equivariant homotopy theory:} fixed point methods, geometric fixed point tomography, Bökstedt periodicity, and stable homotopy-theoretic structures.
+  \item \textbf{Finite group theory:} Quillen's p-subgroup conjecture, subgroup complexes, centralizer structures, and FRUL-WOS sphere methods.
+  \item \textbf{Formal proof:} Lean, Mathlib, and the formalization of advanced mathematics in algebra and topology.
+  \item \textbf{Machine learning theory:} generalization, learnability, out-of-distribution prediction, and Koopman/operator-theoretic methods for long-sequence data.
+\end{itemize}
+
+\section{Education}
+\entry{Expected Jun. 2027}{Yangtze University College of Arts and Sciences}{Jingzhou, China}{B.Sc. in Mathematics and Applied Mathematics. Coursework: mathematical analysis, linear algebra, probability and statistics, differential equations, computational modeling, optimization, numerical computation, data structures, Python, R, MATLAB. Marks: Optimization Theory 97/100; Numerical Computation Methods 96/100.}
+
+\section{Visiting Position and Training}
+\entry{2025--present}{Visiting Student, Great Bay University}{}{Research in theoretical mathematics and machine learning theory.}
+\entry{2026}{Zhejiang University Lean Formalization Summer School}{}{Formal proof, Lean, Mathlib, and computer-assisted theorem proving.}
+\entry{Winter training}{Neural Networks and Python Implementation}{Grade: A}{Short winter training with Prof. Mark Vogelsberger. Completed the course and received an A grade.}
+
+\section{Research Experience}
+\entry{2025--present}{Finite Group Theory and Quillen's p-Subgroup Conjecture}{}{Centralizer energy, FRUL-WOS spheres, and subgroup-complex methods for Quillen's p-subgroup conjecture.}
+\entry{2025--present}{Algebraic Topology and Equivariant Homotopy Theory}{}{Geometric fixed point tomography and spoke Bökstedt periodicity.}
+\entry{2026--present}{Formal Proof and Lean}{}{Lean formalization, proof engineering, and formalization of advanced mathematical arguments.}
+\entry{2024--present}{Theoretical Machine Learning and Optimization}{}{Learnability, generalization guarantees, out-of-distribution prediction, and optimization-theoretic aspects of learning algorithms.}
+\entry{2023--present}{Stochastic Processes, Dynamical Systems, and Quantitative Finance}{}{Stochastic processes, rough volatility, MCMC simulation, Koopman/operator-theoretic dynamics, and robust financial decision problems.}
+\entry{2023--2025}{Epidemic Prevention and Population Mobility Modeling, Jingzhou}{}{Mathematical modeling and statistical surveys on epidemic prevention and population mobility in Jingzhou.}
+\entry{2025--2026 H1}{Spatial Omics Data Processing}{}{Spatial omics data processing with Dayu Hu, Northeastern University.}
+
+\newpage
+\section*{Research Experience (continued)}
+\entry{2025--2026 H2}{Epilepsy and Long-Sequence Data Research}{}{Epilepsy-related long-sequence modeling in Prof. Huaguang Gu's group, focusing on Koopman operator methods.}
+
+\section{Publications and Manuscripts}
+\textbf{Published and Accepted Papers}
+\begin{enumerate}
+  \paper{Q. Li and \textbf{X. Tang}}{Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions} \emph{AIMS Mathematics}, 11(3), 7330--7352, 2026. Published. DOI: \href{https://doi.org/10.3934/math.2026302}{10.3934/math.2026302}.
+  \paper{\textbf{X. Tang et al.}}{Structure-preserving Koopman Predictive Control for Memristive Neural Dynamics: Input-exact and Commutator-defect Lifting} \emph{Biological Cybernetics}. Accepted. \href{https://doi.org/10.21203/rs.3.rs-9200134/v1}{Public preprint}.
+\end{enumerate}
+
+\textbf{Under Review, Submitted, and Manuscripts}
+\begin{enumerate}
+  \paper{\textbf{X. Tang et al.}}{The Curvature Filter in Bilevel Optimization: Implicit Differentiation Without Nondegeneracy} \emph{Journal of Machine Learning Research}, Theory and Methods. Submitted.
+  \paper{\textbf{X. Tang}, R. Guan, and Z. Wang}{Moment Order in Unsupervised Direction Learning} \emph{Journal of Machine Learning Research}. Submitted.
+  \paper{Y. Fan, \textbf{X. Tang}, and R. Guan}{Deep Hedging under Rough Volatility: A Fractional Kernel Embedding Approach with Optimal Convergence Rate} \emph{Journal of Computational and Applied Mathematics}. Under review.
+  \paper{\textbf{X. Tang et al.}}{Spectral Network Determinants of Seizure-like Synchronization and Spread in Coupled Hindmarsh-Rose Brain Models} \emph{Cognitive Neurodynamics}. Under review.
+  \paper{\textbf{X. Tang et al.}}{Trajectory-Level Out-of-Distribution Success Bounds for Deep Autoregressive Models} Manuscript, 2026.
+\end{enumerate}
+
+\section{Collaborators and Mentors}
+\begin{itemize}
+  \item \href{https://engineering.jhu.edu/faculty/william-redman/}{William Redman}, Johns Hopkins University.
+  \item \href{https://qiaoziyue.com/}{Ziyue Qiao}, Great Bay University.
+\end{itemize}
+
+\section{Software Copyrights}
+\begin{itemize}
+  \item Software copyright in financial systems.
+  \item Software copyright in unmanned swarm systems.
+\end{itemize}
+
+\section{Honors, Competitions, and Activities}
+\begin{itemize}
+  \item Kaggle Silver Medal, Jigsaw Toxic Comment Classification Challenge.
+  \item Regional Gold Medal, WorldQuant International Quant Championship.
+  \item Third Prize, UCAS Graduate AI Forum.
+  \item Mathematical Modeling Competition, Hua Zhong Cup.
+  \item National College Students Statistical Modeling Competition.
+  \item Multiple national second prizes in mathematical modeling competitions.
+  \item Reviewer, ICLR 2026 Workshop.
+\end{itemize}
+
+\section{Professional Experience}
+\entry{Jun.--Aug. 2024}{Peking University - Open-Source LLM Group}{}{Contributed to LLM deployment and retrieval-augmented generation systems.}
+\entry{Jul.--Sep. 2024}{Deloitte}{}{Professional experience in consulting workflows, teamwork, and communication.}
+\entry{Jul.--Sep. 2024}{Guolian Securities}{}{Applied statistical methods to securities research and quantitative workflows.}
+
+\section{Skills}
+\skill{Mathematics}{algebraic topology, finite group theory, homotopy theory, representation theory, optimization, numerical analysis, stochastic processes, differential equations, causal inference, statistical modeling.}
+\skill{Formal proof and programming}{Lean, Mathlib, Python, PyTorch, NumPy, Pandas, MATLAB, R, C++, LaTeX, Git/GitHub, Linux.}
+\skill{Languages}{Mandarin Chinese, English.}
+
+\end{document}
