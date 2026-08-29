@@ -71,3 +71,25 @@ search_generator:
 theme: next
 deploy:
   type: ''
+
+# NexT theme overrides. Keep typography local-first so the site remains fast
+# and readable without a network request to a font provider.
+theme_config:
+  font:
+    enable: false
+    global:
+      external: false
+      family: system-ui
+      size: 16
+    headings:
+      external: false
+      family: 'Songti SC'
+    posts:
+      external: false
+      family: 'Noto Serif SC'
+    logo:
+      external: false
+      family: 'Iowan Old Style'
+    codes:
+      external: false
+      family: ui-monospace

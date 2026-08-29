@@ -1,1 +1,18 @@
-// Custom styles.
+// Local-first typography: system sans for the interface, a readable Chinese
+// serif for long-form notes, and a stable monospace stack for mathematics/code.
+body
+  font-family -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif
+
+.post,
+.post-body
+  font-family "Noto Serif SC", "Songti SC", "STSong", "Times New Roman", serif
+
+.post-title,
+.post-title-link,
+h1, h2, h3, h4, h5, h6
+  font-family "Iowan Old Style", "Noto Serif SC", "Songti SC", "STSong", serif
+
+code,
+pre,
+.highlight
+  font-family ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace
