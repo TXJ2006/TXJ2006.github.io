@@ -62,7 +62,7 @@ I believe **mathematics can open broader frontiers for machine learning and arti
 - Contributed to large-language-model deployment and retrieval-augmented generation.
 - Implemented retrieval and knowledge-integration modules, providing experience with Python-based ML systems and experimental workflows.
 
-My projects in Koopman operator learning, neural dynamics, spatial transcriptomics, and deep hedging developed practical skills in mathematical modeling, numerical experiments, high-dimensional data processing, and evaluation. The Koopman predictive-control manuscript on memristive neural dynamics has been accepted by *Biological Cybernetics*.
+My projects in Koopman operator learning, neural dynamics, spatial transcriptomics, and deep hedging developed practical skills in mathematical modeling, numerical experiments, high-dimensional data processing, and evaluation. The Koopman predictive-control manuscript on memristive neural dynamics has been accepted by *Biological Cybernetics*, and the spectral-network study of seizure-like synchronization has been accepted by *Cognitive Neurodynamics*.
 
 ## Related Pages
 

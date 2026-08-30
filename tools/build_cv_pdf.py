@@ -28,11 +28,27 @@ LINE = colors.HexColor("#9aa4ad")
 
 
 def register_fonts():
-    font_dir = Path("C:/Windows/Fonts")
-    pdfmetrics.registerFont(TTFont("TimesNewRoman", str(font_dir / "times.ttf")))
-    pdfmetrics.registerFont(TTFont("TimesNewRoman-Bold", str(font_dir / "timesbd.ttf")))
-    pdfmetrics.registerFont(TTFont("TimesNewRoman-Italic", str(font_dir / "timesi.ttf")))
-    pdfmetrics.registerFont(TTFont("TimesNewRoman-BoldItalic", str(font_dir / "timesbi.ttf")))
+    font_sets = [
+        (Path("C:/Windows/Fonts"), "times.ttf", "timesbd.ttf", "timesi.ttf", "timesbi.ttf"),
+        (
+            Path("/System/Library/Fonts/Supplemental"),
+            "Times New Roman.ttf",
+            "Times New Roman Bold.ttf",
+            "Times New Roman Italic.ttf",
+            "Times New Roman Bold Italic.ttf",
+        ),
+        (Path("/Library/Fonts"), "Times New Roman.ttf", "Times New Roman Bold.ttf", "Times New Roman Italic.ttf", "Times New Roman Bold Italic.ttf"),
+    ]
+    for font_dir, regular, bold, italic, bold_italic in font_sets:
+        if all((font_dir / filename).exists() for filename in (regular, bold, italic, bold_italic)):
+            break
+    else:
+        raise FileNotFoundError("Times New Roman fonts were not found in the supported system font directories")
+
+    pdfmetrics.registerFont(TTFont("TimesNewRoman", str(font_dir / regular)))
+    pdfmetrics.registerFont(TTFont("TimesNewRoman-Bold", str(font_dir / bold)))
+    pdfmetrics.registerFont(TTFont("TimesNewRoman-Italic", str(font_dir / italic)))
+    pdfmetrics.registerFont(TTFont("TimesNewRoman-BoldItalic", str(font_dir / bold_italic)))
     pdfmetrics.registerFontFamily(
         "TimesNewRoman",
         normal="TimesNewRoman",
@@ -327,6 +343,7 @@ def build():
         [
             publication(1, "Q. Li and <b>X. Tang</b>. Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions. <i>AIMS Mathematics</i>, 11(3), 7330-7352, 2026. Published. DOI: 10.3934/math.2026302.", styles),
             publication(2, "<b>X. Tang et al.</b> Structure-preserving Koopman Predictive Control for Memristive Neural Dynamics: Input-exact and Commutator-defect Lifting. <i>Biological Cybernetics</i>. Accepted.", styles),
+            publication(3, "<b>X. Tang et al.</b> Spectral Network Determinants of Seizure-like Synchronization and Spread in Coupled Hindmarsh-Rose Brain Models. <i>Cognitive Neurodynamics</i>. Accepted.", styles),
         ]
     )
 
@@ -336,8 +353,7 @@ def build():
             publication(1, "<b>X. Tang et al.</b> The Curvature Filter in Bilevel Optimization: Implicit Differentiation Without Nondegeneracy. <i>Journal of Machine Learning Research</i>, Theory and Methods. Submitted.", styles),
             publication(2, "<b>X. Tang</b>, R. Guan, and Z. Wang. Moment Order in Unsupervised Direction Learning. <i>Journal of Machine Learning Research</i>. Submitted.", styles),
             publication(3, "Y. Fan, <b>X. Tang</b>, and R. Guan. Deep Hedging under Rough Volatility: A Fractional Kernel Embedding Approach with Optimal Convergence Rate. <i>Journal of Computational and Applied Mathematics</i>. Under review.", styles),
-            publication(4, "<b>X. Tang et al.</b> Spectral Network Determinants of Seizure-like Synchronization and Spread in Coupled Hindmarsh-Rose Brain Models. <i>Cognitive Neurodynamics</i>. Under review.", styles),
-            publication(5, "<b>X. Tang et al.</b> Trajectory-Level Out-of-Distribution Success Bounds for Deep Autoregressive Models. Manuscript, 2026.", styles),
+            publication(4, "<b>X. Tang et al.</b> Trajectory-Level Out-of-Distribution Success Bounds for Deep Autoregressive Models. Manuscript, 2026.", styles),
         ]
     )
 
