@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">二维线性 Bandit 的置信椭球与乐观动作</title>
+  <desc id="desc">参数估计值周围的置信椭球、真实参数、候选动作方向以及 OFUL 选择的乐观动作。</desc>
+  <rect width="960" height="560" fill="#fbfcfd"/>
+  <g stroke="#d8dee4" stroke-width="1">
+    <path d="M80 460H900"/>
+    <path d="M120 505V55"/>
+    <path d="M220 455V465M320 455V465M420 455V465M520 455V465M620 455V465M720 455V465M820 455V465"/>
+    <path d="M115 360H125M115 260H125M115 160H125"/>
+  </g>
+  <g fill="#4b5563" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif" font-size="18">
+    <text x="875" y="492">θ₁</text>
+    <text x="83" y="75">θ₂</text>
+  </g>
+
+  <ellipse cx="500" cy="270" rx="238" ry="112" transform="rotate(-24 500 270)" fill="#2a9d8f" fill-opacity="0.12" stroke="#137b70" stroke-width="4"/>
+  <ellipse cx="500" cy="270" rx="154" ry="72" transform="rotate(-24 500 270)" fill="none" stroke="#55a79e" stroke-width="2" stroke-dasharray="9 8"/>
+
+  <g stroke="#8a94a3" stroke-width="3" fill="none" marker-end="url(#arrowGray)">
+    <path d="M500 270L728 182"/>
+    <path d="M500 270L606 88"/>
+    <path d="M500 270L340 100"/>
+    <path d="M500 270L260 315"/>
+    <path d="M500 270L380 438"/>
+  </g>
+  <path d="M500 270L790 122" stroke="#d1495b" stroke-width="7" fill="none" marker-end="url(#arrowRed)"/>
+
+  <circle cx="500" cy="270" r="9" fill="#17212b"/>
+  <circle cx="545" cy="246" r="9" fill="#f4a261" stroke="#8a4b08" stroke-width="2"/>
+  <circle cx="790" cy="122" r="8" fill="#d1495b"/>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif">
+    <text x="514" y="302" fill="#17212b" font-size="20" font-weight="600">估计中心 θ̂</text>
+    <text x="561" y="236" fill="#8a4b08" font-size="20" font-weight="600">真实参数 θ*</text>
+    <text x="674" y="338" fill="#137b70" font-size="20" font-weight="600">置信椭球 Cₜ</text>
+    <text x="690" y="92" fill="#b12f42" font-size="20" font-weight="700">OFUL 选择的动作</text>
+    <text x="680" y="424" fill="#4b5563" font-size="17">灰色箭头：其他候选动作</text>
+    <text x="680" y="451" fill="#4b5563" font-size="17">红色方向：乐观值最高</text>
+  </g>
+
+  <defs>
+    <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L9 3L0 6Z" fill="#8a94a3"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L9 3L0 6Z" fill="#d1495b"/>
+    </marker>
+  </defs>
+</svg>
