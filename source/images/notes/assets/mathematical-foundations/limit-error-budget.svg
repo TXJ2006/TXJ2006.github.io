@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="570" viewBox="0 0 760 570" role="img" aria-labelledby="title desc">
+  <title id="title">乘积极限的误差分解</title>
+  <desc id="desc">将乘积的总误差分解为两项，再分别控制在二分之一 epsilon 以内。</desc>
+  <rect width="760" height="570" fill="#f7f7f5"/>
+  <rect x="30" y="30" width="700" height="510" rx="7" fill="#ffffff" stroke="#d8d8d3" stroke-width="2"/>
+  <g font-family="Iowan Old Style, Noto Serif SC, Songti SC, STSong, serif" fill="#20211f">
+    <text x="72" y="82" font-size="25" font-weight="600">从目标误差出发</text>
+    <text x="72" y="128" font-size="30">|xₙyₙ - xy|</text>
+    <path d="M260 120 H340" stroke="#555b57" stroke-width="2.5" fill="none"/>
+    <path d="M330 111 L342 120 L330 129" stroke="#555b57" stroke-width="2.5" fill="none"/>
+    <text x="370" y="126" font-size="22" fill="#4c514d">添加再减去 xₙy</text>
+    <text x="72" y="204" font-size="28">|xₙ(yₙ - y) + y(xₙ - x)|</text>
+    <path d="M380 228 V272 M380 272 H202 M380 272 H558 M202 272 V300 M558 272 V300" stroke="#777b76" stroke-width="2" fill="none"/>
+    <rect x="60" y="302" width="286" height="112" rx="6" fill="#eef4f0" stroke="#6f8f7a" stroke-width="2"/>
+    <rect x="414" y="302" width="286" height="112" rx="6" fill="#f5f0e9" stroke="#a17c53" stroke-width="2"/>
+    <text x="92" y="342" font-size="22">第一份误差</text>
+    <text x="92" y="383" font-size="25">M|yₙ - y| &lt; ε/2</text>
+    <text x="446" y="342" font-size="22">第二份误差</text>
+    <text x="446" y="383" font-size="25">|y||xₙ - x| &lt; ε/2</text>
+    <line x1="380" y1="414" x2="380" y2="454" stroke="#777b76" stroke-width="2"/>
+    <text x="100" y="489" font-size="22" fill="#4c514d">共同起点 N = max{N₀, N₁, N₂}</text>
+    <text x="232" y="524" font-size="23" font-weight="600">两份相加，总误差 &lt; ε</text>
+  </g>
+</svg>
