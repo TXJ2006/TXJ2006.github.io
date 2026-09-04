@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
+  <title id="title">EXP3 中的重要性加权</title>
+  <desc id="desc">三个动作中只观察第二个动作，用选择概率的倒数放大观测，得到完整损失向量的无偏估计。</desc>
+  <rect width="800" height="620" fill="#f7f7f5"/>
+  <rect x="30" y="28" width="740" height="564" rx="7" fill="#ffffff" stroke="#d8d8d3" stroke-width="2"/>
+  <g font-family="Iowan Old Style, Noto Serif SC, Songti SC, STSong, serif" fill="#242622">
+    <text x="62" y="78" font-size="27" font-weight="600">真实损失向量不可见</text>
+    <text x="62" y="116" font-size="21" fill="#5b605a">ℓₜ = (0.2, 0.8, 0.4)， pₜ = (0.6, 0.3, 0.1)</text>
+
+    <rect x="62" y="144" width="194" height="72" rx="6" fill="#eef3ef" stroke="#789180" stroke-width="2"/>
+    <rect x="303" y="144" width="194" height="72" rx="6" fill="#f5eee7" stroke="#a87952" stroke-width="3"/>
+    <rect x="544" y="144" width="194" height="72" rx="6" fill="#eef1f5" stroke="#77899f" stroke-width="2"/>
+    <text x="101" y="174" font-size="18">动作 1</text>
+    <text x="101" y="201" font-size="21">损失 0.2</text>
+    <text x="342" y="174" font-size="18">动作 2</text>
+    <text x="342" y="201" font-size="21">损失 0.8</text>
+    <text x="583" y="174" font-size="18">动作 3</text>
+    <text x="583" y="201" font-size="21">损失 0.4</text>
+
+    <path d="M400 230 V278" stroke="#676b66" stroke-width="2.5" fill="none"/>
+    <path d="M391 267 L400 280 L409 267" stroke="#676b66" stroke-width="2.5" fill="none"/>
+    <text x="240" y="314" font-size="24" font-weight="600">抽到 Aₜ = 2，只观察 0.8</text>
+
+    <path d="M400 332 V372" stroke="#676b66" stroke-width="2.5" fill="none"/>
+    <path d="M391 361 L400 374 L409 361" stroke="#676b66" stroke-width="2.5" fill="none"/>
+    <text x="82" y="410" font-size="23">用观测概率 0.3 的倒数校正</text>
+    <text x="82" y="451" font-size="25">ℓ̂ₜ = (0, 0.8 / 0.3, 0) = (0, 8 / 3, 0)</text>
+
+    <rect x="62" y="482" width="676" height="76" rx="6" fill="#f2f4f1" stroke="#8d948c" stroke-width="2"/>
+    <text x="95" y="515" font-size="21">单次估计可以大于 1，但对抽样取平均后</text>
+    <text x="198" y="545" font-size="24" font-weight="600">Eₜ[ℓ̂ₜ] = ℓₜ</text>
+  </g>
+</svg>
