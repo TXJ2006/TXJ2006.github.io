@@ -21,15 +21,15 @@ comments: true
 
 <p>研究目的很明确：同一个 Bandit 算法，能不能在不知道环境究竟“基本稳定”还是“频繁变化”的情况下，同时获得静态遗憾的最优阶和动态遗憾的最优阶？论文给出的答案不是一个无条件的“可以”或“不可以”，而是揭示了对手模型的分界：</p>
 
-<div class="math-block">
-\[
-\begin{array}{c|c|c}
-\text{对手} & \text{损失} & \text{结论}\\ \hline
-\text{adaptive} & \text{确定性} & \text{同时最优仍不可能}\\
-\text{oblivious} & \text{确定性，已知切换数 }S & \text{可以同时达到最优阶}
-\end{array}
-\]
-</div>
+<table>
+<thead>
+<tr><th>对手</th><th>损失</th><th>结论</th></tr>
+</thead>
+<tbody>
+<tr><td>adaptive</td><td>确定性</td><td>同时最优仍不可能</td></tr>
+<tr><td>oblivious</td><td>确定性，已知切换数 $S$</td><td>可以同时达到最优阶</td></tr>
+</tbody>
+</table>
 
 <p>文章的技术核心有两层。第一层是一个两臂构造：如果对手能在看到学习者探测成功后立刻撤回“变好”的臂，那么探索和追踪之间存在不可消除的冲突。第二层是 Blackwell approachability：把“对每个固定臂的静态遗憾”和“对每一轮最佳臂的动态遗憾”放在同一个向量空间里，让一个元算法在两种基础策略之间调节，并利用探索产生的负静态遗憾抵消探索成本。</p>
 
@@ -187,17 +187,16 @@ S:=1+\sum_{t=2}^{T}\mathbb I\{\mathbf c_t\neq \mathbf c_{t-1}\}.
 
 <p>论文研究的精确问题可以写成：</p>
 
+<p>是否存在一个算法，使得</p>
+
 <div class="math-block">
 \[
-\text{是否存在一个算法，使得}\quad
 \operatorname{SReg}=\widetilde O(\sqrt{AT}),\qquad
 \operatorname{DReg}=\widetilde O(\sqrt{SAT})
 \]
-
-\[
-\text{在同一条运行轨迹上同时成立？}
-\]
 </div>
+
+<p>并且这两个界在同一条运行轨迹上同时成立？</p>
 
 <p>“同时”表示同一个算法、同一组反馈、同一个对手序列，而不是先知道环境类型再选择两套算法。此前的 bandit-over-bandit 方法可以在两种目标之间做模型选择，但静态遗憾会出现 $\widetilde O(A^{1/4}T^{3/4})$ 这样的次优项。论文的目标是判断这个额外的 $T^{1/4}$ 是否只是分析损失，还是问题本身的代价。</p>
 
@@ -217,10 +216,14 @@ S:=1+\sum_{t=2}^{T}\mathbb I\{\mathbf c_t\neq \mathbf c_{t-1}\}.
 
 <div class="math-block">
 \[
-\operatorname{SReg}\geq\Omega\bigl(S^{\alpha}\sqrt T\bigr),
-\qquad
-\text{要么}
-\qquad
+\operatorname{SReg}\geq\Omega\bigl(S^{\alpha}\sqrt T\bigr)
+\]
+</div>
+
+<p>或者，</p>
+
+<div class="math-block">
+\[
 \operatorname{DReg}\geq\Omega\bigl(S^{1-\alpha}\sqrt T\bigr).
 \]
 </div>
@@ -274,9 +277,11 @@ S:=1+\sum_{t=2}^{T}\mathbb I\{\mathbf c_t\neq \mathbf c_{t-1}\}.
 
 <p>现在考虑第二个分支。整个 epoch 的长度是 $2T/S$，动作 $2$ 的期望抽取次数小于 $N$。为避免边界上的重复计数，先按论文证明取 $M$ 能整除 epoch 长度，把一个 epoch 划分成 $2T/(SM)$ 个互不重叠的窗口。于是至少有一个窗口的期望抽取次数不超过这些窗口的平均值：</p>
 
+<p>记 $N_2(W)$ 为窗口 $W$ 内抽到动作 $2$ 的次数。则至少有一个窗口满足</p>
+
 <div class="math-block">
 \[
-\mathbb E[\text{窗口内抽取动作 2 的次数}]
+\mathbb E[N_2(W)]
 \leq \frac{N}{2T/(SM)}=\frac{SMN}{2T}.
 \]
 </div>
@@ -307,11 +312,18 @@ MN=\frac TS.
 <p>设 $E$ 是属于第一个分支的 epoch 数。总共有 $S/2$ 个 epoch：</p>
 
 <p>若 $E>3S/8$，高抽样分支贡献至少 $EN/2$；低抽样分支至多带来每个 epoch $1/2$ 的负静态遗憾，而此时低抽样分支少于 $S/8$ 个。因此总静态遗憾仍满足
-$\operatorname{SReg}\geq EN/2-(S/8)/2\geq SN/8$，其中最后一步使用定理条件推出 $N\geq1$。若 $E\leq3S/8$，第二个分支至少出现 $S/8$ 次，于是动态遗憾至少为常数倍的 $SM$。因此</p>
+$\operatorname{SReg}\geq EN/2-(S/8)/2\geq SN/8$，其中最后一步使用定理条件推出 $N\geq1$。若 $E\leq3S/8$，第二个分支至少出现 $S/8$ 次，于是动态遗憾至少为常数倍的 $SM$。因此下面两种情况至少有一种成立：</p>
 
 <div class="math-block">
 \[
-\operatorname{SReg}=\Omega(SN)\quad\text{或}\quad
+\operatorname{SReg}=\Omega(SN)
+\]
+</div>
+
+<p>或者，</p>
+
+<div class="math-block">
+\[
 \operatorname{DReg}=\Omega(SM).
 \]
 </div>
@@ -779,7 +791,7 @@ K=\sqrt{\frac TA}
 
 <div class="math-block">
 \[
-\sum_{j=1}^{H/M}\mathbb E[N_2(W_j)]<N.
+\sum_{j=1}^{H/M}\mathbb E[N_2(W_j)]\lt N.
 \]
 </div>
 
@@ -836,7 +848,7 @@ K=\sqrt{\frac TA}
 
 <p>共有 $S/2$ 个 epoch，设第一个分支的数量为 $E$。</p>
 
-<p>若 $E>3S/8$，低抽样分支的数量为 $S/2-E<S/8$，每个这样的分支对静态遗憾的负贡献至多为 $1/2$。所以</p>
+<p>若 $E>3S/8$，低抽样分支的数量为 $S/2-E\lt S/8$，每个这样的分支对静态遗憾的负贡献至多为 $1/2$。所以</p>
 
 <div class="math-block">
 \[
@@ -935,7 +947,7 @@ SM=S^{1-\alpha}\sqrt T.
 \]
 </div>
 
-<p>在好区间开始前，动作 $2$ 每轮以概率 $\epsilon$ 被抽到。直到第一次成功为止，失败次数的期望不超过 $(1-\epsilon)/\epsilon<\epsilon^{-1}$。所以</p>
+<p>在好区间开始前，动作 $2$ 每轮以概率 $\epsilon$ 被抽到。直到第一次成功为止，失败次数的期望不超过 $(1-\epsilon)/\epsilon\lt\epsilon^{-1}$。所以</p>
 
 <div class="math-block">
 \[
