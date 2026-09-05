@@ -6,6 +6,8 @@ body
 .post,
 .post-body
   font-family "Noto Serif SC", "Songti SC", "STSong", "Times New Roman", serif
+  min-width 0
+  overflow-wrap break-word
 
 .post-title,
 .post-title-link,
@@ -16,3 +18,48 @@ code,
 pre,
 .highlight
   font-family ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace
+
+// Give display equations enough scale and whitespace to remain readable in
+// long-form mathematical posts.
+.post-body .MathJax_Display
+  font-size 112%
+  margin .8em 0 !important
+  padding .08em 0
+  max-width: 100%
+  overflow-x: auto
+  overflow-y: hidden
+  box-sizing: border-box
+
+// MathJax adds overflow to list items that contain inline formulas. Keep the
+// list marker outside that clipping box so numbered explanations remain visible.
+.post-body li.has-jax
+  overflow: visible
+
+.post-body .MathJax
+  color #20252a
+
+.algorithm-compare
+  display table
+  width 100%
+  margin 1.2em 0 1.6em
+  border-collapse collapse
+  font-size .92em
+
+.algorithm-compare th,
+.algorithm-compare td
+  padding .75em .8em
+  border-bottom 1px solid #dfe5e2
+  text-align left
+  vertical-align top
+
+.algorithm-compare th
+  color #263337
+  background #f6f8f7
+  font-family -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans SC", sans-serif
+  font-size .86em
+
+@media (max-width: 767px)
+  .algorithm-compare
+    display block
+    overflow-x auto
+    white-space nowrap
