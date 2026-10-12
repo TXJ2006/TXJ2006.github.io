@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" role="img" aria-labelledby="title desc">
+  <title id="title">有理数逼近平方根二形成的 Dedekind 分割</title>
+  <desc id="desc">数轴上满足 q 平方小于二的有理数从左侧逼近平方根二，它们在有理数中没有上确界，在实数中以上确界 alpha 填补缺口。</desc>
+  <defs>
+    <marker id="axis-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#282d33"/>
+    </marker>
+    <style>
+      .title { font: 600 32px system-ui, -apple-system, "PingFang SC", sans-serif; fill: #20242a; }
+      .body { font: 500 23px system-ui, -apple-system, "PingFang SC", sans-serif; fill: #3b424b; }
+      .math { font: italic 27px Georgia, "Times New Roman", serif; fill: #20242a; }
+      .small { font: 500 19px system-ui, -apple-system, "PingFang SC", sans-serif; fill: #4d555f; }
+    </style>
+  </defs>
+
+  <rect width="900" height="460" fill="#f7f8fa"/>
+  <text x="450" y="52" class="title" text-anchor="middle">有理数从左侧逼近一个缺口</text>
+
+  <rect x="72" y="176" width="472" height="46" fill="#dceee8"/>
+  <rect x="544" y="176" width="284" height="46" fill="#f5dfe2"/>
+  <line x1="70" y1="222" x2="836" y2="222" stroke="#282d33" stroke-width="4" marker-end="url(#axis-arrow)"/>
+
+  <line x1="402" y1="208" x2="402" y2="238" stroke="#282d33" stroke-width="3"/>
+  <text x="402" y="275" class="math" text-anchor="middle">1</text>
+
+  <line x1="544" y1="112" x2="544" y2="250" stroke="#b54455" stroke-width="4" stroke-dasharray="9 7"/>
+  <text x="544" y="98" class="math" text-anchor="middle">α = sup A = √2</text>
+
+  <line x1="758" y1="208" x2="758" y2="238" stroke="#282d33" stroke-width="3"/>
+  <text x="758" y="275" class="math" text-anchor="middle">2</text>
+
+  <circle cx="473" cy="222" r="9" fill="#177d68" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="530" cy="222" r="9" fill="#177d68" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="542" cy="222" r="9" fill="#177d68" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="543.6" cy="222" r="9" fill="#177d68" stroke="#ffffff" stroke-width="3"/>
+
+  <line x1="473" y1="293" x2="473" y2="239" stroke="#177d68" stroke-width="2"/>
+  <line x1="530" y1="317" x2="530" y2="239" stroke="#177d68" stroke-width="2"/>
+  <line x1="542" y1="341" x2="542" y2="239" stroke="#177d68" stroke-width="2"/>
+  <line x1="543.6" y1="365" x2="543.6" y2="239" stroke="#177d68" stroke-width="2"/>
+
+  <text x="457" y="310" class="small" text-anchor="end">1.4</text>
+  <text x="514" y="334" class="small" text-anchor="end">1.41</text>
+  <text x="526" y="358" class="small" text-anchor="end">1.414</text>
+  <text x="528" y="382" class="small" text-anchor="end">1.4142</text>
+
+  <text x="260" y="414" class="math" text-anchor="middle">A = {q ∈ ℚ : q ≥ 0, q² &lt; 2}</text>
+  <text x="697" y="414" class="body" text-anchor="middle">实数的完备性填补缺口</text>
+</svg>
