@@ -1,56 +1,57 @@
-// Local-first typography: a quiet sans-serif interface and a scholarly serif
-// stack for long-form mathematical notes.
+// A book-like mathematical page: old-style Latin glyphs, Songti Chinese, and
+// compact blocks modeled on printed lecture notes.
 body
-  font-family -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif
+  font-family "Iowan Old Style", "Baskerville", "STIX Two Text", "TeX Gyre Pagella", "Noto Serif SC", "Songti SC", "STSong", serif
+  font-variant-numeric oldstyle-nums
 
 .post,
 .post-body
-  font-family "STIX Two Text", "Latin Modern Roman", "Times New Roman", "Noto Serif SC", "Songti SC", "STSong", serif
-  font-size 16px
-  line-height 1.68
+  font-family "Iowan Old Style", "Baskerville", "STIX Two Text", "TeX Gyre Pagella", "Noto Serif SC", "Songti SC", "STSong", serif
+  font-size 17px
+  line-height 1.62
   min-width 0
   overflow-wrap break-word
 
 .post-title,
 .post-title-link,
 h1, h2, h3, h4, h5, h6
-  font-family "STIX Two Text", "Latin Modern Roman", "Times New Roman", "Noto Serif SC", "Songti SC", "STSong", serif
+  font-family "Iowan Old Style", "Baskerville", "STIX Two Text", "TeX Gyre Pagella", "Noto Serif SC", "Songti SC", "STSong", serif
   letter-spacing 0
 
 .post-series
   margin-bottom .8em
   color #176d73
-  font-family -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif
+  font-family "Noto Serif SC", "Songti SC", "STSong", serif
   font-size .78em
   font-weight 600
   letter-spacing .02em
 
 .post-body p
   margin-top 0
-  margin-bottom .72em
+  margin-bottom .62em
 
 .post-body > p
   text-indent 2em
 
 .post-body > p:has(> strong:first-child)
-  margin 1em 0
-  padding .7em 1em
-  border-left 3px solid #238a8b
-  background #eff9f1
   text-indent 0
 
 .post-body h2
-  margin-top 1.7em
-  padding-top .45em
+  margin-top 1.05em
+  padding .42em 0 .3em
   border-top 2px solid #238a8b
+  border-bottom 2px solid #238a8b
   color #197b7c
+
+.lecture-chapter + h2
+  margin-top .52em
 
 .post-body h3
   margin-top 1.35em
   color #197b7c
 
 .post-body blockquote
-  font-family "STIX Two Text", "Latin Modern Roman", "Times New Roman", "Noto Serif SC", "Songti SC", "STSong", serif
+  font-family "Iowan Old Style", "Baskerville", "STIX Two Text", "TeX Gyre Pagella", "Noto Serif SC", "Songti SC", "STSong", serif
   margin 1.1em 0
   padding .55em 1em
   border-left 3px solid #238a8b
@@ -85,6 +86,58 @@ pre,
 .post-body .MathJax
   color #20252a
 
+// Printed-lecture blocks. They are reserved for definitions, theorems,
+// examples, and notes; ordinary prose remains a continuous paragraph stream.
+.lecture-chapter
+  display flex
+  align-items baseline
+  gap .8em
+  margin 1.7em 0 .9em
+  padding .42em .05em .36em
+  border-top 2px solid #238a8b
+  border-bottom 2px solid #238a8b
+  color #197b7c
+  font-weight 600
+
+.lecture-chapter-number
+  font-family "Iowan Old Style", "Baskerville", "STIX Two Text", serif
+  font-size .9em
+  white-space nowrap
+
+.lecture-chapter-title
+  font-size 1.13em
+
+.lecture-definition,
+.lecture-theorem,
+.lecture-example,
+.lecture-note
+  margin 1em 0
+  padding .68em 1em .62em
+  border: 1px solid #8fc6bd
+  background #eff9f1
+
+.lecture-theorem,
+.lecture-note
+  border-color #9bc8d0
+  background #eef8f7
+
+.lecture-example
+  background #f7f7ef
+  border-color #c9c59b
+
+.lecture-definition p,
+.lecture-theorem p,
+.lecture-example p,
+.lecture-note p
+  margin .2em 0
+  text-indent 0
+
+.lecture-definition strong,
+.lecture-theorem strong,
+.lecture-example strong,
+.lecture-note strong
+  color #123f58
+
 .algorithm-compare
   display table
   width 100%
@@ -106,6 +159,13 @@ pre,
   font-size .86em
 
 @media (max-width: 767px)
+  .lecture-chapter
+    display block
+
+  .lecture-chapter-number
+    display block
+    margin-bottom .2em
+
   .algorithm-compare
     display block
     overflow-x auto

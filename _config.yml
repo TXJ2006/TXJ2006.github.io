@@ -79,14 +79,14 @@ theme_config:
     enable: false
     global:
       external: false
-      family: system-ui
+      family: 'Iowan Old Style'
       size: 16
     headings:
       external: false
-      family: 'Songti SC'
+      family: 'Iowan Old Style'
     posts:
       external: false
-      family: 'Noto Serif SC'
+      family: 'Iowan Old Style'
     logo:
       external: false
       family: 'Iowan Old Style'
