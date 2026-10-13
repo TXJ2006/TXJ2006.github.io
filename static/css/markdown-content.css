@@ -1,7 +1,8 @@
 .markdown-content {
   color: #30393c;
-  font: 17px/1.86 "STIX Two Text", "Latin Modern Roman", "Times New Roman",
+  font: 16px/1.66 "STIX Two Text", "Latin Modern Roman", "Times New Roman",
     "Noto Serif SC", "Songti SC", "STSong", serif;
+  letter-spacing: 0;
 }
 
 .markdown-content h1,
@@ -16,17 +17,43 @@
 }
 
 .markdown-content h2 {
-  margin-top: 46px;
-  padding-top: 13px;
-  border-top: 1px solid #d9dfdd;
+  margin: 34px 0 12px;
+  padding-top: 9px;
+  border-top: 2px solid #238a8b;
+  color: #197b7c;
+  font-size: 1.46em;
+}
+
+.markdown-content h3 {
+  margin: 25px 0 8px;
+  color: #197b7c;
+  font-size: 1.16em;
+}
+
+.markdown-content > p {
+  margin: 0 0 0.68em;
+  text-indent: 2em;
+}
+
+.markdown-content > p:has(> strong:first-child) {
+  margin: 1em 0;
+  padding: 0.7em 1em;
+  border-left: 3px solid #238a8b;
+  background: #eff9f1;
+  text-indent: 0;
 }
 
 .markdown-content blockquote {
-  margin: 24px 0;
-  padding: 14px 20px;
-  border-left: 3px solid #a54e39;
-  background: #f5f7f6;
+  margin: 18px 0;
+  padding: 10px 16px;
+  border-left: 3px solid #238a8b;
+  background: #eef8f7;
   color: #495356;
+}
+
+.markdown-content blockquote p {
+  margin: 0.3em 0;
+  text-indent: 0;
 }
 
 .markdown-content pre {
@@ -81,7 +108,8 @@
 .markdown-content .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 4px 34px 4px 0;
+  margin: 0.55em 0;
+  padding: 2px 28px 2px 0;
 }
 
 .markdown-content .numbered-equation {
@@ -130,7 +158,7 @@
   .markdown-content {
     max-width: 100%;
     overflow-x: hidden;
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .markdown-content table {

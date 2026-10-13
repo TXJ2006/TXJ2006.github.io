@@ -563,7 +563,7 @@ a {
 .notes-page,
 .note-page,
 .editor-page {
-  padding: 52px 0 76px;
+  padding: 36px 0 60px;
 }
 
 .notes-header,
@@ -636,10 +636,10 @@ a {
 
 .notes-shell {
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
-  gap: 58px;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 34px;
   align-items: start;
-  padding-top: 42px;
+  padding-top: 28px;
 }
 
 .note-author {
@@ -1052,9 +1052,9 @@ a {
 }
 
 .note-header {
-  margin-bottom: 38px;
-  padding-bottom: 26px;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--accent);
 }
 
 .note-kicker {
@@ -1078,7 +1078,7 @@ a {
 }
 
 .note-content {
-  max-width: 760px;
+  max-width: 860px;
 }
 
 .note-content img {

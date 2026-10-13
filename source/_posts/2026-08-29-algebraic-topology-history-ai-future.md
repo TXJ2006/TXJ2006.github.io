@@ -43,6 +43,14 @@ $$
 H_1(X)=0.
 $$
 
+这里的结论来自同调的不变性，而不是来自图形的直观外观。因为 $[0,1]$ 紧、$\mathbb{R}^2$ Hausdorff，连续单射 $\gamma:[0,1]\to X$ 是到其像的同胚；区间又是可缩空间，所以
+
+$$
+H_1(X)\cong H_1([0,1])=0.
+$$
+
+这正是“嵌入的线段没有一维洞”的严格理由。关于同伦不变性和区间的同调计算，可参见 Hatcher 的 [*Algebraic Topology*，Chapter 2](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf)；本文只使用其中的标准结论，并把中间的同胚步骤写出。
+
 只要不同参数点不被识别，线段作为拓扑空间的类型就没有改变。曲率是微分几何量，不存在“曲率足够大便产生拓扑洞”的阈值；改变拓扑对象的是端点识别或自交。识别端点得到圆周；若存在 $s\neq t$ 使 $\gamma(s)=\gamma(t)$，则 $\gamma$ 不再是嵌入，其像空间可能成为含有环的平面图。
 
 最典型的例子是“8”字形。把交点看成一个顶点、把两个圆瓣看成两条边，得到一个图 $X$，其中
@@ -56,6 +64,19 @@ $$
 $$
 b_1(X)=E-V+1=2.
 $$
+
+![图：把八字形视为一个顶点和两条环边](/images/notes/assets/algebraic-topology/figure-eight-graph.svg)
+
+*图 1. 八字形的抽象图模型。几何上的两个圆瓣对应两条环边 $e_1,e_2$，交点对应同一个顶点 $v$。*
+
+这个计算可以直接从链复形核对。取整数系数，有 $C_1(X)=\mathbb{Z}e_1\oplus\mathbb{Z}e_2$、$C_0(X)=\mathbb{Z}v$，而两条边都是从 $v$ 回到 $v$，所以 $\partial_1(e_1)=\partial_1(e_2)=0$。图中没有二维胞腔，故 $C_2(X)=0$，从而
+
+$$
+H_1(X)=\ker\partial_1/\operatorname{im}\partial_2
+      =C_1(X)\cong\mathbb{Z}^2.
+$$
+
+因此 $b_1(X)=\operatorname{rank}H_1(X)=2$。对任意有限连通图，选一棵极大树后，未被选入的边各贡献一个独立环；极大树有 $V-1$ 条边，于是得到一般公式 $b_1=E-(V-1)=E-V+1$。这也是 Hatcher [Chapter 1 的图与 van Kampen 例子](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf)中“图的基本群是自由群”的同调版本。
 
 这说明它有两个独立的一维环。此时参数化曲线的定义域仍可以是一个圆周，甚至可以用一个区间从头走到尾；但曲线的**像**已经是两个圆在交点处的粘合，不能再把它当作原来的嵌入线段。
 
@@ -93,6 +114,8 @@ $$
 
 其中 $\mathbb{F}$ 是系数域。右侧描述曲线自身的一维上同调，左侧描述从球面中删去曲线后剩下的连通分支。因此，弯曲、交错并形成洞的现象确实可以出现；所研究的对象是自交曲线的像及其补空间，而不是始终保持嵌入的线段。
 
+上式是 Alexander 对偶性的 $S^2$ 特例；一般形式需要紧子集和约化同调/上同调的适当条件。标准出处见 Hatcher [*Algebraic Topology*，Chapter 3 的 Alexander duality 部分](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf)。这里把它用于平面图时，$\widetilde H_0$ 的秩就是补空间连通分支数减一，所以与 $b_1$ 的数值吻合。
+
 这类对象早已有系统理论。Jordan 曲线定理研究无自交闭曲线如何把平面分成内外两部分；Whitney–Graustein 定理研究允许自交的正则闭曲线，并证明它们在正则同伦下由旋转数分类；计算拓扑中还会把自交曲线编码成像图、面与 Gauss 编码。若曲线实际位于三维空间，平面图上的交叉还可能只是投影中的交叉，这又进入结理论和 Reidemeister 变换。
 
 因此需要先决定什么叫“同一种形状”。存在连续双射且逆映射也连续时，两个空间**同胚**。另一种更宽的关系是**同伦等价**：存在 $f:X\to Y$ 与 $g:Y\to X$，使 $g\circ f$ 和 $f\circ g$ 分别同伦于各自的恒等映射。圆盘与一点同伦等价，却不同胚；圆周不与一点同伦等价，后面计算的 $H_1(S^1)$ 会给出理由。这里比较的是空间本身，不能把“某条画在平面上的曲线看起来变圆了”当作同伦等价的定义。
@@ -104,6 +127,16 @@ Poincare 在 1895 年发表 *Analysis Situs*。它留下的计算问题是：能
 $$
 \chi=V-E+F.
 $$
+
+对有限 CW 复形，Euler 示性数还可以按胞腔数写成 $\chi(X)=\sum_k(-1)^k a_k$，并且等于同调秩的交替和 $\sum_k(-1)^k\operatorname{rank}H_k(X)$。这不是额外的记忆公式：链群的秩按短正合列相减时，循环群和边界群的项逐维抵消，最后只留下同调群的秩。MIT OpenCourseWare 的 [Lecture 18: Euler Characteristic and Homology Approximation](https://ocw.mit.edu/courses/18-905-algebraic-topology-i-fall-2016/resources/mit18_905f16_lec18/) 在第 45 页给出了这一命题和证明；本仓库保存了该页的出处截图和获得许可的 PDF。
+
+![MIT OpenCourseWare Lecture 18 第 45 页：Euler 示性数与同调秩公式](/images/notes/assets/algebraic-topology/mit-ocw-euler-characteristic-excerpt.png)
+
+> **原文摘录。** “This integer $\chi(X)$ is called the Euler characteristic of $X$.” 随后 Lecture 18 的 Theorem 18.3 给出 $\chi(X)=\sum_k(-1)^k\operatorname{rank}H_k(X)$。
+>
+> 来源：Sanath Devalapurkar，*MIT 18.905 Algebraic Topology I*，Lecture 18，p. 45，[课程页面](https://ocw.mit.edu/courses/18-905-algebraic-topology-i-fall-2016/resources/mit18_905f16_lec18/)，[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)。
+
+本讲义仓库还保存了这份 [Lecture 18 PDF](/files/algebraic-topology/mit-ocw/MIT18_905F16_lec18.pdf)；同一课程的其他已授权讲义和原始链接见[素材索引](/files/algebraic-topology/README.html)。
 
 一个球面的三角剖分可以有不同数量的顶点和边，但 $\chi$ 总是 $2$；环面的 Euler 示性数则是 $0$。这已经说明，计数并不只是计数：交替相减后，局部剖分的细节会被抵消，剩下的是整体形状的一部分。
 
@@ -272,7 +305,7 @@ $$
 
 使得 $H^*(X;R)$ 不只是各个群的列表，而是一个分次环。这个乘法能区分一些同调群相同、但整体拓扑结构不同的空间。
 
-对闭的、可定向的 $n$ 维流形 $M$，Poincare 对偶性给出
+对闭的、可定向的 $n$ 维流形 $M$，Poincare 对偶性给出下列同构。关于该定理的标准证明路线，可参见 Hatcher [Chapter 3](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf) 和 MIT OpenCourseWare [Lecture 37: Poincare duality](https://ocw.mit.edu/courses/18-905-algebraic-topology-i-fall-2016/resources/mit18_905f16_lec37/)。
 
 $$
 H^k(M;R)\cong H_{n-k}(M;R),
@@ -326,6 +359,7 @@ $$
 14. H. Geiges, “A contact geometric proof of the Whitney–Graustein Theorem,” 2007. [arXiv](https://arxiv.org/abs/0801.0046).
 15. J. Erickson, “Generic Planar Curves,” *Computational Topology* lecture notes, 2023. [Notes](https://jeffe.cs.illinois.edu/teaching/comptop/2023/notes/06-generic-curves.html).
 16. D. S. Dummit and R. M. Foote, *Abstract Algebra*, 3rd ed., Wiley, 2004.
+17. S. Devalapurkar, *MIT 18.905 Algebraic Topology I*, Fall 2016 lecture notes. [MIT OpenCourseWare](https://ocw.mit.edu/courses/18-905-algebraic-topology-i-fall-2016/), [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ---
 

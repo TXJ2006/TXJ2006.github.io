@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" role="img" aria-labelledby="title desc">
+  <title id="title">八字形图的一个顶点和两条环边</title>
+  <desc id="desc">两个圆瓣在中心顶点 v 相交。左边的环边标为 e_1，右边的环边标为 e_2，并给出 V 等于 1、E 等于 2。</desc>
+  <defs>
+    <style>
+      .title{font:600 28px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#18212a}
+      .label{font:20px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#475467}
+      .math{font:italic 27px Georgia,"Times New Roman",serif;fill:#18212a}
+      .edge1{fill:none;stroke:#166a82;stroke-width:6}
+      .edge2{fill:none;stroke:#b44c50;stroke-width:6}
+    </style>
+  </defs>
+  <rect width="900" height="440" fill="#f7f9fa"/>
+  <text x="450" y="52" class="title" text-anchor="middle">八字形的图模型</text>
+  <path d="M420 216 C270 55 74 93 112 220 C74 347 270 385 420 224" class="edge1"/>
+  <path d="M480 216 C630 55 826 93 788 220 C826 347 630 385 480 224" class="edge2"/>
+  <circle cx="450" cy="220" r="27" fill="#fff" stroke="#344054" stroke-width="4"/>
+  <text x="450" y="230" class="math" text-anchor="middle">v</text>
+  <text x="196" y="130" class="math" text-anchor="middle">e₁</text>
+  <text x="704" y="130" class="math" text-anchor="middle">e₂</text>
+  <text x="450" y="390" class="label" text-anchor="middle">V=1，E=2；C₁ ≅ ℤe₁ ⊕ ℤe₂，∂₁=0</text>
+</svg>
