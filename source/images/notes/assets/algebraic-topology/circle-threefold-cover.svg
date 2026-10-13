@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 390" role="img" aria-labelledby="title desc">
+  <title id="title">圆周的三重覆盖</title>
+  <desc id="desc">左侧覆盖圆周上三个彩色点 1、omega、omega squared，在 z 映到 z 的三次方下都落到右侧底圆周的点 1。沿底圆周一圈依次移动三个原像。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#344054"/></marker>
+    <style>
+      .title{font:600 25px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#18212a}
+      .body{font:19px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#475467}
+      .math{font:italic 25px Georgia,serif;fill:#18212a}
+      .circle{fill:#fff;stroke:#344054;stroke-width:4}
+    </style>
+  </defs>
+  <rect width="1080" height="390" fill="#f7f9fa"/>
+  <text x="260" y="50" class="title" text-anchor="middle">覆盖空间 S¹</text>
+  <text x="820" y="50" class="title" text-anchor="middle">底空间 S¹</text>
+  <circle cx="260" cy="203" r="106" class="circle"/>
+  <circle cx="820" cy="203" r="106" class="circle"/>
+  <circle cx="366" cy="203" r="10" fill="#126c70"/>
+  <circle cx="207" cy="111" r="10" fill="#ad4352"/>
+  <circle cx="207" cy="295" r="10" fill="#b47a18"/>
+  <circle cx="926" cy="203" r="10" fill="#344054"/>
+  <text x="390" y="210" class="math">1</text>
+  <text x="128" y="102" class="math">ω</text>
+  <text x="128" y="318" class="math">ω²</text>
+  <text x="945" y="211" class="math">1</text>
+  <path d="M424 203 H650" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="536" y="178" class="math" text-anchor="middle">p(z)=z³</text>
+  <text x="260" y="364" class="body" text-anchor="middle">同一个圆周上的三个原像</text>
+  <text x="820" y="364" class="body" text-anchor="middle">共同映到基点 1</text>
+</svg>

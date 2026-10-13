@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 480" role="img" aria-labelledby="title desc">
+  <title id="title">八字形的二重覆盖</title>
+  <desc id="desc">覆盖图有顶点 v0 与 v1。两条蓝色 a 边分别由 v0 到 v1 及由 v1 到 v0。每个顶点各有一条红色 b 环。右侧为底空间八字形，蓝色圈为 a，红色圈为 b。</desc>
+  <defs>
+    <marker id="blue-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#166a82"/></marker>
+    <marker id="red-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#b44c50"/></marker>
+    <marker id="gray-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#344054"/></marker>
+    <style>
+      .title{font:600 25px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#18212a}
+      .label{font:20px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#475467}
+      .math{font:italic 25px Georgia,serif;fill:#18212a}
+      .a{fill:none;stroke:#166a82;stroke-width:4;marker-end:url(#blue-arrow)}
+      .b{fill:none;stroke:#b44c50;stroke-width:4;marker-end:url(#red-arrow)}
+    </style>
+  </defs>
+  <rect width="1120" height="480" fill="#f7f9fa"/>
+  <text x="345" y="52" class="title" text-anchor="middle">二重覆盖图</text>
+  <text x="935" y="52" class="title" text-anchor="middle">底空间：八字形</text>
+  <path d="M255 224 Q345 110 435 224" class="a"/>
+  <path d="M435 256 Q345 370 255 256" class="a"/>
+  <path d="M206 238 C73 114 72 365 206 248" class="b"/>
+  <path d="M484 238 C617 114 618 365 484 248" class="b"/>
+  <circle cx="230" cy="240" r="24" fill="#fff" stroke="#344054" stroke-width="3"/>
+  <circle cx="460" cy="240" r="24" fill="#fff" stroke="#344054" stroke-width="3"/>
+  <text x="230" y="249" class="math" text-anchor="middle">v₀</text>
+  <text x="460" y="249" class="math" text-anchor="middle">v₁</text>
+  <text x="345" y="137" class="math" text-anchor="middle">a</text>
+  <text x="345" y="355" class="math" text-anchor="middle">a</text>
+  <text x="79" y="152" class="math">b</text>
+  <text x="598" y="152" class="math">b</text>
+  <path d="M644 240 H759" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#gray-arrow)"/>
+  <text x="701" y="215" class="math" text-anchor="middle">p</text>
+  <path d="M885 238 C768 98 765 379 885 248" class="a"/>
+  <path d="M932 238 C1050 98 1053 379 932 248" class="b"/>
+  <circle cx="908" cy="243" r="25" fill="#fff" stroke="#344054" stroke-width="3"/>
+  <text x="908" y="251" class="math" text-anchor="middle">x₀</text>
+  <text x="777" y="137" class="math">a</text>
+  <text x="1048" y="137" class="math">b</text>
+  <text x="345" y="443" class="label" text-anchor="middle">a 交换两层；b 留在原层</text>
+</svg>
