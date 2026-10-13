@@ -1,6 +1,7 @@
 .markdown-content {
   color: #30393c;
-  font: 16px/1.78 Arial, sans-serif;
+  font: 17px/1.86 "STIX Two Text", "Latin Modern Roman", "Times New Roman",
+    "Noto Serif SC", "Songti SC", "STSong", serif;
 }
 
 .markdown-content h1,
@@ -8,7 +9,8 @@
 .markdown-content h3,
 .markdown-content h4 {
   color: #182124;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "STIX Two Text", "Latin Modern Roman", "Times New Roman",
+    "Noto Serif SC", "Songti SC", "STSong", serif;
   letter-spacing: 0;
   line-height: 1.18;
 }
@@ -128,7 +130,7 @@
   .markdown-content {
     max-width: 100%;
     overflow-x: hidden;
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .markdown-content table {

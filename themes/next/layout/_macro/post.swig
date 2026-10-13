@@ -34,6 +34,12 @@
     {% if not headlessPost %}
       <header class="post-header">
 
+        {% if post.series %}
+          <div class="post-series">
+            {{ post.series }}{% if post.series_order %} · 第 {{ post.series_order }} 讲{% endif %}
+          </div>
+        {% endif %}
+
         {# Not to show title for quote posts that do not have a title #}
         {% if not (is_index and post.type === 'quote' and not post.title) %}
           <{% if theme.seo %}h2{% else %}h1{% endif %} class="post-title{% if post.direction && post.direction.toLowerCase() === 'rtl' %} rtl{% endif %}" itemprop="name headline">{#

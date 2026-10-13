@@ -1,18 +1,37 @@
-// Local-first typography: system sans for the interface, a readable Chinese
-// serif for long-form notes, and a stable monospace stack for mathematics/code.
+// Local-first typography: a quiet sans-serif interface and a scholarly serif
+// stack for long-form mathematical notes.
 body
   font-family -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif
 
 .post,
 .post-body
-  font-family "Noto Serif SC", "Songti SC", "STSong", "Times New Roman", serif
+  font-family "STIX Two Text", "Latin Modern Roman", "Times New Roman", "Noto Serif SC", "Songti SC", "STSong", serif
+  font-size 17px
+  line-height 1.86
   min-width 0
   overflow-wrap break-word
 
 .post-title,
 .post-title-link,
 h1, h2, h3, h4, h5, h6
-  font-family "Iowan Old Style", "Noto Serif SC", "Songti SC", "STSong", serif
+  font-family "STIX Two Text", "Latin Modern Roman", "Times New Roman", "Noto Serif SC", "Songti SC", "STSong", serif
+  letter-spacing 0
+
+.post-series
+  margin-bottom .8em
+  color #176d73
+  font-family -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif
+  font-size .78em
+  font-weight 600
+  letter-spacing .02em
+
+.post-body p
+  margin-top 0
+  margin-bottom 1.05em
+
+.post-body blockquote
+  font-family "STIX Two Text", "Latin Modern Roman", "Times New Roman", "Noto Serif SC", "Songti SC", "STSong", serif
+  line-height 1.75
 
 code,
 pre,

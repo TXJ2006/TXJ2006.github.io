@@ -10,7 +10,7 @@
   --accent-dark: #0f5156;
   --warm: #a54e39;
   --soft: #f5f7f6;
-  --serif: "Times New Roman", Times, "Noto Serif SC", "Songti SC", serif;
+  --serif: "STIX Two Text", "Latin Modern Roman", "Times New Roman", "Noto Serif SC", "Songti SC", "STSong", serif;
   --sans: Arial, "Microsoft YaHei", "Noto Sans SC", sans-serif;
   --radius: 4px;
 }
@@ -417,9 +417,9 @@ a {
 
 .post-content {
   color: var(--content);
-  font-family: var(--sans);
-  font-size: 16px;
-  line-height: 1.78;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.86;
 }
 
 .post-content h1,

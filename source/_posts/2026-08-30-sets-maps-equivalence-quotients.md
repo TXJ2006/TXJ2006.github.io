@@ -1,6 +1,10 @@
 ---
 title: "从相等到等价：集合、映射与商结构"
 date: 2026-08-30 21:10:00
+series: 代数拓扑入门讲义
+series_order: 2
+subtitle: 从集合论基础到商集的泛性质
+description: 从集合论基础到商集的泛性质
 categories:
   - 理论数学
 tags:
@@ -16,13 +20,13 @@ toc_number: false
 comments: true
 ---
 
-把区间 $[0,1]$ 的两个端点粘在一起，会得到圆周。但这句话需要两次说明：先证明“粘在一起”确实给出一个集合，再证明赋予商拓扑后它与圆周同胚。环路的同伦类、整数的同余类，也从类似的识别开始。
+把区间 $[0,1]$ 的两个端点识别，可以得到圆周。但这一说法包含两个层次：先在集合层面构造等价类，再证明赋予商拓扑后的空间与圆周同胚。环路的同伦类和整数的同余类都由类似的识别产生。
 
-本文从集合、映射和等价关系走到商集，重点放在一个反复使用的判断：若要用代表元 $x$ 给等价类 $[x]$ 定义一个值，什么时候结果不依赖代表元？答案是商集的泛性质。最后把它写成 Grodal 讲义使用的余等化子语言；读者只需先理解具体的分解公式，不必预先学习范畴论。
+本讲义依次讨论集合、映射、等价关系与商集。核心问题是：用代表元 $x$ 为等价类 $[x]$ 定义值时，何时该定义与代表元的选择无关？商集的泛性质给出了统一答案。最后将这一结论表述为 Grodal 讲义中的余等化子；理解具体的分解公式即可，不要求预先掌握范畴论。
 
 <!--more-->
 
-## 1. 集合：先确定我们在谈论哪些对象
+## 1. 集合及其基本运算
 
 集合是若干对象组成的整体。若对象 $x$ 属于集合 $A$，写作
 
@@ -275,9 +279,9 @@ $$
 映射 $f:X\to Y$ 称为**单射**，如果
 
 $$
-f(x&#95;1)=f(x&#95;2)
+f(x_1)=f(x_2)
 \quad\Longrightarrow\quad
-x&#95;1=x&#95;2.
+x_1=x_2.
 $$
 
 换言之，不同输入不会得到同一个输出。
@@ -319,17 +323,17 @@ $$
 每个集合 $X$ 都有恒等映射
 
 $$
-\operatorname{id}&#95;X:X\to X,
+\operatorname{id}_X:X\to X,
 \qquad
-\operatorname{id}&#95;X(x)=x.
+\operatorname{id}_X(x)=x.
 $$
 
 它满足
 
 $$
-f\circ\operatorname{id}&#95;X=f,
+f\circ\operatorname{id}_X=f,
 \qquad
-\operatorname{id}&#95;Y\circ f=f.
+\operatorname{id}_Y\circ f=f.
 $$
 
 映射复合满足结合律。若还有 $h:Z\to W$，则
@@ -355,22 +359,22 @@ $$
 若存在映射 $g:Y\to X$ 满足
 
 $$
-g\circ f=\operatorname{id}&#95;X,
+g\circ f=\operatorname{id}_X,
 \qquad
-f\circ g=\operatorname{id}&#95;Y,
+f\circ g=\operatorname{id}_Y,
 $$
 
 则称 $g$ 是 $f$ 的逆映射，记作 $f^{-1}$。这个记号和集合原像使用同样的符号，但对象不同：$f^{-1}:Y\to X$ 是一个映射，而 $f^{-1}(B)$ 是 $X$ 的一个子集。
 
 **定理 2.1**　映射 $f:X\to Y$ 存在逆映射，当且仅当 $f$ 是双射。
 
-**证明。** 先设 $f$ 存在逆映射 $g$。若 $f(x&#95;1)=f(x&#95;2)$，在两边应用 $g$，得到
+**证明。** 先设 $f$ 存在逆映射 $g$。若 $f(x_1)=f(x_2)$，在两边应用 $g$，得到
 
 $$
-x&#95;1
-=g(f(x&#95;1))
-=g(f(x&#95;2))
-=x&#95;2,
+x_1
+=g(f(x_1))
+=g(f(x_2))
+=x_2,
 $$
 
 所以 $f$ 是单射。对任意 $y\in Y$，取 $x=g(y)$，则
@@ -381,20 +385,20 @@ $$
 
 所以 $f$ 是满射，因而是双射。
 
-反过来设 $f$ 是双射。对每个 $y\in Y$，满射性保证至少存在一个 $x\in X$ 使 $f(x)=y$，单射性保证这样的 $x$ 至多一个。把这个唯一的 $x$ 记为 $x&#95;y$，定义
+反过来设 $f$ 是双射。对每个 $y\in Y$，满射性保证至少存在一个 $x\in X$ 使 $f(x)=y$，单射性保证这样的 $x$ 至多一个。把这个唯一的 $x$ 记为 $x_y$，定义
 
 $$
-g(y):=x&#95;y,
+g(y):=x_y,
 \qquad
-f(x&#95;y)=y.
+f(x_y)=y.
 $$
 
 由定义，$g(f(x))=x$ 且 $f(g(y))=y$，所以
 
 $$
-g\circ f=\operatorname{id}&#95;X,
+g\circ f=\operatorname{id}_X,
 \qquad
-f\circ g=\operatorname{id}&#95;Y.
+f\circ g=\operatorname{id}_Y.
 $$
 
 故 $g=f^{-1}$。证毕。
@@ -414,7 +418,7 @@ $$
 $$
 x\leq y
 \quad\Longleftrightarrow\quad
-(x,y)\in R&#95;{\leq}.
+(x,y)\in R_{\leq}.
 $$
 
 集合之间的包含关系、整数之间的整除关系、平面上两点之间的距离关系，也都可以按这种方式写成笛卡尔积的子集。
@@ -501,24 +505,24 @@ $$
 
 最后设存在 $z\in[x]\cap[y]$。于是 $z\sim x$ 且 $z\sim y$。由对称性，$x\sim z$；再与 $z\sim y$ 使用传递性，得到 $x\sim y$。三个条件因此互相等价。证毕。
 
-一个集合 $X$ 的**划分**是一族非空子集 $\lbrace P&#95;i\rbrace&#95;{i\in I}$，满足
+一个集合 $X$ 的**划分**是一族非空子集 $\lbrace P_i\rbrace_{i\in I}$，满足
 
 $$
-X=\bigcup&#95;{i\in I}P&#95;i,
+X=\bigcup_{i\in I}P_i,
 $$
 
-并且当 $i\neq j$ 时，$P&#95;i\cap P&#95;j=\varnothing$。这里 $I$ 是给各个子集编号的指标集。划分的意思是：每个 $x\in X$ 恰好落在其中一块。
+并且当 $i\neq j$ 时，$P_i\cap P_j=\varnothing$。这里 $I$ 是给各个子集编号的指标集。划分的意思是：每个 $x\in X$ 恰好落在其中一块。
 
 **定理 4.2**　集合 $X$ 上的等价关系与 $X$ 的划分一一对应。
 
 **证明。** 给定等价关系 $\sim$，自反性说明 $x\in[x]$，所以所有等价类覆盖 $X$；命题 4.1 说明不同等价类不相交。因此互不相同的等价类构成一个划分。
 
-反过来，给定划分 $\lbrace P&#95;i\rbrace&#95;{i\in I}$，定义
+反过来，给定划分 $\lbrace P_i\rbrace_{i\in I}$，定义
 
 $$
 x\sim y
 \quad\Longleftrightarrow\quad
-(\exists i\in I)\quad (x\in P&#95;i)\land(y\in P&#95;i).
+(\exists i\in I)\quad (x\in P_i)\land(y\in P_i).
 $$
 
 每个元素都与自己位于同一块，所以关系自反；“位于同一块”与顺序无关，所以关系对称；若 $x,y$ 位于同一块且 $y,z$ 位于同一块，由于划分中的不同块不相交，包含 $y$ 的两块必须相同，所以 $x,z$ 位于同一块，关系传递。
@@ -654,21 +658,21 @@ $$
 给定任意映射 $f:X\to Y$，可以在 $X$ 上定义关系
 
 $$
-x\sim&#95;f y
+x\sim_f y
 \quad\Longleftrightarrow\quad
 f(x)=f(y).
 $$
 
 下标 $f$ 表示这个关系由映射 $f$ 决定。它是等价关系：
 
-- 因为 $f(x)=f(x)$，所以 $x\sim&#95;f x$；
+- 因为 $f(x)=f(x)$，所以 $x\sim_f x$；
 - 若 $f(x)=f(y)$，则 $f(y)=f(x)$，所以关系对称；
 - 若 $f(x)=f(y)$ 且 $f(y)=f(z)$，则 $f(x)=f(z)$，所以关系传递。
 
 等价类
 
 $$
-[x]&#95;f
+[x]_f
 =
 \lbrace x'\in X:f(x')=f(x)\rbrace
 $$
@@ -676,35 +680,35 @@ $$
 正是单点 $\lbrace f(x)\rbrace$ 的原像，也称为 $f$ 在 $f(x)$ 上的**纤维**：
 
 $$
-[x]&#95;f=f^{-1}(\lbrace f(x)\rbrace).
+[x]_f=f^{-1}(\lbrace f(x)\rbrace).
 $$
 
-映射 $f$ 在每条纤维上取同一个值，因此按照定理 5.1，它通过商集 $X/\!\sim&#95;f$ 唯一分解。
+映射 $f$ 在每条纤维上取同一个值，因此按照定理 5.1，它通过商集 $X/\!\sim_f$ 唯一分解。
 
 **定理 6.1（映射的标准分解）**　映射 $f:X\to Y$ 诱导一个双射
 
 $$
-\widetilde f:X/\!\sim&#95;f
+\widetilde f:X/\!\sim_f
 \longrightarrow
 \operatorname{im}f,
 \qquad
-\widetilde f([x]&#95;f)=f(x).
+\widetilde f([x]_f)=f(x).
 $$
 
-**证明。** 良定义性来自 $\sim&#95;f$ 的定义：若 $[x]&#95;f=[y]&#95;f$，则 $f(x)=f(y)$。
+**证明。** 良定义性来自 $\sim_f$ 的定义：若 $[x]_f=[y]_f$，则 $f(x)=f(y)$。
 
 若
 
 $$
-\widetilde f([x]&#95;f)=\widetilde f([y]&#95;f),
+\widetilde f([x]_f)=\widetilde f([y]_f),
 $$
 
-则 $f(x)=f(y)$，所以 $x\sim&#95;f y$，进而 $[x]&#95;f=[y]&#95;f$。因此 $\widetilde f$ 是单射。
+则 $f(x)=f(y)$，所以 $x\sim_f y$，进而 $[x]_f=[y]_f$。因此 $\widetilde f$ 是单射。
 
 任取 $z\in\operatorname{im}f$。像集的定义保证存在 $x\in X$ 使 $z=f(x)$，于是
 
 $$
-z=\widetilde f([x]&#95;f).
+z=\widetilde f([x]_f).
 $$
 
 所以 $\widetilde f$ 是满射，最终为双射。证毕。
@@ -714,7 +718,7 @@ $$
 $$
 X
 \xrightarrow{\ q\ }
-X/\!\sim&#95;f
+X/\!\sim_f
 \xrightarrow{\ \widetilde f\ }
 \operatorname{im}f
 \xrightarrow{\ \iota\ }
@@ -727,7 +731,7 @@ $$
 f=\iota\circ\widetilde f\circ q.
 $$
 
-后面学习群同态时，关系 $x\sim&#95;f y$ 会由一个正规子群描述，定理 6.1 会升级为第一同构定理。此处的集合论分解正是那个定理的骨架。
+后面学习群同态时，关系 $x\sim_f y$ 会由一个正规子群描述，定理 6.1 会升级为第一同构定理。此处的集合论分解正是那个定理的骨架。
 
 ## 7. 三个商结构的例子
 
@@ -738,7 +742,7 @@ $$
 $$
 \mathbb Z/n\mathbb Z
 :=
-\mathbb Z/\!\equiv&#95;n.
+\mathbb Z/\!\equiv_n.
 $$
 
 它包含 $n$ 个等价类，可以写成
@@ -1017,16 +1021,16 @@ $$
 设 $f:X\to Y$ 与 $g:Y\to Z$ 都是单射。若
 
 $$
-(g\circ f)(x&#95;1)=(g\circ f)(x&#95;2),
+(g\circ f)(x_1)=(g\circ f)(x_2),
 $$
 
 则
 
 $$
-g(f(x&#95;1))=g(f(x&#95;2)).
+g(f(x_1))=g(f(x_2)).
 $$
 
-由 $g$ 的单射性，$f(x&#95;1)=f(x&#95;2)$；再由 $f$ 的单射性，$x&#95;1=x&#95;2$。因此 $g\circ f$ 是单射。
+由 $g$ 的单射性，$f(x_1)=f(x_2)$；再由 $f$ 的单射性，$x_1=x_2$。因此 $g\circ f$ 是单射。
 
 ### C.2 满射的复合仍是满射
 
@@ -1043,13 +1047,13 @@ $$
 若存在 $g:Y\to X$ 使
 
 $$
-g\circ f=\operatorname{id}&#95;X,
+g\circ f=\operatorname{id}_X,
 $$
 
-则 $f$ 必为单射。因为若 $f(x&#95;1)=f(x&#95;2)$，应用 $g$ 后得到
+则 $f$ 必为单射。因为若 $f(x_1)=f(x_2)$，应用 $g$ 后得到
 
 $$
-x&#95;1=g(f(x&#95;1))=g(f(x&#95;2))=x&#95;2.
+x_1=g(f(x_1))=g(f(x_2))=x_2.
 $$
 
 此时 $g$ 称为 $f$ 的左逆。
@@ -1057,7 +1061,7 @@ $$
 若存在 $h:Y\to X$ 使
 
 $$
-f\circ h=\operatorname{id}&#95;Y,
+f\circ h=\operatorname{id}_Y,
 $$
 
 则 $f$ 必为满射。对任意 $y\in Y$，取 $x=h(y)$，便有 $f(x)=y$。此时 $h$ 称为 $f$ 的右逆。
