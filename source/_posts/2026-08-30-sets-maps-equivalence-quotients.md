@@ -16,9 +16,9 @@ toc_number: false
 comments: true
 ---
 
-现代数学中有一个反复出现的动作：先规定哪些对象应当被视为相同，再把每一批彼此等价的对象压缩成一个新对象。整数的同余类、群的陪集、环路的同伦类以及分析学中的函数商空间，都使用这套做法。
+把区间 $[0,1]$ 的两个端点粘在一起，会得到圆周。但这句话需要两次说明：先证明“粘在一起”确实给出一个集合，再证明赋予商拓扑后它与圆周同胚。环路的同伦类、整数的同余类，也从类似的识别开始。
 
-这项构造从集合开始。映射记录元素怎样被送往另一个集合；等价关系把元素分成互不相交的类；商集再把每一个等价类看成一个新的点。它们共同导向商集的泛性质：只要一个映射在每个等价类上取值相同，它就会唯一地下降为商集上的映射。抽象代数、拓扑学和分析学会沿着不同方向反复使用这个结论。
+本文从集合、映射和等价关系走到商集，重点放在一个反复使用的判断：若要用代表元 $x$ 给等价类 $[x]$ 定义一个值，什么时候结果不依赖代表元？答案是商集的泛性质。最后把它写成 Grodal 讲义使用的余等化子语言；读者只需先理解具体的分解公式，不必预先学习范畴论。
 
 <!--more-->
 
@@ -647,6 +647,8 @@ $$
 
 “泛性质”刻画的是商集面对任意目标集合 $Y$ 和任意类内常值映射 $f$ 时的共同性质。商群、商环与商空间会保留同样的分解形式，同时要求诱导映射保持相应的代数或拓扑结构。
 
+这也是 Grodal 等人《Categories and Topology》第 1.8 节所说的**余等化子**的一个具体例子。令 $R=\lbrace(x,y)\in X\times X:x\sim y\rbrace$，两个投影 $p_1,p_2:R\to X$ 分别取出 $x$ 和 $y$。商映射满足 $q\circ p_1=q\circ p_2$。反过来，任意满足 $f\circ p_1=f\circ p_2$ 的 $f:X\to Y$，恰好在每个等价类上为常值，因此由定理 5.1 唯一分解为 $f=\overline f\circ q$。这里先有逐点可查的等式，才有“余等化子”这个名称。
+
 ## 6. 每个映射都在制造一个商
 
 给定任意映射 $f:X\to Y$，可以在 $X$ 上定义关系
@@ -798,7 +800,7 @@ $$
 \cong S^1.
 $$
 
-符号 $\cong$ 在这里只表示存在自然双射。要进一步断言两边是同胚的拓扑空间，还必须给商集配备商拓扑，并证明诱导双射及其逆映射连续。这部分将在点集拓扑篇中完成。
+到目前为止只证明了集合的双射。再给 $[0,1]/(0\sim1)$ 配备商拓扑：集合 $O$ 开，当且仅当 $q^{-1}(O)$ 在 $[0,1]$ 中开。由于 $p=\widetilde p\circ q$ 连续，商拓扑的定义立即给出诱导双射 $\widetilde p:[0,1]/(0\sim1)\to S^1$ 连续。商空间是紧的（它是紧区间的连续像），圆周是 Hausdorff 空间；连续双射从紧空间到 Hausdorff 空间，其逆映射也连续。于是这一次的 $\cong$ 可以加强为同胚。证明最后一句只需看闭集：紧空间中的闭集仍紧，其像在 Hausdorff 空间中闭，所以 $\widetilde p^{-1}$ 的闭集原像为闭集。
 
 ### 7.3 同伦类
 
@@ -826,7 +828,7 @@ $$
 
 证明集合相等时，可以逐点证明双包含；处理映射时，必须同时记住定义域与陪域；在代表元上写公式时，必须检查良定义性；把对象按等价关系取商后，类内常值映射会唯一地通过商集分解。
 
-从这里可以分别进入抽象代数、拓扑学与分析学。下一篇先沿抽象代数方向，从集合上的二元运算开始定义群，并依次证明单位元与逆元的唯一性、消去律、子群判别法以及群同态的基本性质。模 $n$ 同余类会从一个商集变成带有运算的代数结构。
+从这里可以沿两条已经出现的线索继续：给 $\mathbb Z/n\mathbb Z$ 定义运算，必须先检查良定义性；给区间端点商集配备拓扑，则要检查诱导映射是否连续。两者都不是新的“粘合技巧”，而是在同一泛性质上增加结构。
 
 ## 参考文献
 
@@ -835,7 +837,8 @@ $$
 3. Serge Lang, *Algebra*, Revised Third Edition, Springer, 2002.
 4. Paolo Aluffi, *Algebra: Chapter 0*, American Mathematical Society, 2009.
 5. James R. Munkres, *Topology*, Second Edition, Prentice Hall, 2000.
-6. Allen Hatcher, *Algebraic Topology*, Cambridge University Press, 2002.
+6. Allen Hatcher, *Algebraic Topology*, Cambridge University Press, 2002, Chapter 0 (quotient spaces and cell attachments). [Author's site](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf).
+7. Jesper Grodal et al., *Categories and Topology*, University of Copenhagen lecture notes, Section 1.8 (coequalizers in sets). [Course notes](https://web.math.ku.dk/~jg/papers/cattop.pdf).
 
 ---
 

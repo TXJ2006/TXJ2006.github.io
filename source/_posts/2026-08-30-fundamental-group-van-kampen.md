@@ -14,15 +14,15 @@ toc: true
 comments: true
 ---
 
-第一篇文章里，同调把“洞”翻译成了可以计算的群。但同调有一个明显的遗憾：它只记录环路相加后的结果，不记录环路经过的先后顺序。两个环路先走哪一个、后走哪一个，在同调群里会被交换掉；在基本群里却可能得到不同的元素。
+在八字形上，从交点出发先绕左圈再绕右圈，和先绕右圈再绕左圈，是同一条环路吗？只数两个圈各走了几次，答案看起来一样；若记录行走顺序，答案可能不同。这正是第一同调群与基本群的分界。
 
-这篇文章只讨论一个问题：怎样把“环路可以连续变形”组织成一个群。我们会从环路和同伦的定义开始，计算圆周的基本群，解释八字形为什么产生自由群，最后介绍 van Kampen 定理如何把大空间的基本群分解成小空间的基本群。所有新记号都在首次出现时说明，完整的计算放在附录中。
+本文沿着 Hatcher 第一章的计算路线，从带基点的环路出发，先算圆周，再算八字形，最后用 van Kampen 定理处理粘合带来的关系。正文给出每一步要解决的问题，路径提升和群运算的证明放在附录。涉及“把两部分粘合”时，我们也会指出它与 Grodal 讲义中泛性质的联系。
 
 <!--more-->
 
-## 0. 预备语言：我们究竟在什么对象上运算
+## 0. 阅读约定
 
-为了让后面的证明可以独立阅读，先固定几条基本定义。一个**拓扑空间**是一个集合 $X$ 和一族子集 $\mathcal{T}$，其中 $\mathcal{T}$ 中的集合称为开集，并满足：空集 $\varnothing$ 和 $X$ 本身是开集；任意多个开集的并仍是开集；有限多个开集的交仍是开集。写作
+正文可以从第 1 节的环路开始读。本节只固定证明中会用到的词语；集合、映射、商集的细节见[《从相等到等价》](/2026/08/30/2026-08-30-sets-maps-equivalence-quotients/)。一个**拓扑空间**是一个集合 $X$ 和一族子集 $\mathcal{T}$，其中 $\mathcal{T}$ 中的集合称为开集，并满足：空集 $\varnothing$ 和 $X$ 本身是开集；任意多个开集的并仍是开集；有限多个开集的交仍是开集。写作
 
 $$
 (X,\mathcal{T}).
@@ -50,7 +50,7 @@ $$
 
 其中各 $E_j$ 两两不交且开，并且每个限制 $p|_{E_j}:E_j\to W$ 都是同胚。这样的 $W$ 称为被均匀覆盖的邻域。直观上，覆盖映射把底空间的每个小片复制成许多互不相交、形状相同的小片。
 
-如果恒等映射可以在整个空间中连续变形为某个常值映射，就称空间**可缩**；如果子空间 $A\subseteq X$ 可以在 $X$ 内连续变形到一点，并且变形过程中 $A$ 中的点仍留在 $A$ 中，就称 $A$ 在 $X$ 中**形变收缩**。可缩空间的基本群只有单位元。
+如果恒等映射可以在整个空间中连续变形为某个常值映射，就称空间**可缩**。说 $A\subseteq X$ 是 $X$ 的**形变收缩核**，则要求存在连续映射 $H:X\times[0,1]\to X$，满足 $H(x,0)=x$、$H(x,1)\in A$，而且对每个 $a\in A$ 和每个 $t$ 都有 $H(a,t)=a$。这比“$A$ 本身可缩”强得多，也不是同一句话。可缩空间的基本群只有单位元。
 
 如果 $G$ 和 $H$ 是群，映射 $\varphi:G\to H$ 满足
 
@@ -181,7 +181,7 @@ p:\mathbb{R}\longrightarrow S^1,
 p(u)=(\cos 2\pi u,\sin 2\pi u).
 $$
 
-实数轴每增加 $1$，$p(u)$ 就在圆周上多走一圈。若环路 $\gamma$ 满足 $\gamma(0)=\gamma(1)=x_0$，并且存在唯一提升 $\widetilde\gamma$ 使
+实数轴每增加 $1$，$p(u)$ 就在圆周上多走一圈。对每条满足 $\gamma(0)=\gamma(1)=x_0$ 的环路，路径提升定理给出唯一提升 $\widetilde\gamma$，使
 
 $$
 \widetilde\gamma(0)=0,\qquad p(\widetilde\gamma(t))=\gamma(t),
@@ -242,7 +242,7 @@ $$
 \pi_1(S^1_a\vee S^1_b,x_0)\cong F(a,b).
 $$
 
-为什么这里不是 $\mathbb{Z}^2$？因为 $\mathbb{Z}^2$ 要求 $ab=ba$，而八字形中的两条基本环路没有二维区域把交换子
+为什么这里不是 $\mathbb{Z}^2$？因为 $\mathbb{Z}^2$ 要求 $ab=ba$，而八字形中的两条基本环路没有二维胞腔把交换子
 
 $$
 aba^{-1}b^{-1}
@@ -294,7 +294,7 @@ $$
 \pi_1(V,x_0).
 $$
 
-右侧的符号 $\ast_{\pi_1(U\cap V,x_0)}$ 表示**带 amalgamation 的自由积**。它的意思是：先把 $U$ 和 $V$ 的基本群自由地拼在一起，再把交集中的同一条环路在两边的像识别起来。
+右侧的符号 $\ast_{\pi_1(U\cap V,x_0)}$ 表示**带识别关系的自由积**：先把 $U$ 和 $V$ 的基本群自由地拼在一起，再把交集中的同一条环路在两边的像识别起来。Grodal 讲义第 1.8 节称这种由两支映射共同决定的对象为推出（pushout）；这里的定理说明，在上述开覆盖与道路连通条件下，基本群可由相应的群推出计算。附录 D 展开证明所需的路径切分。
 
 如果 $U\cap V$ 可缩，则
 
@@ -342,7 +342,7 @@ $$
 \langle a\mid a^2=1\rangle
 $$
 
-表示由生成元 $a$ 生成、并加入关系 $a^2=1$ 的群。这个例子说明 van Kampen 的实际作用：每加入一个二维胞腔，就可能给一维环路加入一个关系。
+表示由生成元 $a$ 生成、并加入关系 $a^2=1$ 的群。这个例子说明 van Kampen 的实际作用：附着圆盘时，原先绕边界的环路变成可缩的；附着映射所走出的字因此成为一个关系。一般的二维胞腔也是这样计算，但需要先写清附着映射代表的字。
 
 ## 7. 基本群与第一同调群的关系
 
@@ -376,11 +376,12 @@ $$
 
 ## 参考文献
 
-1. A. Hatcher, *Algebraic Topology*, Cambridge University Press, 2002, Chapter 1. [Author's site](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf).
-2. R. M. Brown, *Topology and Groupoids*, BookSurge, 2006.
-3. E. H. Spanier, *Algebraic Topology*, McGraw--Hill, 1966.
-4. J. P. May, *A Concise Course in Algebraic Topology*, University of Chicago Press, 1999.
-5. C. R. F. Maunder, *Algebraic Topology*, Cambridge University Press, 1980.
+1. A. Hatcher, *Algebraic Topology*, Cambridge University Press, 2002, Chapter 1, especially Sections 1.1--1.2. [Author's site](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf).
+2. J. Grodal et al., *Categories and Topology*, University of Copenhagen lecture notes, Section 1.8 (pushouts). [Course notes](https://web.math.ku.dk/~jg/papers/cattop.pdf).
+3. R. M. Brown, *Topology and Groupoids*, BookSurge, 2006.
+4. E. H. Spanier, *Algebraic Topology*, McGraw--Hill, 1966.
+5. J. P. May, *A Concise Course in Algebraic Topology*, University of Chicago Press, 1999.
+6. C. R. F. Maunder, *Algebraic Topology*, Cambridge University Press, 1980.
 
 ---
 
@@ -1053,14 +1054,13 @@ $$
 其中 $F(S)$ 表示以集合 $S$ 为自由生成元的自由群。
 
 每个 2-单纯形 $\sigma$ 的边界沿三个有向边行走，代入对应的 $\ell_e$ 并约去树路径，得到自由群中的关系字 $r_\sigma$。逐个附着 2-单纯形并应用 D 的粘合证明，得到
-每个 2-单纯形 $\sigma$ 的边界沿三个有向边行走，代入对应的 $\ell_e$ 并约去树路径，得到自由群中的关系字 $r_\sigma$。逐个附着 2-单纯形并应用 D 的粘合证明，得到
 
 $$
 \pi_1(X,v_0)\cong
 F(\ell_e\mid e\in E_{\mathrm{nt}})/\langle\!\langle r_\sigma\rangle\!\rangle.
 $$
 
-高于 2 维的单纯形不会给基本群增加新的关系，因为它们的边界维数至少为 2；等价地，基本群只由 2-骨架决定。
+高于 2 维的胞腔不会再改变基本群：附着一个 $n\geq3$ 维胞腔时，其附着球面 $S^{n-1}$ 是单连通的，开邻域版 van Kampen 定理表明基本群不再增加生成元或关系。因此基本群由 2-骨架决定。
 
 现在对上式阿贝尔化。自由群的阿贝尔化把每个 $\ell_e$ 变成一个整数坐标，因此
 

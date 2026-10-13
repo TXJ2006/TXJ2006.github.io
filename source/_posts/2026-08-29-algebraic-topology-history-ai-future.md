@@ -15,15 +15,15 @@ toc: true
 comments: true
 ---
 
-代数拓扑最初并不是为了给数据寻找特征，也不是为了服务于机器学习。它诞生于一个更古老的问题：当一个空间被连续地拉伸、弯曲，却没有被撕裂或粘合时，究竟什么东西保持不变？Poincare 在十九世纪末提出这个问题时，现代计算机尚不存在；一个多世纪之后，人工智能又让这个问题获得了新的应用场景，但问题本身仍然是数学的。
+一条闭合曲线围住了什么，和它有多长、弯得多厉害，是两类不同的问题。前者要求我们先说清楚允许怎样变形，再寻找变形中不变的东西。Poincare 的 *Analysis Situs* 是这条思路的早期系统尝试；基本群、同调和上同调把它发展为可以计算的理论。
 
-本文从 Poincare 的 *Analysis Situs* 讲起，沿着同调、同伦、范畴和持续同调的路线，说明代数拓扑怎样把连续的形状转成可计算的代数对象。最后再回到 AI，讨论拓扑结构能提供什么数学约束，以及它不能替代什么。
+本文先从一个容易画错的例子出发：线段弯成“8”字形时，究竟是哪一个空间变了？接着用链与边界计算圆周的洞，说明为什么一个整数或一个 Betti 数还不够。持久同调和 AI 放在最后讨论，因为它们依赖前面的数学，而不能反过来替代定义与证明。经典部分主要参照 Hatcher；涉及映射、链复形和泛性质的组织方式，则参考 Grodal 等人的公开讲义。
 
 <!--more-->
 
 ## 1. Poincare 的问题：如何描述一个会变形的空间
 
-如果只问一个图形有多长、多大、弯曲得多厉害，微积分和微分几何已经有一套成熟语言。但有些性质与长度和角度无关：一个圆环中间有一个洞，正方形的边界围出一个洞；把它们拉伸，洞仍然在那里。另一方面，如果“弯曲”始终指保持嵌入的连续变形，一条线段无论弯曲多大，也不会变成一个圆。
+长度、面积和曲率会随几何形状改变，圆周上的闭合路径能否在圆周内缩成一点却不会。这里必须先固定研究对象：若只是在平面中移动一条嵌入的线段，它始终同胚于区间；若把两点粘起来，得到的则是另一个空间。下面的自交例子把这一区别说得更具体。
 
 ### 1.1 自交并不是反例，而是换了研究对象
 
@@ -50,7 +50,7 @@ $$
 所以
 
 $$
-\beta&#95;1(X)=E-V+1=2.
+b&#95;1(X)=E-V+1=2.
 $$
 
 这说明它有两个独立的一维环。此时参数化曲线的定义域仍可以是一个圆周，甚至可以用一个区间从头走到尾；但曲线的**像**已经是两个圆在交点处的粘合，不能再把它当作原来的嵌入线段。
@@ -76,7 +76,7 @@ $$
 其中一个区域是无界区域，所以有 $n+1$ 个有界区域；另一方面，连通图的第一 Betti 数为
 
 $$
-\beta&#95;1=E-V+1=n+1.
+b&#95;1=E-V+1=n+1.
 $$
 
 在这个平面图情形下，“有多少个独立的环”和“补空间有多少个有界区域”恰好相等。Alexander 对偶性把这种现象写成
@@ -91,9 +91,9 @@ $$
 
 这类对象早已有系统理论。Jordan 曲线定理研究无自交闭曲线如何把平面分成内外两部分；Whitney–Graustein 定理研究允许自交的正则闭曲线，并证明它们在正则同伦下由旋转数分类；计算拓扑中还会把自交曲线编码成 image graph、face 和 Gauss code。若曲线实际位于三维空间，平面图上的交叉还可能只是投影中的交叉，这又进入结理论和 Reidemeister moves。
 
-因此需要先决定什么叫“同一种形状”。代数拓扑通常不要求两个空间保持距离，只要求它们之间存在连续的双射及连续的逆映射，这叫**同胚**。在很多问题中，还会进一步放宽到**同伦等价**：允许一个连续映射逐渐变形成另一个映射。一个圆盘可以收缩到一个点，所以它与一点同伦等价；圆周却不能这样收缩，因为圆周中间的洞阻止了这个过程。
+因此需要先决定什么叫“同一种形状”。存在连续双射且逆映射也连续时，两个空间**同胚**。另一种更宽的关系是**同伦等价**：存在 $f:X\to Y$ 与 $g:Y\to X$，使 $g\circ f$ 和 $f\circ g$ 分别同伦于各自的恒等映射。圆盘与一点同伦等价，却不同胚；圆周不与一点同伦等价，后面计算的 $H&#95;1(S^1)$ 会给出理由。这里比较的是空间本身，不能把“某条画在平面上的曲线看起来变圆了”当作同伦等价的定义。
 
-Poincare 在 1895 年发表 *Analysis Situs*，提出了一个影响深远的方向：不要直接追踪空间的每一个点，而是为整个空间构造一些在连续变形下保持不变的量。这个想法把问题从“画出空间”转成了“提取空间的代数指纹”。
+Poincare 在 1895 年发表 *Analysis Situs*。它留下的计算问题是：能否从空间的一个剖分出发，构造不依赖于剖分细节的不变量？
 
 最早的指纹之一是 Euler 示性数。对一个有限三角剖分，记顶点、边和三角形的个数分别为 $V,E,F$，定义
 
@@ -103,7 +103,7 @@ $$
 
 一个球面的三角剖分可以有不同数量的顶点和边，但 $\chi$ 总是 $2$；环面的 Euler 示性数则是 $0$。这已经说明，计数并不只是计数：交替相减后，局部剖分的细节会被抵消，剩下的是整体形状的一部分。
 
-但 Euler 示性数仍然过于粗糙。球面和某些其他空间可能有相同的 $\chi$，却并不具有相同的拓扑结构。我们需要的不只是一个数，而是一组能够记录不同维度洞的代数对象。这就引出了同调。
+但 Euler 示性数只有一个整数，无法说明差异发生在哪个维度。例如 $\mathbb{R}P^2$ 与 $S^1\vee S^2$ 都有 $\chi=1$；它们的第一整数同调分别是 $\mathbb Z/2\mathbb Z$ 和 $\mathbb Z$。前者有一个二阶元素，后者则有无限阶元素，单看 $\chi$ 根本读不出来。同调群正是为了保留这些信息。
 
 ## 2. 同调：把“洞”变成可以计算的群
 
@@ -154,21 +154,29 @@ $$
 \chi=\sum&#95;{k\geq0}(-1)^kb&#95;k.
 $$
 
-这条公式解释了上一节的 $V-E+F$ 为什么能抵抗三角剖分的改变：链群的维数交替和，等于同调群维数的交替和；边界映射带来的部分在相邻维度中正好抵消。
+这条公式解释了上一节的 $V-E+F$ 为什么与同调有关：链群的秩交替相加时，相邻维度的边界部分互相抵消，剩下同调群自由部分的秩。要证明它不依赖剖分，还需要同调的拓扑不变性；仅靠这个计数恒等式并不足以推出这一点。附录 E 写出了秩的抵消过程。
 
 但同调并没有回答所有问题。两个空间可能有相同的同调群，却有不同的基本群；一个空间的局部环路如何相乘，不能仅靠“有几个洞”描述。于是人们研究基本群 $\pi&#95;1$、高阶同伦群和上同调。与同调相比，同伦群通常更难计算，却保留了更多关于连续映射的信息。
 
-二十世纪上半叶，代数拓扑的语言从“为每个空间指定一个群”逐渐转向“空间之间的映射也必须被记录”。一个连续映射 $f:X\to Y$ 会诱导同调群之间的映射
+只给每个空间列一张同调群表仍不够。一个连续映射 $f:X\to Y$ 还会诱导同调群之间的映射
 
 $$
 f&#95;*:H&#95;k(X)\to H&#95;k(Y).
 $$
 
-如果 $f$ 和 $g$ 同伦，那么它们诱导的同调映射相同。这使 $H&#95;k$ 不只是一个数字计算器，而是一个从拓扑空间到代数对象的函子：空间的结构通过映射被传递到代数中。
+如果 $f$ 和 $g$ 同伦，那么它们诱导的同调映射相同。对可复合的映射 $f,g$，还有
+
+$$
+H&#95;k(g\circ f)=H&#95;k(g)\circ H&#95;k(f),
+\qquad
+H&#95;k(\operatorname{id}&#95;X)=\operatorname{id}&#95;{H&#95;k(X)}.
+$$
+
+复合与恒等映射这两条规则是“同调是函子”的具体含义。Grodal 的《Categories and Topology》从对象与映射及其复合出发组织理论；这里我们只借用这层语言，不预设读者已经学过讲义后面的单纯集或高阶范畴。
 
 Eilenberg 与 Mac Lane 在 1945 年关于自然变换的工作，把这种“映射之间的映射”提升为范畴论语言。范畴论有时会让初学者觉得过于抽象，但它解决了一个实在的问题：当我们有很多种不变量、很多种构造时，怎样区分自然出现的关系和人为拼接的公式？
 
-从这个角度看，代数拓扑的历史并不是从几何跳到代数后就结束了，而是经历了三次扩展：先记录空间，再记录空间之间的映射，最后记录不同构造之间的兼容关系。
+例如，同一空间可以用不同的剖分计算同调；真正有用的结论不只是两次计算得到同构的群，还要说明这些同构与连续映射相容。这正是自然性要回答的问题。这里的次序是先理解一个空间的计算，再理解映射如何作用于计算结果。
 
 ## 4. 现代观点：过滤、持久同调与结构定理
 
@@ -301,18 +309,19 @@ $$
 1. H. Poincare, “Analysis Situs,” *Journal de l'École Polytechnique*, 1895. [Gallica](https://gallica.bnf.fr/ark:/12148/bpt6k4336762/f285.item).
 2. E. Betti, “Sopra gli spazi di un numero qualunque di dimensioni,” *Annali di Matematica Pura ed Applicata*, 1871.
 3. S. Eilenberg and S. Mac Lane, “General Theory of Natural Equivalences,” *Transactions of the American Mathematical Society*, 1945. [JSTOR](https://www.jstor.org/stable/1990284).
-4. A. Hatcher, *Algebraic Topology*, Cambridge University Press, 2002. [Author's site](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf).
-5. H. Edelsbrunner and J. Harer, *Computational Topology: An Introduction*, American Mathematical Society, 2010. [AMS](https://bookstore.ams.org/mbk-69/).
-6. R. Ghrist, “Barcodes: The Persistent Topology of Data,” *Bulletin of the American Mathematical Society*, 2008. [Project Euclid](https://projecteuclid.org/journals/bulletin-of-the-american-mathematical-society/volume-45/issue-1/Barcodes-The-persistent-topology-of-data/10.1090/S0273-0979-07-01191-3.full).
-7. G. Carlsson, “Topology and Data,” *Bulletin of the American Mathematical Society*, 2009. [Project Euclid](https://projecteuclid.org/journals/bulletin-of-the-american-mathematical-society/volume-46/issue-2/Topology-and-data/10.1090/S0273-0979-09-01249-X.full).
-8. M. M. Bronstein, J. Bruna, Y. LeCun, A. Szlam, and P. Vandergheynst, “Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges,” *IEEE Signal Processing Magazine*, 2021. [arXiv](https://arxiv.org/abs/2104.13478).
-9. G. de Rham, “Sur l'analysis situs des variétés à $n$ dimensions,” *Journal de Mathématiques Pures et Appliquées*, 1931.
-10. E. H. Spanier, *Algebraic Topology*, McGraw–Hill, 1966.
-11. M. Hajij et al., “Topological Deep Learning: Going Beyond Graph Data,” 2023. [arXiv](https://arxiv.org/abs/2206.00606).
-12. H. Whitney, “On regular closed curves on the plane,” *Compositio Mathematica*, 4 (1937), 276–284.
-13. H. Geiges, “A contact geometric proof of the Whitney–Graustein Theorem,” 2007. [arXiv](https://arxiv.org/abs/0801.0046).
-14. J. Erickson, “Generic Planar Curves,” *Computational Topology* lecture notes, 2023. [Notes](https://jeffe.cs.illinois.edu/teaching/comptop/2023/notes/06-generic-curves.html).
-15. D. S. Dummit and R. M. Foote, *Abstract Algebra*, 3rd ed., Wiley, 2004.
+4. A. Hatcher, *Algebraic Topology*, Cambridge University Press, 2002, Chapters 0--3. [Author's site](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf).
+5. J. Grodal et al., *Categories and Topology*, University of Copenhagen lecture notes, Sections 1.1--1.2, 1.8 and 3.2. [Course notes](https://web.math.ku.dk/~jg/papers/cattop.pdf). 这份讲义更进阶，本文只借用其中与链复形、映射和泛性质有关的视角。
+6. H. Edelsbrunner and J. Harer, *Computational Topology: An Introduction*, American Mathematical Society, 2010. [AMS](https://bookstore.ams.org/mbk-69/).
+7. R. Ghrist, “Barcodes: The Persistent Topology of Data,” *Bulletin of the American Mathematical Society*, 2008. [Project Euclid](https://projecteuclid.org/journals/bulletin-of-the-american-mathematical-society/volume-45/issue-1/Barcodes-The-persistent-topology-of-data/10.1090/S0273-0979-07-01191-3.full).
+8. G. Carlsson, “Topology and Data,” *Bulletin of the American Mathematical Society*, 2009. [Project Euclid](https://projecteuclid.org/journals/bulletin-of-the-american-mathematical-society/volume-46/issue-2/Topology-and-data/10.1090/S0273-0979-09-01249-X.full).
+9. M. M. Bronstein, J. Bruna, Y. LeCun, A. Szlam, and P. Vandergheynst, “Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges,” *IEEE Signal Processing Magazine*, 2021. [arXiv](https://arxiv.org/abs/2104.13478).
+10. G. de Rham, “Sur l'analysis situs des variétés à $n$ dimensions,” *Journal de Mathématiques Pures et Appliquées*, 1931.
+11. E. H. Spanier, *Algebraic Topology*, McGraw–Hill, 1966.
+12. M. Hajij et al., “Topological Deep Learning: Going Beyond Graph Data,” 2023. [arXiv](https://arxiv.org/abs/2206.00606).
+13. H. Whitney, “On regular closed curves on the plane,” *Compositio Mathematica*, 4 (1937), 276–284.
+14. H. Geiges, “A contact geometric proof of the Whitney–Graustein Theorem,” 2007. [arXiv](https://arxiv.org/abs/0801.0046).
+15. J. Erickson, “Generic Planar Curves,” *Computational Topology* lecture notes, 2023. [Notes](https://jeffe.cs.illinois.edu/teaching/comptop/2023/notes/06-generic-curves.html).
+16. D. S. Dummit and R. M. Foote, *Abstract Algebra*, 3rd ed., Wiley, 2004.
 
 ---
 
