@@ -44,6 +44,18 @@ The important point is that continuity belongs to the joint map $H(x,t)$. A coll
   <p><strong>A first calculation.</strong> For $f,g:\mathbb R\to\mathbb R$ given by $f(x)=x$ and $g(x)=x^2$, set $H(x,t)=(1-t)x+tx^2$. This is a polynomial in $(x,t)$, hence continuous, and it satisfies the two endpoint conditions. Therefore $f\simeq g$. The formula is more informative than the picture: it tells us exactly what every point does at every time.</p>
 </div>
 
+The relation $\simeq$ is an equivalence relation on maps with the same domain and codomain. Reflexivity uses the constant homotopy $H(x,t)=f(x)$. If $H$ runs from $f$ to $g$, then $H(x,1-t)$ runs from $g$ to $f$. Finally, if $H$ runs from $f$ to $g$ and $K$ runs from $g$ to $h$, concatenate them by
+
+$$
+L(x,t)=
+\begin{cases}
+H(x,2t),&0\leq t\leq\frac12,\\
+K(x,2t-1),&\frac12\leq t\leq1.
+\end{cases}
+$$
+
+The two formulas agree at $t=\frac12$ because $H(x,1)=g(x)=K(x,0)$, so the pasting lemma makes $L$ continuous. This elementary fact is what allows us to speak of a map's homotopy class.
+
 ## 2. Retractions and the fixed part of a deformation
 
 Let $A\subseteq X$ be a subspace. A **retraction** of $X$ onto $A$ is a map $r:X\to A$ satisfying
@@ -129,10 +141,10 @@ This relation is weaker than homeomorphism. A homeomorphism preserves the whole 
 ## 6. Exercises for this reading
 
 1. Verify directly that the annulus formula above is continuous and fixes $C$ pointwise.
-2. Show that every constant map $X\to\{a\}$ is a retraction onto a point, but that this alone does not give a deformation retraction.
+2. For a point $a\in X$, show that the constant map $X\to\{a\}$ is a retraction onto the subspace $\{a\}$, but that the existence of this retraction alone does not give a deformation retraction.
 3. Write an explicit homotopy between two constant maps $\mathbb R^m\to\mathbb R^n$.
 
-The next note will read Hatcher's CW-complex construction. The quotient description there will be our first place where a geometric picture and a precise topological construction must be kept together.
+The next note will read quotient spaces and attaching maps before turning to Hatcher's CW-complex construction. This will be our first place where a geometric picture and a precise topological construction must be kept together.
 
 ## Sources
 
