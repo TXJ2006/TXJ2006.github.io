@@ -1,0 +1,40 @@
+{
+  "notes": [
+    "Supplement I: Measure, Integration, and Lebesgue Spaces",
+    "Supplement II: Weak Derivatives and Sobolev Spaces"
+  ],
+  "sources": [
+    {
+      "author": "Sheldon Axler",
+      "title": "Measure, Integration & Real Analysis",
+      "version": "12 June 2026",
+      "source_page": "https://measure.axler.net/",
+      "url": "https://measure.axler.net/MIRA.pdf",
+      "local_file": "MIRA.pdf",
+      "sha256": "7a7ab07fb74f5394c3180da51875ec467a0d89627321c8b2624b6b9b9585fb4e",
+      "license": "CC BY-NC 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "changes": "The PDF is unmodified. The article screenshot crops Example 1.14, printed page 9, PDF page 24."
+    },
+    {
+      "author": "John K. Hunter",
+      "title": "Notes on Partial Differential Equations",
+      "version": "18 June 2014",
+      "source_page": "https://www.math.ucdavis.edu/~hunter/pdes/pdes.html",
+      "url": "https://www.math.ucdavis.edu/~hunter/pdes/pde_notes.pdf",
+      "sections": "1.9, 3.1-3.11, 4.1-4.5",
+      "local_file": null,
+      "license": "No redistribution license identified; author-hosted link retained."
+    },
+    {
+      "author": "Cheng Wei",
+      "title": "Real Variable Theory (Chinese)",
+      "version": "21 December 2019",
+      "source_page": "http://maths.nju.edu.cn/~chengwei/",
+      "url": "http://maths.nju.edu.cn/~chengwei/teaching/ln.pdf",
+      "sections": "Chapters 3-5, pages 41-92",
+      "local_file": null,
+      "license": "No redistribution license identified; author-hosted link retained."
+    }
+  ]
+}

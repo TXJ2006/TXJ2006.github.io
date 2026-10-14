@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="510" viewBox="0 0 820 510" role="img" aria-labelledby="title desc">
+  <title id="title">A corner and a jump have different distributional derivatives</title>
+  <desc id="desc">The graph of absolute value is continuous with a corner at zero. Its derivative is minus one on the left and plus one on the right. A step has a jump from zero to one; its distributional derivative is the Dirac mass at zero.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0 0 L6 3.5 L0 7" fill="#8e3f38"/></marker>
+  </defs>
+  <rect width="820" height="510" fill="#fff"/>
+  <style>
+    text { font-family: "Iowan Old Style", Baskerville, Georgia, serif; font-size: 18px; fill: #252525; }
+    .heading { font-size: 23px; }
+    .math { font-style: italic; }
+    .axis { stroke: #949494; stroke-width: 1; fill: none; }
+    .curve { stroke: #296861; stroke-width: 3; fill: none; }
+    .point { stroke: #296861; stroke-width: 2; fill: white; }
+    .label { font-size: 16px; }
+  </style>
+  <text class="heading" x="205" y="35" text-anchor="middle">A corner</text>
+  <text class="heading" x="615" y="35" text-anchor="middle">A jump</text>
+  <text class="math" x="205" y="67" text-anchor="middle">u(x) = |x|</text>
+  <text class="math" x="615" y="67" text-anchor="middle">h(x) = 1 if x &gt; 0, else 0</text>
+  <path class="axis" d="M70 213 H345 M205 92 V225 M480 213 H755 M615 92 V225"/>
+  <path class="curve" d="M80 103 L205 213 L330 103 M490 213 H615 M615 103 H740"/>
+  <circle class="point" cx="615" cy="103" r="5"/>
+  <circle cx="615" cy="213" r="4" fill="#296861"/>
+  <text class="label" x="199" y="244">0</text><text class="math" x="345" y="233">x</text>
+  <text class="label" x="609" y="244">0</text><text class="math" x="755" y="233">x</text>
+  <text class="label" x="187" y="108">1</text><text class="label" x="597" y="108">1</text>
+  <text x="205" y="283" text-anchor="middle">Distributional derivative</text>
+  <text x="615" y="283" text-anchor="middle">Distributional derivative</text>
+  <path class="axis" d="M70 372 H345 M205 304 V435 M480 414 H755 M615 304 V435"/>
+  <path class="curve" d="M80 422 H205 M205 322 H330"/>
+  <circle class="point" cx="205" cy="422" r="5"/><circle class="point" cx="205" cy="322" r="5"/>
+  <text class="label" x="168" y="328">1</text><text class="label" x="165" y="447">-1</text>
+  <text class="label" x="211" y="389">0</text><text class="math" x="345" y="393">x</text>
+  <path d="M615 414 V327" stroke="#8e3f38" stroke-width="3" marker-end="url(#arrow)"/>
+  <text class="label" x="633" y="344">mass 1</text>
+  <text class="label" x="609" y="458">0</text><text class="math" x="755" y="435">x</text>
+  <text class="math" x="205" y="489" text-anchor="middle">u' = sign(x), an integrable function</text>
+  <text x="615" y="489" text-anchor="middle">h' = Dirac mass at 0</text>
+</svg>
