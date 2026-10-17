@@ -21,6 +21,21 @@ figure. The complete book remains available at the author's page.
 Source: https://pi.math.cornell.edu/~hatcher/AT/AT.pdf
 Author page: https://pi.math.cornell.edu/~hatcher/AT/ATpage.html
 
+`notes/assets/algebraic-topology/quotient-interval-circle.svg`,
+`cell-attachment.svg`, and `cw-skeletons.svg` are original diagrams made for
+the reading notes. Their mathematical content follows the quotient and CW
+complex constructions in Hatcher, Chapter 0; they do not reproduce a source
+figure.
+
+`notes/assets/algebraic-topology/hatcher-ch0-cell-complexes-excerpt.png`
+is a cropped excerpt from Allen Hatcher, *Algebraic Topology*, Chapter 0,
+p. 5 (PDF p. 14). It is used in the second reading note to identify the
+source's examples of surfaces and polygonal cell attachments. The crop
+changes only the page boundaries.
+
+Source: https://pi.math.cornell.edu/~hatcher/AT/AT.pdf
+Author page: https://pi.math.cornell.edu/~hatcher/AT/ATpage.html
+
 `notes/assets/analysis/axler-example-1-14.png` is a cropped excerpt of
 Example 1.14, printed p. 9 (PDF p. 24), in Sheldon Axler,
 *Measure, Integration & Real Analysis*, PDF dated 12 June 2026.

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 280" role="img" aria-labelledby="title desc">
+  <title id="title">Building a CW complex by skeleta</title>
+  <desc id="desc">A point becomes a graph after attaching one-cells, then a surface after attaching a two-cell.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#344054"/>
+    </marker>
+    <style>
+      .title{font:600 24px Georgia,"Times New Roman",serif;fill:#20313a}
+      .label{font:20px Georgia,"Times New Roman",serif;fill:#334e59}
+      .math{font:italic 29px Georgia,"Times New Roman",serif;fill:#20313a}
+      .node{fill:#fff;stroke:#197b7c;stroke-width:4}
+      .edge{fill:none;stroke:#197b7c;stroke-width:6}
+      .cell{fill:#f5f0db;stroke:#b47a18;stroke-width:4}
+    </style>
+  </defs>
+  <rect width="1120" height="280" fill="#f7faf9"/>
+  <text x="75" y="45" class="title">start</text>
+  <circle cx="90" cy="147" r="18" class="node"/>
+  <text x="90" y="210" class="math" text-anchor="middle">X⁰</text>
+  <path d="M150 147 H302" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="226" y="120" class="label" text-anchor="middle">attach 1-cells</text>
+  <circle cx="400" cy="147" r="62" class="node"/>
+  <path d="M400 147 L400 85 M400 147 L453 178 M400 147 L347 178" class="edge"/>
+  <circle cx="400" cy="147" r="9" fill="#b44c50"/>
+  <text x="400" y="245" class="math" text-anchor="middle">X¹</text>
+  <path d="M480 147 H635" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="557" y="120" class="label" text-anchor="middle">attach 2-cells</text>
+  <circle cx="770" cy="147" r="78" class="node"/>
+  <path d="M710 175 C735 102 806 91 837 131 C865 167 843 204 801 211 C751 220 717 208 710 175 Z" class="cell"/>
+  <path d="M729 148 C751 120 792 116 818 137 C839 154 833 178 807 188 C774 201 740 185 729 166" class="edge"/>
+  <text x="770" y="258" class="math" text-anchor="middle">X²</text>
+  <path d="M895 147 H1050" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="972" y="205" class="label" text-anchor="middle">continue inductively</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 360" role="img" aria-labelledby="title desc">
+  <title id="title">Attaching a disk to a space</title>
+  <desc id="desc">The boundary of a disk is mapped into a space X and the quotient glues the disk to X.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#344054"/>
+    </marker>
+    <style>
+      .title{font:600 24px Georgia,"Times New Roman",serif;fill:#20313a}
+      .label{font:20px Georgia,"Times New Roman",serif;fill:#334e59}
+      .math{font:italic 29px Georgia,"Times New Roman",serif;fill:#20313a}
+      .space{fill:#eaf5f2;stroke:#197b7c;stroke-width:4}
+      .disk{fill:#f5f0db;stroke:#b47a18;stroke-width:4}
+      .boundary{fill:none;stroke:#b44c50;stroke-width:7}
+    </style>
+  </defs>
+  <rect width="1080" height="360" fill="#f7faf9"/>
+  <text x="190" y="45" class="title" text-anchor="middle">before gluing</text>
+  <text x="860" y="45" class="title" text-anchor="middle">after gluing</text>
+  <path d="M74 211 C74 132 180 92 267 137 C330 170 326 255 253 284 C166 319 74 288 74 211 Z" class="space"/>
+  <text x="200" y="214" class="math" text-anchor="middle">X</text>
+  <circle cx="384" cy="211" r="75" class="disk"/>
+  <circle cx="384" cy="211" r="61" class="boundary"/>
+  <text x="384" y="217" class="math" text-anchor="middle">Dⁿ</text>
+  <text x="384" y="316" class="label" text-anchor="middle">∂Dⁿ = Sⁿ⁻¹</text>
+  <path d="M324 211 H273" fill="none" stroke="#b44c50" stroke-width="4" stroke-dasharray="8 7"/>
+  <text x="300" y="181" class="math" text-anchor="middle">f</text>
+  <path d="M508 211 H650" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="579" y="181" class="math" text-anchor="middle">quotient</text>
+  <path d="M726 216 C726 142 823 100 907 139 C968 168 966 253 898 282 C820 314 726 288 726 216 Z" class="space"/>
+  <path d="M760 202 C779 164 831 147 873 165 C907 180 910 224 878 243 C835 268 777 252 760 218 Z" class="disk"/>
+  <text x="822" y="211" class="math" text-anchor="middle">X ∪f Dⁿ</text>
+</svg>
