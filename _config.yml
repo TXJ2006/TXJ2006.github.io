@@ -93,3 +93,7 @@ theme_config:
     codes:
       external: false
       family: ui-monospace
+  # The local preview must remain visible even when the legacy animation
+  # bundle is not executed by the embedded browser.
+  motion:
+    enable: false

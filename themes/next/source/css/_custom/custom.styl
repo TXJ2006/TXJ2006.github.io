@@ -237,3 +237,27 @@ pre,
     display block
     overflow-x auto
     white-space nowrap
+
+// These figures already have a hand-written figcaption and reading guide.
+// Keep the accessible alt text without NexT repeating it beneath the image.
+.post-body .concept-visual .image-caption
+  display none
+
+.post-body .exercise-check
+  margin 1em 0 1.4em
+  padding .55em .85em
+  border-left 3px solid #197b7c
+  background #f6f9f7
+
+.post-body .exercise-check summary
+  cursor pointer
+  color #315d62
+  font-weight 600
+  line-height 1.6
+
+.post-body .exercise-check p
+  margin .65em 0 .2em
+  text-indent 0
+
+.post-body .exercise-check p
+  text-align left
