@@ -1,0 +1,141 @@
+{
+  "sources": [
+    {
+      "id": "imo2003",
+      "author": "International Mathematical Olympiad",
+      "title": "44th IMO 2003: Problems",
+      "version": "official English problem sheet",
+      "url": "https://www.imo-official.org/assets/documents/problems/2003/2003_eng.pdf",
+      "accessed": "2026-10-27",
+      "sha256": "af5d5c538beb1566d90733f08ee7f735c2745a433a3ec8d1f6223bf879950fa5",
+      "read_physical_pages": [
+        1
+      ]
+    },
+    {
+      "id": "mcs2018",
+      "author": "Eric Lehman; F. Thomson Leighton; Albert R. Meyer",
+      "title": "Mathematics for Computer Science",
+      "version": "6 June 2018 revision",
+      "url": "https://courses.csail.mit.edu/6.042/spring18/mcs.pdf",
+      "accessed": "2026-10-27",
+      "sha256": "ea4ced500d4a4bae7beb7a72ae9784abb96ed656ad905976f54c828cf6337dc1",
+      "read_physical_pages": [
+        328,
+        329,
+        519,
+        520,
+        521
+      ]
+    },
+    {
+      "id": "stanley2013",
+      "author": "Richard P. Stanley",
+      "title": "Topics in Algebraic Combinatorics",
+      "version": "1 February 2013",
+      "url": "https://math.mit.edu/~rstan/algcomb/algcomb.pdf",
+      "accessed": "2026-10-27",
+      "sha256": "9218eb3abc51d3f306d5072e33aae59d53be0942f6cb9a7ac3313e60a2ee3c2c",
+      "read_physical_pages": [
+        42,
+        43,
+        190,
+        191,
+        192,
+        193,
+        194
+      ]
+    },
+    {
+      "id": "jukna-draft",
+      "author": "Stasys Jukna",
+      "title": "Extremal Combinatorics",
+      "version": "author-hosted Draft; undated; not identified as a print edition",
+      "url": "https://web.vu.lt/mif/s.jukna/EC_Book_2nd/draft.pdf",
+      "accessed": "2026-10-27",
+      "sha256": "c56e7c1636af895c7c8ef8b0c3279541f60578d5559f21aa94729f9c751c082f",
+      "read_physical_pages": [
+        88,
+        89,
+        90,
+        147
+      ]
+    }
+  ],
+  "problems": [
+    {
+      "id": "001",
+      "source_ids": [
+        "imo2003"
+      ],
+      "locator": "Problem 1, p. 1",
+      "classification": "independent Chinese restatement of official competition problem",
+      "additions": "explicitly clarifies translates are not required to stay in S"
+    },
+    {
+      "id": "002",
+      "source_ids": [
+        "mcs2018"
+      ],
+      "locator": "Problem 8.14, printed pp. 320-321, physical pp. 328-329",
+      "classification": "exercise adaptation",
+      "additions": "recursive-layer solution; overlapping underlying sets and empty-set cases"
+    },
+    {
+      "id": "003",
+      "source_ids": [
+        "mcs2018"
+      ],
+      "locator": "section 12.5.2, Theorem 12.5.2, printed pp. 511-512; Theorem 12.5.4, p. 513",
+      "classification": "application adapted from Hall theorem",
+      "additions": "two uniform partitions decomposed into k common transversals; Hall theorem proved in solution"
+    },
+    {
+      "id": "004",
+      "source_ids": [
+        "stanley2013"
+      ],
+      "locator": "Corollary 4.8 and Lubell proof, printed pp. 53-54",
+      "classification": "theorem adaptation",
+      "additions": "complete equality classification via connected middle-level inclusion graph"
+    },
+    {
+      "id": "005",
+      "source_ids": [
+        "jukna-draft"
+      ],
+      "locator": "Chapter 8 section 4, Theorems 8.7-8.8, printed pp. 80-82",
+      "classification": "theorem adaptation",
+      "additions": "tight construction and antichain consequence written as explicit tasks"
+    },
+    {
+      "id": "006",
+      "source_ids": [
+        "jukna-draft",
+        "stanley2013"
+      ],
+      "locator": "Exercises 13.3-13.5, printed p. 139; Stanley Theorem 12.2, pp. 233-234",
+      "classification": "exercise adaptation",
+      "additions": "unique symmetric-difference formula in odd equality case; explicit zero-size boundary"
+    },
+    {
+      "id": "007",
+      "source_ids": [
+        "stanley2013"
+      ],
+      "locator": "Theorem 12.4, printed p. 237",
+      "classification": "theorem adaptation",
+      "additions": "lambda=0 sharp boundary; seven-set Fano construction"
+    },
+    {
+      "id": "008",
+      "source_ids": [
+        "stanley2013"
+      ],
+      "locator": "Theorem 12.3, printed pp. 235-236",
+      "classification": "theorem adaptation",
+      "additions": "set-pair language and direct homogeneous-equation solution; tight decomposition diagram"
+    }
+  ],
+  "policy": "Only verified sources and independently checked solutions enter the PDF. Mathematical conclusions are standard; independent exposition does not claim novelty."
+}
