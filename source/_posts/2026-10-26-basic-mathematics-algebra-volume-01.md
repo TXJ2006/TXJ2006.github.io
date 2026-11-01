@@ -14,4 +14,6 @@ comments: false
 
 本篇收录《代数学讲义·第一册》。系列现已更新至[第二册《群的结构理论》](/2026/10/29/2026-10-29-basic-mathematics-algebra-volume-02/)。
 
-[点击阅读《代数学讲义·第一册》（PDF，160 页）](/files/basic-mathematics/algebra-volume-01.pdf)
+[点击阅读《代数学讲义·第一册》（PDF，168 页，审阅修订稿）](/files/basic-mathematics/algebra-volume-01.pdf)
+
+[下载本次审阅修订稿的 LaTeX 源文件](/files/basic-mathematics/algebra-volume-01-review-source.zip)
