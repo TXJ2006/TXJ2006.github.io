@@ -20,4 +20,4 @@ comments: false
 
 本次发布版逐章检查了定义、定理依赖、交叉引用和公式排版，并对新增的 Lebesgue 微分、Radon--Nikodym、Stieltjes 测度与 Cantor 函数章节进行了重新编译和页面复核。参考层次对照 Lebl、Rudin、Folland 以及 Stein--Shakarchi 的经典教材。
 
-几何与拓扑第一册将单独规划，重点从点集拓扑和度量空间开始，逐步进入同伦、基本群、覆盖空间、CW 复形与同调之间的结构联系。
+[《几何与拓扑讲义·第一册：几何空间与点集拓扑基础》](/2026/11/01/2026-11-01-basic-mathematics-geometry-topology-volume-01/)现已发布，内容包括度量空间、点集拓扑、紧性、连通性与商空间。同伦、基本群、覆盖空间、CW 复形与同调由后续代数拓扑分册承接。
