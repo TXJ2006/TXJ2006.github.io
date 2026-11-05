@@ -1,6 +1,7 @@
 ---
 title: "基础数学系列：分析学第一册·实数、极限、微积分与测度"
 date: 2026-10-31 10:00:00
+updated: 2026-11-05 10:00:00
 categories:
   - 基础数学
   - 分析学
@@ -14,10 +15,12 @@ comments: false
 
 本篇发布《分析学讲义·第一册：实数、极限、微积分与测度》。全册从有序域和 Dedekind 分割出发，独立构造实数，证明实数完备性的多种等价形式，再建立级数、连续性、一元与多元微分、逆函数与隐函数、重积分和换元公式。后半册从 Lebesgue 外测度与可测集开始，逐步构造 Lebesgue 积分，证明 Fatou、控制收敛、Tonelli--Fubini、Hölder、Minkowski、$L^p$ 完备性、Lebesgue 微分定理、Radon--Nikodym 定理，以及绝对连续函数的 Lebesgue 版微积分基本定理。
 
-[阅读《分析学讲义·第一册》（PDF，248页）](/files/basic-mathematics/analysis-volume-01.pdf)
+[阅读《分析学讲义·第一册》（PDF，254页，实数基础配图修订版）](/files/basic-mathematics/analysis-volume-01.pdf)
 
-[下载第一册可编辑 LaTeX 源文件与终审记录](/files/basic-mathematics/analysis-volume-01-source.zip)
+[下载第一册可编辑 LaTeX 源文件、图件与审校记录](/files/basic-mathematics/analysis-volume-01-source.zip)
 
-本次发布版逐章检查了定义、定理依赖、交叉引用和公式排版，并对新增的 Lebesgue 微分、Radon--Nikodym、Stieltjes 测度与 Cantor 函数章节进行了重新编译和页面复核。参考层次对照 Lebl、Rudin、Folland 以及 Stein--Shakarchi 的经典教材。
+**2026年11月5日更新：实数基础配图修订版。** 保留全部二十九章，在第一至四章新增七幅图，说明上界、下界与确界的区别，确界的任意误差刻画，有理数的缺口，Dedekind 分割的无限并与交，Cauchy 数列的尾部控制，以及单调收敛与上确界的关系。相邻文字同步补充量词、端点归属和具体例子的解释。PDF 与源码包已同步更新，原下载地址保持不变。
+
+本轮修订已完成整册编译、七幅新图及其正文页面的复核；本轮未重新审校后续二十五章的全部证明。此前发布版的审校记录与本轮配图记录均保留在源码包中。参考层次对照 Lebl、Rudin、Folland 以及 Stein--Shakarchi 的经典教材。
 
 [《几何与拓扑讲义·第一册：几何空间与点集拓扑基础》](/2026/11/01/2026-11-01-basic-mathematics-geometry-topology-volume-01/)现已发布，内容包括度量空间、点集拓扑、紧性、连通性与商空间。同伦、基本群、覆盖空间、CW 复形与同调由后续代数拓扑分册承接。
