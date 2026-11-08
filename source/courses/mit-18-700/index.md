@@ -34,10 +34,10 @@ OCW 没有提供每一讲独立的 lecture-notes PDF；课程包中的 8 份 Stu
 6. [习题集 6（Problem Set 6）](/files/mit-18-700/problem-set-06.pdf)
 7. [习题集 7（Problem Set 7）](/files/mit-18-700/problem-set-07.pdf)
 8. [习题集 8（Problem Set 8）](/files/mit-18-700/problem-set-08.pdf)
-9. [习题集 9（课程页面版本）](/files/mit-18-700/problem-set-09.pdf)
-10. [习题集 9（课程包版本，日期修订前）](/files/mit-18-700/problem-set-09-course-package-version.pdf)
+9. [习题集 9（修订版）](/files/mit-18-700/problem-set-09.pdf)
+10. [习题集 9（旧版）](/files/mit-18-700/problem-set-09-course-package-version.pdf)
 
-第 9 份作业在 OCW 课程页面和下载包中各有一个版本：课程包版本的截止日期为 12 月 3 日，课程页面版本改为 12 月 4 日；两份均保留，便于核对课程包与在线页面的差异。
+课程包收录了第 9 份作业的两个版本：修订版将截止日期从 12 月 3 日改为 12 月 4 日，并修正了部分题目表述与公式。建议使用修订版；旧版另存供核对。
 
 ## 许可与出处
 
