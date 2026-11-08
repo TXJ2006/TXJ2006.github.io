@@ -9,6 +9,10 @@ comments: false
 
 > 资料由用户提供并上传，PDF 未作内容改动。除条目中明确标注开放许可的作品外，版权归原作者、出版社或相关权利人所有；使用和再分发时请遵守适用的版权与许可条款。
 
+## 课程学习记录
+
+[MIT 18.703 现代代数逐讲学习记录](/courses/mit-18-703/)
+
 ## 实分析、测度与泛函分析
 
 ### [《求真书院分析讲义》](/files/math-resources/qiuzhen-lectures-on-analysis.pdf)
