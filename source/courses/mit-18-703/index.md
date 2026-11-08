@@ -13,6 +13,33 @@ MIT OpenCourseWare 的 [18.703 Modern Algebra（2013 年春）](https://ocw.mit.
 - [课程大纲](https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/pages/syllabus/)与[教学日历](https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/pages/calendar/)
 - [讲义](https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/pages/lecture-notes/)、[作业](https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/pages/assignments/)与[考试](https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/pages/exams/)
 
+## 相关在线教材与学习指南
+
+这部分对应 MIT OCW 的[相关资源页](https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/pages/related-resources/)，是教师为课程学习补充的教材、学习指南和参考文章，与上面的逐讲课程讲义分开列出。
+
+### 可下载教材
+
+1. **《Elements of Abstract and Linear Algebra》（抽象代数与线性代数基础）** — Edwin H. Connell
+   - [本站 PDF](/files/mit-18-703/elements-of-abstract-and-linear-algebra.pdf)
+   - [作者主页与章节说明](https://www.math.miami.edu/~ec/book/author.html)
+   - 内容涵盖等价关系、群、环、矩阵环、线性代数及若干附录，重点放在线性代数与抽象代数的衔接。作者说明该书虽受版权保护，但鼓励读者下载、影印并用于教学。
+
+2. **《Abstract Algebra: Theory and Applications》（抽象代数：理论与应用）** — Thomas W. Judson
+   - [本站 PDF](/files/mit-18-703/abstract-algebra-theory-and-applications.pdf)
+   - [SFA ScholarWorks 书目页与原始下载入口](https://scholarworks.sfasu.edu/ebooks/23/)
+   - [Open Textbook Library 书目页](https://open.umn.edu/opentextbooks/textbooks/217)
+   - 这是开放教材，按群、环、整环、布尔代数、向量空间、域和 Galois 理论组织内容，并穿插密码学、编码理论与 Sage 计算。本站 PDF 保留作者和原出版机构信息；Open Textbook Library 标注其许可为 GNU Free Documentation License。
+
+### 在线学习指南
+
+3. **《Abstract Algebra: Study Guide》（抽象代数：学习指南）** — John A. Beachy、William D. Blair
+   - [作者提供的在线学习指南](http://www.math.niu.edu/~beachy/study_guide/)
+   - 这是配合《Abstract Algebra》教材使用的网页笔记。作者页面目前没有可确认的官方整本 PDF，因此本站提供原作者页面跳转，不托管未经核实的镜像文件。
+
+### 相关期刊文章
+
+- [Andrew Granville：It is easy to determine whether a given integer is prime](http://www.ams.org/journals/bull/2005-42-01/S0273-0979-04-01037-7/home.html)（AMS *Bulletin*）。MIT 说明第 22 讲的部分内容参考了这篇文章。
+
 ## 已同步的课程 PDF
 
 以下 37 份文件来自 MIT OCW 课程下载包，课程页面标注 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)。本站保留课程和文件出处，文件内容未作修改。OCW 课程包中没有视频文件或可下载的视频流，因此本页暂不托管视频。
