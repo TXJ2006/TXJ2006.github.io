@@ -162,6 +162,7 @@ menu:
   tags: /tags/ || tags
   categories: /categories/ || th
   数学资料: /math-resources/ || book
+  吉尔伯特线性代数: /courses/gilbert-linear-algebra/ || graduation-cap
   现代代数: /courses/mit-18-703/ || graduation-cap
   archives: /archives/ || archive
 

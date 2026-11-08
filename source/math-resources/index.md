@@ -11,6 +11,8 @@ comments: false
 
 ## 课程学习记录
 
+[吉尔伯特线性代数（Gilbert Strang）](/courses/gilbert-linear-algebra/)
+
 [MIT 18.703 现代代数逐讲学习记录](/courses/mit-18-703/)
 
 ## 实分析、测度与泛函分析
@@ -66,14 +68,6 @@ comments: false
 - **内容概述：** 从 Riemann 映射定理进入单叶函数的几何理论，讲解 Möbius 变换、Schwarz 引理、正规族、边界对应、素端、调和测度及多连通区域。后半部分研究单叶映射的系数估计、极值长度与其他共形不变量，最后介绍径向和弦向 Loewner 演化及 Loewner 链。
 
 ## 线性代数
-
-### [Introduction to Linear Algebra（完整 PDF）](/files/math-resources/strang-introduction-linear-algebra-6e.pdf)
-
-- **作者：** Gilbert Strang
-- **版本信息：** Sixth Edition，Wellesley-Cambridge Press，2023；ISBN 978-1-7331466-7-8
-- **本站授权副本：** [here](/files/math-resources/strang-introduction-linear-algebra-6e.pdf)
-- **内容概述：** 以线性方程组和矩阵分解为主线，发展向量空间、四个基本子空间、特征值与特征向量、正交性、最小二乘和奇异值分解等内容；第六版增加 A = CR 分解及新的应用材料。
-- **授权说明：** 完整 PDF 由用户在获得版权方明确授权后提供，本站未修改文件内容；请勿在授权范围之外复制或再分发。
 
 ### [Linear Algebra Done Right](/files/math-resources/axler-linear-algebra-done-right.pdf)
 
