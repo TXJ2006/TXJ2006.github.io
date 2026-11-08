@@ -161,6 +161,7 @@ menu:
   about: /about/ || user
   tags: /tags/ || tags
   categories: /categories/ || th
+  数学资料: /math-resources/ || book
   archives: /archives/ || archive
 
 # Enable / Disable menu icons / item badges.
