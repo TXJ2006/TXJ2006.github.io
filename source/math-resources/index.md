@@ -67,6 +67,20 @@ comments: false
 
 ## 线性代数
 
+### Introduction to Linear Algebra
+
+- **作者：** Gilbert Strang
+- **版本信息：** Sixth Edition，Wellesley-Cambridge Press，2023；ISBN 978-1-7331466-7-8
+- **完整教材：** [作者的第六版教材页面](https://math.mit.edu/~gs/linearalgebra/ila6/indexila6.html)提供纸本购买信息；[出版社页面](https://www.wellesleycambridge.com/)。
+- **可下载 PDF：** 作者网站提供[14 页的教材样章与 A = CR 补充内容](https://math.mit.edu/~gs/linearalgebra/ila6/Introduction%20to%20Linear%20Algebra%206th%20edition%20and%20A%20=%20CR_05.pdf)，以及[序言与目录](https://math.mit.edu/~gs/linearalgebra/ila6/Introduction%20to%20Linear%20Algebra%206th%20edition_02.pdf)和以下选编章节：
+  - [第 1.4 节：矩阵乘法 AB 与 CR 分解](https://math.mit.edu/~gs/linearalgebra/ila6/ila6_1_4.pdf)
+  - [第 2.2 节：消元矩阵与逆矩阵](https://math.mit.edu/~gs/linearalgebra/ila6/ila6_2_2.pdf)
+  - [第 3.5 节：四个子空间的维数](https://math.mit.edu/~gs/linearalgebra/ila6/ila6_3_5.pdf)
+  - [第 6.1 节：特征值导论](https://math.mit.edu/~gs/linearalgebra/ila6/ila6_6_1.pdf)
+  - [附录 1：AB 与 A+B 的秩](https://math.mit.edu/~gs/linearalgebra/ila6/ila6_app1.pdf)
+- **内容概述：** 以线性方程组和矩阵分解为主线，发展向量空间、四个基本子空间、特征值与特征向量、正交性、最小二乘和奇异值分解等内容；第六版增加 A = CR 分解及新的应用材料。
+- **获取说明：** 上述 PDF 是作者公开提供的样章、目录和选编章节，不是完整教材。完整书籍仍受版权保护，网站链接到作者和出版社的官方页面，不转载整本书。
+
 ### [Linear Algebra Done Right](/files/math-resources/axler-linear-algebra-done-right.pdf)
 
 - **作者：** Sheldon Axler
