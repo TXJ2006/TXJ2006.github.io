@@ -67,7 +67,7 @@ comments: false
 
 ## 线性代数
 
-### Introduction to Linear Algebra
+### [Introduction to Linear Algebra（完整 PDF）](/files/math-resources/strang-introduction-linear-algebra-6e.pdf)
 
 - **作者：** Gilbert Strang
 - **版本信息：** Sixth Edition，Wellesley-Cambridge Press，2023；ISBN 978-1-7331466-7-8
