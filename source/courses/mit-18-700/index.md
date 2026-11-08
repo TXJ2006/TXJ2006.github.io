@@ -7,9 +7,18 @@ comments: false
 
 MIT 18.700 Linear Algebra（2013 年秋季）由 David Vogan 教授讲授，课程以严格的理论和证明为主，涵盖向量空间、线性方程组、基与线性无关、矩阵、行列式、特征值、内积、二次型以及矩阵的标准形；相比 MIT 18.06，理论内容更深入。
 
-本页以 PDF 为主，整理 MIT OCW 课程包中可下载的全部资料：8 份补充讲义、9 份作业，以及课程包中保留的第 9 份作业旧版。PDF 均来自 [MIT 18.700 Linear Algebra（2013 年秋季）](https://ocw.mit.edu/courses/18-700-linear-algebra-fall-2013/) 官方课程资料。
+本页以 PDF 为主，整理 MIT OCW 课程包中可下载的全部资料：8 份补充讲义、9 份作业，以及课程包中保留的第 9 份作业旧版。上述 18 份课程 PDF 均来自 [MIT 18.700 Linear Algebra（2013 年秋季）](https://ocw.mit.edu/courses/18-700-linear-algebra-fall-2013/) 官方课程资料。
 
 OCW 没有提供每一讲独立的 lecture-notes PDF；课程包中的 8 份 Study Materials 补充讲义就是该课程公开提供的讲义文件，下面按其对应讲次列出。
+
+## 课程教材 PDF
+
+**Sheldon Axler：《Linear Algebra Done Right》（《线性代数应该这样学》）**
+
+- [下载／阅读教材 PDF（英文第 4 版，404 页）](/files/mit-18-700/axler-linear-algebra-done-right-4e.pdf)
+- 内容：向量空间、线性映射、特征值、内积空间、谱定理、奇异值分解、广义特征向量及多重线性代数。
+- **版本说明：** MIT 2013 年课程引用的是 Springer 2004 年版（ISBN 9780387982588）。这里提供的是作者公开发布的第 4 版，不能直接沿用课程中的页码和习题编号；完成作业时需核对版本。
+- 来源：[Sheldon Axler 作者网站](https://linear.axler.net/)；许可：[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)。PDF 原样保存，未修改内容。
 
 ## 已同步的补充讲义
 
