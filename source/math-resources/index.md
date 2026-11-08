@@ -47,6 +47,20 @@ comments: false
 - **版本信息：** 2023 年 6 月 27 日版本；471 页
 - **内容概述：** 从 Riemann 积分与外测度开始，建立 Lebesgue 测度、可测函数、Lebesgue 积分、收敛定理、微分定理和乘积测度；后半部分进入 Banach 空间、Hahn-Banach 定理、Baire 方法、(L^p) 空间、Hilbert 空间、算子、紧算子、谱理论和 Fourier 分析。该书明确标注为 **CC BY-NC 4.0 开放许可**，但第三方材料仍需按其标注处理。
 
+## 复分析与共形几何
+
+### [A Course in Complex Analysis](/files/math-resources/zakeri-course-complex-analysis.pdf)
+
+- **作者：** Saeed Zakeri
+- **版本信息：** Princeton University Press，2021；443 页
+- **内容概述：** 从全纯函数、复积分与 Cauchy 理论出发，讨论曲线同伦、绕数、留数、Möbius 变换、双曲度量、正规族和 Riemann 映射定理。后续章节涵盖调和函数、整函数零点、Mittag-Leffler 插值、解析延拓、Picard 定理、分歧覆盖、Riemann-Hurwitz 公式及球面域的一致化。
+
+### [Conformal Maps and Geometry](/files/math-resources/beliaev-conformal-maps-geometry.pdf)
+
+- **作者：** Dmitry Beliaev
+- **版本信息：** World Scientific，版权页标注 2020；240 页
+- **内容概述：** 从 Riemann 映射定理进入单叶函数的几何理论，讲解 Möbius 变换、Schwarz 引理、正规族、边界对应、素端、调和测度及多连通区域。后半部分研究单叶映射的系数估计、极值长度与其他共形不变量，最后介绍径向和弦向 Loewner 演化及 Loewner 链。
+
 ## 线性代数
 
 ### [Linear Algebra Done Right](/files/math-resources/axler-linear-algebra-done-right.pdf)
@@ -55,6 +69,14 @@ comments: false
 - **版本信息：** Fourth Edition，Springer，2024；917 页
 - **内容概述：** 以线性映射而非行列式计算为主线，系统讲解向量空间、有限维空间、线性映射、矩阵、商空间与对偶、多项式、特征值与特征向量、内积空间、谱定理、正算子、奇异值分解、复向量空间上的广义特征向量，以及多重线性代数和行列式。该书明确标注为 **CC BY-NC 4.0 开放许可**，适合与分析和几何课程并行阅读。
 
+## 数论
+
+### [Introduction to Number Theory](/files/math-resources/hill-introduction-number-theory.pdf)
+
+- **作者：** Richard Michael Hill
+- **版本信息：** World Scientific，2018；262 页
+- **内容概述：** 以具体整数问题为主线，先讲 Euclid 算法、中国剩余定理、素数和多项式环，再讨论模素数同余、Fermat 小定理、原根与二次互反律。后两章引入 Hensel 引理、p 进方法、二次整数环、连分数、Pell 方程及若干丢番图方程；书末提供习题解答。
+
 ## 数学结构、拓扑与范畴
 
 ### [An Elementary Overview of Mathematical Structures: Algebra, Topology and Categories](/files/math-resources/grandis-mathematical-structures.pdf)
@@ -62,6 +84,20 @@ comments: false
 - **作者：** Marco Grandis
 - **版本信息：** World Scientific，2021；393 页
 - **内容概述：** 以结构和保持结构的映射为统一视角，前两章介绍域、向量空间、群、格、半群、环、模和仿射空间；第三、四章讨论拓扑空间、连续映射、商空间、积空间、连通性、紧性、紧化、射影空间、曲面、度量空间和拓扑群；最后两章进入范畴、函子、自然变换、极限、余极限与伴随函子。
+
+## 代数拓扑与 K 理论
+
+### [Algebraic Topology: A Structural Introduction](/files/math-resources/grandis-algebraic-topology.pdf)
+
+- **作者：** Marco Grandis
+- **版本信息：** World Scientific，2022；372 页
+- **内容概述：** 从空间、映射、范畴和同伦入手，建立链复形与奇异同调，讨论 Mayer-Vietoris 序列、相对同调、切除定理及同调公理。后续章节涵盖系数变换、导出函子、泛系数定理、上同调乘积、基本群胚、van Kampen 定理和高阶同伦群的入门内容；附习题解答。
+
+### [Vector Bundles and K-Theory](/files/math-resources/hatcher-vector-bundles-k-theory.pdf)
+
+- **作者：** Allen Hatcher
+- **版本信息：** Version 2.1，2009 年 5 月；115 页
+- **内容概述：** 从向量丛的构造与分类进入拓扑 K 理论，讨论 K(X)、Bott 周期性、除代数、球面可平行化、Stiefel-Whitney 类、Chern 类、Euler 类、Pontryagin 类及 J-同态。目录中部分后续小节仍标为“未写”；阅读时应以本版实际正文为准。作者在扉页允许非商业用途的纸质或电子复制。
 
 ## 资料说明
 
