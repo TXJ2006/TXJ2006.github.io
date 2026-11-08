@@ -71,7 +71,7 @@ comments: false
 
 - **作者：** Gilbert Strang
 - **版本信息：** Sixth Edition，Wellesley-Cambridge Press，2023；ISBN 978-1-7331466-7-8
-- **本站授权副本：** [点击可看](/files/math-resources/strang-introduction-linear-algebra-6e.pdf)
+- **本站授权副本：** [here](/files/math-resources/strang-introduction-linear-algebra-6e.pdf)
 - **内容概述：** 以线性方程组和矩阵分解为主线，发展向量空间、四个基本子空间、特征值与特征向量、正交性、最小二乘和奇异值分解等内容；第六版增加 A = CR 分解及新的应用材料。
 - **授权说明：** 完整 PDF 由用户在获得版权方明确授权后提供，本站未修改文件内容；请勿在授权范围之外复制或再分发。
 
