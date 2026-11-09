@@ -7,6 +7,10 @@ comments: false
 
 本页整理 Gilbert Strang 的线性代数教材，以及 MIT OpenCourseWare 18.06SC Linear Algebra（2011 年秋季）的课程 PDF。课程从线性方程组与矩阵消元出发，逐步讨论四个基本子空间、正交投影、最小二乘、行列式、特征值、正定矩阵和奇异值分解。
 
+## 学习笔记
+
+[读书与做题笔记](/courses/gilbert-linear-algebra/notes/)
+
 ## 教材
 
 ### Introduction to Linear Algebra
