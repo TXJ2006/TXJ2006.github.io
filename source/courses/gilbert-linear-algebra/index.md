@@ -11,7 +11,7 @@ comments: false
 
 [读书与做题笔记](/courses/gilbert-linear-algebra/notes/)
 
-第一节：[线性方程的几何：阅读笔记与习题分析](/courses/gilbert-linear-algebra/notes/#session-01)
+第一节：[线性方程的几何：阅读笔记与习题分析](/courses/gilbert-linear-algebra/notes/session-01/)
 
 ## 教材
 
