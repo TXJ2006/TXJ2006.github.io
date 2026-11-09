@@ -86,6 +86,35 @@ A\mathbf x=x_1\mathbf a_1+\cdots+x_n\mathbf a_n,
 \]</div>
 <p>\(\mathbb R^n\) 表示实数 \(n\) 元组组成的空间。<strong>列数决定输入坐标数，行数决定输出坐标数。</strong>计算 \(A\mathbf x\) 是已知输入求输出；解 \(A\mathbf x=\mathbf b\) 是已知目标求输入。</p>
 
+<h3 id="columns-and-inputs">为什么右乘列向量，组合的是列？</h3>
+<p>列向量把坐标竖着排，行向量把坐标横着排，它们在乘法中位置不同。仍用上面的矩阵 \(A\)：</p>
+<div class="equation">\[
+A\begin{pmatrix}1\\0\end{pmatrix}=\mathbf a_1,
+\qquad
+A\begin{pmatrix}0\\1\end{pmatrix}=\mathbf a_2.
+\]</div>
+<p><strong>第一列记录第一个坐标方向的输出，第二列记录第二个坐标方向的输出。</strong>任意输入都能拆成这两个方向的组合；利用线性性质：</p>
+<div class="equation">\[
+\begin{aligned}
+A\begin{pmatrix}x\\y\end{pmatrix}
+&amp;=A\left(x\begin{pmatrix}1\\0\end{pmatrix}+y\begin{pmatrix}0\\1\end{pmatrix}\right)\\
+&amp;=x\mathbf a_1+y\mathbf a_2.
+\end{aligned}
+\]</div>
+<p>因此，\(x,y\) 分别决定两列的倍数。按行计算时，每一行只算出<strong>一个输出坐标</strong>；按列组合时，每一列都是<strong>完整的输出向量</strong>。</p>
+<h3 id="rows-and-elimination">行也能组合：把行向量放在左边</h3>
+<p>记 \(A\) 的两行为 \(\mathbf r_1,\mathbf r_2\)，则：</p>
+<div class="equation">\[
+\begin{pmatrix}s&amp;t\end{pmatrix}A
+=s\mathbf r_1+t\mathbf r_2.
+\]</div>
+<p>右侧列向量的系数组合列，左侧行向量的系数组合行。这正是下一节消元的基础：</p>
+<div class="equation">\[
+\begin{pmatrix}1&amp;0\\-2&amp;1\end{pmatrix}A
+=\begin{pmatrix}\mathbf r_1\\\mathbf r_2-2\mathbf r_1\end{pmatrix}.
+\]</div>
+<p>左边矩阵的每一行分别规定一种行组合：保留第一行；第二行减去第一行的两倍。<strong>逐行算输出坐标，与组合整行，是两种不同的操作。</strong></p>
+
 <h2 id="dependence">四、什么时候有解，什么时候唯一？</h2>
 <p>所有列向量的线性组合组成<strong>列空间</strong>，也就是全部可达输出。目标在列空间中，方程组才有解。</p>
 <p>例如 \(\mathbf u=(1,2)^{\mathsf T}\)、\(\mathbf v=(2,4)^{\mathsf T}=2\mathbf u\)；上标 \(\mathsf T\) 表示将横排坐标转成列。任意组合都是：</p>
