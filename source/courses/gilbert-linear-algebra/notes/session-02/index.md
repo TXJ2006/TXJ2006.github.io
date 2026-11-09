@@ -20,7 +20,7 @@ comments: false
 <p><strong>用可逆的行操作，把方程组化成上三角形式，再回代求解。</strong>消元改变方程的表达，保持未知数的含义与整个解集不变。</p>
 <div class="reading-links">
 <p><a href="/files/mit-18-06sc/unit-1-session-2-summary.pdf">讲义摘要</a> · <a href="/files/mit-18-06sc/unit-1-session-2-problems.pdf">习题</a> · <a href="/files/mit-18-06sc/unit-1-session-2-solutions.pdf">参考解答</a></p>
-<p><a href="#elimination">消元与回代</a> · <a href="#left-multiplication">消元矩阵</a> · <a href="#inverse">为什么解不变</a> · <a href="#pivots">主元与换行</a> · <a href="#order">多步操作的顺序</a></p>
+<p><a href="#elimination">消元与回代</a> · <a href="#left-multiplication">消元矩阵</a> · <a href="#inverse">逆矩阵与解集不变</a> · <a href="#pivots">主元与换行</a> · <a href="#order">多步操作的顺序</a></p>
 </div>
 
 <h2 id="elimination">一、消元与回代</h2>
@@ -54,30 +54,87 @@ E\mathbf b=
 \]</div>
 <p>整个过程就是 \(A\mathbf x=\mathbf b\) 变成 \(U\mathbf x=\mathbf c\)。只改变 \(A\) 而不改变 \(\mathbf b\)，通常会得到另一个问题。</p>
 
-<h2 id="inverse">三、为什么消元不改变解？</h2>
-<p>“第二行减去第一行的两倍”可以用“第二行加回第一行的两倍”撤销：</p>
+<h2 id="inverse">三、什么是逆矩阵，怎样得到它？</h2>
+<h3 id="inverse-definition">1. 逆矩阵负责撤销原来的运算</h3>
+<p>数乘 2 可以用乘 \(1/2\) 撤销，因为 \((1/2)\cdot2=1\)。矩阵也有类似概念，但这里用<strong>单位矩阵</strong>代替数字 1：</p>
 <div class="equation">\[
-E^{-1}=\begin{pmatrix}1&amp;0\\2&amp;1\end{pmatrix},
-\qquad
-E^{-1}E=EE^{-1}=\underbrace{\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}}_I.
+I=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix},
+\qquad I\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}x\\y\end{pmatrix}.
 \]</div>
-<p>\(I\) 是单位矩阵，乘上它不会改变向量。若原方程成立，左乘 \(E\) 就得到新方程；若新方程成立，左乘 \(E^{-1}\) 就恢复原方程：</p>
+<p>对于方阵 \(A\)，如果存在矩阵 \(B\)，满足 \(BA=AB=I\)，就称 \(A\) <strong>可逆</strong>，并把 \(B\) 记为 \(A^{-1}\)。它能把 \(A\) 的输出还原为输入：</p>
+<div class="equation">\[
+\mathbf x\xrightarrow{\ A\ }\mathbf b
+\xrightarrow{\ A^{-1}\ }\mathbf x,
+\qquad \mathbf x=A^{-1}\mathbf b.
+\]</div>
+<p>上标 \(-1\) 表示逆运算，<strong>不是把矩阵里的每个数取倒数</strong>。逆矩阵也不一定存在：若不同输入经 \(A\) 得到相同输出，就无法唯一还原。</p>
+<h3 id="inverse-elimination">2. 消元矩阵的逆，从反向操作得到</h3>
+<p>前面的 \(E\) 将任意列向量变成：</p>
+<div class="equation">\[
+E\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}u\\v-2u\end{pmatrix}.
+\]</div>
+<p>要恢复 \(v\)，只需把第一坐标的两倍加回第二坐标。这给出了逆矩阵，而不只是猜一个公式：</p>
+<div class="equation">\[
+\begin{pmatrix}u\\v-2u\end{pmatrix}
+\xrightarrow{\ \text{第二坐标加上第一坐标的两倍}\ }
+\begin{pmatrix}u\\v\end{pmatrix},
+\qquad E^{-1}=\begin{pmatrix}1&amp;0\\2&amp;1\end{pmatrix}.
+\]</div>
+<p>直接相乘可检查 \(E^{-1}E=EE^{-1}=I\)。所以，原方程左乘 \(E\) 得到新方程，新方程左乘 \(E^{-1}\) 又恢复原方程：</p>
 <div class="equation">\[
 A\mathbf x=\mathbf b
 \quad\Longleftrightarrow\quad
 EA\mathbf x=E\mathbf b.
 \]</div>
-<p><strong>两边都成立的双向关系，才说明解集完全相同。</strong>\(E^{-1}\) 撤销一次行操作，\(A^{-1}\) 则要撤销整个映射 \(\mathbf x\mapsto A\mathbf x\)。消元矩阵可逆，不代表原矩阵一定可逆。</p>
-
-<h2 id="pivots">四、主元为零怎么办？</h2>
-<p>不能除以零。当前主元位置是零时，若同一列下方有非零数，就交换两行。例如：</p>
+<p><strong>能撤销每一步，才保证解集不变。</strong>\(E^{-1}\) 只撤销这一次消元；\(A^{-1}\) 要撤销整个 \(A\) 的运算，二者不同。</p>
+<h3 id="inverse-original">3. 原矩阵的逆，可以通过解方程求出来</h3>
+<p>仍取 \(A=\begin{pmatrix}2&amp;1\\4&amp;3\end{pmatrix}\)，但把右端换成任意的 \((p,q)\)。同样消元、回代：</p>
 <div class="equation">\[
-\underbrace{\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}}_P
-\begin{pmatrix}0&amp;1\\2&amp;3\end{pmatrix}
-=\begin{pmatrix}2&amp;3\\0&amp;1\end{pmatrix}.
+\begin{cases}2x+y=p,\\4x+3y=q\end{cases}
+\quad\Longrightarrow\quad
+y=q-2p,\qquad x=\frac{3p-q}{2}.
 \]</div>
-<p>置换矩阵 \(P\) 交换两行；\(\mathbf b\) 也要交换对应分量。再交换一次就恢复原状，所以 \(P^{-1}=P\)。<strong>碰到零主元不一定失败，可能只需换行。</strong></p>
-<p>若处理方阵时，当前列从主元位置向下全为零，就无法得到每个对角位置都非零的三角形式，原矩阵不可逆。仍可继续整理方程：出现 \(0=d\)、\(d\ne0\) 时无解；若条件相容且有自由变量，就有无穷多个解。例如同一系数行 \((0,0)\)，右端为 1 表示矛盾，右端为 0 则只表示一条重复条件。</p>
+<p>把“从输出 \((p,q)\) 求回输入”的公式写成矩阵：</p>
+<div class="equation">\[
+\begin{pmatrix}x\\y\end{pmatrix}
+=\underbrace{\begin{pmatrix}\frac32&amp;-\frac12\\-2&amp;1\end{pmatrix}}_{A^{-1}}
+\begin{pmatrix}p\\q\end{pmatrix}.
+\]</div>
+<p>这就是 \(A^{-1}\) 的来源。代入 \((p,q)=(5,11)\)，得到 \((x,y)=(2,1)\)。<strong>求逆是在一次推导中求出所有右端的解法；只解某一个方程组，直接消元即可。</strong></p>
+
+<h2 id="pivots">四、主元位置为零：先看能不能换行</h2>
+<h3 id="pivot-swap">1. 下方有非零数：交换方程的顺序</h3>
+<p>例如：</p>
+<div class="equation">\[
+\begin{cases}0x+y=1,\\2x+3y=5.\end{cases}
+\]</div>
+<p>左上角的 0 不能作为除数，但第二行同一列有 2。把两条方程交换，条件本身没有改变：</p>
+<div class="equation">\[
+\left[\begin{array}{cc|c}0&amp;1&amp;1\\2&amp;3&amp;5\end{array}\right]
+\xrightarrow{\ R_1\leftrightarrow R_2\ }
+\left[\begin{array}{cc|c}2&amp;3&amp;5\\0&amp;1&amp;1\end{array}\right].
+\]</div>
+<p>现在两个主元是 2、1，回代得到 \(y=1,x=1\)。因此，<strong>某个位置是零，不等于矩阵不可逆。</strong></p>
+<p>换行也能写成左乘矩阵：\(P\) 的第一行 \((0,1)\) 取原第二行，第二行 \((1,0)\) 取原第一行：</p>
+<div class="equation">\[
+P=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},
+\qquad P\begin{pmatrix}u\\v\end{pmatrix}=\begin{pmatrix}v\\u\end{pmatrix}.
+\]</div>
+<p>交换两次恢复原状，即 \(P^2=I\)，所以<strong>这个交换两行的矩阵</strong>满足 \(P^{-1}=P\)。系数和常数必须整行一起交换。</p>
+<h3 id="pivot-zero-row">2. 消元后整行系数为零：检查常数项</h3>
+<p>把例子第二行的系数改为第一行的两倍：</p>
+<div class="equation">\[
+\begin{cases}2x+y=5,\\4x+2y=d.\end{cases}
+\quad\xrightarrow{\ R_2-2R_1\ }\quad
+\begin{cases}2x+y=5,\\0x+0y=d-10.\end{cases}
+\]</div>
+<p>最后一行不再能确定一个未知数，要看右端：</p>
+<ul>
+<li>\(d=11\)：得到 \(0=1\)，矛盾，因此<strong>无解</strong>。</li>
+<li>\(d=10\)：得到 \(0=0\)，没有新限制。只剩 \(2x+y=5\)，可以任取 \(y=t\)，再令 \(x=(5-t)/2\)，因此<strong>有无穷多个解</strong>。这个可以任取的 \(y\) 叫作自由变量。</li>
+</ul>
+<p>两种情况的系数矩阵都是 \(C=\begin{pmatrix}2&amp;1\\4&amp;2\end{pmatrix}\)。它只能输出 \((2x+y,\,2(2x+y))\)，无法区分所有输入，所以不可逆。<strong>不可逆描述矩阵本身；无解还是无穷多解，还取决于右端。</strong></p>
 
 <h2 id="order">五、多步操作：后做的矩阵放左边</h2>
 <p>先用 \(E_1\) 消元，再用 \(E_2\)，便有：</p>
