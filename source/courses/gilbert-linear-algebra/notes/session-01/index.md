@@ -204,5 +204,5 @@ AB=[A\mathbf b_1\ A\mathbf b_2\ A\mathbf b_3].
 <p>复习时试着解释：解 \((2,1)\) 与目标 \((3,1)\) 有何区别？为什么“有解”不意味着“唯一解”？两个三维向量为何未必能生成任意三维向量？</p>
 <h2 id="sources">资料</h2>
 <p>依据 MIT OCW 18.06SC 第一讲与习题 1.1—1.3 整理。线性相关、可逆与矩阵乘法是为习题补充的解释。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记与原创图示按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
-<p><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a></p>
+<p><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-02/">下一节：矩阵消元</a></p>
 </section>

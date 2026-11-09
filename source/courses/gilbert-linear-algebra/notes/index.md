@@ -14,7 +14,7 @@ comments: false
 | 讲次 | 笔记 | 状态 |
 | --- | --- | --- |
 | 第一节 | [线性方程的几何：阅读笔记与习题分析](/courses/gilbert-linear-algebra/notes/session-01/) | 已整理 |
-| 第二节 | 矩阵消元 | 待学习后整理 |
+| 第二节 | [矩阵消元：阅读笔记](/courses/gilbert-linear-algebra/notes/session-02/) | 已整理阅读笔记 |
 | 第三节 | 矩阵乘法与逆矩阵 | 待学习后整理 |
 | 第四节 | A = LU 分解 | 待学习后整理 |
 

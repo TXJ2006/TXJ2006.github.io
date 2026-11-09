@@ -13,6 +13,8 @@ comments: false
 
 第一节：[线性方程的几何：阅读笔记与习题分析](/courses/gilbert-linear-algebra/notes/session-01/)
 
+第二节：[矩阵消元：阅读笔记](/courses/gilbert-linear-algebra/notes/session-02/)
+
 ## 教材
 
 ### Introduction to Linear Algebra
