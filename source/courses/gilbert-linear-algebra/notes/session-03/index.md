@@ -159,5 +159,5 @@ E[A\mid I]=[EA\mid E]=[I\mid E].
 <p>你应该能回答：为什么 \(AB\) 的列是 \(A\) 作用在 \(B\) 的列上？为什么 \(AB\mathbf x\) 要先算 \(B\mathbf x\)？为什么 \([A\mid I]\to[I\mid A^{-1}]\) 能同时得到所有右端向量的解法？</p>
 <h2 id="sources">资料</h2>
 <p>依据 MIT OCW 18.06SC 第三讲 <em>Multiplication and Inverse Matrices</em> 及其讲义摘要整理；习题链接供练习使用。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
-<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-02/">上一节：矩阵消元</a></p>
+<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-02/">上一节：矩阵消元</a> · <a href="/courses/gilbert-linear-algebra/notes/session-04/">下一节：A = LU 分解</a></p>
 </section>
