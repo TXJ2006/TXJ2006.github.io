@@ -15,6 +15,16 @@ comments: false
 
 [MIT 18.703 现代代数逐讲学习记录](/courses/mit-18-703/)
 
+## 微积分读本
+
+### [Calculus（我们的微积分读本）](/files/math-resources/strang-calculus-3rd-edition.pdf)
+
+- **作者：** Gilbert Strang（吉尔伯特·斯特朗）
+- **版本信息：** Third Edition（第三版），Wellesley-Cambridge Press；PDF 共 706 页
+- **阅读用途：** 作为我们的微积分读本，后续按章节阅读、讨论并整理笔记。
+- **内容概述：** 从距离与速度、曲线高度与斜率引入微积分，讲解极限、连续性、导数及其应用、积分与微积分基本定理、指数与对数、积分技巧和无穷级数；随后进入向量与矩阵、曲线运动、偏导数、梯度、多重积分和向量微积分，涵盖 Green、Gauss 散度与 Stokes 定理。书中包含例题和练习。
+- **PDF：** [在线阅读](/files/math-resources/strang-calculus-3rd-edition.pdf) · <a href="/files/math-resources/strang-calculus-3rd-edition.pdf" download="Gilbert-Strang-Calculus-3rd-Edition.pdf">下载 PDF</a>
+
 ## 实分析、测度与泛函分析
 
 ### [《求真书院分析讲义》](/files/math-resources/qiuzhen-lectures-on-analysis.pdf)
