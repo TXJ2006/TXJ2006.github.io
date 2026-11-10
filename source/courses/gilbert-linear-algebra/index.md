@@ -21,6 +21,8 @@ comments: false
 
 第五节：[转置、置换与向量空间：阅读笔记](/courses/gilbert-linear-algebra/notes/session-05/)
 
+第六节：[列空间与零空间：阅读笔记](/courses/gilbert-linear-algebra/notes/session-06/)
+
 ## 教材
 
 ### Introduction to Linear Algebra

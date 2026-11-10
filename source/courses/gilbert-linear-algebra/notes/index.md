@@ -18,5 +18,6 @@ comments: false
 | 第三节 | [矩阵乘法与逆矩阵：阅读笔记](/courses/gilbert-linear-algebra/notes/session-03/) | 已整理阅读笔记 |
 | 第四节 | [A = LU 分解：阅读笔记](/courses/gilbert-linear-algebra/notes/session-04/) | 已整理阅读笔记 |
 | 第五节 | [转置、置换与向量空间：阅读笔记](/courses/gilbert-linear-algebra/notes/session-05/) | 已整理阅读笔记 |
+| 第六节 | [列空间与零空间：阅读笔记](/courses/gilbert-linear-algebra/notes/session-06/) | 已整理阅读笔记 |
 
 后续各节学习后逐步加入目录。

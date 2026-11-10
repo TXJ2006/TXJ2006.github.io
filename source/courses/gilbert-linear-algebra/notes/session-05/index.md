@@ -262,5 +262,5 @@ S=\frac{A+A^T}{2},\qquad K=\frac{A-A^T}{2},\qquad A=S+K.
 <p>为什么一个向量与它的 span 不是同一个对象？为什么两条过原点的坐标轴合在一起却不是子空间？一个集合是向量空间，与它是另一个空间的子空间，有什么关系？能否不消元就判断本节例子的 \((2,3,6)^T\) 为什么不在列空间？为什么全部解中的自由变化属于零空间，而非列空间？为什么 \(A^T\mathbf y=\mathbf0\) 能表达输出的约束？为什么换行要同时换 \(\mathbf b\)，却不需要改 \(\mathbf x\)？</p>
 <h2 id="sources">资料与衔接</h2>
 <p>依据 MIT OCW 18.06SC 第五讲 <em>Transposes, Permutations, Vector Spaces</em>、讲义摘要与习题 5.1–5.3 整理。零空间、仿射解集与最小二乘的段落是为说明概念用途而补充的衔接；下一讲将正式展开列空间与零空间。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
-<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-04/">上一节：A = LU 分解</a></p>
+<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-04/">上一节：A = LU 分解</a> · <a href="/courses/gilbert-linear-algebra/notes/session-06/">下一节：列空间与零空间</a></p>
 </section>
