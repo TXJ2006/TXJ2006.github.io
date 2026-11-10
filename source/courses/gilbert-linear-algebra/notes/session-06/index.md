@@ -90,7 +90,7 @@ A=\begin{pmatrix}
 \end{pmatrix}
 =\begin{pmatrix}\mathbf a_1&amp;\mathbf a_2&amp;\mathbf a_3\end{pmatrix}.
 \]</div>
-<p>因为 \(\mathbf a_3=\mathbf a_1+\mathbf a_2\)，所以</p>
+<p>先直接观察列之间的关系：\(\mathbf a_3=\mathbf a_1+\mathbf a_2\)。于是</p>
 <div class="equation">\[
 A\mathbf x
 =(x_1+x_3)\mathbf a_1+(x_2+x_3)\mathbf a_2.
@@ -100,8 +100,17 @@ A\mathbf x
 C(A)=\operatorname{span}\{\mathbf a_1,\mathbf a_2\}
 =\left\{\begin{pmatrix}p+q\\2p+q\\3p+q\\4p+q\end{pmatrix}:p,q\in\mathbb R\right\}.
 \]</div>
-<p>为确定这个空间的维数，还要证明前两列线性无关。若 \(p\mathbf a_1+q\mathbf a_2=\mathbf0\)，前两分量给出 \(p+q=0,2p+q=0\)，相减得 \(p=0\)，继而 \(q=0\)。所以 \(\mathbf a_1,\mathbf a_2\) 构成列空间的一组<strong>基</strong>：它们张成该空间且线性无关，故列空间的<strong>维数</strong>为 2。</p>
-<p>“\(\mathbb R^4\) 中的二维平面”在这里有精确含义：每个向量有四个分量，但只需两个独立系数便能唯一表示。第三列没有增加维数。</p>
+<p>这里已经知道前两列能组合出整个列空间，还要问：能否再删去其中一列而保持张成空间不变？这需要把第一节简短提过的判据写清楚。</p>
+<p><strong>定义 3（线性无关与线性相关）。</strong>设 \(\mathbf v_1,\ldots,\mathbf v_r\) 属于同一个实向量空间。若对任意实系数 \(c_1,\ldots,c_r\) 都有</p>
+<div class="equation">\[
+c_1\mathbf v_1+\cdots+c_r\mathbf v_r=\mathbf0
+\quad\Longrightarrow\quad c_1=\cdots=c_r=0,
+\]</div>
+<p>则称这组向量<strong>线性无关</strong>；若存在一组<strong>不全为零</strong>的实系数使该组合等于零，则称它们<strong>线性相关</strong>。“不全为零”只要求至少一个系数非零。此时可以把对应向量移到等式一边并除以其系数，将它表示为其余向量的线性组合；因此删除它不改变张成空间。</p>
+<p>本例中，\(\mathbf a_1+\mathbf a_2-\mathbf a_3=\mathbf0\)，系数 \((1,1,-1)\) 不全为零，所以<strong>三列线性相关</strong>，第三列可以删去。再检查前两列：若 \(p\mathbf a_1+q\mathbf a_2=\mathbf0\)，前两分量给出 \(p+q=0,2p+q=0\)，相减得 \(p=0\)，继而 \(q=0\)。所以<strong>前两列线性无关</strong>。</p>
+<p>这还保证表示的唯一性：若 \(p\mathbf a_1+q\mathbf a_2=p'\mathbf a_1+q'\mathbf a_2\)，相减得到零组合，故 \(p=p'\)、\(q=q'\)。因此，列空间的每个向量都能由这两列表示，而且系数唯一。</p>
+<p><strong>定义 4（基与维数，本例所需的有限维情形）。</strong>若一组向量既张成空间 \(V\)，又线性无关，就称为 \(V\) 的一组<strong>基</strong>。若 \(V\) 有一组有限基，就称它是有限维的。有限维空间的任意两组基所含向量数相同；这个数称为 \(V\) 的<strong>维数</strong>，记作 \(\dim V\)。基的向量数与选择无关这一结论，将在后续专讲基与维数时证明。</p>
+<p>本例的 \(\mathbf a_1,\mathbf a_2\) 满足上述两个条件，因此构成 \(C(A)\) 的一组基，\(\dim C(A)=2\)。这就是“\(\mathbb R^4\) 中的二维平面”的含义：向量有四个分量，但在这组基下由两个可任意取值的系数唯一确定。<strong>向量的分量数与所在子空间的维数要区分。</strong></p>
 <p><strong>命题 2（可解性）。</strong>对 \(\mathbf b\in\mathbb R^4\)，\(A\mathbf x=\mathbf b\) 有解，当且仅当 \(\mathbf b\in C(A)\)。这是列空间定义与 \(A\mathbf x=\sum_jx_j\mathbf a_j\) 的直接结果。</p>
 <p>本例还能把“属于列空间”改写为可检查的条件：若 \(\mathbf b=(b_1,b_2,b_3,b_4)^T\in C(A)\)，则它的四个分量构成等差数列，即</p>
 <div class="equation">\[
@@ -126,7 +135,7 @@ A\mathbf x=\mathbf0
 <div class="equation">\[
 \boxed{N(A)=\left\{t\begin{pmatrix}1\\1\\-1\end{pmatrix}:t\in\mathbb R\right\}.}
 \]</div>
-<p>因此零空间是 \(\mathbb R^3\) 中的一条直线，维数为 1。列空间中的二维平面位于 \(\mathbb R^4\)，这条直线位于 \(\mathbb R^3\)；它们分别描述输出与输入。</p>
+<p>向量 \((1,1,-1)^T\) 非零，其倍数只有在系数为零时才是零向量，故它单独构成一组线性无关的向量；上式又说明它张成整个零空间。因此它是 \(N(A)\) 的一组基，\(\dim N(A)=1\)，零空间是 \(\mathbb R^3\) 中的一条直线。列空间中的二维平面位于 \(\mathbb R^4\)，这条直线位于 \(\mathbb R^3\)；它们分别描述输出与输入。</p>
 <p>这个非零方向也解释了为什么输入不能由输出唯一恢复。对任意 \(\mathbf x\in\mathbb R^3\)，</p>
 <div class="equation">\[
 A\left(\mathbf x+t\begin{pmatrix}1\\1\\-1\end{pmatrix}\right)=A\mathbf x.
@@ -165,6 +174,6 @@ S+T:=\{\mathbf s+\mathbf t:\mathbf s\in S,\ \mathbf t\in T\}
 <h2 id="self-check">理解检查</h2>
 <p>能否证明等差条件既必要又充分？为什么只找到 \((1,1,-1)^T\) 一个齐次解，还不足以声称已求出零空间？为什么非齐次解集平行于零空间，却不一定等于零空间？</p>
 <h2 id="sources">资料与衔接</h2>
-<p>依据 MIT OCW 18.06SC 第六讲 <em>Column Space and Nullspace</em> 与讲义摘要整理。子空间的交、并及和空间见文末补充，与习题 6.1 衔接；右端的等差条件、完整证明及基与维数的简要说明为补充。后续课程将用消元、主元变量与自由变量系统求解 \(A\mathbf x=\mathbf0\)。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
+<p>依据 MIT OCW 18.06SC 第六讲 <em>Column Space and Nullspace</em> 与讲义摘要整理。子空间的交、并及和空间见文末补充，与习题 6.1 衔接；右端的等差条件、完整证明及线性相关、基与维数的定义为补充。后续课程将用消元、主元变量与自由变量系统求解 \(A\mathbf x=\mathbf0\)。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
 <p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-05/">上一节：转置、置换与向量空间</a></p>
 </section>
