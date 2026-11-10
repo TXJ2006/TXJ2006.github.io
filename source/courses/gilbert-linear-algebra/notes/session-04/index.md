@@ -42,7 +42,7 @@ comments: false
 <div class="note-lead"><p><strong>消元得到上三角矩阵；把消元步骤倒过来，就得到原矩阵的分解。</strong>先理解恢复过程，再引入符号。</p></div>
 <div class="reading-links">
 <p class="link-row"><a href="/files/mit-18-06sc/unit-1-session-4-summary.pdf">讲义摘要</a> <a href="/files/mit-18-06sc/unit-1-session-4-problems.pdf">习题</a> <a href="/files/mit-18-06sc/unit-1-session-4-solutions.pdf">参考解答</a></p>
-<p class="link-row"><a href="#restore">从消元到分解</a> <a href="#multipliers">倍数如何进入 L</a> <a href="#solve">用分解解方程</a> <a href="#cost">运算量与存储</a> <a href="#pivoting">换行与置换</a> <a href="#extensions">主元与转置</a></p>
+<p class="link-row"><a href="#restore">从消元到分解</a> <a href="#multipliers">倍数如何进入 L</a> <a href="#exercise-41">习题 4.1：用行向量读出 L 与 E</a> <a href="#solve">用分解解方程</a> <a href="#cost">运算量与存储</a> <a href="#pivoting">换行与置换</a> <a href="#extensions">主元与转置</a></p>
 </div>
 
 <h2 id="restore">一、从第二节接着问：怎样恢复原矩阵？</h2>
@@ -114,6 +114,51 @@ E_2E_1=
 \mathbf r_i=\sum_{j=1}^{i-1}\ell_{ij}\mathbf u_j+\mathbf u_i.
 \]</div>
 <p>右边恰好是矩阵乘法 \(LU\) 的第 \(i\) 行。这就同时推出：\(L_{ij}=\ell_{ij}\)（\(j&lt;i\)），对角线为 1，上方为零。<strong>下三角形状与每个数字的位置，都由实际做过的行操作决定。</strong>这里假定按列向下消元、不换行、不缩放主元行；换行的情况见后文。</p>
+
+<h3 id="exercise-41">习题 4.1：用行向量读出 L 与 E</h3>
+<p>题目给出下面的 \(A\)，要求求出 \(EA=U\) 中的 \(E\)，再得到 \(A=LU\)。这里的矩阵与前面的示例不同：</p>
+<div class="equation">\[
+A=\begin{pmatrix}1&amp;3&amp;0\\2&amp;4&amp;0\\2&amp;0&amp;1\end{pmatrix}.
+\]</div>
+<p>把<strong>原矩阵的三行</strong>记为 \(\mathbf r_1=(1,3,0)\)、\(\mathbf r_2=(2,4,0)\)、\(\mathbf r_3=(2,0,1)\)。这些名字始终指原行，不随消元变化；把<strong>最终 \(U\) 的三行</strong>记为 \(\mathbf u_1,\mathbf u_2,\mathbf u_3\)。它们都是整行向量，不是单个元素。</p>
+<p>第一行不变，所以 \(\mathbf u_1=\mathbf r_1\)。第二行减去两倍第一行，得到 \(\mathbf u_2=\mathbf r_2-2\mathbf u_1=(0,-2,0)\)。第三行先减去两倍第一行，成为 \((0,-6,1)\)；再用<strong>当前第二行 \(\mathbf u_2\)</strong>消去 \(-6\)，倍数为 \((-6)/(-2)=3\)。因此：</p>
+<div class="equation">\[
+\begin{aligned}
+\mathbf u_1&amp;=\mathbf r_1=(1,3,0),\\
+\mathbf u_2&amp;=\mathbf r_2-2\mathbf u_1=(0,-2,0),\\
+\mathbf u_3&amp;=\mathbf r_3-2\mathbf u_1-3\mathbf u_2=(0,0,1).
+\end{aligned}
+\]</div>
+<p>将这三行排起来就是 \(U\)。要读出 \(L\)，把等式移项，<strong>用 \(U\) 的行表示原矩阵的行</strong>：</p>
+<div class="equation">\[
+\begin{aligned}
+\mathbf r_1&amp;=1\mathbf u_1+0\mathbf u_2+0\mathbf u_3,\\
+\mathbf r_2&amp;=2\mathbf u_1+1\mathbf u_2+0\mathbf u_3,\\
+\mathbf r_3&amp;=2\mathbf u_1+3\mathbf u_2+1\mathbf u_3.
+\end{aligned}
+\]</div>
+<p>矩阵左乘正是组合右边矩阵的行，所以每条等式中的三个系数，就是 \(L\) 的对应行：</p>
+<div class="equation">\[
+L=\begin{pmatrix}1&amp;0&amp;0\\2&amp;1&amp;0\\2&amp;3&amp;1\end{pmatrix},
+\qquad
+U=\begin{pmatrix}1&amp;3&amp;0\\0&amp;-2&amp;0\\0&amp;0&amp;1\end{pmatrix}.
+\]</div>
+<p>例如第三行 \((2,3,1)\) 表示取 \(2\mathbf u_1+3\mathbf u_2+\mathbf u_3\)，实际结果为 \((2,6,0)+(0,-6,0)+(0,0,1)=(2,0,1)=\mathbf r_3\)。这说明了第三行每一个数的含义，也直接验证了 \(A=LU\)。</p>
+<p>题目中的 \(E\) 方向相反：它要<strong>用原矩阵的行表示 \(U\) 的行</strong>。把刚才的 \(\mathbf u_1=\mathbf r_1\)、\(\mathbf u_2=\mathbf r_2-2\mathbf r_1\) 代入第三行：</p>
+<div class="equation">\[
+\begin{aligned}
+\mathbf u_1&amp;=\mathbf r_1,\\
+\mathbf u_2&amp;=-2\mathbf r_1+\mathbf r_2,\\
+\mathbf u_3&amp;=\mathbf r_3-2\mathbf r_1-3(\mathbf r_2-2\mathbf r_1)\\
+&amp;=4\mathbf r_1-3\mathbf r_2+\mathbf r_3.
+\end{aligned}
+\]</div>
+<p>再次按行读取组合系数，得到：</p>
+<div class="equation">\[
+E=\begin{pmatrix}1&amp;0&amp;0\\-2&amp;1&amp;0\\4&amp;-3&amp;1\end{pmatrix},
+\qquad EA=U,\quad E^{-1}=L.
+\]</div>
+<p><strong>\(L\) 组合的是 \(\mathbf u_1,\mathbf u_2,\mathbf u_3\)，\(E\) 组合的是 \(\mathbf r_1,\mathbf r_2,\mathbf r_3\)。</strong>两者使用的行不同，所以 \(E\) 的左下角是 \(4=-2+3\cdot2\)，而 \(L\) 的左下角是 \(2\)；不能逐项变号来求逆。</p>
 
 <h2 id="solve">三、为什么分解后更容易解方程？</h2>
 <p>原方程成为 \(L(U\mathbf x)=\mathbf b\)。已知最终输出 \(\mathbf b\)，先求“经过 \(L\) 后会得到 \(\mathbf b\) 的向量”；这个向量就是 \(U\mathbf x\)，现在才给它一个名字 \(\mathbf y\)。所以分成：</p>
@@ -212,6 +257,6 @@ D=\begin{pmatrix}2&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;2\end{pmatrix},\quad
 <h2 id="self-check">理解检查</h2>
 <p>能否从一行经历过的消元推导 \(L\) 的对应行？为什么系数更新要数平方和，而右端只需数一次和？一个数组怎样同时存下 \(L,U\)？为什么置换矩阵的逆一定是转置，却未必是自身？</p>
 <h2 id="sources">资料</h2>
-<p>依据 MIT OCW 18.06SC 第四讲 <em>Factorization into A = LU</em> 及其讲义摘要整理，例子从第二节延伸。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
+<p>依据 MIT OCW 18.06SC 第四讲 <em>Factorization into A = LU</em>、讲义摘要与习题 4.1 整理，正文示例从第二节延伸。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
 <p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-03/">上一节：矩阵乘法与逆矩阵</a></p>
 </section>
