@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 250" role="img" aria-labelledby="title desc">
+  <title id="title">矩阵乘法表示连续的线性变换</title>
+  <desc id="desc">输入向量先经过 B，再经过 A，最后得到 AB 作用后的输出。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#557a77"/>
+    </marker>
+    <style>
+      .box { fill:#f3f7f6; stroke:#557a77; stroke-width:2; rx:12; }
+      .label { fill:#243b3b; font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; text-anchor:middle; }
+      .small { fill:#506565; font:17px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; text-anchor:middle; }
+      .arrow { stroke:#557a77; stroke-width:3; marker-end:url(#arrow); }
+    </style>
+  </defs>
+  <rect x="24" y="76" width="150" height="96" class="box"/>
+  <text x="99" y="118" class="label">输入 x</text>
+  <text x="99" y="146" class="small">∈ ℝᵖ</text>
+  <line x1="174" y1="124" x2="302" y2="124" class="arrow"/>
+  <text x="238" y="102" class="small">先作用</text>
+  <rect x="302" y="76" width="150" height="96" class="box"/>
+  <text x="377" y="118" class="label">Bx</text>
+  <text x="377" y="146" class="small">∈ ℝⁿ</text>
+  <line x1="452" y1="124" x2="580" y2="124" class="arrow"/>
+  <text x="516" y="102" class="small">再作用</text>
+  <rect x="580" y="76" width="150" height="96" class="box"/>
+  <text x="655" y="118" class="label">A(Bx)</text>
+  <text x="655" y="146" class="small">∈ ℝᵐ</text>
+  <line x1="730" y1="124" x2="860" y2="124" class="arrow"/>
+  <text x="795" y="102" class="small">等于</text>
+  <text x="795" y="151" class="label">ABx</text>
+</svg>
