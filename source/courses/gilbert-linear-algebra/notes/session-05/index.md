@@ -26,7 +26,7 @@ comments: false
 .post-body .la-notes--session05 .link-row { display: flex; flex-wrap: wrap; column-gap: 18px; row-gap: 6px; }
 .post-body .la-notes--session05 .equation { margin: 1em 0 1.15em; padding: 8px 2px; overflow-x: auto; overflow-y: hidden; }
 .post-body .la-notes--session05 .MathJax_Display { font-size: 100%; margin: .25em 0 !important; padding: 3px 0; }
-.post-body .la-notes--session05 ul { margin: .65em 0 1.2em; padding-left: 1.35em; }
+.post-body .la-notes--session05 ul, .post-body .la-notes--session05 ol { margin: .65em 0 1.2em; padding-left: 1.35em; }
 .post-body .la-notes--session05 li { margin-bottom: .55em; }
 .post-body .la-notes--session05 .note-extension { margin: 1.2em 0; padding: 10px 14px; border-left: 2px solid #ccd8d5; font-size: 16px; }
 .post-body .la-notes--session05 .note-extension summary { cursor: pointer; color: #285d5d; }
@@ -42,73 +42,113 @@ comments: false
 
 <section class="la-notes la-notes--session05">
 <p class="note-nav"><a href="/courses/gilbert-linear-algebra/notes/">← 返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-04/">第四节</a></p>
-<div class="note-lead"><p><strong>向量空间规定线性组合的运算规则；span 生成这样的空间；列空间把它用于判断方程是否有解。</strong>转置连接行、列与内积，置换连接换行与消元。</p></div>
+<div class="note-lead"><p><strong>定义向量空间与子空间，证明 span 的最小性，再将列空间识别为线性映射的像。</strong>转置与置换的作用见后文。</p></div>
 <div class="reading-links">
 <p class="link-row"><a href="/files/mit-18-06sc/unit-1-session-5-summary.pdf">讲义摘要</a> <a href="/files/mit-18-06sc/unit-1-session-5-problems.pdf">习题</a> <a href="/files/mit-18-06sc/unit-1-session-5-solutions.pdf">参考解答</a></p>
 <p class="link-row"><a href="#outputs">向量空间</a> <a href="#spaces">子空间判据</a> <a href="#span">Span 与列空间</a> <a href="#transpose">转置的作用</a> <a href="#permutation">置换的作用</a> <a href="#matrix-spaces">用习题检验理解</a></p>
 </div>
 
-<h2 id="outputs">一、向量空间：一个集合，以及加法和数乘</h2>
-<p><strong>实向量空间是一个配有加法与实数数乘的非空集合；这两种运算对集合封闭，并满足通常的运算法则。</strong>封闭指：集合中的向量相加、乘以任意实数，结果仍在集合中。运算法则包括加法的交换律、结合律、零向量与相反向量，以及数乘的分配律、结合律和 \(1\mathbf v=\mathbf v\)。</p>
-<p>例如，\(\mathbb R^2\) 是所有二分量实向量的集合，按分量相加、数乘，就是向量空间。平面内的直线</p>
+<h2 id="outputs">一、向量空间的定义</h2>
+<p><strong>定义 1（向量空间）。</strong>固定一个域 \(\mathbb F\)。设 \(V\) 是非空集合，配有两个运算：</p>
 <div class="equation">\[
-W=\{t\mathbf v:t\in\mathbb R\},\qquad
-\mathbf v=\begin{pmatrix}1\\2\end{pmatrix}
+\begin{aligned}
++\colon V\times V&amp;\longrightarrow V,
+&amp;(\mathbf u,\mathbf v)&amp;\longmapsto\mathbf u+\mathbf v,\\
+\cdot\colon\mathbb F\times V&amp;\longrightarrow V,
+&amp;(a,\mathbf v)&amp;\longmapsto a\mathbf v.
+\end{aligned}
 \]</div>
-<p>也能成为向量空间。这里 \(\mathbf v\) 是一个向量，\(W\) 是它的全部实数倍组成的集合，即直线 \(y=2x\) 上的所有向量。任取 \(s\mathbf v,t\mathbf v\in W\)，有</p>
-<div class="equation">\[
-s\mathbf v+t\mathbf v=(s+t)\mathbf v\in W,\qquad
-c(t\mathbf v)=(ct)\mathbf v\in W.
-\]</div>
-<p>所以加法、数乘都留在直线上；其余运算法则沿用 \(\mathbb R^2\) 中的规则。<strong>向量空间研究的是能进行线性组合的一整个集合。</strong>“空间”可以是一条直线；向量写着两个分量，也不代表这两个分量能独立变化。</p>
+<p>若对任意 \(\mathbf u,\mathbf v,\mathbf w\in V\) 及 \(a,b\in\mathbb F\)，满足以下公理，则称 \(V\) 为<strong>域 \(\mathbb F\) 上的向量空间</strong>。\(V\) 的元素称为向量，\(\mathbb F\) 的元素称为标量。</p>
+<ol>
+<li><strong>加法交换律：</strong>\(\mathbf u+\mathbf v=\mathbf v+\mathbf u\)。</li>
+<li><strong>加法结合律：</strong>\((\mathbf u+\mathbf v)+\mathbf w=\mathbf u+(\mathbf v+\mathbf w)\)。</li>
+<li><strong>零向量：</strong>存在 \(\mathbf0\in V\)，使每个 \(\mathbf v\in V\) 满足 \(\mathbf v+\mathbf0=\mathbf v\)。</li>
+<li><strong>加法逆元：</strong>每个 \(\mathbf v\in V\) 都存在 \(-\mathbf v\in V\)，使 \(\mathbf v+(-\mathbf v)=\mathbf0\)。</li>
+<li><strong>数乘结合律：</strong>\(a(b\mathbf v)=(ab)\mathbf v\)。</li>
+<li><strong>数乘单位元：</strong>\(1\mathbf v=\mathbf v\)，其中 \(1\) 是域中的乘法单位元。</li>
+<li><strong>对向量加法的分配律：</strong>\(a(\mathbf u+\mathbf v)=a\mathbf u+a\mathbf v\)。</li>
+<li><strong>对标量加法的分配律：</strong>\((a+b)\mathbf v=a\mathbf v+b\mathbf v\)。</li>
+</ol>
+<p>“域”是允许加、减、乘及除以非零元素的标量体系，例如 \(\mathbb R\) 与 \(\mathbb C\)。<strong>本节以下均取 \(\mathbb F=\mathbb R\)</strong>。上述运算的目标集合都是 \(V\)，已经包含了加法、数乘的封闭性。向量空间的结构由集合、标量域及这两种运算共同确定。</p>
+<p><strong>例 1。</strong>\(\mathbb R^n\) 在逐分量加法与数乘下是实向量空间。这里 \(\mathbb R^n\) 表示所有 \(n\) 分量实列向量的集合。向量也可以是矩阵、函数等对象，只要指定的运算满足上述公理。</p>
 
-<h2 id="spaces">二、子空间：怎样判断一个子集仍是向量空间？</h2>
-<p id="subspace">若 \(W\) 包含在向量空间 \(V\) 中，沿用 \(V\) 的加法和数乘，且自身也是向量空间，就称 \(W\) 为 \(V\) 的<strong>子空间</strong>。例如，上面的直线既是向量空间，也是 \(\mathbb R^2\) 的子空间。</p>
-<p id="closure">由于运算法则已从 \(V\) 继承，只需检查<strong>非空与封闭性</strong>：</p>
+<h2 id="spaces">二、子空间的定义与判据</h2>
+<p id="subspace"><strong>定义 2（子空间）。</strong>设 \(V\) 是实向量空间，\(W\subseteq V\)。若 \(W\) 在 \(V\) 的加法、数乘的限制下也是实向量空间，则称 \(W\) 为 \(V\) 的<strong>线性子空间</strong>。这里“限制”指使用原来的运算，只让输入取自 \(W\)。</p>
+<p id="closure"><strong>命题 1（子空间判据）。</strong>\(W\subseteq V\) 是子空间，当且仅当 \(W\ne\varnothing\)，且</p>
 <div class="equation">\[
-W\ne\varnothing,\qquad
-\mathbf u,\mathbf v\in W,\ \alpha,\beta\in\mathbb R
-\ \Longrightarrow\ \alpha\mathbf u+\beta\mathbf v\in W.
+\forall\,\mathbf u,\mathbf v\in W,\quad
+\forall\,a,b\in\mathbb R,\qquad
+ a\mathbf u+b\mathbf v\in W.
 \]</div>
-<p>\(\in\) 表示“属于”，\(\varnothing\) 表示空集。取系数为零，推出 \(\mathbf0\in W\)；取 \(-1\)，得到相反向量也在 \(W\) 中。这个判据要求<strong>任意</strong>向量、任意实系数都成立。</p>
-<p id="counterexamples">两个反例说明每项要求的作用：</p>
-<ul>
-<li>直线 \(y=2x+1\)：\((0,1)^T\) 在其中，但 \(2(0,1)^T=(0,2)^T\) 不在，数乘不封闭。它也不含零向量。</li>
-<li>两条坐标轴的并集：含零向量，数乘也封闭，但 \((1,0)^T+(0,1)^T=(1,1)^T\) 离开集合，加法不封闭。</li>
-</ul>
-<p>所以<strong>过原点必要，但不足以保证是子空间</strong>。\(\{\mathbf0\}\) 则满足全部条件，也是子空间。</p>
+<p><strong>证明。</strong>必要性来自向量空间的加法、数乘封闭性。反过来，设上述条件成立。任取 \(\mathbf w\in W\)，令系数均为零，得 \(\mathbf0\in W\)；令 \(a=-1,b=0\)，得每个向量的相反向量都在 \(W\) 中。取 \(a=b=1\) 得加法封闭，取 \(b=0\) 得数乘封闭。其余公理是 \(V\) 中已成立的等式，在 \(W\) 上仍成立。因此 \(W\) 是向量空间。\(\square\)</p>
+<p><strong>例 2。</strong>设 \(\mathbf v=(1,2)^T\)，则 \(W=\{t\mathbf v:t\in\mathbb R\}\) 是 \(\mathbb R^2\) 的子空间：它含零向量，且</p>
+<div class="equation">\[
+a(s\mathbf v)+b(t\mathbf v)=(as+bt)\mathbf v\in W.
+\]</div>
+<p>几何上 \(W\) 是直线 \(y=2x\)。\(\mathbf v\) 是其中一个向量，\(W\) 是整个集合；\(W\) 既是实向量空间，也是 \(\mathbb R^2\) 的子空间。</p>
+<p id="counterexamples"><strong>反例。</strong>直线 \(y=2x+1\) 不含零向量，故不是子空间。两条坐标轴的并集虽然含零向量，却因 \((1,0)^T+(0,1)^T=(1,1)^T\) 不在其中而不封闭，也不是子空间。\(\{\mathbf0\}\) 则是子空间。</p>
 
-<h2 id="span">三、Span 与列空间：收集全部线性组合</h2>
-<h3 id="column-space">从给定向量生成子空间</h3>
-<p>给出 \(\mathbf a_1,\ldots,\mathbf a_n\)，它们的全部线性组合组成的集合叫作 <strong>span（张成空间）</strong>：</p>
+<h2 id="span">三、张成空间与列空间</h2>
+<h3 id="column-space">张成空间</h3>
+<p><strong>定义 3（Span）。</strong>设 \(\mathbf a_1,\ldots,\mathbf a_n\in V\)，其中 \(n\ge1\)。它们的<strong>张成空间</strong>定义为</p>
 <div class="equation">\[
-\operatorname{span}\{\mathbf a_1,\ldots,\mathbf a_n\}
-=\left\{\sum_{j=1}^n x_j\mathbf a_j:x_j\in\mathbb R\right\}.
+\operatorname{span}_{\mathbb R}\{\mathbf a_1,\ldots,\mathbf a_n\}
+=\left\{\sum_{j=1}^n x_j\mathbf a_j:
+(x_1,\ldots,x_n)\in\mathbb R^n\right\}.
 \]</div>
-<p>两次组合相加，只需把系数相加；数乘，只需把系数同乘一个数。因此 span 是子空间，而且是<strong>包含这些向量的最小子空间</strong>：凡包含这些向量的子空间，按封闭性就必须包含它们的全部组合。</p>
-<p>例如，\(\mathbf v=(1,2)^T\) 生成前面的直线。再加入 \(2\mathbf v\)，因为 \(s\mathbf v+t(2\mathbf v)=(s+2t)\mathbf v\)，空间仍是原来的直线；若加入 \((0,1)^T\)，则</p>
+<p>其中每个和式称为这些向量的<strong>线性组合</strong>。以下省略下标 \(\mathbb R\)。</p>
+<p><strong>命题 2。</strong>该 span 是包含 \(\mathbf a_1,\ldots,\mathbf a_n\) 的最小子空间。</p>
+<p><strong>证明。</strong>记这个集合为 \(S\)。系数全取零，得 \(\mathbf0\in S\)。若 \(\mathbf u=\sum_j x_j\mathbf a_j\)、\(\mathbf v=\sum_j y_j\mathbf a_j\)，则</p>
 <div class="equation">\[
-s\begin{pmatrix}1\\2\end{pmatrix}
-+t\begin{pmatrix}0\\1\end{pmatrix}
-=\begin{pmatrix}s\\2s+t\end{pmatrix}.
+a\mathbf u+b\mathbf v
+=\sum_{j=1}^n(ax_j+by_j)\mathbf a_j\in S.
 \]</div>
-<p>任给 \((p,q)^T\)，取 \(s=p,t=q-2p\) 就能得到，所以这次生成整个 \(\mathbb R^2\)。<strong>决定空间大小的是能生成多少独立方向，单纯增加向量数量未必有用。</strong></p>
-<h3 id="reachable">矩阵的列空间决定方程是否有解</h3>
-<p>矩阵乘法 \(A\mathbf x=x_1\mathbf a_1+\cdots+x_n\mathbf a_n\) 正是列的线性组合。因此各列的 span 叫作<strong>列空间</strong> \(C(A)\)，它收集 \(A\mathbf x\) 的全部可能输出。看下面的例子：</p>
+<p>由子空间判据，\(S\) 是子空间。取第 \(j\) 个系数为 1、其余为零，得 \(\mathbf a_j\in S\)；而任何包含这些向量的子空间，因对加法、数乘封闭，必包含它们的所有线性组合，即包含 \(S\)。这就是“最小”的含义。\(\square\)</p>
+<p><strong>例 3。</strong>\(\operatorname{span}\{(1,2)^T,(2,4)^T\}=W\)，因为第二个向量是第一个的两倍。若换成 \((0,1)^T\)，则</p>
+<div class="equation">\[
+\begin{pmatrix}p\\q\end{pmatrix}
+=p\begin{pmatrix}1\\2\end{pmatrix}
++(q-2p)\begin{pmatrix}0\\1\end{pmatrix}
+\qquad(p,q\in\mathbb R),
+\]</div>
+<p>所以这两个向量张成整个 \(\mathbb R^2\)。</p>
+
+<h3 id="reachable">列空间：矩阵各列的张成空间</h3>
+<p><strong>定义 4（列空间）。</strong>设 \(A\in\mathbb R^{m\times n}\)，即 \(A\) 为 \(m\) 行 \(n\) 列的实矩阵，\(m,n\ge1\)。将其各列记为 \(\mathbf a_1,\ldots,\mathbf a_n\in\mathbb R^m\)。\(A\) 的<strong>列空间</strong>定义为</p>
+<div class="equation">\[
+\boxed{C(A)=\operatorname{span}\{\mathbf a_1,\ldots,\mathbf a_n\}
+\subseteq\mathbb R^m.}
+\]</div>
+<p>由命题 2，\(C(A)\) 是 \(\mathbb R^m\) 的子空间，所以它自身也是实向量空间。<strong>向量空间是一般的代数结构；列空间是由给定矩阵确定的一个具体向量空间。</strong></p>
+<p>也可以用映射表述。令 \(T_A\colon\mathbb R^n\to\mathbb R^m\)，\(T_A(\mathbf x)=A\mathbf x\)。对任意 \(\mathbf x,\mathbf y\in\mathbb R^n\) 与 \(a,b\in\mathbb R\)，有</p>
+<div class="equation">\[
+T_A(a\mathbf x+b\mathbf y)=aT_A(\mathbf x)+bT_A(\mathbf y),
+\]</div>
+<p>\(T_A\) 是<strong>线性映射</strong>，即保持线性组合的映射。由矩阵乘法 \(A\mathbf x=\sum_j x_j\mathbf a_j\)，得</p>
+<div class="equation">\[
+C(A)=\operatorname{im}T_A
+=\{A\mathbf x:\mathbf x\in\mathbb R^n\}.
+\]</div>
+<p>\(\operatorname{im}T_A\) 称为映射的<strong>像</strong>，就是全部输出组成的集合。\(\mathbb R^m\) 是映射的目标空间，\(C(A)\) 是实际像，两者未必相等。</p>
+<p><strong>命题 3（可解性）。</strong>对任意 \(\mathbf b\in\mathbb R^m\)，</p>
+<div class="equation">\[
+A\mathbf x=\mathbf b\text{ 有解}
+\quad\Longleftrightarrow\quad
+\mathbf b\in C(A).
+\]</div>
+<p><strong>证明。</strong>有解等价于存在 \(\mathbf x\in\mathbb R^n\) 使 \(\mathbf b=A\mathbf x\)；按像的定义，这恰好等价于 \(\mathbf b\in C(A)\)。\(\square\)</p>
+<p><strong>例 4。</strong>取</p>
 <div class="equation">\[
 A=\begin{pmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\\1&amp;1&amp;2\end{pmatrix},\qquad
 A\begin{pmatrix}s\\t\\r\end{pmatrix}
 =\begin{pmatrix}s+r\\t+r\\s+t+2r\end{pmatrix}.
 \]</div>
-<p>所有输出的第三分量都等于前两者之和；反过来，任意 \((p,q,p+q)^T\) 都能由输入 \((p,q,0)^T\) 得到。因此</p>
+<p>每个输出的第三分量等于前两分量之和，故</p>
 <div class="equation">\[
-C(A)=\left\{\begin{pmatrix}p\\q\\p+q\end{pmatrix}:p,q\in\mathbb R\right\},
+C(A)\subseteq
+H:=\left\{\begin{pmatrix}p\\q\\p+q\end{pmatrix}:p,q\in\mathbb R\right\}.
 \]</div>
-<p>即平面 \(z=x+y\)。第三列等于前两列之和，没有增加新方向。求解方程就是寻找组合系数，所以</p>
-<div class="equation">\[
-\boxed{A\mathbf x=\mathbf b\text{ 有解}\iff\mathbf b\in C(A)}.
-\]</div>
-<p>本例 \((2,3,5)^T\) 在列空间中，有解；\((2,3,6)^T\) 不在，无解。<strong>列空间把全部可解的右端统一描述出来。</strong>对于 \(m\times n\) 矩阵，输入属于 \(\mathbb R^n\)，列空间则是输出空间 \(\mathbb R^m\) 的子空间。</p>
+<p>反过来，对任意 \((p,q,p+q)^T\in H\)，取输入 \((p,q,0)^T\)，即可得到它，故 \(H\subseteq C(A)\)。因此 \(C(A)=H\)，是平面 \(z=x+y\)，并非整个目标空间 \(\mathbb R^3\)。由命题 3，\((2,3,5)^T\) 对应的方程有解，\((2,3,6)^T\) 对应的方程无解。</p>
 <details class="note-extension">
 <summary>延伸：零空间怎样解释多解？</summary>
 <h3 id="nullspace">零空间：哪些输入被送到零？</h3>
