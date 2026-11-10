@@ -65,13 +65,25 @@ A\mathbf x=x_1\mathbf a_1+\cdots+x_n\mathbf a_n.
 C(A):=\operatorname{span}\{\mathbf a_1,\ldots,\mathbf a_n\}
 =\{A\mathbf x:\mathbf x\in\mathbb R^n\}\subseteq\mathbb R^m.
 \]</div>
-<p>再看唯一性。假设已找到一个解 \(\mathbf x_p\)，把输入改为 \(\mathbf x_p+\mathbf z\)，其中 \(\mathbf z\in\mathbb R^n\)。它仍是同一个方程的解，当且仅当</p>
+<h3 id="same-output">已有一个解后，怎样判断还有没有别的解？</h3>
+<p>假设已经找到一个解，把它记作 \(\mathbf x_p\)，因此 \(A\mathbf x_p=\mathbf b\)。下标 \(p\) 来自英文 <em>particular solution</em>（特解），是标明“已经选定的一个具体解”的标签；\(\mathbf x_p\) 整体仍是一个向量，\(p\) 不是乘数，也不是分量编号。</p>
+<p>现在考察另一个可能的输入 \(\mathbf x\)，把两次输入的差记为 \(\mathbf z:=\mathbf x-\mathbf x_p\)。于是 \(\mathbf x=\mathbf x_p+\mathbf z\)：\(\mathbf z\in\mathbb R^n\) 表示在已有解上<strong>增加的输入改变量</strong>。任何输入都能这样写，但它是否仍是解，需要检查。</p>
+<p>利用矩阵乘法的分配律，再代入已知的 \(A\mathbf x_p=\mathbf b\)，改变后的输出为</p>
+<div class="equation">\[
+\begin{aligned}
+A(\mathbf x_p+\mathbf z)
+&amp;=A\mathbf x_p+A\mathbf z\\
+&amp;=\mathbf b+A\mathbf z.
+\end{aligned}
+\]</div>
+<p>这里 \(A\mathbf z\) 就是<strong>输出的改变量</strong>。要让新输入仍得到原来的目标 \(\mathbf b\)，输出的改变量必须为零。因此</p>
 <div class="equation">\[
 A(\mathbf x_p+\mathbf z)=\mathbf b
 \iff \mathbf b+A\mathbf z=\mathbf b
 \iff A\mathbf z=\mathbf0.
 \]</div>
-<p>所以要判断解能否改变，只需找出<strong>所有不改变输出的输入增量</strong>。这解释了为什么要单独研究右端为零的方程：它的解描述任意两个同一方程的解之间可能的差。</p>
+<p>符号 \(\iff\) 表示“当且仅当”：这三个条件彼此等价。整行表达的是<strong>给已有解加上 \(\mathbf z\) 后仍是解，当且仅当 \(\mathbf z\) 被矩阵送到零向量</strong>。若这样的 \(\mathbf z\) 可以非零，就得到另一个解；若只能取零向量，原来的解就唯一。</p>
+<p>因此，研究右端为零的方程 \(A\mathbf z=\mathbf0\)，就是找出所有<strong>不改变输出的输入改变量</strong>。这正是下面零空间定义的用途。</p>
 <p><strong>定义 2（零空间）。</strong>矩阵 \(A\) 的零空间为</p>
 <div class="equation">\[
 N(A):=\{\mathbf z\in\mathbb R^n:A\mathbf z=\mathbf0\}
@@ -100,7 +112,7 @@ N(B)=\left\{t\begin{pmatrix}-2\\1\end{pmatrix}:t\in\mathbb R\right\}.
 \mathbf x=\begin{pmatrix}3\\0\end{pmatrix}
 +t\begin{pmatrix}-2\\1\end{pmatrix},\qquad t\in\mathbb R.
 \]</div>
-<p>沿 \((-2,1)^T\) 改变输入，输出始终是 \((3,6)^T\)。<strong>零空间给出保持同一输出的全部输入增量。</strong>固定 \(B\) 后，无论换成哪个可达目标，这些增量都相同。</p>
+<p>在这个式子中，特解是 \(\mathbf x_p=(3,0)^T\)，输入改变量是 \(\mathbf z=t(-2,1)^T\)。沿 \((-2,1)^T\) 改变输入，输出始终是 \((3,6)^T\)。<strong>零空间给出保持同一输出的全部输入增量。</strong>固定 \(B\) 后，无论换成哪个可达目标，这些增量都相同。</p>
 <details class="note-extension"><summary>线性映射中的名称：像与核</summary>
 <p>从线性映射 \(T_A\colon\mathbb R^n\to\mathbb R^m,\ \mathbf x\mapsto A\mathbf x\) 看，\(C(A)\) 是映射的像，\(N(A)\) 是映射的核。两者的元素角色不同：列空间收集可能的<strong>输出</strong>，位于 \(\mathbb R^m\)；零空间收集输出为零的<strong>输入</strong>，位于 \(\mathbb R^n\)。方程 \(A\mathbf z=\mathbf0\) 中的零向量属于 \(\mathbb R^m\)。</p>
 </details>
