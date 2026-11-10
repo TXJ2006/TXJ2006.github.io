@@ -216,5 +216,5 @@ A&amp;\xrightarrow{E_1}E_1A\xrightarrow{E_2}E_2E_1A=U,\\[6pt]
 <p>消元倍数为什么是“待消系数 ÷ 主元”？为什么必须同时操作常数列？为什么零主元不一定意味着矩阵不可逆？能解释这三点，就抓住了本节的基础。</p>
 <h2 id="sources">资料</h2>
 <p>依据 MIT OCW 18.06SC 第二讲 <em>Elimination with Matrices</em> 及其讲义摘要整理，例子沿用我们的讨论。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
-<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-01/">上一节：线性方程的几何</a></p>
+<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-01/">上一节：线性方程的几何</a> · <a href="/courses/gilbert-linear-algebra/notes/session-03/">下一节：矩阵乘法与逆矩阵</a></p>
 </section>
