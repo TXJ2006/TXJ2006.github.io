@@ -68,13 +68,31 @@ EA=U,\qquad
 \begin{pmatrix}2&amp;1\\4&amp;3\end{pmatrix}
 =\begin{pmatrix}2&amp;1\\0&amp;1\end{pmatrix}.
 \]</div>
-<p>\(E\) 的第一行 \((1,0)\) 表示保留原第一行；第二行 \((-2,1)\) 表示原第二行减去原第一行的两倍。\(E\) 叫作<strong>消元矩阵</strong>，\(U\) 表示所得的上三角矩阵。</p>
-<p>常数向量 \(\mathbf b\) 必须接受同样的操作：</p>
+<p>这里的 \(E\) 是记录“怎样组合原来的行”的<strong>消元矩阵</strong>，\(U\) 是所得的上三角矩阵。记 \(A\) 原来的两行为 \(R_1=(2,1)\)、\(R_2=(4,3)\)。<strong>\(E\) 的行号决定生成哪一行，列号决定取原来的哪一行，数字决定取多少倍。</strong></p>
+<ul>
+<li>左上角的 \(1\)：新第一行取 \(1\) 倍原第一行。</li>
+<li>右上角的 \(0\)：新第一行取 \(0\) 倍原第二行。因此新第一行是 \(1R_1+0R_2=R_1\)，保持不变。</li>
+<li>左下角的 \(-2\)：新第二行取 \(-2\) 倍原第一行。</li>
+<li>右下角的 \(1\)：新第二行取 \(1\) 倍原第二行。因此新第二行是 \((-2)R_1+1R_2=R_2-2R_1\)。</li>
+</ul>
+<p>这就是矩阵乘法的“行乘列”规则。把第二行的两个元素展开：</p>
 <div class="equation">\[
-E\mathbf b=
+\begin{aligned}
+(EA)_{21}&amp;=(-2)\cdot2+1\cdot4=0,\\
+(EA)_{22}&amp;=(-2)\cdot1+1\cdot3=1.
+\end{aligned}
+\]</div>
+<p>下标 \(21\)、\(22\) 分别指第二行第一列、第二行第二列。两次都用同样的系数 \((-2,1)\)，所以整个新第二行就是 \((-2)(2,1)+(4,3)=(0,1)\)。</p>
+<p><strong>\(-2\) 的位置和数值共同确定操作。</strong>它在第二行第一列，才表示“向第二行加上第一行的 \(-2\) 倍”。数值来自消元的要求：要把 \(4\) 消成零，需 \(4+k\cdot2=0\)，所以 \(k=-2\)。负号表示减去；右下角的 \(1\) 则保证原第二行仍取一份。</p>
+<p>常数向量 \(\mathbf b\) 也要按<strong>同一组系数</strong>组合：</p>
+<div class="equation">\[
+\begin{aligned}
+E\mathbf b&amp;=
 \begin{pmatrix}1&amp;0\\-2&amp;1\end{pmatrix}
-\begin{pmatrix}5\\11\end{pmatrix}
-=\begin{pmatrix}5\\1\end{pmatrix}=\mathbf c.
+\begin{pmatrix}5\\11\end{pmatrix}\\[6pt]
+&amp;=\begin{pmatrix}1\cdot5+0\cdot11\\(-2)\cdot5+1\cdot11\end{pmatrix}\\[6pt]
+&amp;=\begin{pmatrix}5\\1\end{pmatrix}=\mathbf c.
+\end{aligned}
 \]</div>
 <p>整个过程就是 \(A\mathbf x=\mathbf b\) 变成 \(U\mathbf x=\mathbf c\)。只改变 \(A\) 而不改变 \(\mathbf b\)，通常会得到另一个问题。</p>
 
