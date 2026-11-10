@@ -42,41 +42,39 @@ comments: false
 
 <section class="la-notes la-notes--session06">
 <p class="note-nav"><a href="/courses/gilbert-linear-algebra/notes/">← 返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-05/">第五节</a></p>
-<div class="note-lead"><p><strong>列空间描述全部可能的输出；零空间描述输出为零的全部输入。</strong>同一个列关系，既限制输出范围，也使不同输入可能产生相同输出。</p></div>
+<div class="note-lead"><p>固定矩阵 \(A\)，研究 \(A\mathbf x=\mathbf b\) 有两个问题：<strong>哪些 \(\mathbf b\) 有解？有解时，解是否唯一？</strong>列空间与零空间分别从这两个问题中引出。</p></div>
 <div class="reading-links">
 <p class="link-row"><a href="/files/mit-18-06sc/unit-1-session-6-summary.pdf">讲义摘要</a> <a href="/files/mit-18-06sc/unit-1-session-6-problems.pdf">习题</a> <a href="/files/mit-18-06sc/unit-1-session-6-solutions.pdf">参考解答</a></p>
-<p class="link-row"><a href="#subspaces">交、并与子空间</a> <a href="#definitions">列空间与零空间</a> <a href="#column-space">哪些右端有解</a> <a href="#nullspace">求出全部齐次解</a> <a href="#solution-set">非齐次解集</a></p>
+<p class="link-row"><a href="#definitions">为什么引入两个空间</a> <a href="#column-space">哪些右端有解</a> <a href="#nullspace">求出全部齐次解</a> <a href="#solution-set">非齐次解集</a> <a href="#subspaces">补充：子空间的交与并</a></p>
 </div>
 
-<h2 id="subspaces">一、子空间的交与并</h2>
-<p>以下均讨论实向量空间，沿用第五节的子空间判据：非空，且对任意实线性组合封闭。</p>
-<p><strong>命题 1。</strong>设 \(S,T\) 是向量空间 \(V\) 的子空间，则交集 \(S\cap T\) 也是子空间。</p>
-<p><strong>证明。</strong>两者都包含零向量，故交集非空。任取 \(\mathbf u,\mathbf v\in S\cap T\) 及 \(a,b\in\mathbb R\)。由于两者都对线性组合封闭，\(a\mathbf u+b\mathbf v\) 同时属于 \(S,T\)，因此属于交集。\(\square\)</p>
-<p>并集 \(S\cup T\) 则不一定是子空间。例如，令 \(S\) 为 \(\mathbb R^3\) 中的平面 \(z=0\)，\(T\) 为 \(z\) 轴。\((1,0,0)^T\in S\)、\((0,0,1)^T\in T\)，但它们的和 \((1,0,1)^T\) 不在并集中。</p>
-<p>若要得到包含两个子空间的最小子空间，应取<strong>和空间</strong>：</p>
+<h2 id="definitions">一、从方程的有解性与唯一性出发</h2>
+<p>前几节用消元求解一个给定的方程组。现在固定 \(A\in\mathbb R^{m\times n}\)，让右端 \(\mathbf b\in\mathbb R^m\) 变化：我们希望知道<strong>哪些右端有解，以及有解时能否唯一确定 \(\mathbf x\)</strong>。以下均讨论实向量空间。</p>
+<p>先看有解性。记 \(A\) 的列为 \(\mathbf a_1,\ldots,\mathbf a_n\in\mathbb R^m\)。由第一节的列观点，</p>
 <div class="equation">\[
-S+T:=\{\mathbf s+\mathbf t:\mathbf s\in S,\ \mathbf t\in T\}
-=\operatorname{span}(S\cup T).
+A\mathbf x=x_1\mathbf a_1+\cdots+x_n\mathbf a_n.
 \]</div>
-<p>这里 \(\operatorname{span}(S\cup T)\) 指从并集中取有限个向量作全部线性组合。将来自 \(S\) 与 \(T\) 的项分别合并，任何组合都可写成 \(\mathbf s+\mathbf t\)；反过来，每个这样的和都是并集中两个向量的线性组合。它对加法、数乘封闭，且包含两个子空间。上述平面与轴的并集不是整个 \(\mathbb R^3\)，和空间却是整个 \(\mathbb R^3\)。</p>
-
-<h2 id="definitions">二、两个空间的定义：先区分输入与输出</h2>
-<p>设 \(A\in\mathbb R^{m\times n}\)，各列为 \(\mathbf a_1,\ldots,\mathbf a_n\in\mathbb R^m\)。矩阵确定线性映射</p>
+<p>解 \(A\mathbf x=\mathbf b\)，就是寻找一组列向量的系数，使其组合等于 \(\mathbf b\)。因此，方程有解，恰好意味着 \(\mathbf b\) 属于<strong>全部列向量的线性组合所成的集合</strong>。第五节已经把这样的集合称为张成空间；在这里，它就是矩阵的列空间。</p>
+<p><strong>定义 1（列空间）。</strong>矩阵 \(A\) 的列空间为</p>
 <div class="equation">\[
-T_A\colon\mathbb R^n\longrightarrow\mathbb R^m,\qquad
-\mathbf x\longmapsto A\mathbf x.
+C(A):=\operatorname{span}\{\mathbf a_1,\ldots,\mathbf a_n\}
+=\{A\mathbf x:\mathbf x\in\mathbb R^n\}\subseteq\mathbb R^m.
 \]</div>
-<p><strong>定义 1（列空间与零空间）。</strong></p>
+<p>再看唯一性。假设已找到一个解 \(\mathbf x_p\)，把输入改为 \(\mathbf x_p+\mathbf z\)，其中 \(\mathbf z\in\mathbb R^n\)。它仍是同一个方程的解，当且仅当</p>
 <div class="equation">\[
-\begin{aligned}
-C(A)&amp;:=\operatorname{span}\{\mathbf a_1,\ldots,\mathbf a_n\}\\
-&amp;=\{A\mathbf x:\mathbf x\in\mathbb R^n\}\subseteq\mathbb R^m,\\[5pt]
-N(A)&amp;:=\{\mathbf x\in\mathbb R^n:A\mathbf x=\mathbf0\}
+A(\mathbf x_p+\mathbf z)=\mathbf b
+\iff \mathbf b+A\mathbf z=\mathbf b
+\iff A\mathbf z=\mathbf0.
+\]</div>
+<p>所以要判断解能否改变，只需找出<strong>所有不改变输出的输入增量</strong>。这解释了为什么要单独研究右端为零的方程：它的解描述任意两个同一方程的解之间可能的差。</p>
+<p><strong>定义 2（零空间）。</strong>矩阵 \(A\) 的零空间为</p>
+<div class="equation">\[
+N(A):=\{\mathbf z\in\mathbb R^n:A\mathbf z=\mathbf0\}
 \subseteq\mathbb R^n.
-\end{aligned}
 \]</div>
-<p>\(C(A)\) 是映射的像，元素是<strong>输出向量</strong>；\(N(A)\) 是映射的核，元素是<strong>输入向量</strong>。这里 \(A\mathbf x=\mathbf0\) 中的零向量属于 \(\mathbb R^m\)，而 \(N(A)\) 所包含的零输入属于 \(\mathbb R^n\)。</p>
-<p><strong>命题 2。</strong>\(C(A)\) 与 \(N(A)\) 分别是 \(\mathbb R^m\)、\(\mathbb R^n\) 的子空间。</p>
+<p>若 \(N(A)=\{\mathbf0\}\)，已有的解无法改变，因而唯一；若其中存在非零向量，就可把它加到已有的解上，得到另一个解。这里“零”限定的是<strong>输出</strong>，零空间中的输入可以非零。</p>
+<p>从线性映射 \(T_A\colon\mathbb R^n\to\mathbb R^m,\ \mathbf x\mapsto A\mathbf x\) 看，\(C(A)\) 是映射的像，\(N(A)\) 是映射的核。两者的元素角色不同：列空间收集可能的<strong>输出</strong>，位于 \(\mathbb R^m\)；零空间收集输出为零的<strong>输入</strong>，位于 \(\mathbb R^n\)。方程 \(A\mathbf z=\mathbf0\) 中的零向量属于 \(\mathbb R^m\)。</p>
+<p><strong>命题 1。</strong>\(C(A)\) 与 \(N(A)\) 分别是 \(\mathbb R^m\)、\(\mathbb R^n\) 的子空间。</p>
 <p><strong>证明。</strong>列空间是张成空间，结论由第五节已证的命题得到。零空间含零向量；若 \(\mathbf u,\mathbf v\in N(A)\)，则对任意 \(a,b\in\mathbb R\)，</p>
 <div class="equation">\[
 A(a\mathbf u+b\mathbf v)
@@ -84,7 +82,7 @@ A(a\mathbf u+b\mathbf v)
 \]</div>
 <p>故 \(a\mathbf u+b\mathbf v\in N(A)\)，由子空间判据得证。\(\square\)</p>
 
-<h2 id="column-space">三、讲义的矩阵：哪些右端能够得到？</h2>
+<h2 id="column-space">二、讲义的矩阵：哪些右端能够得到？</h2>
 <p>本节始终使用讲义中的矩阵</p>
 <div class="equation">\[
 A=\begin{pmatrix}
@@ -104,14 +102,14 @@ C(A)=\operatorname{span}\{\mathbf a_1,\mathbf a_2\}
 \]</div>
 <p>为确定这个空间的维数，还要证明前两列线性无关。若 \(p\mathbf a_1+q\mathbf a_2=\mathbf0\)，前两分量给出 \(p+q=0,2p+q=0\)，相减得 \(p=0\)，继而 \(q=0\)。所以 \(\mathbf a_1,\mathbf a_2\) 构成列空间的一组<strong>基</strong>：它们张成该空间且线性无关，故列空间的<strong>维数</strong>为 2。</p>
 <p>“\(\mathbb R^4\) 中的二维平面”在这里有精确含义：每个向量有四个分量，但只需两个独立系数便能唯一表示。第三列没有增加维数。</p>
-<p><strong>命题 3（可解性）。</strong>对 \(\mathbf b\in\mathbb R^4\)，\(A\mathbf x=\mathbf b\) 有解，当且仅当 \(\mathbf b\in C(A)\)。这是列空间定义与 \(A\mathbf x=\sum_jx_j\mathbf a_j\) 的直接结果。</p>
+<p><strong>命题 2（可解性）。</strong>对 \(\mathbf b\in\mathbb R^4\)，\(A\mathbf x=\mathbf b\) 有解，当且仅当 \(\mathbf b\in C(A)\)。这是列空间定义与 \(A\mathbf x=\sum_jx_j\mathbf a_j\) 的直接结果。</p>
 <p>本例还能把“属于列空间”改写为可检查的条件：若 \(\mathbf b=(b_1,b_2,b_3,b_4)^T\in C(A)\)，则它的四个分量构成等差数列，即</p>
 <div class="equation">\[
 \boxed{b_2-b_1=b_3-b_2=b_4-b_3.}
 \]</div>
 <p>反过来，若三个差都等于 \(p\)，令 \(q=b_1-p\)，就有 \(b_i=ip+q\)（\(i=1,2,3,4\)），故 \(\mathbf b=p\mathbf a_1+q\mathbf a_2\in C(A)\)。因此这也是有解的充要条件。例如 \((1,2,3,4)^T\) 对应有解，\((1,2,3,5)^T\) 对应无解。</p>
 
-<h2 id="nullspace">四、同一个列关系，怎样确定全部齐次解？</h2>
+<h2 id="nullspace">三、同一个列关系，怎样确定全部齐次解？</h2>
 <p>列关系 \(\mathbf a_1+\mathbf a_2-\mathbf a_3=\mathbf0\) 给出一个非零输入：</p>
 <div class="equation">\[
 A\begin{pmatrix}1\\1\\-1\end{pmatrix}=\mathbf0.
@@ -135,8 +133,8 @@ A\left(\mathbf x+t\begin{pmatrix}1\\1\\-1\end{pmatrix}\right)=A\mathbf x.
 \]</div>
 <p>增加前两列各 \(t\) 份，同时减少第三列 \(t\) 份，输出完全抵消。因此<strong>两次输入产生同一输出，当且仅当它们的差属于零空间</strong>：\(A\mathbf x=A\mathbf y\iff\mathbf x-\mathbf y\in N(A)\)。</p>
 
-<h2 id="solution-set">五、非齐次解集：零空间的平移</h2>
-<p><strong>命题 4（全部解的结构）。</strong>设 \(A\in\mathbb R^{m\times n}\)，且 \(A\mathbf x=\mathbf b\) 至少有一个解 \(\mathbf x_p\)。则它的解集为</p>
+<h2 id="solution-set">四、非齐次解集：零空间的平移</h2>
+<p><strong>命题 3（全部解的结构）。</strong>设 \(A\in\mathbb R^{m\times n}\)，且 \(A\mathbf x=\mathbf b\) 至少有一个解 \(\mathbf x_p\)。则它的解集为</p>
 <div class="equation">\[
 \boxed{\{\mathbf x:A\mathbf x=\mathbf b\}
 =\mathbf x_p+N(A)
@@ -152,9 +150,21 @@ A\left(\mathbf x+t\begin{pmatrix}1\\1\\-1\end{pmatrix}\right)=A\mathbf x.
 <p>特解的选择不影响整个解集：若 \(\mathbf x'_p\) 是另一特解，两者之差属于 \(N(A)\)，所以 \(\mathbf x'_p+N(A)=\mathbf x_p+N(A)\)。</p>
 <p>由此可分别判断：\(\mathbf b\notin C(A)\) 时无解；\(\mathbf b\in C(A)\) 时有解，且恰在 \(N(A)=\{\mathbf0\}\) 时唯一。若零空间包含非零向量，实数参数的不同取值便给出无穷多个解。</p>
 
+<h2 id="subspaces">补充：子空间的交与并</h2>
+<p>以下均讨论实向量空间，沿用第五节的子空间判据：非空，且对任意实线性组合封闭。</p>
+<p><strong>命题 4。</strong>设 \(S,T\) 是向量空间 \(V\) 的子空间，则交集 \(S\cap T\) 也是子空间。</p>
+<p><strong>证明。</strong>两者都包含零向量，故交集非空。任取 \(\mathbf u,\mathbf v\in S\cap T\) 及 \(a,b\in\mathbb R\)。由于两者都对线性组合封闭，\(a\mathbf u+b\mathbf v\) 同时属于 \(S,T\)，因此属于交集。\(\square\)</p>
+<p>并集 \(S\cup T\) 则不一定是子空间。例如，令 \(S\) 为 \(\mathbb R^3\) 中的平面 \(z=0\)，\(T\) 为 \(z\) 轴。\((1,0,0)^T\in S\)、\((0,0,1)^T\in T\)，但它们的和 \((1,0,1)^T\) 不在并集中。</p>
+<p>若要得到包含两个子空间的最小子空间，应取<strong>和空间</strong>：</p>
+<div class="equation">\[
+S+T:=\{\mathbf s+\mathbf t:\mathbf s\in S,\ \mathbf t\in T\}
+=\operatorname{span}(S\cup T).
+\]</div>
+<p>这里 \(\operatorname{span}(S\cup T)\) 指从并集中取有限个向量作全部线性组合。将来自 \(S\) 与 \(T\) 的项分别合并，任何组合都可写成 \(\mathbf s+\mathbf t\)；反过来，每个这样的和都是并集中两个向量的线性组合。它对加法、数乘封闭，且包含两个子空间。上述平面与轴的并集不是整个 \(\mathbb R^3\)，和空间却是整个 \(\mathbb R^3\)。</p>
+
 <h2 id="self-check">理解检查</h2>
 <p>能否证明等差条件既必要又充分？为什么只找到 \((1,1,-1)^T\) 一个齐次解，还不足以声称已求出零空间？为什么非齐次解集平行于零空间，却不一定等于零空间？</p>
 <h2 id="sources">资料与衔接</h2>
-<p>依据 MIT OCW 18.06SC 第六讲 <em>Column Space and Nullspace</em> 与讲义摘要整理。和空间与习题 6.1 衔接；右端的等差条件、完整证明及基与维数的简要说明为补充。后续课程将用消元、主元变量与自由变量系统求解 \(A\mathbf x=\mathbf0\)。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
+<p>依据 MIT OCW 18.06SC 第六讲 <em>Column Space and Nullspace</em> 与讲义摘要整理。子空间的交、并及和空间见文末补充，与习题 6.1 衔接；右端的等差条件、完整证明及基与维数的简要说明为补充。后续课程将用消元、主元变量与自由变量系统求解 \(A\mathbf x=\mathbf0\)。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
 <p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-05/">上一节：转置、置换与向量空间</a></p>
 </section>
