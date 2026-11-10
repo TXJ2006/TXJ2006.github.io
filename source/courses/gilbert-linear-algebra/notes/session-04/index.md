@@ -258,5 +258,5 @@ D=\begin{pmatrix}2&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;2\end{pmatrix},\quad
 <p>能否从一行经历过的消元推导 \(L\) 的对应行？为什么系数更新要数平方和，而右端只需数一次和？一个数组怎样同时存下 \(L,U\)？为什么置换矩阵的逆一定是转置，却未必是自身？</p>
 <h2 id="sources">资料</h2>
 <p>依据 MIT OCW 18.06SC 第四讲 <em>Factorization into A = LU</em>、讲义摘要与习题 4.1 整理，正文示例从第二节延伸。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
-<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-03/">上一节：矩阵乘法与逆矩阵</a></p>
+<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-03/">上一节：矩阵乘法与逆矩阵</a> · <a href="/courses/gilbert-linear-algebra/notes/session-05/">下一节：转置、置换与向量空间</a></p>
 </section>
