@@ -26,9 +26,6 @@ comments: false
 .post-body .la-notes--session03 .link-row { display: flex; flex-wrap: wrap; column-gap: 18px; row-gap: 6px; }
 .post-body .la-notes--session03 .equation { margin: 1em 0 1.15em; padding: 8px 2px; overflow-x: auto; overflow-y: hidden; }
 .post-body .la-notes--session03 .MathJax_Display { font-size: 100%; margin: .25em 0 !important; padding: 3px 0; }
-.post-body .la-notes--session03 figure { margin: 1.5em 0 1.8em; }
-.post-body .la-notes--session03 figure img { display: block; width: 100%; max-width: 560px; height: auto; margin: 0 auto; }
-.post-body .la-notes--session03 figcaption { margin-top: .7em; color: #506565; font-size: 14px; line-height: 1.7; }
 .post-body .la-notes--session03 ul { margin: .65em 0 1.2em; padding-left: 1.35em; }
 .post-body .la-notes--session03 li { margin-bottom: .55em; }
 .post-body .la-notes--session03 .note-footer { margin-top: 1.8em; padding-top: 1em; border-top: 1px solid #e2e8e6; font-size: 14px; }
@@ -45,7 +42,7 @@ comments: false
 <div class="note-lead"><p><strong>矩阵乘法描述线性变换的连续作用；逆矩阵负责把这种作用撤销。</strong></p></div>
 <div class="reading-links">
 <p class="link-row"><a href="/files/mit-18-06sc/unit-1-session-3-summary.pdf">讲义摘要</a> <a href="/files/mit-18-06sc/unit-1-session-3-problems.pdf">习题</a> <a href="/files/mit-18-06sc/unit-1-session-3-solutions.pdf">参考解答</a></p>
-<p class="link-row"><a href="#product">矩阵乘法</a> <a href="#four-views">四种理解</a> <a href="#order">作用顺序</a> <a href="#inverse">逆矩阵</a> <a href="#gauss-jordan">高斯—约旦求逆</a></p>
+<p class="link-row"><a href="#product">矩阵乘法</a> <a href="#four-views">四种理解</a> <a href="#order">作用顺序</a> <a href="#inverse">逆矩阵</a> <a href="#gauss-jordan">Gauss–Jordan elimination</a></p>
 </div>
 
 <h2 id="product">一、矩阵乘法先看尺寸</h2>
@@ -95,12 +92,26 @@ AB
 <p>讲义还介绍<strong>分块乘法</strong>：把矩阵切成尺寸匹配的矩形块，仍按“行乘列”相乘相加。例如 \(C=AB\) 的左上块是 \(C_{11}=A_{11}B_{11}+A_{12}B_{21}\)。这里每个符号代表一整块矩阵，块内乘法的顺序仍不能交换。</p>
 
 <h2 id="order">三、为什么乘法顺序不能随便交换</h2>
-<figure>
-<img src="/images/courses/gilbert-linear-algebra/session-03/matrix-composition.svg" alt="输入向量先经过矩阵 B，再经过矩阵 A，结果是 ABx。" loading="lazy">
-<figcaption>图 1：\(AB\mathbf x=A(B\mathbf x)\)。右边的矩阵先作用。</figcaption>
-</figure>
-<p>为什么可以把两步合成一步？因为 \(B\mathbf x=\sum_jx_j\mathbf b_j\)，而 \(A\) 保持线性组合，所以 \(A(B\mathbf x)=\sum_jx_jA\mathbf b_j\)，正是用 \(\mathbf x\) 的坐标组合 \(AB\) 的各列。</p>
-<p>本例反过来算，得到 \(BA=\begin{pmatrix}4&amp;13\\2&amp;7\end{pmatrix}\)，与 \(AB\) 不同。矩阵乘法满足结合律 \((AB)C=A(BC)\)，改变括号不会改变作用顺序。</p>
+<p>把 \(A,B\) 看成两个固定的线性变换。先做 \(B\)，得到中间向量 \(B\mathbf x\)；再把<strong>这个结果</strong>交给 \(A\)，得到 \(A(B\mathbf x)\)。前面已经算出，\(AB\) 的第 \(j\) 列就是 \(A\mathbf b_j\)，其中 \(\mathbf b_j\) 是 \(B\) 的第 \(j\) 列。因此，对任意输入 \(\mathbf x=(x_1,\ldots,x_p)^{\mathsf T}\)，</p>
+<div class="equation">\[
+\begin{aligned}
+A(B\mathbf x)
+&amp;=A\left(\sum_{j=1}^{p}x_j\mathbf b_j\right)\\
+&amp;=\sum_{j=1}^{p}x_jA\mathbf b_j
+=(AB)\mathbf x.
+\end{aligned}
+\]</div>
+<p>第二步使用了 \(A\) 保持线性组合的性质。这个等式说明：<strong>矩阵乘积 \(AB\) 恰好记录“先 \(B\)、后 \(A\)”的复合变换。</strong>顺序从右向左读，是因为输入先交给最靠近它的 \(B\)。</p>
+<p>交换成 \(BA\) 后，中间向量变为 \(A\mathbf x\)，后一步也变为 \(B\)，得到的是 \(B(A\mathbf x)\)。线性性质并不保证这与原结果相同。用本节的矩阵，取同一个输入 \(\mathbf e_1=(1,0)^{\mathsf T}\)：</p>
+<div class="equation">\[
+\begin{aligned}
+A(B\mathbf e_1)&amp;=A\begin{pmatrix}2\\0\end{pmatrix}
+=\begin{pmatrix}2\\4\end{pmatrix},\\[6pt]
+B(A\mathbf e_1)&amp;=B\begin{pmatrix}1\\2\end{pmatrix}
+=\begin{pmatrix}4\\2\end{pmatrix}.
+\end{aligned}
+\]</div>
+<p>同一个输入产生不同输出，就足以说明 \(AB\ne BA\)。某些矩阵确实满足 \(AB=BA\)，但需要具体证明。结合律 \((AB)C=A(BC)\) 则始终成立（尺寸匹配时）：两边都按“先 \(C\)、再 \(B\)、最后 \(A\)”作用；<strong>改变括号只改变计算的分组，交换矩阵才会改变作用顺序。</strong></p>
 
 <h2 id="inverse">四、逆矩阵：撤销一个可逆变换</h2>
 <p>单位矩阵 \(I\) 不改变向量。若方阵 \(A\) 有一个矩阵 \(A^{-1}\) 满足</p>
@@ -117,7 +128,7 @@ AA^{-1}=A^{-1}A=I,
 <p>反过来，若 \(A\mathbf x=\mathbf0\) 只有零解，消元就没有自由变量。对方阵，这意味着每行每列都有主元，所以任意右端都能唯一求解，也能用下面的方法求逆。这与第一节的列观点一致：<strong>列向量线性无关，就是只有零系数才能组合出零向量。</strong></p>
 <p>若 \(A,B\) 都可逆，撤销“先 \(B\) 后 \(A\)”时，要先撤销 \(A\)，再撤销 \(B\)，所以 \((AB)^{-1}=B^{-1}A^{-1}\)。</p>
 
-<h2 id="gauss-jordan">五、用高斯—约旦消元求逆</h2>
+<h2 id="gauss-jordan">五、Gauss–Jordan elimination</h2>
 <p>仍用前面的 \(A=\begin{pmatrix}1&amp;3\\2&amp;7\end{pmatrix}\)。把单位矩阵接在右边，对整个增广矩阵做行操作：</p>
 <div class="equation">\[
 \begin{aligned}
@@ -128,7 +139,7 @@ AA^{-1}=A^{-1}A=I,
 \left[\begin{array}{cc|cc}1&amp;0&amp;7&amp;-3\\0&amp;1&amp;-2&amp;1\end{array}\right].
 \end{aligned}
 \]</div>
-<p>普通消元先消掉主元下方的数，得到上三角；<strong>高斯—约旦消元继续消掉主元上方的数，并把主元归一为 1</strong>。左半边成为 \(I\)，右半边就是：</p>
+<p>普通消元先消掉主元下方的数，得到上三角；<strong>Gauss–Jordan elimination 继续消掉主元上方的数，并把主元归一为 1</strong>。左半边成为 \(I\)，右半边就是：</p>
 <div class="equation">\[
 A^{-1}=
 \begin{pmatrix}7&amp;-3\\-2&amp;1\end{pmatrix}.
@@ -147,6 +158,6 @@ E[A\mid I]=[EA\mid E]=[I\mid E].
 <h2 id="self-check">理解检查</h2>
 <p>你应该能回答：为什么 \(AB\) 的列是 \(A\) 作用在 \(B\) 的列上？为什么 \(AB\mathbf x\) 要先算 \(B\mathbf x\)？为什么 \([A\mid I]\to[I\mid A^{-1}]\) 能同时得到所有右端向量的解法？</p>
 <h2 id="sources">资料</h2>
-<p>依据 MIT OCW 18.06SC 第三讲 <em>Multiplication and Inverse Matrices</em> 及其讲义摘要整理；习题链接供练习使用。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记与原创图示按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
+<p>依据 MIT OCW 18.06SC 第三讲 <em>Multiplication and Inverse Matrices</em> 及其讲义摘要整理；习题链接供练习使用。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
 <p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-02/">上一节：矩阵消元</a></p>
 </section>
