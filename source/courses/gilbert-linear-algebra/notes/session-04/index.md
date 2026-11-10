@@ -42,7 +42,7 @@ comments: false
 <div class="note-lead"><p><strong>消元得到上三角矩阵；把消元步骤倒过来，就得到原矩阵的分解。</strong>先理解恢复过程，再引入符号。</p></div>
 <div class="reading-links">
 <p class="link-row"><a href="/files/mit-18-06sc/unit-1-session-4-summary.pdf">讲义摘要</a> <a href="/files/mit-18-06sc/unit-1-session-4-problems.pdf">习题</a> <a href="/files/mit-18-06sc/unit-1-session-4-solutions.pdf">参考解答</a></p>
-<p class="link-row"><a href="#restore">从消元到分解</a> <a href="#multipliers">多步消元</a> <a href="#solve">用分解解方程</a> <a href="#pivoting">需要换行时</a> <a href="#extensions">讲义补充</a></p>
+<p class="link-row"><a href="#restore">从消元到分解</a> <a href="#multipliers">倍数如何进入 L</a> <a href="#solve">用分解解方程</a> <a href="#cost">运算量与存储</a> <a href="#pivoting">换行与置换</a> <a href="#extensions">主元与转置</a></p>
 </div>
 
 <h2 id="restore">一、从第二节接着问：怎样恢复原矩阵？</h2>
@@ -98,14 +98,29 @@ E_2E_1A=U
 A=\underbrace{E_1^{-1}E_2^{-1}}_{L}U.
 \]</div>
 <p>右边先作用 \(E_2^{-1}\)，即先恢复第三行。若先恢复第二行，再用它更新第三行，就会额外加进 \(5\cdot2=10\) 倍第一行，无法恢复原矩阵。</p>
-<p>一般地，按列向下消元，且<strong>不换行、不缩放主元行</strong>时，\(L\) 的对角线为 1，\(L_{ij}\) 记录操作 \(R_i\leftarrow R_i-\ell_{ij}R_j\) 中的倍数 \(\ell_{ij}\)。倒序恢复时，主元行尚未撤销更早的消元，因此可以直接记录这些倍数。由于总是用前面的行更新后面的行，记录都在对角线下方。</p>
+<p>这个例子还说明：<strong>\(L\) 不是把合并后的消元矩阵逐项变号。</strong>直接相乘得到：</p>
+<div class="equation">\[
+E_2E_1=
+\begin{pmatrix}1&amp;0&amp;0\\-2&amp;1&amp;0\\10&amp;-5&amp;1\end{pmatrix},
+\qquad
+(E_2E_1)^{-1}=
+\begin{pmatrix}1&amp;0&amp;0\\2&amp;1&amp;0\\0&amp;5&amp;1\end{pmatrix}=L.
+\]</div>
+<p>左下角的 \(10\) 来自连续减行产生的交叉项；取逆会改变操作顺序，不能只改变符号。</p>
+<p>为什么一般情况下也能直接记录倍数？固定原矩阵的第 \(i\) 行。按列消元时，它依次减去第 1、2、……、\(i-1\) 个主元行的若干倍。<strong>第 \(j\) 个主元行一旦用来消下面的行，之后就不再被修改，因此它正是最终 \(U\) 的第 \(j\) 行。</strong>记原矩阵第 \(i\) 行为 \(\mathbf r_i\)，\(U\) 的第 \(j\) 行为 \(\mathbf u_j\)，实际减去的倍数为 \(\ell_{ij}\)，则消元的全过程就是：</p>
+<div class="equation">\[
+\mathbf u_i=\mathbf r_i-\sum_{j=1}^{i-1}\ell_{ij}\mathbf u_j
+\quad\Longrightarrow\quad
+\mathbf r_i=\sum_{j=1}^{i-1}\ell_{ij}\mathbf u_j+\mathbf u_i.
+\]</div>
+<p>右边恰好是矩阵乘法 \(LU\) 的第 \(i\) 行。这就同时推出：\(L_{ij}=\ell_{ij}\)（\(j&lt;i\)），对角线为 1，上方为零。<strong>下三角形状与每个数字的位置，都由实际做过的行操作决定。</strong>这里假定按列向下消元、不换行、不缩放主元行；换行的情况见后文。</p>
 
 <h2 id="solve">三、为什么分解后更容易解方程？</h2>
-<p>原方程成为 \(L(U\mathbf x)=\mathbf b\)。我们已经认识 \(U\mathbf x\)，但还不知道它的值；现在把这个<strong>中间向量</strong>记为 \(\mathbf y\)，分两步求：</p>
+<p>原方程成为 \(L(U\mathbf x)=\mathbf b\)。已知最终输出 \(\mathbf b\)，先求“经过 \(L\) 后会得到 \(\mathbf b\) 的向量”；这个向量就是 \(U\mathbf x\)，现在才给它一个名字 \(\mathbf y\)。所以分成：</p>
 <div class="equation">\[
 L\mathbf y=\mathbf b,\qquad U\mathbf x=\mathbf y.
 \]</div>
-<p>\(L\) 是下三角，从第一行向下逐个求坐标，叫作<strong>前代</strong>；\(U\) 是上三角，从最后一行向上<strong>回代</strong>。\(\mathbf y\) 是辅助量，原未知数仍是 \(\mathbf x\)。</p>
+<p>\(L\) 是下三角，第 \(i\) 行只涉及 \(y_1,\ldots,y_i\)，而对角线为 1。因此，前面的坐标求出后，就有 \(y_i=b_i-\sum_{j&lt;i}L_{ij}y_j\)。从上往下逐个求解叫作<strong>前代</strong>。同理，\(U\) 的最后一行先确定 \(x_n\)，随后向上<strong>回代</strong>；每一步需要除以对应的非零主元。\(\mathbf y\) 是辅助量，原未知数仍是 \(\mathbf x\)。</p>
 <p>用刚才的三阶分解，取 \(\mathbf b=(7,19,31)^{\mathsf T}\)。先解：</p>
 <div class="equation">\[
 \begin{cases}y_1=7,\\2y_1+y_2=19,\\5y_2+y_3=31\end{cases}
@@ -119,37 +134,83 @@ L\mathbf y=\mathbf b,\qquad U\mathbf x=\mathbf y.
 \mathbf x=\begin{pmatrix}1\\2\\3\end{pmatrix}.
 \]</div>
 <p>\(\mathbf y\) 正是消元后的右端：\(L^{-1}\mathbf b=E_2E_1\mathbf b\)。所以这两步仍是第二节的“同时变换系数和常数，再回代”。</p>
-<p><strong>同一个 \(A\) 对应许多个不同的 \(\mathbf b\) 时，分解只需做一次。</strong>对于一般稠密的 \(n\times n\) 矩阵，分解的运算量约随 \(n^3\) 增长；之后每个右端的前代、回代合计约随 \(n^2\) 增长。这样不必对每个右端重新消元，也不必显式求逆。</p>
+<p><strong>同一个 \(A\) 对应许多个不同的 \(\mathbf b\) 时，分解只需做一次。</strong>因为消元倍数只由系数矩阵决定，改变右端不会改变 \(L,U\)。究竟节省多少计算，需要从每一步数起。</p>
 
-<h2 id="pivoting">四、需要换行时：PA = LU</h2>
+<h2 id="cost">四、消元究竟需要多少计算与存储？</h2>
+<p>考虑一般稠密的 \(n\times n\) 矩阵。第 \(k\) 列消元时，前 \(k-1\) 列已经处理完。主元下有 \(n-k\) 行，每行需要更新右侧 \(n-k\) 个数。下面的 \(a_{ij}\) 表示<strong>当前工作矩阵</strong>中的数，每个数都按同一规则更新：</p>
+<div class="equation">\[
+\ell_{ik}=\frac{a_{ik}}{a_{kk}},\qquad
+a_{ij}\leftarrow a_{ij}-\ell_{ik}a_{kj}
+\quad(i,j&gt;k).
+\]</div>
+<p>除法求出“这一行要减去主元行的多少倍”；后一个式子就是行操作在单个坐标上的写法。共有 \((n-k)^2\) 次这样的<strong>乘后减更新</strong>，所以全部消元的更新次数为：</p>
+<div class="equation">\[
+\begin{aligned}
+\sum_{k=1}^{n-1}(n-k)^2
+&amp;=1^2+2^2+\cdots+(n-1)^2\\
+&amp;=\frac{n(n-1)(2n-1)}6
+=\frac13n^3-\frac12n^2+\frac16n.
+\end{aligned}
+\]</div>
+<p>讲义用 \(\sum_{i=1}^{n}i^2\approx\int_0^n x^2\,dx=\frac13n^3\) 估计同一个主导项。端点差异只影响较低次项。<strong>三次方来自：逐列消元，每列要更新一个边长逐渐缩短的方块。</strong>矩阵阶数翻倍，主导计算量约为原来的八倍。</p>
+<p>计数单位要说清：讲义把“乘后减”作为一组来估计；若一次乘法、一次减法各算一次浮点运算，主导项就是 \(\frac23n^3\)。求消元倍数还需要 \(n(n-1)/2\) 次除法，属于二次项。两种计数都说明同一个事实：一般稠密矩阵的消元是三次量级。</p>
+<p>右端为何只需二次量级？同一次行操作只需更新一个常数 \(b_i\leftarrow b_i-\ell_{ik}b_k\)，不是一整行系数。因此全部右端更新只有：</p>
+<div class="equation">\[
+\sum_{k=1}^{n-1}(n-k)=\frac{n(n-1)}2.
+\]</div>
+<p>用已经保存的 \(L\) 做前代，也是这些更新；回代再做约同样多次乘后减和 \(n\) 次除法。因此，每个新右端只增加二次量级工作。若有 \(r\) 个右端，重复消元的主要成本约为 \(r\) 次三次量级工作；保存分解后，则是<strong>一次三次量级工作，加 \(r\) 次二次量级工作</strong>。这里比较的是运算次数，实际耗时还受存储访问、硬件和矩阵结构影响。</p>
+<p><strong>存储也不需要把所有消元矩阵留下来。</strong>主元下方的位置被消成零后，后续步骤不再需要这些系数；可以用这些位置保存刚算出的倍数。对角线和上方保存 \(U\)，下方保存 \(L\) 的倍数，而 \(L\) 的对角线 1 无须存储。刚才的三阶例子可以在一个数组中保存为：</p>
+<div class="equation">\[
+\begin{pmatrix}
+2&amp;1&amp;1\\
+\boxed{2}&amp;1&amp;1\\
+\boxed{0}&amp;\boxed{5}&amp;2
+\end{pmatrix}.
+\]</div>
+<p>框内属于 \(L\)，其余属于 \(U\)；这个数组<strong>本身并不是 \(A\)、\(L\) 或 \(U\)</strong>。计算时已处理的下方位置只作记录，不再当作待消系数。这样用约 \(n^2\) 个数就能保存分解，可以覆盖原矩阵；若之后还需要原矩阵本身，才额外保留副本。换行次序通常另用一个长度为 \(n\) 的整数数组保存。</p>
+
+<h2 id="pivoting">五、需要换行时：置换矩阵从哪里来？</h2>
 <p>下面用 \(A\) 表示第二节见过的矩阵 \(\begin{pmatrix}0&amp;1\\2&amp;3\end{pmatrix}\)。它可逆，但左上角的 0 不能作主元。先用交换矩阵 \(P\) 换行：</p>
 <div class="equation">\[
 P=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\qquad
 PA=\begin{pmatrix}2&amp;3\\0&amp;1\end{pmatrix}.
 \]</div>
-<p>换行后分解，写成 \(PA=LU\)；本例 \(L=I\)，\(U=PA\)。\(P\) 记录总的换行次序。求解时常数也要同步换行：</p>
+<p>这里 \(P\) 的第一行 \((0,1)\) 选出原第二行，第二行 \((1,0)\) 选出原第一行。一般的<strong>置换矩阵（permutation matrix）</strong>由单位矩阵重排行得到：每行每列恰有一个 1，其余为零。每行的 1 选择一条原行，每列恰有一个 1 保证既不重复选取，也不遗漏。</p>
+<p>多次换行仍是一次整体重排，把它记为 \(P\)，再分解重排后的矩阵，就得到 \(PA=LU\)；本例 \(L=I\)，\(U=PA\)。求解时常数也要同步换行：</p>
 <div class="equation">\[
 L\mathbf y=P\mathbf b,\qquad U\mathbf x=\mathbf y.
 \]</div>
-<p>若在消元中途换行，构造 \(L\) 时还要交换相关两行中<strong>先前已记录的倍数</strong>，才能保持等式成立。前面“倍数直接填入 \(L\)”的简单规则，前提是不换行。</p>
+<p>若在消元中途换行，已记录的倍数也必须跟着对应的行移动。例如第一列处理后，第二、三行分别记录了倍数 \(\ell_{21},\ell_{31}\)；再交换这两行时，这两个数必须一同交换，因为它们记录的是各自那条方程已经减去过什么。只交换工作矩阵而不交换这些记录，\(L\) 就无法恢复 \(PA\)。</p>
 <p>本节的求解过程假设 \(A\) 可逆，从而有足够的非零主元。不可逆矩阵也可能有 \(LU\) 分解，但 \(U\) 会缺少主元，不能保证任意右端都有唯一解。</p>
+<p><strong>为什么恰有 \(n!\) 个置换矩阵？</strong>第一行可选 \(n\) 条原行之一，第二行只剩 \(n-1\) 种选择，依次到最后一行只剩一种。因此总数为 \(n(n-1)\cdots1=n!\)，包含保持原顺序的单位矩阵。</p>
+<p><strong>为什么它们在乘法下组成一个群？</strong>连续两次重排仍是重排，故乘法封闭；结合律来自矩阵乘法；\(I\) 是不改变顺序的单位元；每次重排都能逆向放回，故每个元素都有逆。这四条正是群的要求。这个群叫作 <em>symmetric group</em>，记为 \(S_n\)。有了这个观点，多次换行就能作为一个可逆操作 \(P\) 统一处理。</p>
+<p>逆矩阵为何恰为转置？\(P\) 的各行是互不相同的标准单位向量，每行与自身点积为 1，与其他行点积为 0。按“行乘列”计算，\(PP^{\mathsf T}=I\)；同样，\(P^{\mathsf T}P=I\)，所以 \(P^{-1}=P^{\mathsf T}\)。单次交换两行还满足 \(P^{-1}=P\)，但一般重排未必如此。</p>
 
-<h2 id="extensions">五、讲义中的两个补充</h2>
+<h2 id="extensions">六、把主元分离，以及转置的乘法规则</h2>
 <p><strong>把主元单独保存。</strong>将刚才 \(U\) 的主元排成对角矩阵 \(D\)，再把 \(U\) 的各行除以对应主元，得到对角线为 1 的 \(\widehat U\)：</p>
 <div class="equation">\[
 D=\begin{pmatrix}2&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;2\end{pmatrix},\quad
 \widehat U=\begin{pmatrix}1&amp;\frac12&amp;\frac12\\0&amp;1&amp;1\\0&amp;0&amp;1\end{pmatrix}.
 \]</div>
-<p>于是 \(U=D\widehat U\)，分解也可写成 \(A=LD\widehat U\)。</p>
-<p><strong>转置也反转乘积顺序。</strong>\(A^{\mathsf T}\) 表示交换行与列，即 \((A^{\mathsf T})_{ij}=A_{ji}\)。把“左边的行乘右边的列”转置后，成为“右边转置后的行乘左边转置后的列”，因此：</p>
+<p>为什么左乘 \(D\)？因为对角矩阵左乘时，第 \(i\) 行只取原第 \(i\) 行的 \(D_{ii}\) 倍，正好把除掉的主元乘回来。因此 \(U=D\widehat U\)，分解写成 \(A=LD\widehat U\)：\(L\) 保存消元倍数，\(D\) 保存主元，\(\widehat U\) 保存每行除以主元后的系数。这里需要各主元非零。</p>
+<p><strong>转置也反转乘积顺序。</strong>\(A^{\mathsf T}\) 表示交换行与列，即 \((A^{\mathsf T})_{ij}=A_{ji}\)。固定转置后第 \(i,j\) 个元素，用第三节的乘法公式：</p>
+<div class="equation">\[
+\begin{aligned}
+((AB)^{\mathsf T})_{ij}
+&amp;=(AB)_{ji}=\sum_k a_{jk}b_{ki}\\
+&amp;=\sum_k(B^{\mathsf T})_{ik}(A^{\mathsf T})_{kj}
+=(B^{\mathsf T}A^{\mathsf T})_{ij}.
+\end{aligned}
+\]</div>
+<p>中间只交换了两个实数因子的次序，再用乘法定义识别结果，没有交换矩阵。所以每个位置都相等，从而：</p>
 <div class="equation">\[
 (AB)^{\mathsf T}=B^{\mathsf T}A^{\mathsf T},\qquad
 (A^{\mathsf T})^{-1}=(A^{-1})^{\mathsf T}.
 \]</div>
-<p>第二式要求 \(A\) 可逆；把 \(AA^{-1}=A^{-1}A=I\) 转置即可验证。对换行矩阵，\(P^{-1}=P^{\mathsf T}\)：转置后的排列恰好把各行放回原位。</p>
+<p>第二式要求 \(A\) 可逆：将 \(AA^{-1}=I\) 转置，得到 \((A^{-1})^{\mathsf T}A^{\mathsf T}=I\)；再将 \(A^{-1}A=I\) 转置，得到反向乘积也为 \(I\)。因此 \((A^{-1})^{\mathsf T}\) 符合 \(A^{\mathsf T}\) 的逆矩阵定义。</p>
 
 <h2 id="self-check">理解检查</h2>
-<p>为什么 \(L\) 里存 \(2,5\)，而消元矩阵里是 \(-2,-5\)？三阶例子为什么必须先恢复第三行？\(\mathbf y\) 与第二节消元后的右端有什么关系？</p>
+<p>能否从一行经历过的消元推导 \(L\) 的对应行？为什么系数更新要数平方和，而右端只需数一次和？一个数组怎样同时存下 \(L,U\)？为什么置换矩阵的逆一定是转置，却未必是自身？</p>
 <h2 id="sources">资料</h2>
 <p>依据 MIT OCW 18.06SC 第四讲 <em>Factorization into A = LU</em> 及其讲义摘要整理，例子从第二节延伸。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
 <p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-03/">上一节：矩阵乘法与逆矩阵</a></p>
