@@ -49,12 +49,17 @@ comments: false
 </div>
 
 <h2 id="definitions">一、从方程的有解性与唯一性出发</h2>
+<p>先明确 \(A\mathbf x=\mathbf b\) 中三个对象的角色：\(A\) 是已知的 \(m\times n\) 矩阵，\(\mathbf b\in\mathbb R^m\) 是给定的目标向量，而</p>
+<div class="equation">\[
+\mathbf x=\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}\in\mathbb R^n
+\]</div>
+<p>是把 \(n\) 个未知数排成一列得到的<strong>未知向量</strong>。求解就是找出它的各个分量。把矩阵乘法看作输入到输出的规则时，\(\mathbf x\) 称为输入，\(A\mathbf x\) 称为输出；解方程则要求这个输出恰好等于 \(\mathbf b\)。</p>
 <p>前几节用消元求解一个给定的方程组。现在固定 \(A\in\mathbb R^{m\times n}\)，让右端 \(\mathbf b\in\mathbb R^m\) 变化：我们希望知道<strong>哪些右端有解，以及有解时能否唯一确定 \(\mathbf x\)</strong>。以下均讨论实向量空间。</p>
 <p>先看有解性。记 \(A\) 的列为 \(\mathbf a_1,\ldots,\mathbf a_n\in\mathbb R^m\)。这只是为每一列取名；列空间还包括它们的任意实数倍与任意线性组合。由第一节的列观点，</p>
 <div class="equation">\[
 A\mathbf x=x_1\mathbf a_1+\cdots+x_n\mathbf a_n.
 \]</div>
-<p>解 \(A\mathbf x=\mathbf b\)，就是寻找一组列向量的系数，使其组合等于 \(\mathbf b\)。因此，方程有解，恰好意味着 \(\mathbf b\) 属于<strong>全部列向量的线性组合所成的集合</strong>。第五节已经把这样的集合称为张成空间；在这里，它就是矩阵的列空间。</p>
+<p>其中 \(x_j\) 是一个数，是第 \(j\) 列 \(\mathbf a_j\) 的系数；\(\mathbf x\) 把这些系数收集成一个向量。解 \(A\mathbf x=\mathbf b\)，就是寻找一组列向量的系数，使其组合等于 \(\mathbf b\)。因此，方程有解，恰好意味着 \(\mathbf b\) 属于<strong>全部列向量的线性组合所成的集合</strong>。第五节已经把这样的集合称为张成空间；在这里，它就是矩阵的列空间。</p>
 <p><strong>定义 1（列空间）。</strong>矩阵 \(A\) 的列空间为</p>
 <div class="equation">\[
 C(A):=\operatorname{span}\{\mathbf a_1,\ldots,\mathbf a_n\}
@@ -74,7 +79,7 @@ N(A):=\{\mathbf z\in\mathbb R^n:A\mathbf z=\mathbf0\}
 \]</div>
 <p>若 \(N(A)=\{\mathbf0\}\)，已有的解无法改变，因而唯一；若其中存在非零向量，就可把它加到已有的解上，得到另一个解。这里“零”限定的是<strong>输出</strong>，零空间中的输入可以非零。</p>
 <h3 id="small-example">例：哪些目标可达，输入又能怎样改变？</h3>
-<p>先用一个小矩阵算清两个集合。令</p>
+<p>先用一个小矩阵算清两个集合。这里有两个未知数 \(u,v\)，把它们合写为 \(\mathbf x=(u,v)^T\)，令</p>
 <div class="equation">\[
 B=\begin{pmatrix}1&amp;2\\2&amp;4\end{pmatrix},\qquad
 B\begin{pmatrix}u\\v\end{pmatrix}
@@ -90,7 +95,7 @@ C(B)=\left\{\begin{pmatrix}s\\2s\end{pmatrix}:s\in\mathbb R\right\}.
 N(B)=\left\{t\begin{pmatrix}-2\\1\end{pmatrix}:t\in\mathbb R\right\}.
 \]</div>
 <p>例如输入 \((-2,1)^T\) 的两个分量都非零，却满足 \(B(-2,1)^T=\mathbf0\)。两个列贡献相互抵消。这正是零空间可以包含非零输入的原因。</p>
-<p>对目标 \((3,6)^T\)，已知一个输入是 \((3,0)^T\)。全部输入满足 \(u+2v=3\)，故可写成</p>
+<p>对目标 \(\mathbf b=(3,6)^T\)，解方程就是求出所有满足 \(u+2v=3\)、\(2u+4v=6\) 的数对 \((u,v)\)。第二式是第一式的两倍，所以只需满足 \(u+2v=3\)。例如 \((u,v)=(3,0)\) 是一组解；令 \(v=t\)，则 \(u=3-2t\)，全部未知向量可写成</p>
 <div class="equation">\[
 \mathbf x=\begin{pmatrix}3\\0\end{pmatrix}
 +t\begin{pmatrix}-2\\1\end{pmatrix},\qquad t\in\mathbb R.
