@@ -50,7 +50,7 @@ comments: false
 
 <h2 id="definitions">一、从方程的有解性与唯一性出发</h2>
 <p>前几节用消元求解一个给定的方程组。现在固定 \(A\in\mathbb R^{m\times n}\)，让右端 \(\mathbf b\in\mathbb R^m\) 变化：我们希望知道<strong>哪些右端有解，以及有解时能否唯一确定 \(\mathbf x\)</strong>。以下均讨论实向量空间。</p>
-<p>先看有解性。记 \(A\) 的列为 \(\mathbf a_1,\ldots,\mathbf a_n\in\mathbb R^m\)。由第一节的列观点，</p>
+<p>先看有解性。记 \(A\) 的列为 \(\mathbf a_1,\ldots,\mathbf a_n\in\mathbb R^m\)。这只是为每一列取名；列空间还包括它们的任意实数倍与任意线性组合。由第一节的列观点，</p>
 <div class="equation">\[
 A\mathbf x=x_1\mathbf a_1+\cdots+x_n\mathbf a_n.
 \]</div>
@@ -73,7 +73,32 @@ N(A):=\{\mathbf z\in\mathbb R^n:A\mathbf z=\mathbf0\}
 \subseteq\mathbb R^n.
 \]</div>
 <p>若 \(N(A)=\{\mathbf0\}\)，已有的解无法改变，因而唯一；若其中存在非零向量，就可把它加到已有的解上，得到另一个解。这里“零”限定的是<strong>输出</strong>，零空间中的输入可以非零。</p>
+<h3 id="small-example">例：哪些目标可达，输入又能怎样改变？</h3>
+<p>先用一个小矩阵算清两个集合。令</p>
+<div class="equation">\[
+B=\begin{pmatrix}1&amp;2\\2&amp;4\end{pmatrix},\qquad
+B\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}u+2v\\2(u+2v)\end{pmatrix}.
+\]</div>
+<p><strong>列空间看输出。</strong>两列是 \((1,2)^T\)、\((2,4)^T\)，但列空间还包含 \((3,6)^T\)、\((-1,-2)^T\) 等所有组合。令 \(s=u+2v\)；它可以取任意实数，因此</p>
+<div class="equation">\[
+C(B)=\left\{\begin{pmatrix}s\\2s\end{pmatrix}:s\in\mathbb R\right\}.
+\]</div>
+<p>这条直线包含全部可能输出。于是 \(B\mathbf x=(3,6)^T\) 有解，而 \(B\mathbf x=(3,7)^T\) 无解：任何输出的第二分量都必须是第一分量的两倍。<strong>列空间给出对右端的限制条件。</strong></p>
+<p><strong>零空间看输入。</strong>要使上面的输出为零，只需 \(u+2v=0\)。令 \(v=t\)，便得到</p>
+<div class="equation">\[
+N(B)=\left\{t\begin{pmatrix}-2\\1\end{pmatrix}:t\in\mathbb R\right\}.
+\]</div>
+<p>例如输入 \((-2,1)^T\) 的两个分量都非零，却满足 \(B(-2,1)^T=\mathbf0\)。两个列贡献相互抵消。这正是零空间可以包含非零输入的原因。</p>
+<p>对目标 \((3,6)^T\)，已知一个输入是 \((3,0)^T\)。全部输入满足 \(u+2v=3\)，故可写成</p>
+<div class="equation">\[
+\mathbf x=\begin{pmatrix}3\\0\end{pmatrix}
++t\begin{pmatrix}-2\\1\end{pmatrix},\qquad t\in\mathbb R.
+\]</div>
+<p>沿 \((-2,1)^T\) 改变输入，输出始终是 \((3,6)^T\)。<strong>零空间给出保持同一输出的全部输入增量。</strong>固定 \(B\) 后，无论换成哪个可达目标，这些增量都相同。</p>
+<details class="note-extension"><summary>线性映射中的名称：像与核</summary>
 <p>从线性映射 \(T_A\colon\mathbb R^n\to\mathbb R^m,\ \mathbf x\mapsto A\mathbf x\) 看，\(C(A)\) 是映射的像，\(N(A)\) 是映射的核。两者的元素角色不同：列空间收集可能的<strong>输出</strong>，位于 \(\mathbb R^m\)；零空间收集输出为零的<strong>输入</strong>，位于 \(\mathbb R^n\)。方程 \(A\mathbf z=\mathbf0\) 中的零向量属于 \(\mathbb R^m\)。</p>
+</details>
 <p><strong>命题 1。</strong>\(C(A)\) 与 \(N(A)\) 分别是 \(\mathbb R^m\)、\(\mathbb R^n\) 的子空间。</p>
 <p><strong>证明。</strong>列空间是张成空间，结论由第五节已证的命题得到。零空间含零向量；若 \(\mathbf u,\mathbf v\in N(A)\)，则对任意 \(a,b\in\mathbb R\)，</p>
 <div class="equation">\[
@@ -83,7 +108,7 @@ A(a\mathbf u+b\mathbf v)
 <p>故 \(a\mathbf u+b\mathbf v\in N(A)\)，由子空间判据得证。\(\square\)</p>
 
 <h2 id="column-space">二、讲义的矩阵：哪些右端能够得到？</h2>
-<p>本节始终使用讲义中的矩阵</p>
+<p>下面回到讲义中的矩阵</p>
 <div class="equation">\[
 A=\begin{pmatrix}
 1&amp;1&amp;2\\2&amp;1&amp;3\\3&amp;1&amp;4\\4&amp;1&amp;5
@@ -174,6 +199,6 @@ S+T:=\{\mathbf s+\mathbf t:\mathbf s\in S,\ \mathbf t\in T\}
 <h2 id="self-check">理解检查</h2>
 <p>能否证明等差条件既必要又充分？为什么只找到 \((1,1,-1)^T\) 一个齐次解，还不足以声称已求出零空间？为什么非齐次解集平行于零空间，却不一定等于零空间？</p>
 <h2 id="sources">资料与衔接</h2>
-<p>依据 MIT OCW 18.06SC 第六讲 <em>Column Space and Nullspace</em> 与讲义摘要整理。子空间的交、并及和空间见文末补充，与习题 6.1 衔接；右端的等差条件、完整证明及线性相关、基与维数的定义为补充。后续课程将用消元、主元变量与自由变量系统求解 \(A\mathbf x=\mathbf0\)。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
+<p>依据 MIT OCW 18.06SC 第六讲 <em>Column Space and Nullspace</em> 与讲义摘要整理。二阶矩阵例子用于说明两个空间的用途；子空间的交、并及和空间见文末补充，与习题 6.1 衔接；右端的等差条件、完整证明及线性相关、基与维数的定义为补充。后续课程将用消元、主元变量与自由变量系统求解 \(A\mathbf x=\mathbf0\)。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
 <p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-05/">上一节：转置、置换与向量空间</a></p>
 </section>
