@@ -25,6 +25,29 @@ comments: false
 - **内容概述：** 从距离与速度、曲线高度与斜率引入微积分，讲解极限、连续性、导数及其应用、积分与微积分基本定理、指数与对数、积分技巧和无穷级数；随后进入向量与矩阵、曲线运动、偏导数、梯度、多重积分和向量微积分，涵盖 Green、Gauss 散度与 Stokes 定理。书中包含例题和练习。
 - **PDF：** [在线阅读](/files/math-resources/strang-calculus-3rd-edition.pdf) · <a href="/files/math-resources/strang-calculus-3rd-edition.pdf" download="Gilbert-Strang-Calculus-3rd-Edition.pdf">下载 PDF</a>
 
+## Lifesaver 学习辅导系列
+
+### [The Calculus Lifesaver: All the Tools You Need to Excel at Calculus](/files/math-resources/banner-calculus-lifesaver.pdf)
+
+- **作者：** Adrian Banner
+- **版本信息：** Princeton University Press，2007；PDF 共 753 页
+- **内容概述：** 以单变量微积分的概念理解与解题方法为主线，从函数、三角函数与极限讲起，覆盖连续性、导数、微分应用、积分与微积分基本定理、积分技巧、反常积分、数列与级数、Taylor 展开、参数方程和极坐标，以及初等微分方程。通过分步例题解释方法选择，适合配合我们的 Strang 微积分读本查漏补缺。
+- **PDF：** [在线阅读](/files/math-resources/banner-calculus-lifesaver.pdf) · <a href="/files/math-resources/banner-calculus-lifesaver.pdf" download="Adrian-Banner-The-Calculus-Lifesaver.pdf">下载 PDF</a>
+
+### [The Probability Lifesaver: All the Tools You Need to Understand Chance](/files/math-resources/miller-probability-lifesaver.pdf)
+
+- **作者：** Steven J. Miller
+- **版本信息：** Princeton University Press，2017；PDF 共 753 页
+- **内容概述：** 从生日问题、计数与概率公理进入条件概率、独立性和 Bayes 定理，继而讲解离散与连续随机变量、期望、方差、卷积、常见分布、大数定律、生成函数与中心极限定理；后续讨论假设检验、Markov 过程和最小二乘法。包含例题、习题与编程模拟，并附证明技巧及分析基础。
+- **PDF：** [在线阅读](/files/math-resources/miller-probability-lifesaver.pdf) · <a href="/files/math-resources/miller-probability-lifesaver.pdf" download="Steven-J-Miller-The-Probability-Lifesaver.pdf">下载 PDF</a>
+
+### [The Real Analysis Lifesaver: All the Tools You Need to Understand Proofs](/files/math-resources/grinberg-real-analysis-lifesaver.pdf)
+
+- **作者：** Raffi Grinberg
+- **版本信息：** Princeton University Press，版权页标注 2017；PDF 共 201 页
+- **内容概述：** 面向实分析入门与证明训练，从逻辑、集合、上确界和实数域出发，介绍复数与欧氏空间、双射与可数性、度量空间中的开闭集、紧性、Heine–Borel 定理、完全集与连通集，随后讨论数列收敛、子列、Cauchy 数列、单调数列及级数。重点解释定义如何用于证明，适合补充分析教材的基础论证。
+- **PDF：** [在线阅读](/files/math-resources/grinberg-real-analysis-lifesaver.pdf) · <a href="/files/math-resources/grinberg-real-analysis-lifesaver.pdf" download="Raffi-Grinberg-The-Real-Analysis-Lifesaver.pdf">下载 PDF</a>
+
 ## 实分析、测度与泛函分析
 
 ### [《求真书院分析讲义》](/files/math-resources/qiuzhen-lectures-on-analysis.pdf)
