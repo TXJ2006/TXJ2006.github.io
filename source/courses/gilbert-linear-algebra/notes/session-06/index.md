@@ -161,28 +161,66 @@ c_1\mathbf v_1+\cdots+c_r\mathbf v_r=\mathbf0
 <p>反过来，若三个差都等于 \(p\)，令 \(q=b_1-p\)，就有 \(b_i=ip+q\)（\(i=1,2,3,4\)），故 \(\mathbf b=p\mathbf a_1+q\mathbf a_2\in C(A)\)。因此这也是有解的充要条件。例如 \((1,2,3,4)^T\) 对应有解，\((1,2,3,5)^T\) 对应无解。</p>
 
 <h2 id="nullspace">三、同一个列关系，怎样确定全部齐次解？</h2>
-<p>列关系 \(\mathbf a_1+\mathbf a_2-\mathbf a_3=\mathbf0\) 给出一个非零输入：</p>
+<p><strong>齐次方程</strong>指右端为零向量的线性方程 \(A\mathbf x=\mathbf0\)，它的解称为齐次解；全部齐次解组成 \(N(A)\)。本例的未知向量是 \(\mathbf x=(x_1,x_2,x_3)^T\in\mathbb R^3\)，右端则是 \(\mathbb R^4\) 中的零向量。</p>
+<h3>先找到一个解，再确定有没有其他方向的解</h3>
+<p>矩阵乘法把输入的三个分量分别作为三列的系数。由于 \(\mathbf a_3=\mathbf a_1+\mathbf a_2\)，取系数 \((1,1,-1)\) 就有</p>
 <div class="equation">\[
-A\begin{pmatrix}1\\1\\-1\end{pmatrix}=\mathbf0.
+A\begin{pmatrix}1\\1\\-1\end{pmatrix}
+=1\mathbf a_1+1\mathbf a_2-1\mathbf a_3
+=\mathbf0.
 \]</div>
-<p>这只找到了一个零空间向量。要求出<strong>全部</strong>零空间，利用前面已经证明的线性无关性：</p>
+<p>这说明 \((1,1,-1)^T\) 是一个非零齐次解。它的任意实数倍也都是解，但此时还没有证明：是否存在不在这些倍数中的其他解？所以要从<strong>任意未知向量</strong>出发求解。</p>
+<h3>展开任意输入，求出三个分量之间的约束</h3>
+<p>将第三列替换成前两列之和，再合并同类项：</p>
 <div class="equation">\[
 \begin{aligned}
-A\mathbf x=\mathbf0
-&amp;\iff (x_1+x_3)\mathbf a_1+(x_2+x_3)\mathbf a_2=\mathbf0\\
-&amp;\iff x_1+x_3=0,\quad x_2+x_3=0.
+A\mathbf x
+&amp;=x_1\mathbf a_1+x_2\mathbf a_2+x_3\mathbf a_3\\
+&amp;=x_1\mathbf a_1+x_2\mathbf a_2+x_3(\mathbf a_1+\mathbf a_2)\\
+&amp;=(x_1+x_3)\mathbf a_1+(x_2+x_3)\mathbf a_2.
 \end{aligned}
 \]</div>
-<p>令 \(t=-x_3\)，便得到</p>
+<p>前一节已证明 \(\mathbf a_1,\mathbf a_2\) 线性无关。因此，它们的组合为零时，<strong>各自的系数必须为零</strong>。这里两个系数分别是 \(x_1+x_3\)、\(x_2+x_3\)，所以</p>
+<div class="equation">\[
+A\mathbf x=\mathbf0
+\iff
+\begin{cases}
+x_1+x_3=0,\\
+x_2+x_3=0
+\end{cases}
+\iff
+\begin{cases}
+x_1=-x_3,\\
+x_2=-x_3.
+\end{cases}
+\]</div>
+<p>这两条等式并没有限制 \(x_3\) 必须取哪个数。它可以任取实数；一旦选定 \(x_3\)，\(x_1,x_2\) 就随之确定。为把结果写成前面那个向量的倍数，<strong>令 \(t=-x_3\)</strong>，于是 \(x_3=-t\)、\(x_1=x_2=t\)，得到</p>
+<div class="equation">\[
+\mathbf x=\begin{pmatrix}t\\t\\-t\end{pmatrix}
+=t\begin{pmatrix}1\\1\\-1\end{pmatrix},\qquad t\in\mathbb R.
+\]</div>
+<p>\(t\) 是一个可任意取值的实数参数。取 \(t=0\) 得零解，取 \(t=1\) 得 \((1,1,-1)^T\)，取 \(t=-2\) 得 \((-2,-2,2)^T\)。也可以令 \(s=x_3\)，写成 \(s(-1,-1,1)^T\)；因为 \(s\) 遍历全部实数，得到的是同一个解集。</p>
+<p>上述推导说明<strong>每个齐次解都必须有这个形式</strong>；反过来，任取 \(t\in\mathbb R\)，代回有 \(A\mathbf x=t(\mathbf a_1+\mathbf a_2-\mathbf a_3)=\mathbf0\)，说明<strong>每个这种形式的向量确实都是解</strong>。两方面合起来，才确定没有漏解：</p>
 <div class="equation">\[
 \boxed{N(A)=\left\{t\begin{pmatrix}1\\1\\-1\end{pmatrix}:t\in\mathbb R\right\}.}
 \]</div>
-<p>向量 \((1,1,-1)^T\) 非零，其倍数只有在系数为零时才是零向量，故它单独构成一组线性无关的向量；上式又说明它张成整个零空间。因此它是 \(N(A)\) 的一组基，\(\dim N(A)=1\)，零空间是 \(\mathbb R^3\) 中的一条直线。列空间中的二维平面位于 \(\mathbb R^4\)，这条直线位于 \(\mathbb R^3\)；它们分别描述输出与输入。</p>
-<p>这个非零方向也解释了为什么输入不能由输出唯一恢复。对任意 \(\mathbf x\in\mathbb R^3\)，</p>
+<p>花括号表示一个集合，冒号后的 \(t\in\mathbb R\) 指明参数取值范围：把所有实数 \(t\) 代入，收集得到的全部向量。这个集合是 \(\mathbb R^3\) 中经过原点、方向为 \((1,1,-1)^T\) 的直线。</p>
+<p>按前面的基定义，\((1,1,-1)^T\) 张成整个 \(N(A)\)；且若 \(c(1,1,-1)^T=\mathbf0\)，第一分量就给出 \(c=0\)，所以这一个向量组成的向量组线性无关。它因而构成零空间的一组基，\(\dim N(A)=1\)。三个分量由一个参数确定；前面列空间的二维平面则位于输出空间 \(\mathbb R^4\) 中。</p>
+<h3>这一结果有什么用：找出保持输出不变的全部输入变化</h3>
+<p>将任意输入 \(\mathbf x=(x_1,x_2,x_3)^T\) 改为</p>
 <div class="equation">\[
-A\left(\mathbf x+t\begin{pmatrix}1\\1\\-1\end{pmatrix}\right)=A\mathbf x.
+\mathbf x'=\mathbf x+t\begin{pmatrix}1\\1\\-1\end{pmatrix}
+=\begin{pmatrix}x_1+t\\x_2+t\\x_3-t\end{pmatrix}.
 \]</div>
-<p>增加前两列各 \(t\) 份，同时减少第三列 \(t\) 份，输出完全抵消。因此<strong>两次输入产生同一输出，当且仅当它们的差属于零空间</strong>：\(A\mathbf x=A\mathbf y\iff\mathbf x-\mathbf y\in N(A)\)。</p>
+<p>这里改变的是<strong>列的组合系数</strong>：前两个系数各增加 \(t\)，第三个系数减少 \(t\)，矩阵的列本身保持固定。对应的输出变化为</p>
+<div class="equation">\[
+A\mathbf x'-A\mathbf x
+=A(\mathbf x'-\mathbf x)
+=t(\mathbf a_1+\mathbf a_2-\mathbf a_3)
+=\mathbf0.
+\]</div>
+<p>因此 \(A\mathbf x'=A\mathbf x\)。例如，输入 \((1,0,0)^T\) 取 \(t=-1\) 后变成 \((0,-1,1)^T\)，输出仍是 \(\mathbf a_1\)，因为 \(-\mathbf a_2+\mathbf a_3=\mathbf a_1\)。</p>
+<p>反过来，若两个输入 \(\mathbf x,\mathbf y\) 产生同一输出，则 \(A(\mathbf y-\mathbf x)=A\mathbf y-A\mathbf x=\mathbf0\)，所以它们的差属于刚求出的 \(N(A)\)。即<strong>本例中，保持输出不变的全部输入变化，恰好就是沿 \((1,1,-1)^T\) 的任意实数倍变化</strong>。下一节据此写出非齐次方程的全部解。</p>
 
 <h2 id="solution-set">四、非齐次解集：零空间的平移</h2>
 <p><strong>命题 3（全部解的结构）。</strong>设 \(A\in\mathbb R^{m\times n}\)，且 \(A\mathbf x=\mathbf b\) 至少有一个解 \(\mathbf x_p\)。则它的解集为</p>
