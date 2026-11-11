@@ -162,7 +162,7 @@ c_1\mathbf v_1+\cdots+c_r\mathbf v_r=\mathbf0
 
 <h2 id="nullspace">三、同一个列关系，怎样确定全部齐次解？</h2>
 <p><strong>齐次方程</strong>指右端为零向量的线性方程 \(A\mathbf x=\mathbf0\)，它的解称为齐次解；全部齐次解组成 \(N(A)\)。本例的未知向量是 \(\mathbf x=(x_1,x_2,x_3)^T\in\mathbb R^3\)，右端则是 \(\mathbb R^4\) 中的零向量。</p>
-<h3>先找到一个解，再确定有没有其他方向的解</h3>
+<h3 id="one-homogeneous-solution">先找到一个解，再确定有没有其他方向的解</h3>
 <p>矩阵乘法把输入的三个分量分别作为三列的系数。由于 \(\mathbf a_3=\mathbf a_1+\mathbf a_2\)，取系数 \((1,1,-1)\) 就有</p>
 <div class="equation">\[
 A\begin{pmatrix}1\\1\\-1\end{pmatrix}
@@ -170,7 +170,7 @@ A\begin{pmatrix}1\\1\\-1\end{pmatrix}
 =\mathbf0.
 \]</div>
 <p>这说明 \((1,1,-1)^T\) 是一个非零齐次解。它的任意实数倍也都是解，但此时还没有证明：是否存在不在这些倍数中的其他解？所以要从<strong>任意未知向量</strong>出发求解。</p>
-<h3>展开任意输入，求出三个分量之间的约束</h3>
+<h3 id="all-homogeneous-solutions">展开任意输入，求出三个分量之间的约束</h3>
 <p>将第三列替换成前两列之和，再合并同类项：</p>
 <div class="equation">\[
 \begin{aligned}
@@ -206,7 +206,7 @@ x_2=-x_3.
 \]</div>
 <p>花括号表示一个集合，冒号后的 \(t\in\mathbb R\) 指明参数取值范围：把所有实数 \(t\) 代入，收集得到的全部向量。这个集合是 \(\mathbb R^3\) 中经过原点、方向为 \((1,1,-1)^T\) 的直线。</p>
 <p>按前面的基定义，\((1,1,-1)^T\) 张成整个 \(N(A)\)；且若 \(c(1,1,-1)^T=\mathbf0\)，第一分量就给出 \(c=0\)，所以这一个向量组成的向量组线性无关。它因而构成零空间的一组基，\(\dim N(A)=1\)。三个分量由一个参数确定；前面列空间的二维平面则位于输出空间 \(\mathbb R^4\) 中。</p>
-<h3>这一结果有什么用：找出保持输出不变的全部输入变化</h3>
+<h3 id="nullspace-use">这一结果有什么用：找出保持输出不变的全部输入变化</h3>
 <p>将任意输入 \(\mathbf x=(x_1,x_2,x_3)^T\) 改为</p>
 <div class="equation">\[
 \mathbf x'=\mathbf x+t\begin{pmatrix}1\\1\\-1\end{pmatrix}
