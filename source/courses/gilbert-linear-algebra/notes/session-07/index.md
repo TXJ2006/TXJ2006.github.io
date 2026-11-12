@@ -211,5 +211,5 @@ N=\begin{pmatrix}-2&amp;2\\1&amp;0\\0&amp;-2\\0&amp;1\end{pmatrix}
 <p>为什么第 2 列没有主元，却不要求 \(x_2=0\)？若取 \(x_2=3,x_4=-1\)，能否回代得到一个解？为什么构造两个特殊解后，还需证明它们能组合出全部解？交换列时，为什么必须同步调整未知数顺序？</p>
 <h2 id="sources">资料与衔接</h2>
 <p>依据 MIT OCW 18.06SC 第七讲 <em>Solving Ax = 0: Pivot Variables, Special Solutions</em> 及讲义摘要整理。矩阵、消元过程、特殊解与分块形式来自本讲；零空间基的完整性论证及列空间说明作了展开。下一节将用行最简形处理一般右端 \(A\mathbf x=\mathbf b\)，第九节再系统讨论线性无关、基与维数。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
-<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-06/">上一节：列空间与零空间</a></p>
+<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-06/">上一节：列空间与零空间</a> · <a href="/courses/gilbert-linear-algebra/notes/session-08/">下一节：有解条件与全部解</a></p>
 </section>

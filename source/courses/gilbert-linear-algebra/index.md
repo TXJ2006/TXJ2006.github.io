@@ -25,6 +25,8 @@ comments: false
 
 第七节：[求解 Ax = 0：主元变量与特殊解：阅读笔记](/courses/gilbert-linear-algebra/notes/session-07/)
 
+第八节：[求解 Ax = b：有解条件与全部解：阅读笔记](/courses/gilbert-linear-algebra/notes/session-08/)
+
 ## 教材
 
 ### Introduction to Linear Algebra
