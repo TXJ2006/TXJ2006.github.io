@@ -23,6 +23,8 @@ comments: false
 
 第六节：[列空间与零空间：阅读笔记](/courses/gilbert-linear-algebra/notes/session-06/)
 
+第七节：[求解 Ax = 0：主元变量与特殊解：阅读笔记](/courses/gilbert-linear-algebra/notes/session-07/)
+
 ## 教材
 
 ### Introduction to Linear Algebra

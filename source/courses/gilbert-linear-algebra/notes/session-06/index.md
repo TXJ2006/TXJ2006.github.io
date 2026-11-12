@@ -255,5 +255,5 @@ S+T:=\{\mathbf s+\mathbf t:\mathbf s\in S,\ \mathbf t\in T\}
 <p>能否证明等差条件既必要又充分？为什么只找到 \((1,1,-1)^T\) 一个齐次解，还不足以声称已求出零空间？为什么非齐次解集平行于零空间，却不一定等于零空间？</p>
 <h2 id="sources">资料与衔接</h2>
 <p>依据 MIT OCW 18.06SC 第六讲 <em>Column Space and Nullspace</em> 与讲义摘要整理。二阶矩阵例子用于说明两个空间的用途；子空间的交、并及和空间见文末补充，与习题 6.1 衔接；右端的等差条件、完整证明及线性相关、基与维数的定义为补充。后续课程将用消元、主元变量与自由变量系统求解 \(A\mathbf x=\mathbf0\)。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
-<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-05/">上一节：转置、置换与向量空间</a></p>
+<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-05/">上一节：转置、置换与向量空间</a> · <a href="/courses/gilbert-linear-algebra/notes/session-07/">下一节：求解 Ax = 0</a></p>
 </section>
