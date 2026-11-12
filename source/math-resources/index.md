@@ -363,6 +363,13 @@ comments: false
 
 ## 几何、流形与代数几何（新增）
 
+### [代数曲线：代数几何引论（Algebraic Curves: An Introduction to Algebraic Geometry）](/files/math-resources/fulton-algebraic-curves-zh.pdf)
+
+- **作者：** William Fulton
+- **版本信息：** 以 2008 年 1 月 28 日作者公开本为底本的中文翻译及重排版；封面标注 Model: Codex，更新于 2026 年 11 月 6 日；PDF 共 114 页
+- **内容概述：** 从环、理想和多项式等代数预备知识进入仿射代数集与仿射簇，讨论坐标环、函数域、局部环、平面曲线的重数与交数；继而介绍射影簇、Bézout 定理、Max Noether 基本定理、态射与有理映射、通过吹起消解曲线奇点，最后建立除子、微分与曲线上的 Riemann–Roch 定理。附有习题及非零特征的补充说明。
+- **PDF：** [在线阅读](/files/math-resources/fulton-algebraic-curves-zh.pdf) · <a href="/files/math-resources/fulton-algebraic-curves-zh.pdf" download="William-Fulton-Algebraic-Curves-zh.pdf">下载 PDF</a>
+
 ### [MIT 18.721: Notes for a Course in Algebraic Geometry](/files/math-resources/archive-2026-11-08-11.pdf)
 - **作者 / 编者：** MIT 18.721 课程讲义，文件未署名
 - **版本信息：** 2022 年 1 月预稿；216 页
