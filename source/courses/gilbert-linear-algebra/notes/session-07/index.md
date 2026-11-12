@@ -116,9 +116,15 @@ x_3=-2x_4.
 <div class="equation">\[
 \mathbf x=
 \begin{pmatrix}-2s+2t\\s\\-2t\\t\end{pmatrix}
-=s\begin{pmatrix}-2\\1\\0\\0\end{pmatrix}
+=\begin{pmatrix}-2s\\s\\0\\0\end{pmatrix}
++\begin{pmatrix}2t\\0\\-2t\\t\end{pmatrix}.
+\]</div>
+<p>这一步只是按分量相加的规则，把含 \(s\) 和含 \(t\) 的部分分别收集起来；再从两个向量中分别提出公因子 \(s,t\)，得到</p>
+<div class="equation">\[
+\mathbf x=s\begin{pmatrix}-2\\1\\0\\0\end{pmatrix}
 +t\begin{pmatrix}2\\0\\-2\\1\end{pmatrix}.
 \]</div>
+<p><strong>两个固定向量中的数，依次是各分量里 \(s\) 与 \(t\) 的系数。</strong>例如 \(x_1=-2s+2t\)，所以第一个位置分别填 \(-2,2\)；\(x_2=s=1s+0t\)，所以第二个位置分别填 \(1,0\)。其余分量同理。这是对全部解的表达式作代数整理，并没有增加新的条件。</p>
 <p>将两个固定向量分别记为 \(\mathbf s_1,\mathbf s_2\)。下标只是区分这两个向量。它们由如下选择得到：</p>
 <ul>
 <li>取 \((x_2,x_4)=(1,0)\)，回代得到 \(\mathbf s_1=(-2,1,0,0)^T\)。</li>
