@@ -29,6 +29,8 @@ comments: false
 
 第九节：[线性无关、基与维数：阅读笔记](/courses/gilbert-linear-algebra/notes/session-09/)
 
+第十节：[四个基本子空间：阅读笔记](/courses/gilbert-linear-algebra/notes/session-10/)
+
 ## 教材
 
 ### Introduction to Linear Algebra

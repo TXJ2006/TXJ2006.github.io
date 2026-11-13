@@ -240,5 +240,5 @@ x_1+x_3+x_4=0,\qquad x_2+x_3=0.
 </ol>
 <h2 id="sources">资料与衔接</h2>
 <p>依据 MIT OCW 18.06SC 第九讲 <em>Independence, Basis and Dimension</em> 及<a href="/files/mit-18-06sc/unit-1-session-9-summary.pdf">讲义摘要</a>整理。定义、两组矩阵例子、列空间与零空间的基来自摘要；唯一表示、基的个数不变、主元列与特殊解成基的证明作了展开；坐标比较、参数冗余与列关系的说明用于衔接第五至八节，并纠正摘要中的符号笔误。摘要注明三向量例子在 Lecture 10 开头讨论，本页用它补充辨析“平面的基”与“整个空间的基”。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
-<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-08/">上一节：有解条件与全部解</a></p>
+<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-08/">上一节：有解条件与全部解</a> · <a href="/courses/gilbert-linear-algebra/notes/session-10/">下一节：四个基本子空间</a></p>
 </section>

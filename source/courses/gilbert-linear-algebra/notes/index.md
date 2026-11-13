@@ -22,5 +22,6 @@ comments: false
 | 第七节 | [求解 Ax = 0：主元变量与特殊解：阅读笔记](/courses/gilbert-linear-algebra/notes/session-07/) | 已整理阅读笔记 |
 | 第八节 | [求解 Ax = b：有解条件与全部解：阅读笔记](/courses/gilbert-linear-algebra/notes/session-08/) | 已整理阅读笔记 |
 | 第九节 | [线性无关、基与维数：阅读笔记](/courses/gilbert-linear-algebra/notes/session-09/) | 已整理阅读笔记 |
+| 第十节 | [四个基本子空间：阅读笔记](/courses/gilbert-linear-algebra/notes/session-10/) | 已整理阅读笔记 |
 
 后续各节学习后逐步加入目录。
