@@ -57,19 +57,19 @@ comments: false
 
 <section class="la-notes la-notes--session10">
 <p class="note-nav"><a href="/courses/gilbert-linear-algebra/notes/">← 返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-09/">第九节</a></p>
-<div class="note-lead"><p>第九节解释了怎样为列空间、零空间选基。本节沿讲义加入行空间与左零空间：<strong>列空间记录可能的输出，零空间记录列之间的关系；行空间记录方程左端能组合出的系数，左零空间记录行之间的关系。</strong>最后一类关系，正是第八节有解条件的来源。</p></div>
+<div class="note-lead"><p>第九节从列之间的关系求出了零空间。现在把同一个问题转向行：<strong>各行能组合出哪些方程？哪些组合会让左端抵消为零？</strong>前一个问题引出行空间，后一个问题引出左零空间，并解释第八节的有解条件为何出现。</p></div>
 <div class="reading-links">
 <p class="link-row"><a href="/files/mit-18-06sc/unit-1-session-10-summary.pdf">讲义摘要</a> <a href="/files/mit-18-06sc/unit-1-session-10-problems.pdf">习题</a> <a href="/files/mit-18-06sc/unit-1-session-10-solutions.pdf">参考解答</a></p>
 <p class="link-row"><a href="#four-spaces">四个空间的定义</a> <a href="#example">沿用上一节的矩阵</a> <a href="#row-space">行空间与行秩</a> <a href="#left-nullspace">左零空间</a> <a href="#elimination">消元矩阵怎样给出基</a> <a href="#compatibility">有解条件</a> <a href="#relations">空间之间的联系</a> <a href="#matrix-space">矩阵也是向量</a></p>
 </div>
 
-<h2 id="four-spaces">一、先分清：向量在哪里，系数又在哪里？</h2>
+<h2 id="four-spaces">一、从组合各行的方程，引出两个新空间</h2>
 <p>设 \(A\in\mathbb R^{m\times n}\)，即有 \(m\) 行、\(n\) 列；\(r\) 是其主元数。映射 \(\mathbf x\mapsto A\mathbf x\) 把 \(n\) 个输入分量变成 \(m\) 个输出分量：</p>
 <div class="equation">\[
 A:\mathbb R^n\longrightarrow\mathbb R^m,
 \qquad\mathbf x\longmapsto\mathbf b=A\mathbf x.
 \]</div>
-<p>把列记为 \(\mathbf a_1,\ldots,\mathbf a_n\in\mathbb R^m\)。第 \(i\) 行有 \(n\) 个数，把它竖着写，记为 \(\boldsymbol\rho_i=(a_{i1},\ldots,a_{in})^T\in\mathbb R^n\)；所以矩阵的第 \(i\) 行是 \(\boldsymbol\rho_i^T\)。这里 \(T\) 表示转置。全文把空间中的向量统一写成列；谈“行向量的空间”时，用转置把行识别为相应的列向量。</p>
+<p>把第 \(j\) 列记为 \(\mathbf a_j\in\mathbb R^m\)。第 \(i\) 行则有 \(n\) 个数，记作 \(\boldsymbol\rho_i^T=(a_{i1},\ldots,a_{in})\)，其中 \(a_{ij}\) 是第 \(i\) 行、第 \(j\) 列的元素，\(T\) 表示转置。\(\boldsymbol\rho_i\in\mathbb R^n\) 是把这一行竖着写成的向量。这样，谈行空间时也能统一使用列向量记法。</p>
 <p>已有的两个空间是</p>
 <div class="equation">\[
 \begin{aligned}
@@ -78,16 +78,19 @@ C(A)&=\left\{\sum_{j=1}^n x_j\mathbf a_j:
 N(A)&=\{\mathbf x\in\mathbb R^n:A\mathbf x=\mathbf0\}.
 \end{aligned}
 \]</div>
-<p>转置后，\(A^T\) 的列恰好是 \(\boldsymbol\rho_1,\ldots,\boldsymbol\rho_m\)。令 \(\mathbf y=(y_1,\ldots,y_m)^T\in\mathbb R^m\)，就有</p>
+<p>从行看，\(A\mathbf x=\mathbf b\) 的第 \(i\) 条方程是 \(\boldsymbol\rho_i^T\mathbf x=b_i\)。取 \(m\) 个实数 \(y_1,\ldots,y_m\)，把各条方程按这些系数相加，就得到</p>
 <div class="equation">\[
-A^T\mathbf y=\sum_{i=1}^m y_i\boldsymbol\rho_i
-\in\mathbb R^n.
+\left(\sum_{i=1}^m y_i\boldsymbol\rho_i\right)^T\mathbf x
+=\sum_{i=1}^m y_i b_i.
 \]</div>
-<p>若原方程的第 \(i\) 条为 \(\boldsymbol\rho_i^T\mathbf x=b_i\)，按系数 \(y_i\) 相加，就得到 \((A^T\mathbf y)^T\mathbf x=\mathbf y^T\mathbf b\)。因此，行空间中的向量正是<strong>组合原方程时，左端可能出现的系数向量</strong>；左零空间则挑出那些让左端全部抵消的组合。</p>
-<p>因此再定义两个空间：</p>
+<p>左边括号中是新方程的系数向量。把组合系数收集成 \(\mathbf y=(y_1,\ldots,y_m)^T\)，注意到 \(A^T\) 的列就是原来的各行竖着写，便有</p>
+<div class="equation">\[
+\sum_{i=1}^m y_i\boldsymbol\rho_i=A^T\mathbf y.
+\]</div>
+<p>于是两个新空间自然出现：</p>
 <ul>
-<li><strong>行空间</strong>（row space）是 \(C(A^T)=\operatorname{span}(\boldsymbol\rho_1,\ldots,\boldsymbol\rho_m)\subseteq\mathbb R^n\)，即原矩阵各行的全部线性组合。</li>
-<li><strong>左零空间</strong>（left nullspace）是 \(N(A^T)=\{\mathbf y\in\mathbb R^m:A^T\mathbf y=\mathbf0\}\)，即让各行组合为零的全部系数向量。</li>
+<li><strong>行空间</strong>（row space）收集全部组合结果：\(C(A^T)=\operatorname{span}(\boldsymbol\rho_1,\ldots,\boldsymbol\rho_m)\subseteq\mathbb R^n\)。它的元素是原方程经线性组合后，左端可能出现的系数向量。</li>
+<li><strong>左零空间</strong>（left nullspace）收集使组合结果为零的全部组合系数：\(N(A^T)=\{\mathbf y\in\mathbb R^m:A^T\mathbf y=\mathbf0\}\)。这些组合会把方程左端完全抵消。</li>
 </ul>
 <p><strong>行空间的元素是组合结果，有 \(n\) 个分量；左零空间的元素是组合系数，有 \(m\) 个分量。</strong>正如列向量在 \(\mathbb R^m\) 中，而组合列所用的系数在 \(\mathbb R^n\) 中，这两者不能混淆。四者都是子空间：列空间、行空间是张成空间；两个零空间都是齐次线性方程的解集，封闭性已在第六节证明。</p>
 <div class="space-map" role="group" aria-label="四个基本子空间所在的两个环境空间">
@@ -95,7 +98,7 @@ A^T\mathbf y=\sum_{i=1}^m y_i\boldsymbol\rho_i
 <div class="space-arrow" aria-hidden="true">A</div>
 <div class="space-box"><p><strong>输出空间 \(\mathbb R^m\)</strong></p><p>列空间 \(C(A)\)</p><p>左零空间 \(N(A^T)\)</p></div>
 </div>
-<p class="map-caption">图中按向量的分量数放置各空间；箭头表示原映射 \(A\) 的方向。转置映射 \(A^T\) 的方向相反。两个零空间分别属于两个不同映射。</p>
+<p class="map-caption">箭头连接的是两个环境空间，表示映射 \(A:\mathbb R^n\to\mathbb R^m\)，不表示两边的子空间逐项对应。\(A\) 把 \(N(A)\) 全部送到零；\(A^T\) 的方向相反，把 \(N(A^T)\) 全部送到零。</p>
 
 <h2 id="example">二、同一个矩阵，先保留已经求出的两个基</h2>
 <p>讲义沿用第九节的矩阵及其行最简形：</p>
@@ -118,7 +121,12 @@ B_C&=\big((1,1,1)^T,\ (2,1,2)^T\big),\\
 B_N&=\big((-1,-1,1,0)^T,\ (-1,0,0,1)^T\big).
 \end{aligned}
 \]</div>
-<p>第九节已分别验证它们无关且张成，所以 \(\dim C(A)=2\)、\(\dim N(A)=2\)。以下用同一次消元求另外两个空间，并说明为什么它们的维数分别是 \(r\) 与 \(m-r\)。</p>
+<p>第九节已验证它们无关且张成，所以 \(\dim C(A)=2\)、\(\dim N(A)=2\)。现在看这个矩阵的前两行：\(\boldsymbol\rho_1=(1,2,3,1)^T\)、\(\boldsymbol\rho_2=(1,1,2,1)^T\)。取组合系数 \(\mathbf y=(2,-1,0)^T\)，得到</p>
+<div class="equation">\[
+A^T\mathbf y=2\boldsymbol\rho_1-\boldsymbol\rho_2
+=(1,3,4,1)^T.
+\]</div>
+<p>\(\mathbf y\) 有三个分量，用来指定怎样组合三行；结果有四个分量，用来指定新方程的四个未知数系数。结果属于行空间，但 \(\mathbf y\) 不属于左零空间，因为组合结果不为零。若取 \((-1,0,1)^T\)，第一行与第三行抵消，才得到左零空间中的向量。</p>
 
 <h2 id="row-space">三、行操作为什么保持行空间，且行秩等于列秩？</h2>
 <h3 id="same-row-space">先证明空间相同，再找基</h3>
@@ -141,7 +149,12 @@ B_{\rm row}=\big((1,0,1,1)^T,\ (0,1,1,0)^T\big).
 &\boldsymbol\rho_2&=\mathbf u_1+\mathbf u_2.
 \end{aligned}
 \]</div>
-<p>又有 \(\boldsymbol\rho_3=\boldsymbol\rho_1\)，所以原来的三行与现在的两条非零行，确实张成同一个空间。本例原来的前两行也能作基，但不能据此制定“一律取原矩阵前 \(r\) 行”的规则：例如三行依次为 \((1,0),(2,0),(0,1)\) 时，秩为 2，前两行却相关。取 \(R\) 的非零行才是上述证明保证的方法。</p>
+<p>又有 \(\boldsymbol\rho_3=\boldsymbol\rho_1\)，所以原来的三行与现在的两条非零行，确实张成同一个空间。本例还可明确写成</p>
+<div class="equation">\[
+C(A^T)=\{(p,q,p+q,p)^T:p,q\in\mathbb R\}.
+\]</div>
+<p>这里 \(p,q\) 分别是 \(\mathbf u_1,\mathbf u_2\) 的组合系数，也是结果的前两个分量，因此任意取值都能实现，且表示唯一。</p>
+<p>本例原来的前两行也能作基，但不能一律取原矩阵的前 \(r\) 行：例如三行依次为 \((1,0),(2,0),(0,1)\) 时，秩为 2，前两行却相关。取 \(R\) 的非零行才有上述证明的保证。</p>
 <h3 id="row-column-rank">为什么两个秩必相同？</h3>
 <p>行空间有一组包含 \(r\) 个向量的基，所以</p>
 <div class="equation">\[
@@ -182,7 +195,7 @@ N(A^T)=\{t(-1,0,1)^T:t\in\mathbb R\},
 [A\mid I_m]\longrightarrow[R\mid E],
 \qquad EA=R.
 \]</div>
-<p>理由是：若所有行操作的乘积为 \(E\)，左半块变为 \(EA\)，右半块变为 \(EI_m=E\)。这里的目标是把<strong>左半块</strong>化为行最简形，并记录同样的操作；不继续为了右半块的主元改变左半块。\(I_m,E\) 均为 \(m\times m\)，而 \(A,R\) 为 \(m\times n\)。</p>
+<p>开始时，\(I_m\) 的第 \(i\) 行用一个 1 标记“这是原来的第 \(i\) 行”。两边同步消元后，右侧每行便记录左侧那一行由哪些原行组合而成。用矩阵乘法说，若操作的乘积为 \(E\)，两侧分别变为 \(EA\) 与 \(EI_m=E\)。\(I_m,E\) 均为 \(m\times m\)，而 \(A,R\) 为 \(m\times n\)。这里在左侧达到行最简形时停止。</p>
 <p>本例使用与上一节相同的操作：第 2 行减第 1 行，第 3 行减第 1 行，将第 2 行乘以 −1，再作第 1 行减第 2 行的 2 倍。得到</p>
 <div class="equation">\[
 E=\begin{pmatrix}
@@ -194,18 +207,18 @@ E=\begin{pmatrix}
 <p>例如 \(E\) 的末行 \((-1,0,1)\) 表示“取原来第 1 行的 −1 倍、第 2 行的 0 倍、第 3 行的 1 倍相加”。其结果是 \(R\) 的末行，恰为零。因此这行转置后就是左零空间中的向量。前两行也分别记录了上一部分 \(\mathbf u_1,\mathbf u_2\) 的组合系数。</p>
 <p>\(E\) 由可逆行操作相乘而成，所以自身可逆，即使 \(A\) 不是方阵也成立。只有当 \(A\) 为可逆方阵、\(R=I_m\) 时，才有 \(E=A^{-1}\)；一般不能把消元矩阵当成原矩阵的逆。</p>
 <h3 id="left-basis-proof">末 m − r 行为什么不仅“属于”，而且“构成基”？</h3>
-<p>把 \(E\) 的第 \(i\) 行记为 \(\boldsymbol\varepsilon_i^T\)。由 \(EA=R\)，当 \(i&gt;r\) 时，对应的 \(R\) 行为零，所以 \(\boldsymbol\varepsilon_i^TA=\mathbf0^T\)。因此这 \(m-r\) 行的转置都属于 \(N(A^T)\)。</p>
-<p><strong>无关性：</strong>若这些行的某个线性组合为零，在前 \(r\) 个位置补零，把其系数排成 \(\mathbf c\in\mathbb R^m\)，就有 \(\mathbf c^TE=\mathbf0^T\)。右乘 \(E^{-1}\) 得 \(\mathbf c=\mathbf0\)，所以所有组合系数都为零。</p>
-<p><strong>张成性：</strong>任取 \(\mathbf y\in N(A^T)\)，设 \(\mathbf z^T=\mathbf y^TE^{-1}\)。这只是把行向量 \(\mathbf y^T\) 改写为 \(\mathbf z^TE\)，于是</p>
+<p>要证明它们是基，仍需证明“属于空间、线性无关、张成空间”三件事。把 \(E\) 的第 \(i\) 行记为 \(\mathbf q_i^T\)，也就是令 \(\mathbf q_i\) 为这一行的转置。由 \(EA=R\)，当 \(i&gt;r\) 时，对应的 \(R\) 行为零，所以 \(\mathbf q_i^TA=\mathbf0^T\)。因此这 \(m-r\) 行的转置都属于 \(N(A^T)\)。</p>
+<p><strong>无关性：</strong>设 \(\sum_{i=r+1}^m c_i\mathbf q_i^T=\mathbf0^T\)。把系数补成 \(\mathbf c=(0,\ldots,0,c_{r+1},\ldots,c_m)^T\)，这就是 \(\mathbf c^TE=\mathbf0^T\)。右乘 \(E^{-1}\) 得 \(\mathbf c=\mathbf0\)，所以组合系数全为零。</p>
+<p><strong>张成性：</strong>要证明任意行关系都由末几行记录，先把任意 \(\mathbf y^T\) 写成 \(E\) 各行的组合。\(E\) 可逆保证这总能做到：令 \(\mathbf z^T=\mathbf y^TE^{-1}\)，就有 \(\mathbf y^T=\mathbf z^TE\)。\(z_i\) 是使用 \(E\) 第 \(i\) 行的系数。若 \(\mathbf y\in N(A^T)\)，则</p>
 <div class="equation">\[
 \mathbf z^TR=\mathbf z^TEA=\mathbf y^TA=\mathbf0^T.
 \]</div>
 <p>\(R\) 的第 \(i\) 个主元列是第 \(i\) 个标准单位向量，在这一列检查上式，得到 \(z_i=0\)，对 \(i=1,\ldots,r\) 均成立。因此</p>
 <div class="equation">\[
 \mathbf y^T=\mathbf z^TE
-=\sum_{i=r+1}^{m}z_i\boldsymbol\varepsilon_i^T.
+=\sum_{i=r+1}^{m}z_i\mathbf q_i^T.
 \]</div>
-<p>任意左零空间向量都能由这些行的转置表示，张成性得证。结合无关性，<strong>\(E\) 的末 \(m-r\) 行转置后，构成原矩阵左零空间的一组基。</strong>这也独立验证了维数为 \(m-r\)。消元路径可能改变基的具体取法，但不会改变左零空间本身。</p>
+<p>任意左零空间向量都能由这些行的转置表示，张成性得证。结合无关性，<strong>\(E\) 的末 \(m-r\) 行转置后，构成原矩阵左零空间的一组基。</strong>这也独立验证了维数为 \(m-r\)。本例的 \(R\) 有一个零行，\(E\) 对应的非零行 \((-1,0,1)\) 正好记录“第三行减第一行”。消元路径可能改变记录关系所用的基，但不会改变全部行关系组成的空间。</p>
 
 <h2 id="compatibility">六、左零空间为什么给出全部有解条件？</h2>
 <p>第八节通过消元得到有解条件，现在可以说明它们在原方程中表示什么。若 \(A\mathbf x=\mathbf b\) 有解，那么任取 \(\mathbf y\in N(A^T)\)，都有</p>
@@ -214,7 +227,7 @@ E=\begin{pmatrix}
 =\mathbf y^TA\mathbf x=0.
 \]</div>
 <p>\(\mathbf y^T\mathbf b=\sum_{i=1}^m y_i b_i\) 是一个实数。它要求：<strong>原矩阵各行满足的任何线性关系，右端各分量也必须满足。</strong>否则把方程按这些系数组合，就会在左边得到零，右边却得到非零数，产生矛盾。</p>
-<p>这不只是必要条件。若对所有 \(\mathbf y\in N(A^T)\) 都有 \(\mathbf y^T\mathbf b=0\)，特别地，上一部分每个基向量 \(\boldsymbol\varepsilon_i\) 都满足 \(\boldsymbol\varepsilon_i^T\mathbf b=0\)，其中 \(i&gt;r\)。而这些数正是 \(E\mathbf b\) 的最后 \(m-r\) 个分量。对增广矩阵消元，</p>
+<p>这不只是必要条件。若对所有 \(\mathbf y\in N(A^T)\) 都有 \(\mathbf y^T\mathbf b=0\)，特别地，上一部分每个基向量 \(\mathbf q_i\) 都满足 \(\mathbf q_i^T\mathbf b=0\)，其中 \(i&gt;r\)。而这些数正是 \(E\mathbf b\) 的最后 \(m-r\) 个分量。对增广矩阵消元，</p>
 <div class="equation">\[
 [A\mid\mathbf b]\longrightarrow[R\mid E\mathbf b].
 \]</div>
@@ -234,7 +247,12 @@ E\mathbf b=\begin{pmatrix}
 -b_1+2b_2\\b_1-b_2\\-b_1+b_3
 \end{pmatrix}.
 \]</div>
-<p>相容时，取自由变量 \(x_3=x_4=0\)，便得特解 \(\mathbf x_p=(-b_1+2b_2,b_1-b_2,0,0)^T\)。例如 \(\mathbf b=(1,5,1)^T\) 时，\(\mathbf x_p=(9,-4,0,0)^T\) 确实给出该输出；若把右端改为 \((1,5,2)^T\)，同一个 \(\mathbf y\) 给出 \(\mathbf y^T\mathbf b=1\)，消元末行成为 \(0=1\)，无解。</p>
+<p>相容时，取自由变量 \(x_3=x_4=0\)，便得特解 \(\mathbf x_p=(-b_1+2b_2,b_1-b_2,0,0)^T\)。例如 \(\mathbf b=(1,5,1)^T\) 时，\(\mathbf x_p=(9,-4,0,0)^T\)，且</p>
+<div class="equation">\[
+A\mathbf x_p=9\mathbf a_1-4\mathbf a_2=(1,5,1)^T.
+\]</div>
+<p>全部解仍按第八节写成 \(\mathbf x_p+s(-1,-1,1,0)^T+t(-1,0,0,1)^T\)，其中 \(s,t\in\mathbb R\)。左零空间检查右端能否进入列空间；通过以后，零空间再描述所有解的变化。</p>
+<p>若改成 \(\mathbf b=(1,5,2)^T\)，同一行关系给出 \(\mathbf y^T\mathbf b=-1+2=1\)，消元末行成为 \(0=1\)，无解。</p>
 <p>因此，一个使 \(\mathbf y^TA=0\) 却使 \(\mathbf y^T\mathbf b\ne0\) 的向量，就是可直接核验的<strong>无解依据</strong>。反过来，若方程无解，消元必有某个零行对应非零右端，\(E\) 的那一行恰好给出这样的 \(\mathbf y\)。</p>
 
 <h2 id="relations">七、把四个空间放回同一个结构中</h2>
@@ -268,6 +286,12 @@ N(A^T)&=C(A)^\perp\quad\text{in }\mathbb R^m.
 \end{aligned}
 \]</div>
 <p>“每一行”到“整个行空间”的一步来自线性：若 \(\mathbf x\) 与各 \(\boldsymbol\rho_i\) 的内积都为零，则与任意组合 \(\sum_i c_i\boldsymbol\rho_i\) 的内积也为零；反过来，各行本身就在行空间中。列空间的论证相同。这里的正交关系由方程直接证明，不能只凭维数相加推断。</p>
+<p>本例可以直接核验。行空间中的任意向量为 \(\mathbf u=(p,q,p+q,p)^T\)，零空间中的任意向量为 \(\mathbf x=(-s-t,-s,s,t)^T\)。逐项计算，</p>
+<div class="equation">\[
+\mathbf u^T\mathbf x
+=p(-s-t)-qs+(p+q)s+pt=0.
+\]</div>
+<p>另一侧，\(C(A)=\{(a,b,a)^T:a,b\in\mathbb R\}\)，而 \(N(A^T)\) 由 \((-1,0,1)^T\) 张成；两者的内积为 \(-a+a=0\)。所以列空间是 \(\mathbb R^3\) 中的平面，左零空间是垂直于该平面的过原点直线。这也把有解条件 \(b_3=b_1\) 解释为：目标向量必须落在这个平面中。</p>
 <p>两对维数分别满足 \(r+(n-r)=n\)、\(r+(m-r)=m\)。它们与求解的联系是：\(N(A)\) 决定已有解能怎样变化，\(N(A^T)\) 决定给定右端是否相容。满列秩 \(r=n\) 时，前者只有零向量，有解就唯一；满行秩 \(r=m\) 时，后者只有零向量，所有右端都有解。讲义习题正是从这两个方向检验理解。</p>
 
 <h2 id="matrix-space">八、讲义最后为什么转向“矩阵组成的空间”？</h2>
@@ -276,7 +300,7 @@ N(A^T)&=C(A)^\perp\quad\text{in }\mathbb R^m.
 <div class="equation">\[
 B=\sum_{i=1}^3\sum_{j=1}^3 b_{ij}E_{ij}.
 \]</div>
-<p>张成性由逐项展开得到；若组合为零，逐个位置检查，所有系数就都为零，故这 9 个矩阵线性无关。因此 \(\dim M_3(\mathbb R)=9\)。这里讨论的是矩阵作为<strong>空间中的元素</strong>；它自身乘法的性质不参与向量空间的定义。</p>
+<p>张成性由逐项展开得到；若组合为零，逐个位置检查，所有系数就都为零，故这 9 个矩阵线性无关。因此 \(\dim M_3(\mathbb R)=9\)。这里的基元素是矩阵，组合系数仍是实数；矩阵之间的乘法不参与向量空间的定义。</p>
 <p>讲义列出三个子空间：上三角矩阵空间 \(U\)、对称矩阵空间 \(S\)、对角矩阵空间 \(D\)。这些形状条件都在加法、数乘下保持，并且包含零矩阵，故都是子空间。它们的基也能逐项构造：</p>
 <ul>
 <li><strong>上三角：</strong>允许非零的位置满足 \(i\le j\)，取这 6 个位置上的 \(E_{ij}\) 作基。每个允许位置的值就是唯一系数，所以 \(\dim U=6\)。</li>
@@ -304,13 +328,13 @@ G_2=E_{11}+3E_{22},\qquad G_3=7E_{33}.
 <h2 id="self-check">理解检查</h2>
 <ol>
 <li>为什么行空间与列空间的维数相同，却通常不能拿同一组向量作基？本例两类基向量各有几个分量？</li>
-<li>\(R\) 末行为零，为什么不能取这个零行作左零空间的基？\(E\) 末行又记录了什么？</li>
+<li>取 \(\mathbf y=(2,-1,0)^T\)，组合结果 \(A^T\mathbf y\) 属于哪个空间？为什么 \(\mathbf y\) 本身不在左零空间中？\(E\) 的末行与 \(R\) 的末行又分别是什么对象？</li>
 <li>若存在一个右端使 \(A\mathbf x=\mathbf b\) 无解，四个空间中哪个空间必含非零向量？这个向量怎样解释矛盾？</li>
 <li>把方程换成 \(A^T\mathbf y=\mathbf d\)，先判断 \(\mathbf d\) 属于哪个环境空间；再分别说明有解性、已有解的唯一性由哪两个空间决定。</li>
 <li>上三角空间与对称空间都为六维，为什么它们的交却只有三维？请用允许非零的位置与基解释。</li>
 </ol>
 <h2 id="sources">资料与衔接</h2>
-<p>依据 MIT OCW 18.06SC 第十讲 <em>The Four Fundamental Subspaces</em> 及<a href="/files/mit-18-06sc/unit-1-session-10-summary.pdf">讲义摘要</a>整理。四个空间、贯穿矩阵、消元矩阵及矩阵空间的例子来自讲义；行秩等于列秩、消元矩阵末行成基、有解条件的充分性与正交关系作了展开，矩阵子空间的基与维数补上逐项解释。正交关系用于连接后续课程，讲义本节的主体仍是定义、基与维数。</p>
+<p>依据 MIT OCW 18.06SC 第十讲 <em>The Four Fundamental Subspaces</em> 及<a href="/files/mit-18-06sc/unit-1-session-10-summary.pdf">讲义摘要</a>整理。四个空间、贯穿矩阵、消元矩阵及矩阵空间的例子来自讲义；行秩等于列秩、消元矩阵末行成基、有解条件的充分性与正交关系作了展开，并用同一矩阵核验行空间参数式、全部解与正交性；矩阵子空间的基与维数补上逐项解释。正交关系用于连接后续课程，讲义本节的主体仍是定义、基与维数。</p>
 <p>两处记号校正：摘要第 2 页增广式中的 \(I,E\) 应为 \(m\times m\)，并非 \(m\times n\)；参考解答 10.1(a) 提及列空间未覆盖整个空间时，该环境空间应为 \(\mathbb R^m\)，不是 \(\mathbb R^n\)。原 PDF 保留供对照，本页按矩阵大小使用正确记号。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
 <p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-09/">上一节：线性无关、基与维数</a></p>
 </section>
