@@ -27,6 +27,8 @@ comments: false
 
 第八节：[求解 Ax = b：有解条件与全部解：阅读笔记](/courses/gilbert-linear-algebra/notes/session-08/)
 
+第九节：[线性无关、基与维数：阅读笔记](/courses/gilbert-linear-algebra/notes/session-09/)
+
 ## 教材
 
 ### Introduction to Linear Algebra

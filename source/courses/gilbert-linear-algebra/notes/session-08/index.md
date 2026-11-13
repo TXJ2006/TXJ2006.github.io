@@ -238,5 +238,5 @@ r=n\iff N(A)=\{\mathbf0\}.
 <p>把本例右端改成 \((1,5,7)^T\)，矛盾出现在哪一行？为什么 \(\mathbf x_p+\mathbf s_1\) 仍是一个特解？一个 \(4\times3\)、秩为 2 的矩阵，在行最简形中有几个零行、几个自由变量；它对相容右端有多少解？为什么这两个数分别由 \(m-r\)、\(n-r\) 决定？</p>
 <h2 id="sources">资料与衔接</h2>
 <p>依据 MIT OCW 18.06SC 第八讲 <em>Solving Ax = b: Row Reduced Form R</em> 及<a href="/files/mit-18-06sc/unit-1-session-8-summary.pdf">讲义摘要</a>整理。矩阵、右端 \((1,5,6)^T\)、特解、四种秩的分类及分块形状来自讲义；有解条件的充分性、全部解的反向证明、分块公式与换列说明作了展开，小矩阵例子为补充。下一节将系统整理线性无关、基与维数。<a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">课程来源</a>；笔记按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 分享。</p>
-<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-07/">上一节：主元变量与特殊解</a></p>
+<p class="note-footer"><a href="/courses/gilbert-linear-algebra/notes/">返回笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/session-07/">上一节：主元变量与特殊解</a> · <a href="/courses/gilbert-linear-algebra/notes/session-09/">下一节：线性无关、基与维数</a></p>
 </section>
