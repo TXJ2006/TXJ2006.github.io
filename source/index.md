@@ -1,6 +1,5 @@
 ---
-title: 研究博客
-layout: index
+title: Xujiang Tang 唐煦江
+layout: home
 comments: false
 ---
-
