@@ -73,10 +73,10 @@ comments: false
 <p>现在令 \(y=(y_1,\ldots,y_5)^T\) 表示五条边上的<strong>带符号电流</strong>，正号表示沿图中箭头流。\(A^Ty\) 的四个分量是四个节点从边得到的净流入量：边起点在 \(A\) 中为 \(-1\)，终点为 \(1\)。逐个节点计算，</p>
 <div class="equation">\[A^Ty=\begin{pmatrix}-y_1-y_3-y_4\\y_1-y_2\\y_2+y_3-y_5\\y_4+y_5\end{pmatrix}.\]</div>
 <p>例如第二个分量 \(y_1-y_2\) 表示流入节点 2 的 \(y_1\)，减去从节点 2 流出的 \(y_2\)。没有外部注入或抽取时，每个节点净流入为零，即 Kirchhoff's Current Law：\(A^Ty=0\)。所以<strong>同一个左零空间</strong>也可理解为满足节点守恒的环流。\(z_1\) 表示沿 \(1\to2\to3\to1\) 流一单位；第三条边上的 \(-1\) 表示逆着它的参考箭头流。</p>
-<p>不过，满足守恒的环流未必是某个实际电路在给定条件下的电流；还须满足欧姆定律。若第 \(k\) 条边的电导为 \(c_k>0\)，把五个电导放在对角线上，记 \(C=\operatorname{diag}(c_1,\ldots,c_5)\)。这里单独的 \(C\) 是<strong>电导矩阵</strong>，不是前面表示列空间的 \(C(A)\)。</p>
+<p>不过，满足守恒的环流未必是某个实际电路在给定条件下的电流；还须满足欧姆定律。电导衡量一条边在相同电势差下能通过多少电流。若第 \(k\) 条边的电导为 \(c_k>0\)，把五个电导放在对角线上，记 \(C=\operatorname{diag}(c_1,\ldots,c_5)\)。这里单独的 \(C\) 是<strong>电导矩阵</strong>，不是前面表示列空间的 \(C(A)\)。</p>
 <p>本页把 \(e=Ax\) 定为“终点电势减起点电势”，把正电流定为沿箭头流。电流从高电势流向低电势，所以欧姆定律是 \(y=-Ce\)。若 \(s\) 表示各节点<strong>从外部注入的净电流</strong>（注入为正），节点要平衡，就须有“边带来的净流入 + 外部注入 = 0”，即 \(A^Ty+s=0\)。于是</p>
 <div class="equation">\[e=Ax,\qquad y=-Ce,\qquad A^Ty=-s\quad\Longrightarrow\quad A^TCAx=s.\]</div>
-<p>用最简单的电导 \(C=I\) 核对一遍。令节点电势为 \(x=(1,0,0,0)^T\)。边 1、3、4 都从高电势的节点 1 指向低电势节点，电流应各为 1：</p>
+<p>取五条边的电导都为 1，此时 \(C=I\)，其中 \(I\) 是五阶单位矩阵。令节点电势为 \(x=(1,0,0,0)^T\)。边 1、3、4 都从高电势的节点 1 指向低电势节点，电流应各为 1：</p>
 <div class="equation">\[e=Ax=\begin{pmatrix}-1\\0\\-1\\-1\\0\end{pmatrix}.\]</div>
 <div class="equation">\[y=-e=\begin{pmatrix}1\\0\\1\\1\\0\end{pmatrix}.\]</div>
 <div class="equation">\[s=-A^Ty=\begin{pmatrix}3\\-1\\-1\\-1\end{pmatrix}.\]</div>
