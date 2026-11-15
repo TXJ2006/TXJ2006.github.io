@@ -16,7 +16,8 @@ comments: false
 <p>设状态 \(u_k=(C_k,M_k)^T\) 表示第 \(k\) 步在两地的人数，第一项为加州、第二项为马萨诸塞州。讲义给出的转移矩阵是</p>
 <div class="equation">\[u_{k+1}=Au_k,\qquad A=\begin{pmatrix}0.9&0.2\\0.1&0.8\end{pmatrix}.\]</div>
 <p>第一列说明：原在加州的人有 \(90\%\) 留下、\(10\%\) 转到另一地；第二列说明：原在马萨诸塞州的人有 \(20\%\) 转到加州、\(80\%\) 留下。每列描述<strong>同一出发地</strong>的人如何分配，因此必须和为 1。元素非负且每列和为 1 的矩阵，在这里称为<strong>列随机矩阵</strong>（讲义称 Markov matrix）。</p>
-<p>例如 \(u_0=(0,1000)^T\) 给出 \(u_1=(200,800)^T\)。令 \(\boldsymbol 1^T=(1,1)\)，则 \(\boldsymbol 1^TA=\boldsymbol 1^T\)，因而 \(\boldsymbol 1^Tu_{k+1}=\boldsymbol 1^Tu_k\)：两地总人数始终为 1000。这里 \(\boldsymbol 1^T\) 是左特征向量；它表达总量守恒，而人口比例的稳态要找右特征向量。</p>
+<p>例如 \(u_0=(0,1000)^T\) 给出 \(u_1=(200,800)^T\)。令 \(\boldsymbol 1^T=(1,1)\)，则 \(\boldsymbol 1^TA=\boldsymbol 1^T\)，因而 \(\boldsymbol 1^Tu_{k+1}=\boldsymbol 1^Tu_k\)：两地总人数始终为 1000。这里 \(\boldsymbol 1^T\) 是左特征向量；它表达总量守恒，而人口比例的稳态要找右特征向量。连续转移 \(k\) 次后，\(A^k\) 的元素仍非负，且 \(\boldsymbol 1^TA^k=\boldsymbol 1^T\)，所以 \(A^k\) 仍是列随机矩阵。</p>
+<p>左、右特征向量可以不同，特征值却相同：\(\det(A^T-\lambda I)=\det((A-\lambda I)^T)=\det(A-\lambda I)\)。因而 \(A^T\) 与 \(A\) 有同一个特征方程。这里 \(\boldsymbol 1\) 是 \(A^T\) 在特征值 1 下的右特征向量，说明 1 也是 \(A\) 的特征值；它并不意味着 \(\boldsymbol 1\) 本身就是人口的稳态分布。</p>
 
 <h2 id="steady-state">二、稳态从哪里来，何时真的会趋近它？</h2>
 <p>稳态是不再改变的状态 \(u_*\)，满足 \(Au_*=u_*\)，即 \((A-I)u_*=0\)。本例两行都化成 \(-0.1C+0.2M=0\)，所以 \(C=2M\)。总数为 1000 时，稳态是 \(u_*=(2000/3,1000/3)^T\)。列和为 1 保证 \(A-I\) 的各列和为零，因此其行线性相关、行列式为零；这解释了为什么 1 一定是特征值，却没有单凭这一点保证收敛。</p>
@@ -32,9 +33,9 @@ u_k&=\frac{1000}{3}\begin{pmatrix}2\\1\end{pmatrix}
 <p>一般列随机矩阵的所有特征值满足 \(|\lambda|\leq1\)：它把向量的 \(1\) 范数至多保持原值（对任意可能带负号的向量也成立）。但不能说除 1 以外的特征值都严格小于 1 的模。例如 \(\begin{pmatrix}0&1\\1&0\end{pmatrix}\) 的另一个特征值是 \(-1\)，状态会在两地之间来回交换。若 1 是唯一的单位圆上特征值且稳态方向唯一，有限维情形下其余模式衰减；常见的严格正转移矩阵满足这样的收敛条件。若初始总量为 \(M\)，本例的极限改成 \((2M/3,M/3)^T\)，并非不看初值就有一个固定人数。</p>
 
 <h2 id="function-inner-product">三、函数怎样像向量一样“垂直”？</h2>
-<p>在 \(\mathbb R^n\) 中，两向量的内积是 \(v^Tw=\sum_jv_jw_j\)。对区间 \([0,2\pi]\) 上的实函数，把连续的取值相乘再累加，得到函数内积</p>
+<p>在 \(\mathbb R^n\) 中，两向量的内积是 \(v^Tw=\sum_jv_jw_j\)。现在取区间 \([0,2\pi]\) 上的<strong>平方可积</strong>实函数，即 \(\int_0^{2\pi}|f(x)|^2\,dx\lt\infty\) 的函数。把区间各处的两个函数值相乘再累加，得到函数内积</p>
 <div class="equation">\[\langle f,g\rangle=\int_0^{2\pi}f(x)g(x)\,dx.\]</div>
-<p>当内积为零，我们就说两个函数在这个区间正交。例如 \(\langle\sin x,\cos x\rangle=\int_0^{2\pi}\sin x\cos x\,dx=0\)。更一般地，常数函数 1、\(\cos nx\)、\(\sin nx\)（\(n=1,2,\ldots\)）两两正交；可以用积化和差公式验算。它们并非都已归一化：\(\langle1,1\rangle=2\pi\)，而 \(\langle\cos nx,\cos nx\rangle=\langle\sin nx,\sin nx\rangle=\pi\)。这个长度差异决定了下面分母为何不同。</p>
+<p>当内积为零，我们就说两个函数在这个区间正交。例如 \(\langle\sin x,\cos x\rangle=\int_0^{2\pi}\sin x\cos x\,dx=0\)。更一般地，常数函数 1、\(\cos nx\)、\(\sin nx\)（\(n=1,2,\ldots\)）两两正交。以不同频率的余弦为例，\(2\cos(mx)\cos(nx)=\cos((m-n)x)+\cos((m+n)x)\)；当正整数 \(m\ne n\) 时，右边两项在整周期上的积分都为零。它们并非都已归一化：\(\langle1,1\rangle=2\pi\)，而 \(\langle\cos nx,\cos nx\rangle=\langle\sin nx,\sin nx\rangle=\pi\)。这个长度差异决定了下面分母为何不同。</p>
 
 <h2 id="fourier-coefficients">四、傅里叶系数就是沿各方向的投影坐标</h2>
 <p>先取有限个三角函数，令 \(S_N(x)=a_0+\sum_{n=1}^N(a_n\cos nx+b_n\sin nx)\)。目标是让 \(f-S_N\) 与所选的每个函数正交；这和第二、三讲把误差垂直投到列空间完全相同。比如对 \(\cos mx\) 取内积，除 \(a_m\cos mx\) 外其余项都为零，于是 \(\langle f,\cos mx\rangle=\pi a_m\)。同理得到</p>
@@ -44,7 +45,8 @@ a_n&=\frac1\pi\int_0^{2\pi}f(x)\cos(nx)\,dx,\\
 b_n&=\frac1\pi\int_0^{2\pi}f(x)\sin(nx)\,dx.
 \end{aligned}\]</div>
 <p>这里 \(a_0\) 是平均值；若采用另一种写法 \(a_0/2+\sum_{n\ge1}(a_n\cos nx+b_n\sin nx)\)，常数系数的公式便改为 \(a_0=\pi^{-1}\int f\)。两种记号不要混用。例如 \(f(x)=1+2\cos x+\sin2x\)，正交性直接给出常数坐标 1、\(\cos x\) 坐标 2、\(\sin2x\) 坐标 1，其余坐标为零。</p>
-<p>对平方可积函数，按这些公式构成的 \(S_N\) 是 \(f\) 在有限维空间 \(\operatorname{span}\{1,\cos x,\sin x,\ldots,\cos Nx,\sin Nx\}\) 中的<strong>正交投影</strong>：对这个空间里的任意 \(g\)，都有 \(\langle f-S_N,g\rangle=0\)，所以 \(\|f-g\|_2^2=\|f-S_N\|_2^2+\|S_N-g\|_2^2\)。这说明它使积分平方误差最小。令 \(N\to\infty\) 时能否逐点收敛到 \(f(x)\)，还要看函数的条件；有限投影的结论本身不需要先假定逐点收敛。</p>
+<p>对平方可积函数，按这些公式构成的 \(S_N\) 是 \(f\) 在有限维空间 \(\operatorname{span}\{1,\cos x,\sin x,\ldots,\cos Nx,\sin Nx\}\) 中的<strong>正交投影</strong>：对这个空间里的任意 \(g\)，都有 \(\langle f-S_N,g\rangle=0\)，所以 \(\|f-g\|_2^2=\|f-S_N\|_2^2+\|S_N-g\|_2^2\)。这说明它使积分平方误差最小。这里 \(\|h\|_2^2=\int_0^{2\pi}|h(x)|^2\,dx\)；严格说，在 \(L^2\) 空间中把几乎处处相等的函数视为同一个对象。</p>
+<p>进一步，三角多项式在 \(L^2[0,2\pi]\) 中稠密，因此 \(\|f-S_N\|_2\to0\)。理由是：给定任意小的误差，可先找一个有限阶三角多项式 \(T\) 逼近 \(f\)；当 \(N\) 不小于 \(T\) 的阶数时，\(S_N\) 作为最佳投影，误差不会超过 \(\|f-T\|_2\)。这是<strong>积分平方意义</strong>的收敛，不等于在每个 \(x\) 处逐点收敛；逐点结论还需额外条件。</p>
 
 <h2 id="check">理解检查</h2>
 <ol><li>用矩阵乘法算 \(u_2\)，再用上面的通项式核对；说明为何每一步总人数为 1000。</li><li>对交换矩阵与初值 \((1,0)^T\)，写出前四步，解释为何“1 是特征值”不足以推出极限存在。</li><li>计算 \(\int_0^{2\pi}\cos^2x\,dx\) 与 \(\int_0^{2\pi}\cos x\sin2x\,dx\)，再说出 \(f=3+4\cos x-2\sin2x\) 的非零傅里叶系数。</li></ol>

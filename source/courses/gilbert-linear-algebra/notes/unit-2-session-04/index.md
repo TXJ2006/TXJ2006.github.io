@@ -9,14 +9,14 @@ comments: false
 
 <section class="la-notes la-notes--unit2">
 <p class="note-nav"><a href="/courses/gilbert-linear-algebra/notes/">← 笔记目录</a> · <a href="/courses/gilbert-linear-algebra/notes/unit-2-session-03/">上一讲</a> · <a href="/courses/gilbert-linear-algebra/notes/unit-2-session-05/">下一讲 →</a></p>
-<div class="note-lead"><p>投影的公式 \(A(A^TA)^{-1}A^T\) 看起来复杂，是因为原来的列向量不一定互相垂直。若把同一列空间改用<strong>标准正交基</strong>表示，\(A^TA\) 会变成单位矩阵。Gram–Schmidt 做的是这次换基，QR 分解则把它写成矩阵等式。</p></div>
+<div class="note-lead"><p>投影的公式 \(A(A^TA)^{-1}A^T\) 看起来复杂，是因为原来的列向量不一定互相垂直。若把同一列空间改用<strong>标准正交基</strong> \(Q\) 表示，便有 \(Q^TQ=I\)，投影公式随之简化；原矩阵的 \(A^TA\) 并没有改变。Gram–Schmidt 构造这组新基，QR 分解记录两组列向量之间的关系。</p></div>
 <nav class="reading-links" aria-label="本讲资料"><a href="/files/mit-18-06sc/unit-2-session-4-summary.pdf">讲义摘要 PDF</a><a href="/files/mit-18-06sc/unit-2-session-4-problems.pdf">习题 PDF</a><a href="/files/mit-18-06sc/unit-2-session-4-solutions.pdf">参考解答 PDF</a></nav>
 
 <h2 id="orthonormal">一、标准正交为什么让坐标容易求？</h2>
 <p>一组向量 \(q_1,\ldots,q_r\in\mathbb R^m\) 称为<strong>标准正交</strong>，若 \(q_i^Tq_j=0\)（\(i\ne j\)），且每个 \(q_i^Tq_i=1\)。也就是两两垂直、每个长度为 1。把它们排成 \(m\times r\) 矩阵 \(Q=[q_1\ \cdots\ q_r]\)，这些等式合并为</p>
 <div class="equation">\[Q^TQ=I_r.\]</div>
 <p>这里 \(I_r\) 是 \(r\times r\) 单位矩阵。若 \(p\in C(Q)\)，写成 \(p=Qc=\sum_i c_iq_i\)，左乘 \(q_j^T\) 后，其余项因垂直而消失，只剩 \(c_j=q_j^Tp\)。矩阵写法就是 \(c=Q^Tp\)。对任意 \(b\in\mathbb R^m\)，\(Q^Tb\) 给出投到 \(C(Q)\) 后的系数，投影本身为 \(QQ^Tb\)。</p>
-<p>当 \(m>r\)，\(Q\) 是长方形，虽然 \(Q^TQ=I_r\)，但 \(QQ^T\) 通常<strong>不是</strong> \(I_m\)；它只保留 \(C(Q)\) 中的分量。只有 \(Q\) 是方阵且列标准正交时，才有 \(Q^{-1}=Q^T\) 和 \(QQ^T=I\)，这时称 \(Q\) 为<strong>正交矩阵</strong>。例如二维旋转矩阵保持长度与角度；长方形 \(Q\) 不能当作可逆方阵使用。</p>
+<p>当 \(m\gt r\)，\(Q\) 是长方形，虽然 \(Q^TQ=I_r\)，但 \(QQ^T\) 通常<strong>不是</strong> \(I_m\)；它只保留 \(C(Q)\) 中的分量。只有 \(Q\) 是方阵且列标准正交时，才有 \(Q^{-1}=Q^T\) 和 \(QQ^T=I\)，这时称 \(Q\) 为<strong>正交矩阵</strong>。例如二维旋转矩阵保持长度与角度；长方形 \(Q\) 不能当作可逆方阵使用。</p>
 
 <h2 id="gram-schmidt">二、Gram–Schmidt 每一步在减掉什么？</h2>
 <p>从无关的 \(a_1,\ldots,a_r\) 出发，先把第一列变成单位向量 \(q_1=a_1/\|a_1\|\)。第二列若直接归一化，仍会与 \(q_1\) 不垂直，所以先减去它沿 \(q_1\) 的投影：</p>
@@ -33,7 +33,7 @@ comments: false
 <p>这两列与原来的 \(a_1,a_2\) 张成同一平面。若把 \(b\) 投到这个平面，先算两个内积 \(q_1^Tb,q_2^Tb\)，再组成 \(p=(q_1^Tb)q_1+(q_2^Tb)q_2=QQ^Tb\)，不再需要求 \((A^TA)^{-1}\)。</p>
 
 <h2 id="qr">四、QR 分解保存了哪些信息？</h2>
-<p>设原矩阵 \(A=[a_1\ \cdots\ a_r]\)，正交化得到 \(Q=[q_1\ \cdots\ q_r]\)。每个 \(a_j\) 都由前 \(j\) 个 \(q_i\) 组合而成，所以有 \(A=QR\)，其中 \(R\) 是 \(r\times r\) 上三角矩阵。由 \(Q^TQ=I\)，左乘 \(Q^T\) 得 \(R=Q^TA\)。\(R\) 的第 \(i,j\) 个数 \(q_i^Ta_j\)，记录原来的第 \(j\) 列在新方向 \(q_i\) 上有多少；当 \(i>j\) 时为零。</p>
+<p>设原矩阵 \(A=[a_1\ \cdots\ a_r]\)，正交化得到 \(Q=[q_1\ \cdots\ q_r]\)。每个 \(a_j\) 都由前 \(j\) 个 \(q_i\) 组合而成，所以有 \(A=QR\)，其中 \(R\) 是 \(r\times r\) 上三角矩阵。由 \(Q^TQ=I\)，左乘 \(Q^T\) 得 \(R=Q^TA\)。\(R\) 的第 \(i,j\) 个数 \(q_i^Ta_j\)，记录原来的第 \(j\) 列在新方向 \(q_i\) 上有多少；当 \(i\gt j\) 时为零。</p>
 <p>在刚才的例子中，\(a_1=\sqrt3\,q_1\)，\(a_2=\sqrt3\,q_1+\sqrt2\,q_2\)，所以</p>
 <div class="equation">\[A=QR,\qquad R=\begin{pmatrix}\sqrt3&\sqrt3\\0&\sqrt2\end{pmatrix}.\]</div>
 <p>这与第一单元的 LU 分解不同：LU 通过行消元得到三角结构；QR 保持列空间，用正交方向表达原来的列。实际计算最小二乘时，若 \(A=QR\) 且列无关，正规方程可化为 \(R\widehat x=Q^Tb\)，只需解一个上三角方程。</p>

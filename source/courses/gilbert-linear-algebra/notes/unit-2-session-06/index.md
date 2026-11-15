@@ -13,10 +13,10 @@ comments: false
 <nav class="reading-links" aria-label="本讲资料"><a href="/files/mit-18-06sc/unit-2-session-6-summary.pdf">讲义摘要 PDF</a><a href="/files/mit-18-06sc/unit-2-session-6-problems.pdf">习题 PDF</a><a href="/files/mit-18-06sc/unit-2-session-6-solutions.pdf">参考解答 PDF</a></nav>
 
 <h2 id="one-per-row-column">一、为什么每项必须“每行每列各取一个”？</h2>
-<p>从两阶矩阵 \(A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\) 看起：\(ad\) 选的是第一行第一列、第二行第二列；\(-bc\) 选的是第一行第二列、第二行第一列。两项都从每行取一个数，而且不能重复取同一列。若重复列，行列式的交替性会让那一项为零。</p>
+<p>从两阶矩阵 \(A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\) 看起：\(ad\) 选的是第一行第一列、第二行第二列；\(-bc\) 选的是第一行第二列、第二行第一列。两项都从每行取一个数，而且不能重复取同一列。原因是把每一行按坐标方向拆开后，若两行都选同一列，拆出的矩阵就有两条平行的行，行列式为零。</p>
 <p>三阶时，第一行先有三种列可选；第二行只剩两种，第三行只剩一种，因此恰有 \(3\cdot2\cdot1=6\) 个可能非零项。每项的正负由把所选列顺序排回 \(1,2,3\) 所需交换次数的奇偶决定。比如选 \((2,3,1)\) 时，项 \(a_{12}a_{23}a_{31}\) 为正；选 \((2,1,3)\) 时，\(a_{12}a_{21}a_{33}\) 为负。</p>
 <p>对具体矩阵 \(B=\begin{pmatrix}1&2&0\\0&3&4\\5&0&6\end{pmatrix}\)，多数选择因含 0 消失，只剩 \(1\cdot3\cdot6\) 和 \(2\cdot4\cdot5\)，两项都为正，所以 \(\det B=18+40=58\)。这比盲背三阶展开式容易核对。</p>
-<details class="note-extension"><summary>理解之后的一般置换公式</summary><p>对 \(n\times n\) 矩阵，令 \(\sigma\) 遍历 \(1,\ldots,n\) 的所有排列；\(\sigma(i)\) 指第 \(i\) 行选的列。只有各列互不重复的选法能留下，故有 \(\det A=\sum_{\sigma}\operatorname{sgn}(\sigma)\prod_{i=1}^n a_{i,\sigma(i)}\)。\(\operatorname{sgn}(\sigma)\) 为偶数次交换时的 \(1\)，奇数次时的 \(-1\)。共有 \(n!\) 个候选项；实际计算大矩阵通常仍用消元。</p></details>
+<details class="note-extension"><summary>理解之后的一般置换公式</summary><p>对 \(n\times n\) 矩阵，令 \(\sigma\) 遍历 \(1,\ldots,n\) 的所有排列；\(\sigma(i)\) 指第 \(i\) 行选的列。只有各列互不重复的选法能留下，故有 \(\det A=\sum_{\sigma}\operatorname{sgn}(\sigma)\prod_{i=1}^n a_{i,\sigma(i)}\)。\(\operatorname{sgn}(\sigma)\) 为偶数次交换时的 \(1\)，奇数次时的 \(-1\)。为什么“奇偶”不依赖具体交换路径？可数出排列中的<strong>逆序对</strong>：满足 \(i\lt j\) 却有 \(\sigma(i)\gt\sigma(j)\) 的一对位置。每做一次相邻交换，逆序对数的奇偶就翻转；因此交换路径的奇偶由排列本身决定。共有 \(n!\) 个候选项；实际计算大矩阵通常仍用消元。</p></details>
 
 <h2 id="cofactor">二、余子式是怎样从分组中出现的？</h2>
 <p>先固定第一行的选择。若这一行选 \(a_{11}\)，余下各行只能在删去第一列后的矩阵中各选一列，贡献合起来是 \(a_{11}\) 乘一个 \((n-1)\) 阶行列式。若选 \(a_{12}\)，要把第二列移到第一列的位置，产生一个负号；依次选下去，符号交替。</p>

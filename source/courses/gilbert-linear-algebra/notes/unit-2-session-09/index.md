@@ -23,20 +23,20 @@ comments: false
 <p>将 \(A=S\Lambda S^{-1}\) 连乘两次，中间的 \(S^{-1}S=I\) 抵消，得 \(A^2=S\Lambda^2S^{-1}\)；重复可得 \(A^k=S\Lambda^kS^{-1}\)。由于 \(\Lambda\) 是对角矩阵，\(\Lambda^k\) 只需把各 \(\lambda_j\) 分别变成 \(\lambda_j^k\)。</p>
 <p>用上一讲 \(A=\begin{pmatrix}3&1\\1&3\end{pmatrix}\) 验算：取 \(S=\begin{pmatrix}1&1\\1&-1\end{pmatrix}\)，\(S^{-1}=\frac12S\)，\(\Lambda=\operatorname{diag}(4,2)\)。因此</p>
 <div class="equation">\[A^k=\frac12\begin{pmatrix}4^k+2^k&4^k-2^k\\4^k-2^k&4^k+2^k\end{pmatrix}.\]</div>
-<p>代 \(k=1\) 得原矩阵，代 \(k=0\) 得单位矩阵。如果所有 \(|\lambda_j|<1\)，每个 \(\lambda_j^k\to0\)，故 \(A^k\to0\)；反过来，只要有某个特征值的模不小于 1，沿其特征向量的输入就不会趋零。这里是在可对角化的前提下直接由公式证明；一般矩阵也有相同的最终判据，但需处理不可对角化情形。</p>
+<p>代 \(k=1\) 得原矩阵，代 \(k=0\) 得单位矩阵。如果所有 \(|\lambda_j|\lt1\)，每个 \(\lambda_j^k\to0\)，故 \(A^k\to0\)；反过来，只要有某个特征值的模不小于 1，沿其特征向量的输入就不会趋零。这里是在可对角化的前提下直接由公式证明；一般矩阵也有相同的最终判据，但需处理不可对角化情形。</p>
 <p>要注意：\(A\) 的特征向量仍是 \(A^k\) 的特征向量，但 \(A^k\) 可能出现<strong>更多</strong>特征向量。例如 \(A=\operatorname{diag}(1,-1)\) 只有两条特征直线，而 \(A^2=I\) 的任意非零向量都是特征向量。所以“幂的特征向量完全不变”说得过强。</p>
 
 <h2 id="difference-equation">三、把递推式写成矩阵幂</h2>
 <p>若状态按 \(u_{k+1}=Au_k\) 更新，给定初始列向量 \(u_0\)，则 \(u_k=A^ku_0\)。若 \(A\) 可对角化，把初始状态唯一写成 \(u_0=c_1v_1+\cdots+c_nv_n\)，便得到</p>
 <div class="equation">\[u_k=c_1\lambda_1^kv_1+\cdots+c_n\lambda_n^kv_n.\]</div>
-<p>每个特征方向是一种独立的“模式”。\(|\lambda_j|<1\) 的模式衰减；\(\lambda_j=1\) 的模式保持；\(\lambda_j=-1\) 的模式每步翻向；\(|\lambda_j|>1\) 的模式增长。实际初始状态中若某一模式系数 \(c_j=0\)，那个模式就不会出现，因此不能只看矩阵的最大特征值就断言<strong>每条</strong>轨迹的行为。</p>
+<p>每个特征方向是一种独立的“模式”。\(|\lambda_j|\lt1\) 的模式衰减；\(\lambda_j=1\) 的模式保持；\(\lambda_j=-1\) 的模式每步翻向；\(|\lambda_j|\gt1\) 的模式增长。实际初始状态中若某一模式系数 \(c_j=0\)，那个模式就不会出现，因此不能只看矩阵的最大特征值就断言<strong>每条</strong>轨迹的行为。</p>
 
 <h2 id="fibonacci">四、Fibonacci 为何也是一个二维系统？</h2>
 <p>数列 \(F_0=0,F_1=1,F_{k+2}=F_{k+1}+F_k\) 看似是二阶递推；把相邻两项放进状态 \(u_k=(F_{k+1},F_k)^T\)，则</p>
 <div class="equation">\[u_{k+1}=\begin{pmatrix}1&1\\1&0\end{pmatrix}u_k,\qquad u_0=\begin{pmatrix}1\\0\end{pmatrix}.\]</div>
 <p>记这个矩阵为 \(B\)。特征方程 \(\lambda^2-\lambda-1=0\) 给出 \(\phi=(1+\sqrt5)/2\)、\(\psi=(1-\sqrt5)/2\)，对应的特征向量可取 \((\phi,1)^T,(\psi,1)^T\)。解 \(u_0=c_1(\phi,1)^T+c_2(\psi,1)^T\)：第二分量给 \(c_2=-c_1\)，第一分量给 \(c_1(\phi-\psi)=1\)，故 \(c_1=1/\sqrt5\)。于是状态的第二分量恰为</p>
 <div class="equation">\[F_k=\frac{\phi^k-\psi^k}{\sqrt5}.\]</div>
-<p>这不是凭空猜出的通项：两个指数分别来自矩阵的两个特征值，系数来自初值。由于 \(|\psi|<1<\phi\)，\(F_k\) 的长期增长由 \(\phi^k/\sqrt5\) 主导；但精确等式仍须保留第二项。</p>
+<p>这不是凭空猜出的通项：两个指数分别来自矩阵的两个特征值，系数来自初值。由于 \(|\psi|\lt1\lt\phi\)，\(F_k\) 的长期增长由 \(\phi^k/\sqrt5\) 主导；但精确等式仍须保留第二项。</p>
 <h2 id="check">理解检查</h2>
 <ol><li>在上面的 \(A^k\) 公式中取 \(k=2\)，与直接相乘 \(A^2\) 核对。</li><li>习题 22.1 的 \(A=\begin{pmatrix}4&0\\1&2\end{pmatrix}\)。先找两条特征直线，再说明改变特征向量的非零倍数会怎样改变 \(S\)，而 \(A\) 是否改变。</li><li>从 \(F_k\) 的通项直接验证 \(F_0=0,F_1=1\)，再解释为什么 \(\phi,\psi\) 都满足同一个递推关系。</li></ol>
 <p class="note-footer">依据 MIT OCW 18.06SC Unit II, Session 9 <em>Diagonalization and Powers of A</em> 整理。对“幂的特征向量不变”及长期行为的适用条件作了限定。<a href="/courses/gilbert-linear-algebra/notes/">返回目录</a>。</p>
