@@ -26,4 +26,18 @@ comments: false
 | 第十一节 | [矩阵空间、秩一矩阵与图：阅读笔记](/courses/gilbert-linear-algebra/notes/session-11/) | 已整理阅读笔记 |
 | 第十二节 | [图、网络与关联矩阵：阅读笔记](/courses/gilbert-linear-algebra/notes/session-12/) | 已整理阅读笔记 |
 
-后续各节学习后逐步加入目录。
+## 第二单元：正交、行列式与特征值
+
+| 讲次 | 笔记 |
+| --- | --- |
+| 第 1 讲 | [正交向量与正交子空间](/courses/gilbert-linear-algebra/notes/unit-2-session-01/) |
+| 第 2 讲 | [正交投影](/courses/gilbert-linear-algebra/notes/unit-2-session-02/) |
+| 第 3 讲 | [投影矩阵与最小二乘](/courses/gilbert-linear-algebra/notes/unit-2-session-03/) |
+| 第 4 讲 | [正交矩阵、Gram–Schmidt 与 QR](/courses/gilbert-linear-algebra/notes/unit-2-session-04/) |
+| 第 5 讲 | [行列式的性质与消元](/courses/gilbert-linear-algebra/notes/unit-2-session-05/) |
+| 第 6 讲 | [行列式展开与余子式](/courses/gilbert-linear-algebra/notes/unit-2-session-06/) |
+| 第 7 讲 | [Cramer 法则、逆矩阵与体积](/courses/gilbert-linear-algebra/notes/unit-2-session-07/) |
+| 第 8 讲 | [特征值与特征向量](/courses/gilbert-linear-algebra/notes/unit-2-session-08/) |
+| 第 9 讲 | [对角化、矩阵幂与递推](/courses/gilbert-linear-algebra/notes/unit-2-session-09/) |
+| 第 10 讲 | [微分方程与矩阵指数](/courses/gilbert-linear-algebra/notes/unit-2-session-10/) |
+| 第 11 讲 | [马尔可夫矩阵与傅里叶级数](/courses/gilbert-linear-algebra/notes/unit-2-session-11/) |
