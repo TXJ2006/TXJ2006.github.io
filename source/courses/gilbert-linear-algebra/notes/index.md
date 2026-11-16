@@ -7,7 +7,7 @@ comments: false
 
 [← 返回课程资料](/courses/gilbert-linear-algebra/)
 
-这里是课程笔记目录。每一节都有独立页面，分别整理阅读笔记、学习疑问、习题分析与配图；学完并讨论后，再添加相应笔记。
+这里是课程三个单元的知识讲次笔记目录。每一讲有独立页面，连接原课程讲义、习题与解答；考试复习讲次保留在[课程资料页](/courses/gilbert-linear-algebra/)中。
 
 ## 第一单元：Ax = b 与四个基本子空间
 
@@ -41,3 +41,16 @@ comments: false
 | 第 9 讲 | [对角化、矩阵幂与递推](/courses/gilbert-linear-algebra/notes/unit-2-session-09/) |
 | 第 10 讲 | [微分方程与矩阵指数](/courses/gilbert-linear-algebra/notes/unit-2-session-10/) |
 | 第 11 讲 | [马尔可夫矩阵与傅里叶级数](/courses/gilbert-linear-algebra/notes/unit-2-session-11/) |
+
+## 第三单元：正定矩阵与线性映射
+
+| 讲次 | 笔记 |
+| --- | --- |
+| 第 1 讲 | [实对称矩阵与正定性](/courses/gilbert-linear-algebra/notes/unit-3-session-01/) |
+| 第 2 讲 | [复矩阵与快速傅里叶变换](/courses/gilbert-linear-algebra/notes/unit-3-session-02/) |
+| 第 3 讲 | [正定矩阵、二次型与极小值](/courses/gilbert-linear-algebra/notes/unit-3-session-03/) |
+| 第 4 讲 | [相似矩阵与 Jordan 形](/courses/gilbert-linear-algebra/notes/unit-3-session-04/) |
+| 第 5 讲 | [奇异值分解](/courses/gilbert-linear-algebra/notes/unit-3-session-05/) |
+| 第 6 讲 | [线性映射与矩阵表示](/courses/gilbert-linear-algebra/notes/unit-3-session-06/) |
+| 第 7 讲 | [换基与图像压缩](/courses/gilbert-linear-algebra/notes/unit-3-session-07/) |
+| 第 8 讲 | [左右逆与伪逆](/courses/gilbert-linear-algebra/notes/unit-3-session-08/) |

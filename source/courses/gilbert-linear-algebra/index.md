@@ -9,27 +9,7 @@ comments: false
 
 ## 学习笔记
 
-[读书与做题笔记](/courses/gilbert-linear-algebra/notes/)
-
-第一节：[线性方程的几何：阅读笔记与习题分析](/courses/gilbert-linear-algebra/notes/session-01/)
-
-第二节：[矩阵消元：阅读笔记](/courses/gilbert-linear-algebra/notes/session-02/)
-
-第三节：[矩阵乘法与逆矩阵：阅读笔记](/courses/gilbert-linear-algebra/notes/session-03/)
-
-第四节：[A = LU 分解：阅读笔记](/courses/gilbert-linear-algebra/notes/session-04/)
-
-第五节：[转置、置换与向量空间：阅读笔记](/courses/gilbert-linear-algebra/notes/session-05/)
-
-第六节：[列空间与零空间：阅读笔记](/courses/gilbert-linear-algebra/notes/session-06/)
-
-第七节：[求解 Ax = 0：主元变量与特殊解：阅读笔记](/courses/gilbert-linear-algebra/notes/session-07/)
-
-第八节：[求解 Ax = b：有解条件与全部解：阅读笔记](/courses/gilbert-linear-algebra/notes/session-08/)
-
-第九节：[线性无关、基与维数：阅读笔记](/courses/gilbert-linear-algebra/notes/session-09/)
-
-第十节：[四个基本子空间：阅读笔记](/courses/gilbert-linear-algebra/notes/session-10/)
+[读书与做题笔记：三个单元的知识讲次](/courses/gilbert-linear-algebra/notes/)
 
 ## 教材
 
