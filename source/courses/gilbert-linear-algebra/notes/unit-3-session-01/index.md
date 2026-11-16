@@ -28,6 +28,7 @@ comments: false
 <div class="equation">\[x^TBx=5\left(x_1+\frac25x_2\right)^2+\frac{11}{5}x_2^2.\]</div>
 <p>右侧对非零 \(x\) 必正，所以 \(B\) 正定。对应特征方程 \(\lambda^2-8\lambda+11=0\)，根 \(4\pm\sqrt5\) 也都正。三种检查读的是同一事实。</p>
 <p>对称矩阵若能在不交换行且主元均非零的条件下逐步消元，就可写成 \(A=LDL^T\)，其中 \(L\) 是对角线全为 1 的下三角矩阵，\(D=\operatorname{diag}(d_1,\ldots,d_n)\) 收集主元。于是 \(x^TAx=(L^Tx)^TD(L^Tx)\)；因 \(L^T\) 可逆，所有主元 \(d_j\gt0\) 与正定等价。正定矩阵必有这样的分解。左上角 \(k\times k\) 子矩阵的行列式 \(\Delta_k=d_1\cdots d_k\)，故也等价于每个<strong>顺序前导子式</strong> \(\Delta_k\gt0\)（Sylvester 判据）。这里要求的是从左上角逐级扩大的那 \(n\) 个子式，并非任取的 \(n\) 个子式。</p>
+<p>主元还能提供比“是否正定”更多的信息：在上述分解可行时，正主元和负主元的个数，分别等于正特征值和负特征值的个数。这是二次型的<strong>惯性定律</strong>：可逆的坐标替换 \(y=L^Tx\) 不改变正、负方向各自的最大维数。因此无需解特征方程，也能判断谱的符号分布；对 \(A-bI\) 做同样的检查，还可数出 \(A\) 有多少特征值大于 \(b\)。若消元遇到零主元，不能直接沿用这一无换行分解。</p>
 <h2 id="check">理解检查</h2>
 <ol><li>习题 25.1 用旋转矩阵的特征向量 \((i,1)^T\) 检查“\(x^TAx/x^Tx\) 一定为实数”的错误证明：分母究竟是多少？</li><li>把 \(B\) 的配方展开，并从两个主元求出 \(\Delta_1,\Delta_2\)。</li><li>为什么两矩阵分别正定，乘积却未必对称？取两个不交换的对称矩阵试一试。</li></ol>
 <p class="note-footer">依据 MIT OCW 18.06SC Unit III, Session 1 <em>Symmetric Matrices and Positive Definiteness</em> 整理。复特征向量的证明明确使用共轭转置，正定判据注明对称性前提。<a href="/courses/gilbert-linear-algebra/notes/">返回目录</a>。</p>
