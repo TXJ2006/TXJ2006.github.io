@@ -5,7 +5,27 @@ permalink: /courses/mit-18-703/
 comments: false
 ---
 
-MIT OpenCourseWare 的 [18.703 Modern Algebra（2013 年春）](https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/) 是 James McKernan 教授讲授的本科抽象代数入门课。本页按实际学习进度整理逐讲笔记。课程 PDF 资料已从 OCW 课程包同步到本站；后续你每上完一讲，把自己的课堂资料发给我，我再补充对应的学习笔记。
+MIT OpenCourseWare 的 [18.703 Modern Algebra（2013 年春）](https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/) 是 James McKernan 教授讲授的本科抽象代数入门课。课程 PDF 资料已从 OCW 课程包同步到本站。群论部分的第 1–13 讲已有独立阅读笔记；后续讲次继续按学习进度整理。
+
+## 阅读笔记：群论（第 1–13 讲）
+
+每篇笔记都附原讲义 PDF，按“问题、定义、证明、例子”组织。课程作业是跨讲布置的，完整题目见下方作业 PDF。
+
+| 讲次 | 阅读笔记 |
+| --- | --- |
+| 1 | [群与对称](/courses/mit-18-703/notes/lecture-01/) |
+| 2 | [子群](/courses/mit-18-703/notes/lecture-02/) |
+| 3 | [陪集与 Lagrange 定理](/courses/mit-18-703/notes/lecture-03/) |
+| 4 | [循环群与模运算](/courses/mit-18-703/notes/lecture-04/) |
+| 5 | [置换与循环分解](/courses/mit-18-703/notes/lecture-05/) |
+| 6 | [对称群中的共轭](/courses/mit-18-703/notes/lecture-06/) |
+| 7 | [同构与 Cayley 定理](/courses/mit-18-703/notes/lecture-07/) |
+| 8 | [同态、核与正规子群](/courses/mit-18-703/notes/lecture-08/) |
+| 9 | [商群与泛性质](/courses/mit-18-703/notes/lecture-09/) |
+| 10 | [同构定理与交换化](/courses/mit-18-703/notes/lecture-10/) |
+| 11 | [交错群与置换的符号](/courses/mit-18-703/notes/lecture-11/) |
+| 12 | [群的呈示与小阶群](/courses/mit-18-703/notes/lecture-12/) |
+| 13 | [Sylow 定理与群作用](/courses/mit-18-703/notes/lecture-13/) |
 
 ## 官方课程资料
 
