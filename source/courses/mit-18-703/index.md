@@ -5,7 +5,7 @@ permalink: /courses/mit-18-703/
 comments: false
 ---
 
-MIT OpenCourseWare 的 [18.703 Modern Algebra（2013 年春）](https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/) 是 James McKernan 教授讲授的本科抽象代数入门课。课程 PDF 资料已从 OCW 课程包同步到本站。群论部分的第 1–13 讲已有独立阅读笔记；后续讲次继续按学习进度整理。
+MIT OpenCourseWare 的 [18.703 Modern Algebra（2013 年春）](https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/) 是 James McKernan 教授讲授的本科抽象代数入门课。课程 PDF 资料已从 OCW 课程包同步到本站，第 1–24 讲均有独立阅读笔记；第 24 讲按课程复习资料整理。
 
 ## 阅读笔记：群论（第 1–13 讲）
 
@@ -26,6 +26,22 @@ MIT OpenCourseWare 的 [18.703 Modern Algebra（2013 年春）](https://ocw.mit.
 | 11 | [交错群与置换的符号](/courses/mit-18-703/notes/lecture-11/) |
 | 12 | [群的呈示与小阶群](/courses/mit-18-703/notes/lecture-12/) |
 | 13 | [Sylow 定理与群作用](/courses/mit-18-703/notes/lecture-13/) |
+
+## 阅读笔记：环论与总结（第 14–24 讲）
+
+| 讲次 | 阅读笔记 |
+| --- | --- |
+| 14 | [环](/courses/mit-18-703/notes/lecture-14/) |
+| 15 | [环的基本性质](/courses/mit-18-703/notes/lecture-15/) |
+| 16 | [环同态与理想](/courses/mit-18-703/notes/lecture-16/) |
+| 17 | [分式域](/courses/mit-18-703/notes/lecture-17/) |
+| 18 | [素理想与极大理想](/courses/mit-18-703/notes/lecture-18/) |
+| 19 | [特殊整环](/courses/mit-18-703/notes/lecture-19/) |
+| 20 | [欧几里得整环](/courses/mit-18-703/notes/lecture-20/) |
+| 21 | [多项式环](/courses/mit-18-703/notes/lecture-21/) |
+| 22 | [快速素性检验](/courses/mit-18-703/notes/lecture-22/) |
+| 23 | [群作用与自同构](/courses/mit-18-703/notes/lecture-23/) |
+| 24 | [全课程复习](/courses/mit-18-703/notes/lecture-24/) |
 
 ## 官方课程资料
 
