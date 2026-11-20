@@ -363,6 +363,13 @@ comments: false
 
 ## 几何、流形与代数几何（新增）
 
+### [Low-Dimensional Topology and Knot Theory](/files/math-resources/juhasz-low-dimensional-topology-knot-theory.pdf)
+
+- **作者：** András Juhász
+- **版本信息：** Oxford 课程讲义；PDF 共 79 页
+- **内容概述：** 以拓扑流形、光滑流形和 Morse 理论为基础，介绍把流形分解为 handles、手术与 cobordism，并说明高维拓扑中的 Whitney trick 与 h-cobordism theorem。随后进入 3-流形的 Heegaard 分解、不可压缩曲面、正规曲面和素分解；再以结与链环为主线讨论 Reidemeister moves、Seifert 曲面、Seifert 形式、结群、Jones 多项式及用链环构造 3-流形，最后介绍 Kirby calculus、交叉形式与 4-流形分类。适合在一般拓扑、代数拓扑和基础微分流形之后阅读。
+- **PDF：** [在线阅读](/files/math-resources/juhasz-low-dimensional-topology-knot-theory.pdf) · <a href="/files/math-resources/juhasz-low-dimensional-topology-knot-theory.pdf" download="Andras-Juhasz-Low-Dimensional-Topology-and-Knot-Theory.pdf">下载 PDF</a>
+
 ### [代数曲线：代数几何引论（Algebraic Curves: An Introduction to Algebraic Geometry）](/files/math-resources/fulton-algebraic-curves-zh.pdf)
 
 - **作者：** William Fulton
