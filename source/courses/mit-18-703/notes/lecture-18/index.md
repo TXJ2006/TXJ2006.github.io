@@ -25,6 +25,6 @@ comments: false
 <p>任意带单位环都有唯一环同态 \(\mathbb Z\to R\)，由 \(1\mapsto1\) 决定。若最小正整数 \(n\) 满足 \(n\cdot1=0\)，称环的特征为 \(n\)；若不存在这样的整数，特征为 0。若 \(R\) 是整环且特征有限，\(n\) 必为素数：若 \(n=ab\) 可分解，则 \((a1)(b1)=n1=0\)，整环迫使某个因子为零，违背最小性。</p>
 <p>\(\mathbb Q,\mathbb R,\mathbb C\) 的特征为 0，\(\mathbb Z_p\) 的特征为 \(p\)。函数环的“在一点取值”映射给出重要例子：在 \(R^X\) 中，某点处为零的函数构成理想，商环同构于 \(R\)，因此该理想是否素或极大完全取决于 \(R\) 是否整环或域。</p>
 <h2 id="section-69">理解检查</h2>
-<ol><li>证明 \((x^2+1)\) 在 \(\mathbb R[x]\) 中不是极大理想，但在某些商环中可能得到域。</li><li>为什么“极大理想必素”只需要域是整环这一事实？</li><li>求 \(\mathbb Z/12\mathbb Z\) 的特征，并判断 \((4)\) 是否为素理想。</li></ol>
+<ol><li>比较 \((x^2+1)\) 在 \(\mathbb R[x]\) 与 \(\mathbb Z[x]\) 中的地位：前者的商环同构于 \(\mathbb C\)，故理想极大；后者的商环同构于 \(\mathbb Z[i]\)，故理想素但不极大。</li><li>为什么“极大理想必素”只需要域是整环这一事实？</li><li>求 \(\mathbb Z/12\mathbb Z\) 的特征，并判断 \((4)\) 是否为素理想。</li></ol>
 <p class="note-footer">依据 MIT OCW 18.703 Lecture 18, <em>Prime and Maximal Ideals</em> 整理。</p>
 </section>
