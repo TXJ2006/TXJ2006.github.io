@@ -15,6 +15,8 @@ comments: false
 
 [MIT 18.703 现代代数逐讲学习记录](/courses/mit-18-703/)
 
+[点集拓扑读书笔记](/courses/point-set-topology/)
+
 ## 微积分读本
 
 ### [Calculus（我们的微积分读本）](/files/math-resources/strang-calculus-3rd-edition.pdf)

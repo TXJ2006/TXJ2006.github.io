@@ -1,5 +1,5 @@
 ---
-title: 第 1 篇：拓扑空间、基与子空间｜阅读笔记
+title: 第 1 篇：从距离到拓扑、基与子空间｜阅读笔记
 layout: page
 permalink: /courses/point-set-topology/notes/chapter-01/
 mathjax: true
@@ -8,51 +8,38 @@ comments: false
 ---
 
 <section class="la-notes la-notes--algebra">
-<p class="note-nav"><a href="/courses/point-set-topology/">← 课程目录</a></p>
-<div class="note-lead"><p>拓扑的第一步不是定义“距离很近”，而是直接规定哪些集合算作开集。只要开集满足三条公理，就可以在没有坐标和距离的集合上讨论连续性。</p></div>
-<nav class="reading-links" aria-label="参考资料"><a href="/files/math-resources/archive-2026-11-08-59.pdf">拓扑学讲义 PDF</a><a href="/files/math-resources/archive-2026-11-08-45.pdf">Topology I PDF</a><a href="/files/math-resources/archive-2026-11-08-34.pdf">Metric and Topological Spaces PDF</a></nav>
+<p class="note-nav"><a href="/courses/point-set-topology/">← 课程目录</a> · <a href="/courses/point-set-topology/notes/chapter-02/">下一篇 →</a></p>
+<div class="note-lead"><p>先看一个熟悉的事实：\((0,1)\) 在实数轴上是开集，因为其中每一点都能容下一个更小的开区间。拓扑把“每一点周围还能活动一点”抽象为开集，不再要求先给距离。</p></div>
+<nav class="reading-links" aria-label="参考讲义"><a href="/files/math-resources/archive-2026-11-08-59.pdf">林剑峰讲义</a><a href="/files/math-resources/archive-2026-11-08-45.pdf">Yi Li 讲义</a><a href="/files/math-resources/archive-2026-11-08-34.pdf">Körner 讲义</a></nav>
 
-<h2 id="section-1">一、拓扑要解决什么问题？</h2>
-<p>在 \(\mathbb R^n\) 中，连续性的通常定义依赖距离：点 \(x\) 附近的点在映射下仍应落在 \(f(x)\) 附近。可是许多重要对象没有天然的欧氏距离，例如连续函数空间、无穷维空间、矩阵群、商空间和代数几何中的点集。若把连续性写成“开集的原像仍是开集”，就能把距离从定义中抽掉。</p>
-<p>因此拓扑学研究的基本对象是一个集合 \(X\) 和一批被指定为“开”的子集。这个选择必须足以表达局部性，又不能依赖某个具体坐标系统。</p>
+<h2 id="section-1">一、为什么从开集入手？</h2>
+<p>在度量空间 \((X,d)\) 中，点 \(x\) 的半径 \(r\) 开球是 \(B(x,r)=\{y:d(x,y)\lt r\}\)。集合 \(U\subseteq X\) 开，意思是每个 \(x\in U\) 都有某个 \(r>0\)，使 \(B(x,r)\subseteq U\)。这不是要求全体点共用一个半径；靠近区间端点的点，可以选择更小的半径。</p>
+<p>例如 \(x\in(0,1)\) 时，取 \(r=\frac12\min\{x,1-x\}\)，便有 \(B(x,r)\subset(0,1)\)。而 \([0,1)\) 在 \(\mathbb R\) 中不开放，因为 \(0\) 的每个开球都含负数。这个区别完全由开球如何覆盖点决定。</p>
+<p>我们关心的不只是数值距离，还关心哪些映射连续、哪些点可被开集区分。不同度量有时给出完全相同的开集，例如 \(d(x,y)=|x-y|\) 和 \(d'(x,y)=\min\{1,|x-y|\}\) 在 \(\mathbb R\) 上给出同一个拓扑。由此可把开集结构本身作为研究对象。</p>
 
-<h2 id="section-2">二、拓扑空间的严格定义</h2>
-<p>设 \(X\) 是集合。一个拓扑是幂集 \(\mathcal P(X)\) 的子集 \(\mathcal T\)，满足：</p>
-<ol><li>\(\varnothing\in\mathcal T\)，且 \(X\in\mathcal T\)；</li><li>若 \(U,V\in\mathcal T\)，则 \(U\cap V\in\mathcal T\)；更一般地，任意有限个开集的交仍开；</li><li>对任意指标集 \(I\)，若每个 \(U_i\in\mathcal T\)，则 \(\bigcup_{i\in I}U_i\in\mathcal T\)。</li></ol>
-<p>二元组 \((X,\mathcal T)\) 称拓扑空间，\(\mathcal T\) 中的集合称开集。这里“有限交”和“任意并”不是对称的：无限交不必开，例如 \(\bigcap_{n\ge1}(-1/n,1/n)=\{0\}\) 在通常拓扑的 \(\mathbb R\) 中不是开集。</p>
-<p>闭集不是另一种独立结构：集合 \(F\subseteq X\) 称闭集，当且仅当 \(X\setminus F\) 开。由德摩根律，闭集满足对任意交封闭、对有限并封闭。这种开闭对偶会反复用于闭包、紧性和连续映射的证明。</p>
+<h2 id="section-2">二、开集公理从哪里来？</h2>
+<p>度量空间的开集有三条共同性质：空集和全空间开；任意多个开集的并开；有限多个开集的交开。交集只保证有限个，是因为点在两个开集内时可取两个半径的最小值，而无限多个半径的下确界可能为零。</p>
+<p>于是给定集合 \(X\)，一个<strong>拓扑</strong>就是子集族 \(\mathcal T\subseteq\mathcal P(X)\)，满足上面三条性质。\((X,\mathcal T)\) 称拓扑空间，\(U\in\mathcal T\) 称开集。\(\mathcal P(X)\) 是 \(X\) 的所有子集的集合；写成 \(\mathcal T\subseteq\mathcal P(X)\)，是说我们从所有子集中选出哪些算开。</p>
+<p>这组公理恰好允许连续性的开集原像定义与复合运算配合。无限交不能随意加入：在 \(\mathbb R\) 中，\(\bigcap_{n\ge1}(-1/n,1/n)=\{0\}\)，而 \(\{0\}\) 不是通常拓扑的开集。</p>
 
-<h2 id="section-3">三、同一个集合可以承载不同拓扑</h2>
-<p>拓扑不是集合本身的属性，而是集合上的额外结构。常见例子如下。</p>
-<table><thead><tr><th>拓扑</th><th>开集</th><th>局部性</th></tr></thead><tbody><tr><td>平凡拓扑</td><td>\(\varnothing,X\)</td><td>最少，几乎无法区分点</td></tr><tr><td>离散拓扑</td><td>\(\mathcal P(X)\)</td><td>最多，每个单点集都开</td></tr><tr><td>余有限拓扑</td><td>空集或补集有限的集合</td><td>无限集合中任意两个非空开集相交</td></tr><tr><td>度量拓扑</td><td>每个点都含一个开球的集合</td><td>由距离产生，但不只限于欧氏空间</td></tr></tbody></table>
-<p>拓扑越细，开集越多；连续性条件通常越容易从定义域满足、越难从目标空间满足。不能只说“这个集合是开集”，必须说明是在什么拓扑下。</p>
+<h2 id="section-3">三、同一个集合有不同的“靠近”方式</h2>
+<p>令 \(X\) 是无限集合。\(\{\varnothing,X\}\) 是<strong>平凡拓扑</strong>，几乎无法用开集区分点。\(\mathcal P(X)\) 是<strong>离散拓扑</strong>，每个单点集都开。<strong>余有限拓扑</strong>则把空集和所有“补集有限”的集合规定为开集。检验任意并时，看补集变成有限集合的交；检验有限交时，看补集变成有限集合的并。</p>
+<p>这些结构不同：在无限余有限空间中，两个非空开集一定相交；在离散空间中，不同点的单点开集不相交。也因此，“\(A\) 是开集”必须连同环境空间及其拓扑一起说。</p>
+<p>若 \(\mathcal T_1\subseteq\mathcal T_2\)，称 \(\mathcal T_2\) 比 \(\mathcal T_1\) <strong>更细</strong>。同一个集合的恒等映射 \((X,\mathcal T_2)\to(X,\mathcal T_1)\) 连续，因为目标的每个开集在定义域中仍开；反方向未必连续。这是判断粗细方向的可靠办法。</p>
 
-<h2 id="section-4">四、度量怎样产生拓扑？</h2>
-<p>度量是函数 \(d:X\times X\to[0,\infty)\)，满足正定性、对称性和三角不等式。给定 \(x\in X\) 与 \(r>0\)，开球为 \(B_d(x,r)=\{y:d(x,y)\lt r\}\)。定义 \(U\subseteq X\) 开，当且仅当每个 \(x\in U\) 都存在 \(r>0\) 使 \(B_d(x,r)\subseteq U\)。这些开球生成的拓扑称度量拓扑。</p>
-<p>关键点是：度量不是拓扑本身。不同度量可能产生同一个拓扑；而有些拓扑根本不能由任何度量产生。拓扑学保留的是开集、连续性和收敛等结构，舍弃具体距离的数值。</p>
+<h2 id="section-4">四、基为什么能够代替全部开集？</h2>
+<p>实数轴上不必列出全部开集，只需给出开区间：每个开集都是若干开区间的并。一般地，子集族 \(\mathcal B\) 是 \(X\) 上的<strong>基</strong>，若它覆盖 \(X\)，而且当 \(x\in B_1\cap B_2\)（\(B_1,B_2\in\mathcal B\)）时，能找到 \(B_3\in\mathcal B\) 使 \(x\in B_3\subseteq B_1\cap B_2\)。由 \(\mathcal B\) 生成的开集就是它的成员的任意并，空并给出空集。</p>
+<p>第二条条件只要求在交集的<strong>每个点附近</strong>找到更小的基元素，并不要求整个交集本身属于基。例如开球的交一般不是一个开球，但交集内每一点都能容下一个小开球。这样，基元素的任意并既对任意并封闭，也对有限交封闭，确实形成拓扑。</p>
+<p>一个常用判据是：\(\mathcal B\) 是已有拓扑 \(\mathcal T\) 的基，当且仅当每个 \(x\in U\in\mathcal T\) 都能找到 \(B\in\mathcal B\)，使 \(x\in B\subseteq U\)。取端点为有理数的开区间就给 \(\mathbb R\) 一个可数基：在实数 \(x\) 周围的任意开区间内，都可用有理数选出更小的区间。</p>
+<p>若只给出<strong>子基</strong> \(\mathcal S\)，先取子基元素的所有有限交（包括空交 \(X\)）形成基，再取任意并。例如 \(\mathbb R\) 的所有射线 \((a,\infty)\) 与 \((-\infty,b)\) 是通常拓扑的子基，因为二者的交给出开区间。</p>
 
-<h2 id="section-5">五、基：如何少写很多开集？</h2>
-<p>直接列出所有开集通常不现实。设 \(\mathcal B\subseteq\mathcal P(X)\)。称 \(\mathcal B\) 为一个基，如果：</p>
-<ol><li>每个点 \(x\in X\) 至少属于某个 \(B\in\mathcal B\)；</li><li>若 \(x\in B_1\cap B_2\)，其中 \(B_1,B_2\in\mathcal B\)，则存在 \(B_3\in\mathcal B\)，满足 \(x\in B_3\subseteq B_1\cap B_2\)。</li></ol>
-<p>由基生成的拓扑规定：开集恰好是基元素的任意并。第二条不是要求基元素本身对交封闭，而是要求交集中的每个点附近都能找到更小的基元素。它正是“基元素能够描述局部邻域”的条件。</p>
-<p>证明生成的确是拓扑时，任意并自动满足；有限交的证明使用第二条：若 \(x\in U\cap V\)，分别取包含 \(x\) 的 \(B_1\subseteq U\)、\(B_2\subseteq V\)，再取 \(B_3\subseteq B_1\cap B_2\)，于是 \(x\) 落在交集内的基元素中。</p>
-<p>\(\mathbb R^n\) 的开球是基；也可以只取中心和半径为有理数的开球，仍得到同一个通常拓扑。后一个例子说明：基是描述拓扑的工具，不必包含所有可能的开集。</p>
+<h2 id="section-5">五、子空间的“开”是相对于自身的</h2>
+<p>若 \(Y\subseteq X\)，定义 \(Y\) 中的开集为 \(U\cap Y\)，其中 \(U\) 在 \(X\) 中开。这给出<strong>子空间拓扑</strong> \(\mathcal T_Y=\{U\cap Y:U\in\mathcal T_X\}\)。例如令 \(Y=[0,1]\subset\mathbb R\)。\([0,1/2)\) 在 \(Y\) 中开，因为它等于 \((-1,1/2)\cap Y\)；在 \(\mathbb R\) 中却不开放，因为 \(0\) 没有留在该集合中的实数开邻域。</p>
+<p>如果 \(\mathcal B\) 是 \(X\) 的基，那么 \(\{B\cap Y:B\in\mathcal B\}\) 是 \(Y\) 的基。理由是任意相对开集 \(U\cap Y\) 可把 \(U\) 写成基元素的并，再与 \(Y\) 取交。这个事实让我们计算子空间时无需重新从公理开始。</p>
+<p>包含映射 \(i:Y\hookrightarrow X\) 自动连续，因为 \(i^{-1}(U)=U\cap Y\)。反过来，对任何 \(f:Z\to Y\)，\(f\) 连续当且仅当 \(i\circ f:Z\to X\) 连续；这把“在 \(Y\) 中连续”化成“在环境空间中连续”。</p>
 
-<h2 id="section-6">六、子空间拓扑：子集继承什么结构？</h2>
-<p>设 \((X,\mathcal T)\) 是拓扑空间，\(Y\subseteq X\)。子空间拓扑定义为
-\[\mathcal T_Y=\{U\cap Y:U\in\mathcal T\}.\]
-因此 \(Y\) 中的开集不一定是 \(X\) 中的开集，而是某个环境开集与 \(Y\) 的交。例如 \([0,1]\) 在 \(\mathbb R\) 的子空间拓扑中是开集，因为 \([0,1]=(-1,2)\cap[0,1]\)，但它不是 \(\mathbb R\) 中的开集。</p>
-<p>子空间拓扑是使包含映射 \(\iota:Y\hookrightarrow X\) 连续的最自然拓扑：若 \(U\) 在 \(X\) 中开，则 \(\iota^{-1}(U)=U\cap Y\) 在 \(Y\) 中开。更强的事实是，对任意拓扑空间 \(Z\)，映射 \(f:Z\to Y\) 连续，当且仅当复合 \(\iota\circ f:Z\to X\) 连续。这是子空间的泛性质。</p>
-
-<h2 id="section-7">七、连续映射与同胚</h2>
-<p>拓扑空间之间的映射 \(f:(X,\mathcal T_X)\to(Y,\mathcal T_Y)\) 连续，当且仅当对每个目标开集 \(V\in\mathcal T_Y\)，原像 \(f^{-1}(V)\) 在 \(X\) 中开。注意方向：连续性检查的是<strong>原像</strong>，而不是像。这个方向使连续映射可以复合，也使子空间和商空间的定义自然成立。</p>
-<p>若 \(f\) 是双射且 \(f\) 与 \(f^{-1}\) 都连续，则称 \(f\) 为同胚。拓扑学把同胚空间视为同一个空间，因为开集结构、闭集结构和所有由它们定义的性质都被保留。仅有连续双射还不够：逆映射可能不连续。</p>
-
-<h2 id="section-8">八、这一篇的逻辑链</h2>
-<ol><li>先在集合上指定开集，得到拓扑空间；</li><li>用度量的开球或抽象的基生成拓扑；</li><li>用原像定义连续性，用连续双射及连续逆映射定义同胚；</li><li>用交集定义子空间，使子集继承环境空间的局部结构。</li></ol>
-<p>后续的内部、闭包、边界、紧性和连通性都建立在这条链上。学习时遇到新拓扑，先回答三个问题：哪些集合开？它由什么基生成？一个映射的开集原像是什么？</p>
-
-<h2 id="section-9">理解检查</h2>
-<ol><li>证明余有限拓扑满足拓扑的三条公理，特别说明有限个余有限集的交为何仍余有限。</li><li>在离散拓扑和余有限拓扑中分别求单点集的闭包。</li><li>证明有理数开区间 \((a,b)\)（\(a,b\in\mathbb Q\)）构成 \(\mathbb R\) 通常拓扑的一个基。</li><li>说明 \([0,1)\) 为什么在 \([0,1]\) 的子空间拓扑中开，却不在 \(\mathbb R\) 中开。</li><li>给出一个连续双射但逆映射不连续的例子，并指出失败发生在哪里。</li></ol>
-<p class="note-footer">主要依据《拓扑学讲义》第 1 章与 Yi Li, <em>Topology I: Elementary Topology</em> 第 1 章整理；定义与基的判据与 Munkres 的标准表述对照。</p>
+<h2 id="section-6">六、读完能做什么？</h2>
+<ol><li>给定一个“开集”候选族，逐一检查空集、全体、任意并、有限交。</li><li>给定基，只需用“每个点附近能找到更小的基元素”检验开集。</li><li>遇到子集先说明环境空间：\([0,1/2)\) 在 \([0,1]\) 中开，在 \(\mathbb R\) 中不开。</li></ol>
+<p>试着证明：\(\mathbb R\) 中开球与开区间产生同一拓扑；若 \(A\subseteq Y\subseteq X\)，\(A\) 在 \(Y\) 中开且 \(Y\) 在 \(X\) 中开，则 \(A\) 在 \(X\) 中开。第二篇将把这些开集用于计算内部、闭包和连续性。</p>
+<p class="note-footer">依据林剑峰 / 陈晓《拓扑学讲义》第 1 章、Yi Li <em>Topology I</em> 第 1.1–1.2 节及 Körner <em>Metric and Topological Spaces</em> 第 2–5 节整理。</p>
 </section>
