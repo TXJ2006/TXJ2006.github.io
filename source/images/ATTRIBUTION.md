@@ -6,6 +6,10 @@ generated from `tools/generate-point-set-topology-figures.js` and do not
 reproduce figures from the cited textbooks. Perspective layers are schematic;
 they do not assert an embedding of arbitrary topological spaces in R^3.
 
+`notes/assets/mit-18-703/triangle-rotation.svg` and
+`triangle-reflection.svg` are original black-and-white diagrams of the two
+generating symmetries used in the MIT 18.703 Lecture 1 reading note.
+
 `youyu-chitang-source.jpg` depicts You Yu and Chi Tang from the Chinese
 baihe story `Her Mountain, Her Sea` (`她的山，她的海`). It was downloaded from
 the public image page below at the user's request.

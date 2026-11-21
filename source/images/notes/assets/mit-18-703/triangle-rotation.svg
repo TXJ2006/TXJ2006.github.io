@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 230" role="img" aria-labelledby="title desc">
+<title id="title">正三角形逆时针旋转</title><desc id="desc">顶点 A 在上，B 在右下，C 在左下。旋转 R 把 A 送到 C、C 送到 B、B 送到 A。</desc>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" fill="#222"/></marker></defs>
+<rect width="360" height="230" fill="#fff"/>
+<path d="M180 35L292 185H68Z" fill="none" stroke="#222" stroke-width="2"/>
+<path d="M155 42Q83 75 62 162 M84 201Q180 228 276 201 M299 162Q280 74 205 42" fill="none" stroke="#555" stroke-width="1.7" marker-end="url(#arrow)"/>
+<g fill="#222" font-family="Georgia,serif" font-size="18"><text x="172" y="25">A</text><text x="300" y="195">B</text><text x="45" y="195">C</text><text x="150" y="120">R</text></g>
+</svg>

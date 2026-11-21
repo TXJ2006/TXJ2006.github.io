@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 230" role="img" aria-labelledby="title desc">
+<title id="title">正三角形沿过 A 的轴反射</title><desc id="desc">反射 F 固定顶点 A，交换底部的 B 和 C。</desc>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" fill="#222"/></marker></defs>
+<rect width="360" height="230" fill="#fff"/>
+<path d="M180 35L292 185H68Z" fill="none" stroke="#222" stroke-width="2"/>
+<path d="M180 26V199" fill="none" stroke="#666" stroke-width="1.6" stroke-dasharray="6 5"/>
+<path d="M272 203Q180 215 88 203 M88 216Q180 229 272 216" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+<g fill="#222" font-family="Georgia,serif" font-size="18"><text x="172" y="25">A</text><text x="300" y="195">B</text><text x="45" y="195">C</text><text x="194" y="101">F</text></g>
+</svg>

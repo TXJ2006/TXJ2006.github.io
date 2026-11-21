@@ -170,6 +170,9 @@ html.editorial body{background:var(--paper);color:var(--ink);font:16px/1.65 var(
 .editorial .post-body :is(.la-notes--unit2,.la-notes--unit3,.la-notes--algebra) .note-figure{margin:1.5em 0}
 .editorial .post-body :is(.la-notes--unit2,.la-notes--unit3,.la-notes--algebra) .note-figure svg{display:block;width:100%;height:auto;background:var(--surface);border:1px solid var(--line);border-radius:5px}
 .editorial .post-body .la-notes--algebra .point-topology-figure img{display:block;width:100%;max-width:600px;height:auto;margin:0 auto;border:1px solid var(--line);background:#fff}
+.editorial .post-body .la-notes--algebra .symmetry-figures{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.editorial .post-body .la-notes--algebra .symmetry-figures img{display:block;width:100%;height:auto;border:1px solid var(--line);background:#fff}
+@media(max-width:600px){.editorial .post-body .la-notes--algebra .symmetry-figures{grid-template-columns:1fr}}
 .editorial .post-body :is(.la-notes--unit2,.la-notes--unit3,.la-notes--algebra) .note-figure figcaption{margin-top:8px;color:var(--muted);font:13px/1.6 var(--sans)}
 .editorial .post-body :is(.la-notes--unit2,.la-notes--unit3,.la-notes--algebra) .note-figure text{fill:var(--ink);font:15px var(--sans)}
 .editorial .post-body :is(.la-notes--unit2,.la-notes--unit3,.la-notes--algebra) details.note-extension{margin:1.2em 0;padding:12px 17px;border:1px solid var(--line)}
