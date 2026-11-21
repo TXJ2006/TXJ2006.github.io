@@ -13,11 +13,13 @@ comments: false
 <nav class="reading-links" aria-label="参考讲义"><a href="/files/math-resources/archive-2026-11-08-59.pdf">林剑峰讲义：2.3、2.4、8</a><a href="/files/math-resources/archive-2026-11-08-34.pdf">Körner 讲义：8</a></nav>
 
 <h2 id="section-27">一、先比较四种“分开”</h2>
+<figure class="note-figure point-topology-figure"><img src="/images/notes/assets/point-set-topology/05-regular-normal.svg" alt="点 x 与闭集 F 分别位于互不相交的开邻域中" loading="lazy"><figcaption>正则性要求把点 \(x\) 与不含它的闭集 \(F\) 用不交开邻域分开；正规性再把“点”换成“闭集”。</figcaption></figure>
 <p><strong>\(T_1\)</strong> 要求每个单点集闭。等价地，对不同的 \(x,y\)，可找一个包含 \(x\) 却不含 \(y\) 的开集，也可反过来找一个包含 \(y\) 却不含 \(x\) 的开集。<strong>Hausdorff（\(T_2\)）</strong> 更强：可找互不相交的开集分别包含 \(x,y\)。</p>
 <p>在本系列约定，<strong>正则（\(T_3\)）</strong> 指 \(T_1\) 且每个点 \(x\) 与不含它的闭集 \(F\) 有不相交的开邻域；<strong>正规（\(T_4\)）</strong> 指 \(T_1\) 且任意两个不交闭集有不相交的开邻域。这样有 \(T_4\Rightarrow T_3\Rightarrow T_2\Rightarrow T_1\)。不同教材对 \(T_3,T_4\) 是否默认含 \(T_1\) 约定不一，判断定理时应看定义而非编号。</p>
 <p>无限集合上的余有限拓扑是 \(T_1\)，却不是 Hausdorff：单点的补集开，但任意两个非空开集相交。它证明“每个点都闭”仍不足以保证极限唯一。</p>
 
 <h2 id="section-28">二、Hausdorff 条件到底保证什么？</h2>
+<figure class="note-figure point-topology-figure"><img src="/images/notes/assets/point-set-topology/05-hausdorff.svg" alt="两个不同点 x 和 y 分别拥有互不相交的开邻域" loading="lazy"><figcaption>若 \(x\) 与 \(y\) 有互不相交的开邻域，同一个网不可能最终同时落在两边，故极限唯一。</figcaption></figure>
 <p>若序列或网同时收敛到不同点 \(x,y\)，取不交的开邻域 \(U\ni x,V\ni y\)。充分靠后的项必须同时在 \(U\) 和 \(V\)，矛盾。故 Hausdorff 空间的收敛极限唯一。反过来，在特殊空间中极限唯一未必保证完整的 Hausdorff 分离条件，因此这里使用的是充分条件。</p>
 <p>还有一个实用判据：\(X\) Hausdorff 当且仅当对角线 \(\Delta_X=\{(x,x):x\in X\}\) 在 \(X\times X\) 中闭。若 \((x,y)\notin\Delta_X\)，不交邻域 \(U,V\) 给出不碰对角线的积开集 \(U\times V\)；反过来从这种积邻域可读出 \(U\cap V=\varnothing\)。</p>
 
@@ -28,6 +30,7 @@ comments: false
 <p>是连续函数，且 \(h(A)=0,h(B)=1\)。取 \(U=h^{-1}([0,1/3))\)、\(V=h^{-1}((2/3,1])\)，其中区间按 \([0,1]\) 的子空间拓扑理解，就得到不交开邻域。若某个闭集为空，分离显然。这个构造说明度量空间不只是能分开点，还能用连续实值函数分开闭集。</p>
 
 <h2 id="section-30">四、开集怎样升级成 Urysohn 函数？</h2>
+<figure class="note-figure point-topology-figure"><img src="/images/notes/assets/point-set-topology/05-urysohn-surface.svg" alt="连续高度曲面在闭集 A 上取零，在闭集 B 上取一" loading="lazy"><figcaption>高度代表函数值：在闭集 \(A\) 上为 0，在不交的闭集 \(B\) 上为 1，中间连续过渡。</figcaption></figure>
 <p><strong>Urysohn lemma：</strong>若 \(X\) 正规、\(A,B\subseteq X\) 不交且闭，则存在连续 \(f:X\to[0,1]\)，使 \(f(A)=0,f(B)=1\)。度量情形刚才给了显式公式；一般正规空间没有距离，必须用开集逐级逼近。</p>
 <p>证明的核心引理是：若闭集 \(F\subseteq U\) 且 \(U\) 开，可找开集 \(V\) 使 \(F\subseteq V\subseteq\overline V\subseteq U\)。这是把 \(F\) 与 \(X\setminus U\) 分开。随后对 \([0,1]\) 的有理数 \(r\) 构造嵌套开集 \(U_r\)，使 \(r\lt s\) 时 \(\overline{U_r}\subseteq U_s\)，最后令 \(f(x)=\inf\{r:x\in U_r\}\)（空集时取 1）。嵌套的“闭包留有余地”保证 \(f\) 的上下水平集都开，因此 \(f\) 连续。完整的逐项归纳见原讲义第 8 章。</p>
 

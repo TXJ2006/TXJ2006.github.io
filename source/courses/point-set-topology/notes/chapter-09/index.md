@@ -17,6 +17,7 @@ comments: false
 <p>度量空间必 Hausdorff、第一可数、正规。因而余有限拓扑（无限集合）不可度量化，因为它不是 Hausdorff；不可数集合的余可数拓扑也不可度量化，因为它不是第一可数。这些是快速排除法，不是可度量化的完整刻画。</p>
 
 <h2 id="section-52">二、Urysohn 可度量化定理的构造</h2>
+<figure class="note-figure point-topology-figure"><img src="/images/notes/assets/point-set-topology/09-urysohn-embedding.svg" alt="原空间中的点通过可数个连续函数的值映入立方体" loading="lazy"><figcaption>可数个连续函数把点送成坐标列 \((f_1(x),f_2(x),\ldots)\)；它们一起记录原空间的邻域。</figcaption></figure>
 <p><strong>Urysohn metrization theorem：</strong>若 \(X\) 是第二可数且正则的 \(T_1\) 空间，则 \(X\) 可度量化。第二可数提供可数多个局部测试，正则性使一个点及其邻域可以用连续实值函数区分。</p>
 <p>证明的主线如下。先由第二可数与正则性得到正规性；再选可数个基对 \((U_n,V_n)\)，使 \(\overline{U_n}\subseteq V_n\)。Urysohn lemma 为每对构造连续函数 \(f_n:X\to[0,1]\)，在 \(\overline{U_n}\) 上为 0，在 \(X\setminus V_n\) 上为 1。基与正则性保证：给定 \(x\) 及其开邻域 \(W\)，有某个 \(n\) 使 \(x\in U_n\subseteq\overline{U_n}\subseteq V_n\subseteq W\)。</p>
 <p>把这些函数组成 \(F:X\to[0,1]^{\mathbb N}\)、\(F(x)=(f_1(x),f_2(x),\ldots)\)。它连续，因为各坐标连续；上面的基对还保证 \(F\) 区分点，并且目标中的坐标开集能拉回成 \(x\) 的任意小邻域，所以 \(F\) 是拓扑嵌入。目标积空间可由
@@ -24,12 +25,14 @@ comments: false
 度量化，限制到 \(F(X)\) 就给 \(X\) 所需的度量。这里的核心不是凭空猜一个距离，而是先用可数个连续函数记录拓扑信息，再从函数值构造距离。</p>
 
 <h2 id="section-53">三、函数空间为什么也需要拓扑？</h2>
+<figure class="note-figure point-topology-figure"><img src="/images/notes/assets/point-set-topology/09-compact-open.svg" alt="下层紧集 K 的像落在上层空间的开区域 U 内" loading="lazy"><figcaption>紧开拓扑的基本条件 \(f(K)\subseteq U\) 同时控制紧集 \(K\) 上所有点的函数值。</figcaption></figure>
 <p>写 \(C(X,Y)\) 表示从 \(X\) 到 \(Y\) 的连续映射集合。若想讨论一族函数是否连续地变化，必须在 \(C(X,Y)\) 上指定拓扑。最常用的<strong>紧开拓扑</strong>以集合
 \[[K,U]=\{f\in C(X,Y):f(K)\subseteq U\}\]
 为子基，其中 \(K\subseteq X\) 紧、\(U\subseteq Y\) 开。它表示“整个紧集 \(K\) 的像都落入目标开集 \(U\)”这一有限范围的控制。</p>
 <p>如果 \(X\) 紧、\(Y\) 有度量，紧开拓扑通常对应一致收敛拓扑：用 \(\sup_{x\in X}d_Y(f(x),g(x))\) 衡量函数距离。若 \(X\) 不紧，紧开拓扑对应的是在每个紧子集上一致收敛，而不是对全体 \(X\) 一致收敛。例如 \(f_n(x)=x/n\) 在 \(\mathbb R\) 的每个有界闭区间上一致收敛到零，却不在整个 \(\mathbb R\) 上一致收敛。</p>
 
 <h2 id="section-54">四、评价映射与指数律</h2>
+<figure class="note-figure point-topology-figure"><img src="/images/notes/assets/point-set-topology/09-evaluation.svg" alt="从底面上的点 x 垂直上升到函数图像上的值 f(x)" loading="lazy"><figcaption>评价映射把“一个函数 \(f\) 加一个点 \(x\)”读成函数值 \(f(x)\)。</figcaption></figure>
 <p>评价映射把函数和点送到函数值：\(\mathrm{ev}:C(X,Y)\times X\to Y\)、\((f,x)\mapsto f(x)\)。若 \(X\) 局部紧且 Hausdorff，紧开拓扑使评价映射连续。关键在于 \(x\) 附近能找到闭包紧的小邻域 \(V\)；若 \(f(x)\in U\)，可缩小 \(V\) 使 \(f(\overline V)\subseteq U\)，于是 \([\overline V,U]\times V\) 是映入 \(U\) 的邻域。</p>
 <p>同一假设下，\(F:Z\times X\to Y\) 连续，等价于它的“转置” \(\widehat F:Z\to C(X,Y)\)、\(\widehat F(z)(x)=F(z,x)\) 连续。这就是紧开拓扑的指数律。它解释为何同伦可以看成到函数空间的一条路径，也说明函数空间不是为了多引入一个集合，而是为了把“连续变化的映射”纳入拓扑学。</p>
 

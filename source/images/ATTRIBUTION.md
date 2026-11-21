@@ -1,5 +1,11 @@
 # Image source
 
+`notes/assets/point-set-topology/*.svg` contains 33 original black-and-white
+mathematical diagrams for the point-set topology reading notes. They are
+generated from `tools/generate-point-set-topology-figures.js` and do not
+reproduce figures from the cited textbooks. Perspective layers are schematic;
+they do not assert an embedding of arbitrary topological spaces in R^3.
+
 `youyu-chitang-source.jpg` depicts You Yu and Chi Tang from the Chinese
 baihe story `Her Mountain, Her Sea` (`她的山，她的海`). It was downloaded from
 the public image page below at the user's request.
