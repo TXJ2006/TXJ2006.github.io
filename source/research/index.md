@@ -11,13 +11,6 @@ I believe **mathematics can open broader frontiers for machine learning and arti
 
 ## Mathematics and Mathematical Modeling
 
-### Algebraic Topology and Polyhedral Products
-
-**Ongoing research discussions and guidance from [Prof. Stephen D. Theriault](https://www.southampton.ac.uk/people/5x9nl2/professor-stephen-theriault), University of Southampton · 2026**
-
-- Studying questions in algebraic topology involving Whitehead products, moment-angle complexes, graph Lie algebras, and quasi-Lie structures.
-- Developing background in prime-local methods, low-characteristic operations, completion methods, and PBW-type arguments.
-
 ### Analysis, Differential Equations, and Formalized Mathematics
 
 - Core coursework includes Mathematical Modeling (96), Ordinary Differential Equations (89), Complex Analysis (90), Real Analysis (95), Functional Analysis (99), and Abstract Algebra (98).
@@ -62,7 +55,7 @@ I believe **mathematics can open broader frontiers for machine learning and arti
 - Contributed to large-language-model deployment and retrieval-augmented generation.
 - Implemented retrieval and knowledge-integration modules, providing experience with Python-based ML systems and experimental workflows.
 
-My projects in Koopman operator learning, neural dynamics, spatial transcriptomics, and deep hedging developed practical skills in mathematical modeling, numerical experiments, high-dimensional data processing, and evaluation. The Koopman predictive-control manuscript on memristive neural dynamics has been accepted by *Biological Cybernetics*, and the spectral-network study of seizure-like synchronization has been accepted by *Cognitive Neurodynamics*.
+My projects in Koopman operator learning, neural dynamics, spatial transcriptomics, and deep hedging developed practical skills in mathematical modeling, numerical experiments, high-dimensional data processing, and evaluation. The Koopman predictive-control manuscript on memristive neural dynamics was published in *Biological Cybernetics* in 2026, and the spectral-network study of seizure-like synchronization has been accepted by *Cognitive Neurodynamics*.
 
 ## Related Pages
 
