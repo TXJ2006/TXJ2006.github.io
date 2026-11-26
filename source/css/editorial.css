@@ -57,6 +57,7 @@ html.editorial body{background:var(--paper);color:var(--ink);font:16px/1.65 var(
 .editorial .post-body th,.editorial .post-body td{border-color:var(--line);background:transparent;padding:10px 13px}
 .editorial .post-body th{background:var(--surface)}
 .editorial .post-body tr:nth-of-type(even){background:transparent}
+.editorial[data-theme=dark] .post-body tbody > tr:nth-of-type(odd){background-color:var(--surface)}
 .editorial .post-body hr{height:1px;border:0;background:var(--line);margin:36px 0}
 .editorial .post-body code{background:var(--surface);color:var(--ink)}
 .editorial .post-body img,.editorial .post-body svg{max-width:100%}

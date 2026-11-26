@@ -9,7 +9,7 @@
   {{ partial('_partials/head/head.swig', {}, {cache: theme.cache.enable}) }}
   {% include '_partials/head/head-unique.swig' %}
   <title>{% block title %}{% endblock %}</title>
-  <link rel="stylesheet" href="/css/editorial.css?v=1">
+  <link rel="stylesheet" href="/css/editorial.css?v=2">
   <script>try{var t=localStorage.getItem('blog-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.theme='dark'}catch(e){}</script>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage" class="editorial-site">
