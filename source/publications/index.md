@@ -9,6 +9,8 @@ comments: false
 
 ## Published and Accepted
 
+### 本科生阶段工作
+
 1. Q. Li and **X. Tang**. "Robust Optimal Reinsurance and Investment with Inflation Risk: A Game-Theoretic Approach and Explicit Solutions." *AIMS Mathematics*, 11(3), 7330–7352, 2026. [DOI: 10.3934/math.2026302](https://doi.org/10.3934/math.2026302)
 
 2. Q. Li and **X. Tang**. "HKGEduRec: A Knowledge Graph-Enhanced Dynamic Hybrid Framework for Educational Recommendation with Cold-Start Mitigation." In *2025 6th International Conference on Modern Education and Information Management (ICMEIM)*, pp. 1–5, 2025. [DOI: 10.1109/ICMEIM66684.2025.11307032](https://doi.org/10.1109/ICMEIM66684.2025.11307032)
